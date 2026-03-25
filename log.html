@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Build Log . ElektraOS.dev</title>
+  <meta name="description" content="Live build log. What shipped this week. Engineering velocity in real time.">
+  <meta property="og:title" content="Build Log . ElektraOS.dev">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#7c3aed">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/chat.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    .log-hero { padding: 120px 0 60px; text-align: center; }
+    .log-subtitle { font-size: 16px; color: var(--text-secondary); max-width: 480px; margin: 12px auto 0; }
+    .log-feed { max-width: 720px; margin: 0 auto; padding: 0 24px 80px; }
+    .log-entry {
+      position: relative; padding: 24px 0 24px 32px;
+      border-left: 2px solid var(--border);
+    }
+    .log-entry::before {
+      content: ''; position: absolute; left: -5px; top: 28px;
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--purple); border: 2px solid var(--bg-primary);
+    }
+    .log-entry:hover::before {
+      box-shadow: 0 0 12px var(--purple-glow);
+    }
+    .log-date {
+      font-family: var(--font-mono); font-size: 11px;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      color: var(--text-muted); margin-bottom: 6px;
+    }
+    .log-title { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+    .log-tag {
+      display: inline-block; font-family: var(--font-mono); font-size: 10px;
+      text-transform: uppercase; letter-spacing: 1px;
+      padding: 2px 8px; border-radius: 4px; margin-right: 6px; margin-bottom: 8px;
+    }
+    .log-tag.session { background: var(--purple-dim); color: var(--purple); }
+    .log-tag.handoff { background: var(--cyan-dim); color: var(--cyan); }
+    .log-items { list-style: none; padding: 0; margin: 0; }
+    .log-items li {
+      font-size: 13px; color: var(--text-secondary); padding: 3px 0;
+      padding-left: 16px; position: relative;
+    }
+    .log-items li::before {
+      content: ''; position: absolute; left: 0; top: 10px;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--green); opacity: 0.6;
+    }
+    .log-empty {
+      text-align: center; padding: 60px 0;
+      color: var(--text-muted); font-size: 14px;
+    }
+    .log-cta {
+      text-align: center; padding: 40px 0 0;
+      border-top: 1px solid var(--border); margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><span>E</span>lektraOS<span>.</span>dev</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#solutions">Solutions</a></li>
+        <li><a href="index.html#proof">Work</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="log.html" style="color:var(--cyan);">Build Log</a></li>
+      </ul>
+      <a href="index.html#contact" class="btn nav-cta">Let's Build</a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="log-hero">
+    <span class="section-label">build log</span>
+    <h1 class="gradient-text" style="font-size:clamp(28px,4vw,44px);margin-top:8px;">What shipped this week.</h1>
+    <p class="log-subtitle">Engineering velocity. No tutorials. No how-to guides. Just what was built, when it shipped, and what's next.</p>
+  </div>
+
+  <!-- Feed -->
+  <div class="log-feed" id="logFeed">
+
+    <!-- Entry: March 25, 2026 -->
+    <div class="log-entry reveal">
+      <div class="log-date">March 25, 2026</div>
+      <div class="log-title">Thumbnail Pipeline + ElektraOS.dev Launch</div>
+      <span class="log-tag session">session</span>
+      <span class="log-tag handoff">handoff</span>
+      <ul class="log-items">
+        <li>Image previews live in thumbnail generator</li>
+        <li>Fixed infinite render loop in MutationObserver</li>
+        <li>Added /media-thumbs static mount for asset serving</li>
+        <li>Full generate, preview, approve pipeline tested end-to-end</li>
+        <li>Verified Elektra + Claude Code architecture (25+ MCP tools, 22 agents)</li>
+        <li>ElektraOS.dev restructured: 9 pages, smart features, command palette</li>
+        <li>Live system pulse, interactive solution demos, case study timeline</li>
+        <li>Deployed to elektraos.dev with GitHub Pages + HTTPS</li>
+        <li>EU/Denmark GDPR compliance: cookie banner, privacy policy, Datatilsynet</li>
+      </ul>
+    </div>
+
+    <!-- Entry: March 24, 2026 -->
+    <div class="log-entry reveal">
+      <div class="log-date">March 24, 2026</div>
+      <div class="log-title">ElektraOS.dev Website + Thumbnail System Architecture</div>
+      <span class="log-tag handoff">handoff</span>
+      <ul class="log-items">
+        <li>Built ElektraOS.dev website from scratch (5 pages, interactive pricing calculator)</li>
+        <li>Completed 4 Upwork catalog projects</li>
+        <li>Extracted Danish market strategy into actionable pipeline</li>
+        <li>Thumbnail generator backend: multi-brand, multi-platform, face locking system</li>
+      </ul>
+    </div>
+
+    <!-- CTA -->
+    <div class="log-cta">
+      <p style="color:var(--text-secondary);font-size:14px;">This log updates after every engineering session.</p>
+      <a href="index.html#contact" class="btn btn-primary" style="margin-top:16px;">Start a Project</a>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-copy"><span class="mono">&copy; 2026 ElektraOS.dev</span></div>
+      <div class="footer-links">
+        <a href="https://github.com/yoggi-sheandelle" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.upwork.com/freelancers/~01eddb5df59f03b475" target="_blank" rel="noopener">Upwork</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/utils.js"></script>
+  <script src="js/chat.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
