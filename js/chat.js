@@ -1,142 +1,184 @@
-// ===== LIVE CHAT WIDGET =====
+// ===== ELEKTRA CHAT - AI-Powered with ElektraOS Backend =====
+// Tries live API first, falls back to smart local FAQ.
+// Shows under-the-hood stats panel for technical visitors.
 
 (function () {
-  const toggle = document.getElementById('chatToggle');
-  const panel = document.getElementById('chatPanel');
-  const closeBtn = document.getElementById('chatClose');
-  const input = document.getElementById('chatInput');
-  const sendBtn = document.getElementById('chatSend');
-  const messages = document.getElementById('chatMessages');
+  var toggle = document.getElementById('chatToggle');
+  var panel = document.getElementById('chatPanel');
+  var closeBtn = document.getElementById('chatClose');
+  var input = document.getElementById('chatInput');
+  var sendBtn = document.getElementById('chatSend');
+  var messagesEl = document.getElementById('chatMessages');
 
   if (!toggle) return;
 
-  const RESPONSES = {
-    greetings: {
-      patterns: ['hello', 'hi', 'hey', 'hej', 'salut', 'bonjour', 'merhaba'],
-      replies: [
-        'Hey! Good to have you here. What are you working on?',
-        'Hi there! Looking for AI solutions, automation, or something else?'
-      ]
-    },
-    services: {
-      patterns: ['service', 'what do you', 'what can you', 'offer', 'help', 'build'],
-      replies: [
-        'I build four things: AI chatbots, workflow automation, WordPress SEO optimization, and web design. Each one is tailored to what you actually need - no cookie-cutter packages.',
-        'Four core services: AI assistants, automation workflows, SEO, and web design. Want me to go deeper on any of these?'
-      ]
-    },
-    pricing: {
-      patterns: ['price', 'cost', 'how much', 'budget', 'rate', 'expensive', 'cheap', 'afford'],
-      replies: [
-        'Depends on scope. AI chatbots start at $200, automation at $150, SEO at $150, and web design at $250. Check the pricing calculator above for a detailed estimate.',
-        'I price by project, not by hour. Starting points: $150 for SEO audits, $200 for chatbots, $250 for web design. Use the calculator on this page to build your estimate.'
-      ]
-    },
-    chatbot: {
-      patterns: ['chatbot', 'assistant', 'bot', 'ai chat', 'rag', 'llm'],
-      replies: [
-        'I build RAG-powered chatbots trained on your data. They handle customer questions, capture leads, and work 24/7. Multi-language support included. Want to discuss your use case?'
-      ]
-    },
-    automation: {
-      patterns: ['automat', 'workflow', 'n8n', 'agent', 'integrate', 'api'],
-      replies: [
-        'I connect your tools and automate repetitive work. Think: invoice parsing, email routing, CRM updates, lead scoring - all running without you touching it. What processes are eating your time?'
-      ]
-    },
-    seo: {
-      patterns: ['seo', 'search', 'google', 'traffic', 'ranking', 'wordpress', 'speed', 'core web'],
-      replies: [
-        'I do full technical SEO: audits, Core Web Vitals optimization, schema markup, and automated content pipelines. I\'ve optimized 50+ sites. Drop your URL in the audit tool above for a free check.'
-      ]
-    },
-    design: {
-      patterns: ['design', 'website', 'landing', 'figma', 'redesign', 'ui', 'ux'],
-      replies: [
-        'I design and build responsive websites from scratch or from Figma. Six style categories available - from luxury to minimal. Everything ships mobile-first and SEO-ready.'
-      ]
-    },
-    location: {
-      patterns: ['where', 'location', 'country', 'copenhagen', 'denmark', 'remote', 'meet'],
-      replies: [
-        'Based in Copenhagen, Denmark. I work with clients worldwide. If you\'re local, we can meet in person - a 20-minute coffee is usually enough to scope a project.'
-      ]
-    },
-    timeline: {
-      patterns: ['how long', 'timeline', 'when', 'deadline', 'fast', 'urgent', 'rush'],
-      replies: [
-        'Depends on the project. A chatbot or SEO audit can be done in days. Full automation suites or brand websites take 2-4 weeks. Rush delivery is available as an add-on.'
-      ]
-    },
-    fallback: {
-      replies: [
-        'Good question. Let me point you to the right place - check out the services section above or use the contact form for a detailed conversation.',
-        'I\'d rather give you a proper answer than a generic one. Drop me a message through the contact form and I\'ll get back to you with specifics.',
-        'That\'s worth a proper conversation. Book a quick call or send me a message through the form - I respond within 24 hours.'
-      ]
+  // ── Config ──
+  var API_URL = 'http://localhost:8000/public/chat';
+  var SESSION_ID = localStorage.getItem('elektra_session') || ('s_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6));
+  localStorage.setItem('elektra_session', SESSION_ID);
+  var isApiOnline = false;
+  var messageCount = 0;
+
+  // ── Detect current page for context ──
+  function getCurrentPage() {
+    var path = window.location.pathname;
+    if (path.includes('pricing')) return 'pricing';
+    if (path.includes('chatbot')) return 'chatbot';
+    if (path.includes('automation')) return 'automation';
+    if (path.includes('seo')) return 'seo';
+    if (path.includes('design')) return 'design';
+    if (path.includes('cases')) return 'cases';
+    if (path.includes('about')) return 'about';
+    if (path.includes('blog')) return 'blog';
+    if (path.includes('log')) return 'log';
+    return 'home';
+  }
+
+  // ── Check API availability on load ──
+  function checkApi() {
+    fetch(API_URL.replace('/chat', '/health'), { method: 'GET', signal: AbortSignal.timeout(3000) })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        isApiOnline = d.status === 'online';
+        updateStatus();
+      })
+      .catch(function () { isApiOnline = false; updateStatus(); });
+  }
+
+  function updateStatus() {
+    var statusEl = panel ? panel.querySelector('.header-status') : null;
+    if (statusEl) {
+      statusEl.textContent = isApiOnline ? 'Online - AI powered' : 'Online';
+      statusEl.style.color = isApiOnline ? '#00ff9d' : '#aaa';
     }
+  }
+
+  checkApi();
+  setInterval(checkApi, 30000);
+
+  // ── Local FAQ fallback ──
+  var FAQ = {
+    greetings: { p: ['hello','hi','hey','hej','salut','bonjour'], r: ['Hey! I\'m Elektra. What are you working on?', 'Hi there! Looking for AI solutions, automation, or something custom?'] },
+    services: { p: ['service','what do you','what can you','offer','help','build','do you do'], r: ['I build five things: AI chatbots, workflow automation, SEO optimization, web design, and AI media pipelines. Each one is engineered from scratch. What do you need?'] },
+    pricing: { p: ['price','cost','how much','budget','rate','afford'], r: ['AI chatbots from $200, automation from $150, SEO from $150, web design from $250. Everything is scoped to what you actually need. Want a custom quote?'] },
+    chatbot: { p: ['chatbot','assistant','bot','ai chat','rag','llm'], r: ['I build RAG-powered chatbots trained on your data. Multi-language, 24/7, with lead capture built in. What\'s your use case?'] },
+    automation: { p: ['automat','workflow','n8n','agent','integrate','api'], r: ['I connect your tools and automate repetitive work - invoice parsing, email routing, CRM updates, lead scoring. What processes are eating your time?'] },
+    seo: { p: ['seo','search','google','traffic','ranking','speed'], r: ['Full technical SEO: audits, Core Web Vitals, schema markup, and automated content pipelines. Drop your URL in the audit tool for a free check.'] },
+    design: { p: ['design','website','landing','figma','ui','ux'], r: ['I design and build responsive websites from scratch. Everything ships mobile-first and SEO-ready. What do you have in mind?'] },
+    contact: { p: ['contact','email','reach','talk','call','meeting','book'], r: ['Email yossra.benzad@gmail.com or start a project on Upwork (link in the nav). I respond within 24 hours.'] },
+    portfolio: { p: ['portfolio','projects','case study','examples','work','built'], r: ['Check the Case Studies page. Highlights: ElektraOS (184K+ lines, 41 agents), AYLA Luxury e-commerce, AI thumbnail pipeline, and this website. All production code.'] },
+    location: { p: ['where','location','copenhagen','denmark','remote'], r: ['Based in Copenhagen, Denmark. Available worldwide for remote work. Timezone flexibility is not a problem.'] },
+    timeline: { p: ['how long','timeline','deadline','when','delivery'], r: ['A chatbot or automation ships in 1-2 weeks. Full web platforms take 3-6 weeks. Tell me what you need for an honest timeline.'] },
+    hire: { p: ['hire','freelance','contract','available','collaborate','partnership'], r: ['Open for projects, co-builds, and partnerships. I work through Upwork for contracts. What are you building?'] }
   };
 
-  // Toggle panel
+  function localMatch(text) {
+    var lower = text.toLowerCase();
+    for (var key in FAQ) {
+      for (var i = 0; i < FAQ[key].p.length; i++) {
+        if (lower.includes(FAQ[key].p[i])) {
+          var replies = FAQ[key].r;
+          return replies[Math.floor(Math.random() * replies.length)];
+        }
+      }
+    }
+    return null;
+  }
+
+  // ── Toggle panel ──
   toggle.addEventListener('click', function () {
     panel.classList.toggle('open');
     if (panel.classList.contains('open')) input.focus();
   });
 
-  closeBtn.addEventListener('click', function () {
-    panel.classList.remove('open');
-  });
+  // Also let sigil3d trigger toggle
+  var sigil = document.getElementById('sigil3d');
+  if (sigil && sigil !== toggle) {
+    sigil.addEventListener('click', function () {
+      panel.classList.toggle('open');
+      if (panel.classList.contains('open')) input.focus();
+    });
+  }
 
-  // Send message
+  if (closeBtn) closeBtn.addEventListener('click', function () { panel.classList.remove('open'); });
+
+  // ── Add message to chat ──
+  function addMessage(text, type, meta) {
+    var bubble = document.createElement('div');
+    bubble.className = 'chat-bubble ' + type;
+    bubble.textContent = text;
+    messagesEl.appendChild(bubble);
+
+    // Stats badge for bot messages (under the hood)
+    if (type === 'bot' && meta && meta.model !== 'faq') {
+      var stats = document.createElement('div');
+      stats.className = 'chat-stats';
+      stats.innerHTML = '<span title="Model">' + (meta.model || '?') + '</span>'
+        + '<span title="Latency">' + (meta.latency_ms || 0) + 'ms</span>'
+        + '<span title="Tokens">' + (meta.tokens || 0) + ' tok</span>'
+        + '<span title="Source">' + (meta.source || '?') + '</span>';
+      messagesEl.appendChild(stats);
+    } else if (type === 'bot' && meta && meta.model === 'faq') {
+      var stats = document.createElement('div');
+      stats.className = 'chat-stats';
+      stats.innerHTML = '<span>faq</span><span>&lt;1ms</span><span>local</span>';
+      messagesEl.appendChild(stats);
+    }
+
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+
+  // ── Send message ──
   function sendMessage() {
-    const text = input.value.trim();
+    var text = input.value.trim();
     if (!text) return;
 
     addMessage(text, 'user');
     input.value = '';
+    messageCount++;
 
-    // Show typing indicator
-    const typing = document.createElement('div');
+    // Show typing
+    var typing = document.createElement('div');
     typing.className = 'chat-typing';
     typing.innerHTML = '<span></span><span></span><span></span>';
-    messages.appendChild(typing);
-    messages.scrollTop = messages.scrollHeight;
+    messagesEl.appendChild(typing);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
 
-    // Generate response
-    const delay = 800 + Math.random() * 1200;
-    setTimeout(function () {
-      typing.remove();
-      const reply = getResponse(text);
-      addMessage(reply, 'bot');
-    }, delay);
+    // Lead capture: after 3 messages, subtly ask for contact if not given
+    var leadPrompt = '';
+    if (messageCount === 4) {
+      leadPrompt = '\n\nBy the way - if you want me to follow up with details, drop your email and I\'ll send a proper breakdown.';
+    }
+
+    // Try API first, fallback to local
+    if (isApiOnline) {
+      fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: text, session_id: SESSION_ID, page: getCurrentPage() }),
+        signal: AbortSignal.timeout(10000)
+      })
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        typing.remove();
+        addMessage((data.reply || 'Something went wrong.') + leadPrompt, 'bot', data);
+      })
+      .catch(function () {
+        typing.remove();
+        isApiOnline = false;
+        updateStatus();
+        var local = localMatch(text) || 'Good question. Email yossra.benzad@gmail.com for a detailed answer - I respond within 24 hours.';
+        addMessage(local + leadPrompt, 'bot', { model: 'faq' });
+      });
+    } else {
+      setTimeout(function () {
+        typing.remove();
+        var local = localMatch(text) || 'Good question. Email yossra.benzad@gmail.com for a detailed answer - I respond within 24 hours.';
+        addMessage(local + leadPrompt, 'bot', { model: 'faq' });
+      }, 400 + Math.random() * 600);
+    }
   }
 
   sendBtn.addEventListener('click', sendMessage);
-  input.addEventListener('keydown', function (e) {
-    if (e.key === 'Enter') sendMessage();
-  });
-
-  function addMessage(text, type) {
-    const bubble = document.createElement('div');
-    bubble.className = 'chat-bubble ' + type;
-    bubble.textContent = text;
-    messages.appendChild(bubble);
-    messages.scrollTop = messages.scrollHeight;
-  }
-
-  function getResponse(text) {
-    const lower = text.toLowerCase();
-    for (const category of Object.keys(RESPONSES)) {
-      if (category === 'fallback') continue;
-      const patterns = RESPONSES[category].patterns;
-      for (const pattern of patterns) {
-        if (lower.includes(pattern)) {
-          const replies = RESPONSES[category].replies;
-          return replies[Math.floor(Math.random() * replies.length)];
-        }
-      }
-    }
-    const fallbacks = RESPONSES.fallback.replies;
-    return fallbacks[Math.floor(Math.random() * fallbacks.length)];
-  }
+  input.addEventListener('keydown', function (e) { if (e.key === 'Enter') sendMessage(); });
 })();

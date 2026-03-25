@@ -182,6 +182,25 @@
 .chat-typing span:nth-child(2) { animation: typingDot 1.4s infinite 0.2s; }
 .chat-typing span:nth-child(3) { animation: typingDot 1.4s infinite 0.4s; }
 
+/* Under-the-hood stats badge */
+.chat-stats {
+  display: flex;
+  gap: 8px;
+  padding: 2px 0 0 14px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--text-muted);
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+.chat-stats:hover { opacity: 0.9; }
+.chat-stats span {
+  padding: 1px 5px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 3px;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
 .chat-input-area {
   padding: 12px;
   border-top: 1px solid var(--border);
