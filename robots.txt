@@ -1,0 +1,50 @@
+# robots.txt for https://elektraos.dev
+# AI-friendly: all major crawlers explicitly allowed
+
+# Google
+User-agent: Googlebot
+Allow: /
+Disallow: /js/
+Disallow: /css/
+
+# Google AI (Gemini training)
+User-agent: Google-Extended
+Allow: /
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Disallow: /js/
+Disallow: /css/
+
+# OpenAI - ChatGPT browsing
+User-agent: ChatGPT-User
+Allow: /
+
+# OpenAI - GPTBot (training + browsing)
+User-agent: GPTBot
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# Anthropic - Claude web search
+User-agent: ClaudeBot
+Allow: /
+
+# Anthropic - training
+User-agent: Anthropic-ai
+Allow: /
+
+# Common Crawl
+User-agent: CCBot
+Allow: /
+
+# All other bots
+User-agent: *
+Allow: /
+Disallow: /js/
+Disallow: /css/
+
+Sitemap: https://elektraos.dev/sitemap.xml
