@@ -22,8 +22,8 @@
 
     // ---- Scene setup ----
     var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
-    camera.position.z = 6;
+    var camera = new THREE.PerspectiveCamera(40, width / height, 0.1, 100);
+    camera.position.z = 7;
 
     var renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setSize(width, height);
@@ -169,26 +169,25 @@
     var particles = new THREE.Points(particleGeo, particleMat);
     sigil.add(particles);
 
-    // ---- Scanline ring (holographic effect) ----
-    var ringGeo = new THREE.RingGeometry(1.9, 2.0, 6);
+    // ---- Scanline rings (subtle, thin, contained) ----
+    var ringGeo = new THREE.RingGeometry(1.85, 1.88, 64);
     var ringMat = new THREE.MeshBasicMaterial({
       color: cyan,
       transparent: true,
-      opacity: 0.08,
+      opacity: 0.1,
       side: THREE.DoubleSide
     });
     var scanRing = new THREE.Mesh(ringGeo, ringMat);
     sigil.add(scanRing);
 
-    // ---- Second ring (offset, phase shifted) ----
-    var ring2 = scanRing.clone();
-    ring2.material = new THREE.MeshBasicMaterial({
+    var ring2Geo = new THREE.RingGeometry(2.05, 2.07, 64);
+    var ring2Mat = new THREE.MeshBasicMaterial({
       color: purple,
       transparent: true,
-      opacity: 0.05,
+      opacity: 0.06,
       side: THREE.DoubleSide
     });
-    ring2.scale.setScalar(1.15);
+    var ring2 = new THREE.Mesh(ring2Geo, ring2Mat);
     ring2.rotation.z = Math.PI / 6;
     sigil.add(ring2);
 
