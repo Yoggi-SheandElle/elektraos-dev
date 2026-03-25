@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Study: The 40th Brick . Interactive Puzzle Game . ElektraOS.dev</title>
+  <meta name="description" content="The 40th Brick: a co-op puzzle adventure. 40 rooms, 4 chapters, built in a single engineering session with Claude Code. Pure JavaScript and HTML Canvas.">
+  <meta property="og:title" content="Case Study: The 40th Brick . ElektraOS.dev">
+  <meta property="og:description" content="A co-op puzzle adventure. 40 rooms. 4 chapters. Built in a single engineering session.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://elektraos.dev/case-40th-brick.html">
+  <meta name="theme-color" content="#7c3aed">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="canonical" href="https://elektraos.dev/case-40th-brick.html">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "The 40th Brick: Interactive Puzzle Game",
+    "description": "A co-op puzzle adventure with 40 rooms and 4 chapters. Built in a single engineering session with Claude Code. Pure JavaScript and HTML Canvas.",
+    "url": "https://elektraos.dev/case-40th-brick.html",
+    "author": {
+      "@type": "Organization",
+      "name": "ElektraOS.dev",
+      "url": "https://elektraos.dev"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ElektraOS.dev"
+    },
+    "proficiencyLevel": "Expert",
+    "dependencies": "JavaScript, HTML Canvas, Node.js, Express"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/chat.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <style>
+    .case-hero {
+      padding: 160px 0 80px;
+      text-align: center;
+    }
+    .case-hero-badge {
+      display: inline-block;
+      font-family: var(--font-mono); font-size: 11px;
+      text-transform: uppercase; letter-spacing: 2px;
+      color: var(--cyan);
+      border: 1px solid rgba(0, 212, 255, 0.2);
+      padding: 6px 16px; border-radius: 999px;
+      margin-bottom: 24px;
+      background: rgba(0, 212, 255, 0.06);
+    }
+    .case-hero h1 {
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 700; line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .case-hero h1 .gradient {
+      background: var(--gradient-brand);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .case-hero-sub {
+      font-size: 18px; color: var(--text-secondary);
+      max-width: 640px; margin: 0 auto;
+    }
+    .case-container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+    .stats-bar {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1px; background: var(--border); border-radius: var(--radius-lg);
+      overflow: hidden; margin: 60px 0 80px;
+    }
+    .stat {
+      background: var(--bg-secondary); padding: 28px 16px; text-align: center;
+    }
+    .stat-value {
+      font-family: var(--font-mono); font-size: 28px;
+      font-weight: 700; color: var(--cyan);
+    }
+    .stat-label {
+      font-size: 11px; text-transform: uppercase;
+      letter-spacing: 1px; color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .case-section { margin-bottom: 80px; }
+    .section-label {
+      font-family: var(--font-mono); font-size: 11px;
+      text-transform: uppercase; letter-spacing: 2px;
+      color: var(--purple); margin-bottom: 12px;
+    }
+    .case-section h2 {
+      font-size: 28px; font-weight: 700;
+      margin-bottom: 16px; line-height: 1.2;
+    }
+    .case-section p {
+      color: var(--text-secondary); font-size: 16px;
+      margin-bottom: 16px; line-height: 1.7;
+    }
+
+    .card-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px; margin-top: 24px;
+    }
+    .card {
+      background: var(--bg-card); border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md); padding: 24px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .card:hover { border-color: rgba(124, 58, 237, 0.3); transform: translateY(-2px); }
+    .card h3 { font-size: 16px; margin-bottom: 8px; }
+    .card p { font-size: 14px; color: var(--text-muted); margin: 0; }
+
+    .tech-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 12px; margin-top: 20px;
+    }
+    .tech-chip {
+      background: var(--bg-card); border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md); padding: 14px 16px;
+      text-align: center; font-size: 13px; font-weight: 600;
+    }
+
+    .github-link {
+      display: inline-flex; align-items: center; gap: 10px;
+      margin-top: 24px; padding: 14px 28px;
+      background: var(--bg-card); border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md); text-decoration: none;
+      color: var(--text-primary); font-weight: 600; font-size: 14px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .github-link:hover { border-color: rgba(124, 58, 237, 0.3); transform: translateY(-2px); }
+    .github-link svg { flex-shrink: 0; }
+
+    .cta-section {
+      text-align: center; padding: 80px 0;
+      border-top: 1px solid var(--border);
+    }
+    .cta-button {
+      display: inline-block; padding: 16px 40px;
+      background: var(--gradient-brand);
+      color: white; font-weight: 700; font-size: 15px;
+      border-radius: var(--radius-md); text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      font-family: var(--font-mono); text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .cta-button:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(124, 58, 237, 0.35); }
+
+    .reveal {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 768px) {
+      .stats-bar { grid-template-columns: repeat(2, 1fr); }
+      .case-hero { padding: 120px 0 60px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAV ===== -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><span>E</span>lektraOS<span>.</span>dev</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#solutions">Solutions</a></li>
+        <li><a href="log.html">Build Log</a></li>
+        <li><a href="cases.html">Case Studies</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <a href="index.html#contact" class="btn nav-cta">Let's Build</a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <header class="case-hero">
+    <div class="case-container">
+      <div class="case-hero-badge">Interactive Puzzle Game</div>
+      <h1><span class="gradient">The 40th Brick</span></h1>
+      <p class="case-hero-sub">
+        A co-op puzzle adventure. 40 rooms. 4 chapters. Built in a single engineering session.
+      </p>
+    </div>
+  </header>
+
+  <!-- ===== STATS ===== -->
+  <div class="case-container">
+    <div class="stats-bar reveal">
+      <div class="stat">
+        <div class="stat-value">40</div>
+        <div class="stat-label">Rooms</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">4</div>
+        <div class="stat-label">Chapters</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">1</div>
+        <div class="stat-label">Session to Build</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">Mobile</div>
+        <div class="stat-label">Friendly</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== THE CONCEPT ===== -->
+  <div class="case-container">
+    <section class="case-section reveal">
+      <div class="section-label">// The Concept</div>
+      <h2>A birthday gift designed as an interactive experience</h2>
+      <p>
+        A personalized birthday gift, engineered as a playable puzzle adventure.
+        40 rooms, one for each year. 4 themed chapters that progress in difficulty
+        and narrative complexity. Solo and multiplayer modes for shared play.
+        Fully responsive across desktop, tablet, and mobile.
+      </p>
+      <p>
+        The constraint was personal. It had to feel crafted, not generic.
+        Each room carries unique puzzle mechanics. The experience is linear
+        but varied, with no two rooms sharing the same interaction pattern.
+      </p>
+    </section>
+
+    <!-- ===== ENGINEERING ===== -->
+    <section class="case-section reveal">
+      <div class="section-label">// Engineering</div>
+      <h2>Zero frameworks. One session. Pure craftsmanship.</h2>
+      <p>
+        Built entirely with Claude Code in a single engineering session.
+        No frameworks, no libraries. Pure JavaScript with HTML Canvas rendering.
+        Every room has its own puzzle logic, visual style, and interaction model.
+      </p>
+      <p>
+        The architecture is deliberately minimal. A Node.js and Express server
+        handles multiplayer state. The client is vanilla JavaScript with Canvas API
+        for all rendering. Responsive design ensures consistent gameplay
+        across screen sizes, from desktop monitors to mobile phones.
+      </p>
+
+      <div class="card-grid">
+        <div class="card">
+          <h3>40 Unique Rooms</h3>
+          <p>Each room features distinct puzzle mechanics. Pattern matching, timing challenges, spatial reasoning, memory sequences, and more.</p>
+        </div>
+        <div class="card">
+          <h3>4 Themed Chapters</h3>
+          <p>Progressive difficulty curve across four narrative arcs. Each chapter introduces new interaction patterns and visual themes.</p>
+        </div>
+        <div class="card">
+          <h3>Zero Dependencies</h3>
+          <p>No React. No Phaser. No game engine. Pure JavaScript and HTML Canvas. The entire game runs without a single external library.</p>
+        </div>
+        <div class="card">
+          <h3>Multiplayer Support</h3>
+          <p>Real-time co-op mode via WebSocket connections. Shared puzzle state, synchronized progress, and collaborative solving.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== VIEW ON GITHUB ===== -->
+    <section class="case-section reveal">
+      <div class="section-label">// Source Code</div>
+      <h2>Open source on GitHub</h2>
+      <p>
+        The full source code is publicly available. Inspect the architecture,
+        explore the puzzle logic, or fork it for your own project.
+      </p>
+      <a href="https://github.com/Yoggi-SheandElle/the-40th-brick" target="_blank" rel="noopener" class="github-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        View on GitHub
+      </a>
+    </section>
+
+    <!-- ===== TECH STACK ===== -->
+    <section class="case-section reveal">
+      <div class="section-label">// Tech Stack</div>
+      <h2>Built with</h2>
+
+      <div class="tech-grid">
+        <div class="tech-chip">JavaScript</div>
+        <div class="tech-chip">HTML Canvas</div>
+        <div class="tech-chip">Node.js</div>
+        <div class="tech-chip">Express</div>
+        <div class="tech-chip">Claude Code</div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ===== CTA ===== -->
+  <div class="cta-section reveal">
+    <div class="case-container">
+      <h2 style="margin-bottom:16px;">Need something custom built?</h2>
+      <p style="color:var(--text-secondary);margin-bottom:32px;">
+        From interactive experiences to production systems. Engineered to spec.
+      </p>
+      <a href="index.html#contact" class="cta-button">Let's Build</a>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-copy">
+        <span class="mono">&copy; 2026 ElektraOS.dev</span>
+        <span style="display:block;font-size:11px;color:var(--text-muted);margin-top:4px;">Copenhagen, Denmark</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/yoggi-sheandelle" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.upwork.com/freelancers/~01eddb5df59f03b475" target="_blank" rel="noopener">Upwork</a>
+        <a href="about.html#privacy">Privacy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/utils.js"></script>
+  <script src="js/chat.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
