@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Studies . ElektraOS.dev . Production Systems</title>
+  <meta name="description" content="Case studies: AI systems, e-commerce, automation, interactive games. Real projects, real metrics, real production code. Copenhagen, Denmark.">
+  <meta name="keywords" content="case study, AI engineer, automation, SaaS, e-commerce, full-stack developer, Copenhagen, Denmark, ElektraOS, portfolio">
+  <meta property="og:title" content="Case Studies . ElektraOS.dev">
+  <meta property="og:description" content="Real projects. Real metrics. Production systems built and shipped.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://elektraos.dev/cases.html">
+  <meta name="theme-color" content="#7c3aed">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="canonical" href="https://elektraos.dev/cases.html">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "ElektraOS.dev Case Studies",
+    "description": "Portfolio of production AI systems, automation pipelines, e-commerce builds, and full-stack engineering projects.",
+    "url": "https://elektraos.dev/cases.html",
+    "author": {
+      "@type": "Person",
+      "jobTitle": "AI Systems Engineer",
+      "knowsAbout": ["AI", "Automation", "SaaS", "Full-Stack Development"],
+      "workLocation": {"@type": "Place", "address": {"@type": "PostalAddress", "addressLocality": "Copenhagen", "addressCountry": "DK"}}
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/chat.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    .cases-hero { padding: 120px 0 48px; text-align: center; }
+    .cases-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px; max-width: 900px; margin: 0 auto; padding: 0 24px 80px;
+    }
+    .case-card-full {
+      background: var(--bg-card); border: 1px solid var(--glass-border);
+      border-radius: 16px; overflow: hidden; transition: all 0.3s;
+      text-decoration: none; color: inherit; display: block;
+    }
+    .case-card-full:hover {
+      border-color: rgba(124,58,237,0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+    .case-header {
+      padding: 28px 24px 20px; border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .case-tags { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
+    .case-tag-sm {
+      font-family: var(--font-mono); font-size: 9px;
+      text-transform: uppercase; letter-spacing: 1px;
+      padding: 3px 8px; border-radius: 4px;
+    }
+    .case-tag-sm.ai { background: rgba(124,58,237,0.1); color: #a78bfa; }
+    .case-tag-sm.ship { background: rgba(0,255,157,0.08); color: var(--green); }
+    .case-tag-sm.design { background: rgba(245,158,11,0.08); color: var(--amber); }
+    .case-tag-sm.infra { background: rgba(0,212,255,0.08); color: var(--cyan); }
+    .case-tag-sm.game { background: rgba(239,68,68,0.08); color: #f87171; }
+    .case-card-title { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+    .case-card-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
+    .case-body { padding: 20px 24px; }
+    .case-metrics {
+      display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 16px;
+    }
+    .case-metric-item { }
+    .case-metric-val { font-family: var(--font-mono); font-size: 16px; font-weight: 700; color: var(--cyan); }
+    .case-metric-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); }
+    .case-tech { display: flex; flex-wrap: wrap; gap: 4px; }
+    .case-tech span {
+      font-family: var(--font-mono); font-size: 9px;
+      padding: 2px 7px; border-radius: 3px;
+      background: rgba(255,255,255,0.02); color: var(--text-muted);
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+    .case-arrow {
+      padding: 16px 24px; border-top: 1px solid rgba(255,255,255,0.04);
+      font-family: var(--font-mono); font-size: 11px; color: var(--purple);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .cases-cta {
+      text-align: center; max-width: 900px; margin: 0 auto;
+      padding: 48px 24px; border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><span>E</span>lektraOS<span>.</span>dev</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#solutions">Solutions</a></li>
+        <li><a href="log.html">Build Log</a></li>
+        <li><a href="cases.html" style="color:var(--cyan);">Case Studies</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <a href="index.html#contact" class="btn nav-cta">Let's Build</a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="cases-hero">
+    <span class="section-label">case studies</span>
+    <h1 class="gradient-text" style="font-size:clamp(28px,4vw,44px);margin-top:8px;">Production systems.</h1>
+    <p style="font-size:16px;color:var(--text-secondary);max-width:500px;margin:12px auto 0;line-height:1.7;">Real projects with real metrics. Every system listed here is in production or was delivered to a client.</p>
+  </div>
+
+  <!-- Cases Grid -->
+  <div class="cases-grid">
+
+    <!-- ElektraOS -->
+    <div class="case-card-full reveal" itemscope itemtype="https://schema.org/SoftwareApplication">
+      <div class="case-header">
+        <div class="case-tags">
+          <span class="case-tag-sm ai">AI Systems</span>
+          <span class="case-tag-sm infra">Infrastructure</span>
+          <span class="case-tag-sm ship">Production</span>
+        </div>
+        <h2 class="case-card-title" itemprop="name">ElektraOS</h2>
+        <p class="case-card-desc" itemprop="description">Full-stack cognitive operating system. 41 specialized AI agents across 5 teams, multi-provider LLM orchestration, real-time operator console, autonomous scheduling, and Obsidian-compatible knowledge vault.</p>
+      </div>
+      <div class="case-body">
+        <div class="case-metrics">
+          <div class="case-metric-item"><div class="case-metric-val">184K+</div><div class="case-metric-label">Lines of code</div></div>
+          <div class="case-metric-item"><div class="case-metric-val">41</div><div class="case-metric-label">AI agents</div></div>
+          <div class="case-metric-item"><div class="case-metric-val">624</div><div class="case-metric-label">Endpoints</div></div>
+          <div class="case-metric-item"><div class="case-metric-val">59</div><div class="case-metric-label">DB tables</div></div>
+        </div>
+        <div class="case-tech">
+          <span>Python</span><span>FastAPI</span><span>SQLite</span><span>Claude CLI</span><span>Groq</span><span>MCP</span><span>SSE</span><span>n8n</span><span>Playwright</span>
+        </div>
+      </div>
+      <div class="case-arrow"><span>Flagship system</span><span>&rarr;</span></div>
+    </div>
+
+    <!-- AYLA Luxury -->
+    <a href="#" class="case-card-full reveal" itemscope itemtype="https://schema.org/CreativeWork">
+      <div class="case-header">
+        <div class="case-tags">
+          <span class="case-tag-sm ship">Shipped</span>
+          <span class="case-tag-sm design">E-Commerce</span>
+          <span class="case-tag-sm ai">AI</span>
+        </div>
+        <h2 class="case-card-title" itemprop="name">AYLA Luxury</h2>
+        <p class="case-card-desc" itemprop="description">Complete e-commerce solution for luxury jewelry brand. Website, SEO strategy, AI chatbot for customer inquiries, and automated content pipeline. Delivered measurable revenue impact within 8 weeks.</p>
+      </div>
+      <div class="case-body">
+        <div class="case-metrics">
+          <div class="case-metric-item"><div class="case-metric-val">3.1&rarr;4.0</div><div class="case-metric-label">ROAS</div></div>
+          <div class="case-metric-item"><div class="case-metric-val">-28%</div><div class="case-metric-label">CAC</div></div>
+          <div class="case-metric-item"><div class="case-metric-val">8</div><div class="case-metric-label">Weeks</div></div>
+        </div>
+        <div class="case-tech">
+          <span>HTML/CSS</span><span>SEO</span><span>AI Chatbot</span><span>Content Pipeline</span><span>E-Commerce</span>
+        </div>
+      </div>
+      <div class="case-arrow"><span>Client project</span><span>&rarr;</span></div>
+    </a>
+
+    <!-- AI Thumbnail Pipeline -->
+    <a href="case-thumbnail-pipeline.html" class="case-card-full reveal" itemscope itemtype="https://schema.org/CreativeWork">
+      <div class="case-header">
+        <div class="case-tags">
+          <span class="case-tag-sm ai">AI Systems</span>
+          <span class="case-tag-sm ship">Shipped</span>
+        </div>
+        <h2 class="case-card-title" itemprop="name">AI Thumbnail Pipeline</h2>
+        <p class="case-card-desc" itemprop="description">Multi-brand thumbnail generator with face consistency, JSON-structured prompts, and one-click approval. Generates platform-ready visuals for YouTube, Instagram, TikTok in under 60 seconds.</p>
+      </div>
+      <div class="case-body">
+        <div class="case-metrics">
+          <div class="case-metric-item"><div class="case-metric-val">3</div><div class="case-metric-label">Brands</div></div>
+          <div class="case-metric-item"><div class="case-metric-val">5</div><div class="case-metric-label">Platforms</div></div>
+          <div class="case-metric-item"><div class="case-metric-val">&lt;60s</div><div class="case-metric-label">Per thumbnail</div></div>
+        </div>
+        <div class="case-tech">
+          <span>Python</span><span>FastAPI</span><span>HuggingFace FLUX.1</span><span>Claude Code</span><span>JavaScript</span>
+        </div>
+      </div>
+      <div class="case-arrow"><span>View full case study</span><span>&rarr;</span></div>
+    </a>
+
+    <!-- She&Elle of Morocco -->
+    <div class="case-card-full reveal" itemscope itemtype="https://schema.org/CreativeWork">
+      <div class="case-header">
+        <div class="case-tags">
+          <span class="case-tag-sm design">Design</span>
+          <span class="case-tag-sm ship">Shipped</span>
+        </div>
+        <h2 class="case-card-title" itemprop="name">She&Elle of Morocco</h2>
+        <p class="case-card-desc" itemprop="description">Brand identity and WordPress site for a Moroccan-Scandinavian lifestyle brand. Custom theme, content strategy, and social media automation pipeline. Warm aesthetic merging two cultural design languages.</p>
+      </div>
+      <div class="case-body">
+        <div class="case-metrics">
+          <div class="case-metric-item"><div class="case-metric-val">WordPress</div><div class="case-metric-label">Platform</div></div>
+          <div class="case-metric-item"><div class="case-metric-val">Custom</div><div class="case-metric-label">Theme</div></div>
+        </div>
+        <div class="case-tech">
+          <span>WordPress</span><span>GeneratePress</span><span>CSS</span><span>Content Strategy</span><span>Social Media</span>
+        </div>
+      </div>
+      <div class="case-arrow"><span>Brand + website</span><span>&rarr;</span></div>
+    </div>
+
+    <!-- The 40th Brick -->
+    <a href="https://github.com/Yoggi-SheandElle/the-40th-brick" target="_blank" rel="noopener" class="case-card-full reveal" itemscope itemtype="https://schema.org/CreativeWork">
+      <div class="case-header">
+        <div class="case-tags">
+          <span class="case-tag-sm game">Interactive</span>
+          <span class="case-tag-sm ship">Shipped</span>
+        </div>
+        <h2 class="case-card-title" itemprop="name">The 40th Brick</h2>
+        <p class="case-card-desc" itemprop="description">Co-op puzzle adventure game built as a personalized birthday gift. 40 rooms across 4 chapters, solo and multiplayer modes, mobile-friendly. Built in one session with Claude Code.</p>
+      </div>
+      <div class="case-body">
+        <div class="case-metrics">
+          <div class="case-metric-item"><div class="case-metric-val">40</div><div class="case-metric-label">Rooms</div></div>
+          <div class="case-metric-item"><div class="case-metric-val">4</div><div class="case-metric-label">Chapters</div></div>
+          <div class="case-metric-item"><div class="case-metric-val">1</div><div class="case-metric-label">Session</div></div>
+        </div>
+        <div class="case-tech">
+          <span>JavaScript</span><span>HTML Canvas</span><span>Node.js</span><span>Claude Code</span><span>Mobile</span>
+        </div>
+      </div>
+      <div class="case-arrow"><span>View on GitHub</span><span>&rarr;</span></div>
+    </a>
+
+    <!-- Operations Suite -->
+    <div class="case-card-full reveal" itemscope itemtype="https://schema.org/CreativeWork">
+      <div class="case-header">
+        <div class="case-tags">
+          <span class="case-tag-sm infra">Automation</span>
+          <span class="case-tag-sm ship">Production</span>
+        </div>
+        <h2 class="case-card-title" itemprop="name">Operations Suite</h2>
+        <p class="case-card-desc" itemprop="description">31 production automation workflows. Invoice parsing, receipt OCR, email digests, lead routing, calendar management, content scheduling. All running autonomously inside ElektraOS.</p>
+      </div>
+      <div class="case-body">
+        <div class="case-metrics">
+          <div class="case-metric-item"><div class="case-metric-val">31</div><div class="case-metric-label">Workflows</div></div>
+          <div class="case-metric-item"><div class="case-metric-val">16</div><div class="case-metric-label">Cron jobs</div></div>
+          <div class="case-metric-item"><div class="case-metric-val">24/7</div><div class="case-metric-label">Autonomous</div></div>
+        </div>
+        <div class="case-tech">
+          <span>n8n</span><span>Python</span><span>FastAPI</span><span>Cron</span><span>OCR</span><span>Email</span>
+        </div>
+      </div>
+      <div class="case-arrow"><span>Internal system</span><span>&rarr;</span></div>
+    </div>
+
+  </div>
+
+  <!-- CTA -->
+  <div class="cases-cta reveal">
+    <h3 style="margin-bottom:8px;">Every project here is production code.</h3>
+    <p style="color:var(--text-secondary);font-size:14px;max-width:480px;margin:0 auto 24px;">Open for projects, co-builds, and partnerships. If you need something engineered, let's talk.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="index.html#contact" class="btn btn-primary">Start a Project</a>
+      <a href="log.html" class="btn btn-outline">View Build Log</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-copy">
+        <span class="mono">&copy; 2026 ElektraOS.dev</span>
+        <span style="display:block;font-size:11px;color:var(--text-muted);margin-top:4px;">Copenhagen, Denmark</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/yoggi-sheandelle" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.upwork.com/freelancers/~01eddb5df59f03b475" target="_blank" rel="noopener">Upwork</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/utils.js"></script>
+  <script src="js/chat.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
