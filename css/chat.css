@@ -24,44 +24,18 @@
 }
 
 /* 3D layered glow effect */
-.chat-toggle::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: 16px;
-  padding: 1px;
-  background: conic-gradient(from 180deg, var(--purple), var(--cyan), var(--green), var(--purple));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0.6;
-  animation: sigil-rotate 4s linear infinite;
-}
-
+.chat-toggle::before,
 .chat-toggle::after {
-  content: '';
-  position: absolute;
-  inset: 4px;
-  border-radius: 12px;
-  background: radial-gradient(circle at 30% 30%, rgba(0, 212, 255, 0.15), transparent 60%);
-  pointer-events: none;
-}
-
-@keyframes sigil-rotate {
-  to { filter: hue-rotate(360deg); }
+  display: none;
 }
 
 .chat-toggle:hover {
   transform: scale(1.1) translateY(-2px);
-  box-shadow: 0 8px 32px rgba(0, 212, 255, 0.2), 0 0 60px rgba(124, 58, 237, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 212, 255, 0.25), 0 0 60px rgba(124, 58, 237, 0.15);
 }
 
-.chat-toggle svg {
-  width: 22px;
-  height: 22px;
-  position: relative;
-  z-index: 1;
-  filter: drop-shadow(0 0 6px rgba(0, 212, 255, 0.5));
+.chat-toggle canvas {
+  border-radius: 18px;
 }
 
 .chat-panel {

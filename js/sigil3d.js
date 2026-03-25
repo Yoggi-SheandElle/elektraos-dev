@@ -22,8 +22,8 @@
 
     // ---- Scene setup ----
     var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(40, width / height, 0.1, 100);
-    camera.position.z = 7;
+    var camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 100);
+    camera.position.z = 5;
 
     var renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setSize(width, height);
@@ -203,10 +203,10 @@
       mouse.y = 0;
     });
 
-    // ---- Click: open chat or command palette ----
+    // ---- Click: toggle chat panel ----
     container.addEventListener('click', function () {
-      var chatToggle = document.getElementById('chatToggle');
-      if (chatToggle) chatToggle.click();
+      var hiddenToggle = document.getElementById('chatToggle');
+      if (hiddenToggle) hiddenToggle.click();
     });
     container.style.cursor = 'pointer';
 
