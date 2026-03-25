@@ -168,7 +168,11 @@
   display: none;
   flex-direction: column;
   gap: 5px;
-  padding: 4px;
+  padding: 8px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .nav-hamburger span {
@@ -178,6 +182,16 @@
   background: var(--text-primary);
   border-radius: 1px;
   transition: all 0.3s var(--ease);
+}
+
+.nav-hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.nav-hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.nav-hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
 }
 
 /* ===== BUTTONS ===== */

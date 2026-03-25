@@ -17,14 +17,36 @@
   // Hamburger toggle
   if (hamburger) {
     hamburger.addEventListener('click', function () {
-      navLinks.classList.toggle('open');
+      var isOpen = navLinks.classList.toggle('open');
+      hamburger.classList.toggle('active', isOpen);
+      // Prevent body scroll when menu is open
+      document.body.style.overflow = isOpen ? 'hidden' : '';
     });
 
-    // Close on link click
+    // Close on link click (but not dropdown triggers)
     navLinks.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () {
+      link.addEventListener('click', function (e) {
+        // If this is a dropdown trigger on mobile, toggle the dropdown
+        if (link.classList.contains('nav-dropdown-trigger') && window.innerWidth <= 768) {
+          e.preventDefault();
+          link.classList.toggle('dd-open');
+          var dropdown = link.parentElement.querySelector('.nav-dropdown');
+          if (dropdown) dropdown.classList.toggle('mobile-open');
+          return;
+        }
         navLinks.classList.remove('open');
+        hamburger.classList.remove('active');
+        document.body.style.overflow = '';
       });
+    });
+
+    // Close menu on outside click
+    document.addEventListener('click', function (e) {
+      if (navLinks.classList.contains('open') && !nav.contains(e.target)) {
+        navLinks.classList.remove('open');
+        hamburger.classList.remove('active');
+        document.body.style.overflow = '';
+      }
     });
   }
 

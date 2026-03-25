@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: 0;
+  padding: 100px 0 40px;
 }
 
 /* Subtle scan-line overlay */
