@@ -5,11 +5,11 @@
   if (!el) return;
 
   const phrases = [
-    'AI that works while you sleep.',
-    'Automation that scales.',
-    'Performance you can measure.',
-    'Infrastructure that compounds.',
-    'Systems that deliver.'
+    'Custom SaaS. Apps. AI systems. Shipped.',
+    'From concept to production in days.',
+    'It works before you pay. That\'s the deal.',
+    'Systems that compound over time.',
+    'I build because I enjoy it.'
   ];
 
   let phraseIndex = 0;

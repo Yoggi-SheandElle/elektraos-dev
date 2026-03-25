@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing - ElektraOS.dev</title>
+  <meta name="description" content="Transparent pricing for AI chatbots, automation, SEO, web design and more. Configure your project and see the estimate in real time.">
+  <meta property="og:title" content="Pricing - ElektraOS.dev">
+  <meta property="og:description" content="Configure your project and see the estimate in real time. No surprises.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#7c3aed">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/chat.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- ===== NAV ===== -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><span>E</span>lektraOS<span>.</span>dev</a>
+      <ul class="nav-links" id="navLinks">
+        <li class="nav-dropdown-wrap">
+          <a href="index.html#solutions" class="nav-dropdown-trigger">Solutions <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a>
+          <div class="nav-dropdown">
+            <a href="chatbot.html" class="nav-drop-item"><span class="nav-drop-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></span><span><strong>AI Chatbot</strong><small>Intelligent assistants</small></span></a>
+            <a href="automation.html" class="nav-drop-item"><span class="nav-drop-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><span><strong>Automation</strong><small>Workflow orchestration</small></span></a>
+            <a href="seo.html" class="nav-drop-item"><span class="nav-drop-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></span><span><strong>SEO</strong><small>Search optimization</small></span></a>
+            <a href="design.html" class="nav-drop-item"><span class="nav-drop-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></span><span><strong>Web Design</strong><small>Digital experiences</small></span></a>
+            <a href="case-thumbnail-pipeline.html" class="nav-drop-item"><span class="nav-drop-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="2"/><circle cx="8.5" cy="8.5" r="2.5"/><path d="M21 15l-5-5L5 21"/></svg></span><span><strong>AI Media</strong><small>Content pipeline</small></span></a>
+          </div>
+        </li>
+        <li><a href="index.html#proof">Work</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <a href="index.html#contact" class="btn nav-cta">Let's Build</a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero" style="min-height: 50vh;">
+    <div class="hero-content">
+      <h1 class="hero-name gradient-text">Transparent pricing.<br>No surprises.</h1>
+      <p class="text-secondary" style="font-size: 18px; max-width: 560px; margin: 20px auto 0; line-height: 1.7;">Configure your project and see the estimate in real time. I make sure it works before you pay.</p>
+    </div>
+  </section>
+
+  <!-- ===== PRICING CALCULATOR ===== -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="calculator reveal" id="calculator">
+        <!-- Step 1: Service -->
+        <div class="calc-step">
+          <div class="calc-step-label">01 / Select a service</div>
+          <div class="calc-services" id="calcServices">
+            <div class="calc-service-card" data-service="chatbot">
+              <div class="icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+              </div>
+              <div class="name">AI Chatbot</div>
+            </div>
+            <div class="calc-service-card" data-service="automation">
+              <div class="icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9c.26.604.852.997 1.51 1H21a2 2 0 010 4h-.09c-.658.003-1.25.396-1.51 1z"/></svg>
+              </div>
+              <div class="name">Automation</div>
+            </div>
+            <div class="calc-service-card" data-service="seo">
+              <div class="icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+              </div>
+              <div class="name">WordPress SEO</div>
+            </div>
+            <div class="calc-service-card" data-service="design">
+              <div class="icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+              </div>
+              <div class="name">Web Design</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2: Tier -->
+        <div class="calc-step" id="calcTierStep" style="display: none;">
+          <div class="calc-step-label">02 / Choose your tier</div>
+          <div class="calc-tiers" id="calcTiers"></div>
+        </div>
+
+        <!-- Step 3: Add-ons -->
+        <div class="calc-step" id="calcAddonStep" style="display: none;">
+          <div class="calc-step-label">03 / Add-ons (optional)</div>
+          <div class="calc-addons" id="calcAddons">
+            <div class="calc-addon" data-addon="rush" data-price="100">
+              <div><strong>Rush delivery</strong><br><small class="text-secondary">Priority timeline, faster turnaround</small></div>
+              <span class="mono text-green">+$100</span>
+            </div>
+            <div class="calc-addon" data-addon="maintenance" data-price="75">
+              <div><strong>Monthly maintenance</strong><br><small class="text-secondary">Ongoing support + updates</small></div>
+              <span class="mono text-green">+$75/mo</span>
+            </div>
+            <div class="calc-addon" data-addon="revisions" data-price="50">
+              <div><strong>Extra revision rounds</strong><br><small class="text-secondary">3 additional rounds of feedback</small></div>
+              <span class="mono text-green">+$50</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Total -->
+        <div class="calc-total" id="calcTotal" style="display: none;">
+          <div class="calc-total-amount" id="calcAmount">$0</div>
+          <div class="calc-total-note">Estimated project range</div>
+          <a href="index.html#contact" class="btn btn-primary" style="margin-top: var(--space-md);">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ===== PRICE OVERVIEW TABLE ===== -->
+  <section class="about" id="price-overview">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 48px;">
+        <span class="section-label reveal">overview</span>
+        <h2 class="reveal delay-1">All services at a glance</h2>
+      </div>
+
+      <div class="reveal delay-2" style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 15px;">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <th style="text-align: left; padding: 16px 20px; color: var(--text-muted); font-weight: 500; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em;">Service</th>
+              <th style="text-align: left; padding: 16px 20px; color: var(--text-muted); font-weight: 500; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em;">Starter</th>
+              <th style="text-align: left; padding: 16px 20px; color: var(--text-muted); font-weight: 500; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em;">Pro</th>
+              <th style="text-align: left; padding: 16px 20px; color: var(--text-muted); font-weight: 500; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em;">Enterprise</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 16px 20px; font-weight: 600;">AI Chatbot</td>
+              <td style="padding: 16px 20px;" class="mono text-green">$200</td>
+              <td style="padding: 16px 20px;" class="mono text-green">$500</td>
+              <td style="padding: 16px 20px;" class="mono text-green">$1,200</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 16px 20px; font-weight: 600;">Automation</td>
+              <td style="padding: 16px 20px;" class="mono text-green">$300</td>
+              <td style="padding: 16px 20px;" class="mono text-green">$800</td>
+              <td style="padding: 16px 20px;" class="mono text-green">$2,000</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 16px 20px; font-weight: 600;">WordPress SEO</td>
+              <td style="padding: 16px 20px;" class="mono text-green">$150</td>
+              <td style="padding: 16px 20px;" class="mono text-green">$400</td>
+              <td style="padding: 16px 20px;" class="mono text-green">$900</td>
+            </tr>
+            <tr>
+              <td style="padding: 16px 20px; font-weight: 600;">Web Design</td>
+              <td style="padding: 16px 20px;" class="mono text-green">$300</td>
+              <td style="padding: 16px 20px;" class="mono text-green">$800</td>
+              <td style="padding: 16px 20px;" class="mono text-green">$2,000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="text-secondary reveal delay-3" style="text-align: center; margin-top: 24px; font-size: 14px;">All prices in USD. Add-ons available: Rush delivery (+$100), Monthly maintenance (+$75/mo), Extra revisions (+$50).</p>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ===== CTA ===== -->
+  <section class="about" style="text-align: center; padding: var(--space-2xl) 0;">
+    <div class="container">
+      <h2 class="reveal gradient-text">Ready to start? Let's talk.</h2>
+      <p class="text-secondary reveal delay-1" style="max-width: 480px; margin: 16px auto 32px; font-size: 17px;">A 20-minute call is usually enough to scope the project and determine fit.</p>
+      <a href="index.html#contact" class="btn btn-primary reveal delay-2">Start a Project</a>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-copy">
+        <span class="mono">&copy; 2026 ElektraOS.dev  · ElektraOS.dev</span>
+        <span style="display:block;font-size:11px;color:var(--text-muted);margin-top:4px;">Copenhagen, Denmark</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/yoggi-sheandelle" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.upwork.com/freelancers/~01eddb5df59f03b475" target="_blank" rel="noopener">Upwork</a>
+        <a href="#privacy" onclick="document.getElementById('privacyModal').style.display='flex';return false;">Privacy</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== CHAT WIDGET ===== -->
+  <div class="chat-widget" id="chatWidget">
+    <div class="chat-panel" id="chatPanel">
+      <div class="chat-panel-header">
+        <div class="header-info">
+          <div class="header-avatar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+          <div>
+            <div class="header-name">ElektraOS Assistant</div>
+            <div class="header-status">Online</div>
+          </div>
+        </div>
+        <button class="chat-close-btn" id="chatClose">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="chat-bubble bot">Hey! I'm the ElektraOS assistant. Ask me about services, pricing, or how I work. What do you need?</div>
+      </div>
+      <div class="chat-input-area">
+        <input type="text" class="chat-input" id="chatInput" placeholder="Ask me anything...">
+        <button class="chat-send" id="chatSend">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+    </div>
+    <button class="chat-toggle" id="chatToggle">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+    </button>
+  </div>
+
+  <!-- ===== GDPR COOKIE BANNER ===== -->
+  <div id="cookieBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--bg-secondary);border-top:1px solid var(--border);padding:16px 24px;font-size:13px;color:var(--text-secondary);">
+    <div style="max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <p style="margin:0;flex:1;min-width:240px;">This site uses only essential cookies required for the contact form to function. No tracking, no analytics, no third-party cookies. <a href="#privacy" onclick="document.getElementById('privacyModal').style.display='flex';return false;" style="color:var(--cyan);text-decoration:underline;">Privacy policy</a></p>
+      <div style="display:flex;gap:8px;">
+        <button onclick="document.getElementById('cookieBanner').style.display='none';localStorage.setItem('cookieConsent','accepted')" style="padding:8px 20px;background:var(--gradient-brand);border:none;border-radius:8px;color:#fff;cursor:pointer;font-size:12px;font-weight:600;">Accept</button>
+        <button onclick="document.getElementById('cookieBanner').style.display='none';localStorage.setItem('cookieConsent','declined')" style="padding:8px 20px;background:transparent;border:1px solid var(--border);border-radius:8px;color:var(--text-secondary);cursor:pointer;font-size:12px;font-weight:600;">Decline</button>
+      </div>
+    </div>
+  </div>
+  <script>if(!localStorage.getItem('cookieConsent')){document.getElementById('cookieBanner').style.display='block';}</script>
+
+  <!-- ===== PRIVACY MODAL ===== -->
+  <div id="privacyModal" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:24px;">
+    <div style="max-width:640px;width:100%;max-height:80vh;overflow-y:auto;background:var(--bg-secondary);border:1px solid var(--border);border-radius:16px;padding:32px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+        <h3 style="margin:0;font-size:18px;">Privacy Policy</h3>
+        <button onclick="document.getElementById('privacyModal').style.display='none'" style="background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:20px;">&times;</button>
+      </div>
+      <div style="font-size:14px;line-height:1.8;color:var(--text-secondary);">
+        <p><strong>Data controller:</strong> ElektraOS.dev, Copenhagen, Denmark<br>Contact: yossra.benzad@gmail.com</p>
+        <p><strong>What we collect:</strong> When you submit the contact form, we collect your name, email, and message. This data is processed by Formspree to deliver your message. No other personal data is collected.</p>
+        <p><strong>Cookies:</strong> This site uses no tracking cookies, no analytics cookies, and no third-party cookies. Only essential cookies required for form submission may be set by the form provider.</p>
+        <p><strong>Legal basis:</strong> Contact form submissions are processed under GDPR Article 6(1)(b) . necessary for responding to your inquiry. Consent for non-essential cookies under the ePrivacy Directive is not required as none are used.</p>
+        <p><strong>Data retention:</strong> Contact form submissions are retained only as long as needed to respond to your inquiry, then deleted.</p>
+        <p><strong>Your rights (GDPR Articles 15-22):</strong> You have the right to access, rectify, erase, restrict processing, data portability, and object to processing of your personal data. Contact yossra.benzad@gmail.com to exercise these rights.</p>
+        <p><strong>Danish supervisory authority:</strong> Datatilsynet, Carl Jacobsens Vej 35, 2500 Valby, Denmark. <a href="https://www.datatilsynet.dk" target="_blank" rel="noopener" style="color:var(--cyan);">datatilsynet.dk</a></p>
+        <p style="color:var(--text-muted);font-size:12px;margin-top:16px;">Last updated: March 2026</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script src="js/utils.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/chat.js"></script>
+  <script src="js/calculator.js"></script>
+</body>
+</html>

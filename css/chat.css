@@ -8,26 +8,61 @@
 }
 
 .chat-toggle {
-  width: 56px;
-  height: 56px;
-  border-radius: var(--radius-md);
-  background: var(--gradient-brand);
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 4px 20px rgba(0, 212, 255, 0.25);
-  transition: all 0.3s var(--ease);
-  border: none;
+  transition: all 0.4s var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 3D layered glow effect */
+.chat-toggle::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 16px;
+  padding: 1px;
+  background: conic-gradient(from 180deg, var(--purple), var(--cyan), var(--green), var(--purple));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.6;
+  animation: sigil-rotate 4s linear infinite;
+}
+
+.chat-toggle::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border-radius: 12px;
+  background: radial-gradient(circle at 30% 30%, rgba(0, 212, 255, 0.15), transparent 60%);
+  pointer-events: none;
+}
+
+@keyframes sigil-rotate {
+  to { filter: hue-rotate(360deg); }
 }
 
 .chat-toggle:hover {
-  transform: scale(1.08);
-  box-shadow: 0 6px 28px rgba(0, 212, 255, 0.35);
+  transform: scale(1.1) translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 212, 255, 0.2), 0 0 60px rgba(124, 58, 237, 0.1);
 }
 
-.chat-toggle svg { width: 24px; height: 24px; }
+.chat-toggle svg {
+  width: 22px;
+  height: 22px;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 0 6px rgba(0, 212, 255, 0.5));
+}
 
 .chat-panel {
   position: absolute;
@@ -70,18 +105,20 @@
 }
 
 .chat-panel-header .header-avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: var(--purple-dim);
-  border: 1px solid var(--purple-border);
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(0, 212, 255, 0.15));
+  border: 1px solid rgba(0, 212, 255, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--purple);
+  color: var(--cyan);
+  position: relative;
+}
+
+.chat-panel-header .header-avatar svg {
+  filter: drop-shadow(0 0 4px rgba(0, 212, 255, 0.4));
 }
 
 .chat-panel-header .header-name {
