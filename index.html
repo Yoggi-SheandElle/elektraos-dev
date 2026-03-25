@@ -9,6 +9,11 @@
   <meta property="og:description" content="Turn your ideas into products. AI systems, automation, apps, websites. Precision-engineered.">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#7c3aed">
+  <!-- Security headers -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://formspree.io; frame-ancestors 'none';">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -79,8 +84,10 @@
   <!-- ===== HERO ===== -->
   <section class="hero" id="hero">
     <canvas class="hero-canvas" id="heroCanvas"></canvas>
-    <div class="hero-content">
-      <h1 class="hero-name gradient-text">Turn your ideas<br>into products.</h1>
+    <!-- 3D Living Sigil -->
+    <div id="sigil3d" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-55%);width:320px;height:320px;z-index:2;pointer-events:auto;"></div>
+    <div class="hero-content" style="position:relative;z-index:3;">
+      <h1 class="hero-name gradient-text" style="margin-top:140px;">Turn your ideas<br>into products.</h1>
       <div class="hero-typing">
         <span id="typingText"></span><span class="cursor"></span>
       </div>
@@ -479,6 +486,7 @@
   <script src="js/solutions.js"></script>
   <script src="js/chat.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/sigil3d.js"></script>
   <script src="js/smart-features.js"></script>
 </body>
 </html>
