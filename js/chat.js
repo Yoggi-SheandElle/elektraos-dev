@@ -48,7 +48,7 @@
   function updateStatus() {
     var statusEl = panel ? panel.querySelector('.header-status') : null;
     if (statusEl) {
-      statusEl.textContent = isApiOnline ? 'Online - AI powered' : 'Online';
+      statusEl.textContent = isApiOnline ? 'AI Assistant - Online' : 'AI Assistant';
       statusEl.style.color = isApiOnline ? '#00ff9d' : '#aaa';
     }
   }
