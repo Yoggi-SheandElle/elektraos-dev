@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Case Study: The 40th Brick . Interactive Puzzle Game . ElektraOS.dev</title>
-  <meta name="description" content="The 40th Brick: a co-op puzzle adventure. 40 rooms, 4 chapters, built in a single engineering session with Claude Code. Pure JavaScript and HTML Canvas.">
+  <meta name="description" content="The 40th Brick: a co-op puzzle adventure. 40 rooms, 4 chapters, built in a single engineering session in a single session. Pure JavaScript and HTML Canvas.">
   <meta property="og:title" content="Case Study: The 40th Brick . ElektraOS.dev">
   <meta property="og:description" content="A co-op puzzle adventure. 40 rooms. 4 chapters. Built in a single engineering session.">
   <meta property="og:type" content="article">
@@ -18,7 +18,7 @@
     "@context": "https://schema.org",
     "@type": "TechArticle",
     "headline": "The 40th Brick: Interactive Puzzle Game",
-    "description": "A co-op puzzle adventure with 40 rooms and 4 chapters. Built in a single engineering session with Claude Code. Pure JavaScript and HTML Canvas.",
+    "description": "A co-op puzzle adventure with 40 rooms and 4 chapters. Built in a single engineering session in a single session. Pure JavaScript and HTML Canvas.",
     "url": "https://elektraos.dev/case-40th-brick.html",
     "author": {
       "@type": "Organization",
@@ -172,8 +172,13 @@
 </head>
 <body>
 
+  <!-- ===== TOP BAR ===== -->
+  <div style="position:fixed;top:0;left:0;right:0;z-index:101;background:linear-gradient(90deg,rgba(124,58,237,0.15),rgba(0,212,255,0.1));border-bottom:1px solid rgba(124,58,237,0.2);padding:8px 0;text-align:center;font-family:var(--font-mono);font-size:11px;letter-spacing:0.5px;color:var(--text-secondary);backdrop-filter:blur(12px);">
+    <span style="color:var(--cyan);">&#9889;</span> Site undergoing neuro-surgery at the moment. Some features may glitch. We ship live.
+  </div>
+
   <!-- ===== NAV ===== -->
-  <nav class="nav" id="nav">
+  <nav class="nav" id="nav" style="top:33px;">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo"><span>E</span>lektraOS<span>.</span>dev</a>
       <ul class="nav-links" id="navLinks">
@@ -244,7 +249,7 @@
       <div class="section-label">// Engineering</div>
       <h2>Zero frameworks. One session. Pure craftsmanship.</h2>
       <p>
-        Built entirely with Claude Code in a single engineering session.
+        Built entirely in a single session in a single engineering session.
         No frameworks, no libraries. Pure JavaScript with HTML Canvas rendering.
         Every room has its own puzzle logic, visual style, and interaction model.
       </p>
@@ -299,7 +304,7 @@
         <div class="tech-chip">HTML Canvas</div>
         <div class="tech-chip">Node.js</div>
         <div class="tech-chip">Express</div>
-        <div class="tech-chip">Claude Code</div>
+        <div class="tech-chip">AI-assisted engineering</div>
       </div>
     </section>
   </div>
