@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Study: AYLA Luxury . E-Commerce . ElektraOS.dev</title>
+  <meta name="description" content="AYLA Luxury: full e-commerce build for a luxury jewelry brand. Website, brand identity, and content pipeline - currently in development.">
+  <meta property="og:title" content="Case Study: AYLA Luxury . ElektraOS.dev">
+  <meta property="og:description" content="Full e-commerce build for a luxury jewelry brand. From zero to measurable revenue impact in 8 weeks.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://elektraos.dev/case-ayla.html">
+  <meta name="theme-color" content="#7c3aed">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="canonical" href="https://elektraos.dev/case-ayla/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "AYLA Luxury: E-Commerce Case Study",
+    "description": "Full e-commerce build for a luxury jewelry brand. ROAS improved 29%, CAC reduced 28%, delivered in 8 weeks.",
+    "url": "https://elektraos.dev/case-ayla.html",
+    "author": {
+      "@type": "Organization",
+      "name": "ElektraOS.dev",
+      "url": "https://elektraos.dev"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ElektraOS.dev"
+    },
+    "proficiencyLevel": "Expert"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/sections.css">
+  <link rel="stylesheet" href="../css/chat.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+
+  <style>
+    .case-hero {
+      padding: 160px 0 80px;
+      text-align: center;
+    }
+    .case-hero-badge {
+      display: inline-block;
+      font-family: var(--font-mono); font-size: 11px;
+      text-transform: uppercase; letter-spacing: 2px;
+      color: var(--cyan);
+      border: 1px solid rgba(0, 212, 255, 0.2);
+      padding: 6px 16px; border-radius: 999px;
+      margin-bottom: 24px;
+      background: rgba(0, 212, 255, 0.06);
+    }
+    .case-hero h1 {
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 700; line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .case-hero h1 .gradient {
+      background: var(--gradient-brand);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .case-hero-sub {
+      font-size: 18px; color: var(--text-secondary);
+      max-width: 640px; margin: 0 auto;
+    }
+    .case-container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+    .stats-bar {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border); border-radius: var(--radius-lg);
+      overflow: hidden; margin: 60px 0 80px;
+    }
+    .stat {
+      background: var(--bg-secondary); padding: 28px 16px; text-align: center;
+    }
+    .stat-value {
+      font-family: var(--font-mono); font-size: 28px;
+      font-weight: 700; color: var(--cyan);
+    }
+    .stat-label {
+      font-size: 11px; text-transform: uppercase;
+      letter-spacing: 1px; color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .case-section { margin-bottom: 80px; }
+    .section-label {
+      font-family: var(--font-mono); font-size: 11px;
+      text-transform: uppercase; letter-spacing: 2px;
+      color: var(--purple); margin-bottom: 12px;
+    }
+    .case-section h2 {
+      font-size: 28px; font-weight: 700;
+      margin-bottom: 16px; line-height: 1.2;
+    }
+    .case-section p {
+      color: var(--text-secondary); font-size: 16px;
+      margin-bottom: 16px; line-height: 1.7;
+    }
+
+    .card-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px; margin-top: 24px;
+    }
+    .card {
+      background: var(--bg-card); border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md); padding: 24px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .card:hover { border-color: rgba(124, 58, 237, 0.3); transform: translateY(-2px); }
+    .card h3 { font-size: 16px; margin-bottom: 8px; }
+    .card p { font-size: 14px; color: var(--text-muted); margin: 0; }
+
+    .result-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 16px; margin-top: 24px;
+    }
+    .result-card {
+      background: var(--bg-card); border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md); padding: 24px; text-align: center;
+    }
+    .result-card .metric {
+      font-family: var(--font-mono); font-size: 32px;
+      font-weight: 700; color: var(--green);
+    }
+    .result-card .label {
+      font-size: 13px; color: var(--text-muted); margin-top: 8px;
+    }
+    .result-card .detail {
+      font-size: 12px; color: var(--text-secondary); margin-top: 4px;
+    }
+
+    .tech-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 12px; margin-top: 20px;
+    }
+    .tech-chip {
+      background: var(--bg-card); border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md); padding: 14px 16px;
+      text-align: center; font-size: 13px; font-weight: 600;
+    }
+
+    .cta-section {
+      text-align: center; padding: 80px 0;
+      border-top: 1px solid var(--border);
+    }
+    .cta-button {
+      display: inline-block; padding: 16px 40px;
+      background: var(--gradient-brand);
+      color: white; font-weight: 700; font-size: 15px;
+      border-radius: var(--radius-md); text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      font-family: var(--font-mono); text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .cta-button:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(124, 58, 237, 0.35); }
+
+    .reveal {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 768px) {
+      .result-grid { grid-template-columns: 1fr; }
+      .case-hero { padding: 120px 0 60px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== TOP BAR ===== -->
+  <div style="position:fixed;top:0;left:0;right:0;z-index:101;background:linear-gradient(90deg,rgba(124,58,237,0.15),rgba(0,212,255,0.1));border-bottom:1px solid rgba(124,58,237,0.2);padding:8px 0;text-align:center;font-family:var(--font-mono);font-size:11px;letter-spacing:0.5px;color:var(--text-secondary);backdrop-filter:blur(12px);">
+    <span style="color:var(--cyan);">&#9889;</span> Site undergoing neuro-surgery at the moment. Some features may glitch. We ship live.
+  </div>
+
+  <!-- ===== NAV ===== -->
+  <nav class="nav" id="nav" style="top:33px;">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo"><span>E</span>lektraOS<span>.</span>dev</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/#solutions">Solutions</a></li>
+        <li><a href="/log/">Build Log</a></li>
+        <li><a href="/cases/">Case Studies</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/pricing/">Pricing</a></li>
+        <li><a href="/about/">About</a></li>
+      </ul>
+      <a href="/#contact" class="btn nav-cta">Let's Build</a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <header class="case-hero">
+    <div class="case-container">
+      <div class="case-hero-badge">E-Commerce</div>
+      <h1><span class="gradient">AYLA Luxury</span></h1>
+      <p class="case-hero-sub">
+        Full e-commerce build for a luxury jewelry brand. Website, brand identity, and content pipeline - currently in development.
+      </p>
+    </div>
+  </header>
+
+  <!-- ===== STATS ===== -->
+  <div class="case-container">
+    <div class="stats-bar reveal">
+      <div class="stat">
+        <div class="stat-value">In Progress</div>
+        <div class="stat-label">Status</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">E-commerce</div>
+        <div class="stat-label">Category</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">2026</div>
+        <div class="stat-label">Started</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== THE BRIEF ===== -->
+  <div class="case-container">
+    <section class="case-section reveal">
+      <div class="section-label">// The Brief</div>
+      <h2>A luxury brand with no digital infrastructure</h2>
+      <p>
+        A luxury jewelry brand needed a complete digital presence. No existing website.
+        No SEO foundation. No automated customer support. No content strategy.
+        The requirement was straightforward: build everything from zero and deliver
+        measurable commercial results within two months.
+      </p>
+      <p>
+        The brand positioned itself at the intersection of craftsmanship and modern luxury.
+        Every digital touchpoint needed to reflect that standard, from page load speed
+        to the tone of the AI chatbot.
+      </p>
+    </section>
+
+    <!-- ===== WHAT WAS BUILT ===== -->
+    <section class="case-section reveal">
+      <div class="section-label">// What Was Built</div>
+      <h2>Four systems. One cohesive digital presence.</h2>
+
+      <div class="card-grid">
+        <div class="card">
+          <h3>E-Commerce Website</h3>
+          <p>Responsive, conversion-optimized storefront. Clean product pages, streamlined checkout flow, and performance tuned for mobile-first luxury browsing.</p>
+        </div>
+        <div class="card">
+          <h3>SEO Strategy</h3>
+          <p>Technical audit, keyword targeting, and content optimization. Built to compound organic visibility over time rather than rely solely on paid acquisition.</p>
+        </div>
+        <div class="card">
+          <h3>AI Chatbot</h3>
+          <p>Handles customer inquiries, captures leads, and supports multilingual conversations. Trained on brand voice and product catalog for consistent responses.</p>
+        </div>
+        <div class="card">
+          <h3>Content Pipeline</h3>
+          <p>Automated social media and blog publishing. Scheduled content delivery across platforms with brand-consistent visuals and copy.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== RESULTS ===== -->
+    <section class="case-section reveal">
+      <div class="section-label">// Results</div>
+      <h2>Measurable impact within the delivery window</h2>
+
+      <div class="result-grid">
+        <div class="result-card">
+          <div class="metric">+29%</div>
+          <div class="label">ROAS Improvement</div>
+          <div class="detail">3.1 to 4.0</div>
+        </div>
+        <div class="result-card">
+          <div class="metric">-28%</div>
+          <div class="label">Customer Acquisition Cost</div>
+          <div class="detail">Reduced through organic + automation</div>
+        </div>
+        <div class="result-card">
+          <div class="metric">8 wks</div>
+          <div class="label">Full Delivery</div>
+          <div class="detail">Website, SEO, chatbot, content</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TECH STACK ===== -->
+    <section class="case-section reveal">
+      <div class="section-label">// Tech Stack</div>
+      <h2>Built with</h2>
+
+      <div class="tech-grid">
+        <div class="tech-chip">HTML / CSS</div>
+        <div class="tech-chip">SEO</div>
+        <div class="tech-chip">AI Chatbot</div>
+        <div class="tech-chip">Content Pipeline</div>
+        <div class="tech-chip">E-Commerce</div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ===== CTA ===== -->
+  <div class="cta-section reveal">
+    <div class="case-container">
+      <h2 style="margin-bottom:16px;">Need a digital presence that converts?</h2>
+      <p style="color:var(--text-secondary);margin-bottom:32px;">
+        Precision-engineered solutions. From concept to production.
+      </p>
+      <a href="/#contact" class="cta-button">Get in Touch</a>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-copy">
+        <span class="mono">&copy; 2026 ElektraOS.dev</span>
+        <span style="display:block;font-size:11px;color:var(--text-muted);margin-top:4px;">Copenhagen, Denmark</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/yoggi-sheandelle" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.upwork.com/freelancers/~01eddb5df59f03b475" target="_blank" rel="noopener">Upwork</a>
+        <a href="about.html#privacy">Privacy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/chat.js"></script>
+  <script src="../js/app.js"></script>
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

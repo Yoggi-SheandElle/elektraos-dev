@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Homepage -->
   <url>
-    <loc>https://elektraos.dev/index.html</loc>
+    <loc>https://elektraos.dev/</loc>
     <lastmod>2026-03-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
@@ -10,19 +10,19 @@
 
   <!-- High-traffic content pages -->
   <url>
-    <loc>https://elektraos.dev/cases.html</loc>
+    <loc>https://elektraos.dev/cases/</loc>
     <lastmod>2026-03-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://elektraos.dev/blog.html</loc>
+    <loc>https://elektraos.dev/blog/</loc>
     <lastmod>2026-03-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://elektraos.dev/log.html</loc>
+    <loc>https://elektraos.dev/log/</loc>
     <lastmod>2026-03-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -30,31 +30,31 @@
 
   <!-- Solution pages -->
   <url>
-    <loc>https://elektraos.dev/chatbot.html</loc>
+    <loc>https://elektraos.dev/chatbot/</loc>
     <lastmod>2026-03-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://elektraos.dev/automation.html</loc>
+    <loc>https://elektraos.dev/automation/</loc>
     <lastmod>2026-03-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://elektraos.dev/seo.html</loc>
+    <loc>https://elektraos.dev/seo/</loc>
     <lastmod>2026-03-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://elektraos.dev/design.html</loc>
+    <loc>https://elektraos.dev/design/</loc>
     <lastmod>2026-03-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://elektraos.dev/case-thumbnail-pipeline.html</loc>
+    <loc>https://elektraos.dev/case-thumbnail-pipeline/</loc>
     <lastmod>2026-03-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -62,13 +62,13 @@
 
   <!-- About and Pricing -->
   <url>
-    <loc>https://elektraos.dev/about.html</loc>
+    <loc>https://elektraos.dev/about/</loc>
     <lastmod>2026-03-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://elektraos.dev/pricing.html</loc>
+    <loc>https://elektraos.dev/pricing/</loc>
     <lastmod>2026-03-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -76,7 +76,7 @@
 
   <!-- Audit -->
   <url>
-    <loc>https://elektraos.dev/audit.html</loc>
+    <loc>https://elektraos.dev/audit/</loc>
     <lastmod>2026-03-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

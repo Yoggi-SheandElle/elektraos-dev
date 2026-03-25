@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Study: She&amp;Elle of Morocco . Brand + Website . ElektraOS.dev</title>
+  <meta name="description" content="She&amp;Elle of Morocco: brand identity and digital presence for a Moroccan-Scandinavian lifestyle brand. WordPress, content strategy, social automation.">
+  <meta property="og:title" content="Case Study: She&amp;Elle of Morocco . ElektraOS.dev">
+  <meta property="og:description" content="Brand identity and digital presence for a Moroccan-Scandinavian lifestyle brand.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://elektraos.dev/case-sheandelle.html">
+  <meta name="theme-color" content="#7c3aed">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="canonical" href="https://elektraos.dev/case-sheandelle/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "She&Elle of Morocco: Brand + Website",
+    "description": "Brand identity and digital presence for a Moroccan-Scandinavian lifestyle brand. WordPress build, content strategy, social media automation.",
+    "url": "https://elektraos.dev/case-sheandelle.html",
+    "author": {
+      "@type": "Organization",
+      "name": "ElektraOS.dev",
+      "url": "https://elektraos.dev"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ElektraOS.dev"
+    },
+    "proficiencyLevel": "Expert"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/sections.css">
+  <link rel="stylesheet" href="../css/chat.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+
+  <style>
+    .case-hero {
+      padding: 160px 0 80px;
+      text-align: center;
+    }
+    .case-hero-badge {
+      display: inline-block;
+      font-family: var(--font-mono); font-size: 11px;
+      text-transform: uppercase; letter-spacing: 2px;
+      color: var(--cyan);
+      border: 1px solid rgba(0, 212, 255, 0.2);
+      padding: 6px 16px; border-radius: 999px;
+      margin-bottom: 24px;
+      background: rgba(0, 212, 255, 0.06);
+    }
+    .case-hero h1 {
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 700; line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .case-hero h1 .gradient {
+      background: var(--gradient-brand);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .case-hero-sub {
+      font-size: 18px; color: var(--text-secondary);
+      max-width: 640px; margin: 0 auto;
+    }
+    .case-container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+    .case-section { margin-bottom: 80px; }
+    .section-label {
+      font-family: var(--font-mono); font-size: 11px;
+      text-transform: uppercase; letter-spacing: 2px;
+      color: var(--purple); margin-bottom: 12px;
+    }
+    .case-section h2 {
+      font-size: 28px; font-weight: 700;
+      margin-bottom: 16px; line-height: 1.2;
+    }
+    .case-section p {
+      color: var(--text-secondary); font-size: 16px;
+      margin-bottom: 16px; line-height: 1.7;
+    }
+
+    .card-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px; margin-top: 24px;
+    }
+    .card {
+      background: var(--bg-card); border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md); padding: 24px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .card:hover { border-color: rgba(124, 58, 237, 0.3); transform: translateY(-2px); }
+    .card h3 { font-size: 16px; margin-bottom: 8px; }
+    .card p { font-size: 14px; color: var(--text-muted); margin: 0; }
+
+    .tech-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 12px; margin-top: 20px;
+    }
+    .tech-chip {
+      background: var(--bg-card); border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md); padding: 14px 16px;
+      text-align: center; font-size: 13px; font-weight: 600;
+    }
+
+    .cta-section {
+      text-align: center; padding: 80px 0;
+      border-top: 1px solid var(--border);
+    }
+    .cta-button {
+      display: inline-block; padding: 16px 40px;
+      background: var(--gradient-brand);
+      color: white; font-weight: 700; font-size: 15px;
+      border-radius: var(--radius-md); text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      font-family: var(--font-mono); text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .cta-button:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(124, 58, 237, 0.35); }
+
+    .reveal {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 768px) {
+      .case-hero { padding: 120px 0 60px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== TOP BAR ===== -->
+  <div style="position:fixed;top:0;left:0;right:0;z-index:101;background:linear-gradient(90deg,rgba(124,58,237,0.15),rgba(0,212,255,0.1));border-bottom:1px solid rgba(124,58,237,0.2);padding:8px 0;text-align:center;font-family:var(--font-mono);font-size:11px;letter-spacing:0.5px;color:var(--text-secondary);backdrop-filter:blur(12px);">
+    <span style="color:var(--cyan);">&#9889;</span> Site undergoing neuro-surgery at the moment. Some features may glitch. We ship live.
+  </div>
+
+  <!-- ===== NAV ===== -->
+  <nav class="nav" id="nav" style="top:33px;">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo"><span>E</span>lektraOS<span>.</span>dev</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/#solutions">Solutions</a></li>
+        <li><a href="/log/">Build Log</a></li>
+        <li><a href="/cases/">Case Studies</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/pricing/">Pricing</a></li>
+        <li><a href="/about/">About</a></li>
+      </ul>
+      <a href="/#contact" class="btn nav-cta">Let's Build</a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <header class="case-hero">
+    <div class="case-container">
+      <div class="case-hero-badge">Brand + Website</div>
+      <h1><span class="gradient">She&amp;Elle of Morocco</span></h1>
+      <p class="case-hero-sub">
+        Brand identity and digital presence for a Moroccan-Scandinavian lifestyle brand.
+      </p>
+    </div>
+  </header>
+
+  <!-- ===== THE VISION ===== -->
+  <div class="case-container">
+    <section class="case-section reveal" style="margin-top:60px;">
+      <div class="section-label">// The Vision</div>
+      <h2>Two cultures. One cohesive identity.</h2>
+      <p>
+        A brand that merges Moroccan warmth with Scandinavian minimalism. Content spanning
+        food, lifestyle, and cultural storytelling. The challenge was building a cohesive
+        digital identity that honored both design traditions without diluting either.
+      </p>
+      <p>
+        The aesthetic needed to feel simultaneously warm and restrained. Rich textures and
+        earthy tones from Moroccan craft traditions, balanced against the clean geometry
+        and white space of Nordic design. Every element, from typography to color palette,
+        required deliberate calibration.
+      </p>
+    </section>
+
+    <!-- ===== WHAT WAS BUILT ===== -->
+    <section class="case-section reveal">
+      <div class="section-label">// What Was Built</div>
+      <h2>A complete brand system and digital home</h2>
+
+      <div class="card-grid">
+        <div class="card">
+          <h3>WordPress Website</h3>
+          <p>Custom GeneratePress theme build. Lightweight, fast-loading, and designed for long-form content with editorial-quality layouts.</p>
+        </div>
+        <div class="card">
+          <h3>Brand Identity</h3>
+          <p>Color palette, typography system, and visual language. A deliberate fusion of warm Moroccan tones and clean Scandinavian structure.</p>
+        </div>
+        <div class="card">
+          <h3>Content Strategy</h3>
+          <p>Cross-platform publishing framework covering food, lifestyle, and cultural storytelling. Structured for consistency and growth.</p>
+        </div>
+        <div class="card">
+          <h3>Social Automation</h3>
+          <p>Automated social media pipeline. Scheduled publishing, content repurposing, and platform-specific formatting.</p>
+        </div>
+        <div class="card">
+          <h3>Cultural Design Balance</h3>
+          <p>Visual system that blends two distinct aesthetic traditions into a singular, recognizable brand. Warm but minimal. Rich but clean.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TECH STACK ===== -->
+    <section class="case-section reveal">
+      <div class="section-label">// Tech Stack</div>
+      <h2>Built with</h2>
+
+      <div class="tech-grid">
+        <div class="tech-chip">WordPress</div>
+        <div class="tech-chip">GeneratePress</div>
+        <div class="tech-chip">Custom CSS / JS</div>
+        <div class="tech-chip">Content Strategy</div>
+        <div class="tech-chip">Social Media Automation</div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ===== CTA ===== -->
+  <div class="cta-section reveal">
+    <div class="case-container">
+      <h2 style="margin-bottom:16px;">Need a brand that resonates?</h2>
+      <p style="color:var(--text-secondary);margin-bottom:32px;">
+        Identity, website, and content strategy. Engineered as one system.
+      </p>
+      <a href="/#contact" class="cta-button">Let's Build</a>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-copy">
+        <span class="mono">&copy; 2026 ElektraOS.dev</span>
+        <span style="display:block;font-size:11px;color:var(--text-muted);margin-top:4px;">Copenhagen, Denmark</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/yoggi-sheandelle" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.upwork.com/freelancers/~01eddb5df59f03b475" target="_blank" rel="noopener">Upwork</a>
+        <a href="about.html#privacy">Privacy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/chat.js"></script>
+  <script src="../js/app.js"></script>
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
