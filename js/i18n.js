@@ -6,9 +6,9 @@
 (function(){
   'use strict';
 
-  var SUPPORTED = ['en','da','fr','it'];
-  var LABELS = {en:'EN',da:'DA',fr:'FR',it:'IT'};
-  var NAMES = {en:'English',da:'Dansk',fr:'Fran\u00E7ais',it:'Italiano'};
+  var SUPPORTED = ['en','da','fr','it','ma'];
+  var LABELS = {en:'EN',da:'DA',fr:'FR',it:'IT',ma:'MA'};
+  var NAMES = {en:'English',da:'Dansk',fr:'Fran\u00E7ais',it:'Italiano',ma:'Darija'};
 
   function getCurrentLang(){
     var path = window.location.pathname;

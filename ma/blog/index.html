@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog . ElektraOS.dev</title>
+  <meta name="description" content="Notes d'ingenierie, perspective neurodivergente 3la le building, systems thinking. Kifash ingenieur wa7ed kayebni des systemes IA production-grade men Copenhagen.">
+  <meta property="og:title" content="Blog . ElektraOS.dev">
+  <meta property="og:description" content="Notes d'ingenierie. Perspective neurodivergente. Systems thinking.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#7c3aed">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="canonical" href="https://elektraos.dev/ma/blog/">
+  <link rel="alternate" hreflang="en" href="https://elektraos.dev/blog/">
+  <link rel="alternate" hreflang="da" href="https://elektraos.dev/da/blog/">
+  <link rel="alternate" hreflang="fr" href="https://elektraos.dev/fr/blog/">
+  <link rel="alternate" hreflang="it" href="https://elektraos.dev/it/blog/">
+  <link rel="alternate" hreflang="x-default" href="https://elektraos.dev/blog/">
+  <meta name="robots" content="index, follow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/animations.css">
+  <link rel="stylesheet" href="/css/sections.css">
+  <link rel="stylesheet" href="/css/chat.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="/css/smart-features.css">
+</head>
+<body>
+
+  <!-- ===== TOP BAR ===== -->
+  <div style="position:fixed;top:0;left:0;right:0;z-index:101;background:linear-gradient(90deg,rgba(124,58,237,0.15),rgba(0,212,255,0.1));border-bottom:1px solid rgba(124,58,237,0.2);padding:8px 0;text-align:center;font-family:var(--font-mono);font-size:11px;letter-spacing:0.5px;color:var(--text-secondary);backdrop-filter:blur(12px);">
+    <span style="color:var(--cyan);">&#9889;</span> Site taht l'operation daba. Kankhedmo live.
+  </div>
+
+  <nav class="nav" id="nav" style="top:33px;">
+    <div class="nav-inner">
+      <a href="/ma/" class="nav-logo"><span>E</span>lektraOS<span>.</span>dev</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/ma/#solutions">Solutions</a></li>
+        <li><a href="/log/">Journal de build</a></li>
+        <li><a href="/ma/cases/">Etudes de cas</a></li>
+        <li><a href="/ma/blog/" style="color:var(--cyan);">Blog</a></li>
+        <li><a href="/ma/pricing/">Les prix</a></li>
+        <li><a href="/ma/about/">3liya</a></li>
+      </ul>
+      <a href="/ma/#contact" class="btn nav-cta">YALLAH NBNIW</a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <section class="hero" id="hero" style="min-height: 50vh;">
+    <div class="hero-content">
+      <h1 class="hero-name gradient-text">Blog</h1>
+      <p class="text-secondary" style="font-size: 18px; max-width: 520px; margin: 20px auto 0; line-height: 1.7;">Le blog maktob b l'anglais. Ghadi nwejhek l version anglaise.</p>
+    </div>
+  </section>
+
+  <section style="padding: 60px 0; text-align: center;">
+    <div class="container" style="max-width: 600px;">
+      <p style="font-size: 16px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 32px;">Les articles du blog kaytktabou b l'anglais. 9ra les notes d'ingenierie, la perspective neurodivergente 3la le building, w le systems thinking.</p>
+      <a href="/blog/" class="btn btn-primary">Chouf le blog (anglais)</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-copy">
+        <span class="mono">&copy; 2026 ElektraOS.dev</span>
+        <span style="display:block;font-size:11px;color:var(--text-muted);margin-top:4px;">Copenhagen, Danemark</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/yoggi-sheandelle" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.upwork.com/freelancers/~01eddb5df59f03b475" target="_blank" rel="noopener">Upwork</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="chat-widget" id="chatWidget">
+    <div class="chat-panel" id="chatPanel">
+      <div class="chat-panel-header">
+        <div class="header-info">
+          <div class="header-avatar"><svg width="18" height="18" viewBox="0 0 32 32" fill="none"><polygon points="16,5 25,10.5 25,21.5 16,27 7,21.5 7,10.5" stroke="url(#sigil-g)" stroke-width="1.2" opacity="0.6"/><path d="M12 11 L20 11 M12 11 L12 21 M12 16 L19 16 M12 21 L20 21" stroke="url(#sigil-g)" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="16" r="1.5" fill="#00d4ff" opacity="0.9"/><defs><linearGradient id="sigil-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#00d4ff"/></linearGradient></defs></svg></div>
+          <div><div class="header-name">Elektra</div><div class="header-status">Online</div></div>
+        </div>
+        <button class="chat-close-btn" id="chatClose"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="chat-bubble bot">Merhba! Ana Elektra. Souwelni 3la solutions, les prix, wla kifash kankhdem. Ash bghiti t3ref?</div>
+      </div>
+      <div class="chat-input-area">
+        <input type="text" class="chat-input" id="chatInput" placeholder="Souwelni 3la chi 7aja...">
+        <button class="chat-send" id="chatSend"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+      </div>
+    </div>
+    <div id="sigil3d" class="chat-toggle" style="width:70px;height:70px;padding:0;border:none;background:rgba(13,17,23,0.6);backdrop-filter:blur(8px);overflow:hidden;border-radius:18px;"></div>
+    <button id="chatToggle" style="display:none;"></button>
+  </div>
+
+  <script src="/js/utils.js"></script>
+  <script src="/js/chat.js"></script>
+  <script src="/js/sigil3d.js"></script>
+  <script src="/js/app.js"></script>
+  <script src="/js/i18n.js" defer></script>
+</body>
+</html>
