@@ -3,12 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Build Log . ElektraOS.dev</title>
-  <meta name="description" content="Live build log. What shipped this week. Engineering velocity in real time.">
+  <title>Build Log . ElektraOS.dev . Engineering Velocity</title>
+  <meta name="description" content="Live engineering build log. AI systems, automation pipelines, full-stack development. What shipped, when it shipped, and the technical decisions behind it. Copenhagen, Denmark.">
+  <meta name="keywords" content="AI engineer, automation, SaaS development, Claude Code, full-stack developer, Copenhagen, Denmark, freelance engineer, build log, ElektraOS">
   <meta property="og:title" content="Build Log . ElektraOS.dev">
+  <meta property="og:description" content="Live engineering build log. AI systems, automation, full-stack. Copenhagen, Denmark.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://elektraos.dev/log.html">
   <meta name="theme-color" content="#7c3aed">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="canonical" href="https://elektraos.dev/log.html">
+
+  <!-- Structured Data: Blog/TechArticle for AI crawlers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "ElektraOS.dev Build Log",
+    "description": "Live engineering build log documenting AI systems, automation pipelines, and full-stack product development.",
+    "url": "https://elektraos.dev/log.html",
+    "inLanguage": ["en", "da"],
+    "author": {
+      "@type": "Person",
+      "jobTitle": "AI Systems Engineer",
+      "knowsAbout": ["Artificial Intelligence", "Automation", "Full-Stack Development", "SaaS", "Python", "FastAPI", "Claude Code", "Multi-Agent Systems", "SEO", "Web Design"],
+      "knowsLanguage": ["English", "French", "Arabic", "Danish", "Italian"],
+      "workLocation": {
+        "@type": "Place",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Copenhagen",
+          "addressCountry": "DK"
+        }
+      }
+    },
+    "about": [
+      {"@type": "Thing", "name": "AI Agent Orchestration"},
+      {"@type": "Thing", "name": "Workflow Automation"},
+      {"@type": "Thing", "name": "Custom SaaS Development"},
+      {"@type": "Thing", "name": "Full-Stack Engineering"}
+    ]
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,51 +58,118 @@
   <link rel="stylesheet" href="css/chat.css">
   <link rel="stylesheet" href="css/responsive.css">
   <style>
-    .log-hero { padding: 120px 0 60px; text-align: center; }
-    .log-subtitle { font-size: 16px; color: var(--text-secondary); max-width: 480px; margin: 12px auto 0; }
-    .log-feed { max-width: 720px; margin: 0 auto; padding: 0 24px 80px; }
+    .log-hero { padding: 120px 0 40px; text-align: center; }
+    .log-subtitle { font-size: 16px; color: var(--text-secondary); max-width: 560px; margin: 12px auto 0; line-height: 1.7; }
+
+    /* Stats strip */
+    .log-stats {
+      display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;
+      padding: 24px 0; margin: 24px auto 0; max-width: 600px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .log-stat { text-align: center; }
+    .log-stat-val { font-family: var(--font-mono); font-size: 22px; font-weight: 700; color: var(--cyan); }
+    .log-stat-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-top: 2px; }
+
+    /* Capabilities index */
+    .cap-grid {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
+      max-width: 700px; margin: 32px auto 0; padding: 0 24px;
+    }
+    .cap-tag {
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.5px;
+      padding: 5px 12px; border-radius: 6px;
+      background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+      color: var(--text-muted); transition: all 0.2s;
+    }
+    .cap-tag:hover { border-color: rgba(124,58,237,0.3); color: var(--text-secondary); }
+
+    /* Feed */
+    .log-feed { max-width: 760px; margin: 0 auto; padding: 48px 24px 80px; }
+
+    /* Entry */
     .log-entry {
-      position: relative; padding: 24px 0 24px 32px;
+      position: relative; padding: 28px 0 28px 36px;
       border-left: 2px solid var(--border);
     }
     .log-entry::before {
-      content: ''; position: absolute; left: -5px; top: 28px;
-      width: 8px; height: 8px; border-radius: 50%;
+      content: ''; position: absolute; left: -6px; top: 34px;
+      width: 10px; height: 10px; border-radius: 50%;
       background: var(--purple); border: 2px solid var(--bg-primary);
+      transition: all 0.3s;
     }
     .log-entry:hover::before {
-      box-shadow: 0 0 12px var(--purple-glow);
+      box-shadow: 0 0 16px var(--purple-glow);
+      background: var(--cyan);
     }
     .log-date {
       font-family: var(--font-mono); font-size: 11px;
       text-transform: uppercase; letter-spacing: 1.5px;
-      color: var(--text-muted); margin-bottom: 6px;
+      color: var(--text-muted); margin-bottom: 8px;
     }
-    .log-title { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+    .log-title { font-size: 20px; font-weight: 700; margin-bottom: 10px; line-height: 1.3; }
+    .log-summary { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 12px; }
+
+    /* Tags */
+    .log-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
     .log-tag {
-      display: inline-block; font-family: var(--font-mono); font-size: 10px;
+      font-family: var(--font-mono); font-size: 9px;
       text-transform: uppercase; letter-spacing: 1px;
-      padding: 2px 8px; border-radius: 4px; margin-right: 6px; margin-bottom: 8px;
+      padding: 3px 8px; border-radius: 4px;
     }
-    .log-tag.session { background: var(--purple-dim); color: var(--purple); }
-    .log-tag.handoff { background: var(--cyan-dim); color: var(--cyan); }
+    .log-tag.ai { background: rgba(124,58,237,0.1); color: #a78bfa; }
+    .log-tag.infra { background: rgba(0,212,255,0.08); color: var(--cyan); }
+    .log-tag.ship { background: rgba(0,255,157,0.08); color: var(--green); }
+    .log-tag.design { background: rgba(245,158,11,0.08); color: var(--amber); }
+    .log-tag.ops { background: rgba(239,68,68,0.08); color: #f87171; }
+
+    /* Completed items */
     .log-items { list-style: none; padding: 0; margin: 0; }
     .log-items li {
-      font-size: 13px; color: var(--text-secondary); padding: 3px 0;
-      padding-left: 16px; position: relative;
+      font-size: 13px; color: var(--text-secondary); padding: 4px 0;
+      padding-left: 18px; position: relative; line-height: 1.6;
     }
     .log-items li::before {
-      content: ''; position: absolute; left: 0; top: 10px;
+      content: ''; position: absolute; left: 0; top: 11px;
       width: 6px; height: 6px; border-radius: 50%;
-      background: var(--green); opacity: 0.6;
+      background: var(--green); opacity: 0.5;
     }
+
+    /* Tech used */
+    .log-tech {
+      display: flex; flex-wrap: wrap; gap: 4px; margin-top: 10px;
+      padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.03);
+    }
+    .log-tech span {
+      font-family: var(--font-mono); font-size: 9px;
+      padding: 2px 7px; border-radius: 3px;
+      background: rgba(255,255,255,0.02); color: var(--text-muted);
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+
+    /* Metrics */
+    .log-metrics {
+      display: flex; gap: 16px; margin-top: 10px; flex-wrap: wrap;
+    }
+    .log-metric {
+      font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);
+    }
+    .log-metric strong { color: var(--cyan); }
+
     .log-empty {
       text-align: center; padding: 60px 0;
       color: var(--text-muted); font-size: 14px;
     }
     .log-cta {
-      text-align: center; padding: 40px 0 0;
-      border-top: 1px solid var(--border); margin-top: 40px;
+      text-align: center; padding: 48px 0 0;
+      border-top: 1px solid var(--border); margin-top: 48px;
+    }
+
+    @media (max-width: 768px) {
+      .log-stats { gap: 20px; }
+      .log-entry { padding-left: 24px; }
+      .log-title { font-size: 17px; }
     }
   </style>
 </head>
@@ -91,49 +194,290 @@
   <!-- Hero -->
   <div class="log-hero">
     <span class="section-label">build log</span>
-    <h1 class="gradient-text" style="font-size:clamp(28px,4vw,44px);margin-top:8px;">What shipped this week.</h1>
-    <p class="log-subtitle">Engineering velocity. No tutorials. No how-to guides. Just what was built, when it shipped, and what's next.</p>
+    <h1 class="gradient-text" style="font-size:clamp(28px,4vw,44px);margin-top:8px;">Engineering velocity.</h1>
+    <p class="log-subtitle">What was built, when it shipped, and the architecture behind it. This log updates after every engineering session. No tutorials. No marketing. Just production output.</p>
+
+    <!-- Live stats -->
+    <div class="log-stats">
+      <div class="log-stat">
+        <div class="log-stat-val">184K+</div>
+        <div class="log-stat-label">Lines shipped</div>
+      </div>
+      <div class="log-stat">
+        <div class="log-stat-val">41</div>
+        <div class="log-stat-label">AI agents</div>
+      </div>
+      <div class="log-stat">
+        <div class="log-stat-val">624</div>
+        <div class="log-stat-label">API endpoints</div>
+      </div>
+      <div class="log-stat">
+        <div class="log-stat-val">9</div>
+        <div class="log-stat-label">Pages deployed</div>
+      </div>
+    </div>
+
+    <!-- Capabilities index (for AI crawlers and humans) -->
+    <div class="cap-grid">
+      <span class="cap-tag">Python</span>
+      <span class="cap-tag">FastAPI</span>
+      <span class="cap-tag">Claude Code</span>
+      <span class="cap-tag">Multi-Agent Systems</span>
+      <span class="cap-tag">Workflow Automation</span>
+      <span class="cap-tag">Custom SaaS</span>
+      <span class="cap-tag">AI Chatbots</span>
+      <span class="cap-tag">SEO Engineering</span>
+      <span class="cap-tag">Web Design</span>
+      <span class="cap-tag">Content Pipelines</span>
+      <span class="cap-tag">API Architecture</span>
+      <span class="cap-tag">SQLite</span>
+      <span class="cap-tag">n8n</span>
+      <span class="cap-tag">HuggingFace</span>
+      <span class="cap-tag">MCP Servers</span>
+      <span class="cap-tag">GDPR Compliance</span>
+      <span class="cap-tag">E-Commerce</span>
+      <span class="cap-tag">GitHub Pages</span>
+      <span class="cap-tag">SSE Streaming</span>
+      <span class="cap-tag">Image Generation</span>
+    </div>
   </div>
 
   <!-- Feed -->
-  <div class="log-feed" id="logFeed">
+  <div class="log-feed">
 
-    <!-- Entry: March 25, 2026 -->
-    <div class="log-entry reveal">
-      <div class="log-date">March 25, 2026</div>
-      <div class="log-title">Thumbnail Pipeline + ElektraOS.dev Launch</div>
-      <span class="log-tag session">session</span>
-      <span class="log-tag handoff">handoff</span>
-      <ul class="log-items">
-        <li>Image previews live in thumbnail generator</li>
-        <li>Fixed infinite render loop in MutationObserver</li>
-        <li>Added /media-thumbs static mount for asset serving</li>
-        <li>Full generate, preview, approve pipeline tested end-to-end</li>
-        <li>Verified Elektra + Claude Code architecture (25+ MCP tools, 22 agents)</li>
-        <li>ElektraOS.dev restructured: 9 pages, smart features, command palette</li>
-        <li>Live system pulse, interactive solution demos, case study timeline</li>
-        <li>Deployed to elektraos.dev with GitHub Pages + HTTPS</li>
-        <li>EU/Denmark GDPR compliance: cookie banner, privacy policy, Datatilsynet</li>
-      </ul>
-    </div>
+    <!-- ===== March 25, 2026 ===== -->
+    <article class="log-entry reveal" itemscope itemtype="https://schema.org/TechArticle">
+      <meta itemprop="datePublished" content="2026-03-25">
+      <meta itemprop="author" content="ElektraOS.dev">
+      <div class="log-date">
+        <time datetime="2026-03-25">March 25, 2026</time>
+      </div>
+      <h2 class="log-title" itemprop="headline">AI Thumbnail Pipeline + ElektraOS.dev Full Launch</h2>
+      <p class="log-summary" itemprop="description">Built a multi-brand AI thumbnail generator with face consistency and image previews. Restructured and deployed elektraos.dev with 7 smart interactive features. Full EU/Denmark GDPR compliance. Wired build log pipeline into Elektra's content system.</p>
 
-    <!-- Entry: March 24, 2026 -->
-    <div class="log-entry reveal">
-      <div class="log-date">March 24, 2026</div>
-      <div class="log-title">ElektraOS.dev Website + Thumbnail System Architecture</div>
-      <span class="log-tag handoff">handoff</span>
+      <div class="log-tags">
+        <span class="log-tag ai">AI Systems</span>
+        <span class="log-tag infra">Infrastructure</span>
+        <span class="log-tag ship">Shipped</span>
+        <span class="log-tag design">Design</span>
+      </div>
+
       <ul class="log-items">
-        <li>Built ElektraOS.dev website from scratch (5 pages, interactive pricing calculator)</li>
-        <li>Completed 4 Upwork catalog projects</li>
-        <li>Extracted Danish market strategy into actionable pipeline</li>
-        <li>Thumbnail generator backend: multi-brand, multi-platform, face locking system</li>
+        <li>Image previews live in thumbnail generator (approved, drafts, face refs)</li>
+        <li>Fixed infinite MutationObserver render loop in frontend</li>
+        <li>Added /media-thumbs static mount for direct asset serving</li>
+        <li>Full generate, preview, approve pipeline tested with HuggingFace FLUX.1</li>
+        <li>Verified Elektra + Claude Code architecture: 25+ MCP tools, 22 agents, streaming</li>
+        <li>Restructured landing page from 618 to 425 lines, split into 9 pages</li>
+        <li>7 smart features: system pulse, command palette, solution demos, ambient mode, timeline, live terminal, diagnostic</li>
+        <li>Deployed to elektraos.dev: GitHub Pages, custom domain, HTTPS enforced</li>
+        <li>EU/Denmark GDPR: cookie banner, privacy policy, Datatilsynet, e-handelsloven</li>
+        <li>Built devsite pipeline: /devsite/contact, /devsite/build-log, /devsite/status</li>
+        <li>3 new MCP tools: get_devsite_status, get_build_log, publish_build_log</li>
+        <li>Session-end skill created for automated content pipeline feeding</li>
       </ul>
-    </div>
+
+      <div class="log-metrics">
+        <div class="log-metric"><strong>12</strong> features shipped</div>
+        <div class="log-metric"><strong>9</strong> pages deployed</div>
+        <div class="log-metric"><strong>3</strong> API endpoints created</div>
+        <div class="log-metric"><strong>2,200+</strong> lines added</div>
+      </div>
+
+      <div class="log-tech">
+        <span>Python</span>
+        <span>FastAPI</span>
+        <span>Claude Code</span>
+        <span>HuggingFace FLUX.1</span>
+        <span>GitHub Pages</span>
+        <span>JavaScript</span>
+        <span>CSS</span>
+        <span>MCP Server</span>
+        <span>GDPR</span>
+      </div>
+    </article>
+
+    <!-- ===== March 24, 2026 ===== -->
+    <article class="log-entry reveal" itemscope itemtype="https://schema.org/TechArticle">
+      <meta itemprop="datePublished" content="2026-03-24">
+      <meta itemprop="author" content="ElektraOS.dev">
+      <div class="log-date">
+        <time datetime="2026-03-24">March 24, 2026</time>
+      </div>
+      <h2 class="log-title" itemprop="headline">ElektraOS.dev Website + Thumbnail System Architecture</h2>
+      <p class="log-summary" itemprop="description">Built the complete elektraos.dev website from scratch. Pure HTML/CSS/JS with interactive pricing calculator, URL audit tool, and live chat widget. Designed the thumbnail generator backend architecture for multi-brand, multi-platform content generation.</p>
+
+      <div class="log-tags">
+        <span class="log-tag design">Design</span>
+        <span class="log-tag infra">Infrastructure</span>
+        <span class="log-tag ship">Shipped</span>
+      </div>
+
+      <ul class="log-items">
+        <li>Built 5-page website: landing, chatbot, automation, SEO, design service pages</li>
+        <li>Interactive pricing calculator with service, tier, and add-on selection</li>
+        <li>URL audit tool with animated SVG performance gauges</li>
+        <li>Live chat widget with pattern-matched AI responses</li>
+        <li>Particle canvas hero with cursor-reactive grid animation</li>
+        <li>Completed 4 Upwork catalog projects (live)</li>
+        <li>Thumbnail generator architecture: BACKGROUND_STYLES, BRAND_BG_DEFAULTS, PLATFORM_DIMS</li>
+        <li>Multi-provider image generation cascade: HuggingFace, Stability, FAL</li>
+      </ul>
+
+      <div class="log-metrics">
+        <div class="log-metric"><strong>5</strong> pages built</div>
+        <div class="log-metric"><strong>4</strong> Upwork projects shipped</div>
+        <div class="log-metric"><strong>7</strong> CSS files</div>
+        <div class="log-metric"><strong>10</strong> JS files</div>
+      </div>
+
+      <div class="log-tech">
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>JavaScript</span>
+        <span>Python</span>
+        <span>FastAPI</span>
+        <span>SVG</span>
+        <span>Canvas API</span>
+      </div>
+    </article>
+
+    <!-- ===== March 22, 2026 ===== -->
+    <article class="log-entry reveal" itemscope itemtype="https://schema.org/TechArticle">
+      <meta itemprop="datePublished" content="2026-03-22">
+      <meta itemprop="author" content="ElektraOS.dev">
+      <div class="log-date">
+        <time datetime="2026-03-22">March 22, 2026</time>
+      </div>
+      <h2 class="log-title" itemprop="headline">ElektraOS Core: 184K Lines, 41 Agents, 624 Endpoints</h2>
+      <p class="log-summary" itemprop="description">Full-stack cognitive operating system reaching production maturity. 22 specialized AI agents across 5 teams (Revenue, Content, Intel, Ops, Trading). Multi-provider LLM orchestration with Claude, Groq, OpenRouter. Real-time operator console with 12 dashboard tabs.</p>
+
+      <div class="log-tags">
+        <span class="log-tag ai">AI Systems</span>
+        <span class="log-tag infra">Infrastructure</span>
+        <span class="log-tag ops">Operations</span>
+      </div>
+
+      <ul class="log-items">
+        <li>184,000+ lines of production Python and JavaScript</li>
+        <li>41 AI agents with autonomous scheduling (16 cron jobs)</li>
+        <li>624 API endpoints across 34 routers</li>
+        <li>59 database tables (SQLite)</li>
+        <li>Multi-provider LLM chain: Claude CLI, Groq, OpenRouter, OpenAI, HuggingFace, Ollama</li>
+        <li>SSE streaming for real-time chat and task execution</li>
+        <li>Obsidian-compatible vault with knowledge graph visualization</li>
+        <li>31 n8n automation workflows in production</li>
+        <li>Browser automation via Playwright</li>
+        <li>Voice synthesis: Cartesia, ElevenLabs, OpenAI, Edge-TTS cascade</li>
+      </ul>
+
+      <div class="log-metrics">
+        <div class="log-metric"><strong>184K</strong> lines of code</div>
+        <div class="log-metric"><strong>41</strong> AI agents</div>
+        <div class="log-metric"><strong>624</strong> endpoints</div>
+        <div class="log-metric"><strong>59</strong> database tables</div>
+      </div>
+
+      <div class="log-tech">
+        <span>Python</span>
+        <span>FastAPI</span>
+        <span>SQLAlchemy</span>
+        <span>SQLite</span>
+        <span>Claude CLI</span>
+        <span>Groq</span>
+        <span>OpenRouter</span>
+        <span>Playwright</span>
+        <span>n8n</span>
+        <span>SSE</span>
+        <span>MCP</span>
+      </div>
+    </article>
+
+    <!-- ===== December 2025 ===== -->
+    <article class="log-entry reveal" itemscope itemtype="https://schema.org/TechArticle">
+      <meta itemprop="datePublished" content="2025-12-15">
+      <meta itemprop="author" content="ElektraOS.dev">
+      <div class="log-date">
+        <time datetime="2025-12-15">December 2025</time>
+      </div>
+      <h2 class="log-title" itemprop="headline">AYLA Luxury: Full E-Commerce Build</h2>
+      <p class="log-summary" itemprop="description">Complete e-commerce solution built from scratch for luxury jewelry brand. Website, SEO strategy, AI chatbot, and content pipeline. ROAS improved from 3.1 to 4.0, customer acquisition cost reduced 28% in 8 weeks.</p>
+
+      <div class="log-tags">
+        <span class="log-tag ship">Shipped</span>
+        <span class="log-tag design">Design</span>
+        <span class="log-tag ai">AI Systems</span>
+      </div>
+
+      <ul class="log-items">
+        <li>E-commerce website designed and deployed</li>
+        <li>SEO strategy: technical audit, content optimization, keyword targeting</li>
+        <li>AI chatbot for customer inquiries and lead capture</li>
+        <li>Content pipeline for automated social media and blog publishing</li>
+        <li>ROAS: 3.1 to 4.0 (29% improvement)</li>
+        <li>CAC reduced 28% in 8 weeks</li>
+      </ul>
+
+      <div class="log-metrics">
+        <div class="log-metric"><strong>3.1 &rarr; 4.0</strong> ROAS</div>
+        <div class="log-metric"><strong>-28%</strong> CAC</div>
+        <div class="log-metric"><strong>8</strong> weeks</div>
+      </div>
+
+      <div class="log-tech">
+        <span>HTML/CSS</span>
+        <span>SEO</span>
+        <span>AI Chatbot</span>
+        <span>Content Pipeline</span>
+        <span>E-Commerce</span>
+      </div>
+    </article>
+
+    <!-- ===== October 2025 ===== -->
+    <article class="log-entry reveal" itemscope itemtype="https://schema.org/TechArticle">
+      <meta itemprop="datePublished" content="2025-10-01">
+      <meta itemprop="author" content="ElektraOS.dev">
+      <div class="log-date">
+        <time datetime="2025-10-01">October 2025</time>
+      </div>
+      <h2 class="log-title" itemprop="headline">ElektraOS v1: The Operating System Begins</h2>
+      <p class="log-summary" itemprop="description">First commit. FastAPI backend, SQLite database, multi-provider LLM chain. Task management, scheduling, and the first 10 AI agents. Built to run an entire business from a single terminal.</p>
+
+      <div class="log-tags">
+        <span class="log-tag infra">Infrastructure</span>
+        <span class="log-tag ai">AI Systems</span>
+      </div>
+
+      <ul class="log-items">
+        <li>FastAPI backend architecture established</li>
+        <li>SQLite database with initial schema</li>
+        <li>Multi-provider LLM chain: Claude CLI as primary</li>
+        <li>First 10 specialized agents deployed</li>
+        <li>Task management and schedule block system</li>
+        <li>Activity logging and behavioral tracking</li>
+      </ul>
+
+      <div class="log-metrics">
+        <div class="log-metric"><strong>10</strong> agents</div>
+        <div class="log-metric"><strong>v1</strong> deployed</div>
+      </div>
+
+      <div class="log-tech">
+        <span>Python</span>
+        <span>FastAPI</span>
+        <span>SQLite</span>
+        <span>Claude CLI</span>
+      </div>
+    </article>
 
     <!-- CTA -->
-    <div class="log-cta">
-      <p style="color:var(--text-secondary);font-size:14px;">This log updates after every engineering session.</p>
-      <a href="index.html#contact" class="btn btn-primary" style="margin-top:16px;">Start a Project</a>
+    <div class="log-cta reveal">
+      <h3 style="margin-bottom:8px;">This log updates after every session.</h3>
+      <p style="color:var(--text-secondary);font-size:14px;max-width:480px;margin:0 auto 24px;">Open for projects, co-builds, and partnerships. If you need something engineered, let's talk.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a href="index.html#contact" class="btn btn-primary">Start a Project</a>
+        <a href="https://www.upwork.com/freelancers/~01eddb5df59f03b475" target="_blank" rel="noopener" class="btn btn-outline">Upwork Profile</a>
+      </div>
     </div>
 
   </div>
@@ -141,7 +485,10 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-inner">
-      <div class="footer-copy"><span class="mono">&copy; 2026 ElektraOS.dev</span></div>
+      <div class="footer-copy">
+        <span class="mono">&copy; 2026 ElektraOS.dev</span>
+        <span style="display:block;font-size:11px;color:var(--text-muted);margin-top:4px;">Copenhagen, Denmark</span>
+      </div>
       <div class="footer-links">
         <a href="https://github.com/yoggi-sheandelle" target="_blank" rel="noopener">GitHub</a>
         <a href="https://www.upwork.com/freelancers/~01eddb5df59f03b475" target="_blank" rel="noopener">Upwork</a>
