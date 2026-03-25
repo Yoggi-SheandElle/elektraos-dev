@@ -40,98 +40,104 @@
     var sigil = new THREE.Group();
     scene.add(sigil);
 
-    // ---- Hex frame (outer) ----
+    // ---- Hollow hex prism (front face, back face, depth struts) ----
+    var DEPTH = 0.6;
+    var RADIUS = 1.8;
     var hexVerts = [];
     for (var i = 0; i < 6; i++) {
       var angle = (Math.PI / 3) * i - Math.PI / 2;
-      hexVerts.push(new THREE.Vector3(Math.cos(angle) * 1.8, Math.sin(angle) * 1.8, 0));
+      hexVerts.push(new THREE.Vector3(Math.cos(angle) * RADIUS, Math.sin(angle) * RADIUS, 0));
     }
 
-    var hexGeo = new THREE.BufferGeometry();
-    var hexPositions = [];
-    for (var i = 0; i < 6; i++) {
-      var a = hexVerts[i], b = hexVerts[(i + 1) % 6];
-      hexPositions.push(a.x, a.y, a.z, b.x, b.y, b.z);
+    // Front face wireframe
+    function makeHexRing(z, color, opacity) {
+      var positions = [];
+      for (var i = 0; i < 6; i++) {
+        var a = hexVerts[i], b = hexVerts[(i + 1) % 6];
+        positions.push(a.x, a.y, z, b.x, b.y, z);
+      }
+      var geo = new THREE.BufferGeometry();
+      geo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+      return new THREE.LineSegments(geo, new THREE.LineBasicMaterial({ color: color, transparent: true, opacity: opacity }));
     }
-    hexGeo.setAttribute('position', new THREE.Float32BufferAttribute(hexPositions, 3));
-    var hexMat = new THREE.LineBasicMaterial({ color: purple, transparent: true, opacity: 0.5 });
-    var hexLine = new THREE.LineSegments(hexGeo, hexMat);
-    sigil.add(hexLine);
 
-    // ---- Inner hex (smaller, offset Z) ----
-    var hexInner = hexLine.clone();
-    hexInner.scale.setScalar(0.65);
-    hexInner.position.z = 0.15;
-    hexInner.material = new THREE.LineBasicMaterial({ color: cyan, transparent: true, opacity: 0.3 });
-    sigil.add(hexInner);
+    var frontHex = makeHexRing(DEPTH / 2, purple, 0.6);
+    var backHex = makeHexRing(-DEPTH / 2, cyan, 0.35);
+    sigil.add(frontHex);
+    sigil.add(backHex);
+    var hexMat = frontHex.material; // reference for animation
 
-    // ---- Connecting lines (depth struts) ----
-    var strutGeo = new THREE.BufferGeometry();
+    // Depth struts connecting front to back
     var strutPositions = [];
     for (var i = 0; i < 6; i++) {
-      var outer = hexVerts[i];
-      var inner = hexVerts[i].clone().multiplyScalar(0.65);
-      strutPositions.push(outer.x, outer.y, 0, inner.x, inner.y, 0.15);
+      var v = hexVerts[i];
+      strutPositions.push(v.x, v.y, DEPTH / 2, v.x, v.y, -DEPTH / 2);
     }
+    var strutGeo = new THREE.BufferGeometry();
     strutGeo.setAttribute('position', new THREE.Float32BufferAttribute(strutPositions, 3));
-    var strutMat = new THREE.LineBasicMaterial({ color: purple, transparent: true, opacity: 0.15 });
-    sigil.add(new THREE.LineSegments(strutGeo, strutMat));
+    sigil.add(new THREE.LineSegments(strutGeo, new THREE.LineBasicMaterial({ color: purple, transparent: true, opacity: 0.2 })));
 
-    // ---- E letterform (3D extruded lines) ----
-    var eMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.9 });
-    var eGlowMat = new THREE.MeshBasicMaterial({ color: cyan, transparent: true, opacity: 0.3 });
-
-    function makeBar(x1, y1, x2, y2, thickness) {
-      var dx = x2 - x1, dy = y2 - y1;
-      var len = Math.sqrt(dx * dx + dy * dy);
-      var geo = new THREE.BoxGeometry(len, thickness, thickness * 0.6);
-      var mesh = new THREE.Mesh(geo, eMat);
-      mesh.position.set((x1 + x2) / 2, (y1 + y2) / 2, 0.08);
-      mesh.rotation.z = Math.atan2(dy, dx);
-
-      // Glow duplicate
-      var glowGeo = new THREE.BoxGeometry(len + 0.06, thickness + 0.06, thickness * 0.6 + 0.04);
-      var glow = new THREE.Mesh(glowGeo, eGlowMat);
-      glow.position.copy(mesh.position);
-      glow.rotation.copy(mesh.rotation);
-
-      return { mesh: mesh, glow: glow };
+    // ---- E letterform as wireframe edges (hollow, not solid) ----
+    var ePositions = [];
+    function addEdge(x1, y1, x2, y2) {
+      // Front edge
+      ePositions.push(x1, y1, DEPTH / 2 - 0.05, x2, y2, DEPTH / 2 - 0.05);
+      // Back edge
+      ePositions.push(x1, y1, -DEPTH / 2 + 0.05, x2, y2, -DEPTH / 2 + 0.05);
+      // Depth connectors at endpoints
+      ePositions.push(x1, y1, DEPTH / 2 - 0.05, x1, y1, -DEPTH / 2 + 0.05);
+      ePositions.push(x2, y2, DEPTH / 2 - 0.05, x2, y2, -DEPTH / 2 + 0.05);
     }
 
-    // E shape: vertical bar + 3 horizontal bars
-    var eGroup = new THREE.Group();
-    var bars = [
-      makeBar(-0.5, -0.7, -0.5, 0.7, 0.1),   // vertical
-      makeBar(-0.5, 0.7, 0.45, 0.7, 0.1),     // top
-      makeBar(-0.5, 0.0, 0.35, 0.0, 0.09),    // middle
-      makeBar(-0.5, -0.7, 0.45, -0.7, 0.1),   // bottom
-    ];
-    bars.forEach(function (b) {
-      eGroup.add(b.mesh);
-      eGroup.add(b.glow);
-    });
-    sigil.add(eGroup);
+    // E shape
+    addEdge(-0.5, -0.7, -0.5, 0.7);   // vertical
+    addEdge(-0.5, 0.7, 0.45, 0.7);    // top
+    addEdge(-0.5, 0.0, 0.35, 0.0);    // middle
+    addEdge(-0.5, -0.7, 0.45, -0.7);  // bottom
 
-    // ---- Core glow (center sphere) ----
-    var coreGeo = new THREE.SphereGeometry(0.12, 16, 16);
+    var eGeo = new THREE.BufferGeometry();
+    eGeo.setAttribute('position', new THREE.Float32BufferAttribute(ePositions, 3));
+    var eLine = new THREE.LineSegments(eGeo, new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.85 }));
+    sigil.add(eLine);
+
+    // E glow (slightly larger, same shape)
+    var eGlowLine = eLine.clone();
+    eGlowLine.material = new THREE.LineBasicMaterial({ color: cyan, transparent: true, opacity: 0.25, linewidth: 2 });
+    eGlowLine.scale.setScalar(1.02);
+    sigil.add(eGlowLine);
+
+    // Keep bars reference for animation
+    var bars = [{ glow: { material: eGlowLine.material } }];
+
+    // ---- Core glow (hollow ring, not solid sphere) ----
+    var coreGeo = new THREE.TorusGeometry(0.15, 0.03, 8, 24);
     var coreMat = new THREE.MeshBasicMaterial({ color: cyan, transparent: true, opacity: 0.8 });
     var core = new THREE.Mesh(coreGeo, coreMat);
-    core.position.z = 0.08;
     sigil.add(core);
 
-    // ---- Circuit node dots at hex vertices ----
+    // ---- Circuit node dots at hex vertices (both faces) ----
     var nodeDots = [];
     hexVerts.forEach(function (v, i) {
-      var dotGeo = new THREE.SphereGeometry(0.06, 8, 8);
+      // Front node
+      var dotGeo = new THREE.SphereGeometry(0.05, 8, 8);
       var dotMat = new THREE.MeshBasicMaterial({
         color: i % 2 === 0 ? cyan : purple,
         transparent: true,
         opacity: 0.7
       });
-      var dot = new THREE.Mesh(dotGeo, dotMat);
-      dot.position.set(v.x, v.y, 0);
-      sigil.add(dot);
-      nodeDots.push(dot);
+      var dotF = new THREE.Mesh(dotGeo, dotMat);
+      dotF.position.set(v.x, v.y, DEPTH / 2);
+      sigil.add(dotF);
+      nodeDots.push(dotF);
+
+      // Back node (dimmer)
+      var dotB = new THREE.Mesh(dotGeo.clone(), new THREE.MeshBasicMaterial({
+        color: i % 2 === 0 ? purple : cyan,
+        transparent: true,
+        opacity: 0.35
+      }));
+      dotB.position.set(v.x, v.y, -DEPTH / 2);
+      sigil.add(dotB);
     });
 
     // ---- Orbiting particles (agent streams) ----
@@ -241,10 +247,11 @@
       // Don't override Y completely, add to auto-rotation
       var targetY = sigil.rotation.y + mouse.x * 0.15;
 
-      // Core pulse
+      // Core torus pulse + rotation
       var pulse = 0.8 + Math.sin(t * 2) * 0.2;
       core.material.opacity = pulse;
-      core.scale.setScalar(0.8 + Math.sin(t * 3) * 0.2);
+      core.rotation.x = t * 1.5;
+      core.rotation.y = t * 0.8;
 
       // Core color: green when online, cyan when offline
       if (isOnline) {
