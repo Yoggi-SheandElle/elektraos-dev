@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MealShift API Developer Portal - Live Case Study . ElektraOS.dev</title>
+  <meta name="description" content="Live case study: Building MealShift's API developer portal. Transparent workplan showing research, design, build, and deployment in real time.">
+  <meta property="og:title" content="MealShift API Portal - Live Case Study . ElektraOS.dev">
+  <meta property="og:description" content="A transparent look at how we turn API documentation into a developer experience. Live build log, architecture decisions, and progress tracking.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://elektraos.dev/casestudy/mealshift/">
+  <meta name="theme-color" content="#7c3aed">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="canonical" href="https://elektraos.dev/casestudy/mealshift/">
+  <link rel="alternate" hreflang="en" href="https://elektraos.dev/casestudy/mealshift/">
+  <link rel="alternate" hreflang="x-default" href="https://elektraos.dev/casestudy/mealshift/">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Building MealShift's API Developer Portal",
+    "description": "Live case study: Turning a 10-page API PDF into a professional developer portal with AES-256 encryption.",
+    "url": "https://elektraos.dev/casestudy/mealshift/",
+    "datePublished": "2026-03-25",
+    "author": {
+      "@type": "Person",
+      "name": "Yossra Benzad",
+      "jobTitle": "Full-Stack Engineer & AI Systems Builder",
+      "url": "https://elektraos.dev/about/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ElektraOS.dev",
+      "url": "https://elektraos.dev"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/animations.css">
+  <link rel="stylesheet" href="/css/sections.css">
+  <link rel="stylesheet" href="/css/chat.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="/css/smart-features.css">
+
+  <style>
+    /* ===== CASE STUDY PAGE STYLES ===== */
+    .cs-container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+    /* Hero */
+    .cs-hero { padding: 120px 0 48px; text-align: center; }
+    .cs-badge {
+      display: inline-block; font-family: var(--font-mono); font-size: 10px;
+      text-transform: uppercase; letter-spacing: 2px; padding: 6px 16px;
+      border-radius: var(--radius-full); color: var(--green);
+      background: rgba(0,255,157,0.06); border: 1px solid rgba(0,255,157,0.2);
+      margin-bottom: 20px;
+    }
+    .cs-badge::before { content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--green); margin-right: 8px; animation: pulse-dot 2s infinite; }
+    @keyframes pulse-dot { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+    .cs-hero h1 {
+      font-size: clamp(28px, 4vw, 44px); font-weight: 700;
+      background: var(--gradient-text); -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; background-clip: text;
+      line-height: 1.2; margin-bottom: 16px;
+    }
+    .cs-hero-sub { font-size: 16px; color: var(--text-secondary); max-width: 560px; margin: 0 auto 24px; line-height: 1.7; }
+    .cs-hero-meta { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; align-items: center; }
+    .cs-meta-item { font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); }
+    .cs-meta-item a { color: var(--cyan); text-decoration: none; }
+    .cs-meta-item a:hover { text-decoration: underline; }
+    .cs-timer {
+      font-family: var(--font-mono); font-size: 14px; font-weight: 700;
+      color: var(--amber); background: rgba(245,158,11,0.08);
+      border: 1px solid rgba(245,158,11,0.2); border-radius: 8px;
+      padding: 6px 14px; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .cs-status {
+      font-family: var(--font-mono); font-size: 11px; text-transform: uppercase;
+      letter-spacing: 1px; color: var(--amber); padding: 4px 10px;
+      border-radius: 4px; background: rgba(245,158,11,0.08);
+    }
+
+    /* Section headings */
+    .cs-section { margin-bottom: 64px; }
+    .cs-section-label {
+      font-family: var(--font-mono); font-size: 10px; text-transform: uppercase;
+      letter-spacing: 2px; color: var(--purple); margin-bottom: 12px;
+    }
+    .cs-section-title { font-size: 24px; font-weight: 700; margin-bottom: 20px; color: var(--text-primary); }
+
+    /* Overview card */
+    .cs-overview {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px; background: var(--bg-card); border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg); padding: 28px;
+    }
+    .cs-overview-item h4 {
+      font-family: var(--font-mono); font-size: 10px; text-transform: uppercase;
+      letter-spacing: 1px; color: var(--text-muted); margin-bottom: 8px;
+    }
+    .cs-overview-item p { font-size: 14px; color: var(--text-primary); line-height: 1.6; margin: 0; }
+
+    /* Phase progress */
+    .cs-phases { display: flex; gap: 0; align-items: flex-start; position: relative; overflow-x: auto; padding-bottom: 8px; }
+    .cs-phase {
+      flex: 1; min-width: 140px; text-align: center; position: relative; padding: 0 8px;
+    }
+    .cs-phase-icon {
+      width: 44px; height: 44px; border-radius: 50%; display: flex;
+      align-items: center; justify-content: center; margin: 0 auto 12px;
+      font-size: 18px; position: relative; z-index: 2;
+    }
+    .cs-phase-icon.done { background: rgba(0,255,157,0.12); border: 2px solid var(--green); color: var(--green); }
+    .cs-phase-icon.active { background: rgba(245,158,11,0.12); border: 2px solid var(--amber); color: var(--amber); animation: pulse-phase 2s infinite; }
+    .cs-phase-icon.pending { background: rgba(255,255,255,0.03); border: 2px solid var(--border); color: var(--text-muted); }
+    @keyframes pulse-phase { 0%,100% { box-shadow: 0 0 0 0 rgba(245,158,11,0.3); } 50% { box-shadow: 0 0 0 8px rgba(245,158,11,0); } }
+    .cs-phase-name { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+    .cs-phase-desc { font-size: 11px; color: var(--text-muted); line-height: 1.5; }
+    .cs-phase-line {
+      position: absolute; top: 22px; left: calc(50% + 28px); right: calc(-50% + 28px);
+      height: 2px; background: var(--border); z-index: 1;
+    }
+    .cs-phase-line.done { background: var(--green); }
+    .cs-phase-line.active { background: linear-gradient(90deg, var(--green), var(--amber)); }
+    .cs-phase:last-child .cs-phase-line { display: none; }
+
+    /* Build log timeline */
+    .cs-timeline { position: relative; padding-left: 24px; }
+    .cs-timeline::before {
+      content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px;
+      width: 2px; background: var(--border);
+    }
+    .cs-entry {
+      position: relative; margin-bottom: 24px; padding: 16px 20px;
+      background: var(--bg-card); border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md); transition: border-color 0.2s;
+    }
+    .cs-entry:hover { border-color: rgba(124,58,237,0.2); }
+    .cs-entry::before {
+      content: ''; position: absolute; left: -21px; top: 20px;
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--bg-card); border: 2px solid var(--purple);
+    }
+    .cs-entry-header { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; flex-wrap: wrap; }
+    .cs-entry-time { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); }
+    .cs-entry-phase {
+      font-family: var(--font-mono); font-size: 9px; text-transform: uppercase;
+      letter-spacing: 1px; padding: 3px 8px; border-radius: 4px;
+    }
+    .cs-entry-phase.research { background: rgba(0,212,255,0.08); color: var(--cyan); }
+    .cs-entry-phase.design { background: rgba(124,58,237,0.1); color: #a78bfa; }
+    .cs-entry-phase.build { background: rgba(245,158,11,0.08); color: var(--amber); }
+    .cs-entry-duration { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); margin-left: auto; }
+    .cs-entry-desc { font-size: 14px; color: var(--text-primary); line-height: 1.6; margin-bottom: 8px; }
+    .cs-entry-tools { display: flex; gap: 6px; flex-wrap: wrap; }
+    .cs-entry-tool {
+      font-family: var(--font-mono); font-size: 9px; padding: 2px 8px;
+      border-radius: 4px; background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.04); color: var(--text-muted);
+    }
+
+    /* Architecture flow */
+    .cs-arch {
+      display: flex; align-items: center; gap: 0; overflow-x: auto;
+      padding: 32px 0; justify-content: center; flex-wrap: wrap;
+    }
+    .cs-arch-box {
+      background: var(--bg-card); border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md); padding: 16px 20px; text-align: center;
+      min-width: 120px; flex-shrink: 0;
+    }
+    .cs-arch-box-label { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 4px; }
+    .cs-arch-box-value { font-size: 14px; font-weight: 600; color: var(--text-primary); }
+    .cs-arch-arrow {
+      font-family: var(--font-mono); font-size: 16px; color: var(--purple);
+      padding: 0 12px; flex-shrink: 0;
+    }
+    .cs-arch-branch {
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+    }
+    .cs-arch-down { font-family: var(--font-mono); font-size: 16px; color: var(--cyan); }
+
+    /* Decision cards */
+    .cs-decisions { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .cs-decision {
+      background: var(--bg-card); border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md); padding: 24px; transition: border-color 0.2s;
+    }
+    .cs-decision:hover { border-color: rgba(124,58,237,0.2); }
+    .cs-decision h4 { font-size: 15px; font-weight: 600; margin-bottom: 10px; color: var(--text-primary); }
+    .cs-decision p { font-size: 13px; color: var(--text-secondary); line-height: 1.7; margin: 0; }
+
+    /* Metrics */
+    .cs-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; }
+    .cs-metric-card {
+      background: var(--bg-card); border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md); padding: 24px; text-align: center;
+    }
+    .cs-metric-val {
+      font-family: var(--font-mono); font-size: 28px; font-weight: 700;
+      background: var(--gradient-brand); -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; background-clip: text;
+      margin-bottom: 4px;
+    }
+    .cs-metric-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); }
+
+    /* Tools */
+    .cs-tools { display: flex; flex-wrap: wrap; gap: 8px; }
+    .cs-tool-tag {
+      font-family: var(--font-mono); font-size: 12px; padding: 8px 16px;
+      border-radius: 8px; background: var(--bg-card); border: 1px solid var(--glass-border);
+      color: var(--text-secondary); transition: all 0.2s;
+    }
+    .cs-tool-tag:hover { border-color: rgba(124,58,237,0.3); color: var(--text-primary); }
+
+    /* Footer hint */
+    .cs-hint {
+      text-align: center; padding: 48px 0 32px;
+      font-family: var(--font-mono); font-size: 12px; color: var(--text-muted);
+      border-top: 1px solid var(--border); margin-top: 32px;
+    }
+
+    /* Reveal animation */
+    .cs-reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
+    .cs-reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .cs-hero { padding: 100px 0 32px; }
+      .cs-hero-meta { gap: 12px; }
+      .cs-phases { flex-direction: column; align-items: stretch; }
+      .cs-phase { text-align: left; display: flex; gap: 12px; align-items: center; padding: 8px 0; }
+      .cs-phase-icon { margin: 0; flex-shrink: 0; }
+      .cs-phase-line { display: none !important; }
+      .cs-arch { flex-direction: column; }
+      .cs-arch-arrow { transform: rotate(90deg); }
+      .cs-entry-duration { margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== TOP BAR ===== -->
+  <div style="position:fixed;top:0;left:0;right:0;z-index:101;background:linear-gradient(90deg,rgba(124,58,237,0.15),rgba(0,212,255,0.1));border-bottom:1px solid rgba(124,58,237,0.2);padding:8px 0;text-align:center;font-family:var(--font-mono);font-size:11px;letter-spacing:0.5px;color:var(--text-secondary);backdrop-filter:blur(12px);">
+    <span style="color:var(--cyan);">&#9889;</span> Neuro-surgery in progress. We ship live.
+  </div>
+
+  <!-- ===== NAV ===== -->
+  <nav class="nav" id="nav" style="top:33px;">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo"><span>E</span>lektraOS<span>.</span>dev</a>
+      <ul class="nav-links" id="navLinks">
+        <li class="nav-dropdown-wrap">
+          <a href="/#solutions" class="nav-dropdown-trigger">Solutions <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a>
+          <div class="nav-dropdown">
+            <a href="/chatbot/" class="nav-drop-item"><span class="nav-drop-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></span><span><strong>AI Chatbot</strong><small>Intelligent assistants</small></span></a>
+            <a href="/automation/" class="nav-drop-item"><span class="nav-drop-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><span><strong>Automation</strong><small>Workflow orchestration</small></span></a>
+            <a href="/seo/" class="nav-drop-item"><span class="nav-drop-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></span><span><strong>SEO</strong><small>Search optimization</small></span></a>
+            <a href="/design/" class="nav-drop-item"><span class="nav-drop-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></span><span><strong>Web Design</strong><small>Digital experiences</small></span></a>
+            <a href="/case-thumbnail-pipeline/" class="nav-drop-item"><span class="nav-drop-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="2"/><circle cx="8.5" cy="8.5" r="2.5"/><path d="M21 15l-5-5L5 21"/></svg></span><span><strong>AI Media</strong><small>Content pipeline</small></span></a>
+          </div>
+        </li>
+        <li><a href="/log/">Build Log</a></li>
+        <li><a href="/cases/" style="color:var(--cyan);">Case Studies</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/pricing/">Pricing</a></li>
+        <li><a href="/about/">About</a></li>
+      </ul>
+      <a href="/#contact" class="btn nav-cta">Let's Build</a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- ===== 1. PROJECT HEADER / HERO ===== -->
+  <section class="cs-hero">
+    <div class="cs-container">
+      <div class="cs-badge">Live Case Study</div>
+      <!-- MealShift Logo -->
+      <div style="margin-bottom:20px;">
+        <img src="https://mealshift.co.uk/wp-content/uploads/2022/06/MealShift-Logo.png" alt="MealShift" style="height:40px;filter:brightness(1.1);" loading="lazy">
+      </div>
+      <h1>Building MealShift's API Developer Portal</h1>
+      <p class="cs-hero-sub">Turning a 10-page PDF into a professional developer experience for <a href="https://mealshift.co.uk" target="_blank" rel="noopener" style="color:#18a300;text-decoration:none;font-weight:600;">mealshift.co.uk</a> - the UK's flexible, fair food delivery platform</p>
+      <div class="cs-hero-meta">
+        <span class="cs-meta-item">Client: <strong style="color:var(--text-primary);">Said Ziane</strong>, Founder</span>
+        <span class="cs-meta-item">|</span>
+        <span class="cs-meta-item">Started: <strong style="color:var(--text-primary);">25 Mar 2026, 14:56 UTC</strong></span>
+        <span class="cs-meta-item">|</span>
+        <span class="cs-status">In Progress</span>
+      </div>
+      <div style="margin-top:16px;display:flex;justify-content:center;gap:16px;align-items:center;flex-wrap:wrap;">
+        <div class="cs-timer" id="elapsedTimer">0h 0m 0s</div>
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted);padding:6px 14px;border-radius:8px;background:rgba(255,255,255,0.03);border:1px solid var(--border);">
+          <span style="color:var(--cyan);">Builder:</span> Yossra Benzad
+          <span style="margin:0 8px;color:var(--border);">|</span>
+          <span style="color:var(--purple);">Engine:</span> ElektraOS + Claude Code
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 2. PROJECT OVERVIEW ===== -->
+  <section class="cs-section cs-reveal">
+    <div class="cs-container">
+      <div class="cs-section-label">Overview</div>
+      <h2 class="cs-section-title">Project scope</h2>
+      <div class="cs-overview">
+        <div class="cs-overview-item">
+          <h4>What</h4>
+          <p>Turn a 10-page PDF into a professional developer portal</p>
+        </div>
+        <div class="cs-overview-item">
+          <h4>Who</h4>
+          <p>MealShift - UK-based food delivery platform</p>
+        </div>
+        <div class="cs-overview-item">
+          <h4>Deliverables</h4>
+          <p>Developer docs portal, OpenAPI 3.x spec, end-to-end examples</p>
+        </div>
+        <div class="cs-overview-item">
+          <h4>Scope</h4>
+          <p>11 endpoints (9 REST + 2 webhooks)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 3. PHASE PROGRESS ===== -->
+  <section class="cs-section cs-reveal">
+    <div class="cs-container">
+      <div class="cs-section-label">Progress</div>
+      <h2 class="cs-section-title">Phase dashboard</h2>
+      <div class="cs-phases">
+        <!-- Research -->
+        <div class="cs-phase">
+          <div class="cs-phase-icon done">&#10003;</div>
+          <div>
+            <div class="cs-phase-name">Research</div>
+            <div class="cs-phase-desc">Analyzed PDF, studied Flipdish portal</div>
+          </div>
+          <div class="cs-phase-line done"></div>
+        </div>
+        <!-- Design -->
+        <div class="cs-phase">
+          <div class="cs-phase-icon done">&#10003;</div>
+          <div>
+            <div class="cs-phase-name">Design</div>
+            <div class="cs-phase-desc">Architecture decisions, page structure</div>
+          </div>
+          <div class="cs-phase-line active"></div>
+        </div>
+        <!-- Build -->
+        <div class="cs-phase">
+          <div class="cs-phase-icon active">&#9881;</div>
+          <div>
+            <div class="cs-phase-name">Build</div>
+            <div class="cs-phase-desc">Docs portal, OpenAPI spec</div>
+          </div>
+          <div class="cs-phase-line"></div>
+        </div>
+        <!-- Encrypt -->
+        <div class="cs-phase">
+          <div class="cs-phase-icon pending">&#128274;</div>
+          <div>
+            <div class="cs-phase-name">Encrypt</div>
+            <div class="cs-phase-desc">AES-256 encryption, password protection</div>
+          </div>
+          <div class="cs-phase-line"></div>
+        </div>
+        <!-- Deploy -->
+        <div class="cs-phase">
+          <div class="cs-phase-icon pending">&#128640;</div>
+          <div>
+            <div class="cs-phase-name">Deploy</div>
+            <div class="cs-phase-desc">GitHub Pages, handoff to client</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 4. LIVE BUILD LOG ===== -->
+  <section class="cs-section cs-reveal">
+    <div class="cs-container">
+      <div class="cs-section-label">Build Log</div>
+      <h2 class="cs-section-title">Live timeline - every step, every decision</h2>
+      <p style="font-size:12px;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:24px;">
+        <span style="color:var(--cyan);">Your clock</span> = Yossra's instruction time &nbsp;|&nbsp;
+        <span style="color:var(--purple);">Agent clock</span> = Claude Code / ElektraOS processing time
+      </p>
+      <div class="cs-timeline">
+
+        <!-- Entry: Brief received -->
+        <div class="cs-entry">
+          <div class="cs-entry-header">
+            <span class="cs-entry-time">14:56 UTC</span>
+            <span class="cs-entry-phase" style="background:rgba(0,212,255,0.08);color:var(--cyan);border-color:rgba(0,212,255,0.2);">Client Brief</span>
+            <span class="cs-entry-duration" style="color:var(--cyan);">your clock: 16 min</span>
+          </div>
+          <div class="cs-entry-desc">Said Ziane shared the project scope via WhatsApp: MealShift API PDF (10 pages), requirement spec (AI-generated from Perplexity), and Flipdish developer portal as reference.</div>
+          <div class="cs-entry-tools">
+            <span class="cs-entry-tool">WhatsApp</span>
+            <span class="cs-entry-tool">PDF</span>
+          </div>
+        </div>
+
+        <!-- Entry: Brief analyzed -->
+        <div class="cs-entry">
+          <div class="cs-entry-header">
+            <span class="cs-entry-time">15:12 UTC</span>
+            <span class="cs-entry-phase research">Research</span>
+            <span class="cs-entry-duration" style="color:var(--purple);">agent: 3 min</span>
+          </div>
+          <div class="cs-entry-desc">3 parallel Explore agents launched: (1) Audit elektraos.dev site structure and case study patterns, (2) Explore ElektraOS backend for project tracking infrastructure, (3) Analyze Flipdish developer portal + attempt MealShift PDF download (S3 link expired).</div>
+          <div class="cs-entry-tools">
+            <span class="cs-entry-tool">Claude Code</span>
+            <span class="cs-entry-tool">3x Explore Agents</span>
+            <span class="cs-entry-tool">WebFetch</span>
+          </div>
+        </div>
+
+        <!-- Entry: PDF parsed -->
+        <div class="cs-entry">
+          <div class="cs-entry-header">
+            <span class="cs-entry-time">15:15 UTC</span>
+            <span class="cs-entry-phase research">Research</span>
+            <span class="cs-entry-duration" style="color:var(--purple);">agent: 1 min</span>
+          </div>
+          <div class="cs-entry-desc">Parsed MealShift API PDF locally via pypdf (ElektraOS venv). Extracted 12,123 characters across 10 pages. Confirmed 11 endpoints: 9 REST + 2 webhooks. Stored in ElektraOS vault as structured brief.</div>
+          <div class="cs-entry-tools">
+            <span class="cs-entry-tool">pypdf</span>
+            <span class="cs-entry-tool">ElektraOS Vault</span>
+            <span class="cs-entry-tool">WSL/Python</span>
+          </div>
+        </div>
+
+        <!-- Entry: Security decision -->
+        <div class="cs-entry">
+          <div class="cs-entry-header">
+            <span class="cs-entry-time">15:18 UTC</span>
+            <span class="cs-entry-phase design">Design</span>
+            <span class="cs-entry-duration" style="color:var(--cyan);">your clock: 2 min</span>
+          </div>
+          <div class="cs-entry-desc">Security architecture decision. 3 options evaluated: (1) Private GitHub repo, (2) Local build + encrypt before push, (3) ElektraOS vault + encrypted output. Chose Option 3 - source files never leave local machine. Only AES-256 encrypted HTML deployed.</div>
+          <div class="cs-entry-tools">
+            <span class="cs-entry-tool">Claude Code</span>
+            <span class="cs-entry-tool">Architecture Decision</span>
+          </div>
+        </div>
+
+        <!-- Entry: Plan agent -->
+        <div class="cs-entry">
+          <div class="cs-entry-header">
+            <span class="cs-entry-time">15:20 UTC</span>
+            <span class="cs-entry-phase design">Design</span>
+            <span class="cs-entry-duration" style="color:var(--purple);">agent: 4 min</span>
+          </div>
+          <div class="cs-entry-desc">Plan agent designed full implementation: 4 phases, file structure, encryption workflow, ElektraOS integration, deployment pipeline. Plan approved by builder.</div>
+          <div class="cs-entry-tools">
+            <span class="cs-entry-tool">Plan Agent</span>
+            <span class="cs-entry-tool">Claude Code</span>
+          </div>
+        </div>
+
+        <!-- Entry: Branding research -->
+        <div class="cs-entry">
+          <div class="cs-entry-header">
+            <span class="cs-entry-time">15:25 UTC</span>
+            <span class="cs-entry-phase research">Research</span>
+            <span class="cs-entry-duration" style="color:var(--purple);">agent: 1 min</span>
+          </div>
+          <div class="cs-entry-desc">Fetched MealShift branding from mealshift.co.uk. Extracted: primary green #18a300, logo PNG URL, tagline "Flexible, fair, food delivery!", company info (est. 2020, Hertfordshire).</div>
+          <div class="cs-entry-tools">
+            <span class="cs-entry-tool">WebFetch</span>
+            <span class="cs-entry-tool">WebSearch</span>
+          </div>
+        </div>
+
+        <!-- Entry: Foundation -->
+        <div class="cs-entry">
+          <div class="cs-entry-header">
+            <span class="cs-entry-time">15:27 UTC</span>
+            <span class="cs-entry-phase build">Build</span>
+            <span class="cs-entry-duration" style="color:var(--purple);">agent: 8 min</span>
+          </div>
+          <div class="cs-entry-desc">Phase 1 foundation: Created directory structure, registered mealshift-docs-builder agent in ElektraOS (agent #46), created vault project directory, parsed PDF into vault/projects/mealshift/brief.md.</div>
+          <div class="cs-entry-tools">
+            <span class="cs-entry-tool">ElektraOS</span>
+            <span class="cs-entry-tool">SQLite</span>
+            <span class="cs-entry-tool">Vault</span>
+          </div>
+        </div>
+
+        <!-- Entry: Workplan page -->
+        <div class="cs-entry">
+          <div class="cs-entry-header">
+            <span class="cs-entry-time">15:30 UTC</span>
+            <span class="cs-entry-phase build">Build</span>
+            <span class="cs-entry-duration" style="color:var(--purple);">agent: 4 min</span>
+          </div>
+          <div class="cs-entry-desc">Built this live workplan page. MealShift branding integrated (green #18a300, logo). Dual clock system (your time vs agent time). Real-time elapsed timer. Phase dashboard. Architecture diagram.</div>
+          <div class="cs-entry-tools">
+            <span class="cs-entry-tool">Claude Code</span>
+            <span class="cs-entry-tool">HTML/CSS/JS</span>
+          </div>
+        </div>
+
+        <!-- Placeholder for next entries -->
+        <div class="cs-entry" style="opacity:0.4;border-left-color:var(--border);">
+          <div class="cs-entry-header">
+            <span class="cs-entry-time">next</span>
+            <span class="cs-entry-phase build">Build</span>
+            <span class="cs-entry-duration">pending</span>
+          </div>
+          <div class="cs-entry-desc">Build developer docs portal (11 endpoints, sidebar nav, JSON highlighting, code copy). Generate OpenAPI 3.x spec.</div>
+          <div class="cs-entry-tools">
+            <span class="cs-entry-tool">Prism.js</span>
+            <span class="cs-entry-tool">OpenAPI</span>
+          </div>
+        </div>
+
+        <div class="cs-entry" style="opacity:0.3;border-left-color:var(--border);">
+          <div class="cs-entry-header">
+            <span class="cs-entry-time">next</span>
+            <span class="cs-entry-phase" style="background:rgba(239,68,68,0.08);color:#f87171;border-color:rgba(239,68,68,0.2);">Encrypt</span>
+            <span class="cs-entry-duration">pending</span>
+          </div>
+          <div class="cs-entry-desc">AES-256 encrypt docs portal via PageCrypt. Style lock screen with MealShift + ElektraOS branding. Deploy to GitHub Pages.</div>
+          <div class="cs-entry-tools">
+            <span class="cs-entry-tool">PageCrypt</span>
+            <span class="cs-entry-tool">AES-256</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 5. ARCHITECTURE ===== -->
+  <section class="cs-section cs-reveal">
+    <div class="cs-container">
+      <div class="cs-section-label">Architecture</div>
+      <h2 class="cs-section-title">Build pipeline</h2>
+      <div class="cs-arch">
+        <div class="cs-arch-box">
+          <div class="cs-arch-box-label">Source</div>
+          <div class="cs-arch-box-value">PDF (10 pages)</div>
+        </div>
+        <div class="cs-arch-arrow">&rarr;</div>
+        <div class="cs-arch-box">
+          <div class="cs-arch-box-label">Parser</div>
+          <div class="cs-arch-box-value">pypdf</div>
+        </div>
+        <div class="cs-arch-arrow">&rarr;</div>
+        <div class="cs-arch-box">
+          <div class="cs-arch-box-label">Structure</div>
+          <div class="cs-arch-box-value">JSON Schema</div>
+        </div>
+        <div class="cs-arch-arrow">&rarr;</div>
+        <div class="cs-arch-branch">
+          <div class="cs-arch-box">
+            <div class="cs-arch-box-label">Output</div>
+            <div class="cs-arch-box-value">HTML Portal + OpenAPI 3.x</div>
+          </div>
+          <div class="cs-arch-down">&darr;</div>
+          <div class="cs-arch-box" style="border-color:rgba(0,255,157,0.2);">
+            <div class="cs-arch-box-label" style="color:var(--green);">Secure</div>
+            <div class="cs-arch-box-value">AES-256 Encrypt</div>
+          </div>
+          <div class="cs-arch-down">&darr;</div>
+          <div class="cs-arch-box" style="border-color:rgba(0,212,255,0.2);">
+            <div class="cs-arch-box-label" style="color:var(--cyan);">Deploy</div>
+            <div class="cs-arch-box-value">GitHub Pages</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 6. DECISION LOG ===== -->
+  <section class="cs-section cs-reveal">
+    <div class="cs-container">
+      <div class="cs-section-label">Decisions</div>
+      <h2 class="cs-section-title">Why we chose what we chose</h2>
+      <div class="cs-decisions">
+        <div class="cs-decision">
+          <h4>Why single-page docs?</h4>
+          <p>Simpler encryption, instant navigation, better search. No page-to-page transitions. The entire portal lives in one encrypted file.</p>
+        </div>
+        <div class="cs-decision">
+          <h4>Why AES-256?</h4>
+          <p>PageCrypt encrypts entire HTML. Content invisible in source, network tab, and GitHub repo. Zero server-side requirements.</p>
+        </div>
+        <div class="cs-decision">
+          <h4>Why ElektraOS vault?</h4>
+          <p>Source files never leave the local machine. Only encrypted output is deployed. Maximum security for client data.</p>
+        </div>
+        <div class="cs-decision">
+          <h4>Why dark theme?</h4>
+          <p>Developers prefer dark. Matches ElektraOS design system. Reduces eye strain during long reading sessions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 7. METRICS DASHBOARD ===== -->
+  <section class="cs-section cs-reveal">
+    <div class="cs-container">
+      <div class="cs-section-label">Metrics</div>
+      <h2 class="cs-section-title">By the numbers</h2>
+      <div class="cs-metrics">
+        <div class="cs-metric-card">
+          <div class="cs-metric-val">0/11</div>
+          <div class="cs-metric-label">Endpoints Documented</div>
+        </div>
+        <div class="cs-metric-card">
+          <div class="cs-metric-val">1</div>
+          <div class="cs-metric-label">Build Sessions</div>
+        </div>
+        <div class="cs-metric-card">
+          <div class="cs-metric-val" id="metricTimer">0h 0m</div>
+          <div class="cs-metric-label">Total Build Time</div>
+        </div>
+        <div class="cs-metric-card">
+          <div class="cs-metric-val">4</div>
+          <div class="cs-metric-label">Files Created</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 8. TOOLS USED ===== -->
+  <section class="cs-section cs-reveal">
+    <div class="cs-container">
+      <div class="cs-section-label">Stack</div>
+      <h2 class="cs-section-title">Tools used</h2>
+      <div class="cs-tools">
+        <span class="cs-tool-tag">Claude Code</span>
+        <span class="cs-tool-tag">ElektraOS</span>
+        <span class="cs-tool-tag">pypdf</span>
+        <span class="cs-tool-tag">Prism.js</span>
+        <span class="cs-tool-tag">PageCrypt</span>
+        <span class="cs-tool-tag">OpenAPI 3.x</span>
+        <span class="cs-tool-tag">GitHub Pages</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 9. FOOTER HINT ===== -->
+  <div class="cs-container">
+    <div class="cs-hint">
+      This workplan updates live during build sessions. Powered by ElektraOS.
+    </div>
+  </div>
+
+  <!-- ===== 10. FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-copy">
+        <span class="mono">&copy; 2026 ElektraOS.dev</span>
+        <span style="display:block;font-size:11px;color:var(--text-muted);margin-top:4px;">Copenhagen, Denmark</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/yoggi-sheandelle" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.upwork.com/freelancers/~01eddb5df59f03b475" target="_blank" rel="noopener">Upwork</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== CHAT WIDGET ===== -->
+  <div class="chat-widget" id="chatWidget">
+    <div class="chat-panel" id="chatPanel">
+      <div class="chat-panel-header">
+        <div class="header-info">
+          <div class="header-avatar"><svg width="18" height="18" viewBox="0 0 32 32" fill="none"><polygon points="16,5 25,10.5 25,21.5 16,27 7,21.5 7,10.5" stroke="url(#sigil-g)" stroke-width="1.2" opacity="0.6"/><path d="M12 11 L20 11 M12 11 L12 21 M12 16 L19 16 M12 21 L20 21" stroke="url(#sigil-g)" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="16" r="1.5" fill="#00d4ff" opacity="0.9"/><defs><linearGradient id="sigil-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#00d4ff"/></linearGradient></defs></svg></div>
+          <div>
+            <div class="header-name">Elektra</div>
+            <div class="header-status">Online</div>
+          </div>
+        </div>
+        <button class="chat-close-btn" id="chatClose">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="chat-bubble bot">Hey! I'm Elektra. Ask me about what we build, pricing, or how I work. What do you need?</div>
+      </div>
+      <div class="chat-input-area">
+        <input type="text" class="chat-input" id="chatInput" placeholder="Ask me anything...">
+        <button class="chat-send" id="chatSend">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="sigil3d" class="chat-toggle" style="width:70px;height:70px;padding:0;border:none;background:rgba(13,17,23,0.6);backdrop-filter:blur(8px);overflow:hidden;border-radius:18px;"></div>
+    <button id="chatToggle" style="display:none;"></button>
+  </div>
+
+  <!-- ===== GDPR COOKIE BANNER ===== -->
+  <div id="cookieBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--bg-secondary);border-top:1px solid var(--border);padding:16px 24px;font-size:13px;color:var(--text-secondary);">
+    <div style="max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <p style="margin:0;flex:1;min-width:240px;">This site uses only essential cookies required for the contact form to function. No tracking, no analytics, no third-party cookies. <a href="#privacy" onclick="document.getElementById('privacyModal').style.display='flex';return false;" style="color:var(--cyan);text-decoration:underline;">Privacy policy</a></p>
+      <div style="display:flex;gap:8px;">
+        <button onclick="document.getElementById('cookieBanner').style.display='none';localStorage.setItem('cookieConsent','accepted')" style="padding:8px 20px;background:var(--gradient-brand);border:none;border-radius:8px;color:#fff;cursor:pointer;font-size:12px;font-weight:600;">Accept</button>
+        <button onclick="document.getElementById('cookieBanner').style.display='none';localStorage.setItem('cookieConsent','declined')" style="padding:8px 20px;background:transparent;border:1px solid var(--border);border-radius:8px;color:var(--text-secondary);cursor:pointer;font-size:12px;font-weight:600;">Decline</button>
+      </div>
+    </div>
+  </div>
+  <script>if(!localStorage.getItem('cookieConsent')){document.getElementById('cookieBanner').style.display='block';}</script>
+
+  <!-- ===== PRIVACY MODAL ===== -->
+  <div id="privacyModal" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:24px;">
+    <div style="max-width:640px;width:100%;max-height:80vh;overflow-y:auto;background:var(--bg-secondary);border:1px solid var(--border);border-radius:16px;padding:32px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+        <h3 style="margin:0;font-size:18px;">Privacy Policy</h3>
+        <button onclick="document.getElementById('privacyModal').style.display='none'" style="background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:20px;">&times;</button>
+      </div>
+      <div style="font-size:14px;line-height:1.8;color:var(--text-secondary);">
+        <p><strong>Data controller:</strong> ElektraOS.dev, Copenhagen, Denmark<br>Contact: yossra.benzad@gmail.com</p>
+        <p><strong>What we collect:</strong> When you submit the contact form, we collect your name, email, and message. This data is processed by Formspree to deliver your message. No other personal data is collected.</p>
+        <p><strong>Cookies:</strong> This site uses no tracking cookies, no analytics cookies, and no third-party cookies. Only essential cookies required for form submission may be set by the form provider.</p>
+        <p><strong>Your rights (GDPR Articles 15-22):</strong> You have the right to access, rectify, erase, restrict processing, data portability, and object to processing of your personal data. Contact yossra.benzad@gmail.com to exercise these rights.</p>
+        <p><strong>Danish supervisory authority:</strong> Datatilsynet, Carl Jacobsens Vej 35, 2500 Valby, Denmark. <a href="https://www.datatilsynet.dk" target="_blank" rel="noopener" style="color:var(--cyan);">datatilsynet.dk</a></p>
+        <p style="color:var(--text-muted);font-size:12px;margin-top:16px;">Last updated: March 2026</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script src="/js/utils.js"></script>
+  <script src="/js/chat.js"></script>
+  <script src="/js/sigil3d.js"></script>
+  <script src="/js/app.js"></script>
+  <script src="/js/i18n.js" defer></script>
+
+  <script>
+  (function() {
+    // Live elapsed timer
+    // Project clock started when client shared the brief (WhatsApp 14:56 UTC)
+    var startTime = new Date('2026-03-25T14:56:00Z').getTime();
+    var heroTimer = document.getElementById('elapsedTimer');
+    var metricTimer = document.getElementById('metricTimer');
+
+    function updateTimer() {
+      var now = Date.now();
+      var diff = Math.max(0, now - startTime);
+      var secs = Math.floor(diff / 1000);
+      var mins = Math.floor(secs / 60);
+      var hrs = Math.floor(mins / 60);
+      secs = secs % 60;
+      mins = mins % 60;
+
+      if (hrs > 0) {
+        heroTimer.textContent = hrs + 'h ' + mins + 'm ' + secs + 's';
+        metricTimer.textContent = hrs + 'h ' + mins + 'm';
+      } else {
+        heroTimer.textContent = mins + 'm ' + secs + 's';
+        metricTimer.textContent = mins + 'm ' + secs + 's';
+      }
+    }
+
+    updateTimer();
+    setInterval(updateTimer, 1000);
+
+    // Scroll reveal with IntersectionObserver
+    var reveals = document.querySelectorAll('.cs-reveal');
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+      reveals.forEach(function(el) { observer.observe(el); });
+    } else {
+      reveals.forEach(function(el) { el.classList.add('visible'); });
+    }
+  })();
+  </script>
+
+</body>
+</html>
