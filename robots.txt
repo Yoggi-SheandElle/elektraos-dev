@@ -48,3 +48,6 @@ Disallow: /js/
 Disallow: /css/
 
 Sitemap: https://elektraos.dev/sitemap.xml
+
+# MealShift case study - encrypted, no indexing
+Disallow: /casestudy/mealshift/
