@@ -284,10 +284,12 @@
   min-width: 150px;
   z-index: 1001;
   box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+  flex-direction: column;
+  gap: 0;
 }
 
 .lang-dropdown.open {
-  display: block;
+  display: flex;
 }
 
 .lang-option {
