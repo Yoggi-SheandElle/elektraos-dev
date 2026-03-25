@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Chatbot - ElektraOS.dev</title>
+  <meta name="description" content="AI-drevne assistenter traenet paa dine data. Haandterer henvendelser, fanger leads og loeser problemer doegnet rundt.">
+  <meta property="og:title" content="AI Chatbot - ElektraOS.dev">
+  <meta property="og:description" content="Intelligente assistenter der aldrig sover.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#7c3aed">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/animations.css">
+  <link rel="stylesheet" href="/css/sections.css">
+  <link rel="stylesheet" href="/css/chat.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <link rel="canonical" href="https://elektraos.dev/da/chatbot/">
+  <link rel="alternate" hreflang="en" href="https://elektraos.dev/chatbot/">
+  <link rel="alternate" hreflang="da" href="https://elektraos.dev/da/chatbot/">
+  <link rel="alternate" hreflang="fr" href="https://elektraos.dev/fr/chatbot/">
+  <link rel="alternate" hreflang="it" href="https://elektraos.dev/it/chatbot/">
+  <link rel="alternate" hreflang="x-default" href="https://elektraos.dev/chatbot/">
+</head>
+<body>
+  <div style="position:fixed;top:0;left:0;right:0;z-index:101;background:linear-gradient(90deg,rgba(124,58,237,0.15),rgba(0,212,255,0.1));border-bottom:1px solid rgba(124,58,237,0.2);padding:8px 0;text-align:center;font-family:var(--font-mono);font-size:11px;letter-spacing:0.5px;color:var(--text-secondary);backdrop-filter:blur(12px);">
+    <span style="color:var(--cyan);">&#9889;</span> Siden er under neuro-kirurgi lige nu. Nogle funktioner kan glitche. Vi shipper live.
+  </div>
+  <nav class="nav" id="nav" style="top:33px;">
+    <div class="nav-inner">
+      <a href="/da/" class="nav-logo"><span>E</span>lektraOS<span>.</span>dev</a>
+      <ul class="nav-links" id="navLinks">
+        <li class="nav-dropdown-wrap">
+          <a href="/da/#solutions" class="nav-dropdown-trigger">Loesninger <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a>
+          <div class="nav-dropdown">
+            <a href="/da/chatbot/" class="nav-drop-item"><span class="nav-drop-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></span><span><strong>AI Chatbot</strong><small>Intelligente assistenter</small></span></a>
+            <a href="/da/automation/" class="nav-drop-item"><span class="nav-drop-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><span><strong>Automatisering</strong><small>Workflow-orkestrering</small></span></a>
+            <a href="/da/seo/" class="nav-drop-item"><span class="nav-drop-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></span><span><strong>SEO</strong><small>Soege-optimering</small></span></a>
+            <a href="/da/design/" class="nav-drop-item"><span class="nav-drop-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></span><span><strong>Webdesign</strong><small>Digitale oplevelser</small></span></a>
+            <a href="/da/case-thumbnail-pipeline/" class="nav-drop-item"><span class="nav-drop-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="2"/><circle cx="8.5" cy="8.5" r="2.5"/><path d="M21 15l-5-5L5 21"/></svg></span><span><strong>AI Medier</strong><small>Indhold-pipeline</small></span></a>
+          </div>
+        </li>
+        <li><a href="/da/log/">Bygge-log</a></li>
+        <li><a href="/da/cases/">Cases</a></li>
+        <li><a href="/da/blog/">Blog</a></li>
+        <li><a href="/da/pricing/">Priser</a></li>
+        <li><a href="/da/about/">Om</a></li>
+      </ul>
+      <a href="/da/#contact" class="btn nav-cta">Lad os bygge</a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Skift menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <section class="hero" style="min-height: 70vh;">
+    <div class="hero-content">
+      <span class="section-label">ai chatbot</span>
+      <h1 class="hero-name gradient-text">Intelligente assistenter<br>der aldrig sover</h1>
+      <p class="text-secondary" style="max-width: 580px; margin: 24px auto 0; font-size: 18px; line-height: 1.7;">AI-drevne assistenter traenet paa dine data. De haandterer henvendelser, fanger leads og loeser problemer doegnet rundt, paa alle sprog.</p>
+      <div class="hero-ctas" style="margin-top: 40px;">
+        <a href="/da/#contact" class="btn btn-primary">Start et projekt</a>
+        <a href="/da/pricing/" class="btn btn-outline">Se priser</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding: var(--space-3xl) 0;">
+    <div class="container">
+      <span class="section-label reveal">funktioner</span>
+      <h2 class="reveal delay-1">Hvad den goer</h2>
+      <div class="grid grid-2" style="margin-top: var(--space-xl);">
+        <div class="card reveal delay-2">
+          <h3 style="font-size: 18px; margin-bottom: 8px;">Traenet paa dine forretningsdata</h3>
+          <p class="text-secondary" style="font-size: 14px; line-height: 1.6;">Indlaerer dine dokumenter, FAQ'er og produktinfo. Svarer praecist og i overensstemmelse med dit brand.</p>
+        </div>
+        <div class="card reveal delay-2">
+          <h3 style="font-size: 18px; margin-bottom: 8px;">Multi-model arkitektur</h3>
+          <p class="text-secondary" style="font-size: 14px; line-height: 1.6;">Router foresp&oslash;rgsler til den bedste model. Fallback-kaeder sikrer paalidelighed.</p>
+        </div>
+        <div class="card reveal delay-3">
+          <h3 style="font-size: 18px; margin-bottom: 8px;">Vedvarende hukommelse paa tvaers af sessioner</h3>
+          <p class="text-secondary" style="font-size: 14px; line-height: 1.6;">Husker kontekst mellem samtaler. Tilbagevenden foeles personlig, ikke gentagende.</p>
+        </div>
+        <div class="card reveal delay-3">
+          <h3 style="font-size: 18px; margin-bottom: 8px;">Alle sprog, alle platforme</h3>
+          <p class="text-secondary" style="font-size: 14px; line-height: 1.6;">Flersproget som standard. Deploy paa web, WhatsApp, Telegram eller din egen app.</p>
+        </div>
+        <div class="card reveal delay-4">
+          <h3 style="font-size: 18px; margin-bottom: 8px;">API- &amp; platformintegration</h3>
+          <p class="text-secondary" style="font-size: 14px; line-height: 1.6;">Forbinder til dit CRM, bookingsystem eller enhver API. Udforer handlinger, ikke kun svar.</p>
+        </div>
+        <div class="card reveal delay-4">
+          <h3 style="font-size: 18px; margin-bottom: 8px;">Realtidsanalyse</h3>
+          <p class="text-secondary" style="font-size: 14px; line-height: 1.6;">Spoer samtaler, tilfredshed og konvertering. Ved hvad dine brugere faktisk spoerger om.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <section style="padding: var(--space-3xl) 0;">
+    <div class="container">
+      <span class="section-label reveal">brugsscenarier</span>
+      <h2 class="reveal delay-1">Bygget til</h2>
+      <div class="grid grid-2" style="margin-top: var(--space-xl);">
+        <div class="card reveal delay-2">
+          <span class="mono text-green" style="font-size: 12px;">01</span>
+          <h3 style="font-size: 18px; margin-top: 12px;">Automatisering af kundesupport</h3>
+          <p class="text-secondary" style="font-size: 14px; margin-top: 8px; line-height: 1.6;">Loes 80% af henvendelser uden menneskelig indgriben. Eskaler resten intelligent.</p>
+        </div>
+        <div class="card reveal delay-2">
+          <span class="mono text-green" style="font-size: 12px;">02</span>
+          <h3 style="font-size: 18px; margin-top: 12px;">Lead-kvalificering</h3>
+          <p class="text-secondary" style="font-size: 14px; margin-top: 8px; line-height: 1.6;">Engager besoegende, stil kvalificerende spoergsmaal og rut varme leads til dit salgsteam.</p>
+        </div>
+        <div class="card reveal delay-3">
+          <span class="mono text-green" style="font-size: 12px;">03</span>
+          <h3 style="font-size: 18px; margin-top: 12px;">Intern vidensbase</h3>
+          <p class="text-secondary" style="font-size: 14px; margin-top: 8px; line-height: 1.6;">Giv dit team ojeblikkelig adgang til virksomhedsviden. Onboarding paa minutter, ikke uger.</p>
+        </div>
+        <div class="card reveal delay-3">
+          <span class="mono text-green" style="font-size: 12px;">04</span>
+          <h3 style="font-size: 18px; margin-top: 12px;">Flersprogede gaesteservices</h3>
+          <p class="text-secondary" style="font-size: 14px; margin-top: 8px; line-height: 1.6;">Hoteller, restauranter, turisme. Betjen internationale gaester paa deres modersmaal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <section style="padding: var(--space-3xl) 0;">
+    <div class="container">
+      <span class="section-label reveal">priser</span>
+      <h2 class="reveal delay-1">Investering</h2>
+      <div class="calc-tiers reveal delay-2" style="margin-top: var(--space-xl);">
+        <div class="calc-tier">
+          <div class="tier-name">Starter</div>
+          <div class="tier-range">$200 - $400</div>
+          <ul class="tier-features">
+            <li>Simpel FAQ-bot</li>
+            <li>Enkelt datakilde</li>
+            <li>Web-widget deployment</li>
+            <li>Standard svarskabeloner</li>
+          </ul>
+        </div>
+        <div class="calc-tier">
+          <div class="tier-name">Pro</div>
+          <div class="tier-range">$400 - $800</div>
+          <ul class="tier-features">
+            <li>Multi-kilde assistent</li>
+            <li>API-integrationer</li>
+            <li>Hukommelse paa tvaers af sessioner</li>
+            <li>Tilpasset personlighed &amp; tone</li>
+          </ul>
+        </div>
+        <div class="calc-tier">
+          <div class="tier-name">Enterprise</div>
+          <div class="tier-range">$800 - $2.000</div>
+          <ul class="tier-features">
+            <li>Multi-model fallback</li>
+            <li>Tilpasset traeningspipeline</li>
+            <li>Analyse-dashboard</li>
+            <li>Prioriteret support</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <section style="padding: var(--space-3xl) 0; text-align: center;">
+    <div class="container">
+      <h2 class="reveal">Klar til at automatisere<br>dine samtaler?</h2>
+      <p class="text-secondary reveal delay-1" style="max-width: 480px; margin: 20px auto 0; font-size: 17px;">Fortael om dit projekt. Vi scoper det og vender tilbage inden for 24 timer.</p>
+      <div style="margin-top: var(--space-xl);" class="reveal delay-2">
+        <a href="/da/#contact" class="btn btn-primary">Start et projekt</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-copy"><span class="mono">&copy; 2026 ElektraOS.dev</span></div>
+      <div class="footer-links">
+        <a href="https://github.com/yoggi-sheandelle" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.upwork.com/freelancers/~01eddb5df59f03b475" target="_blank" rel="noopener">Upwork</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="chat-widget" id="chatWidget">
+    <div class="chat-panel" id="chatPanel">
+      <div class="chat-panel-header">
+        <div class="header-info">
+          <div class="header-avatar"><svg width="18" height="18" viewBox="0 0 32 32" fill="none"><polygon points="16,5 25,10.5 25,21.5 16,27 7,21.5 7,10.5" stroke="url(#sigil-g)" stroke-width="1.2" opacity="0.6"/><path d="M12 11 L20 11 M12 11 L12 21 M12 16 L19 16 M12 21 L20 21" stroke="url(#sigil-g)" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="16" r="1.5" fill="#00d4ff" opacity="0.9"/><defs><linearGradient id="sigil-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#00d4ff"/></linearGradient></defs></svg></div>
+          <div><div class="header-name">Elektra</div><div class="header-status">Online</div></div>
+        </div>
+        <button class="chat-close-btn" id="chatClose"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      </div>
+      <div class="chat-messages" id="chatMessages"><div class="chat-bubble bot">Hej! Jeg er Elektra. Spoerg mig om hvad vi bygger, priser eller hvordan jeg arbejder. Hvad har du brug for?</div></div>
+      <div class="chat-input-area">
+        <input type="text" class="chat-input" id="chatInput" placeholder="Spoerg mig om hvad som helst...">
+        <button class="chat-send" id="chatSend"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+      </div>
+    </div>
+    <div id="sigil3d" class="chat-toggle" style="width:70px;height:70px;padding:0;border:none;background:rgba(13,17,23,0.6);backdrop-filter:blur(8px);overflow:hidden;border-radius:18px;"></div>
+    <button id="chatToggle" style="display:none;"></button>
+  </div>
+
+  <script src="/js/utils.js"></script>
+  <script src="/js/chat.js"></script>
+  <script src="/js/sigil3d.js"></script>
+  <script src="/js/app.js"></script>
+  <script src="/js/i18n.js" defer></script>
+</body>
+</html>

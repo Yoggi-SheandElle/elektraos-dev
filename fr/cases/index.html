@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Etudes de cas . ElektraOS.dev . Systemes en production</title>
+  <meta name="description" content="Etudes de cas : systemes IA, e-commerce, automatisation, jeux interactifs. Projets reels, metriques reelles, code en production. Copenhague, Danemark.">
+  <meta property="og:title" content="Etudes de cas . ElektraOS.dev">
+  <meta property="og:description" content="Projets reels. Metriques reelles. Systemes en production construits et livres.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#7c3aed">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="canonical" href="https://elektraos.dev/fr/cases/">
+  <link rel="alternate" hreflang="en" href="https://elektraos.dev/cases/">
+  <link rel="alternate" hreflang="da" href="https://elektraos.dev/da/cases/">
+  <link rel="alternate" hreflang="fr" href="https://elektraos.dev/fr/cases/">
+  <link rel="alternate" hreflang="it" href="https://elektraos.dev/it/cases/">
+  <link rel="alternate" hreflang="x-default" href="https://elektraos.dev/cases/">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/animations.css">
+  <link rel="stylesheet" href="/css/sections.css">
+  <link rel="stylesheet" href="/css/chat.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <style>
+    .cases-hero { padding: 120px 0 48px; text-align: center; }
+    .cases-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; max-width: 900px; margin: 0 auto; padding: 0 24px 80px; }
+    .case-card-full { background: var(--bg-card); border: 1px solid var(--glass-border); border-radius: 16px; overflow: hidden; transition: all 0.3s; text-decoration: none; color: inherit; display: block; }
+    .case-card-full:hover { border-color: rgba(124,58,237,0.3); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+    .case-header { padding: 28px 24px 20px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .case-tags { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
+    .case-tag-sm { font-family: var(--font-mono); font-size: 9px; text-transform: uppercase; letter-spacing: 1px; padding: 3px 8px; border-radius: 4px; }
+    .case-tag-sm.ai { background: rgba(124,58,237,0.1); color: #a78bfa; }
+    .case-tag-sm.ship { background: rgba(0,255,157,0.08); color: var(--green); }
+    .case-tag-sm.design { background: rgba(245,158,11,0.08); color: var(--amber); }
+    .case-tag-sm.infra { background: rgba(0,212,255,0.08); color: var(--cyan); }
+    .case-tag-sm.game { background: rgba(239,68,68,0.08); color: #f87171; }
+    .case-card-title { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+    .case-card-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
+    .case-body { padding: 20px 24px; }
+    .case-metrics { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 16px; }
+    .case-metric-val { font-family: var(--font-mono); font-size: 16px; font-weight: 700; color: var(--cyan); }
+    .case-metric-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); }
+    .case-tech { display: flex; flex-wrap: wrap; gap: 4px; }
+    .case-tech span { font-family: var(--font-mono); font-size: 9px; padding: 2px 7px; border-radius: 3px; background: rgba(255,255,255,0.02); color: var(--text-muted); border: 1px solid rgba(255,255,255,0.04); }
+    .case-arrow { padding: 16px 24px; border-top: 1px solid rgba(255,255,255,0.04); font-family: var(--font-mono); font-size: 11px; color: var(--purple); display: flex; justify-content: space-between; align-items: center; }
+    .cat-filters { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; max-width: 700px; margin: 32px auto 40px; padding: 0 24px; }
+    .cat-btn { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 1px; padding: 6px 14px; border-radius: 6px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); color: var(--text-muted); cursor: pointer; transition: all 0.2s; }
+    .cat-btn:hover, .cat-btn.active { background: rgba(124,58,237,0.1); border-color: rgba(124,58,237,0.3); color: var(--purple); }
+    .case-card-full[data-cat].hidden { display: none; }
+    .case-icon { width: 40px; height: 40px; border-radius: 10px; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-weight: 700; font-size: 16px; }
+    .cases-cta { text-align: center; max-width: 900px; margin: 0 auto; padding: 48px 24px; border-top: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+
+  <!-- ===== TOP BAR ===== -->
+  <div style="position:fixed;top:0;left:0;right:0;z-index:101;background:linear-gradient(90deg,rgba(124,58,237,0.15),rgba(0,212,255,0.1));border-bottom:1px solid rgba(124,58,237,0.2);padding:8px 0;text-align:center;font-family:var(--font-mono);font-size:11px;letter-spacing:0.5px;color:var(--text-secondary);backdrop-filter:blur(12px);">
+    <span style="color:var(--cyan);">&#9889;</span> Site en cours de neuro-chirurgie. Certaines fonctions peuvent bugger. On livre en direct.
+  </div>
+
+  <nav class="nav" id="nav" style="top:33px;">
+    <div class="nav-inner">
+      <a href="/fr/" class="nav-logo"><span>E</span>lektraOS<span>.</span>dev</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/fr/#solutions">Solutions</a></li>
+        <li><a href="/fr/log/">Journal de build</a></li>
+        <li><a href="/fr/cases/" style="color:var(--cyan);">Etudes de cas</a></li>
+        <li><a href="/fr/blog/">Blog</a></li>
+        <li><a href="/fr/pricing/">Tarifs</a></li>
+        <li><a href="/fr/about/">A propos</a></li>
+      </ul>
+      <a href="/fr/#contact" class="btn nav-cta">Construisons</a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Basculer le menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="cases-hero">
+    <span class="section-label">etudes de cas</span>
+    <h1 class="gradient-text" style="font-size:clamp(28px,4vw,44px);margin-top:8px;">Systemes en production.</h1>
+    <p style="font-size:16px;color:var(--text-secondary);max-width:500px;margin:12px auto 0;line-height:1.7;">Chaque projet est en cours. Rien n'est jamais vraiment livre. Tout s'ameliore en permanence.</p>
+  </div>
+
+  <div class="cat-filters">
+    <button class="cat-btn active" onclick="filterCases('all')">Tous</button>
+    <button class="cat-btn" onclick="filterCases('software')">Logiciel</button>
+    <button class="cat-btn" onclick="filterCases('ai')">Systemes IA</button>
+    <button class="cat-btn" onclick="filterCases('automation')">Automatisation</button>
+    <button class="cat-btn" onclick="filterCases('website')">Sites web</button>
+    <button class="cat-btn" onclick="filterCases('ecommerce')">E-Commerce</button>
+    <button class="cat-btn" onclick="filterCases('game')">Jeux</button>
+  </div>
+
+  <div class="cases-grid" id="casesGrid">
+    <a href="/fr/case-elektraos/" class="case-card-full reveal" data-cat="software ai automation">
+      <div class="case-header">
+        <div class="case-icon" style="background:linear-gradient(135deg,#7c3aed,#00d4ff);color:#fff;">E</div>
+        <div class="case-tags">
+          <span class="case-tag-sm ai">Systemes IA</span>
+          <span class="case-tag-sm infra">Infrastructure</span>
+          <span class="case-tag-sm ship">Production</span>
+        </div>
+        <h2 class="case-card-title">ElektraOS</h2>
+        <p class="case-card-desc">Systeme d'exploitation cognitif full-stack. 41 agents IA specialises en 5 equipes, orchestration LLM multi-fournisseurs, console operateur en temps reel, planification autonome et vault de connaissances compatible Obsidian.</p>
+      </div>
+      <div class="case-body">
+        <div class="case-metrics">
+          <div class="case-metric-item"><div class="case-metric-val">184K+</div><div class="case-metric-label">Lignes de code</div></div>
+          <div class="case-metric-item"><div class="case-metric-val">41</div><div class="case-metric-label">Agents IA</div></div>
+          <div class="case-metric-item"><div class="case-metric-val">624</div><div class="case-metric-label">Endpoints</div></div>
+          <div class="case-metric-item"><div class="case-metric-val">59</div><div class="case-metric-label">Tables DB</div></div>
+        </div>
+        <div class="case-tech">
+          <span>Python</span><span>FastAPI</span><span>SQLite</span><span>Claude CLI</span><span>Groq</span><span>MCP</span><span>SSE</span><span>n8n</span><span>Playwright</span>
+        </div>
+      </div>
+      <div class="case-arrow"><span>Voir l'etude de cas</span><span>&rarr;</span></div>
+    </a>
+
+    <a href="/fr/case-ayla/" class="case-card-full reveal" data-cat="ecommerce website ai">
+      <div class="case-header">
+        <div class="case-icon" style="background:linear-gradient(135deg,#d4a574,#8b6f47);color:#fff;">A</div>
+        <div class="case-tags">
+          <span class="case-tag-sm design">E-Commerce</span>
+          <span class="case-tag-sm ai">IA</span>
+          <span class="case-tag-sm ship">Production</span>
+        </div>
+        <h2 class="case-card-title">AYLA Luxury</h2>
+        <p class="case-card-desc">Build e-commerce complet pour une marque de bijoux de luxe. Site web, identite de marque et pipeline de contenu.</p>
+      </div>
+      <div class="case-body">
+        <div class="case-tech">
+          <span>Shopify</span><span>SEO</span><span>Contenu IA</span><span>Branding</span>
+        </div>
+      </div>
+      <div class="case-arrow"><span>Voir l'etude de cas</span><span>&rarr;</span></div>
+    </a>
+
+    <a href="/fr/case-sheandelle/" class="case-card-full reveal" data-cat="ecommerce website">
+      <div class="case-header">
+        <div class="case-icon" style="background:linear-gradient(135deg,#e8b4b8,#c4878e);color:#fff;">S</div>
+        <div class="case-tags">
+          <span class="case-tag-sm design">Marque</span>
+          <span class="case-tag-sm ship">Production</span>
+        </div>
+        <h2 class="case-card-title">She&amp;Elle of Morocco</h2>
+        <p class="case-card-desc">Identite de marque et presence digitale pour une marque lifestyle maroco-scandinave. WordPress, strategie de contenu, automatisation sociale.</p>
+      </div>
+      <div class="case-body">
+        <div class="case-metrics">
+          <div class="case-metric-item"><div class="case-metric-val">68+</div><div class="case-metric-label">Articles SEO</div></div>
+          <div class="case-metric-item"><div class="case-metric-val">0.056</div><div class="case-metric-label">CPC DKK</div></div>
+        </div>
+        <div class="case-tech">
+          <span>WordPress</span><span>SEO</span><span>Contenu</span><span>Social</span>
+        </div>
+      </div>
+      <div class="case-arrow"><span>Voir l'etude de cas</span><span>&rarr;</span></div>
+    </a>
+
+    <a href="/fr/case-thumbnail-pipeline/" class="case-card-full reveal" data-cat="ai automation">
+      <div class="case-header">
+        <div class="case-icon" style="background:linear-gradient(135deg,#7c3aed,#f59e0b);color:#fff;">T</div>
+        <div class="case-tags">
+          <span class="case-tag-sm ai">IA</span>
+          <span class="case-tag-sm infra">Pipeline</span>
+        </div>
+        <h2 class="case-card-title">Pipeline Miniatures IA</h2>
+        <p class="case-card-desc">Generation de miniatures par IA avec coherence de marque. 3 marques, 5 plateformes, prompts structures en JSON.</p>
+      </div>
+      <div class="case-body">
+        <div class="case-tech">
+          <span>FLUX.1</span><span>Python</span><span>FastAPI</span><span>HuggingFace</span>
+        </div>
+      </div>
+      <div class="case-arrow"><span>Voir l'etude de cas</span><span>&rarr;</span></div>
+    </a>
+
+    <a href="/fr/case-40th-brick/" class="case-card-full reveal" data-cat="game software">
+      <div class="case-header">
+        <div class="case-icon" style="background:linear-gradient(135deg,#e05545,#f59e0b);color:#fff;">40</div>
+        <div class="case-tags">
+          <span class="case-tag-sm game">Jeu</span>
+          <span class="case-tag-sm design">Design</span>
+        </div>
+        <h2 class="case-card-title">The 40th Brick</h2>
+        <p class="case-card-desc">Experience puzzle interactive et personnalisee. 40 salles. En cours de developpement.</p>
+      </div>
+      <div class="case-body">
+        <div class="case-tech">
+          <span>JavaScript</span><span>Canvas</span><span>IA</span>
+        </div>
+      </div>
+      <div class="case-arrow"><span>Bientot disponible</span><span>&rarr;</span></div>
+    </a>
+  </div>
+
+  <div class="cases-cta">
+    <h2 class="gradient-text">Vous avez un projet en tete ?</h2>
+    <p style="color:var(--text-secondary);margin:12px 0 24px;font-size:15px;">Parlons de comment je peux construire quelque chose de similaire pour vous.</p>
+    <a href="/fr/#contact" class="btn btn-primary">Demarrer un projet</a>
+  </div>
+
+  <script>
+  function filterCases(cat){
+    document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
+    event.target.classList.add('active');
+    document.querySelectorAll('.case-card-full').forEach(c=>{
+      if(cat==='all'||c.dataset.cat.includes(cat)){c.classList.remove('hidden')}
+      else{c.classList.add('hidden')}
+    });
+  }
+  </script>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-copy"><span class="mono">&copy; 2026 ElektraOS.dev</span><span style="display:block;font-size:11px;color:var(--text-muted);margin-top:4px;">Copenhague, Danemark</span></div>
+      <div class="footer-links">
+        <a href="https://github.com/yoggi-sheandelle" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.upwork.com/freelancers/~01eddb5df59f03b475" target="_blank" rel="noopener">Upwork</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="chat-widget" id="chatWidget">
+    <div class="chat-panel" id="chatPanel">
+      <div class="chat-panel-header">
+        <div class="header-info">
+          <div class="header-avatar"><svg width="18" height="18" viewBox="0 0 32 32" fill="none"><polygon points="16,5 25,10.5 25,21.5 16,27 7,21.5 7,10.5" stroke="url(#sigil-g)" stroke-width="1.2" opacity="0.6"/><path d="M12 11 L20 11 M12 11 L12 21 M12 16 L19 16 M12 21 L20 21" stroke="url(#sigil-g)" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="16" r="1.5" fill="#00d4ff" opacity="0.9"/><defs><linearGradient id="sigil-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#00d4ff"/></linearGradient></defs></svg></div>
+          <div><div class="header-name">Elektra</div><div class="header-status">En ligne</div></div>
+        </div>
+        <button class="chat-close-btn" id="chatClose"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      </div>
+      <div class="chat-messages" id="chatMessages"><div class="chat-bubble bot">Salut ! Je suis Elektra. De quoi avez-vous besoin ?</div></div>
+      <div class="chat-input-area">
+        <input type="text" class="chat-input" id="chatInput" placeholder="Posez-moi une question...">
+        <button class="chat-send" id="chatSend"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+      </div>
+    </div>
+    <div id="sigil3d" class="chat-toggle" style="width:70px;height:70px;padding:0;border:none;background:rgba(13,17,23,0.6);backdrop-filter:blur(8px);overflow:hidden;border-radius:18px;"></div>
+    <button id="chatToggle" style="display:none;"></button>
+  </div>
+
+  <script src="/js/utils.js"></script>
+  <script src="/js/chat.js"></script>
+  <script src="/js/sigil3d.js"></script>
+  <script src="/js/app.js"></script>
+  <script src="/js/i18n.js" defer></script>
+</body>
+</html>

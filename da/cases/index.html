@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cases - ElektraOS.dev - Produktionssystemer</title>
+  <meta name="description" content="Cases: AI-systemer, e-handel, automatisering, interaktive spil. Rigtige projekter, rigtige metrikker, rigtig produktionskode. Koebenhavn, Danmark.">
+  <meta property="og:title" content="Cases - ElektraOS.dev">
+  <meta property="og:description" content="Rigtige projekter. Rigtige metrikker. Produktionssystemer bygget og leveret.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#7c3aed">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="canonical" href="https://elektraos.dev/da/cases/">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <link rel="alternate" hreflang="en" href="https://elektraos.dev/cases/">
+  <link rel="alternate" hreflang="da" href="https://elektraos.dev/da/cases/">
+  <link rel="alternate" hreflang="fr" href="https://elektraos.dev/fr/cases/">
+  <link rel="alternate" hreflang="it" href="https://elektraos.dev/it/cases/">
+  <link rel="alternate" hreflang="x-default" href="https://elektraos.dev/cases/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/animations.css">
+  <link rel="stylesheet" href="/css/sections.css">
+  <link rel="stylesheet" href="/css/chat.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <style>
+    .cases-hero { padding: 120px 0 48px; text-align: center; }
+    .cases-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; max-width: 900px; margin: 0 auto; padding: 0 24px 80px; }
+    .case-card-full { background: var(--bg-card); border: 1px solid var(--glass-border); border-radius: 16px; overflow: hidden; transition: all 0.3s; text-decoration: none; color: inherit; display: block; }
+    .case-card-full:hover { border-color: rgba(124,58,237,0.3); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+    .case-header { padding: 28px 24px 20px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .case-tags { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
+    .case-tag-sm { font-family: var(--font-mono); font-size: 9px; text-transform: uppercase; letter-spacing: 1px; padding: 3px 8px; border-radius: 4px; }
+    .case-tag-sm.ai { background: rgba(124,58,237,0.1); color: #a78bfa; }
+    .case-tag-sm.ship { background: rgba(0,255,157,0.08); color: var(--green); }
+    .case-tag-sm.design { background: rgba(245,158,11,0.08); color: var(--amber); }
+    .case-tag-sm.infra { background: rgba(0,212,255,0.08); color: var(--cyan); }
+    .case-tag-sm.game { background: rgba(239,68,68,0.08); color: #f87171; }
+    .case-card-title { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+    .case-card-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
+    .case-body { padding: 20px 24px; }
+    .case-metrics { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 16px; }
+    .case-metric-val { font-family: var(--font-mono); font-size: 16px; font-weight: 700; color: var(--cyan); }
+    .case-metric-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); }
+    .case-tech { display: flex; flex-wrap: wrap; gap: 4px; }
+    .case-tech span { font-family: var(--font-mono); font-size: 9px; padding: 2px 7px; border-radius: 3px; background: rgba(255,255,255,0.02); color: var(--text-muted); border: 1px solid rgba(255,255,255,0.04); }
+    .case-arrow { padding: 16px 24px; border-top: 1px solid rgba(255,255,255,0.04); font-family: var(--font-mono); font-size: 11px; color: var(--purple); display: flex; justify-content: space-between; align-items: center; }
+    .cat-filters { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; max-width: 700px; margin: 32px auto 40px; padding: 0 24px; }
+    .cat-btn { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 1px; padding: 6px 14px; border-radius: 6px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); color: var(--text-muted); cursor: pointer; transition: all 0.2s; }
+    .cat-btn:hover, .cat-btn.active { background: rgba(124,58,237,0.1); border-color: rgba(124,58,237,0.3); color: var(--purple); }
+    .case-card-full[data-cat].hidden { display: none; }
+    .case-icon { width: 40px; height: 40px; border-radius: 10px; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-weight: 700; font-size: 16px; }
+    .cases-cta { text-align: center; max-width: 900px; margin: 0 auto; padding: 48px 24px; border-top: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+  <!-- ===== TOP BAR ===== -->
+  <div style="position:fixed;top:0;left:0;right:0;z-index:101;background:linear-gradient(90deg,rgba(124,58,237,0.15),rgba(0,212,255,0.1));border-bottom:1px solid rgba(124,58,237,0.2);padding:8px 0;text-align:center;font-family:var(--font-mono);font-size:11px;letter-spacing:0.5px;color:var(--text-secondary);backdrop-filter:blur(12px);">
+    <span style="color:var(--cyan);">&#9889;</span> Siden er under neuro-kirurgi lige nu. Nogle funktioner kan glitche. Vi shipper live.
+  </div>
+  <nav class="nav" id="nav" style="top:33px;">
+    <div class="nav-inner">
+      <a href="/da/" class="nav-logo"><span>E</span>lektraOS<span>.</span>dev</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/da/#solutions">Loesninger</a></li>
+        <li><a href="/da/log/">Bygge-log</a></li>
+        <li><a href="/da/cases/" style="color:var(--cyan);">Cases</a></li>
+        <li><a href="/da/blog/">Blog</a></li>
+        <li><a href="/da/pricing/">Priser</a></li>
+        <li><a href="/da/about/">Om</a></li>
+      </ul>
+      <a href="/da/#contact" class="btn nav-cta">Lad os bygge</a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Skift menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="cases-hero">
+    <span class="section-label">cases</span>
+    <h1 class="gradient-text" style="font-size:clamp(28px,4vw,44px);margin-top:8px;">Produktionssystemer.</h1>
+    <p style="font-size:16px;color:var(--text-secondary);max-width:500px;margin:12px auto 0;line-height:1.7;">Hvert projekt er igangvaerende. Intet er nogensinde faerdigt. Alt forbedres konstant.</p>
+  </div>
+
+  <div class="cat-filters">
+    <button class="cat-btn active" onclick="filterCases('all')">Alle</button>
+    <button class="cat-btn" onclick="filterCases('software')">Software</button>
+    <button class="cat-btn" onclick="filterCases('ai')">AI-systemer</button>
+    <button class="cat-btn" onclick="filterCases('automation')">Automatisering</button>
+    <button class="cat-btn" onclick="filterCases('website')">Hjemmesider</button>
+    <button class="cat-btn" onclick="filterCases('ecommerce')">E-handel</button>
+    <button class="cat-btn" onclick="filterCases('game')">Spil</button>
+  </div>
+
+  <div class="cases-grid" id="casesGrid">
+    <a href="/da/case-elektraos/" class="case-card-full reveal" data-cat="software ai automation">
+      <div class="case-header">
+        <div class="case-icon" style="background:linear-gradient(135deg,#7c3aed,#00d4ff);color:#fff;">E</div>
+        <div class="case-tags"><span class="case-tag-sm ai">AI-systemer</span><span class="case-tag-sm infra">Infrastruktur</span><span class="case-tag-sm ship">Produktion</span></div>
+        <h2 class="case-card-title">ElektraOS</h2>
+        <p class="case-card-desc">Full-stack kognitivt operativsystem. 41 specialiserede AI-agenter paa tvaers af 5 teams, multi-provider LLM-orkestrering, realtids-operatoer-konsol, autonom planlaegging og Obsidian-kompatibel vidensbase.</p>
+      </div>
+      <div class="case-body">
+        <div class="case-metrics">
+          <div class="case-metric-item"><div class="case-metric-val">184K+</div><div class="case-metric-label">Kodelinjer</div></div>
+          <div class="case-metric-item"><div class="case-metric-val">41</div><div class="case-metric-label">AI-agenter</div></div>
+          <div class="case-metric-item"><div class="case-metric-val">624</div><div class="case-metric-label">Endepunkter</div></div>
+          <div class="case-metric-item"><div class="case-metric-val">59</div><div class="case-metric-label">DB-tabeller</div></div>
+        </div>
+        <div class="case-tech"><span>Python</span><span>FastAPI</span><span>SQLite</span><span>Claude CLI</span><span>Groq</span><span>MCP</span><span>SSE</span><span>n8n</span><span>Playwright</span></div>
+      </div>
+      <div class="case-arrow"><span>Se case study</span><span>&rarr;</span></div>
+    </a>
+
+    <a href="/da/case-ayla/" class="case-card-full reveal" data-cat="ecommerce website ai">
+      <div class="case-header">
+        <div class="case-tags"><span class="case-tag-sm ship">Aktiv</span><span class="case-tag-sm design">E-handel</span><span class="case-tag-sm ai">AI</span></div>
+        <div class="case-icon" style="background:linear-gradient(135deg,#d4a853,#c4956a);color:#fff;">A</div>
+        <h2 class="case-card-title">AYLA Luxury</h2>
+        <p class="case-card-desc">Komplet e-handelsloesning for luksurioes smykkebrand. Hjemmeside, SEO-strategi, AI-chatbot til kundehenvendelser og automatiseret indhold-pipeline. Maalbar omsaetningseffekt inden for 8 uger.</p>
+      </div>
+      <div class="case-body">
+        <div class="case-metrics">
+          <div class="case-metric-item"><div class="case-metric-val">3,1&rarr;4,0</div><div class="case-metric-label">ROAS</div></div>
+          <div class="case-metric-item"><div class="case-metric-val">-28%</div><div class="case-metric-label">CAC</div></div>
+          <div class="case-metric-item"><div class="case-metric-val">8</div><div class="case-metric-label">Uger</div></div>
+        </div>
+        <div class="case-tech"><span>HTML/CSS</span><span>SEO</span><span>AI Chatbot</span><span>Content Pipeline</span><span>E-Commerce</span></div>
+      </div>
+      <div class="case-arrow"><span>Se case study</span><span>&rarr;</span></div>
+    </a>
+
+    <a href="/da/case-thumbnail-pipeline/" class="case-card-full reveal" data-cat="ai automation software">
+      <div class="case-header">
+        <div class="case-tags"><span class="case-tag-sm ai">AI-systemer</span><span class="case-tag-sm ship">Aktiv</span></div>
+        <div class="case-icon" style="background:linear-gradient(135deg,#1a1a2e,#7c3aed);color:#00d4ff;">T</div>
+        <h2 class="case-card-title">AI Thumbnail Pipeline</h2>
+        <p class="case-card-desc">Multi-brand thumbnail-generator med ansigtskonsistens, JSON-strukturerede prompts og et-klik-godkendelse. Genererer platformklare visuals til YouTube, Instagram, TikTok paa under 60 sekunder.</p>
+      </div>
+      <div class="case-body">
+        <div class="case-metrics">
+          <div class="case-metric-item"><div class="case-metric-val">3</div><div class="case-metric-label">Brands</div></div>
+          <div class="case-metric-item"><div class="case-metric-val">5</div><div class="case-metric-label">Platforme</div></div>
+          <div class="case-metric-item"><div class="case-metric-val">&lt;60s</div><div class="case-metric-label">Per thumbnail</div></div>
+        </div>
+        <div class="case-tech"><span>Python</span><span>FastAPI</span><span>HuggingFace FLUX.1</span><span>AI Engineering</span><span>JavaScript</span></div>
+      </div>
+      <div class="case-arrow"><span>Se fuld case study</span><span>&rarr;</span></div>
+    </a>
+
+    <a href="/da/case-sheandelle/" class="case-card-full reveal" data-cat="website">
+      <div class="case-header">
+        <div class="case-tags"><span class="case-tag-sm design">Design</span><span class="case-tag-sm ship">Aktiv</span></div>
+        <div class="case-icon" style="background:linear-gradient(135deg,#c4956a,#8b6d4f);color:#fff;">S</div>
+        <h2 class="case-card-title">She&amp;Elle of Morocco</h2>
+        <p class="case-card-desc">Brandidentitet og WordPress-site for et marokkansk-skandinavisk livsstilsbrand. Skraeddersyet tema, indholdsstrategi og automatiseret social media-pipeline. Varm aestetik der forener to kulturelle designsprog.</p>
+      </div>
+      <div class="case-body">
+        <div class="case-metrics">
+          <div class="case-metric-item"><div class="case-metric-val">WordPress</div><div class="case-metric-label">Platform</div></div>
+          <div class="case-metric-item"><div class="case-metric-val">Custom</div><div class="case-metric-label">Tema</div></div>
+        </div>
+        <div class="case-tech"><span>WordPress</span><span>GeneratePress</span><span>CSS</span><span>Content Strategy</span><span>Social Media</span></div>
+      </div>
+      <div class="case-arrow"><span>Se case study</span><span>&rarr;</span></div>
+    </a>
+
+    <a href="/da/case-40th-brick/" class="case-card-full reveal" data-cat="game software">
+      <div class="case-header">
+        <div class="case-tags"><span class="case-tag-sm game">Interaktiv</span><span class="case-tag-sm" style="background:rgba(245,158,11,0.1);color:var(--amber);">Under udvikling</span></div>
+        <div class="case-icon" style="background:linear-gradient(135deg,#e05545,#f59e0b);color:#fff;">40</div>
+        <h2 class="case-card-title">The 40th Brick</h2>
+        <p class="case-card-desc">En personlig interaktiv puslespilsoplevelse. 40 rum. Hvert enkelt et minde. Hvert enkelt en udfordring. Under udvikling nu.</p>
+      </div>
+      <div class="case-body">
+        <div class="case-metrics">
+          <div class="case-metric-item"><div class="case-metric-val">40</div><div class="case-metric-label">Rum</div></div>
+          <div class="case-metric-item"><div class="case-metric-val">4</div><div class="case-metric-label">Kapitler</div></div>
+          <div class="case-metric-item"><div class="case-metric-val">1</div><div class="case-metric-label">Session</div></div>
+        </div>
+        <div class="case-tech"><span>JavaScript</span><span>HTML Canvas</span><span>Node.js</span><span>AI Engineering</span><span>Mobile</span></div>
+      </div>
+      <div class="case-arrow"><span>Kommer snart</span><span style="color:var(--amber);">&#9679;</span></div>
+    </a>
+
+    <div class="case-card-full reveal" data-cat="automation software">
+      <div class="case-header">
+        <div class="case-tags"><span class="case-tag-sm infra">Automatisering</span><span class="case-tag-sm ship">Produktion</span></div>
+        <div class="case-icon" style="background:linear-gradient(135deg,#00d4ff,#0a6e8a);color:#fff;">Op</div>
+        <h2 class="case-card-title">Operations Suite</h2>
+        <p class="case-card-desc">31 produktions-automatiseringsworkflows. Faktura-parsing, kvitterings-OCR, email-digests, lead-routing, kalender-styring, indholdsplanlaegging. Alt koerer autonomt inde i ElektraOS.</p>
+      </div>
+      <div class="case-body">
+        <div class="case-metrics">
+          <div class="case-metric-item"><div class="case-metric-val">31</div><div class="case-metric-label">Workflows</div></div>
+          <div class="case-metric-item"><div class="case-metric-val">16</div><div class="case-metric-label">Cron jobs</div></div>
+          <div class="case-metric-item"><div class="case-metric-val">24/7</div><div class="case-metric-label">Autonomt</div></div>
+        </div>
+        <div class="case-tech"><span>n8n</span><span>Python</span><span>FastAPI</span><span>Cron</span><span>OCR</span><span>Email</span></div>
+      </div>
+      <div class="case-arrow"><span>Internt system</span><span>&rarr;</span></div>
+    </div>
+  </div>
+
+  <div style="max-width:900px;margin:0 auto;padding:0 24px;">
+    <div class="reveal" style="padding:20px 24px;border-left:2px solid var(--green);background:rgba(0,255,157,0.02);border-radius:0 8px 8px 0;">
+      <p style="font-size:12px;color:var(--text-muted);line-height:1.7;margin:0;font-family:var(--font-mono);">
+        Projektstatus opdateres automatisk. En tracker-agent overvaager <span style="color:var(--green);">6 repositories</span> og feeder fremskridtsdata gennem indhold-pipelinen.
+      </p>
+    </div>
+  </div>
+
+  <div class="cases-cta reveal">
+    <h3 style="margin-bottom:8px;">Hvert projekt her er produktionskode.</h3>
+    <p style="color:var(--text-secondary);font-size:14px;max-width:480px;margin:0 auto 24px;">Aaben for projekter, samarbejder og partnerskaber. Har du brug for noget bygget, saa lad os snakke.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="/da/#contact" class="btn btn-primary">Start et projekt</a>
+      <a href="/da/log/" class="btn btn-outline">Se bygge-log</a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-copy"><span class="mono">&copy; 2026 ElektraOS.dev</span><span style="display:block;font-size:11px;color:var(--text-muted);margin-top:4px;">Koebenhavn, Danmark</span></div>
+      <div class="footer-links">
+        <a href="https://github.com/yoggi-sheandelle" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.upwork.com/freelancers/~01eddb5df59f03b475" target="_blank" rel="noopener">Upwork</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="chat-widget" id="chatWidget">
+    <div class="chat-panel" id="chatPanel">
+      <div class="chat-panel-header">
+        <div class="header-info">
+          <div class="header-avatar"><svg width="18" height="18" viewBox="0 0 32 32" fill="none"><polygon points="16,5 25,10.5 25,21.5 16,27 7,21.5 7,10.5" stroke="url(#sigil-g)" stroke-width="1.2" opacity="0.6"/><path d="M12 11 L20 11 M12 11 L12 21 M12 16 L19 16 M12 21 L20 21" stroke="url(#sigil-g)" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="16" r="1.5" fill="#00d4ff" opacity="0.9"/><defs><linearGradient id="sigil-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#00d4ff"/></linearGradient></defs></svg></div>
+          <div><div class="header-name">Elektra</div><div class="header-status">Online</div></div>
+        </div>
+        <button class="chat-close-btn" id="chatClose"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      </div>
+      <div class="chat-messages" id="chatMessages"><div class="chat-bubble bot">Hej! Jeg er Elektra. Spoerg mig om hvad vi bygger, priser eller hvordan jeg arbejder. Hvad har du brug for?</div></div>
+      <div class="chat-input-area">
+        <input type="text" class="chat-input" id="chatInput" placeholder="Spoerg mig om hvad som helst...">
+        <button class="chat-send" id="chatSend"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+      </div>
+    </div>
+    <div id="sigil3d" class="chat-toggle" style="width:70px;height:70px;padding:0;border:none;background:rgba(13,17,23,0.6);backdrop-filter:blur(8px);overflow:hidden;border-radius:18px;"></div>
+    <button id="chatToggle" style="display:none;"></button>
+  </div>
+
+  <script src="/js/utils.js"></script>
+  <script src="/js/chat.js"></script>
+  <script src="/js/sigil3d.js"></script>
+  <script src="/js/app.js"></script>
+  <script>
+  function filterCases(cat) {
+    var cards = document.querySelectorAll('.case-card-full[data-cat]');
+    var btns = document.querySelectorAll('.cat-btn');
+    btns.forEach(function(b) { b.classList.remove('active'); });
+    event.target.classList.add('active');
+    cards.forEach(function(c) {
+      if (cat === 'all' || c.getAttribute('data-cat').indexOf(cat) !== -1) {
+        c.classList.remove('hidden');
+      } else {
+        c.classList.add('hidden');
+      }
+    });
+  }
+  </script>
+  <script src="/js/i18n.js" defer></script>
+</body>
+</html>
