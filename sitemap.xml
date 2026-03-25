@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
   <!-- Homepage -->
   <url>
     <loc>https://elektraos.dev/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elektraos.dev/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://elektraos.dev/da/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://elektraos.dev/fr/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://elektraos.dev/it/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elektraos.dev/"/>
     <lastmod>2026-03-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
@@ -11,18 +18,30 @@
   <!-- High-traffic content pages -->
   <url>
     <loc>https://elektraos.dev/cases/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elektraos.dev/cases/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://elektraos.dev/da/cases/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://elektraos.dev/fr/cases/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://elektraos.dev/it/cases/"/>
     <lastmod>2026-03-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://elektraos.dev/blog/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elektraos.dev/blog/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://elektraos.dev/da/blog/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://elektraos.dev/fr/blog/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://elektraos.dev/it/blog/"/>
     <lastmod>2026-03-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://elektraos.dev/log/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elektraos.dev/log/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://elektraos.dev/da/log/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://elektraos.dev/fr/log/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://elektraos.dev/it/log/"/>
     <lastmod>2026-03-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -31,30 +50,40 @@
   <!-- Solution pages -->
   <url>
     <loc>https://elektraos.dev/chatbot/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elektraos.dev/chatbot/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://elektraos.dev/da/chatbot/"/>
     <lastmod>2026-03-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://elektraos.dev/automation/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elektraos.dev/automation/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://elektraos.dev/da/automation/"/>
     <lastmod>2026-03-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://elektraos.dev/seo/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elektraos.dev/seo/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://elektraos.dev/da/seo/"/>
     <lastmod>2026-03-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://elektraos.dev/design/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elektraos.dev/design/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://elektraos.dev/da/design/"/>
     <lastmod>2026-03-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://elektraos.dev/case-thumbnail-pipeline/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elektraos.dev/case-thumbnail-pipeline/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://elektraos.dev/da/case-thumbnail-pipeline/"/>
     <lastmod>2026-03-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -63,12 +92,20 @@
   <!-- About and Pricing -->
   <url>
     <loc>https://elektraos.dev/about/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elektraos.dev/about/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://elektraos.dev/da/about/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://elektraos.dev/fr/about/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://elektraos.dev/it/about/"/>
     <lastmod>2026-03-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://elektraos.dev/pricing/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elektraos.dev/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://elektraos.dev/da/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://elektraos.dev/fr/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://elektraos.dev/it/pricing/"/>
     <lastmod>2026-03-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -77,8 +114,61 @@
   <!-- Audit -->
   <url>
     <loc>https://elektraos.dev/audit/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elektraos.dev/audit/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://elektraos.dev/da/audit/"/>
     <lastmod>2026-03-25</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Case studies -->
+  <url>
+    <loc>https://elektraos.dev/case-ayla/</loc>
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/case-elektraos/</loc>
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/case-sheandelle/</loc>
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/case-40th-brick/</loc>
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Danish pages -->
+  <url>
+    <loc>https://elektraos.dev/da/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elektraos.dev/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://elektraos.dev/da/"/>
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/da/about/</loc>
+    <lastmod>2026-03-25</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/da/pricing/</loc>
+    <lastmod>2026-03-25</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/da/cases/</loc>
+    <lastmod>2026-03-25</lastmod>
     <priority>0.6</priority>
   </url>
 </urlset>
