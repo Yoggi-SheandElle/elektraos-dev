@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog . ElektraOS.dev</title>
+  <meta name="description" content="Engineering notes, neurodivergent perspective on building, systems thinking. How a solo engineer builds production-grade AI systems from Copenhagen.">
+  <meta name="keywords" content="AI engineering blog, neurodivergent developer, systems thinking, automation, Copenhagen Denmark, solo builder, ADHD developer">
+  <meta property="og:title" content="Blog . ElektraOS.dev">
+  <meta property="og:description" content="Engineering notes. Neurodivergent perspective. Systems thinking.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://elektraos.dev/blog.html">
+  <meta name="theme-color" content="#7c3aed">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="canonical" href="https://elektraos.dev/blog.html">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "ElektraOS.dev Blog",
+    "description": "Engineering notes, neurodivergent perspective on building production AI systems, and systems thinking from a solo engineer in Copenhagen.",
+    "url": "https://elektraos.dev/blog.html",
+    "inLanguage": "en",
+    "about": [
+      {"@type": "Thing", "name": "AI Engineering"},
+      {"@type": "Thing", "name": "Neurodivergent Work"},
+      {"@type": "Thing", "name": "Systems Thinking"},
+      {"@type": "Thing", "name": "Automation"}
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/chat.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    .blog-hero { padding: 120px 0 40px; text-align: center; }
+    .blog-feed { max-width: 700px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .blog-post {
+      padding: 32px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .blog-post:first-child { padding-top: 0; }
+    .blog-meta {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap;
+    }
+    .blog-date {
+      font-family: var(--font-mono); font-size: 11px;
+      color: var(--text-muted); letter-spacing: 1px;
+    }
+    .blog-cat {
+      font-family: var(--font-mono); font-size: 9px;
+      text-transform: uppercase; letter-spacing: 1px;
+      padding: 3px 8px; border-radius: 4px;
+    }
+    .blog-cat.eng { background: rgba(124,58,237,0.1); color: #a78bfa; }
+    .blog-cat.mind { background: rgba(0,212,255,0.08); color: var(--cyan); }
+    .blog-cat.sys { background: rgba(0,255,157,0.08); color: var(--green); }
+    .blog-title {
+      font-size: 22px; font-weight: 700; line-height: 1.3;
+      margin-bottom: 10px;
+    }
+    .blog-excerpt {
+      font-size: 14px; color: var(--text-secondary); line-height: 1.8;
+    }
+    .blog-read {
+      display: inline-block; margin-top: 12px;
+      font-family: var(--font-mono); font-size: 11px;
+      color: var(--purple); text-decoration: none;
+      letter-spacing: 0.5px;
+    }
+    .blog-read:hover { color: var(--cyan); }
+
+    .blog-topics {
+      display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;
+      max-width: 600px; margin: 24px auto 0;
+    }
+    .blog-topic {
+      font-family: var(--font-mono); font-size: 10px;
+      padding: 5px 12px; border-radius: 6px;
+      background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== TOP BAR ===== -->
+  <div style="position:fixed;top:0;left:0;right:0;z-index:101;background:linear-gradient(90deg,rgba(124,58,237,0.15),rgba(0,212,255,0.1));border-bottom:1px solid rgba(124,58,237,0.2);padding:8px 0;text-align:center;font-family:var(--font-mono);font-size:11px;letter-spacing:0.5px;color:var(--text-secondary);backdrop-filter:blur(12px);">
+    <span style="color:var(--cyan);">&#9889;</span> Site undergoing neuro-surgery at the moment. Some features may glitch. We ship live.
+  </div>
+
+  <!-- Nav -->
+  <nav class="nav" id="nav" style="top:33px;">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><span>E</span>lektraOS<span>.</span>dev</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#solutions">Solutions</a></li>
+        <li><a href="log.html">Build Log</a></li>
+        <li><a href="cases.html">Case Studies</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <a href="index.html#contact" class="btn nav-cta">Let's Build</a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="blog-hero">
+    <span class="section-label">blog</span>
+    <h1 class="gradient-text" style="font-size:clamp(28px,4vw,44px);margin-top:8px;">Notes from the build.</h1>
+    <p style="font-size:16px;color:var(--text-secondary);max-width:500px;margin:12px auto 0;line-height:1.7;">Engineering perspective. Neurodivergent lens. How systems get built when the brain never stops iterating.</p>
+
+    <div class="blog-topics">
+      <span class="blog-topic">Engineering</span>
+      <span class="blog-topic">Neurodivergent</span>
+      <span class="blog-topic">Systems Thinking</span>
+      <span class="blog-topic">AI</span>
+      <span class="blog-topic">Automation</span>
+      <span class="blog-topic">Solo Building</span>
+    </div>
+  </div>
+
+  <!-- Feed -->
+  <div class="blog-feed">
+
+    <article class="blog-post reveal" itemscope itemtype="https://schema.org/BlogPosting">
+      <div class="blog-meta">
+        <time class="blog-date" datetime="2026-03-25" itemprop="datePublished">March 25, 2026</time>
+        <span class="blog-cat mind">Neurodivergent</span>
+        <span class="blog-cat sys">Systems</span>
+      </div>
+      <h2 class="blog-title" itemprop="headline">Nothing is ever truly shipped</h2>
+      <p class="blog-excerpt" itemprop="description">The neurodivergent brain doesn't do "done." Every project is a living system. Every feature triggers three new ideas. Every deploy opens a new iteration cycle. Most people see this as a problem. I built an operating system around it. ElektraOS tracks 6 active projects simultaneously, each one always improving, always evolving. The trick isn't forcing yourself to finish. It's building infrastructure that turns perpetual iteration into compounding output.</p>
+    </article>
+
+    <article class="blog-post reveal" itemscope itemtype="https://schema.org/BlogPosting">
+      <div class="blog-meta">
+        <time class="blog-date" datetime="2026-03-25" itemprop="datePublished">March 25, 2026</time>
+        <span class="blog-cat eng">Engineering</span>
+      </div>
+      <h2 class="blog-title" itemprop="headline">Why I automated my own documentation</h2>
+      <p class="blog-excerpt" itemprop="description">I set up a pipeline that logs every engineering session automatically. An agent tracks what was built, measures working time, and publishes structured entries to the build log every 2 hours. No manual writing. No editing. The numbers are real, the timestamps are real. If I have to choose between documenting and building, I'll always choose building. So I made the documentation part of the build process itself.</p>
+    </article>
+
+    <article class="blog-post reveal" itemscope itemtype="https://schema.org/BlogPosting">
+      <div class="blog-meta">
+        <time class="blog-date" datetime="2026-03-25" itemprop="datePublished">March 25, 2026</time>
+        <span class="blog-cat eng">Engineering</span>
+        <span class="blog-cat mind">Neurodivergent</span>
+      </div>
+      <h2 class="blog-title" itemprop="headline">I used to work at companies that raised millions. Now I build their solutions in days.</h2>
+      <p class="blog-excerpt" itemprop="description">WakeUpData built a data feed management platform. Contractbook built contract automation. Both raised millions. Both took years. I sat inside both companies. Today I can prototype equivalents in a weekend. Not because the problems got simpler. Because the tools got exponentially better. The gap between "idea" and "production" collapsed. The question isn't whether you can build it anymore. It's whether you can think clearly about what to build.</p>
+    </article>
+
+    <article class="blog-post reveal" itemscope itemtype="https://schema.org/BlogPosting">
+      <div class="blog-meta">
+        <time class="blog-date" datetime="2026-03-24" itemprop="datePublished">March 24, 2026</time>
+        <span class="blog-cat sys">Systems</span>
+      </div>
+      <h2 class="blog-title" itemprop="headline">Building a thumbnail pipeline that works across 3 brands</h2>
+      <p class="blog-excerpt" itemprop="description">The hardest part of AI image generation isn't the generation. It's consistency. Same face across every thumbnail. Same brand feel across different platforms. Same quality whether it's YouTube 16:9 or TikTok 9:16. I built a system that solves this with face locking, JSON-structured prompts, and a multi-brand asset library. Each approved output becomes a future reference. Consistency compounds.</p>
+    </article>
+
+    <article class="blog-post reveal" itemscope itemtype="https://schema.org/BlogPosting">
+      <div class="blog-meta">
+        <time class="blog-date" datetime="2026-03-22" itemprop="datePublished">March 22, 2026</time>
+        <span class="blog-cat eng">Engineering</span>
+        <span class="blog-cat sys">Systems</span>
+      </div>
+      <h2 class="blog-title" itemprop="headline">184,000 lines of code and counting</h2>
+      <p class="blog-excerpt" itemprop="description">ElektraOS hit 184K lines. 41 AI agents. 624 API endpoints. 59 database tables. These aren't aspirational numbers. These are verified from the codebase. The system runs 16 cron jobs autonomously, orchestrates 5 agent teams, and handles everything from content generation to lead scoring to invoice parsing. It started as a personal tool. It became the proof that one person with the right infrastructure can operate at the scale of a small company.</p>
+    </article>
+
+    <!-- More posts CTA -->
+    <div style="text-align:center;padding:48px 0 0;border-top:1px solid var(--border);margin-top:32px;">
+      <p style="color:var(--text-muted);font-size:13px;">New posts publish alongside the build log. Building is writing.</p>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:16px;">
+        <a href="log.html" class="btn btn-outline">Build Log</a>
+        <a href="index.html#contact" class="btn btn-primary">Get in Touch</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-copy">
+        <span class="mono">&copy; 2026 ElektraOS.dev</span>
+        <span style="display:block;font-size:11px;color:var(--text-muted);margin-top:4px;">Copenhagen, Denmark</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/yoggi-sheandelle" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.upwork.com/freelancers/~01eddb5df59f03b475" target="_blank" rel="noopener">Upwork</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/utils.js"></script>
+  <script src="js/chat.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
