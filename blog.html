@@ -183,31 +183,11 @@
       <p class="blog-excerpt" itemprop="description">ElektraOS hit 184K lines. 41 AI agents. 624 API endpoints. 59 database tables. These aren't aspirational numbers. These are verified from the codebase. The system runs 16 cron jobs autonomously, orchestrates 5 agent teams, and handles everything from content generation to lead scoring to invoice parsing. It started as a personal tool. It became the proof that one person with the right infrastructure can operate at the scale of a small company.</p>
     </article>
 
-    <!-- How this blog works -->
-    <div style="margin-top:48px;padding:28px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;" class="reveal">
-      <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--purple);margin-bottom:12px;">How this blog works</div>
-      <p style="font-size:13px;color:var(--text-secondary);line-height:1.8;margin:0 0 16px;">
-        This blog runs on an automated pipeline built inside <span style="color:var(--cyan);">ElektraOS</span>. Every engineering session is tracked by a system of agents that monitor what was built, measure session duration, and extract the key decisions and insights.
+    <!-- Subtle architecture hint -->
+    <div style="margin-top:48px;padding:20px 24px;border-left:2px solid var(--purple);background:rgba(124,58,237,0.03);border-radius:0 8px 8px 0;" class="reveal">
+      <p style="font-size:12px;color:var(--text-muted);line-height:1.7;margin:0;font-family:var(--font-mono);">
+        This blog is automated. Posts are generated from live engineering sessions and published through a multi-agent pipeline. <span style="color:var(--purple);">5 agents</span> coordinate across vault, API, and deployment layers.
       </p>
-      <p style="font-size:13px;color:var(--text-secondary);line-height:1.8;margin:0 0 16px;">
-        The pipeline works like this: when a session starts, a trigger activates the logging agent. During the session, vault files capture technical progress, architecture decisions, and what shipped. At the end, a session-end skill compiles the data into a structured entry and publishes it through the <span style="color:var(--cyan);">/devsite/build-log</span> API. The build log feeds the blog. No manual writing. The content you read here is generated from real engineering output.
-      </p>
-      <p style="font-size:13px;color:var(--text-secondary);line-height:1.8;margin:0 0 16px;">
-        A scheduled agent runs every 2 hours during active sessions, checking for new vault entries and publishing updates. A separate project tracker agent monitors git commits across all repositories and updates project progress percentages automatically. An SEO agent audits the site weekly for search visibility.
-      </p>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;">
-        <span style="font-family:var(--font-mono);font-size:9px;padding:3px 8px;border-radius:4px;background:rgba(124,58,237,0.08);color:#a78bfa;">Session trigger</span>
-        <span style="font-family:var(--font-mono);font-size:9px;padding:3px 8px;border-radius:4px;color:var(--text-muted);">&rarr;</span>
-        <span style="font-family:var(--font-mono);font-size:9px;padding:3px 8px;border-radius:4px;background:rgba(0,212,255,0.06);color:var(--cyan);">Vault logging</span>
-        <span style="font-family:var(--font-mono);font-size:9px;padding:3px 8px;border-radius:4px;color:var(--text-muted);">&rarr;</span>
-        <span style="font-family:var(--font-mono);font-size:9px;padding:3px 8px;border-radius:4px;background:rgba(0,255,157,0.06);color:var(--green);">Build log API</span>
-        <span style="font-family:var(--font-mono);font-size:9px;padding:3px 8px;border-radius:4px;color:var(--text-muted);">&rarr;</span>
-        <span style="font-family:var(--font-mono);font-size:9px;padding:3px 8px;border-radius:4px;background:rgba(245,158,11,0.06);color:var(--amber);">Blog post</span>
-        <span style="font-family:var(--font-mono);font-size:9px;padding:3px 8px;border-radius:4px;color:var(--text-muted);">&rarr;</span>
-        <span style="font-family:var(--font-mono);font-size:9px;padding:3px 8px;border-radius:4px;background:rgba(239,68,68,0.06);color:#f87171;">Git push</span>
-        <span style="font-family:var(--font-mono);font-size:9px;padding:3px 8px;border-radius:4px;color:var(--text-muted);">&rarr;</span>
-        <span style="font-family:var(--font-mono);font-size:9px;padding:3px 8px;border-radius:4px;background:rgba(124,58,237,0.08);color:#a78bfa;">Live on site</span>
-      </div>
     </div>
 
     <!-- CTA -->

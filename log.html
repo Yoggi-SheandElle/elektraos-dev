@@ -484,15 +484,11 @@
       </div>
     </article>
 
-    <!-- How this works -->
-    <div class="reveal" style="margin-top:48px;padding:28px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;">
-      <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--purple);margin-bottom:12px;">How this log works</div>
-      <p style="font-size:13px;color:var(--text-secondary);line-height:1.8;margin:0;">
-        I set up an automated pipeline inside <span style="color:var(--cyan);">ElektraOS</span> that tracks my engineering sessions. When I work, an agent logs what was built, measures the session duration, and records every feature shipped, file modified, and endpoint created. Every 2 hours during active sessions, the pipeline publishes a structured entry to this page automatically. No manual writing. No editing. The numbers are real. The timestamps are real. This is how I work, made visible.
+    <!-- Subtle architecture hint -->
+    <div class="reveal" style="margin-top:48px;padding:20px 24px;border-left:2px solid var(--cyan);background:rgba(0,212,255,0.02);border-radius:0 8px 8px 0;">
+      <p style="font-size:12px;color:var(--text-muted);line-height:1.7;margin:0;font-family:var(--font-mono);">
+        This log is automated. Entries publish from a pipeline that spans <span style="color:var(--cyan);">3 system layers</span> and <span style="color:var(--cyan);">2 scheduled agents</span>. The timestamps and metrics are real.
       </p>
-      <div style="display:flex;gap:16px;margin-top:16px;flex-wrap:wrap;">
-        <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);padding:4px 10px;border-radius:4px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);">Session trigger &rarr; Vault log &rarr; Build log API &rarr; Site deploy</div>
-      </div>
     </div>
 
     <!-- CTA -->
