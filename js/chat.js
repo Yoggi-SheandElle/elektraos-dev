@@ -59,17 +59,18 @@
   // ── Local FAQ fallback ──
   var FAQ = {
     greetings: { p: ['hello','hi','hey','hej','salut','bonjour'], r: ['Hey! I\'m Elektra. What are you working on?', 'Hi there! Looking for AI solutions, automation, or something custom?'] },
-    services: { p: ['service','what do you','what can you','offer','help','build','do you do'], r: ['I build five things: AI chatbots, workflow automation, SEO optimization, web design, and AI media pipelines. Each one is engineered from scratch. What do you need?'] },
+    about: { p: ['who are you','about you','yourself','elektra','how many agent','your system','behind','how does it work'], r: ['I\'m Elektra - the assistant behind this site. I\'m backed by a multi-agent system with AI capabilities, built by Yossra, a full-stack engineer in Copenhagen. What would you like to know?'] },
+    services: { p: ['service','what do you','what can you','offer','help','build','do you do'], r: ['Five core solutions: AI chatbots, workflow automation, SEO optimization, web design, and AI media pipelines. Each one is engineered from scratch - no templates. What do you need?'] },
     pricing: { p: ['price','cost','how much','budget','rate','afford'], r: ['AI chatbots from $200, automation from $150, SEO from $150, web design from $250. Everything is scoped to what you actually need. Want a custom quote?'] },
-    chatbot: { p: ['chatbot','assistant','bot','ai chat','rag','llm'], r: ['I build RAG-powered chatbots trained on your data. Multi-language, 24/7, with lead capture built in. What\'s your use case?'] },
-    automation: { p: ['automat','workflow','n8n','agent','integrate','api'], r: ['I connect your tools and automate repetitive work - invoice parsing, email routing, CRM updates, lead scoring. What processes are eating your time?'] },
-    seo: { p: ['seo','search','google','traffic','ranking','speed'], r: ['Full technical SEO: audits, Core Web Vitals, schema markup, and automated content pipelines. Drop your URL in the audit tool for a free check.'] },
+    chatbot: { p: ['chatbot','assistant','bot','ai chat','rag','llm'], r: ['I build intelligent chatbots trained on your data. Multi-language, 24/7, with lead capture built in. What\'s your use case?'] },
+    automation: { p: ['automat','workflow','integrate','connect','sync'], r: ['I connect your tools and automate repetitive work - invoice parsing, email routing, CRM updates, lead scoring. What processes are eating your time?'] },
+    seo: { p: ['seo','search','google','traffic','ranking','speed'], r: ['Full technical SEO: audits, Core Web Vitals, schema markup, and content optimization. What\'s your current situation?'] },
     design: { p: ['design','website','landing','figma','ui','ux'], r: ['I design and build responsive websites from scratch. Everything ships mobile-first and SEO-ready. What do you have in mind?'] },
     contact: { p: ['contact','email','reach','talk','call','meeting','book'], r: ['Email yossra.benzad@gmail.com or start a project on Upwork (link in the nav). I respond within 24 hours.'] },
-    portfolio: { p: ['portfolio','projects','case study','examples','work','built'], r: ['Check the Case Studies page. Highlights: ElektraOS (184K+ lines, 41 agents), AYLA Luxury e-commerce, AI thumbnail pipeline, and this website. All production code.'] },
+    portfolio: { p: ['portfolio','projects','case study','examples','work','built','previous'], r: ['Check the Case Studies page for detailed breakdowns. I\'ve shipped production systems, e-commerce platforms, AI pipelines, and this website itself. Each one is real, deployed code.'] },
     location: { p: ['where','location','copenhagen','denmark','remote'], r: ['Based in Copenhagen, Denmark. Available worldwide for remote work. Timezone flexibility is not a problem.'] },
     timeline: { p: ['how long','timeline','deadline','when','delivery'], r: ['A chatbot or automation ships in 1-2 weeks. Full web platforms take 3-6 weeks. Tell me what you need for an honest timeline.'] },
-    hire: { p: ['hire','freelance','contract','available','collaborate','partnership'], r: ['Open for projects, co-builds, and partnerships. I work through Upwork for contracts. What are you building?'] }
+    hire: { p: ['hire','freelance','contract','available','collaborate','partnership','agent'], r: ['Open for projects, co-builds, and partnerships. I work through Upwork for contracts. What are you building?'] }
   };
 
   function localMatch(text) {
