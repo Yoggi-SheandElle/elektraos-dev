@@ -3,23 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The 40th Brick . Coming Soon . ElektraOS.dev</title>
-  <meta name="description" content="The 40th Brick. A personalized interactive puzzle experience. 40 rooms. Currently in development. Follow the build log for progress.">
-  <meta property="og:title" content="The 40th Brick . Coming Soon">
+  <title>The 40th Brick . ElektraOS.dev</title>
+  <meta name="description" content="The 40th Brick. An interactive puzzle built for someone who builds worlds. 40 rooms. Each one earned. Coming soon.">
+  <meta property="og:title" content="The 40th Brick">
+  <meta property="og:description" content="Some things are built to be found. 40 rooms. 4 chapters. 1 person who deserves all of them.">
   <meta property="og:type" content="website">
-  <meta name="theme-color" content="#7c3aed">
-  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <meta name="theme-color" content="#e05545">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="../css/variables.css">
-  <link rel="stylesheet" href="../css/base.css">
-  <link rel="stylesheet" href="../css/components.css">
-  <link rel="stylesheet" href="../css/animations.css">
-  <link rel="stylesheet" href="../css/sections.css">
-  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/animations.css">
+  <link rel="stylesheet" href="/css/sections.css">
+  <link rel="stylesheet" href="/css/responsive.css">
 
   <style>
     .lock-page {
@@ -27,77 +28,190 @@
       align-items: center; justify-content: center; text-align: center;
       padding: 24px; position: relative; overflow: hidden;
     }
+
     .lock-icon {
-      width: 80px; height: 80px; border-radius: 20px;
+      width: 90px; height: 90px; border-radius: 22px;
       background: linear-gradient(135deg, #e05545, #f59e0b);
       display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-mono); font-size: 28px; font-weight: 700;
-      color: #fff; margin-bottom: 32px;
-      box-shadow: 0 0 40px rgba(224, 85, 69, 0.3);
-      animation: float 3s ease-in-out infinite;
+      font-family: var(--font-mono); font-size: 30px; font-weight: 700;
+      color: #fff; margin-bottom: 36px;
+      box-shadow: 0 0 60px rgba(224, 85, 69, 0.25), 0 0 120px rgba(224, 85, 69, 0.08);
+      animation: float 4s ease-in-out infinite;
+      position: relative;
     }
+
+    .lock-icon::after {
+      content: '';
+      position: absolute; inset: -3px; border-radius: 25px;
+      background: linear-gradient(135deg, rgba(224,85,69,0.4), rgba(245,158,11,0.4));
+      z-index: -1; filter: blur(12px);
+      animation: glow-pulse 3s ease-in-out infinite alternate;
+    }
+
     @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      25% { transform: translateY(-6px) rotate(0.5deg); }
+      75% { transform: translateY(-3px) rotate(-0.5deg); }
     }
+
+    @keyframes glow-pulse {
+      0% { opacity: 0.4; }
+      100% { opacity: 0.8; }
+    }
+
     .lock-badge {
       font-family: var(--font-mono); font-size: 10px;
-      text-transform: uppercase; letter-spacing: 2px;
-      color: var(--amber); padding: 6px 16px; border-radius: 999px;
-      border: 1px solid rgba(245, 158, 11, 0.2);
-      background: rgba(245, 158, 11, 0.06);
-      margin-bottom: 24px;
+      text-transform: uppercase; letter-spacing: 2.5px;
+      color: var(--amber); padding: 6px 20px; border-radius: 999px;
+      border: 1px solid rgba(245, 158, 11, 0.15);
+      background: rgba(245, 158, 11, 0.04);
+      margin-bottom: 28px;
     }
+
     .lock-title {
-      font-size: clamp(32px, 5vw, 56px); font-weight: 700;
-      line-height: 1.1; margin-bottom: 16px;
+      font-size: clamp(36px, 6vw, 64px); font-weight: 700;
+      line-height: 1.05; margin-bottom: 20px;
     }
+
     .lock-title .gradient {
       background: linear-gradient(135deg, #e05545 0%, #f59e0b 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
+
     .lock-sub {
       font-size: 16px; color: var(--text-secondary);
-      max-width: 440px; line-height: 1.7; margin-bottom: 40px;
+      max-width: 480px; line-height: 1.8; margin-bottom: 48px;
     }
-    .lock-stats {
-      display: flex; gap: 32px; margin-bottom: 40px; flex-wrap: wrap;
-      justify-content: center;
+
+    /* Cryptic clue cards */
+    .clue-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 12px; max-width: 520px; margin-bottom: 48px; width: 100%;
     }
-    .lock-stat-val {
-      font-family: var(--font-mono); font-size: 24px;
-      font-weight: 700; color: var(--amber);
+
+    .clue-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 12px; padding: 20px 12px;
+      transition: all 0.3s ease;
+      cursor: default;
     }
-    .lock-stat-label {
+
+    .clue-card:hover {
+      border-color: rgba(224, 85, 69, 0.2);
+      background: rgba(224, 85, 69, 0.03);
+      transform: translateY(-2px);
+    }
+
+    .clue-val {
+      font-family: var(--font-mono); font-size: 28px;
+      font-weight: 700; color: var(--amber); line-height: 1;
+    }
+
+    .clue-label {
       font-size: 10px; text-transform: uppercase;
-      letter-spacing: 1px; color: var(--text-muted); margin-top: 2px;
+      letter-spacing: 1.5px; color: var(--text-muted); margin-top: 6px;
     }
+
+    /* Riddle section */
+    .riddle {
+      max-width: 440px; margin-bottom: 48px;
+      padding: 24px; border-radius: 12px;
+      background: rgba(224, 85, 69, 0.03);
+      border: 1px solid rgba(224, 85, 69, 0.08);
+    }
+
+    .riddle-label {
+      font-family: var(--font-mono); font-size: 9px;
+      text-transform: uppercase; letter-spacing: 2px;
+      color: rgba(224, 85, 69, 0.6); margin-bottom: 12px;
+    }
+
+    .riddle-text {
+      font-size: 14px; color: var(--text-secondary);
+      line-height: 1.8; font-style: italic;
+    }
+
+    .riddle-text strong { color: var(--text-primary); font-style: normal; }
+
+    /* Countdown */
+    .countdown-wrap {
+      margin-bottom: 40px; text-align: center;
+    }
+
+    .countdown-label {
+      font-family: var(--font-mono); font-size: 10px;
+      text-transform: uppercase; letter-spacing: 2px;
+      color: var(--text-muted); margin-bottom: 12px;
+    }
+
+    .countdown {
+      display: flex; gap: 16px; justify-content: center;
+    }
+
+    .cd-unit {
+      display: flex; flex-direction: column; align-items: center;
+    }
+
+    .cd-val {
+      font-family: var(--font-mono); font-size: 32px;
+      font-weight: 700; color: var(--amber);
+      min-width: 48px; text-align: center;
+    }
+
+    .cd-lbl {
+      font-size: 9px; text-transform: uppercase;
+      letter-spacing: 1.5px; color: var(--text-muted); margin-top: 2px;
+    }
+
+    /* Progress */
     .lock-progress {
-      width: 280px; height: 4px; border-radius: 2px;
-      background: var(--bg-tertiary); margin-bottom: 12px; overflow: hidden;
+      width: 320px; height: 3px; border-radius: 2px;
+      background: var(--bg-tertiary); margin-bottom: 10px; overflow: hidden;
     }
+
     .lock-progress-fill {
-      height: 100%; border-radius: 2px; width: 15%;
+      height: 100%; border-radius: 2px; width: 18%;
       background: linear-gradient(90deg, #e05545, #f59e0b);
-      animation: pulse-width 2s ease-in-out infinite;
+      animation: pulse-width 3s ease-in-out infinite;
     }
+
     @keyframes pulse-width {
-      0%, 100% { width: 15%; }
-      50% { width: 20%; }
+      0%, 100% { width: 18%; }
+      50% { width: 24%; }
     }
+
     .lock-progress-label {
       font-family: var(--font-mono); font-size: 10px;
       color: var(--text-muted); letter-spacing: 1px; margin-bottom: 40px;
     }
+
     .lock-links { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+
+    /* Whisper - barely visible hint at bottom */
+    .whisper {
+      position: fixed; bottom: 16px; left: 0; right: 0;
+      text-align: center; font-family: var(--font-mono);
+      font-size: 9px; letter-spacing: 2px; color: rgba(255,255,255,0.06);
+      transition: color 0.5s;
+    }
+    .whisper:hover { color: rgba(255,255,255,0.15); }
+
     .lock-grid-bg {
       position: fixed; inset: 0; z-index: -1;
       background-image:
-        linear-gradient(rgba(224, 85, 69, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(224, 85, 69, 0.02) 1px, transparent 1px);
+        linear-gradient(rgba(224, 85, 69, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(224, 85, 69, 0.015) 1px, transparent 1px);
       background-size: 60px 60px;
     }
+
+    @media (max-width: 600px) {
+      .clue-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+      .countdown { gap: 10px; }
+      .cd-val { font-size: 24px; }
+    }
   </style>
+
   <link rel="alternate" hreflang="en" href="https://elektraos.dev/case-40th-brick/">
   <link rel="alternate" hreflang="da" href="https://elektraos.dev/da/case-40th-brick/">
   <link rel="alternate" hreflang="fr" href="https://elektraos.dev/fr/case-40th-brick/">
@@ -115,22 +229,63 @@
 
   <div class="lock-page">
     <div class="lock-icon">40</div>
-    <div class="lock-badge">In Development</div>
-    <h1 class="lock-title">The 40th <span class="gradient">Brick</span></h1>
-    <p class="lock-sub">A personalized interactive puzzle experience. 40 rooms. Each one a memory. Each one a challenge. This project is currently being engineered and will be revealed when it's ready.</p>
+    <div class="lock-badge">Something is being built</div>
 
-    <div class="lock-stats">
-      <div>
-        <div class="lock-stat-val">40</div>
-        <div class="lock-stat-label">Rooms</div>
+    <h1 class="lock-title">The 40th <span class="gradient">Brick</span></h1>
+
+    <p class="lock-sub">
+      Built for someone who builds worlds. Someone who knows what it means
+      to put a piece in the right place at the right time.
+      This isn't a product. This is a message.
+    </p>
+
+    <div class="clue-grid">
+      <div class="clue-card">
+        <div class="clue-val">40</div>
+        <div class="clue-label">Rooms</div>
       </div>
-      <div>
-        <div class="lock-stat-val">4</div>
-        <div class="lock-stat-label">Chapters</div>
+      <div class="clue-card">
+        <div class="clue-val">4</div>
+        <div class="clue-label">Chapters</div>
       </div>
-      <div>
-        <div class="lock-stat-val">?</div>
-        <div class="lock-stat-label">Secrets</div>
+      <div class="clue-card">
+        <div class="clue-val">2</div>
+        <div class="clue-label">Companions</div>
+      </div>
+      <div class="clue-card">
+        <div class="clue-val">1</div>
+        <div class="clue-label">Person</div>
+      </div>
+      <div class="clue-card">
+        <div class="clue-val">&#9834;</div>
+        <div class="clue-label">Melodies</div>
+      </div>
+      <div class="clue-card">
+        <div class="clue-val">?</div>
+        <div class="clue-label">Secrets</div>
+      </div>
+    </div>
+
+    <!-- The riddle -->
+    <div class="riddle">
+      <div class="riddle-label">Clue no. 1</div>
+      <p class="riddle-text">
+        She builds what <strong>millions play with</strong> but few understand how.
+        Two small shadows follow her everywhere she goes -
+        one light, one dark. She speaks to machines in a language
+        that becomes <strong>instructions for joy</strong>.
+        The rooms remember everything she's ever made.
+      </p>
+    </div>
+
+    <!-- Countdown -->
+    <div class="countdown-wrap">
+      <div class="countdown-label">Unlocks in</div>
+      <div class="countdown" id="countdown">
+        <div class="cd-unit"><div class="cd-val" id="cdDays">--</div><div class="cd-lbl">Days</div></div>
+        <div class="cd-unit"><div class="cd-val" id="cdHours">--</div><div class="cd-lbl">Hours</div></div>
+        <div class="cd-unit"><div class="cd-val" id="cdMins">--</div><div class="cd-lbl">Min</div></div>
+        <div class="cd-unit"><div class="cd-val" id="cdSecs">--</div><div class="cd-lbl">Sec</div></div>
       </div>
     </div>
 
@@ -142,6 +297,38 @@
       <a href="/cases/" class="btn btn-outline">Back to Case Studies</a>
     </div>
   </div>
+
+  <!-- Barely visible whisper at bottom -->
+  <div class="whisper">she dared to speak her mind and the world got smaller. this makes it bigger.</div>
+
+  <script>
+    // Countdown to April 17, 2026
+    (function(){
+      var target = new Date('2026-04-17T00:00:00+02:00').getTime();
+      function tick(){
+        var now = Date.now();
+        var diff = target - now;
+        if(diff <= 0){
+          document.getElementById('cdDays').textContent = '0';
+          document.getElementById('cdHours').textContent = '0';
+          document.getElementById('cdMins').textContent = '0';
+          document.getElementById('cdSecs').textContent = '0';
+          document.querySelector('.countdown-label').textContent = 'Unlocked';
+          return;
+        }
+        var d = Math.floor(diff / 86400000);
+        var h = Math.floor((diff % 86400000) / 3600000);
+        var m = Math.floor((diff % 3600000) / 60000);
+        var s = Math.floor((diff % 60000) / 1000);
+        document.getElementById('cdDays').textContent = d;
+        document.getElementById('cdHours').textContent = h;
+        document.getElementById('cdMins').textContent = m < 10 ? '0'+m : m;
+        document.getElementById('cdSecs').textContent = s < 10 ? '0'+s : s;
+      }
+      tick();
+      setInterval(tick, 1000);
+    })();
+  </script>
 
   <script src="/js/i18n.js" defer></script>
 </body>
