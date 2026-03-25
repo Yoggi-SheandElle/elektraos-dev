@@ -25,8 +25,13 @@
 </head>
 <body>
 
+  <!-- ===== TOP BAR ===== -->
+  <div style="position:fixed;top:0;left:0;right:0;z-index:101;background:linear-gradient(90deg,rgba(124,58,237,0.15),rgba(0,212,255,0.1));border-bottom:1px solid rgba(124,58,237,0.2);padding:8px 0;text-align:center;font-family:var(--font-mono);font-size:11px;letter-spacing:0.5px;color:var(--text-secondary);backdrop-filter:blur(12px);">
+    <span style="color:var(--cyan);">&#9889;</span> Site undergoing neuro-surgery at the moment. Some features may glitch. We ship live.
+  </div>
+
   <!-- ===== NAV ===== -->
-  <nav class="nav" id="nav">
+  <nav class="nav" id="nav" style="top:33px;">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo"><span>E</span>lektraOS<span>.</span>dev</a>
       <ul class="nav-links" id="navLinks">
@@ -58,15 +63,8 @@
         <li><a href="#proof">Work</a></li>
         <li><a href="pricing.html">Pricing</a></li>
         <li><a href="about.html">About</a></li>
+        <li><a href="audit.html">Diagnostic</a></li>
       </ul>
-      <a href="#" class="nav-cmd-trigger" id="cmdTrigger">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-        <span class="cmd-shortcut">Ctrl K</span>
-      </a>
-      <a href="audit.html" class="nav-diag">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        Free Diagnostic
-      </a>
       <a href="#contact" class="btn nav-cta">Let's Build</a>
       <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -74,12 +72,7 @@
     </div>
   </nav>
 
-  <!-- ===== SYSTEM PULSE ===== -->
-  <div class="system-pulse" id="systemPulse">
-    <div class="pulse-dot" id="pulseDot"></div>
-    <span id="pulseStatus"></span>
-    <span id="pulseTask"></span>
-  </div>
+  <!-- System pulse moved below hero -->
 
   <!-- ===== HERO ===== -->
   <section class="hero" id="hero">
@@ -100,6 +93,13 @@
       </svg>
     </div>
   </section>
+
+  <!-- ===== SYSTEM PULSE ===== -->
+  <div id="systemPulse" style="text-align:center;padding:12px 0;font-family:var(--font-mono);font-size:11px;color:var(--text-muted);border-bottom:1px solid rgba(255,255,255,0.04);display:flex;align-items:center;justify-content:center;gap:12px;">
+    <div id="pulseDot" style="width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);"></div>
+    <span id="pulseStatus"></span>
+    <span id="pulseTask" style="border-left:1px solid var(--border);padding-left:12px;font-size:10px;"></span>
+  </div>
 
   <!-- ===== ABOUT ===== -->
   <section class="about" id="about">
