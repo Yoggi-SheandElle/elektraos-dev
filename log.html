@@ -195,7 +195,7 @@
   <div class="log-hero">
     <span class="section-label">build log</span>
     <h1 class="gradient-text" style="font-size:clamp(28px,4vw,44px);margin-top:8px;">Engineering velocity.</h1>
-    <p class="log-subtitle">What was built, when it shipped, and the architecture behind it. This log updates after every engineering session. No tutorials. No marketing. Just production output.</p>
+    <p class="log-subtitle">What was built, when it shipped, and the architecture behind it. This log is generated automatically. An agent monitors my engineering sessions, measures working spans, and pipelines the output here every 2 hours. No editing. No curating. Raw production data.</p>
 
     <!-- Live stats -->
     <div class="log-stats">
@@ -469,6 +469,17 @@
         <span>Claude CLI</span>
       </div>
     </article>
+
+    <!-- How this works -->
+    <div class="reveal" style="margin-top:48px;padding:28px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;">
+      <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--purple);margin-bottom:12px;">How this log works</div>
+      <p style="font-size:13px;color:var(--text-secondary);line-height:1.8;margin:0;">
+        I set up an automated pipeline inside <span style="color:var(--cyan);">ElektraOS</span> that tracks my engineering sessions. When I work, an agent logs what was built, measures the session duration, and records every feature shipped, file modified, and endpoint created. Every 2 hours during active sessions, the pipeline publishes a structured entry to this page automatically. No manual writing. No editing. The numbers are real. The timestamps are real. This is how I work, made visible.
+      </p>
+      <div style="display:flex;gap:16px;margin-top:16px;flex-wrap:wrap;">
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);padding:4px 10px;border-radius:4px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);">Session trigger &rarr; Vault log &rarr; Build log API &rarr; Site deploy</div>
+      </div>
+    </div>
 
     <!-- CTA -->
     <div class="log-cta reveal">
