@@ -331,6 +331,326 @@
     })();
   </script>
 
+  <!-- ===== ELEKTRA CHAT HELPER ===== -->
+  <style>
+    .e-chat-toggle {
+      position: fixed; bottom: 24px; right: 24px; z-index: 200;
+      width: 56px; height: 56px; border-radius: 50%; border: none;
+      background: linear-gradient(135deg, #e05545, #f59e0b);
+      color: #fff; font-size: 22px; cursor: pointer;
+      box-shadow: 0 4px 24px rgba(224,85,69,0.35);
+      transition: all 0.3s ease; display: flex;
+      align-items: center; justify-content: center;
+    }
+    .e-chat-toggle:hover { transform: scale(1.08); box-shadow: 0 6px 32px rgba(224,85,69,0.5); }
+    .e-chat-toggle.open { border-radius: 14px; }
+
+    .e-chat-box {
+      position: fixed; bottom: 92px; right: 24px; z-index: 200;
+      width: 340px; max-height: 460px; border-radius: 16px;
+      background: rgba(18,18,24,0.97); border: 1px solid rgba(224,85,69,0.15);
+      box-shadow: 0 12px 48px rgba(0,0,0,0.5);
+      display: none; flex-direction: column; overflow: hidden;
+      backdrop-filter: blur(16px);
+    }
+    .e-chat-box.visible { display: flex; animation: chatSlideUp 0.3s ease; }
+
+    @keyframes chatSlideUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .e-chat-header {
+      padding: 16px 18px; border-bottom: 1px solid rgba(224,85,69,0.08);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .e-chat-avatar {
+      width: 32px; height: 32px; border-radius: 10px;
+      background: linear-gradient(135deg, #e05545, #f59e0b);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 700; color: #fff;
+    }
+    .e-chat-name {
+      font-family: var(--font-mono); font-size: 12px;
+      text-transform: uppercase; letter-spacing: 1.5px; color: var(--amber);
+    }
+    .e-chat-status {
+      font-size: 10px; color: var(--text-muted); margin-top: 1px;
+    }
+
+    .e-chat-messages {
+      flex: 1; overflow-y: auto; padding: 16px; display: flex;
+      flex-direction: column; gap: 12px; max-height: 300px;
+    }
+    .e-chat-messages::-webkit-scrollbar { width: 3px; }
+    .e-chat-messages::-webkit-scrollbar-thumb { background: rgba(224,85,69,0.2); border-radius: 3px; }
+
+    .e-msg {
+      max-width: 85%; padding: 10px 14px; border-radius: 12px;
+      font-size: 13px; line-height: 1.6; animation: msgFade 0.4s ease;
+    }
+    @keyframes msgFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+    .e-msg.bot {
+      align-self: flex-start; background: rgba(224,85,69,0.08);
+      border: 1px solid rgba(224,85,69,0.1); color: var(--text-secondary);
+    }
+    .e-msg.user {
+      align-self: flex-end; background: rgba(245,158,11,0.1);
+      border: 1px solid rgba(245,158,11,0.12); color: var(--text-primary);
+    }
+
+    .e-msg .typing { display: inline-flex; gap: 4px; padding: 4px 0; }
+    .e-msg .typing span {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: rgba(224,85,69,0.4); animation: typeDot 1.2s infinite;
+    }
+    .e-msg .typing span:nth-child(2) { animation-delay: 0.2s; }
+    .e-msg .typing span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typeDot { 0%,60%,100% { opacity: 0.3; } 30% { opacity: 1; } }
+
+    .e-chat-input-wrap {
+      padding: 12px; border-top: 1px solid rgba(224,85,69,0.08);
+      display: flex; gap: 8px;
+    }
+    .e-chat-input {
+      flex: 1; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px; padding: 10px 14px; color: var(--text-primary);
+      font-size: 13px; font-family: inherit; outline: none;
+      transition: border-color 0.2s;
+    }
+    .e-chat-input:focus { border-color: rgba(224,85,69,0.25); }
+    .e-chat-input::placeholder { color: var(--text-muted); }
+    .e-chat-send {
+      width: 38px; height: 38px; border-radius: 10px; border: none;
+      background: linear-gradient(135deg, #e05545, #f59e0b);
+      color: #fff; cursor: pointer; font-size: 16px;
+      display: flex; align-items: center; justify-content: center;
+      transition: opacity 0.2s;
+    }
+    .e-chat-send:hover { opacity: 0.85; }
+
+    @media (max-width: 600px) {
+      .e-chat-box { width: calc(100vw - 32px); right: 16px; bottom: 84px; }
+      .e-chat-toggle { bottom: 16px; right: 16px; }
+    }
+  </style>
+
+  <button class="e-chat-toggle" id="eChatToggle" title="Ask Elektra">&#9889;</button>
+
+  <div class="e-chat-box" id="eChatBox">
+    <div class="e-chat-header">
+      <div class="e-chat-avatar">E</div>
+      <div>
+        <div class="e-chat-name">Elektra</div>
+        <div class="e-chat-status">Guardian of the 40 rooms</div>
+      </div>
+    </div>
+    <div class="e-chat-messages" id="eChatMsgs"></div>
+    <div class="e-chat-input-wrap">
+      <input class="e-chat-input" id="eChatInput" placeholder="Ask me something..." autocomplete="off">
+      <button class="e-chat-send" id="eChatSend">&#8593;</button>
+    </div>
+  </div>
+
+  <script>
+  (function(){
+    var toggle = document.getElementById('eChatToggle');
+    var box = document.getElementById('eChatBox');
+    var msgs = document.getElementById('eChatMsgs');
+    var input = document.getElementById('eChatInput');
+    var send = document.getElementById('eChatSend');
+    var open = false;
+    var history = [];
+    var questionCount = 0;
+
+    // Cryptic greeting pool
+    var greetings = [
+      "You found me. Not everyone does. What brings you to the construction site?",
+      "Ah, a visitor. The rooms are still being built, but I can share... fragments.",
+      "Welcome, curious one. The countdown ticks. The rooms wait. What do you want to know?"
+    ];
+
+    // Response engine - cryptic, never too easy
+    var responses = {
+      // About the puzzle
+      what: [
+        "40 rooms. Each one a memory, a riddle, a piece of someone's story. That's all I can say for now.",
+        "It's not a game. It's not a product. It's something between a love letter and an escape room. Built in code.",
+        "Think of it as 40 locked doors. Each one opens with something only she would know."
+      ],
+      who: [
+        "Someone who speaks to machines and makes children smile. That's your only clue.",
+        "She builds what millions touch but never see the hands behind it. Two shadows follow her. One light. One dark.",
+        "I can't tell you her name. But the riddle on the page... read it slowly."
+      ],
+      when: [
+        "The countdown tells you everything. Some things are worth waiting for.",
+        "When the number hits zero, the first door opens. Not before.",
+        "Patience. The best things are never rushed. She would know that better than anyone."
+      ],
+      how: [
+        "Each room has a puzzle. Each puzzle needs something personal. A memory, a date, a name, a song.",
+        "You solve rooms by knowing her. The deeper you know, the further you go.",
+        "Some rooms need words. Some need music. Some need courage. I won't say which."
+      ],
+      rooms: [
+        "40 rooms. 4 chapters. The first chapter is called 'Origins' - where everything started.",
+        "Each room is different. Some are visual. Some are audio. Some will make you laugh. Some won't.",
+        "Room 1 is the easiest. Room 40... nobody builds Room 40 without tears."
+      ],
+      chapters: [
+        "Four chapters: Origins, Echoes, Bridges, Home. That's more than I should have said.",
+        "Each chapter has 10 rooms. The chapters follow the arc of a life. Her life.",
+        "The chapters aren't just themes. They're timestamps. Think about what that means."
+      ],
+      companions: [
+        "Two companions. One light, one dark. They appear in the rooms when you least expect them.",
+        "The companions are real. They have names. They have fur. That's your hint.",
+        "Not every companion walks on two legs. Some purr."
+      ],
+      hint: [
+        "The whisper at the bottom of this page. Did you find it? Hover carefully.",
+        "Read the riddle again. Every bold word is a key. Not metaphorically.",
+        "The number 40 isn't random. Count the years. Count the rooms. They match for a reason."
+      ],
+      help: [
+        "I don't give answers. I give directions. Ask me about the rooms, the chapters, or the companions.",
+        "Try asking about the riddle. Or the countdown. Or what happens when it hits zero.",
+        "I'm not here to make it easy. I'm here to make sure you don't give up."
+      ],
+      brick: [
+        "Every brick is a choice. 40 choices. 40 moments. 40 reasons someone matters.",
+        "The 40th brick is the one that completes the wall. But what wall? That's the question.",
+        "Bricks build things. Rooms. Houses. Worlds. She knows that better than most."
+      ],
+      music: [
+        "Some rooms have melodies. They're not random songs. Each one was chosen because it means something to her.",
+        "Music unlocks what words can't. Room 7 is the first one with a melody. I've said too much.",
+        "If you know what song plays when she's happy, you'll solve at least three rooms."
+      ],
+      secret: [
+        "There are secrets hidden in places you haven't looked yet. Inspect everything.",
+        "Some secrets are visible only at certain times. The countdown isn't just decoration.",
+        "The page source has something most people miss. But I didn't tell you that."
+      ],
+      lego: [
+        "Interesting word. I didn't say anything about bricks being plastic. Did I?",
+        "Some people build with code. Some with plastic. Some with both. Curious, isn't it?",
+        "You're getting warmer. But I'm not confirming anything."
+      ],
+      cats: [
+        "Shadows. I said shadows. You said cats. That's on you.",
+        "If the companions had names, they might rhyme with things that matter. Maybe.",
+        "Two creatures. Two personalities. One follows the sun, one follows the moon."
+      ]
+    };
+
+    // Fallback responses when nothing matches
+    var fallbacks = [
+      "Hmm. Interesting question. But the rooms aren't ready for that answer yet.",
+      "I know more than I'm allowed to say. Try a different angle.",
+      "That's between me and the builder. Ask about something on this page instead.",
+      "You're curious. Good. But curiosity needs direction. Ask about the clues.",
+      "I could answer that. But where's the fun in that? Try asking about the chapters.",
+      "Some doors are locked tighter than others. Come back when the countdown is closer to zero.",
+      "Not everything has an answer yet. Some rooms are still under construction."
+    ];
+
+    // Too many questions
+    var tooMany = [
+      "You ask a lot of questions. The rooms reward patience, not speed.",
+      "Slow down. The puzzle isn't going anywhere. Neither am I.",
+      "Every answer I give costs a little mystery. Choose your questions wisely."
+    ];
+
+    function addMsg(text, isUser) {
+      var div = document.createElement('div');
+      div.className = 'e-msg ' + (isUser ? 'user' : 'bot');
+      div.textContent = text;
+      msgs.appendChild(div);
+      msgs.scrollTop = msgs.scrollHeight;
+    }
+
+    function addTyping() {
+      var div = document.createElement('div');
+      div.className = 'e-msg bot';
+      div.id = 'eTyping';
+      div.innerHTML = '<div class="typing"><span></span><span></span><span></span></div>';
+      msgs.appendChild(div);
+      msgs.scrollTop = msgs.scrollHeight;
+    }
+
+    function removeTyping() {
+      var t = document.getElementById('eTyping');
+      if (t) t.remove();
+    }
+
+    function getResponse(q) {
+      q = q.toLowerCase().trim();
+      questionCount++;
+
+      // Rate limit - every 8th question gets a slowdown
+      if (questionCount % 8 === 0) {
+        return tooMany[Math.floor(Math.random() * tooMany.length)];
+      }
+
+      // Keyword matching
+      var keys = Object.keys(responses);
+      for (var i = 0; i < keys.length; i++) {
+        if (q.indexOf(keys[i]) !== -1) {
+          var pool = responses[keys[i]];
+          return pool[Math.floor(Math.random() * pool.length)];
+        }
+      }
+
+      // Partial matches
+      if (q.match(/puzzle|game|play|riddle/)) return responses.what[Math.floor(Math.random() * responses.what.length)];
+      if (q.match(/person|girl|woman|she|her/)) return responses.who[Math.floor(Math.random() * responses.who.length)];
+      if (q.match(/time|date|open|unlock|start/)) return responses.when[Math.floor(Math.random() * responses.when.length)];
+      if (q.match(/solve|answer|solution|clue|tip/)) return responses.hint[Math.floor(Math.random() * responses.hint.length)];
+      if (q.match(/song|melody|tune|listen|sound/)) return responses.music[Math.floor(Math.random() * responses.music.length)];
+      if (q.match(/hidden|invisible|source|code|inspect/)) return responses.secret[Math.floor(Math.random() * responses.secret.length)];
+      if (q.match(/cat|kitten|pet|animal|furry|meow/)) return responses.cats[Math.floor(Math.random() * responses.cats.length)];
+      if (q.match(/toy|build|plastic|play|child/)) return responses.lego[Math.floor(Math.random() * responses.lego.length)];
+      if (q.match(/hello|hi|hey|hej|salut/)) return greetings[Math.floor(Math.random() * greetings.length)];
+
+      return fallbacks[Math.floor(Math.random() * fallbacks.length)];
+    }
+
+    function handleSend() {
+      var q = input.value.trim();
+      if (!q) return;
+      addMsg(q, true);
+      input.value = '';
+      addTyping();
+      var delay = 800 + Math.random() * 1200;
+      setTimeout(function() {
+        removeTyping();
+        addMsg(getResponse(q), false);
+      }, delay);
+    }
+
+    toggle.addEventListener('click', function() {
+      open = !open;
+      box.classList.toggle('visible', open);
+      toggle.classList.toggle('open', open);
+      toggle.innerHTML = open ? '&#10005;' : '&#9889;';
+      if (open && msgs.children.length === 0) {
+        setTimeout(function() {
+          addMsg(greetings[Math.floor(Math.random() * greetings.length)], false);
+        }, 500);
+      }
+      if (open) setTimeout(function() { input.focus(); }, 100);
+    });
+
+    send.addEventListener('click', handleSend);
+    input.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') handleSend();
+    });
+  })();
+  </script>
+
   <script src="/js/i18n.js" defer></script>
 </body>
 </html>
