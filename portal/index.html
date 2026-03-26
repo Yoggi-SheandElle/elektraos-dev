@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal - ElektraOS.dev</title>
+  <meta name="description" content="ElektraOS Creative Network - Private collaboration portal.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="css/portal.css">
+</head>
+<body>
+
+  <!-- Login View -->
+  <div id="loginView" class="p-login" style="display:none;">
+    <div class="p-login-card">
+      <div class="p-login-logo"><span>E</span>lektraOS<span>.</span>dev</div>
+      <div class="p-login-sub">Creative Network Portal<br>Enter your credentials to join the space.</div>
+      <input class="p-login-input" id="loginUsername" type="text" placeholder="Username" autocomplete="username">
+      <input class="p-login-input" id="loginPassword" type="password" placeholder="Password" autocomplete="current-password">
+      <button class="p-login-btn" id="loginBtn" onclick="PortalApp.doLogin()">Enter</button>
+      <div class="p-login-error" id="loginError"></div>
+      <div style="margin-top:24px;font-size:11px;color:var(--text-muted);">
+        Invitation only. Your host sets your credentials.
+      </div>
+    </div>
+  </div>
+
+  <!-- App View -->
+  <div id="appView" style="display:none;">
+    <!-- Sidebar -->
+    <div class="p-sidebar">
+      <div class="p-sidebar-logo"><span>E</span>lektraOS</div>
+      <nav class="p-sidebar-nav">
+        <a href="#" data-view="dashboard" class="active" onclick="PortalApp.navigate('dashboard');return false;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          Dashboard
+        </a>
+        <a href="#" data-view="projects" onclick="PortalApp.navigate('dashboard');return false;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+          Projects
+        </a>
+        <a href="#" id="adminNav" data-view="admin" style="display:none;" onclick="PortalApp.navigate('admin');return false;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+          Admin
+        </a>
+      </nav>
+      <div class="p-sidebar-user">
+        <div class="p-sidebar-avatar" id="userAvatar" style="background:var(--gradient-brand);">Y</div>
+        <div>
+          <div class="p-sidebar-name" id="userName">-</div>
+          <div class="p-sidebar-vibe" id="userVibe">-</div>
+        </div>
+      </div>
+      <div style="padding:8px 20px;">
+        <button style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);padding:6px 12px;color:var(--text-muted);font-size:11px;font-family:var(--font-mono);cursor:pointer;width:100%;" onclick="Portal.logout()">Sign Out</button>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="p-main">
+      <div id="mainContent">Loading...</div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="p-modal-overlay" id="modalOverlay" onclick="if(event.target===this)PortalApp.closeModal()">
+    <div class="p-modal" id="modalContent"></div>
+  </div>
+
+  <!-- API Config Modal (first time) -->
+  <div class="p-modal-overlay" id="apiConfigOverlay" style="display:none;">
+    <div class="p-modal">
+      <h3>Connect to ElektraOS</h3>
+      <p style="font-size:13px;color:var(--text-secondary);margin-bottom:16px;">Enter the API URL shared by your host. This is needed once.</p>
+      <div class="p-form-group">
+        <label class="p-form-label">API URL</label>
+        <input class="p-form-input" id="apiUrlInput" placeholder="https://your-tunnel-url.trycloudflare.com">
+      </div>
+      <button class="p-form-btn" onclick="PortalApp.saveAPIUrl()">Connect</button>
+    </div>
+  </div>
+
+  <script src="js/portal-auth.js"></script>
+  <script src="js/portal-dashboard.js"></script>
+  <script src="js/portal-kanban.js"></script>
+  <script src="js/portal-admin.js"></script>
+
+  <script>
+  (function() {
+    window.PortalApp = {
+      currentView: 'dashboard',
+      currentProjectId: null,
+
+      async init() {
+        // Check API URL is configured
+        if (!Portal.getAPI()) {
+          document.getElementById('apiConfigOverlay').style.display = 'flex';
+          return;
+        }
+
+        // Check if logged in
+        if (!Portal.isLoggedIn()) {
+          this.showLogin();
+          return;
+        }
+
+        // Validate token
+        var user = await Portal.getMe();
+        if (!user) {
+          this.showLogin();
+          return;
+        }
+
+        this.showApp(user);
+      },
+
+      saveAPIUrl: function() {
+        var url = document.getElementById('apiUrlInput').value.trim();
+        if (!url) { alert('Enter a URL'); return; }
+        Portal.setAPI(url);
+        document.getElementById('apiConfigOverlay').style.display = 'none';
+        this.init();
+      },
+
+      showLogin: function() {
+        document.getElementById('loginView').style.display = 'flex';
+        document.getElementById('appView').style.display = 'none';
+        // Enter key to submit
+        document.getElementById('loginPassword').addEventListener('keydown', function(e) {
+          if (e.key === 'Enter') PortalApp.doLogin();
+        });
+      },
+
+      async doLogin() {
+        var username = document.getElementById('loginUsername').value.trim();
+        var password = document.getElementById('loginPassword').value;
+        var errEl = document.getElementById('loginError');
+        var btn = document.getElementById('loginBtn');
+        if (!username || !password) { errEl.textContent = 'Enter both fields'; errEl.style.display = 'block'; return; }
+        btn.textContent = 'Signing in...';
+        btn.disabled = true;
+        try {
+          var user = await Portal.login(username, password);
+          if (user) {
+            this.showApp(user);
+          } else {
+            errEl.textContent = 'Invalid credentials';
+            errEl.style.display = 'block';
+          }
+        } catch(e) {
+          errEl.textContent = e.message || 'Login failed';
+          errEl.style.display = 'block';
+        }
+        btn.textContent = 'Enter';
+        btn.disabled = false;
+      },
+
+      showApp: function(user) {
+        document.getElementById('loginView').style.display = 'none';
+        document.getElementById('appView').style.display = 'flex';
+
+        // Set user info in sidebar
+        document.getElementById('userName').textContent = user.display_name;
+        document.getElementById('userVibe').textContent = user.vibe || user.role;
+        document.getElementById('userAvatar').textContent = (user.display_name || 'U')[0].toUpperCase();
+
+        // Show admin nav if admin
+        if (user.role === 'admin') {
+          document.getElementById('adminNav').style.display = '';
+        }
+
+        this.navigate('dashboard');
+      },
+
+      navigate: function(view, projectId) {
+        this.currentView = view;
+        this.currentProjectId = projectId || null;
+        var container = document.getElementById('mainContent');
+
+        // Update active nav
+        document.querySelectorAll('.p-sidebar-nav a').forEach(function(a) {
+          a.classList.toggle('active', a.dataset.view === view || (view === 'kanban' && a.dataset.view === 'projects'));
+        });
+
+        switch(view) {
+          case 'dashboard':
+            PortalDash.render(container);
+            break;
+          case 'kanban':
+            if (projectId) PortalKanban.render(container, projectId);
+            else PortalDash.render(container);
+            break;
+          case 'admin':
+            PortalAdmin.render(container);
+            break;
+          default:
+            PortalDash.render(container);
+        }
+      },
+
+      showModal: function(html) {
+        document.getElementById('modalContent').innerHTML = '<button class="p-modal-close" onclick="PortalApp.closeModal()">&times;</button>' + html;
+        document.getElementById('modalOverlay').classList.add('open');
+      },
+
+      closeModal: function() {
+        document.getElementById('modalOverlay').classList.remove('open');
+      },
+    };
+
+    // Boot
+    PortalApp.init();
+  })();
+  </script>
+
+</body>
+</html>
