@@ -776,22 +776,6 @@ components:
           format: date-time
           example: "2024-11-15T14:40:00Z"
 
-    ErrorResponse:
-      type: object
-      description: Standard error response returned by all endpoints on failure.
-      properties:
-        error:
-          type: string
-          description: Machine-readable error code.
-          example: "validation_error"
-        message:
-          type: string
-          description: Human-readable description of the error.
-          example: "The clientReference field is required."
-      required:
-        - error
-        - message
-
     Error:
       type: object
       properties:
