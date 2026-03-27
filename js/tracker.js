@@ -8,8 +8,8 @@
   'use strict';
 
   // ── Config ──────────────────────────────────────────────────────────────
-  // Set this to your Cloudflare tunnel URL or public ElektraOS URL
-  var TRACKER_URL = 'https://elektraos-tracker.trycloudflare.com/public/track';
+  // Cloudflare quick tunnel - update when restarted (run: cloudflared tunnel --url http://localhost:8000)
+  var TRACKER_URL = 'https://duration-extent-remark-maryland.trycloudflare.com/public/track';
   // Fallback: set via window.ELEKTRA_TRACKER_URL before this script loads
   if (window.ELEKTRA_TRACKER_URL) TRACKER_URL = window.ELEKTRA_TRACKER_URL;
 
