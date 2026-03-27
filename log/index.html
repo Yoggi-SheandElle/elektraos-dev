@@ -283,6 +283,102 @@
   <!-- Feed -->
   <div class="log-feed">
 
+    <!-- ===== March 27, 2026 - Session 1: AYLA + 40th Brick + MealShift ===== -->
+    <article class="log-entry reveal" itemscope itemtype="https://schema.org/TechArticle">
+      <meta itemprop="datePublished" content="2026-03-27">
+      <meta itemprop="author" content="ElektraOS.dev">
+      <div class="log-date">
+        <time datetime="2026-03-27">March 27, 2026</time>
+        <span style="margin-left:12px;padding:2px 8px;border-radius:4px;background:rgba(212,168,83,0.1);color:#d4a853;font-size:10px;">Client Launch</span>
+        <span style="margin-left:6px;padding:2px 8px;border-radius:4px;background:rgba(0,255,157,0.06);color:var(--green);font-size:10px;">6h 45m active</span>
+      </div>
+      <h2 class="log-title" itemprop="headline">AYLA Maison Launch + The 40th Brick Deploy + MealShift Phase 1</h2>
+      <p class="log-summary" itemprop="description">Deployed aylamaison.com for a luxury jewelry brand (Casablanca). Built and deployed The 40th Brick interactive puzzle game on Render with Steam Deck gamepad support. MealShift Phase 1 approved by client - sandbox environment greenlit.</p>
+
+      <div class="log-tags">
+        <span class="log-tag ship">Shipped</span>
+        <span class="log-tag design">E-Commerce</span>
+        <span class="log-tag" style="background:rgba(239,68,68,0.08);color:#f87171;">Game</span>
+        <span class="log-tag infra">API</span>
+      </div>
+
+      <ul class="log-items">
+        <li>aylamaison.com deployed: custom domain, DNS (4 A records + CNAME), GitHub Pages</li>
+        <li>3 collections (Luna, Sahara, Noor), 9 products, luxury dark UI with particle effects</li>
+        <li>Favicon, OG tags, sitemap.xml, robots.txt, canonical URLs for SEO foundation</li>
+        <li>The 40th Brick: 4 chapters, lobby, world map, achievements - deployed on Render</li>
+        <li>Gamepad API integration: D-pad, A/B buttons, shoulder triggers for Steam Deck</li>
+        <li>Server hardened: Helmet, rate limiting, input sanitization, CSP headers</li>
+        <li>MealShift OpenAPI spec fixed (duplicate ErrorResponse key at line 779)</li>
+        <li>MealShift Phase 1 approved: sandbox + developer onboarding portal</li>
+        <li>Elektra chat helper on 40th Brick teaser page (cryptic clue system)</li>
+      </ul>
+
+      <div class="log-metrics">
+        <div class="log-metric"><strong>2</strong> sites deployed</div>
+        <div class="log-metric"><strong>1</strong> game shipped</div>
+        <div class="log-metric"><strong>1</strong> client approved</div>
+        <div class="log-metric"><strong>9</strong> products live</div>
+      </div>
+
+      <div class="log-tech">
+        <span>GitHub Pages</span>
+        <span>Render</span>
+        <span>Node.js</span>
+        <span>Gamepad API</span>
+        <span>Socket.io</span>
+        <span>DNS</span>
+        <span>OpenAPI</span>
+        <span>PageCrypt</span>
+      </div>
+    </article>
+
+    <!-- ===== March 26, 2026 - Creative Network Portal ===== -->
+    <article class="log-entry reveal" itemscope itemtype="https://schema.org/TechArticle">
+      <meta itemprop="datePublished" content="2026-03-26">
+      <meta itemprop="author" content="ElektraOS.dev">
+      <div class="log-date">
+        <time datetime="2026-03-26">March 26, 2026</time>
+        <span style="margin-left:12px;padding:2px 8px;border-radius:4px;background:rgba(124,58,237,0.1);color:#a78bfa;font-size:10px;">Platform Build</span>
+        <span style="margin-left:6px;padding:2px 8px;border-radius:4px;background:rgba(0,255,157,0.06);color:var(--green);font-size:10px;">5h 20m active</span>
+      </div>
+      <h2 class="log-title" itemprop="headline">Creative Network Portal + Security Hardening</h2>
+      <p class="log-summary" itemprop="description">Built a private talent matching portal with JWT authentication, Kanban project boards, and AI-powered skill extraction from LinkedIn profiles. Ran full security audit across all 624 endpoints and fixed critical issues.</p>
+
+      <div class="log-tags">
+        <span class="log-tag ai">AI Matching</span>
+        <span class="log-tag infra">Security</span>
+        <span class="log-tag ship">Shipped</span>
+      </div>
+
+      <ul class="log-items">
+        <li>Portal backend: JWT auth, role-based access (admin/collaborator), 24h tokens</li>
+        <li>Kanban board with 5 statuses: backlog, todo, in_progress, review, done</li>
+        <li>AI skill extraction: parses LinkedIn text into structured profiles via Groq</li>
+        <li>AI task matching: scores team members against tasks by skills and creative angle</li>
+        <li>Brute-force protection: 5 login attempts per 5-minute window</li>
+        <li>Security audit: fixed JWT "changeme" fallback, CORS wildcard, rate limiter cleanup</li>
+        <li>Cloudflare tunnel configured for remote portal access</li>
+        <li>Activity logging on all portal actions (user + IP tracking)</li>
+      </ul>
+
+      <div class="log-metrics">
+        <div class="log-metric"><strong>15</strong> endpoints added</div>
+        <div class="log-metric"><strong>6</strong> ORM models</div>
+        <div class="log-metric"><strong>5</strong> security fixes</div>
+        <div class="log-metric"><strong>1</strong> tunnel configured</div>
+      </div>
+
+      <div class="log-tech">
+        <span>FastAPI</span>
+        <span>JWT</span>
+        <span>PBKDF2</span>
+        <span>Groq</span>
+        <span>Cloudflare Tunnel</span>
+        <span>SQLAlchemy</span>
+      </div>
+    </article>
+
     <!-- ===== March 25, 2026 ===== -->
     <!-- ===== March 25, 2026 - Session 3: MealShift ===== -->
     <article class="log-entry reveal" itemscope itemtype="https://schema.org/TechArticle">

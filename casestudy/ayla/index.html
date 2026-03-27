@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AYLA Maison - Case Study . ElektraOS.dev</title>
+  <meta name="description" content="AYLA Maison: luxury minimalist jewelry from Casablanca. Full e-commerce build with AI content management, SEO, and client portal. Live at aylamaison.com.">
+  <meta property="og:title" content="AYLA Maison - Case Study">
+  <meta property="og:description" content="Luxury jewelry e-commerce. 3 collections. 9 products. AI-powered content management. Live at aylamaison.com.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://elektraos.dev/casestudy/ayla/">
+  <meta name="theme-color" content="#B8956A">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="canonical" href="https://elektraos.dev/casestudy/ayla/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/animations.css">
+  <link rel="stylesheet" href="/css/sections.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+
+  <style>
+    .ayla-hero {
+      padding: 120px 24px 48px; text-align: center;
+      background: linear-gradient(180deg, rgba(184,149,106,0.06) 0%, transparent 60%);
+    }
+    .ayla-badge {
+      font-family: var(--font-mono); font-size: 10px;
+      text-transform: uppercase; letter-spacing: 2.5px;
+      color: #B8956A; padding: 6px 20px; border-radius: 999px;
+      border: 1px solid rgba(184,149,106,0.2);
+      background: rgba(184,149,106,0.04);
+      display: inline-block; margin-bottom: 20px;
+    }
+    .ayla-title {
+      font-size: clamp(32px, 5vw, 52px); font-weight: 700;
+      margin-bottom: 16px; line-height: 1.1;
+    }
+    .ayla-title .gold {
+      background: linear-gradient(135deg, #B8956A, #D4B896);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .ayla-sub {
+      font-size: 16px; color: var(--text-secondary);
+      max-width: 520px; margin: 0 auto 32px; line-height: 1.8;
+    }
+
+    /* Stats */
+    .ayla-stats {
+      display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;
+      padding: 24px 0; margin: 0 auto; max-width: 600px;
+      border-top: 1px solid rgba(184,149,106,0.1);
+      border-bottom: 1px solid rgba(184,149,106,0.1);
+    }
+    .ayla-stat-val {
+      font-family: var(--font-mono); font-size: 22px; font-weight: 700; color: #B8956A;
+    }
+    .ayla-stat-label {
+      font-size: 10px; text-transform: uppercase; letter-spacing: 1px;
+      color: var(--text-muted); margin-top: 2px;
+    }
+
+    /* Live embed */
+    .ayla-embed-wrap {
+      max-width: 960px; margin: 48px auto; padding: 0 24px;
+    }
+    .ayla-embed-label {
+      font-family: var(--font-mono); font-size: 10px;
+      text-transform: uppercase; letter-spacing: 2px;
+      color: var(--text-muted); margin-bottom: 12px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .ayla-embed-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--green); animation: pulse-dot 2s infinite;
+    }
+    @keyframes pulse-dot { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+    .ayla-embed {
+      width: 100%; height: 600px; border: 1px solid rgba(184,149,106,0.15);
+      border-radius: 16px; overflow: hidden;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.3);
+    }
+
+    /* Tech stack */
+    .ayla-tech-section {
+      max-width: 760px; margin: 0 auto; padding: 48px 24px;
+    }
+    .ayla-tech-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px; margin-top: 24px;
+    }
+    .ayla-tech-card {
+      background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 12px; padding: 20px;
+    }
+    .ayla-tech-card h4 {
+      font-size: 14px; font-weight: 600; margin-bottom: 6px;
+    }
+    .ayla-tech-card p {
+      font-size: 12px; color: var(--text-muted); line-height: 1.6;
+    }
+
+    /* CTA */
+    .ayla-cta {
+      text-align: center; padding: 48px 24px 80px;
+      border-top: 1px solid rgba(184,149,106,0.08); margin-top: 48px;
+      max-width: 760px; margin-left: auto; margin-right: auto;
+    }
+    .btn-gold {
+      display: inline-block; padding: 12px 32px; border-radius: 8px;
+      background: linear-gradient(135deg, #B8956A, #D4B896);
+      color: #1D1D1F; font-weight: 600; font-size: 14px;
+      text-decoration: none; transition: all 0.3s;
+    }
+    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(184,149,106,0.3); }
+
+    @media (max-width: 768px) {
+      .ayla-embed { height: 400px; }
+      .ayla-stats { gap: 20px; }
+    }
+  </style>
+  <link rel="stylesheet" href="/css/smart-features.css">
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div style="position:fixed;top:0;left:0;right:0;z-index:101;background:linear-gradient(90deg,rgba(184,149,106,0.12),rgba(212,184,150,0.08));border-bottom:1px solid rgba(184,149,106,0.15);padding:8px 0;text-align:center;font-family:var(--font-mono);font-size:11px;letter-spacing:0.5px;color:var(--text-secondary);backdrop-filter:blur(12px);">
+    <span style="color:#B8956A;">&#10022;</span> Client Project - Live at aylamaison.com
+  </div>
+
+  <!-- Nav -->
+  <nav class="nav" id="nav" style="top:33px;">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo"><span>E</span>lektraOS<span>.</span>dev</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/#solutions">Solutions</a></li>
+        <li><a href="/log/">Build Log</a></li>
+        <li><a href="/cases/" style="color:var(--cyan);">Case Studies</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/pricing/">Pricing</a></li>
+        <li><a href="/about/">About</a></li>
+      </ul>
+      <a href="/#contact" class="btn nav-cta">Let's Build</a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="ayla-hero">
+    <div class="ayla-badge">Client Case Study</div>
+    <h1 class="ayla-title">AYLA <span class="gold">Maison</span></h1>
+    <p class="ayla-sub">
+      Luxury minimalist jewelry from Casablanca. Full e-commerce build with
+      AI-powered content management, SEO foundation, and client self-service portal.
+    </p>
+
+    <div class="ayla-stats">
+      <div style="text-align:center;">
+        <div class="ayla-stat-val">3</div>
+        <div class="ayla-stat-label">Collections</div>
+      </div>
+      <div style="text-align:center;">
+        <div class="ayla-stat-val">9</div>
+        <div class="ayla-stat-label">Products</div>
+      </div>
+      <div style="text-align:center;">
+        <div class="ayla-stat-val">4</div>
+        <div class="ayla-stat-label">Pages</div>
+      </div>
+      <div style="text-align:center;">
+        <div class="ayla-stat-val">Live</div>
+        <div class="ayla-stat-label">Status</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Live Site Embed -->
+  <div class="ayla-embed-wrap">
+    <div class="ayla-embed-label">
+      <span class="ayla-embed-dot"></span>
+      aylamaison.com - live
+    </div>
+    <iframe src="https://aylamaison.com" class="ayla-embed" loading="lazy" title="AYLA Maison - Live Website"></iframe>
+  </div>
+
+  <!-- What Was Built -->
+  <div class="ayla-tech-section">
+    <span class="section-label" style="color:#B8956A;">What was built</span>
+    <h2 style="font-size:clamp(22px,3vw,32px);margin-top:8px;">End-to-end e-commerce delivery</h2>
+
+    <div class="ayla-tech-grid">
+      <div class="ayla-tech-card">
+        <h4>Website</h4>
+        <p>4-page luxury site with particle effects, animated cursor, scroll reveals. Dark aesthetic with gold accents.</p>
+      </div>
+      <div class="ayla-tech-card">
+        <h4>Product Catalog</h4>
+        <p>3 collections (Luna, Sahara, Noor), 9 products with filtering, modals, material specs.</p>
+      </div>
+      <div class="ayla-tech-card">
+        <h4>SEO Foundation</h4>
+        <p>Open Graph tags, canonical URLs, sitemap.xml, robots.txt. Optimized for Moroccan + international search.</p>
+      </div>
+      <div class="ayla-tech-card">
+        <h4>Custom Domain</h4>
+        <p>aylamaison.com with HTTPS, 4 A records, CNAME for www. GitHub Pages hosting.</p>
+      </div>
+      <div class="ayla-tech-card">
+        <h4>Client Portal</h4>
+        <p>Password-protected management dashboard. Product CRUD, image upload, price editing with approval workflow.</p>
+      </div>
+      <div class="ayla-tech-card">
+        <h4>AI Assistant</h4>
+        <p>Elektra chat scoped to AYLA brand voice. Generates descriptions, suggests SEO, manages content.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tech Stack -->
+  <div style="max-width:760px;margin:0 auto;padding:24px;">
+    <div style="display:flex;flex-wrap:wrap;gap:6px;">
+      <span style="font-family:var(--font-mono);font-size:10px;padding:4px 10px;border-radius:4px;background:rgba(184,149,106,0.06);border:1px solid rgba(184,149,106,0.1);color:#B8956A;">HTML/CSS/JS</span>
+      <span style="font-family:var(--font-mono);font-size:10px;padding:4px 10px;border-radius:4px;background:rgba(184,149,106,0.06);border:1px solid rgba(184,149,106,0.1);color:#B8956A;">GitHub Pages</span>
+      <span style="font-family:var(--font-mono);font-size:10px;padding:4px 10px;border-radius:4px;background:rgba(184,149,106,0.06);border:1px solid rgba(184,149,106,0.1);color:#B8956A;">PageCrypt AES-256</span>
+      <span style="font-family:var(--font-mono);font-size:10px;padding:4px 10px;border-radius:4px;background:rgba(184,149,106,0.06);border:1px solid rgba(184,149,106,0.1);color:#B8956A;">FastAPI</span>
+      <span style="font-family:var(--font-mono);font-size:10px;padding:4px 10px;border-radius:4px;background:rgba(184,149,106,0.06);border:1px solid rgba(184,149,106,0.1);color:#B8956A;">Groq LLM</span>
+      <span style="font-family:var(--font-mono);font-size:10px;padding:4px 10px;border-radius:4px;background:rgba(184,149,106,0.06);border:1px solid rgba(184,149,106,0.1);color:#B8956A;">Custom DNS</span>
+      <span style="font-family:var(--font-mono);font-size:10px;padding:4px 10px;border-radius:4px;background:rgba(184,149,106,0.06);border:1px solid rgba(184,149,106,0.1);color:#B8956A;">SEO</span>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="ayla-cta">
+    <h3 style="margin-bottom:8px;">Built by ElektraOS.dev</h3>
+    <p style="color:var(--text-secondary);font-size:14px;max-width:480px;margin:0 auto 24px;">
+      Need an e-commerce site with AI-powered content management? Let's talk.
+    </p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="https://aylamaison.com" target="_blank" rel="noopener" class="btn-gold">Visit aylamaison.com</a>
+      <a href="/cases/" class="btn btn-outline">All Case Studies</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-copy">
+        <span class="mono">&copy; 2026 ElektraOS.dev</span>
+        <span style="display:block;font-size:11px;color:var(--text-muted);margin-top:4px;">Copenhagen, Denmark</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/yoggi-sheandelle" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/yossra-benzad/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/i18n.js" defer></script>
+  <script>
+    // Nav hamburger
+    var hb=document.getElementById('navHamburger'),nl=document.getElementById('navLinks');
+    if(hb)hb.addEventListener('click',function(){nl.classList.toggle('open');hb.classList.toggle('open');});
+    // Scroll reveal
+    if('IntersectionObserver' in window){
+      var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target);}});},{threshold:0.1});
+      document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+    }
+  </script>
+</body>
+</html>
