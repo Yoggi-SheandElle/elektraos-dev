@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AYLA Maison - Management Portal</title>
+  <style>
+    :root {
+      --gold: #B8956A; --gold-light: #D4B896; --bg: #0f0f11; --bg-card: #161618;
+      --border: rgba(184,149,106,0.12); --text: #e8e6e3; --text-muted: #6b6b6b;
+      --green: #00ff9d; --red: #ff4444;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'DM Sans', -apple-system, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+    a { color: var(--gold); text-decoration: none; }
+
+    /* Header */
+    .portal-header {
+      padding: 16px 24px; border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 100;
+      background: rgba(15,15,17,0.95);
+    }
+    .portal-logo { font-size: 18px; font-weight: 700; letter-spacing: 4px; }
+    .portal-logo span { color: var(--gold); }
+    .portal-badge {
+      font-size: 9px; text-transform: uppercase; letter-spacing: 1.5px;
+      padding: 4px 12px; border-radius: 999px; border: 1px solid var(--border);
+      color: var(--gold);
+    }
+
+    /* Layout */
+    .portal-layout { display: grid; grid-template-columns: 1fr 360px; min-height: calc(100vh - 57px); }
+    @media (max-width: 900px) { .portal-layout { grid-template-columns: 1fr; } }
+
+    /* Main content */
+    .portal-main { padding: 24px; overflow-y: auto; }
+    .section-title {
+      font-size: 11px; text-transform: uppercase; letter-spacing: 2px;
+      color: var(--text-muted); margin-bottom: 16px;
+    }
+
+    /* Product grid */
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin-bottom: 32px; }
+    .product-card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
+      overflow: hidden; transition: all 0.3s; cursor: pointer;
+    }
+    .product-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+    .product-card img { width: 100%; height: 180px; object-fit: cover; }
+    .product-card-body { padding: 14px; }
+    .product-card-collection { font-size: 9px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gold); margin-bottom: 4px; }
+    .product-card-name { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+    .product-card-price { font-size: 16px; font-weight: 700; color: var(--gold); }
+    .product-card-stock { font-size: 10px; margin-top: 4px; }
+    .product-card-stock.in { color: var(--green); }
+    .product-card-stock.out { color: var(--red); }
+
+    /* Edit modal */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 200;
+      display: none; align-items: center; justify-content: center; padding: 24px;
+    }
+    .modal-overlay.visible { display: flex; }
+    .modal {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
+      width: 100%; max-width: 500px; max-height: 80vh; overflow-y: auto; padding: 28px;
+    }
+    .modal h3 { font-size: 18px; margin-bottom: 20px; }
+    .modal label { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 6px; margin-top: 14px; }
+    .modal input, .modal textarea, .modal select {
+      width: 100%; padding: 10px 14px; background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border); border-radius: 8px; color: var(--text);
+      font-size: 14px; font-family: inherit; outline: none;
+    }
+    .modal input:focus, .modal textarea:focus { border-color: var(--gold); }
+    .modal textarea { min-height: 80px; resize: vertical; }
+    .modal-actions { display: flex; gap: 10px; margin-top: 20px; }
+    .btn-gold {
+      padding: 10px 24px; border-radius: 8px; border: none; cursor: pointer;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: #1D1D1F; font-weight: 600; font-size: 13px; transition: all 0.2s;
+    }
+    .btn-gold:hover { transform: translateY(-1px); }
+    .btn-outline-sm {
+      padding: 10px 24px; border-radius: 8px; cursor: pointer;
+      background: transparent; border: 1px solid var(--border);
+      color: var(--text-muted); font-size: 13px; transition: all 0.2s;
+    }
+    .btn-outline-sm:hover { border-color: var(--gold); color: var(--text); }
+
+    /* Change queue */
+    .change-queue { margin-top: 32px; }
+    .change-item {
+      padding: 14px 16px; background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 10px; margin-bottom: 10px; display: flex; justify-content: space-between;
+      align-items: center;
+    }
+    .change-type {
+      font-size: 9px; text-transform: uppercase; letter-spacing: 1px;
+      padding: 2px 8px; border-radius: 4px;
+    }
+    .change-type.pending { background: rgba(245,158,11,0.1); color: #f59e0b; }
+    .change-type.approved { background: rgba(0,255,157,0.06); color: var(--green); }
+    .change-type.rejected { background: rgba(255,68,68,0.08); color: var(--red); }
+    .change-desc { font-size: 13px; flex: 1; margin: 0 12px; }
+    .change-time { font-size: 10px; color: var(--text-muted); }
+
+    /* Chat sidebar */
+    .chat-sidebar {
+      border-left: 1px solid var(--border); display: flex; flex-direction: column;
+      background: rgba(22,22,24,0.5);
+    }
+    .chat-header {
+      padding: 16px 18px; border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .chat-avatar {
+      width: 32px; height: 32px; border-radius: 10px;
+      background: linear-gradient(135deg, #7c3aed, #00d4ff);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 700; color: #fff;
+    }
+    .chat-name { font-size: 12px; font-weight: 600; }
+    .chat-status { font-size: 10px; color: var(--text-muted); }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+    .chat-messages::-webkit-scrollbar { width: 3px; }
+    .chat-messages::-webkit-scrollbar-thumb { background: rgba(184,149,106,0.2); border-radius: 3px; }
+    .chat-msg {
+      max-width: 88%; padding: 10px 14px; border-radius: 12px;
+      font-size: 13px; line-height: 1.6;
+    }
+    .chat-msg.bot { align-self: flex-start; background: rgba(124,58,237,0.08); border: 1px solid rgba(124,58,237,0.1); }
+    .chat-msg.user { align-self: flex-end; background: rgba(184,149,106,0.1); border: 1px solid rgba(184,149,106,0.12); }
+    .chat-input-wrap { padding: 12px; border-top: 1px solid var(--border); display: flex; gap: 8px; }
+    .chat-input {
+      flex: 1; background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+      border-radius: 10px; padding: 10px 14px; color: var(--text); font-size: 13px;
+      font-family: inherit; outline: none;
+    }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-input::placeholder { color: var(--text-muted); }
+    .chat-send {
+      width: 38px; height: 38px; border-radius: 10px; border: none;
+      background: linear-gradient(135deg, #7c3aed, #00d4ff);
+      color: #fff; cursor: pointer; font-size: 16px;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* Add product button */
+    .add-btn {
+      display: inline-flex; align-items: center; gap: 6px; padding: 10px 20px;
+      border-radius: 8px; border: 1px dashed var(--border); cursor: pointer;
+      background: transparent; color: var(--gold); font-size: 13px;
+      font-family: inherit; transition: all 0.2s; margin-bottom: 20px;
+    }
+    .add-btn:hover { border-color: var(--gold); background: rgba(184,149,106,0.04); }
+
+    /* Status indicator */
+    .status-bar {
+      padding: 8px 24px; background: rgba(0,255,157,0.03); border-bottom: 1px solid rgba(0,255,157,0.08);
+      font-size: 11px; color: var(--text-muted); display: flex; align-items: center; gap: 8px;
+    }
+    .status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); }
+
+    @media (max-width: 900px) {
+      .chat-sidebar { border-left: none; border-top: 1px solid var(--border); max-height: 400px; }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="portal-header">
+    <div class="portal-logo"><span>AYLA</span> MAISON</div>
+    <span class="portal-badge">Management Portal</span>
+  </div>
+
+  <div class="status-bar">
+    <span class="status-dot"></span>
+    Connected to ElektraOS - Changes require approval before going live
+  </div>
+
+  <div class="portal-layout">
+    <!-- Main Content -->
+    <div class="portal-main">
+      <div class="section-title">Products (9)</div>
+      <button class="add-btn" onclick="showAddModal()">+ Add New Product</button>
+
+      <div class="product-grid" id="productGrid">
+        <!-- Products loaded dynamically -->
+      </div>
+
+      <div class="change-queue">
+        <div class="section-title">Change History</div>
+        <div id="changeList">
+          <div class="change-item">
+            <span class="change-type approved">Approved</span>
+            <span class="change-desc">Site launched at aylamaison.com</span>
+            <span class="change-time">Mar 27, 2026</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chat Sidebar -->
+    <div class="chat-sidebar">
+      <div class="chat-header">
+        <div class="chat-avatar">E</div>
+        <div>
+          <div class="chat-name">Elektra</div>
+          <div class="chat-status">AYLA Brand Assistant</div>
+        </div>
+      </div>
+      <div class="chat-messages" id="chatMsgs">
+        <div class="chat-msg bot">Welcome to your portal, Aya. I can help you add products, update prices, write descriptions, or suggest SEO improvements. What would you like to do?</div>
+      </div>
+      <div class="chat-input-wrap">
+        <input class="chat-input" id="chatInput" placeholder="Ask Elektra..." autocomplete="off">
+        <button class="chat-send" id="chatSend">&#8593;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Modal -->
+  <div class="modal-overlay" id="editModal">
+    <div class="modal">
+      <h3 id="modalTitle">Edit Product</h3>
+      <input type="hidden" id="editId">
+
+      <label>Collection</label>
+      <select id="editCollection">
+        <option value="luna">Luna Collection</option>
+        <option value="sahara">Sahara Collection</option>
+        <option value="noor">Noor Collection</option>
+      </select>
+
+      <label>Product Name</label>
+      <input type="text" id="editName" placeholder="e.g. Luna Crescent Pendant">
+
+      <label>Price (MAD)</label>
+      <input type="number" id="editPrice" placeholder="890">
+
+      <label>Materials</label>
+      <input type="text" id="editMaterials" placeholder="e.g. 18K Gold Vermeil">
+
+      <label>Category</label>
+      <select id="editCategory">
+        <option value="necklaces">Necklaces</option>
+        <option value="rings">Rings</option>
+        <option value="earrings">Earrings</option>
+        <option value="bracelets">Bracelets</option>
+      </select>
+
+      <label>Short Description</label>
+      <textarea id="editDescShort" placeholder="One-line description for product cards"></textarea>
+
+      <label>Full Description</label>
+      <textarea id="editDescLong" placeholder="Detailed product description"></textarea>
+
+      <label>In Stock</label>
+      <select id="editStock">
+        <option value="true">In Stock</option>
+        <option value="false">Out of Stock</option>
+      </select>
+
+      <div class="modal-actions">
+        <button class="btn-gold" onclick="submitChange()">Submit for Approval</button>
+        <button class="btn-outline-sm" onclick="closeModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  (function(){
+    // Products data (loaded from products.json or API)
+    var API = null; // Will try localhost:8000/aya first, fallback to static
+    var products = [];
+
+    // Load products
+    function loadProducts() {
+      fetch('https://aylamaison.com/products.json')
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          products = data.products || [];
+          renderProducts();
+        })
+        .catch(function() {
+          // Fallback: hardcoded from last known state
+          renderProducts();
+        });
+    }
+
+    function renderProducts() {
+      var grid = document.getElementById('productGrid');
+      grid.innerHTML = '';
+      products.forEach(function(p, i) {
+        var card = document.createElement('div');
+        card.className = 'product-card';
+        card.onclick = function() { openEdit(i); };
+        card.innerHTML =
+          '<img src="https://aylamaison.com/' + p.image + '" alt="' + p.name + '" onerror="this.style.background=\'var(--bg-card)\';this.style.height=\'180px\'">' +
+          '<div class="product-card-body">' +
+            '<div class="product-card-collection">' + p.collection + '</div>' +
+            '<div class="product-card-name">' + p.name + '</div>' +
+            '<div class="product-card-price">' + p.price_mad.toLocaleString() + ' MAD</div>' +
+            '<div class="product-card-stock ' + (p.in_stock ? 'in' : 'out') + '">' + (p.in_stock ? 'In Stock' : 'Out of Stock') + '</div>' +
+          '</div>';
+        grid.appendChild(card);
+      });
+    }
+
+    // Modal
+    window.openEdit = function(idx) {
+      var p = products[idx];
+      document.getElementById('modalTitle').textContent = 'Edit: ' + p.name;
+      document.getElementById('editId').value = p.id;
+      document.getElementById('editCollection').value = p.collection;
+      document.getElementById('editName').value = p.name;
+      document.getElementById('editPrice').value = p.price_mad;
+      document.getElementById('editMaterials').value = p.materials;
+      document.getElementById('editCategory').value = p.category;
+      document.getElementById('editDescShort').value = p.description_short;
+      document.getElementById('editDescLong').value = p.description_long;
+      document.getElementById('editStock').value = p.in_stock ? 'true' : 'false';
+      document.getElementById('editModal').classList.add('visible');
+    };
+
+    window.showAddModal = function() {
+      document.getElementById('modalTitle').textContent = 'Add New Product';
+      document.getElementById('editId').value = '';
+      document.getElementById('editName').value = '';
+      document.getElementById('editPrice').value = '';
+      document.getElementById('editMaterials').value = '';
+      document.getElementById('editDescShort').value = '';
+      document.getElementById('editDescLong').value = '';
+      document.getElementById('editModal').classList.add('visible');
+    };
+
+    window.closeModal = function() {
+      document.getElementById('editModal').classList.remove('visible');
+    };
+
+    window.submitChange = function() {
+      var change = {
+        id: document.getElementById('editId').value,
+        collection: document.getElementById('editCollection').value,
+        name: document.getElementById('editName').value,
+        price_mad: parseInt(document.getElementById('editPrice').value),
+        materials: document.getElementById('editMaterials').value,
+        category: document.getElementById('editCategory').value,
+        description_short: document.getElementById('editDescShort').value,
+        description_long: document.getElementById('editDescLong').value,
+        in_stock: document.getElementById('editStock').value === 'true'
+      };
+
+      // Add to change queue visually
+      var list = document.getElementById('changeList');
+      var type = change.id ? 'Update' : 'Add';
+      var item = document.createElement('div');
+      item.className = 'change-item';
+      item.innerHTML =
+        '<span class="change-type pending">Pending</span>' +
+        '<span class="change-desc">' + type + ': ' + change.name + ' - ' + change.price_mad + ' MAD</span>' +
+        '<span class="change-time">Just now</span>';
+      list.insertBefore(item, list.firstChild);
+
+      // Try API
+      if (API) {
+        fetch(API + '/aya/products' + (change.id ? '/' + change.id : ''), {
+          method: change.id ? 'PUT' : 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(change)
+        }).catch(function() {});
+      }
+
+      closeModal();
+      addChatMsg('Change submitted: ' + type + ' ' + change.name + ' (' + change.price_mad + ' MAD). Waiting for Yossra to approve.', false);
+    };
+
+    // Chat
+    var chatMsgs = document.getElementById('chatMsgs');
+    var chatInput = document.getElementById('chatInput');
+    var chatSend = document.getElementById('chatSend');
+
+    function addChatMsg(text, isUser) {
+      var div = document.createElement('div');
+      div.className = 'chat-msg ' + (isUser ? 'user' : 'bot');
+      div.textContent = text;
+      chatMsgs.appendChild(div);
+      chatMsgs.scrollTop = chatMsgs.scrollHeight;
+    }
+
+    // Local AYLA-specific responses
+    var aylaResponses = {
+      price: [
+        "To change a price, click the product card and update the MAD amount. All changes need Yossra's approval before going live.",
+        "Current pricing range: 450-1,450 MAD across all collections. Want me to suggest a price for a new piece?"
+      ],
+      add: [
+        "Click the '+ Add New Product' button above. Fill in the collection, name, price, materials, and description. I can help write the description if you tell me about the piece.",
+        "Which collection is the new piece for? Luna (celestial), Sahara (desert), or Noor (light)?"
+      ],
+      description: [
+        "Tell me the product name and materials, and I will write a description in AYLA's brand voice - warm, refined, French-Arabic fusion.",
+        "Good descriptions focus on how the piece feels, not just what it looks like. What emotion should this piece evoke?"
+      ],
+      seo: [
+        "Each product needs a short description (50 words for cards) and a long description (150 words for detail view). Both should include keywords like 'Casablanca jewelry', 'handmade', and the collection name.",
+        "For Instagram, use hashtags: #AYLAMaison #CasablancaJewelry #MoroccanLuxury #HandmadeJewelry #MinimalistJewelry"
+      ],
+      stock: [
+        "To mark a piece as out of stock, click the product card and change the stock status. It stays visible on the site but shows as unavailable.",
+        "Out of stock items can still receive inquiries. Consider adding a 'Notify Me' feature for high-demand pieces."
+      ],
+      collection: [
+        "Luna (moon-inspired, celestial motifs), Sahara (desert textures, warm gold), Noor (light, pearls, shimmer). Each has its own visual language.",
+        "To add a new collection, we will need: a name, a tagline, at least 3 products, and a hero image. Let me know when you are ready."
+      ],
+      help: [
+        "I can help with: adding products, updating prices, writing descriptions, SEO suggestions, stock management, and collection planning. What do you need?",
+        "Try asking me to write a product description, suggest a price, or improve your SEO. I know AYLA's brand voice."
+      ]
+    };
+
+    var fallbacks = [
+      "I can help with that. Could you be more specific? Try asking about prices, descriptions, SEO, or adding products.",
+      "That is a great question. For product changes, use the cards above. For strategy, keep talking to me.",
+      "I am here to help you manage AYLA. Ask me about products, collections, pricing, or content."
+    ];
+
+    function getLocalResponse(q) {
+      q = q.toLowerCase();
+      var keys = Object.keys(aylaResponses);
+      for (var i = 0; i < keys.length; i++) {
+        if (q.indexOf(keys[i]) !== -1) {
+          var pool = aylaResponses[keys[i]];
+          return pool[Math.floor(Math.random() * pool.length)];
+        }
+      }
+      if (q.match(/hello|hi|hey|bonjour|salut|merhba/)) return "Hello Aya! Ready to work on AYLA Maison. What would you like to do today?";
+      if (q.match(/thank|merci|shukran/)) return "You are welcome! Let me know if you need anything else.";
+      return fallbacks[Math.floor(Math.random() * fallbacks.length)];
+    }
+
+    function handleChat() {
+      var q = chatInput.value.trim();
+      if (!q) return;
+      addChatMsg(q, true);
+      chatInput.value = '';
+
+      // Try API first, fallback to local
+      if (API) {
+        fetch(API + '/aya/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: q, session_id: 'aya-portal' })
+        })
+        .then(function(r) { return r.json(); })
+        .then(function(data) { addChatMsg(data.reply || data.message || getLocalResponse(q), false); })
+        .catch(function() {
+          setTimeout(function() { addChatMsg(getLocalResponse(q), false); }, 600);
+        });
+      } else {
+        setTimeout(function() { addChatMsg(getLocalResponse(q), false); }, 600);
+      }
+    }
+
+    chatSend.addEventListener('click', handleChat);
+    chatInput.addEventListener('keydown', function(e) { if (e.key === 'Enter') handleChat(); });
+
+    // Check API availability
+    fetch('http://localhost:8000/aya/products', { signal: AbortSignal.timeout(3000) })
+      .then(function(r) { if (r.ok) API = 'http://localhost:8000'; })
+      .catch(function() { API = null; });
+
+    // Init
+    loadProducts();
+  })();
+  </script>
+</body>
+</html>
