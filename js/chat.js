@@ -92,15 +92,6 @@
     if (panel.classList.contains('open')) input.focus();
   });
 
-  // Also let sigil3d trigger toggle
-  var sigil = document.getElementById('sigil3d');
-  if (sigil && sigil !== toggle) {
-    sigil.addEventListener('click', function () {
-      panel.classList.toggle('open');
-      if (panel.classList.contains('open')) input.focus();
-    });
-  }
-
   if (closeBtn) closeBtn.addEventListener('click', function () { panel.classList.remove('open'); });
 
   // ── Add message to chat ──

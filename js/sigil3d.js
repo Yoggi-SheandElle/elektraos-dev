@@ -4,10 +4,28 @@
   var container = document.getElementById('sigil3d');
   if (!container) return;
 
+  // Shared toggle function used by both the 3D click handler and the fallback
+  function toggleChat() {
+    var panel = document.getElementById('chatPanel');
+    var inp = document.getElementById('chatInput');
+    if (!panel) return;
+    panel.classList.toggle('open');
+    if (panel.classList.contains('open') && inp) inp.focus();
+  }
+
   // Lazy-load Three.js from CDN
   var script = document.createElement('script');
   script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
   script.onload = initSigil;
+  script.onerror = function () {
+    // Three.js failed - still make the container clickable
+    container.style.cursor = 'pointer';
+    container.style.background = 'rgba(124,58,237,0.15)';
+    container.style.border = '1px solid rgba(124,58,237,0.4)';
+    container.style.borderRadius = '18px';
+    container.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#7c3aed;font-size:22px;font-weight:700;font-family:sans-serif;">E</div>';
+    container.addEventListener('click', toggleChat);
+  };
   document.head.appendChild(script);
 
   function initSigil() {
@@ -205,10 +223,7 @@
     });
 
     // ---- Click: toggle chat panel ----
-    container.addEventListener('click', function () {
-      var hiddenToggle = document.getElementById('chatToggle');
-      if (hiddenToggle) hiddenToggle.click();
-    });
+    container.addEventListener('click', toggleChat);
     container.style.cursor = 'pointer';
 
     // ---- System state polling (from pulse) ----
