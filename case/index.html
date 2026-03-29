@@ -192,6 +192,25 @@ p.lead{font-size:1.3rem;color:var(--white);font-weight:300;}
 .terminal .highlight{color:var(--amber);}
 .terminal .cursor{display:inline-block;width:8px;height:14px;background:var(--teal);animation:blink 1s step-end infinite;vertical-align:text-bottom;margin-left:2px;}
 
+/* PRICING TABLE */
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin:2rem 0;}
+.pricing-card{background:var(--navy-card);border:1px solid rgba(0,201,167,0.08);border-radius:14px;padding:1.75rem;transition:all 0.4s;position:relative;overflow:hidden;}
+.pricing-card:hover{border-color:var(--teal);transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,201,167,0.08);}
+.pricing-card.popular{border-color:rgba(232,168,56,0.3);background:linear-gradient(135deg,var(--navy-card),rgba(232,168,56,0.04));}
+.pricing-card.popular::before{content:'MOST POPULAR';position:absolute;top:12px;right:-28px;background:var(--amber);color:var(--navy);font-family:'JetBrains Mono',monospace;font-size:0.55rem;font-weight:600;letter-spacing:0.1em;padding:3px 32px;transform:rotate(45deg);}
+.pricing-tier{font-family:'JetBrains Mono',monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:0.75rem;}
+.pricing-tier.micro{color:var(--teal);}
+.pricing-tier.starter{color:var(--amber);}
+.pricing-tier.pro{color:var(--magenta);}
+.pricing-amount{font-family:'Outfit',sans-serif;font-weight:800;font-size:2.2rem;color:var(--white);line-height:1;margin-bottom:0.25rem;}
+.pricing-amount span{font-size:0.9rem;font-weight:400;color:var(--gray);}
+.pricing-local{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--gray);margin-bottom:1rem;}
+.pricing-features{list-style:none;padding:0;margin:1rem 0;}
+.pricing-features li{font-size:0.9rem;color:var(--gray-light);padding:0.35rem 0;padding-left:1.2rem;position:relative;}
+.pricing-features li::before{content:'>';position:absolute;left:0;color:var(--teal);font-family:'JetBrains Mono',monospace;font-weight:700;}
+.pricing-note{background:var(--navy-light);border-left:3px solid var(--teal);border-radius:0 12px 12px 0;padding:1.25rem 1.5rem;margin:2rem 0;}
+.pricing-note p{margin:0;font-size:0.9rem;}
+
 .divider{width:60px;height:2px;background:linear-gradient(90deg,var(--teal),var(--amber));margin:2.5rem 0;border-radius:2px;}
 
 footer{text-align:center;padding:3rem 2rem;font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--gray-dark);letter-spacing:0.05em;}
@@ -210,6 +229,7 @@ footer{text-align:center;padding:3rem 2rem;font-family:'JetBrains Mono',monospac
     <a href="#how">Method</a>
     <a href="#together">Together</a>
     <a href="#network">Network</a>
+    <a href="#pricing">Pricing</a>
     <a href="#vision">Vision</a>
     <a href="#next">Next</a>
   </div>
@@ -505,9 +525,85 @@ footer{text-align:center;padding:3rem 2rem;font-family:'JetBrains Mono',monospac
   </div>
 </section>
 
+<!-- ACCRA PRICING -->
+<section id="pricing" class="fade">
+  <div class="section-tag">06 / Fair Pricing for Accra</div>
+  <h2>Real prices.<br><span class="hl-a">Built for your economy.</span></h2>
+  <p>Copenhagen is 4-5x more expensive than Accra. Our pricing reflects that. These are not discounts - they're fair market rates calibrated to Ghana's creative economy. All payments work with Mobile Money (MTN MoMo, Vodafone Cash).</p>
+
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <div class="pricing-tier micro">Micro</div>
+      <div class="pricing-amount">$25 <span>/month</span></div>
+      <div class="pricing-local">~ GHS 275 via MoMo</div>
+      <p style="font-size:0.85rem;color:var(--gray);margin-bottom:0.75rem;">For solo freelancers and creators getting started.</p>
+      <ul class="pricing-features">
+        <li>AI chatbot for your business</li>
+        <li>Basic social media scheduling</li>
+        <li>1 automation workflow</li>
+        <li>Email + chat support</li>
+      </ul>
+    </div>
+    <div class="pricing-card popular">
+      <div class="pricing-tier starter">Starter</div>
+      <div class="pricing-amount">$75 <span>/month</span></div>
+      <div class="pricing-local">~ GHS 823 via MoMo</div>
+      <p style="font-size:0.85rem;color:var(--gray);margin-bottom:0.75rem;">For small businesses ready to scale with AI.</p>
+      <ul class="pricing-features">
+        <li>Custom AI assistant</li>
+        <li>Content generation pipeline</li>
+        <li>5 automation workflows</li>
+        <li>Social media management</li>
+        <li>Monthly strategy call</li>
+      </ul>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-tier pro">Professional</div>
+      <div class="pricing-amount">$200 <span>/month</span></div>
+      <div class="pricing-local">~ GHS 2,194 via MoMo</div>
+      <p style="font-size:0.85rem;color:var(--gray);margin-bottom:0.75rem;">Full AI infrastructure. Replaces a part-time hire.</p>
+      <ul class="pricing-features">
+        <li>Full ElektraOS-lite system</li>
+        <li>Unlimited AI agents</li>
+        <li>E-commerce integration</li>
+        <li>SEO + content engine</li>
+        <li>Client portal</li>
+        <li>Priority support</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0;">
+    <div class="pricing-note">
+      <p><strong style="color:var(--white);">One-time projects</strong></p>
+      <p style="margin-top:0.3rem;">Website: <span style="color:var(--teal);">$75-$500</span> (vs GHS 800-7,000 local agencies)<br>
+      AI Chatbot: <span style="color:var(--teal);">$50-$250</span> setup<br>
+      Automation: <span style="color:var(--teal);">$30-$200</span> per workflow</p>
+    </div>
+    <div class="pricing-note" style="border-left-color:var(--amber);">
+      <p><strong style="color:var(--white);">Why these prices work</strong></p>
+      <p style="margin-top:0.3rem;">A social media manager in Accra costs <span style="color:var(--amber);">GHS 300-1,500/mo</span>. Our Starter tier gives you AI-powered content + automation + strategy for <span style="color:var(--amber);">GHS 823/mo</span> - and it runs 24/7.</p>
+    </div>
+  </div>
+
+  <div class="terminal">
+    <span class="prompt">elektra:~$</span> <span class="output">pricing.compare("accra", "copenhagen")</span><br>
+    <span class="output">+===============================================+</span><br>
+    <span class="output">| FAIR PRICING MODEL                            |</span><br>
+    <span class="output">| Cost of living ratio: </span><span class="highlight">4.3x</span><span class="output">                   |</span><br>
+    <span class="output">| Price adjustment: </span><span class="highlight">7-10x discount</span><span class="output">              |</span><br>
+    <span class="output">| Payment: </span><span class="highlight">Mobile Money (MoMo)</span><span class="output">                |</span><br>
+    <span class="output">| 59.7% of Ghanaians use mobile money           |</span><br>
+    <span class="output">| GHS 3.6T mobile money transactions in 2025    |</span><br>
+    <span class="output">| Philosophy: </span><span class="highlight">Fair, not discounted</span><span class="output">             |</span><br>
+    <span class="output">+===============================================+</span><br>
+    <span class="prompt">elektra:~$</span> <span class="cursor"></span>
+  </div>
+</section>
+
 <!-- VISION -->
 <section id="vision" class="fade">
-  <div class="section-tag">06 / The Vision</div>
+  <div class="section-tag">07 / The Vision</div>
   <h2>A fair society<br>for <span class="hl-a">underdogs.</span></h2>
   <p class="lead">What if every creative, in every country, had access to the same AI-powered tools that only well-funded startups have today?</p>
 
@@ -523,7 +619,7 @@ footer{text-align:center;padding:3rem 2rem;font-family:'JetBrains Mono',monospac
 
 <!-- NEXT STEPS -->
 <section id="next" class="fade">
-  <div class="section-tag">07 / Next Steps</div>
+  <div class="section-tag">08 / Next Steps</div>
 
   <div class="cta-block">
     <h2>Mercy, let's figure this out.</h2>
@@ -561,8 +657,9 @@ footer{text-align:center;padding:3rem 2rem;font-family:'JetBrains Mono',monospac
   <div class="cmd-item" onclick="goto('together')">Together - What we build <span class="cmd-key">03</span></div>
   <div class="cmd-item" onclick="goto('network')">Network - 6 cities, real data <span class="cmd-key">04</span></div>
   <div class="cmd-item" onclick="goto('proof')">Proof - Stats + system <span class="cmd-key">05</span></div>
-  <div class="cmd-item" onclick="goto('vision')">Vision - Fair society for underdogs <span class="cmd-key">06</span></div>
-  <div class="cmd-item" onclick="goto('next')">Next - Let's figure it out <span class="cmd-key">07</span></div>
+  <div class="cmd-item" onclick="goto('pricing')">Pricing - Fair rates for Accra <span class="cmd-key">06</span></div>
+  <div class="cmd-item" onclick="goto('vision')">Vision - Fair society for underdogs <span class="cmd-key">07</span></div>
+  <div class="cmd-item" onclick="goto('next')">Next - Let's figure it out <span class="cmd-key">08</span></div>
   <div class="cmd-item" onclick="window.open('https://elektraos.dev','_blank')">Open elektraos.dev &#8599; <span class="cmd-key">&#8594;</span></div>
 </div>
 
