@@ -705,7 +705,7 @@ footer{text-align:center;padding:3rem 2rem;font-family:'JetBrains Mono',monospac
 <div class="mercy-chat">
   <div class="chat-panel-mercy" id="mercyChat">
     <div class="chat-head">
-      <div class="chat-avatar"><svg width="24" height="24" viewBox="0 0 64 64"><ellipse cx="32" cy="36" rx="22" ry="20" fill="#8B5E3C"/><ellipse cx="32" cy="36" rx="22" ry="20" fill="url(#coco-g)" opacity="0.5"/><ellipse cx="32" cy="34" rx="16" ry="14" fill="#D4A574" opacity="0.3"/><circle cx="24" cy="32" r="3" fill="#5C3A1E"/><circle cx="40" cy="32" r="3" fill="#5C3A1E"/><circle cx="32" cy="40" r="2.5" fill="#5C3A1E"/><path d="M26 18 Q32 8 38 18" stroke="#4CAF50" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M22 20 Q28 10 34 16" stroke="#66BB6A" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M30 16 Q36 6 42 18" stroke="#81C784" stroke-width="2" fill="none" stroke-linecap="round"/><defs><radialGradient id="coco-g" cx="0.3" cy="0.3"><stop offset="0%" stop-color="#D4A574"/><stop offset="100%" stop-color="#5C3A1E"/></radialGradient></defs></svg></div>
+      <div class="chat-avatar"><svg width="24" height="24" viewBox="0 0 64 64"><circle cx="32" cy="34" r="22" fill="#6B3F1F"/><circle cx="32" cy="34" r="20" fill="#8B5E3C"/><circle cx="32" cy="34" r="18" fill="url(#coco-sh)" opacity="0.6"/><circle cx="25" cy="28" r="3.5" fill="#5C3310" opacity="0.8"/><circle cx="39" cy="28" r="3.5" fill="#5C3310" opacity="0.8"/><circle cx="32" cy="38" r="3" fill="#5C3310" opacity="0.8"/><ellipse cx="32" cy="34" rx="14" ry="12" fill="none" stroke="#A0724E" stroke-width="0.5" opacity="0.3"/><defs><radialGradient id="coco-sh" cx="0.35" cy="0.3" r="0.7"><stop offset="0%" stop-color="#A07050"/><stop offset="100%" stop-color="#5C3A1E"/></radialGradient></defs></svg></div>
       <div class="chat-head-info">
         <div class="chat-head-name">Elektra</div>
         <div class="chat-head-status" id="chatStatus">ONLINE</div>
@@ -723,7 +723,7 @@ footer{text-align:center;padding:3rem 2rem;font-family:'JetBrains Mono',monospac
     </div>
   </div>
   <div class="chat-toggle-btn" onclick="toggleMercyChat()">
-    <svg width="32" height="32" viewBox="0 0 64 64"><ellipse cx="32" cy="36" rx="22" ry="20" fill="#8B5E3C"/><ellipse cx="32" cy="36" rx="22" ry="20" fill="url(#coco-g2)" opacity="0.5"/><ellipse cx="32" cy="34" rx="16" ry="14" fill="#D4A574" opacity="0.3"/><circle cx="24" cy="32" r="3" fill="#5C3A1E"/><circle cx="40" cy="32" r="3" fill="#5C3A1E"/><circle cx="32" cy="40" r="2.5" fill="#5C3A1E"/><path d="M26 18 Q32 8 38 18" stroke="#4CAF50" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M22 20 Q28 10 34 16" stroke="#66BB6A" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M30 16 Q36 6 42 18" stroke="#81C784" stroke-width="2" fill="none" stroke-linecap="round"/><defs><radialGradient id="coco-g2" cx="0.3" cy="0.3"><stop offset="0%" stop-color="#D4A574"/><stop offset="100%" stop-color="#5C3A1E"/></radialGradient></defs></svg>
+    <svg width="32" height="32" viewBox="0 0 64 64"><circle cx="32" cy="34" r="22" fill="#6B3F1F"/><circle cx="32" cy="34" r="20" fill="#8B5E3C"/><circle cx="32" cy="34" r="18" fill="url(#coco-sh2)" opacity="0.6"/><circle cx="25" cy="28" r="3.5" fill="#5C3310" opacity="0.8"/><circle cx="39" cy="28" r="3.5" fill="#5C3310" opacity="0.8"/><circle cx="32" cy="38" r="3" fill="#5C3310" opacity="0.8"/><ellipse cx="32" cy="34" rx="14" ry="12" fill="none" stroke="#A0724E" stroke-width="0.5" opacity="0.3"/><defs><radialGradient id="coco-sh2" cx="0.35" cy="0.3" r="0.7"><stop offset="0%" stop-color="#A07050"/><stop offset="100%" stop-color="#5C3A1E"/></radialGradient></defs></svg>
     <span class="online-dot"></span>
   </div>
 </div>
@@ -748,7 +748,7 @@ footer{text-align:center;padding:3rem 2rem;font-family:'JetBrains Mono',monospac
 </div>
 
 <!-- COMMAND PALETTE -->
-<button class="cmd-toggle" onclick="toggleCmd()" title="Quick navigate">&#9889;</button>
+<button class="cmd-toggle" onclick="toggleCmd()" title="Quick navigate" style="display:none;">&#9889;</button>
 <div class="cmd-panel" id="cmdPanel">
   <h3>&#9889; Quick Navigate</h3>
   <div class="cmd-item" onclick="goto('origin')">The Problem - Why I built this <span class="cmd-key">01</span></div>
