@@ -69,26 +69,19 @@
     /* ===== BENTO GRID ===== */
     .cases-grid {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
+      grid-template-columns: 1fr 1fr;
       gap: 16px;
-      max-width: 1080px;
+      max-width: 960px;
       margin: 0 auto;
       padding: 0 24px 80px;
     }
-    /* Card sizes: featured=12col, large=8col, medium=6col, small=4col */
-    .case-card-full { grid-column: span 6; }
-    .case-card-full.featured { grid-column: span 12; }
-    .case-card-full.wide { grid-column: span 8; }
-    .case-card-full.narrow { grid-column: span 4; }
+    .case-card-full { grid-column: span 1; }
+    .case-card-full.featured { grid-column: 1 / -1; }
+    .case-card-full.wide { grid-column: 1 / -1; }
 
-    @media (max-width: 900px) {
-      .cases-grid { grid-template-columns: repeat(6, 1fr); }
-      .case-card-full, .case-card-full.wide, .case-card-full.narrow { grid-column: span 6; }
-      .case-card-full.featured { grid-column: span 6; }
-    }
-    @media (max-width: 600px) {
+    @media (max-width: 700px) {
       .cases-grid { grid-template-columns: 1fr; gap: 12px; }
-      .case-card-full, .case-card-full.featured, .case-card-full.wide, .case-card-full.narrow { grid-column: span 1; }
+      .case-card-full, .case-card-full.featured, .case-card-full.wide { grid-column: span 1; }
     }
 
     /* ===== CARD BASE ===== */
@@ -157,19 +150,9 @@
       margin-top: auto;
     }
 
-    /* ===== FEATURED CARD LAYOUT (horizontal for desktop) ===== */
-    .case-card-full.featured {
-      grid-template-rows: 1fr;
-      grid-template-columns: 1fr 1fr;
-    }
-    .case-card-full.featured .case-header { grid-column: 1; grid-row: 1; }
-    .case-card-full.featured .case-body { grid-column: 2; grid-row: 1; display: flex; flex-direction: column; justify-content: center; border-left: 1px solid rgba(255,255,255,0.04); }
-    .case-card-full.featured .case-arrow { grid-column: 1 / -1; }
-    @media (max-width: 900px) {
-      .case-card-full.featured { grid-template-columns: 1fr; grid-template-rows: auto 1fr auto; }
-      .case-card-full.featured .case-header,
-      .case-card-full.featured .case-body { grid-column: 1; grid-row: auto; border-left: none; }
-      .case-card-full.featured .case-arrow { grid-column: 1; }
+    /* ===== FEATURED CARD ===== */
+    .case-card-full.featured .case-body {
+      border-top: 1px solid rgba(255,255,255,0.04);
     }
 
     /* ===== CATEGORY FILTERS ===== */
@@ -302,15 +285,15 @@
       </div>
       <div class="case-arrow" style="flex-wrap:wrap;gap:8px;">
         <span>View case study &rarr;</span>
-        <a href="https://yoggi-sheandelle.github.io/elektraos-portfolio/" target="_blank" rel="noopener" onclick="event.stopPropagation();" style="font-family:var(--font-mono);font-size:10px;color:var(--cyan);text-decoration:none;background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.2);padding:4px 10px;border-radius:6px;display:inline-flex;align-items:center;gap:5px;">
+        <span onclick="event.preventDefault();event.stopPropagation();window.open('https://yoggi-sheandelle.github.io/elektraos-portfolio/','_blank');" style="font-family:var(--font-mono);font-size:10px;color:var(--cyan);cursor:pointer;background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.2);padding:4px 10px;border-radius:6px;display:inline-flex;align-items:center;gap:5px;">
           <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
           Live Portfolio
-        </a>
+        </span>
       </div>
     </a>
 
     <!-- ROW 2: AYLA (8 col) + Network/Mercy (4 col) -->
-    <a href="/casestudy/ayla/" class="case-card-full wide reveal" data-cat="ecommerce website ai" itemscope itemtype="https://schema.org/CreativeWork">
+    <a href="/casestudy/ayla/" class="case-card-full reveal" data-cat="ecommerce website ai" itemscope itemtype="https://schema.org/CreativeWork">
       <div class="status-badge live"><span class="status-dot" style="background:var(--green);"></span> Live</div>
       <div class="case-header">
         <div class="case-tags">
@@ -336,7 +319,7 @@
     </a>
 
     <!-- Mercy / Global Network (4 col, network card) -->
-    <a href="/case/" class="case-card-full narrow network-card reveal" data-cat="network" itemscope itemtype="https://schema.org/CreativeWork">
+    <a href="/case/" class="case-card-full network-card reveal" data-cat="network" itemscope itemtype="https://schema.org/CreativeWork">
       <div class="case-header">
         <div class="case-tags">
           <span class="case-tag-sm network">Network</span>
@@ -405,7 +388,7 @@
     </a>
 
     <!-- ROW 4: 40th Brick (4 col) + MealShift (4 col) + Operations (4 col) -->
-    <a href="/case-40th-brick/" class="case-card-full narrow reveal" data-cat="game software" itemscope itemtype="https://schema.org/CreativeWork">
+    <a href="/case-40th-brick/" class="case-card-full reveal" data-cat="game software" itemscope itemtype="https://schema.org/CreativeWork">
       <div class="case-header">
         <div class="case-tags">
           <span class="case-tag-sm game">Game</span>
@@ -427,7 +410,7 @@
       <div class="case-arrow"><span>View teaser</span><span>&rarr;</span></div>
     </a>
 
-    <a href="/casestudy/mealshift/" class="case-card-full narrow reveal" data-cat="software api" itemscope itemtype="https://schema.org/CreativeWork">
+    <a href="/casestudy/mealshift/" class="case-card-full reveal" data-cat="software api" itemscope itemtype="https://schema.org/CreativeWork">
       <div class="status-badge encrypted">
         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
         Encrypted
@@ -453,7 +436,7 @@
       <div class="case-arrow"><span>View workplan</span><span>&rarr;</span></div>
     </a>
 
-    <div class="case-card-full narrow reveal" data-cat="automation software" itemscope itemtype="https://schema.org/CreativeWork">
+    <div class="case-card-full reveal" data-cat="automation software" itemscope itemtype="https://schema.org/CreativeWork">
       <div class="case-header">
         <div class="case-tags">
           <span class="case-tag-sm infra">Automation</span>
