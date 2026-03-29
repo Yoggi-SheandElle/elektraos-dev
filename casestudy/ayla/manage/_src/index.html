@@ -287,16 +287,17 @@
         })
         .catch(function() {
           // Fallback: hardcoded 9 products from last known state
+          var CDN = 'https://cdn.jsdelivr.net/gh/Yoggi-SheandElle/Catalogue/assets/images/';
           products = [
-            {id:1,collection:"Luna",name:"Luna Crescent Pendant",price_mad:890,materials:"925 Silver",category:"necklaces",image:"assets/images/luna-crescent.jpg",in_stock:true},
-            {id:2,collection:"Luna",name:"Luna Layering Chain",price_mad:720,materials:"925 Silver",category:"necklaces",image:"assets/images/luna-chain.jpg",in_stock:true},
-            {id:3,collection:"Luna",name:"Luna Star Studs",price_mad:450,materials:"925 Silver",category:"earrings",image:"assets/images/luna-studs.jpg",in_stock:true},
-            {id:4,collection:"Sahara",name:"Sahara Stacking Ring",price_mad:650,materials:"925 Silver",category:"rings",image:"assets/images/sahara-ring.jpg",in_stock:true},
-            {id:5,collection:"Sahara",name:"Sahara Signet Ring",price_mad:780,materials:"925 Silver",category:"rings",image:"assets/images/sahara-signet.jpg",in_stock:true},
-            {id:6,collection:"Sahara",name:"Sahara Open Cuff",price_mad:1100,materials:"925 Silver",category:"bracelets",image:"assets/images/sahara-cuff.jpg",in_stock:true},
-            {id:7,collection:"Noor",name:"Noor Drop Earrings",price_mad:1200,materials:"925 Silver",category:"earrings",image:"assets/images/noor-drops.jpg",in_stock:true},
-            {id:8,collection:"Noor",name:"Heritage Chain Bracelet",price_mad:950,materials:"925 Silver",category:"bracelets",image:"assets/images/noor-bracelet.jpg",in_stock:true},
-            {id:9,collection:"Noor",name:"Noor Pearl Choker",price_mad:1450,materials:"925 Silver + Pearl",category:"necklaces",image:"assets/images/noor-choker.jpg",in_stock:true}
+            {id:1,collection:"Luna",name:"Luna Crescent Pendant",price_mad:890,materials:"925 Silver",category:"necklaces",image:CDN+"luna_pendant.jpg",in_stock:true},
+            {id:2,collection:"Luna",name:"Luna Layering Chain",price_mad:720,materials:"925 Silver",category:"necklaces",image:CDN+"luna_chain.jpg",in_stock:true},
+            {id:3,collection:"Luna",name:"Luna Star Studs",price_mad:450,materials:"925 Silver",category:"earrings",image:CDN+"luna_studs.jpg",in_stock:true},
+            {id:4,collection:"Sahara",name:"Sahara Stacking Ring",price_mad:650,materials:"925 Silver",category:"rings",image:CDN+"sahara_ring.jpg",in_stock:true},
+            {id:5,collection:"Sahara",name:"Sahara Signet Ring",price_mad:780,materials:"925 Silver",category:"rings",image:CDN+"sahara_signet.jpg",in_stock:true},
+            {id:6,collection:"Sahara",name:"Sahara Open Cuff",price_mad:1100,materials:"925 Silver",category:"bracelets",image:CDN+"sahara_cuff.jpg",in_stock:true},
+            {id:7,collection:"Noor",name:"Noor Drop Earrings",price_mad:1200,materials:"925 Silver",category:"earrings",image:CDN+"noor_earrings.jpg",in_stock:true},
+            {id:8,collection:"Noor",name:"Heritage Chain Bracelet",price_mad:950,materials:"925 Silver",category:"bracelets",image:CDN+"heritage_bracelet.jpg",in_stock:true},
+            {id:9,collection:"Noor",name:"Noor Pearl Choker",price_mad:1450,materials:"925 Silver + Pearl",category:"necklaces",image:CDN+"noor_choker.jpg",in_stock:true}
           ];
           renderProducts();
         });
@@ -311,7 +312,7 @@
         card.className = 'product-card';
         card.onclick = function() { openEdit(i); };
         var img = document.createElement('img');
-        img.src = 'https://aylamaison.com/' + p.image;
+        img.src = p.image.startsWith('http') ? p.image : 'https://aylamaison.com/' + p.image;
         img.alt = p.name;
         img.onerror = function() { this.style.background='var(--bg-card)'; this.style.height='180px'; this.src=''; };
         card.appendChild(img);
