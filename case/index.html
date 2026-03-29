@@ -235,6 +235,46 @@ footer{text-align:center;padding:3rem 2rem;font-family:'JetBrains Mono',monospac
 .coconut-actions button.add:hover{box-shadow:0 0 16px rgba(232,168,56,0.3);}
 .coconut-trips{margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid rgba(232,168,56,0.1);font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--gray);text-align:center;}
 @media(max-width:640px){.coconut-widget{bottom:1rem;left:1rem;}.coconut-panel{width:calc(100vw - 4rem);}}
+
+/* CHAT WIDGET */
+.mercy-chat{position:fixed;bottom:2rem;right:2rem;z-index:200;}
+.chat-toggle-btn{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#8B5E3C,#6B3F1F);border:2px solid rgba(232,168,56,0.3);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(139,94,60,0.4);transition:all 0.3s;position:relative;overflow:hidden;}
+.chat-toggle-btn:hover{transform:scale(1.1);box-shadow:0 6px 32px rgba(232,168,56,0.4);}
+.chat-toggle-btn .online-dot{position:absolute;top:2px;right:2px;width:12px;height:12px;border-radius:50%;background:var(--teal);border:2px solid var(--navy);}
+.chat-panel-mercy{position:absolute;bottom:68px;right:0;width:360px;height:500px;background:rgba(11,17,32,0.97);backdrop-filter:blur(24px);border:1px solid rgba(232,168,56,0.15);border-radius:20px;display:none;flex-direction:column;overflow:hidden;box-shadow:0 16px 64px rgba(0,0,0,0.5);}
+.chat-panel-mercy.open{display:flex;animation:slideUp 0.3s ease;}
+@media(max-width:640px){.chat-panel-mercy{width:calc(100vw - 2rem);right:-0.5rem;height:70vh;}}
+
+.chat-head{padding:16px 20px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(232,168,56,0.1);flex-shrink:0;}
+.chat-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#8B5E3C,#6B3F1F);display:flex;align-items:center;justify-content:center;border:2px solid rgba(232,168,56,0.2);flex-shrink:0;}
+.chat-head-info{flex:1;}
+.chat-head-name{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;color:var(--white);}
+.chat-head-status{font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--teal);letter-spacing:0.08em;}
+.chat-close{background:none;border:none;color:var(--gray);cursor:pointer;font-size:1.2rem;padding:4px;transition:color 0.2s;}
+.chat-close:hover{color:var(--white);}
+
+.chat-messages{flex:1;overflow-y:auto;padding:16px 20px;display:flex;flex-direction:column;gap:12px;}
+.chat-messages::-webkit-scrollbar{width:4px;}
+.chat-messages::-webkit-scrollbar-thumb{background:rgba(232,168,56,0.2);border-radius:2px;}
+
+.chat-msg{max-width:85%;padding:10px 14px;border-radius:14px;font-size:0.88rem;line-height:1.6;animation:msgIn 0.3s ease;}
+@keyframes msgIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+.chat-msg.bot{align-self:flex-start;background:var(--navy-light);color:var(--gray-light);border-bottom-left-radius:4px;}
+.chat-msg.user{align-self:flex-end;background:linear-gradient(135deg,rgba(232,168,56,0.15),rgba(0,201,167,0.1));color:var(--white);border-bottom-right-radius:4px;border:1px solid rgba(232,168,56,0.1);}
+.chat-msg.typing{color:var(--gray);}
+.chat-msg.typing .dots{display:inline-flex;gap:3px;}
+.chat-msg.typing .dots span{width:6px;height:6px;border-radius:50%;background:var(--gray);animation:dotPulse 1.4s ease-in-out infinite;}
+.chat-msg.typing .dots span:nth-child(2){animation-delay:0.2s;}
+.chat-msg.typing .dots span:nth-child(3){animation-delay:0.4s;}
+@keyframes dotPulse{0%,100%{opacity:0.3;transform:scale(0.8);}50%{opacity:1;transform:scale(1);}}
+
+.chat-input-area{padding:12px 16px;border-top:1px solid rgba(232,168,56,0.1);display:flex;gap:8px;flex-shrink:0;}
+.chat-input-field{flex:1;background:var(--navy-light);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:10px 14px;color:var(--white);font-family:'Source Sans 3',sans-serif;font-size:0.88rem;outline:none;transition:border-color 0.2s;}
+.chat-input-field:focus{border-color:rgba(232,168,56,0.3);}
+.chat-input-field::placeholder{color:var(--gray-dark);}
+.chat-send-btn{width:40px;height:40px;border-radius:12px;background:var(--amber);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;flex-shrink:0;}
+.chat-send-btn:hover{background:#d49530;transform:scale(1.05);}
+.chat-send-btn svg{width:16px;height:16px;stroke:var(--navy);fill:none;stroke-width:2;}
 </style>
 </head>
 <body>
@@ -256,7 +296,7 @@ footer{text-align:center;padding:3rem 2rem;font-family:'JetBrains Mono',monospac
 <!-- HERO -->
 <section id="hero">
   <div class="section-tag">Hey Mercy</div>
-  <h1>Copenhagen.<br>Accra.<br>One network.</h1>
+  <h1>One brain.<br>One system.<br>Global creativity.</h1>
   <p class="lead" style="text-align:center;max-width:620px;">
     You already know me and how my brain works. Here's what I've been building these past 73 days - and why I keep thinking about what we could do together.
   </p>
@@ -661,6 +701,33 @@ footer{text-align:center;padding:3rem 2rem;font-family:'JetBrains Mono',monospac
 
 <footer>elektraos.dev - turn your ideas into products - 2026</footer>
 
+<!-- CHAT WIDGET -->
+<div class="mercy-chat">
+  <div class="chat-panel-mercy" id="mercyChat">
+    <div class="chat-head">
+      <div class="chat-avatar"><svg width="24" height="24" viewBox="0 0 64 64"><ellipse cx="32" cy="36" rx="22" ry="20" fill="#8B5E3C"/><ellipse cx="32" cy="36" rx="22" ry="20" fill="url(#coco-g)" opacity="0.5"/><ellipse cx="32" cy="34" rx="16" ry="14" fill="#D4A574" opacity="0.3"/><circle cx="24" cy="32" r="3" fill="#5C3A1E"/><circle cx="40" cy="32" r="3" fill="#5C3A1E"/><circle cx="32" cy="40" r="2.5" fill="#5C3A1E"/><path d="M26 18 Q32 8 38 18" stroke="#4CAF50" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M22 20 Q28 10 34 16" stroke="#66BB6A" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M30 16 Q36 6 42 18" stroke="#81C784" stroke-width="2" fill="none" stroke-linecap="round"/><defs><radialGradient id="coco-g" cx="0.3" cy="0.3"><stop offset="0%" stop-color="#D4A574"/><stop offset="100%" stop-color="#5C3A1E"/></radialGradient></defs></svg></div>
+      <div class="chat-head-info">
+        <div class="chat-head-name">Elektra</div>
+        <div class="chat-head-status" id="chatStatus">ONLINE</div>
+      </div>
+      <button class="chat-close" onclick="toggleMercyChat()">&#10005;</button>
+    </div>
+    <div class="chat-messages" id="mercyMessages">
+      <div class="chat-msg bot">Hey Mercy! &#127813; I'm Elektra - Yoss built me. Ask me anything about the systems, the network, pricing, or just say hi. I know things.</div>
+    </div>
+    <div class="chat-input-area">
+      <input type="text" class="chat-input-field" id="mercyInput" placeholder="Ask me anything..." autocomplete="off">
+      <button class="chat-send-btn" id="mercySend" onclick="sendMercyMsg()">
+        <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="chat-toggle-btn" onclick="toggleMercyChat()">
+    <svg width="32" height="32" viewBox="0 0 64 64"><ellipse cx="32" cy="36" rx="22" ry="20" fill="#8B5E3C"/><ellipse cx="32" cy="36" rx="22" ry="20" fill="url(#coco-g2)" opacity="0.5"/><ellipse cx="32" cy="34" rx="16" ry="14" fill="#D4A574" opacity="0.3"/><circle cx="24" cy="32" r="3" fill="#5C3A1E"/><circle cx="40" cy="32" r="3" fill="#5C3A1E"/><circle cx="32" cy="40" r="2.5" fill="#5C3A1E"/><path d="M26 18 Q32 8 38 18" stroke="#4CAF50" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M22 20 Q28 10 34 16" stroke="#66BB6A" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M30 16 Q36 6 42 18" stroke="#81C784" stroke-width="2" fill="none" stroke-linecap="round"/><defs><radialGradient id="coco-g2" cx="0.3" cy="0.3"><stop offset="0%" stop-color="#D4A574"/><stop offset="100%" stop-color="#5C3A1E"/></radialGradient></defs></svg>
+    <span class="online-dot"></span>
+  </div>
+</div>
+
 <!-- COCONUT COUNTER -->
 <div class="coconut-widget">
   <div class="coconut-panel" id="coconutPanel">
@@ -863,6 +930,113 @@ document.addEventListener('click', function(e) {
 });
 
 updateCoconutUI();
+
+// ===== MERCY CHAT =====
+var CHAT_API = 'https://elektraos.dev/public/chat';
+var chatSession = localStorage.getItem('mercy_chat_session') || ('mercy_' + Date.now() + '_' + Math.random().toString(36).slice(2,6));
+localStorage.setItem('mercy_chat_session', chatSession);
+var chatOpen = false;
+
+// Local FAQ for when API is offline
+var mercyFAQ = {
+  pricing: 'Pricing starts at $25/month (GHS 275) for the Micro tier. Starter is $75/mo, Professional is $200/mo. All tiers work with Mobile Money (MoMo). One-time projects: websites from $75, chatbots from $50.',
+  coconut: 'I see you are a person of culture. The coconut counter is in the bottom-left corner. Click it, count them, never forget. Grandma would be proud.',
+  system: 'ElektraOS is a full cognitive operating system - 403 API routes, 59 databases, 24 AI agents, built in 73 days by one person using AI as a build tool. It runs content, automation, SEO, and client systems 24/7.',
+  agent: 'There are 24 AI agents organized into teams: Revenue, Content, Intel, and Operations. Each one has a specific job and runs autonomously. Think of them as virtual employees that never sleep.',
+  network: 'The network spans 6 cities: Copenhagen (HQ), Vienna, Paris, London, Casablanca, and Accra. It grows through trust, not algorithms. Fair pricing adapted to local economies.',
+  help: 'I can tell you about: pricing, the AI system, agents, the network, coconuts (obviously), how things are built, or what Yoss and you could create together. Just ask!',
+  accra: 'Accra is booming - Africa\'s freelance tech sector is projected to grow from $7.3B to $37.7B by 2034. 59.7% of Ghanaians use mobile money. The creative economy is at an inflection point.',
+  vienna: 'Vienna has 28,595 creative companies generating EUR 12B annually. 44% of Austrian creative workers are based there. It\'s a creative industries powerhouse - and your other home.',
+  build: 'The method is simple: Yoss designs the systems (architecture, logic, data flow), and AI builds them. Like a music producer - they don\'t carve instruments, they design the song. AI is the studio.',
+  hello: 'Hey! Good to have you here. What do you want to know? I can talk about the systems, pricing for Accra, the network, or we can just vibe. Your call.'
+};
+
+function matchFAQ(msg) {
+  msg = msg.toLowerCase();
+  if (/pric|cost|how much|\$|ghs|money|pay|afford|cheap/.test(msg)) return mercyFAQ.pricing;
+  if (/coconut|coco|trip|grandma/.test(msg)) return mercyFAQ.coconut;
+  if (/system|elektra|routes|database|built/.test(msg)) return mercyFAQ.system;
+  if (/agent|team|autonom/.test(msg)) return mercyFAQ.agent;
+  if (/network|cit|corridor|global/.test(msg)) return mercyFAQ.network;
+  if (/accra|ghana|africa|freelanc/.test(msg)) return mercyFAQ.accra;
+  if (/vienna|austria/.test(msg)) return mercyFAQ.vienna;
+  if (/build|method|how.*work|architect/.test(msg)) return mercyFAQ.build;
+  if (/help|what can|tell me/.test(msg)) return mercyFAQ.help;
+  if (/hi|hey|hello|yo|sup/.test(msg)) return mercyFAQ.hello;
+  return null;
+}
+
+function toggleMercyChat() {
+  chatOpen = !chatOpen;
+  document.getElementById('mercyChat').classList.toggle('open', chatOpen);
+  if (chatOpen) document.getElementById('mercyInput').focus();
+}
+
+function addChatMsg(text, who) {
+  var el = document.getElementById('mercyMessages');
+  var msg = document.createElement('div');
+  msg.className = 'chat-msg ' + who;
+  msg.textContent = text;
+  el.appendChild(msg);
+  el.scrollTop = el.scrollHeight;
+  return msg;
+}
+
+function showTyping() {
+  var el = document.getElementById('mercyMessages');
+  var msg = document.createElement('div');
+  msg.className = 'chat-msg bot typing';
+  msg.id = 'typingIndicator';
+  msg.innerHTML = '<span class="dots"><span></span><span></span><span></span></span>';
+  el.appendChild(msg);
+  el.scrollTop = el.scrollHeight;
+}
+
+function removeTyping() {
+  var t = document.getElementById('typingIndicator');
+  if (t) t.remove();
+}
+
+function sendMercyMsg() {
+  var input = document.getElementById('mercyInput');
+  var text = input.value.trim();
+  if (!text) return;
+
+  addChatMsg(text, 'user');
+  input.value = '';
+  showTyping();
+
+  // Try API first, fall back to FAQ
+  fetch(CHAT_API, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message: text, session_id: chatSession, page: 'mercy-case' })
+  })
+  .then(function(r) { if (!r.ok) throw new Error('API error'); return r.json(); })
+  .then(function(data) {
+    removeTyping();
+    addChatMsg(data.reply, 'bot');
+  })
+  .catch(function() {
+    removeTyping();
+    var faq = matchFAQ(text);
+    if (faq) {
+      addChatMsg(faq, 'bot');
+    } else {
+      addChatMsg('Hmm, I\'m not sure about that one. Try asking about pricing, the AI system, agents, the network, or coconuts. Or just say hi!', 'bot');
+    }
+  });
+}
+
+// Enter key sends
+document.getElementById('mercyInput').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') { e.preventDefault(); sendMercyMsg(); }
+});
+
+// Health check
+fetch(CHAT_API.replace('/chat', '/health'))
+  .then(function(r) { if (r.ok) document.getElementById('chatStatus').textContent = 'ONLINE'; })
+  .catch(function() { document.getElementById('chatStatus').textContent = 'OFFLINE - FAQ MODE'; });
 </script>
 
 </body>
