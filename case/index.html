@@ -217,6 +217,24 @@ footer{text-align:center;padding:3rem 2rem;font-family:'JetBrains Mono',monospac
 
 .fade{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease;}
 .fade.vis{opacity:1;transform:translateY(0);}
+
+/* COCONUT COUNTER */
+.coconut-widget{position:fixed;bottom:5.5rem;left:2rem;z-index:200;}
+.coconut-btn{width:48px;height:48px;border-radius:50%;background:rgba(11,17,32,0.85);backdrop-filter:blur(12px);border:1px solid rgba(232,168,56,0.2);cursor:pointer;font-size:1.5rem;display:flex;align-items:center;justify-content:center;transition:all 0.3s;position:relative;}
+.coconut-btn:hover{transform:scale(1.1);border-color:var(--amber);box-shadow:0 4px 20px rgba(232,168,56,0.2);}
+.coconut-btn .coco-badge{position:absolute;top:-4px;right:-4px;background:var(--amber);color:var(--navy);font-family:'JetBrains Mono',monospace;font-size:0.6rem;font-weight:700;min-width:18px;height:18px;border-radius:9px;display:flex;align-items:center;justify-content:center;padding:0 4px;}
+.coconut-panel{position:absolute;bottom:56px;left:0;width:280px;background:rgba(11,17,32,0.96);backdrop-filter:blur(24px);border:1px solid rgba(232,168,56,0.15);border-radius:16px;padding:1.5rem;display:none;animation:slideUp 0.3s ease;}
+.coconut-panel.open{display:block;}
+.coconut-panel h3{font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--amber);margin-bottom:0.75rem;letter-spacing:0.08em;}
+.coconut-count{font-family:'Outfit',sans-serif;font-weight:900;font-size:3.5rem;color:var(--white);text-align:center;line-height:1;margin:0.5rem 0;}
+.coconut-label{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--gray);text-align:center;letter-spacing:0.1em;text-transform:uppercase;}
+.coconut-actions{display:flex;gap:0.5rem;margin-top:1rem;}
+.coconut-actions button{flex:1;padding:0.5rem;border-radius:8px;border:1px solid rgba(232,168,56,0.2);background:rgba(232,168,56,0.06);color:var(--amber);font-family:'JetBrains Mono',monospace;font-size:0.75rem;cursor:pointer;transition:all 0.2s;}
+.coconut-actions button:hover{background:rgba(232,168,56,0.15);border-color:var(--amber);}
+.coconut-actions button.add{background:var(--amber);color:var(--navy);font-weight:600;border-color:var(--amber);}
+.coconut-actions button.add:hover{box-shadow:0 0 16px rgba(232,168,56,0.3);}
+.coconut-trips{margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid rgba(232,168,56,0.1);font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--gray);text-align:center;}
+@media(max-width:640px){.coconut-widget{bottom:1rem;left:1rem;}.coconut-panel{width:calc(100vw - 4rem);}}
 </style>
 </head>
 <body>
@@ -243,10 +261,10 @@ footer{text-align:center;padding:3rem 2rem;font-family:'JetBrains Mono',monospac
     You already know me and how my brain works. Here's what I've been building these past 73 days - and why I keep thinking about what we could do together.
   </p>
   <div class="hero-sub">
-    <span>Solo builder</span>
-    <span>Copenhagen x Accra</span>
+    <span>Vienna x Accra x Copenhagen</span>
     <span>AI-powered</span>
     <span>Zero funding</span>
+    <span id="heroCoconut">&#127813; 0 coconuts this trip</span>
   </div>
   <div class="scroll-cue">&#8595; scroll to explore</div>
 </section>
@@ -623,15 +641,9 @@ footer{text-align:center;padding:3rem 2rem;font-family:'JetBrains Mono',monospac
 
   <div class="cta-block">
 
-    <h2>So what do you think?</h2>
-    <p class="lead" style="color:var(--white);">No pitch, no pressure. Just us figuring out what makes sense.</p>
-    <p>Here's how I'd start:</p>
-    <div style="text-align:left;max-width:500px;margin:1.5rem auto;padding:1.5rem;background:rgba(0,0,0,0.2);border-radius:12px;">
-      <p style="margin:0.5rem 0;color:var(--teal);font-size:0.95rem;"><strong>1.</strong> We hop on a call and you tell me what's annoying you right now</p>
-      <p style="margin:0.5rem 0;color:var(--teal);font-size:0.95rem;"><strong>2.</strong> I build a small thing around that pain point - free, just to show you</p>
-      <p style="margin:0.5rem 0;color:var(--teal);font-size:0.95rem;"><strong>3.</strong> You play with it, tell me what's wrong, we fix it</p>
-      <p style="margin:0.5rem 0;color:var(--amber);font-size:0.95rem;"><strong>4.</strong> Then we figure out the bigger picture together</p>
-    </div>
+    <h2>You know where to find me.</h2>
+    <p class="lead" style="color:var(--white);">Whenever you're ready, we talk. No rush. The system isn't going anywhere - it's getting better every day.</p>
+    <p>In the meantime, keep counting those coconuts. &#127813;</p>
     <div class="links">
       <a href="mailto:yossra.benzad@gmail.com?subject=Let's%20do%20this" class="btn btn-p">Hit me up &#8594;</a>
       <a href="https://elektraos.dev" target="_blank" class="btn btn-s">Explore elektraos.dev</a>
@@ -648,6 +660,25 @@ footer{text-align:center;padding:3rem 2rem;font-family:'JetBrains Mono',monospac
 </section>
 
 <footer>elektraos.dev - turn your ideas into products - 2026</footer>
+
+<!-- COCONUT COUNTER -->
+<div class="coconut-widget">
+  <div class="coconut-panel" id="coconutPanel">
+    <h3>&#127813; Ghana Trip Tracker</h3>
+    <div class="coconut-count" id="coconutCount">0</div>
+    <div class="coconut-label">coconuts this trip</div>
+    <div class="coconut-actions">
+      <button onclick="addCoconut(-1)">- 1</button>
+      <button class="add" onclick="addCoconut(1)">+ 1 &#127813;</button>
+      <button onclick="resetCoconuts()">new trip</button>
+    </div>
+    <div class="coconut-trips" id="coconutTrips"></div>
+  </div>
+  <div class="coconut-btn" onclick="toggleCoconut()">
+    &#127813;
+    <span class="coco-badge" id="cocoBadge">0</span>
+  </div>
+</div>
 
 <!-- COMMAND PALETTE -->
 <button class="cmd-toggle" onclick="toggleCmd()" title="Quick navigate">&#9889;</button>
@@ -674,9 +705,9 @@ const cities = {
   },
   vienna: {
     name: 'Vienna',
-    tag: 'Creative Industries Powerhouse',
-    desc: '28,595 creative companies in Vienna generating EUR 12B annual revenue. 44% of all Austrian creative workers are based here. The Vienna Business Agency funds digital creative projects.',
-    stat: 'Creative Days Vienna brings global speakers. EIT Culture & Creativity funds cross-border creative tech.'
+    tag: 'Creative Industries Powerhouse - Your Other Home',
+    desc: 'Your Austrian side lives here. 28,595 creative companies generating EUR 12B annual revenue. 44% of all Austrian creative workers are based in Vienna. The Vienna Business Agency funds digital creative projects. This is a node we already have a connection to - through you.',
+    stat: 'Creative Days Vienna brings global speakers. EIT Culture & Creativity funds cross-border creative tech. Vienna-Accra is an untapped corridor.'
   },
   paris: {
     name: 'Paris',
@@ -698,9 +729,9 @@ const cities = {
   },
   accra: {
     name: 'Accra',
-    tag: 'The Creative Boom - Mercy\'s Base',
-    desc: 'Ghana\'s fashion and content creators gaining global recognition. Africa\'s freelance tech sector projected to grow from $7.3B to $37.7B by 2034. Platforms like Solangigs champion Ghanaian talent. Creative industries expected to generate $20B and 20M jobs across Africa by 2030. This is where the energy is. This is where you are.',
-    stat: '416M mobile internet users across Africa. Mobile tech contributed $220B to Africa\'s GDP in 2024. New creative corridors emerging. Mercy + ElektraOS = first node activated.'
+    tag: 'The Creative Boom - Grandma\'s Place',
+    desc: 'Your Ghanaian heart lives here. Fashion and content creators gaining global recognition. Africa\'s freelance tech sector projected to grow from $7.3B to $37.7B by 2034. Creative industries expected to generate $20B and 20M jobs across Africa by 2030. Also: the best coconuts on the planet.',
+    stat: '416M mobile internet users across Africa. Mobile tech contributed $220B to Africa\'s GDP in 2024. Also home to the world\'s most counted coconuts.'
   }
 };
 
@@ -780,6 +811,58 @@ var countObs = new IntersectionObserver(function(entries) {
   });
 }, { threshold: 0.5 });
 document.querySelectorAll('.stat-n').forEach(function(el){ countObs.observe(el); });
+
+// Coconut counter - persists in localStorage
+var coconuts = parseInt(localStorage.getItem('mercy_coconuts') || '0');
+var trips = JSON.parse(localStorage.getItem('mercy_trips') || '[]');
+
+function updateCoconutUI() {
+  document.getElementById('coconutCount').textContent = coconuts;
+  document.getElementById('cocoBadge').textContent = coconuts;
+  var hero = document.getElementById('heroCoconut');
+  if (hero) hero.textContent = '\uD83C\uDF79 ' + coconuts + ' coconut' + (coconuts !== 1 ? 's' : '') + ' this trip';
+  var tripsEl = document.getElementById('coconutTrips');
+  if (trips.length > 0) {
+    tripsEl.textContent = 'Past trips: ' + trips.map(function(t){ return t.count + ' (' + t.date + ')'; }).join(' | ');
+  } else {
+    tripsEl.textContent = 'No past trips yet. Start counting!';
+  }
+}
+
+function addCoconut(n) {
+  coconuts = Math.max(0, coconuts + n);
+  localStorage.setItem('mercy_coconuts', coconuts);
+  updateCoconutUI();
+  if (n > 0) {
+    var btn = document.querySelector('.coconut-btn');
+    btn.style.transform = 'scale(1.3)';
+    setTimeout(function(){ btn.style.transform = ''; }, 200);
+  }
+}
+
+function resetCoconuts() {
+  if (coconuts > 0) {
+    var now = new Date();
+    var dateStr = now.toLocaleDateString('en-GB', { month: 'short', year: 'numeric' });
+    trips.push({ count: coconuts, date: dateStr });
+    localStorage.setItem('mercy_trips', JSON.stringify(trips));
+  }
+  coconuts = 0;
+  localStorage.setItem('mercy_coconuts', '0');
+  updateCoconutUI();
+}
+
+function toggleCoconut() {
+  document.getElementById('coconutPanel').classList.toggle('open');
+}
+
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.coconut-widget')) {
+    document.getElementById('coconutPanel').classList.remove('open');
+  }
+});
+
+updateCoconutUI();
 </script>
 
 </body>
