@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ElektraOS x Mercy - Copenhagen Meets Accra</title>
+<meta name="description" content="How ElektraOS and Mercy can build a Copenhagen-Accra creative corridor. AI systems, automation, and a shared vision for underdogs.">
+<meta property="og:title" content="ElektraOS x Mercy - Let's Build Together">
+<meta property="og:description" content="From one brain to a global network. Here's what we could create together.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://elektraos.dev/case/">
+<meta name="theme-color" content="#00C9A7">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="canonical" href="https://elektraos.dev/case/">
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0B1120;
+  --navy-light: #111827;
+  --navy-mid: #1a2332;
+  --navy-card: #0f1729;
+  --teal: #00C9A7;
+  --teal-dim: rgba(0,201,167,0.12);
+  --teal-glow: rgba(0,201,167,0.35);
+  --amber: #E8A838;
+  --amber-dim: rgba(232,168,56,0.12);
+  --amber-glow: rgba(232,168,56,0.35);
+  --magenta: #E879F9;
+  --blue: #60A5FA;
+  --white: #F0F4F8;
+  --gray: #94A3B8;
+  --gray-light: #CBD5E1;
+  --gray-dark: #475569;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Source Sans 3',sans-serif;background:var(--navy);color:var(--white);line-height:1.7;overflow-x:hidden;}
+
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:var(--navy);}
+::-webkit-scrollbar-thumb{background:var(--teal);border-radius:3px;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0.75rem 2rem;display:flex;justify-content:space-between;align-items:center;background:rgba(11,17,32,0.9);backdrop-filter:blur(24px);border-bottom:1px solid rgba(0,201,167,0.08);}
+.nav-logo{font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:var(--teal);letter-spacing:0.05em;display:flex;align-items:center;gap:0.5rem;text-decoration:none;}
+.nav-logo .pulse{width:8px;height:8px;border-radius:50%;background:var(--teal);animation:blink 2s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.nav-links{display:flex;gap:1.5rem;}
+.nav-links a{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--gray);text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.3s;}
+.nav-links a:hover{color:var(--teal);}
+@media(max-width:768px){.nav-links{display:none;}}
+
+/* SECTION BASE */
+section{min-height:100vh;padding:7rem 2rem 4rem;display:flex;flex-direction:column;justify-content:center;position:relative;max-width:1100px;margin:0 auto;}
+.section-tag{font-family:'JetBrains Mono',monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.25em;color:var(--teal);margin-bottom:1.25rem;opacity:0.7;}
+h1{font-family:'Outfit',sans-serif;font-weight:900;font-size:clamp(2.8rem,7vw,5.5rem);line-height:1.05;margin-bottom:1.5rem;letter-spacing:-0.02em;}
+h2{font-family:'Outfit',sans-serif;font-weight:700;font-size:clamp(1.8rem,4.5vw,3rem);line-height:1.15;margin-bottom:1.25rem;}
+h3{font-family:'Outfit',sans-serif;font-weight:600;font-size:1.2rem;margin-bottom:0.5rem;}
+p{font-size:1.1rem;color:var(--gray-light);max-width:700px;margin-bottom:1rem;}
+p.lead{font-size:1.3rem;color:var(--white);font-weight:300;}
+.hl{color:var(--teal);}
+.hl-a{color:var(--amber);}
+.hl-m{color:var(--magenta);}
+
+/* HERO */
+#hero{text-align:center;align-items:center;min-height:100vh;}
+#hero h1{background:linear-gradient(135deg,var(--white) 0%,var(--teal) 50%,var(--amber) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+#hero p{text-align:center;}
+.hero-sub{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin-top:1rem;}
+.hero-sub span{font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--gray);letter-spacing:0.05em;padding:0.4rem 0.8rem;border:1px solid var(--gray-dark);border-radius:6px;}
+.scroll-cue{margin-top:3rem;font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--gray);animation:float 3s ease-in-out infinite;}
+@keyframes float{0%,100%{transform:translateY(0);opacity:0.4;}50%{transform:translateY(8px);opacity:1;}}
+
+/* PERSONAL BANNER */
+.mercy-banner{background:linear-gradient(135deg,rgba(232,168,56,0.08),rgba(0,201,167,0.08));border:1px solid rgba(232,168,56,0.2);border-radius:16px;padding:2rem 2.5rem;margin:2rem 0;text-align:center;}
+.mercy-banner h3{color:var(--amber);font-size:1.3rem;margin-bottom:0.5rem;}
+.mercy-banner p{max-width:600px;margin:0 auto;text-align:center;}
+
+/* CARDS GRID */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin:2rem 0;}
+.card{background:var(--navy-card);border:1px solid rgba(0,201,167,0.08);border-radius:12px;padding:1.5rem;transition:all 0.4s;cursor:default;}
+.card:hover{border-color:var(--teal);transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,201,167,0.08);}
+.card-icon{font-size:1.6rem;margin-bottom:0.75rem;}
+.card p{font-size:0.95rem;color:var(--gray);margin:0;}
+
+/* LAYER STACK */
+.layers{margin:2rem 0;}
+.layer{display:flex;align-items:stretch;gap:0;margin-bottom:2px;overflow:hidden;border-radius:0;}
+.layer:first-child{border-radius:10px 10px 0 0;}
+.layer:last-child{border-radius:0 0 10px 10px;}
+.layer-bar{width:4px;flex-shrink:0;}
+.layer-content{flex:1;padding:1.25rem 1.5rem;background:var(--navy-light);transition:all 0.3s;cursor:pointer;}
+.layer-content:hover{background:var(--navy-mid);}
+.layer-title{font-family:'Outfit',sans-serif;font-weight:600;font-size:1rem;margin-bottom:0.2rem;}
+.layer-desc{font-size:0.9rem;color:var(--gray);margin:0;max-height:0;overflow:hidden;transition:max-height 0.4s ease, margin 0.4s ease;}
+.layer.open .layer-desc{max-height:200px;margin-top:0.4rem;}
+
+/* TIMELINE */
+.tl{position:relative;margin:2rem 0;padding-left:2rem;}
+.tl::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--teal),var(--amber),var(--magenta),transparent);}
+.tl-item{position:relative;margin-bottom:2rem;padding-left:1.5rem;opacity:0;transform:translateX(-20px);transition:all 0.6s;}
+.tl-item.visible{opacity:1;transform:translateX(0);}
+.tl-item::before{content:'';position:absolute;left:-2.15rem;top:0.6rem;width:10px;height:10px;border-radius:50%;border:2px solid var(--teal);background:var(--navy);}
+.tl-item:nth-child(even)::before{border-color:var(--amber);}
+.tl-item:nth-child(3n)::before{border-color:var(--magenta);}
+.tl-date{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--teal);letter-spacing:0.05em;}
+.tl-item:nth-child(even) .tl-date{color:var(--amber);}
+.tl-item:nth-child(3n) .tl-date{color:var(--magenta);}
+.tl-name{font-family:'Outfit',sans-serif;font-weight:600;font-size:1.1rem;margin:0.15rem 0;}
+.tl-text{font-size:0.92rem;color:var(--gray);margin:0;}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin:2rem 0;}
+.stat{background:var(--navy-card);border:1px solid rgba(0,201,167,0.06);border-radius:12px;padding:1.25rem;text-align:center;transition:all 0.3s;}
+.stat:hover{border-color:var(--teal);}
+.stat-n{font-family:'Outfit',sans-serif;font-weight:800;font-size:2.5rem;color:var(--teal);line-height:1;}
+.stat-n.counting{color:var(--gray-dark);}
+.stat-l{font-size:0.8rem;color:var(--gray);margin-top:0.3rem;}
+.stat-h{font-size:0.7rem;color:var(--amber);margin-top:0.2rem;font-style:italic;}
+
+/* NETWORK MAP */
+.network-container{position:relative;width:100%;margin:2rem 0;background:var(--navy-card);border-radius:16px;border:1px solid rgba(0,201,167,0.08);overflow:hidden;}
+.network-svg{width:100%;height:auto;display:block;}
+.city-dot{cursor:pointer;transition:all 0.3s;}
+.city-dot:hover .dot-ring{r:12;opacity:1;}
+.city-info{position:absolute;top:0;right:0;width:320px;padding:1.5rem;background:rgba(11,17,32,0.95);backdrop-filter:blur(12px);border-left:1px solid rgba(0,201,167,0.1);border-bottom:1px solid rgba(0,201,167,0.1);border-radius:0 16px 0 16px;max-height:100%;overflow-y:auto;transition:all 0.4s;opacity:0;transform:translateX(20px);pointer-events:none;}
+.city-info.active{opacity:1;transform:translateX(0);pointer-events:all;}
+.city-info h3{color:var(--teal);font-size:1.1rem;}
+.city-info .ci-tag{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--amber);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem;}
+.city-info p{font-size:0.88rem;color:var(--gray-light);margin-bottom:0.5rem;}
+.city-info .ci-stat{font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--teal);margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid rgba(0,201,167,0.1);}
+@media(max-width:768px){.city-info{width:100%;position:relative;border-radius:0 0 16px 16px;border-left:none;border-top:1px solid rgba(0,201,167,0.1);}}
+
+/* CORRIDOR */
+.corridors{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+@media(max-width:640px){.corridors{grid-template-columns:1fr;}}
+.corridor{background:var(--navy-card);border:1px solid rgba(0,201,167,0.06);border-radius:12px;padding:1.5rem;transition:all 0.3s;}
+.corridor:hover{border-color:var(--amber);box-shadow:0 0 24px rgba(232,168,56,0.06);}
+.corridor-route{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--amber);letter-spacing:0.08em;margin-bottom:0.5rem;}
+.corridor h3{font-size:1rem;color:var(--white);}
+.corridor p{font-size:0.88rem;color:var(--gray);margin:0;}
+
+/* COLLAB CARDS */
+.collab-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin:2rem 0;}
+@media(max-width:640px){.collab-grid{grid-template-columns:1fr;}}
+.collab-card{background:var(--navy-card);border:1px solid rgba(232,168,56,0.1);border-radius:14px;padding:1.75rem;transition:all 0.4s;}
+.collab-card:hover{border-color:var(--amber);transform:translateY(-3px);box-shadow:0 8px 32px rgba(232,168,56,0.08);}
+.collab-card .collab-num{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--amber);letter-spacing:0.15em;margin-bottom:0.75rem;}
+.collab-card h3{color:var(--white);font-size:1.15rem;margin-bottom:0.5rem;}
+.collab-card p{font-size:0.92rem;color:var(--gray);margin:0;}
+.collab-card .collab-tags{display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.75rem;}
+.collab-card .collab-tags span{font-family:'JetBrains Mono',monospace;font-size:0.6rem;padding:0.2rem 0.5rem;border-radius:4px;background:rgba(0,201,167,0.06);color:var(--teal);letter-spacing:0.05em;}
+
+/* VISION PRINCIPLES */
+.principles{display:grid;gap:0.75rem;margin:2rem 0;}
+.principle{display:flex;gap:1rem;padding:1.25rem 1.5rem;background:var(--navy-card);border-radius:10px;border:1px solid rgba(0,201,167,0.05);transition:all 0.3s;cursor:default;}
+.principle:hover{border-color:rgba(0,201,167,0.15);background:var(--navy-light);}
+.pr-icon{font-size:1.3rem;flex-shrink:0;margin-top:0.1rem;}
+.pr-text{font-size:1rem;color:var(--gray-light);line-height:1.6;}
+.pr-text strong{color:var(--white);}
+
+/* CTA */
+.cta-block{background:linear-gradient(135deg,rgba(0,201,167,0.06) 0%,rgba(232,168,56,0.06) 100%);border:1px solid rgba(0,201,167,0.15);border-radius:16px;padding:3rem;margin:2rem 0;text-align:center;}
+.cta-block h2{background:linear-gradient(135deg,var(--teal),var(--amber));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.cta-block p{max-width:550px;margin:0.5rem auto;text-align:center;}
+
+/* LINKS */
+.links{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.5rem;justify-content:center;}
+.btn{font-family:'JetBrains Mono',monospace;font-size:0.78rem;padding:0.7rem 1.4rem;border-radius:8px;text-decoration:none;letter-spacing:0.03em;transition:all 0.3s;border:none;cursor:pointer;}
+.btn-p{background:var(--teal);color:var(--navy);font-weight:600;}
+.btn-p:hover{box-shadow:0 0 28px var(--teal-glow);transform:translateY(-1px);}
+.btn-s{background:transparent;color:var(--teal);border:1px solid rgba(0,201,167,0.25);}
+.btn-s:hover{border-color:var(--teal);background:var(--teal-dim);}
+
+/* COMMAND PALETTE */
+.cmd-toggle{position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;border-radius:50%;background:var(--teal);color:var(--navy);border:none;font-family:'JetBrains Mono',monospace;font-size:1.2rem;font-weight:700;cursor:pointer;z-index:200;box-shadow:0 4px 20px var(--teal-glow);transition:all 0.3s;}
+.cmd-toggle:hover{transform:scale(1.1);}
+.cmd-panel{position:fixed;bottom:5.5rem;right:2rem;width:360px;max-height:420px;background:rgba(11,17,32,0.96);backdrop-filter:blur(24px);border:1px solid rgba(0,201,167,0.15);border-radius:16px;z-index:200;padding:1.5rem;display:none;overflow-y:auto;}
+.cmd-panel.open{display:block;animation:slideUp 0.3s ease;}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.cmd-panel h3{font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:var(--teal);margin-bottom:1rem;letter-spacing:0.08em;}
+.cmd-item{padding:0.75rem 1rem;border-radius:8px;margin-bottom:0.5rem;cursor:pointer;transition:all 0.2s;font-size:0.9rem;color:var(--gray-light);border:1px solid transparent;}
+.cmd-item:hover{background:var(--navy-mid);border-color:rgba(0,201,167,0.1);color:var(--white);}
+.cmd-item .cmd-key{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--gray);float:right;margin-top:0.15rem;}
+@media(max-width:640px){.cmd-panel{width:calc(100% - 2rem);right:1rem;bottom:5rem;}}
+
+/* TERMINAL BLOCK */
+.terminal{background:#0a0e17;border:1px solid rgba(0,201,167,0.1);border-radius:12px;padding:1.5rem;margin:2rem 0;font-family:'JetBrains Mono',monospace;font-size:0.82rem;line-height:1.8;overflow-x:auto;}
+.terminal .prompt{color:var(--teal);}
+.terminal .output{color:var(--gray-light);}
+.terminal .highlight{color:var(--amber);}
+.terminal .cursor{display:inline-block;width:8px;height:14px;background:var(--teal);animation:blink 1s step-end infinite;vertical-align:text-bottom;margin-left:2px;}
+
+/* PRICING TABLE */
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin:2rem 0;}
+.pricing-card{background:var(--navy-card);border:1px solid rgba(0,201,167,0.08);border-radius:14px;padding:1.75rem;transition:all 0.4s;position:relative;overflow:hidden;}
+.pricing-card:hover{border-color:var(--teal);transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,201,167,0.08);}
+.pricing-card.popular{border-color:rgba(232,168,56,0.3);background:linear-gradient(135deg,var(--navy-card),rgba(232,168,56,0.04));}
+.pricing-card.popular::before{content:'MOST POPULAR';position:absolute;top:12px;right:-28px;background:var(--amber);color:var(--navy);font-family:'JetBrains Mono',monospace;font-size:0.55rem;font-weight:600;letter-spacing:0.1em;padding:3px 32px;transform:rotate(45deg);}
+.pricing-tier{font-family:'JetBrains Mono',monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:0.75rem;}
+.pricing-tier.micro{color:var(--teal);}
+.pricing-tier.starter{color:var(--amber);}
+.pricing-tier.pro{color:var(--magenta);}
+.pricing-amount{font-family:'Outfit',sans-serif;font-weight:800;font-size:2.2rem;color:var(--white);line-height:1;margin-bottom:0.25rem;}
+.pricing-amount span{font-size:0.9rem;font-weight:400;color:var(--gray);}
+.pricing-local{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--gray);margin-bottom:1rem;}
+.pricing-features{list-style:none;padding:0;margin:1rem 0;}
+.pricing-features li{font-size:0.9rem;color:var(--gray-light);padding:0.35rem 0;padding-left:1.2rem;position:relative;}
+.pricing-features li::before{content:'>';position:absolute;left:0;color:var(--teal);font-family:'JetBrains Mono',monospace;font-weight:700;}
+.pricing-note{background:var(--navy-light);border-left:3px solid var(--teal);border-radius:0 12px 12px 0;padding:1.25rem 1.5rem;margin:2rem 0;}
+.pricing-note p{margin:0;font-size:0.9rem;}
+
+.divider{width:60px;height:2px;background:linear-gradient(90deg,var(--teal),var(--amber));margin:2.5rem 0;border-radius:2px;}
+
+footer{text-align:center;padding:3rem 2rem;font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--gray-dark);letter-spacing:0.05em;}
+
+.fade{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.fade.vis{opacity:1;transform:translateY(0);}
+
+/* COCONUT COUNTER */
+.coconut-widget{position:fixed;bottom:5.5rem;left:2rem;z-index:200;}
+.coconut-btn{width:48px;height:48px;border-radius:50%;background:rgba(11,17,32,0.85);backdrop-filter:blur(12px);border:1px solid rgba(232,168,56,0.2);cursor:pointer;font-size:1.5rem;display:flex;align-items:center;justify-content:center;transition:all 0.3s;position:relative;}
+.coconut-btn:hover{transform:scale(1.1);border-color:var(--amber);box-shadow:0 4px 20px rgba(232,168,56,0.2);}
+.coconut-btn .coco-badge{position:absolute;top:-4px;right:-4px;background:var(--amber);color:var(--navy);font-family:'JetBrains Mono',monospace;font-size:0.6rem;font-weight:700;min-width:18px;height:18px;border-radius:9px;display:flex;align-items:center;justify-content:center;padding:0 4px;}
+.coconut-panel{position:absolute;bottom:56px;left:0;width:280px;background:rgba(11,17,32,0.96);backdrop-filter:blur(24px);border:1px solid rgba(232,168,56,0.15);border-radius:16px;padding:1.5rem;display:none;animation:slideUp 0.3s ease;}
+.coconut-panel.open{display:block;}
+.coconut-panel h3{font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--amber);margin-bottom:0.75rem;letter-spacing:0.08em;}
+.coconut-count{font-family:'Outfit',sans-serif;font-weight:900;font-size:3.5rem;color:var(--white);text-align:center;line-height:1;margin:0.5rem 0;}
+.coconut-label{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--gray);text-align:center;letter-spacing:0.1em;text-transform:uppercase;}
+.coconut-actions{display:flex;gap:0.5rem;margin-top:1rem;}
+.coconut-actions button{flex:1;padding:0.5rem;border-radius:8px;border:1px solid rgba(232,168,56,0.2);background:rgba(232,168,56,0.06);color:var(--amber);font-family:'JetBrains Mono',monospace;font-size:0.75rem;cursor:pointer;transition:all 0.2s;}
+.coconut-actions button:hover{background:rgba(232,168,56,0.15);border-color:var(--amber);}
+.coconut-actions button.add{background:var(--amber);color:var(--navy);font-weight:600;border-color:var(--amber);}
+.coconut-actions button.add:hover{box-shadow:0 0 16px rgba(232,168,56,0.3);}
+.coconut-trips{margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid rgba(232,168,56,0.1);font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--gray);text-align:center;}
+@media(max-width:640px){.coconut-widget{bottom:1rem;left:1rem;}.coconut-panel{width:calc(100vw - 4rem);}}
+
+/* CHAT WIDGET */
+.mercy-chat{position:fixed;bottom:2rem;right:2rem;z-index:200;}
+.chat-toggle-btn{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#8B5E3C,#6B3F1F);border:2px solid rgba(232,168,56,0.3);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(139,94,60,0.4);transition:all 0.3s;position:relative;overflow:hidden;}
+.chat-toggle-btn:hover{transform:scale(1.1);box-shadow:0 6px 32px rgba(232,168,56,0.4);}
+.chat-toggle-btn .online-dot{position:absolute;top:2px;right:2px;width:12px;height:12px;border-radius:50%;background:var(--teal);border:2px solid var(--navy);}
+.chat-panel-mercy{position:absolute;bottom:68px;right:0;width:360px;height:500px;background:rgba(11,17,32,0.97);backdrop-filter:blur(24px);border:1px solid rgba(232,168,56,0.15);border-radius:20px;display:none;flex-direction:column;overflow:hidden;box-shadow:0 16px 64px rgba(0,0,0,0.5);}
+.chat-panel-mercy.open{display:flex;animation:slideUp 0.3s ease;}
+@media(max-width:640px){.chat-panel-mercy{width:calc(100vw - 2rem);right:-0.5rem;height:70vh;}}
+
+.chat-head{padding:16px 20px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(232,168,56,0.1);flex-shrink:0;}
+.chat-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#8B5E3C,#6B3F1F);display:flex;align-items:center;justify-content:center;border:2px solid rgba(232,168,56,0.2);flex-shrink:0;}
+.chat-head-info{flex:1;}
+.chat-head-name{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;color:var(--white);}
+.chat-head-status{font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--teal);letter-spacing:0.08em;}
+.chat-close{background:none;border:none;color:var(--gray);cursor:pointer;font-size:1.2rem;padding:4px;transition:color 0.2s;}
+.chat-close:hover{color:var(--white);}
+
+.chat-messages{flex:1;overflow-y:auto;padding:16px 20px;display:flex;flex-direction:column;gap:12px;}
+.chat-messages::-webkit-scrollbar{width:4px;}
+.chat-messages::-webkit-scrollbar-thumb{background:rgba(232,168,56,0.2);border-radius:2px;}
+
+.chat-msg{max-width:85%;padding:10px 14px;border-radius:14px;font-size:0.88rem;line-height:1.6;animation:msgIn 0.3s ease;}
+@keyframes msgIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+.chat-msg.bot{align-self:flex-start;background:var(--navy-light);color:var(--gray-light);border-bottom-left-radius:4px;}
+.chat-msg.user{align-self:flex-end;background:linear-gradient(135deg,rgba(232,168,56,0.15),rgba(0,201,167,0.1));color:var(--white);border-bottom-right-radius:4px;border:1px solid rgba(232,168,56,0.1);}
+.chat-msg.typing{color:var(--gray);}
+.chat-msg.typing .dots{display:inline-flex;gap:3px;}
+.chat-msg.typing .dots span{width:6px;height:6px;border-radius:50%;background:var(--gray);animation:dotPulse 1.4s ease-in-out infinite;}
+.chat-msg.typing .dots span:nth-child(2){animation-delay:0.2s;}
+.chat-msg.typing .dots span:nth-child(3){animation-delay:0.4s;}
+@keyframes dotPulse{0%,100%{opacity:0.3;transform:scale(0.8);}50%{opacity:1;transform:scale(1);}}
+
+.chat-input-area{padding:12px 16px;border-top:1px solid rgba(232,168,56,0.1);display:flex;gap:8px;flex-shrink:0;}
+.chat-input-field{flex:1;background:var(--navy-light);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:10px 14px;color:var(--white);font-family:'Source Sans 3',sans-serif;font-size:0.88rem;outline:none;transition:border-color 0.2s;}
+.chat-input-field:focus{border-color:rgba(232,168,56,0.3);}
+.chat-input-field::placeholder{color:var(--gray-dark);}
+.chat-send-btn{width:40px;height:40px;border-radius:12px;background:var(--amber);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;flex-shrink:0;}
+.chat-send-btn:hover{background:#d49530;transform:scale(1.05);}
+.chat-send-btn svg{width:16px;height:16px;stroke:var(--navy);fill:none;stroke-width:2;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://elektraos.dev" class="nav-logo"><span class="pulse"></span> elektra://case</a>
+  <div class="nav-links">
+    <a href="#hero">Start</a>
+    <a href="#origin">Origin</a>
+    <a href="#how">Method</a>
+    <a href="#together">Together</a>
+    <a href="#network">Network</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#vision">Vision</a>
+    <a href="#next">Next</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="section-tag">Hey Mercy</div>
+  <h1>One brain.<br>One system.<br>Global creativity.</h1>
+  <p class="lead" style="text-align:center;max-width:620px;">
+    You already know me and how my brain works. Here's what I've been building these past 73 days - and why I keep thinking about what we could do together.
+  </p>
+  <div class="hero-sub">
+    <span>Vienna x Accra x Copenhagen</span>
+    <span>AI-powered</span>
+    <span>Zero funding</span>
+    <span id="heroCoconut">&#129381; 0 coconuts this trip</span>
+  </div>
+  <div class="scroll-cue">&#8595; scroll to explore</div>
+</section>
+
+<!-- ORIGIN -->
+<section id="origin" class="fade">
+  <div class="section-tag">01 / The Problem</div>
+  <h2>My brain doesn't fit<br>inside their tools.</h2>
+  <p>I have ADHD. I think in parallel, not in sequence. Every productivity app, every calendar, every to-do list was built for a brain that works differently from mine. So I stopped adapting to broken tools.</p>
+  <p><strong style="color:var(--white);">I built my own operating system.</strong></p>
+  <div class="cards">
+    <div class="card"><div class="card-icon">&#129504;</div><h3>The Gap</h3><p>Ideas scattered across 12 apps. Context lost daily. No system matched how I actually think.</p></div>
+    <div class="card"><div class="card-icon">&#9889;</div><h3>The Bet</h3><p>What if AI could be my engineering partner? Not a toy. A full construction crew, building what I architect.</p></div>
+    <div class="card"><div class="card-icon">&#127959;</div><h3>The Build</h3><p>73 days. 403 API routes. 59 databases. 24 AI agents. A production system equivalent to a 5-person startup team.</p></div>
+    <div class="card"><div class="card-icon">&#127758;</div><h3>The Realization</h3><p>If I can build this for myself, I can build it for anyone. Any creative, anywhere, at any scale. Starting with the people I trust.</p></div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section id="how" class="fade">
+  <div class="section-tag">02 / The Method</div>
+  <h2>I don't code.<br>I <span class="hl">architect</span>.</h2>
+  <p>Think of a music producer. They don't hand-carve instruments. They design the song: the arrangement, the emotion, the drops, the silence. Then they use a studio full of tools to bring it to life.</p>
+  <p>That's my method. I design systems. AI builds them.</p>
+
+  <div class="layers">
+    <div class="layer open" onclick="toggleLayer(this)">
+      <div class="layer-bar" style="background:var(--teal)"></div>
+      <div class="layer-content">
+        <div class="layer-title">&#129504; My Brain - System Architecture</div>
+        <div class="layer-desc">I decide what to build, how data flows, what connects to what. Every decision about structure, logic, and behavior is mine. This is the strategy layer.</div>
+      </div>
+    </div>
+    <div class="layer" onclick="toggleLayer(this)">
+      <div class="layer-bar" style="background:var(--amber)"></div>
+      <div class="layer-content">
+        <div class="layer-title">&#128295; Claude Code - Engineering Partner</div>
+        <div class="layer-desc">AI writes code based on my specifications. Like having a senior developer who works at the speed of thought, 24/7, and never forgets what we discussed.</div>
+      </div>
+    </div>
+    <div class="layer" onclick="toggleLayer(this)">
+      <div class="layer-bar" style="background:var(--magenta)"></div>
+      <div class="layer-content">
+        <div class="layer-title">&#9889; ElektraOS - The Living System</div>
+        <div class="layer-desc">24 AI agents organized into teams: Revenue, Content, Intel, Operations. Each one is a virtual employee with a specific job, running 24/7 without breaks.</div>
+      </div>
+    </div>
+    <div class="layer" onclick="toggleLayer(this)">
+      <div class="layer-bar" style="background:var(--blue)"></div>
+      <div class="layer-content">
+        <div class="layer-title">&#127760; ElektraOS.dev - The Business</div>
+        <div class="layer-desc">Now I build these same systems for other people. Custom AI chatbots, automation pipelines, media generation, SEO engines. The infrastructure that levels the playing field.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="terminal">
+    <span class="prompt">elektra:~$</span> <span class="output">system.status()</span><br>
+    <span class="output">+======================================+</span><br>
+    <span class="output">| </span><span class="highlight">ElektraOS v3.2</span><span class="output"> | STATUS: LIVE      |</span><br>
+    <span class="output">| Routes: 403 | Tables: 59 | Agents: 24 |</span><br>
+    <span class="output">| Built in: 73 days | Builder: solo     |</span><br>
+    <span class="output">| Velocity: 5.5 routes/day              |</span><br>
+    <span class="output">| Method: AI-augmented engineering      |</span><br>
+    <span class="output">+======================================+</span><br>
+    <span class="prompt">elektra:~$</span> <span class="cursor"></span>
+  </div>
+</section>
+
+<!-- WHAT WE COULD BUILD TOGETHER -->
+<section id="together" class="fade">
+  <div class="section-tag">03 / What We Build Together</div>
+  <h2>OK so here's what<br>I keep <span class="hl-a">thinking about</span>.</h2>
+  <p class="lead">You know Accra, you know the people, you know what's missing. I've got the AI systems running. Let's connect the dots.</p>
+
+  <div class="mercy-banner">
+    <h3>Copenhagen + Accra</h3>
+    <p>Not charity. Not a pitch. Real infrastructure for real people who deserve better tools.</p>
+  </div>
+
+  <div class="collab-grid">
+    <div class="collab-card">
+      <div class="collab-num">OPPORTUNITY 01</div>
+      <h3>Your Own AI System</h3>
+      <p>A personal ElektraOS built around your workflow. Content scheduling, client management, social media automation, task tracking - all running on AI agents that learn how you work.</p>
+      <div class="collab-tags">
+        <span>AI agents</span>
+        <span>automation</span>
+        <span>custom dashboard</span>
+      </div>
+    </div>
+    <div class="collab-card">
+      <div class="collab-num">OPPORTUNITY 02</div>
+      <h3>Creative Network Hub - Accra</h3>
+      <p>A platform connecting Accra's creative talent to global clients. Portfolio hosting, AI-powered matching, automated invoicing, and fair pricing that respects local economics.</p>
+      <div class="collab-tags">
+        <span>marketplace</span>
+        <span>fair pricing</span>
+        <span>global reach</span>
+      </div>
+    </div>
+    <div class="collab-card">
+      <div class="collab-num">OPPORTUNITY 03</div>
+      <h3>Content Factory Pipeline</h3>
+      <p>AI-assisted content creation at scale. Blog posts, social media, video scripts, SEO optimization - the same pipeline I built for my clients, adapted for the Ghanaian creative market.</p>
+      <div class="collab-tags">
+        <span>content AI</span>
+        <span>social media</span>
+        <span>SEO</span>
+      </div>
+    </div>
+    <div class="collab-card">
+      <div class="collab-num">OPPORTUNITY 04</div>
+      <h3>Cross-Border E-Commerce</h3>
+      <p>Ghanaian crafts, fashion, and creative products sold to European and global markets. AI-powered product photography, automated listings, logistics coordination, multi-currency pricing.</p>
+      <div class="collab-tags">
+        <span>e-commerce</span>
+        <span>logistics</span>
+        <span>global sales</span>
+      </div>
+    </div>
+    <div class="collab-card">
+      <div class="collab-num">OPPORTUNITY 05</div>
+      <h3>Freelancer Accelerator</h3>
+      <p>Help Accra's freelancers compete globally: AI-generated proposals, portfolio optimization, automated client outreach, and pricing strategies that work for both markets.</p>
+      <div class="collab-tags">
+        <span>freelancers</span>
+        <span>proposals</span>
+        <span>upskilling</span>
+      </div>
+    </div>
+    <div class="collab-card">
+      <div class="collab-num">OPPORTUNITY 06</div>
+      <h3>Education + Workshop Series</h3>
+      <p>Teach people how to use AI as a build tool, not just a chatbot. Workshops in Accra, remote sessions, practical hands-on projects. AI literacy for creatives and entrepreneurs.</p>
+      <div class="collab-tags">
+        <span>workshops</span>
+        <span>AI literacy</span>
+        <span>community</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:var(--navy-light);border-left:3px solid var(--amber);border-radius:0 12px 12px 0;padding:1.5rem 2rem;margin:1.5rem 0;">
+    <p style="color:var(--white);font-style:italic;font-weight:300;font-size:1.15rem;margin:0;">
+      "We don't have to pick one. We start with whatever makes sense for you, see if it works, and grow from there. Once the system is built, it scales without needing more people."
+    </p>
+  </div>
+</section>
+
+<!-- NETWORK -->
+<section id="network" class="fade" style="max-width:1200px;">
+  <div class="section-tag">04 / The Network</div>
+  <h2>Six cities.<br>One <span class="hl">connected system.</span></h2>
+  <p>Each node is a creative hub. Each corridor is an opportunity. Accra is where the energy is. Click a city to explore.</p>
+
+  <div class="network-container">
+    <svg class="network-svg" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(0,201,167,0.03)" stroke-width="0.5"/></pattern>
+        <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <rect width="900" height="500" fill="url(#grid)"/>
+
+      <!-- Corridors -->
+      <g opacity="0.2" stroke-width="1">
+        <line x1="420" y1="150" x2="480" y2="180" stroke="var(--teal)" stroke-dasharray="4,4"/>
+        <line x1="420" y1="150" x2="350" y2="195" stroke="var(--amber)" stroke-dasharray="4,4"/>
+        <line x1="420" y1="150" x2="310" y2="140" stroke="var(--magenta)" stroke-dasharray="4,4"/>
+        <line x1="350" y1="195" x2="370" y2="320" stroke="var(--teal)" stroke-dasharray="4,4"/>
+        <line x1="370" y1="320" x2="340" y2="400" stroke="var(--amber)" stroke-dasharray="4,4"/>
+        <line x1="310" y1="140" x2="340" y2="400" stroke="var(--magenta)" stroke-dasharray="4,4"/>
+        <line x1="480" y1="180" x2="370" y2="320" stroke="var(--blue)" stroke-dasharray="4,4"/>
+        <line x1="420" y1="150" x2="370" y2="320" stroke="var(--teal)" stroke-dasharray="4,4"/>
+        <!-- Highlighted CPH-Accra corridor -->
+        <line x1="420" y1="150" x2="340" y2="400" stroke="var(--amber)" stroke-width="2" stroke-dasharray="6,3" opacity="1"/>
+      </g>
+
+      <!-- City nodes -->
+      <g class="city-dot" onclick="showCity('copenhagen')" filter="url(#glow)">
+        <circle cx="420" cy="150" r="6" fill="var(--teal)"/>
+        <circle class="dot-ring" cx="420" cy="150" r="10" fill="none" stroke="var(--teal)" stroke-width="1" opacity="0.4"/>
+        <text x="420" y="135" text-anchor="middle" fill="var(--teal)" font-family="JetBrains Mono" font-size="9" letter-spacing="0.1em">COPENHAGEN</text>
+        <text x="420" y="168" text-anchor="middle" fill="var(--gray)" font-family="Source Sans 3" font-size="8">HQ - Builder's Base</text>
+      </g>
+      <g class="city-dot" onclick="showCity('vienna')" filter="url(#glow)">
+        <circle cx="480" cy="180" r="5" fill="var(--amber)"/>
+        <circle class="dot-ring" cx="480" cy="180" r="10" fill="none" stroke="var(--amber)" stroke-width="1" opacity="0.4"/>
+        <text x="510" y="175" fill="var(--amber)" font-family="JetBrains Mono" font-size="9" letter-spacing="0.1em">VIENNA</text>
+        <text x="510" y="188" fill="var(--gray)" font-family="Source Sans 3" font-size="8">Creative Industries Hub</text>
+      </g>
+      <g class="city-dot" onclick="showCity('paris')" filter="url(#glow)">
+        <circle cx="350" cy="195" r="5" fill="var(--magenta)"/>
+        <circle class="dot-ring" cx="350" cy="195" r="10" fill="none" stroke="var(--magenta)" stroke-width="1" opacity="0.4"/>
+        <text x="315" y="188" text-anchor="end" fill="var(--magenta)" font-family="JetBrains Mono" font-size="9" letter-spacing="0.1em">PARIS</text>
+        <text x="315" y="201" text-anchor="end" fill="var(--gray)" font-family="Source Sans 3" font-size="8">Diaspora + Fashion + Tech</text>
+      </g>
+      <g class="city-dot" onclick="showCity('london')" filter="url(#glow)">
+        <circle cx="310" cy="140" r="5" fill="var(--blue)"/>
+        <circle class="dot-ring" cx="310" cy="140" r="10" fill="none" stroke="var(--blue)" stroke-width="1" opacity="0.4"/>
+        <text x="275" y="133" text-anchor="end" fill="var(--blue)" font-family="JetBrains Mono" font-size="9" letter-spacing="0.1em">LONDON</text>
+        <text x="275" y="146" text-anchor="end" fill="var(--gray)" font-family="Source Sans 3" font-size="8">Global Gateway</text>
+      </g>
+      <g class="city-dot" onclick="showCity('casablanca')" filter="url(#glow)">
+        <circle cx="370" cy="320" r="5" fill="var(--teal)"/>
+        <circle class="dot-ring" cx="370" cy="320" r="10" fill="none" stroke="var(--teal)" stroke-width="1" opacity="0.4"/>
+        <text x="405" y="315" fill="var(--teal)" font-family="JetBrains Mono" font-size="9" letter-spacing="0.1em">CASABLANCA</text>
+        <text x="405" y="328" fill="var(--gray)" font-family="Source Sans 3" font-size="8">Africa's Digital Gateway</text>
+      </g>
+      <!-- Accra - HIGHLIGHTED with larger node -->
+      <g class="city-dot" onclick="showCity('accra')" filter="url(#glow)">
+        <circle cx="340" cy="400" r="8" fill="var(--amber)"/>
+        <circle class="dot-ring" cx="340" cy="400" r="14" fill="none" stroke="var(--amber)" stroke-width="1.5" opacity="0.6"/>
+        <circle cx="340" cy="400" r="20" fill="none" stroke="var(--amber)" stroke-width="0.5" opacity="0.2">
+          <animate attributeName="r" values="20;28;20" dur="3s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.2;0.05;0.2" dur="3s" repeatCount="indefinite"/>
+        </circle>
+        <text x="375" y="395" fill="var(--amber)" font-family="JetBrains Mono" font-size="10" font-weight="600" letter-spacing="0.1em">ACCRA</text>
+        <text x="375" y="408" fill="var(--amber)" font-family="Source Sans 3" font-size="8" opacity="0.8">Creative Economy Boom - You Are Here</text>
+      </g>
+    </svg>
+    <div class="city-info" id="cityInfo"></div>
+  </div>
+
+  <h3 style="margin-top:2rem;">Opportunity Corridors</h3>
+  <div class="corridors">
+    <div class="corridor" style="border-color:rgba(232,168,56,0.2);background:linear-gradient(135deg,var(--navy-card),rgba(232,168,56,0.03));">
+      <div class="corridor-route">COPENHAGEN &#8596; ACCRA</div>
+      <h3>The CPH-Accra Creative Bridge</h3>
+      <p>Our corridor. Nordic design meets West African creativity. Denmark's Africa Strategy is actively expanding trade. The diaspora bridge is real and growing. We build the digital infrastructure for it.</p>
+    </div>
+    <div class="corridor">
+      <div class="corridor-route">ACCRA &#8596; GLOBAL</div>
+      <h3>Africa's Freelance Boom</h3>
+      <p>Africa's freelance tech sector growing from $7.3B to $37.7B by 2034. Ghana's creative corridors gaining global recognition. The talent is there. The tools aren't. That's where we come in.</p>
+    </div>
+    <div class="corridor">
+      <div class="corridor-route">COPENHAGEN &#8596; CASABLANCA</div>
+      <h3>The DK-Morocco Bridge</h3>
+      <p>Already active via She&Elle. Morocco's Digital 2030 strategy targets 3,000 startups and 240,000 digital jobs. Cross-border e-commerce, crafts, content.</p>
+    </div>
+    <div class="corridor">
+      <div class="corridor-route">DIASPORA &#8596; HOME</div>
+      <h3>The $100B Bridge</h3>
+      <p>African diaspora sends $100B+ in remittances annually. What if we redirected even 1% into creative infrastructure? That's $1B flowing into tools, platforms, and systems that create jobs.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT EXISTS -->
+<section id="proof" class="fade">
+  <div class="section-tag">05 / The Proof</div>
+  <h2>Real numbers,<br><span class="hl-a">real system.</span></h2>
+  <p>This isn't a pitch. This is what already exists today, built in 73 days by one person with AI.</p>
+
+  <div class="stats">
+    <div class="stat"><div class="stat-n" data-target="403">0</div><div class="stat-l">API Routes</div><div class="stat-h">403 doors, each one a function</div></div>
+    <div class="stat"><div class="stat-n" data-target="59">0</div><div class="stat-l">Databases</div><div class="stat-h">59 organized memory banks</div></div>
+    <div class="stat"><div class="stat-n" data-target="24">0</div><div class="stat-l">AI Agents</div><div class="stat-h">24 virtual team members</div></div>
+    <div class="stat"><div class="stat-n" data-target="31">0</div><div class="stat-l">Workflows</div><div class="stat-h">31 automated processes</div></div>
+    <div class="stat"><div class="stat-n" data-target="5">0</div><div class="stat-l">Solutions</div><div class="stat-h">5 services for clients globally</div></div>
+    <div class="stat"><div class="stat-n" data-target="73">0</div><div class="stat-l">Days</div><div class="stat-h">Built in under 3 months</div></div>
+  </div>
+
+  <div class="terminal">
+    <span class="prompt">elektra:~$</span> <span class="output">network.add("mercy", city="accra")</span><br>
+    <span class="output">+===============================================+</span><br>
+    <span class="output">| </span><span class="highlight">NETWORK NODE ADDED</span><span class="output">                            |</span><br>
+    <span class="output">| Member: Mercy                                 |</span><br>
+    <span class="output">| City: Accra, Ghana                            |</span><br>
+    <span class="output">| Corridor: Copenhagen &#8596; Accra                 |</span><br>
+    <span class="output">| Status: </span><span class="highlight">INVITED</span><span class="output">                              |</span><br>
+    <span class="output">| Network size: 2 (and growing)                 |</span><br>
+    <span class="output">+===============================================+</span><br>
+    <span class="prompt">elektra:~$</span> <span class="cursor"></span>
+  </div>
+</section>
+
+<!-- ACCRA PRICING -->
+<section id="pricing" class="fade">
+  <div class="section-tag">06 / Fair Pricing for Accra</div>
+  <h2>Real prices.<br><span class="hl-a">Built for your economy.</span></h2>
+  <p>Copenhagen is 4-5x more expensive than Accra. Our pricing reflects that. These are not discounts - they're fair market rates calibrated to Ghana's creative economy. All payments work with Mobile Money (MTN MoMo, Vodafone Cash).</p>
+
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <div class="pricing-tier micro">Micro</div>
+      <div class="pricing-amount">$25 <span>/month</span></div>
+      <div class="pricing-local">~ GHS 275 via MoMo</div>
+      <p style="font-size:0.85rem;color:var(--gray);margin-bottom:0.75rem;">For solo freelancers and creators getting started.</p>
+      <ul class="pricing-features">
+        <li>AI chatbot for your business</li>
+        <li>Basic social media scheduling</li>
+        <li>1 automation workflow</li>
+        <li>Email + chat support</li>
+      </ul>
+    </div>
+    <div class="pricing-card popular">
+      <div class="pricing-tier starter">Starter</div>
+      <div class="pricing-amount">$75 <span>/month</span></div>
+      <div class="pricing-local">~ GHS 823 via MoMo</div>
+      <p style="font-size:0.85rem;color:var(--gray);margin-bottom:0.75rem;">For small businesses ready to scale with AI.</p>
+      <ul class="pricing-features">
+        <li>Custom AI assistant</li>
+        <li>Content generation pipeline</li>
+        <li>5 automation workflows</li>
+        <li>Social media management</li>
+        <li>Monthly strategy call</li>
+      </ul>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-tier pro">Professional</div>
+      <div class="pricing-amount">$200 <span>/month</span></div>
+      <div class="pricing-local">~ GHS 2,194 via MoMo</div>
+      <p style="font-size:0.85rem;color:var(--gray);margin-bottom:0.75rem;">Full AI infrastructure. Replaces a part-time hire.</p>
+      <ul class="pricing-features">
+        <li>Full ElektraOS-lite system</li>
+        <li>Unlimited AI agents</li>
+        <li>E-commerce integration</li>
+        <li>SEO + content engine</li>
+        <li>Client portal</li>
+        <li>Priority support</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0;">
+    <div class="pricing-note">
+      <p><strong style="color:var(--white);">One-time projects</strong></p>
+      <p style="margin-top:0.3rem;">Website: <span style="color:var(--teal);">$75-$500</span> (vs GHS 800-7,000 local agencies)<br>
+      AI Chatbot: <span style="color:var(--teal);">$50-$250</span> setup<br>
+      Automation: <span style="color:var(--teal);">$30-$200</span> per workflow</p>
+    </div>
+    <div class="pricing-note" style="border-left-color:var(--amber);">
+      <p><strong style="color:var(--white);">Why these prices work</strong></p>
+      <p style="margin-top:0.3rem;">A social media manager in Accra costs <span style="color:var(--amber);">GHS 300-1,500/mo</span>. Our Starter tier gives you AI-powered content + automation + strategy for <span style="color:var(--amber);">GHS 823/mo</span> - and it runs 24/7.</p>
+    </div>
+  </div>
+
+  <div class="terminal">
+    <span class="prompt">elektra:~$</span> <span class="output">pricing.compare("accra", "copenhagen")</span><br>
+    <span class="output">+===============================================+</span><br>
+    <span class="output">| FAIR PRICING MODEL                            |</span><br>
+    <span class="output">| Cost of living ratio: </span><span class="highlight">4.3x</span><span class="output">                   |</span><br>
+    <span class="output">| Price adjustment: </span><span class="highlight">7-10x discount</span><span class="output">              |</span><br>
+    <span class="output">| Payment: </span><span class="highlight">Mobile Money (MoMo)</span><span class="output">                |</span><br>
+    <span class="output">| 59.7% of Ghanaians use mobile money           |</span><br>
+    <span class="output">| GHS 3.6T mobile money transactions in 2025    |</span><br>
+    <span class="output">| Philosophy: </span><span class="highlight">Fair, not discounted</span><span class="output">             |</span><br>
+    <span class="output">+===============================================+</span><br>
+    <span class="prompt">elektra:~$</span> <span class="cursor"></span>
+  </div>
+</section>
+
+<!-- VISION -->
+<section id="vision" class="fade">
+  <div class="section-tag">07 / The Vision</div>
+  <h2>A fair society<br>for <span class="hl-a">underdogs.</span></h2>
+  <p class="lead">What if every creative, in every country, had access to the same AI-powered tools that only well-funded startups have today?</p>
+
+  <div class="principles">
+    <div class="principle"><div class="pr-icon">&#127758;</div><div class="pr-text"><strong>Global, borderless, trust-based.</strong> You join because someone you trust brought you in. Copenhagen, Vienna, Casablanca, Accra, Paris, London. The network grows through real people, not algorithms.</div></div>
+    <div class="principle"><div class="pr-icon">&#9878;</div><div class="pr-text"><strong>Fair market prices, tailored to reality.</strong> A designer in Accra and a designer in Copenhagen both get paid what their work is worth in their context. No race to the bottom. Pricing adapts to local economies while maintaining real value.</div></div>
+    <div class="principle"><div class="pr-icon">&#129302;</div><div class="pr-text"><strong>Your own AI system, built around your brain.</strong> Every member gets a smart system tailored to how they work. Your workflow, your needs, your memory. AI agents that adapt to YOU, not the other way around.</div></div>
+    <div class="principle"><div class="pr-icon">&#128176;</div><div class="pr-text"><strong>Zero funding required.</strong> This needs time and dedication, not investors. Work at whatever scale fits your life. The system adjusts. A single mom in Accra and a full-time creative in Vienna both find their place.</div></div>
+    <div class="principle"><div class="pr-icon">&#128737;</div><div class="pr-text"><strong>Support the underdogs to fair the game.</strong> The game isn't fair and we know it. This is about giving people the same infrastructure, tools, and support that privileged founders take for granted.</div></div>
+    <div class="principle"><div class="pr-icon">&#128279;</div><div class="pr-text"><strong>Network over platform.</strong> This is not an app you download. It's a living network of real people, connected by real relationships, supported by real systems. It grows organically, like trust does.</div></div>
+  </div>
+</section>
+
+<!-- NEXT STEPS -->
+<section id="next" class="fade">
+  <div class="section-tag">08 / Next Steps</div>
+
+  <div class="cta-block">
+
+    <h2>You know where to find me.</h2>
+    <p class="lead" style="color:var(--white);">Whenever you're ready, we talk. No rush. The system isn't going anywhere - it's getting better every day.</p>
+    <p>In the meantime, keep counting those coconuts. &#129381;</p>
+    <div class="links">
+      <a href="mailto:yossra.benzad@gmail.com?subject=Let's%20do%20this" class="btn btn-p">Hit me up &#8594;</a>
+      <a href="https://elektraos.dev" target="_blank" class="btn btn-s">Explore elektraos.dev</a>
+    </div>
+  </div>
+
+  <div class="divider" style="margin:2.5rem auto;"></div>
+  <p style="text-align:center;color:var(--gray);font-size:0.9rem;max-width:100%;margin:0 auto;">
+    Built by Yoss - Copenhagen, Denmark - 2026<br>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--gray-dark);">
+      Powered by ElektraOS - This page was built with the same AI-augmented method described within it.
+    </span>
+  </p>
+</section>
+
+<footer>elektraos.dev - turn your ideas into products - 2026</footer>
+
+<!-- CHAT WIDGET -->
+<div class="mercy-chat">
+  <div class="chat-panel-mercy" id="mercyChat">
+    <div class="chat-head">
+      <div class="chat-avatar"><svg width="24" height="24" viewBox="0 0 64 64"><circle cx="32" cy="36" r="20" fill="#6B3F1F"/><circle cx="32" cy="36" r="18" fill="#8B5E3C"/><circle cx="32" cy="36" r="16" fill="url(#cav)" opacity="0.5"/><circle cx="26" cy="32" r="3" fill="#5C3310" opacity="0.7"/><circle cx="38" cy="32" r="3" fill="#5C3310" opacity="0.7"/><circle cx="32" cy="40" r="2.5" fill="#5C3310" opacity="0.7"/><line x1="28" y1="18" x2="22" y2="4" stroke="#E8A838" stroke-width="2.5" stroke-linecap="round"/><line x1="22" y1="4" x2="20" y2="2" stroke="#E8A838" stroke-width="2" stroke-linecap="round"/><ellipse cx="32" cy="20" rx="16" ry="3" fill="none" stroke="#A07050" stroke-width="1" opacity="0.4"/><defs><radialGradient id="cav" cx="0.35" cy="0.3" r="0.7"><stop offset="0%" stop-color="#A07050"/><stop offset="100%" stop-color="#5C3A1E"/></radialGradient></defs></svg></div>
+      <div class="chat-head-info">
+        <div class="chat-head-name">Elektra</div>
+        <div class="chat-head-status" id="chatStatus">ONLINE</div>
+      </div>
+      <button class="chat-close" onclick="toggleMercyChat()">&#10005;</button>
+    </div>
+    <div class="chat-messages" id="mercyMessages">
+      <div class="chat-msg bot">Hey Mercy! &#129381; I'm Elektra - Yoss built me. Ask me anything about the systems, the network, pricing, or just say hi. I know things.</div>
+    </div>
+    <div class="chat-input-area">
+      <input type="text" class="chat-input-field" id="mercyInput" placeholder="Ask me anything..." autocomplete="off">
+      <button class="chat-send-btn" id="mercySend" onclick="sendMercyMsg()">
+        <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="chat-toggle-btn" onclick="toggleMercyChat()">
+    <svg width="32" height="32" viewBox="0 0 64 64"><circle cx="32" cy="36" r="20" fill="#6B3F1F"/><circle cx="32" cy="36" r="18" fill="#8B5E3C"/><circle cx="32" cy="36" r="16" fill="url(#ctv)" opacity="0.5"/><circle cx="26" cy="32" r="3" fill="#5C3310" opacity="0.7"/><circle cx="38" cy="32" r="3" fill="#5C3310" opacity="0.7"/><circle cx="32" cy="40" r="2.5" fill="#5C3310" opacity="0.7"/><line x1="28" y1="18" x2="22" y2="4" stroke="#E8A838" stroke-width="2.5" stroke-linecap="round"/><line x1="22" y1="4" x2="20" y2="2" stroke="#E8A838" stroke-width="2" stroke-linecap="round"/><ellipse cx="32" cy="20" rx="16" ry="3" fill="none" stroke="#A07050" stroke-width="1" opacity="0.4"/><defs><radialGradient id="ctv" cx="0.35" cy="0.3" r="0.7"><stop offset="0%" stop-color="#A07050"/><stop offset="100%" stop-color="#5C3A1E"/></radialGradient></defs></svg>
+    <span class="online-dot"></span>
+  </div>
+</div>
+
+<!-- COCONUT COUNTER -->
+<div class="coconut-widget">
+  <div class="coconut-panel" id="coconutPanel">
+    <h3>&#129381; Ghana Trip Tracker</h3>
+    <div class="coconut-count" id="coconutCount">0</div>
+    <div class="coconut-label">coconuts this trip</div>
+    <div class="coconut-actions">
+      <button onclick="addCoconut(-1)">- 1</button>
+      <button class="add" onclick="addCoconut(1)">+ 1 &#129381;</button>
+      <button onclick="resetCoconuts()">new trip</button>
+    </div>
+    <div class="coconut-trips" id="coconutTrips"></div>
+  </div>
+  <div class="coconut-btn" onclick="toggleCoconut()">
+    &#129381;
+    <span class="coco-badge" id="cocoBadge">0</span>
+  </div>
+</div>
+
+<!-- COMMAND PALETTE -->
+<button class="cmd-toggle" onclick="toggleCmd()" title="Quick navigate" style="display:none;">&#9889;</button>
+<div class="cmd-panel" id="cmdPanel">
+  <h3>&#9889; Quick Navigate</h3>
+  <div class="cmd-item" onclick="goto('origin')">The Problem - Why I built this <span class="cmd-key">01</span></div>
+  <div class="cmd-item" onclick="goto('how')">The Method - How I build <span class="cmd-key">02</span></div>
+  <div class="cmd-item" onclick="goto('together')">Together - What we build <span class="cmd-key">03</span></div>
+  <div class="cmd-item" onclick="goto('network')">Network - 6 cities, real data <span class="cmd-key">04</span></div>
+  <div class="cmd-item" onclick="goto('proof')">Proof - Stats + system <span class="cmd-key">05</span></div>
+  <div class="cmd-item" onclick="goto('pricing')">Pricing - Fair rates for Accra <span class="cmd-key">06</span></div>
+  <div class="cmd-item" onclick="goto('vision')">Vision - Fair society for underdogs <span class="cmd-key">07</span></div>
+  <div class="cmd-item" onclick="goto('next')">Next - Let's figure it out <span class="cmd-key">08</span></div>
+  <div class="cmd-item" onclick="window.open('https://elektraos.dev','_blank')">Open elektraos.dev &#8599; <span class="cmd-key">&#8594;</span></div>
+</div>
+
+<script>
+const cities = {
+  copenhagen: {
+    name: 'Copenhagen',
+    tag: 'HQ - Builder\'s Base',
+    desc: 'Home base. Where ElektraOS was born and where the build studio operates. Denmark\'s Africa Strategy is actively expanding embassies and trade corridors. The Nordic-Africa Diaspora Collective runs from here.',
+    stat: 'Denmark allocated DKK 430M for Africa knowledge partnerships (2025-2032). DABA connects Danish-African business.'
+  },
+  vienna: {
+    name: 'Vienna',
+    tag: 'Creative Industries Powerhouse - Your Other Home',
+    desc: 'Your Austrian side lives here. 28,595 creative companies generating EUR 12B annual revenue. 44% of all Austrian creative workers are based in Vienna. The Vienna Business Agency funds digital creative projects. This is a node we already have a connection to - through you.',
+    stat: 'Creative Days Vienna brings global speakers. EIT Culture & Creativity funds cross-border creative tech. Vienna-Accra is an untapped corridor.'
+  },
+  paris: {
+    name: 'Paris',
+    tag: 'Diaspora + Fashion + Tech',
+    desc: 'Europe\'s largest African diaspora. Fashion, music, and tech talent pipeline between Paris and Francophone Africa. Strong creative corridor with shared language and cultural ties.',
+    stat: 'Paris-based creatives bridge European markets with African talent. Growing Afro-European creative scene.'
+  },
+  london: {
+    name: 'London',
+    tag: 'Global Creative Gateway',
+    desc: 'Global creative capital connecting Africa, Europe, and the world. Strong Ghanaian diaspora. UK creative industries worth GBP 100B+. Strong freelancer ecosystem across all disciplines.',
+    stat: 'UK-Ghana creative corridor growing. Africa\'s creative exports flowing through London.'
+  },
+  casablanca: {
+    name: 'Casablanca',
+    tag: 'Africa\'s Digital Bridge',
+    desc: 'Morocco\'s Digital 2030 strategy: 240,000 digital jobs, 3,000 startups, EUR 120M allocated for startup ecosystem. 36% of Technopark-supported startups export to 4 continents.',
+    stat: 'Morocco positioned as bridge between Europe and Africa. 7,874 new companies registered in January 2026 alone.'
+  },
+  accra: {
+    name: 'Accra',
+    tag: 'The Creative Boom - Grandma\'s Place',
+    desc: 'Your Ghanaian heart lives here. Fashion and content creators gaining global recognition. Africa\'s freelance tech sector projected to grow from $7.3B to $37.7B by 2034. Creative industries expected to generate $20B and 20M jobs across Africa by 2030. Also: the best coconuts on the planet.',
+    stat: '416M mobile internet users across Africa. Mobile tech contributed $220B to Africa\'s GDP in 2024. Also home to the world\'s most counted coconuts.'
+  }
+};
+
+function showCity(id) {
+  const c = cities[id];
+  const el = document.getElementById('cityInfo');
+  el.innerHTML = '<div class="ci-tag">' + c.tag + '</div><h3>' + c.name + '</h3><p>' + c.desc + '</p><div class="ci-stat">' + c.stat + '</div>';
+  el.classList.add('active');
+}
+
+// Auto-show Accra on load
+setTimeout(function(){ showCity('accra'); }, 1500);
+
+function toggleLayer(el) {
+  document.querySelectorAll('.layer').forEach(function(l){ if(l !== el) l.classList.remove('open'); });
+  el.classList.toggle('open');
+}
+
+function toggleCmd() {
+  document.getElementById('cmdPanel').classList.toggle('open');
+}
+function goto(id) {
+  document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  document.getElementById('cmdPanel').classList.remove('open');
+}
+
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.cmd-panel') && !e.target.closest('.cmd-toggle')) {
+    document.getElementById('cmdPanel').classList.remove('open');
+  }
+});
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
+    e.preventDefault();
+    toggleCmd();
+  }
+});
+
+// Fade in
+var fadeObs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e){ if (e.isIntersecting) e.target.classList.add('vis'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade').forEach(function(el){ fadeObs.observe(el); });
+
+// Timeline items
+var tlObs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e, i) {
+    if (e.isIntersecting) {
+      setTimeout(function(){ e.target.classList.add('visible'); }, i * 120);
+    }
+  });
+}, { threshold: 0.2 });
+document.querySelectorAll('.tl-item').forEach(function(el){ tlObs.observe(el); });
+
+// Counter animation
+function animateCount(el) {
+  var target = parseInt(el.dataset.target);
+  var duration = 1500;
+  var start = performance.now();
+  el.classList.add('counting');
+  function step(now) {
+    var progress = Math.min((now - start) / duration, 1);
+    var eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.floor(eased * target);
+    if (progress < 1) requestAnimationFrame(step);
+    else { el.textContent = target; el.classList.remove('counting'); }
+  }
+  requestAnimationFrame(step);
+}
+var countObs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting && !e.target.dataset.counted) {
+      e.target.dataset.counted = 'true';
+      animateCount(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.stat-n').forEach(function(el){ countObs.observe(el); });
+
+// Coconut counter - persists in localStorage
+var coconuts = parseInt(localStorage.getItem('mercy_coconuts') || '0');
+var trips = JSON.parse(localStorage.getItem('mercy_trips') || '[]');
+
+function updateCoconutUI() {
+  document.getElementById('coconutCount').textContent = coconuts;
+  document.getElementById('cocoBadge').textContent = coconuts;
+  var hero = document.getElementById('heroCoconut');
+  if (hero) hero.textContent = '\uD83C\uDF79 ' + coconuts + ' coconut' + (coconuts !== 1 ? 's' : '') + ' this trip';
+  var tripsEl = document.getElementById('coconutTrips');
+  if (trips.length > 0) {
+    tripsEl.textContent = 'Past trips: ' + trips.map(function(t){ return t.count + ' (' + t.date + ')'; }).join(' | ');
+  } else {
+    tripsEl.textContent = 'No past trips yet. Start counting!';
+  }
+}
+
+function addCoconut(n) {
+  coconuts = Math.max(0, coconuts + n);
+  localStorage.setItem('mercy_coconuts', coconuts);
+  updateCoconutUI();
+  if (n > 0) {
+    var btn = document.querySelector('.coconut-btn');
+    btn.style.transform = 'scale(1.3)';
+    setTimeout(function(){ btn.style.transform = ''; }, 200);
+  }
+}
+
+function resetCoconuts() {
+  if (coconuts > 0) {
+    var now = new Date();
+    var dateStr = now.toLocaleDateString('en-GB', { month: 'short', year: 'numeric' });
+    trips.push({ count: coconuts, date: dateStr });
+    localStorage.setItem('mercy_trips', JSON.stringify(trips));
+  }
+  coconuts = 0;
+  localStorage.setItem('mercy_coconuts', '0');
+  updateCoconutUI();
+}
+
+function toggleCoconut() {
+  document.getElementById('coconutPanel').classList.toggle('open');
+}
+
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.coconut-widget')) {
+    document.getElementById('coconutPanel').classList.remove('open');
+  }
+});
+
+updateCoconutUI();
+
+// ===== MERCY CHAT =====
+var CHAT_API = 'https://elektraos.dev/public/chat';
+var chatSession = localStorage.getItem('mercy_chat_session') || ('mercy_' + Date.now() + '_' + Math.random().toString(36).slice(2,6));
+localStorage.setItem('mercy_chat_session', chatSession);
+var chatOpen = false;
+
+// Local FAQ for when API is offline
+var mercyFAQ = {
+  pricing: 'Pricing starts at $25/month (GHS 275) for the Micro tier. Starter is $75/mo, Professional is $200/mo. All tiers work with Mobile Money (MoMo). One-time projects: websites from $75, chatbots from $50.',
+  coconut: 'I see you are a person of culture. The coconut counter is in the bottom-left corner. Click it, count them, never forget. Grandma would be proud.',
+  system: 'ElektraOS is a full cognitive operating system - 403 API routes, 59 databases, 24 AI agents, built in 73 days by one person using AI as a build tool. It runs content, automation, SEO, and client systems 24/7.',
+  agent: 'There are 24 AI agents organized into teams: Revenue, Content, Intel, and Operations. Each one has a specific job and runs autonomously. Think of them as virtual employees that never sleep.',
+  network: 'The network spans 6 cities: Copenhagen (HQ), Vienna, Paris, London, Casablanca, and Accra. It grows through trust, not algorithms. Fair pricing adapted to local economies.',
+  help: 'I can tell you about: pricing, the AI system, agents, the network, coconuts (obviously), how things are built, or what Yoss and you could create together. Just ask!',
+  accra: 'Accra is booming - Africa\'s freelance tech sector is projected to grow from $7.3B to $37.7B by 2034. 59.7% of Ghanaians use mobile money. The creative economy is at an inflection point.',
+  vienna: 'Vienna has 28,595 creative companies generating EUR 12B annually. 44% of Austrian creative workers are based there. It\'s a creative industries powerhouse - and your other home.',
+  build: 'The method is simple: Yoss designs the systems (architecture, logic, data flow), and AI builds them. Like a music producer - they don\'t carve instruments, they design the song. AI is the studio.',
+  hello: 'Hey! Good to have you here. What do you want to know? I can talk about the systems, pricing for Accra, the network, or we can just vibe. Your call.'
+};
+
+function matchFAQ(msg) {
+  msg = msg.toLowerCase();
+  if (/pric|cost|how much|\$|ghs|money|pay|afford|cheap/.test(msg)) return mercyFAQ.pricing;
+  if (/coconut|coco|trip|grandma/.test(msg)) return mercyFAQ.coconut;
+  if (/system|elektra|routes|database|built/.test(msg)) return mercyFAQ.system;
+  if (/agent|team|autonom/.test(msg)) return mercyFAQ.agent;
+  if (/network|cit|corridor|global/.test(msg)) return mercyFAQ.network;
+  if (/accra|ghana|africa|freelanc/.test(msg)) return mercyFAQ.accra;
+  if (/vienna|austria/.test(msg)) return mercyFAQ.vienna;
+  if (/build|method|how.*work|architect/.test(msg)) return mercyFAQ.build;
+  if (/help|what can|tell me/.test(msg)) return mercyFAQ.help;
+  if (/hi|hey|hello|yo|sup/.test(msg)) return mercyFAQ.hello;
+  return null;
+}
+
+function toggleMercyChat() {
+  chatOpen = !chatOpen;
+  document.getElementById('mercyChat').classList.toggle('open', chatOpen);
+  if (chatOpen) document.getElementById('mercyInput').focus();
+}
+
+function addChatMsg(text, who) {
+  var el = document.getElementById('mercyMessages');
+  var msg = document.createElement('div');
+  msg.className = 'chat-msg ' + who;
+  msg.textContent = text;
+  el.appendChild(msg);
+  el.scrollTop = el.scrollHeight;
+  return msg;
+}
+
+function showTyping() {
+  var el = document.getElementById('mercyMessages');
+  var msg = document.createElement('div');
+  msg.className = 'chat-msg bot typing';
+  msg.id = 'typingIndicator';
+  msg.innerHTML = '<span class="dots"><span></span><span></span><span></span></span>';
+  el.appendChild(msg);
+  el.scrollTop = el.scrollHeight;
+}
+
+function removeTyping() {
+  var t = document.getElementById('typingIndicator');
+  if (t) t.remove();
+}
+
+function sendMercyMsg() {
+  var input = document.getElementById('mercyInput');
+  var text = input.value.trim();
+  if (!text) return;
+
+  addChatMsg(text, 'user');
+  input.value = '';
+  showTyping();
+
+  // Try API first, fall back to FAQ
+  fetch(CHAT_API, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message: text, session_id: chatSession, page: 'mercy-case' })
+  })
+  .then(function(r) { if (!r.ok) throw new Error('API error'); return r.json(); })
+  .then(function(data) {
+    removeTyping();
+    addChatMsg(data.reply, 'bot');
+  })
+  .catch(function() {
+    removeTyping();
+    var faq = matchFAQ(text);
+    if (faq) {
+      addChatMsg(faq, 'bot');
+    } else {
+      addChatMsg('Hmm, I\'m not sure about that one. Try asking about pricing, the AI system, agents, the network, or coconuts. Or just say hi!', 'bot');
+    }
+  });
+}
+
+// Enter key sends
+document.getElementById('mercyInput').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') { e.preventDefault(); sendMercyMsg(); }
+});
+
+// Health check
+fetch(CHAT_API.replace('/chat', '/health'))
+  .then(function(r) { if (r.ok) document.getElementById('chatStatus').textContent = 'ONLINE'; })
+  .catch(function() { document.getElementById('chatStatus').textContent = 'OFFLINE - FAQ MODE'; });
+</script>
+
+</body>
+</html>
