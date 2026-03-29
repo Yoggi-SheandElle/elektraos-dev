@@ -178,13 +178,13 @@
 
   <div class="status-bar">
     <span class="status-dot"></span>
-    Connected to ElektraOS - Changes require approval before going live
+    Connected to ElektraOS - Content, prices, descriptions: you decide. Code changes: need approval.
   </div>
 
   <div class="portal-layout">
     <!-- Main Content -->
     <div class="portal-main">
-      <div class="section-title">Products (9)</div>
+      <div class="section-title" id="productCount">Products (9)</div>
       <button class="add-btn" onclick="showAddModal()">+ Add New Product</button>
 
       <div class="product-grid" id="productGrid">
@@ -280,13 +280,24 @@
     // Load products
     function loadProducts() {
       fetch('https://aylamaison.com/products.json')
-        .then(function(r) { return r.json(); })
+        .then(function(r) { if (!r.ok) throw new Error('not ok'); return r.json(); })
         .then(function(data) {
-          products = data.products || [];
+          products = Array.isArray(data) ? data : (data.products || []);
           renderProducts();
         })
         .catch(function() {
-          // Fallback: hardcoded from last known state
+          // Fallback: hardcoded 9 products from last known state
+          products = [
+            {id:1,collection:"Luna",name:"Luna Crescent Pendant",price_mad:890,materials:"925 Silver",category:"necklaces",image:"assets/images/luna-crescent.jpg",in_stock:true},
+            {id:2,collection:"Luna",name:"Luna Layering Chain",price_mad:720,materials:"925 Silver",category:"necklaces",image:"assets/images/luna-chain.jpg",in_stock:true},
+            {id:3,collection:"Luna",name:"Luna Star Studs",price_mad:450,materials:"925 Silver",category:"earrings",image:"assets/images/luna-studs.jpg",in_stock:true},
+            {id:4,collection:"Sahara",name:"Sahara Stacking Ring",price_mad:650,materials:"925 Silver",category:"rings",image:"assets/images/sahara-ring.jpg",in_stock:true},
+            {id:5,collection:"Sahara",name:"Sahara Signet Ring",price_mad:780,materials:"925 Silver",category:"rings",image:"assets/images/sahara-signet.jpg",in_stock:true},
+            {id:6,collection:"Sahara",name:"Sahara Open Cuff",price_mad:1100,materials:"925 Silver",category:"bracelets",image:"assets/images/sahara-cuff.jpg",in_stock:true},
+            {id:7,collection:"Noor",name:"Noor Drop Earrings",price_mad:1200,materials:"925 Silver",category:"earrings",image:"assets/images/noor-drops.jpg",in_stock:true},
+            {id:8,collection:"Noor",name:"Heritage Chain Bracelet",price_mad:950,materials:"925 Silver",category:"bracelets",image:"assets/images/noor-bracelet.jpg",in_stock:true},
+            {id:9,collection:"Noor",name:"Noor Pearl Choker",price_mad:1450,materials:"925 Silver + Pearl",category:"necklaces",image:"assets/images/noor-choker.jpg",in_stock:true}
+          ];
           renderProducts();
         });
     }
@@ -294,18 +305,24 @@
     function renderProducts() {
       var grid = document.getElementById('productGrid');
       grid.innerHTML = '';
+      document.getElementById('productCount').textContent = 'Products (' + products.length + ')';
       products.forEach(function(p, i) {
         var card = document.createElement('div');
         card.className = 'product-card';
         card.onclick = function() { openEdit(i); };
-        card.innerHTML =
-          '<img src="https://aylamaison.com/' + p.image + '" alt="' + p.name + '" onerror="this.style.background=\'var(--bg-card)\';this.style.height=\'180px\'">' +
-          '<div class="product-card-body">' +
-            '<div class="product-card-collection">' + p.collection + '</div>' +
-            '<div class="product-card-name">' + p.name + '</div>' +
-            '<div class="product-card-price">' + p.price_mad.toLocaleString() + ' MAD</div>' +
-            '<div class="product-card-stock ' + (p.in_stock ? 'in' : 'out') + '">' + (p.in_stock ? 'In Stock' : 'Out of Stock') + '</div>' +
-          '</div>';
+        var img = document.createElement('img');
+        img.src = 'https://aylamaison.com/' + p.image;
+        img.alt = p.name;
+        img.onerror = function() { this.style.background='var(--bg-card)'; this.style.height='180px'; this.src=''; };
+        card.appendChild(img);
+        var body = document.createElement('div');
+        body.className = 'product-card-body';
+        var col = document.createElement('div'); col.className = 'product-card-collection'; col.textContent = p.collection;
+        var nm = document.createElement('div'); nm.className = 'product-card-name'; nm.textContent = p.name;
+        var pr = document.createElement('div'); pr.className = 'product-card-price'; pr.textContent = p.price_mad.toLocaleString() + ' MAD';
+        var st = document.createElement('div'); st.className = 'product-card-stock ' + (p.in_stock ? 'in' : 'out'); st.textContent = p.in_stock ? 'In Stock' : 'Out of Stock';
+        body.appendChild(col); body.appendChild(nm); body.appendChild(pr); body.appendChild(st);
+        card.appendChild(body);
         grid.appendChild(card);
       });
     }
