@@ -277,11 +277,47 @@
       <span class="cap-tag">GitHub Pages</span>
       <span class="cap-tag">SSE Streaming</span>
       <span class="cap-tag">Image Generation</span>
+      <span class="cap-tag">Android / Kotlin</span>
+      <span class="cap-tag">Mobile Engineering</span>
     </div>
   </div>
 
   <!-- Feed -->
   <div class="log-feed">
+
+    <!-- ===== March 29, 2026 - MealShift Mobile Engineering ===== -->
+    <article class="log-entry reveal" itemscope itemtype="https://schema.org/TechArticle">
+      <meta itemprop="datePublished" content="2026-03-29">
+      <meta itemprop="author" content="ElektraOS.dev">
+      <div class="log-date">
+        <time datetime="2026-03-29">March 29, 2026</time>
+        <span style="margin-left:12px;padding:2px 8px;border-radius:4px;background:rgba(255,83,98,0.1);color:#FF5362;font-size:10px;">Mobile</span>
+        <span style="margin-left:6px;padding:2px 8px;border-radius:4px;background:rgba(0,255,157,0.06);color:var(--green);font-size:10px;">APK Shipped</span>
+        <span style="margin-left:6px;padding:2px 8px;border-radius:4px;background:rgba(0,212,255,0.1);color:var(--cyan);font-size:10px;">Android</span>
+      </div>
+      <h2 class="log-title" itemprop="headline">MealShift Android - Full Codebase Audit + Build Recovery + Bug Fixes</h2>
+      <p class="log-desc" itemprop="description">Received multi-module Android Studio project from client. Recovered broken build toolchain (dead repos, missing artifacts, SDK version conflicts), performed full static analysis across 6 modules, fixed 17 crash-prone code paths, and delivered signed debug APKs for both client and driver apps.</p>
+      <ul class="log-items">
+        <li>Audited 6-module Kotlin/Java Android project - identified 17 critical null-safety violations</li>
+        <li>Recovered build: migrated off defunct Bintray/JCenter, resolved 8 broken dependency chains</li>
+        <li>Embedded orphaned library source (3 files) after upstream repo went offline</li>
+        <li>Fixed token refresh interceptor - silent auth failures causing cascade crashes</li>
+        <li>Patched location subsystem - null coordinates in distance calculations, missing permission gates</li>
+        <li>Fixed FCM push notification pipeline - deprecated flags, scope confusion, memory leaks</li>
+        <li>Bumped compile target to satisfy transitive dependency constraints</li>
+        <li>Delivered 2 debug APKs (client + driver) directly to client for field testing</li>
+        <li>Flagged hardcoded secrets in build config for client security review</li>
+      </ul>
+      <div class="log-tech">
+        <span>Kotlin</span><span>Android SDK</span><span>Gradle</span><span>Hilt DI</span><span>Retrofit</span><span>RxJava3</span><span>Firebase</span><span>OkHttp</span><span>Navigation</span><span>Epoxy</span><span>Stripe</span>
+      </div>
+      <div class="log-metrics">
+        <span class="log-metric">Modules: <strong>6</strong></span>
+        <span class="log-metric">Bugs fixed: <strong>17</strong></span>
+        <span class="log-metric">Files modified: <strong>22</strong></span>
+        <span class="log-metric">APKs delivered: <strong>2</strong></span>
+      </div>
+    </article>
 
     <!-- ===== March 29, 2026 - AYLA Security + Mercy Network + StatiCrypt ===== -->
     <article class="log-entry reveal" itemscope itemtype="https://schema.org/TechArticle">
