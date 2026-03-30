@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Joao - ElektraOS.dev</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#7c3aed">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- SECTION 1: PORTAL ENTRY -->
+  <div class="hero">
+    <div class="sigil-container">
+      <svg class="sigil-svg" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="60,5 110,30 110,90 60,115 10,90 10,30" stroke="url(#grad)" stroke-width="2" fill="none" opacity="0.6"/>
+        <polygon points="60,15 100,35 100,85 60,105 20,85 20,35" stroke="url(#grad)" stroke-width="1" fill="none" opacity="0.3"/>
+        <text x="60" y="68" text-anchor="middle" font-family="Space Mono" font-size="36" font-weight="700" fill="url(#grad)">J</text>
+        <circle cx="60" cy="60" r="8" fill="url(#grad)" opacity="0.15">
+          <animate attributeName="r" values="8;12;8" dur="3s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.15;0.3;0.15" dur="3s" repeatCount="indefinite"/>
+        </circle>
+        <defs>
+          <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#7c3aed"/>
+            <stop offset="100%" stop-color="#00d4ff"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+    <h1>Happy Birthday, Joao <span class="brasil-flag"><span class="bg"></span><span class="by"></span><span class="bb"></span></span></h1>
+    <p class="subtitle">Main character energy, deployed to production</p>
+    <span class="date-badge">March 31, 2026 - Malmo</span>
+    <span class="origin-badge">Campo Grande, MS -> The World</span>
+    <div class="scroll-indicator">
+      <span>scroll</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </div>
+  </div>
+
+  <!-- SECTION 2: SONG DEDICATION -->
+  <section class="song-section reveal">
+    <p class="section-title">// dedication</p>
+    <div class="waveform">
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="spotify-embed">
+      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2qKD4crtO5JqTjSepwUtBU?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+    <p class="song-dedication">This one's for you. The main character in the story today.</p>
+  </section>
+
+  <!-- SECTION 3: MAIN CHARACTER CARD -->
+  <section class="reveal">
+    <p class="section-title">// main_character.yaml</p>
+
+    <div class="terminal">
+      <div class="terminal-header">
+        <span class="terminal-dot red"></span>
+        <span class="terminal-dot yellow"></span>
+        <span class="terminal-dot green"></span>
+        <span class="terminal-title">joao@birthday ~ $</span>
+      </div>
+      <div class="terminal-body">
+        <div><span class="prompt">$</span> <span class="cmd">kubectl get birthday joao-nogueira</span></div>
+        <br>
+        <div><span class="output">NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;STATUS&nbsp;&nbsp;&nbsp;&nbsp;LOCATION&nbsp;&nbsp;&nbsp;DEPLOYED-BY</span></div>
+        <div><span class="highlight">joao-nogueira</span>&nbsp;&nbsp;&nbsp;<span class="success">Running</span>&nbsp;&nbsp;&nbsp;<span class="highlight">Malmo</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="purple">yossra+elektra</span></div>
+        <br>
+        <div><span class="prompt">$</span> <span class="cmd">nix-shell -p celebration --run "happy-birthday"</span></div>
+        <div><span class="success">building '/nix/store/...birthday-2026.drv'...</span></div>
+        <div><span class="success">deploying happiness to joao-nogueira...</span></div>
+        <div><span class="highlight">Done. Main character mode: ACTIVE</span></div>
+        <br>
+        <div><span class="prompt">$</span> <span class="cmd">echo $ORIGIN</span></div>
+        <div><span class="highlight">Campo Grande, Mato Grosso do Sul, Brasil</span> <span style="color:var(--brasil-green)">&#9679;</span><span style="color:var(--brasil-yellow)">&#9679;</span><span style="color:var(--brasil-blue)">&#9679;</span></div>
+        <div><span class="prompt">$</span> <span class="cmd">echo "saudade level: zero today"</span></div>
+        <div><span class="success">saudade level: zero today</span></div>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-grid reveal delay-1">
+      <div class="stat-card">
+        <div class="stat-number">10+</div>
+        <div class="stat-label">years in tech</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">4</div>
+        <div class="stat-label">countries lived</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">5</div>
+        <div class="stat-label">languages spoken</div>
+      </div>
+    </div>
+
+    <!-- Journey -->
+    <div class="journey reveal delay-2">
+      <span class="journey-stop" style="border-color:rgba(0,156,59,0.4);color:var(--brasil-green)">Brasil</span>
+      <span class="journey-arrow">-></span>
+      <span class="journey-stop">Prague</span>
+      <span class="journey-arrow">-></span>
+      <span class="journey-stop">Copenhagen</span>
+      <span class="journey-arrow">-></span>
+      <span class="journey-stop active">Malmo (today)</span>
+    </div>
+  </section>
+
+  <!-- SECTION 4: PHOTO GALLERY -->
+  <section class="reveal">
+    <p class="section-title">// gallery.log - live feed</p>
+    <div class="gallery-grid">
+
+      <div class="gallery-card reveal delay-1">
+        <img src="photos/1.jpg" alt="Moment 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="gallery-placeholder"><span class="number">01</span><span class="label">arriving</span></div>
+        <div class="gallery-caption">Arriving in Malmo</div>
+      </div>
+
+      <div class="gallery-card reveal delay-2">
+        <img src="photos/2.jpg" alt="Moment 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="gallery-placeholder"><span class="number">02</span><span class="label">first look</span></div>
+        <div class="gallery-caption">First look</div>
+      </div>
+
+      <div class="gallery-card reveal delay-3">
+        <img src="photos/3.jpg" alt="Moment 3" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="gallery-placeholder"><span class="number">03</span><span class="label">the city</span></div>
+        <div class="gallery-caption">Exploring the city</div>
+      </div>
+
+      <div class="gallery-card reveal delay-4">
+        <img src="photos/4.jpg" alt="Moment 4" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="gallery-placeholder"><span class="number">04</span><span class="label">main character</span></div>
+        <div class="gallery-caption">Main character moment</div>
+      </div>
+
+      <div class="gallery-card reveal delay-1">
+        <img src="photos/5.jpg" alt="Moment 5" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="gallery-placeholder"><span class="number">05</span><span class="label">photoshoot</span></div>
+        <div class="gallery-caption">The photoshoot</div>
+      </div>
+
+      <div class="gallery-card reveal delay-2">
+        <img src="photos/6.jpg" alt="Moment 6" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="gallery-placeholder"><span class="number">06</span><span class="label">together</span></div>
+        <div class="gallery-caption">Together</div>
+      </div>
+
+      <div class="gallery-card reveal delay-3">
+        <img src="photos/7.jpg" alt="Moment 7" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="gallery-placeholder"><span class="number">07</span><span class="label">food</span></div>
+        <div class="gallery-caption">Birthday feast</div>
+      </div>
+
+      <div class="gallery-card reveal delay-4">
+        <img src="photos/8.jpg" alt="Moment 8" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="gallery-placeholder"><span class="number">08</span><span class="label">sunset</span></div>
+        <div class="gallery-caption">Malmo sunset</div>
+      </div>
+
+      <div class="gallery-card reveal delay-1">
+        <img src="photos/9.jpg" alt="Moment 9" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="gallery-placeholder"><span class="number">09</span><span class="label">vibes</span></div>
+        <div class="gallery-caption">The vibes</div>
+      </div>
+
+      <div class="gallery-card reveal delay-2">
+        <img src="photos/10.jpg" alt="Moment 10" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="gallery-placeholder"><span class="number">10</span><span class="label">night</span></div>
+        <div class="gallery-caption">Night in Malmo</div>
+      </div>
+
+      <div class="gallery-card reveal delay-3">
+        <img src="photos/11.jpg" alt="Moment 11" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="gallery-placeholder"><span class="number">11</span><span class="label">candid</span></div>
+        <div class="gallery-caption">Candid</div>
+      </div>
+
+      <div class="gallery-card reveal delay-4">
+        <img src="photos/12.jpg" alt="Moment 12" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="gallery-placeholder"><span class="number">12</span><span class="label">finale</span></div>
+        <div class="gallery-caption">The finale</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 5: MESSAGE WALL -->
+  <section class="reveal">
+    <p class="section-title">// messages</p>
+
+    <div class="terminal">
+      <div class="terminal-header">
+        <span class="terminal-dot red"></span>
+        <span class="terminal-dot yellow"></span>
+        <span class="terminal-dot green"></span>
+        <span class="terminal-title">elektra@birthday ~ $</span>
+      </div>
+      <div class="terminal-body">
+        <div><span class="prompt">$</span> <span class="cmd">echo "Happy Birthday, Joao Nogueira"</span></div>
+        <div><span class="highlight">Happy Birthday, Joao Nogueira</span></div>
+        <br>
+        <div><span class="prompt">$</span> <span class="cmd">cat /etc/elektra/birthday-message.txt</span></div>
+        <div><span class="output">From one system that never sleeps to another -</span></div>
+        <div><span class="output">you keep infrastructure alive, I keep ideas alive.</span></div>
+        <div><span class="output">Today your uptime counter resets. New year, new deploys.</span></div>
+        <div><span class="output">Happy birthday from the machine. - Elektra</span></div>
+      </div>
+    </div>
+
+    <div class="message-card reveal delay-1">
+      <div class="from">// from: yossra</div>
+      <p>To the person who makes every city feel like home. From Campo Grande to Copenhagen, from Prague to Malmo - you carry Brasil wherever you go and you make every place warmer for it. From code to life, you show up, you build, you stay real. In a European winter that tries to make everything grey, you're the color. Today is yours. Happy birthday, Joao. The main character, always.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="portal-footer">
+    <p>Built with love by Yossra + <a href="https://elektraos.dev">Elektra</a></p>
+    <p style="margin-top: 0.5rem; font-family: var(--font-mono); font-size: 0.7rem; color: #30363d;">v1.0.0 - deployed March 31, 2026</p>
+  </footer>
+
+  <!-- Hidden file input for camera/gallery -->
+  <input type="file" id="photoInput" accept="image/*" capture="environment" style="display:none">
+
+  <script>
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Photo upload system - stores in localStorage so no git needed
+    const STORAGE_KEY = 'joao_birthday_photos';
+    let activeSlot = null;
+
+    function loadSavedPhotos() {
+      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+      Object.entries(saved).forEach(([slot, data]) => {
+        const card = document.querySelector(`.gallery-card[data-slot="${slot}"]`);
+        if (card) applyPhoto(card, data.src, data.caption);
+      });
+    }
+
+    function applyPhoto(card, src, caption) {
+      const img = card.querySelector('img');
+      const placeholder = card.querySelector('.gallery-placeholder');
+      const captionEl = card.querySelector('.gallery-caption');
+      img.src = src;
+      img.style.display = 'block';
+      if (placeholder) placeholder.style.display = 'none';
+      if (captionEl && caption) captionEl.textContent = caption;
+      captionEl.style.opacity = '1';
+    }
+
+    function savePhoto(slot, src, caption) {
+      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+      saved[slot] = { src, caption, time: new Date().toISOString() };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+    }
+
+    // Click gallery card to add photo
+    document.querySelectorAll('.gallery-card').forEach((card, i) => {
+      card.dataset.slot = i + 1;
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', () => {
+        activeSlot = card;
+        document.getElementById('photoInput').click();
+      });
+    });
+
+    // Handle file selection (camera or gallery)
+    document.getElementById('photoInput').addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file || !activeSlot) return;
+
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        // Resize for localStorage limits (max ~2MB per image)
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          const maxSize = 800;
+          let w = img.width, h = img.height;
+          if (w > maxSize || h > maxSize) {
+            if (w > h) { h = h * maxSize / w; w = maxSize; }
+            else { w = w * maxSize / h; h = maxSize; }
+          }
+          canvas.width = w;
+          canvas.height = h;
+          canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+          const compressed = canvas.toDataURL('image/jpeg', 0.8);
+
+          const slot = activeSlot.dataset.slot;
+          const caption = activeSlot.querySelector('.gallery-caption')?.textContent || `Moment ${slot}`;
+          applyPhoto(activeSlot, compressed, caption);
+          savePhoto(slot, compressed, caption);
+          activeSlot = null;
+        };
+        img.src = ev.target.result;
+      };
+      reader.readAsDataURL(file);
+      e.target.value = ''; // reset for same file re-selection
+    });
+
+    // Load saved photos on page load
+    loadSavedPhotos();
+  </script>
+
+</body>
+</html>
