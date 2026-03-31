@@ -43,7 +43,29 @@
     </div>
   </div>
 
-  <!-- SECTION 2: SONG DEDICATION -->
+  <!-- SECTION 2: WAKE UP - FIRST MOMENT -->
+  <section class="wake-up-section reveal">
+    <p class="section-title">// bom_dia.sh - first moment</p>
+    <div class="wake-card">
+      <div class="wake-emoji">&#9728;&#65039;</div>
+      <h2 class="wake-title">Bom dia, aniversariante!</h2>
+      <p class="wake-text">The main character just woke up. Before anything else - log this moment. Your first smile of the new year.</p>
+      <div class="selfie-zone" id="selfieZone">
+        <div class="selfie-placeholder" id="selfiePlaceholder">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" style="width:48px;height:48px;color:var(--purple)">
+            <circle cx="24" cy="20" r="8"/><path d="M8 42c0-8 6-14 16-14s16 6 16 14"/><rect x="2" y="2" width="44" height="44" rx="8"/>
+          </svg>
+          <span>Tap to capture your birthday morning face</span>
+          <span style="font-size:0.7rem;color:var(--purple)">front camera selfie</span>
+        </div>
+        <img id="selfieImg" alt="Birthday morning selfie" style="display:none;width:100%;height:100%;object-fit:cover;border-radius:12px;">
+        <div class="selfie-timestamp" id="selfieTimestamp" style="display:none"></div>
+      </div>
+      <input type="file" id="selfieInput" accept="image/*" capture="user" style="display:none">
+    </div>
+  </section>
+
+  <!-- SECTION 3: SONG DEDICATION -->
   <section class="song-section reveal">
     <p class="section-title">// dedication</p>
     <div class="waveform">
@@ -56,7 +78,57 @@
     <p class="song-dedication">This one's for you. The main character in the story today.</p>
   </section>
 
-  <!-- SECTION 3: MAIN CHARACTER CARD -->
+  <!-- SECTION 4: BRAZILIAN BIRTHDAY TRADITIONS -->
+  <section class="brasil-traditions reveal">
+    <p class="section-title">// festa_de_aniversario.br</p>
+    <h2 style="text-align:center;margin-bottom:0.5rem;font-family:var(--font-mono);background:linear-gradient(135deg,var(--brasil-green),var(--brasil-yellow));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Tradi&ccedil;&otilde;es do Aniversariante</h2>
+    <p style="text-align:center;color:var(--text-secondary);font-size:0.9rem;margin-bottom:2rem;">No birthday is complete without these. You know the rules.</p>
+
+    <div class="tradition-grid">
+      <div class="tradition-card reveal delay-1">
+        <div class="tradition-icon">&#127856;</div>
+        <h3>Brigadeiro</h3>
+        <p>The king of every festa. No Brazilian birthday exists without these chocolate fudge balls. If there's no brigadeiro, it didn't happen.</p>
+        <div class="tradition-status" data-tradition="brigadeiro">
+          <button class="tradition-btn" onclick="completeTradition('brigadeiro',this)">Did you eat brigadeiro today?</button>
+        </div>
+      </div>
+
+      <div class="tradition-card reveal delay-2">
+        <div class="tradition-icon">&#127874;</div>
+        <h3>Primeiro Peda&ccedil;o</h3>
+        <p>The first slice of cake goes to the most special person. Tradition says you choose who - usually mae or pai. Who gets yours today?</p>
+        <div class="tradition-status" data-tradition="first_slice">
+          <button class="tradition-btn" onclick="logFirstSlice(this)">Log who got the first slice</button>
+        </div>
+      </div>
+
+      <div class="tradition-card reveal delay-3">
+        <div class="tradition-icon">&#127926;</div>
+        <h3>Parab&eacute;ns pra Voc&ecirc;</h3>
+        <p>Everyone claps while singing. No quiet birthdays in Brasil. The song must be sung, the claps must be loud, and the candles must be blown.</p>
+        <div class="tradition-status" data-tradition="parabens">
+          <button class="tradition-btn" onclick="completeTradition('parabens',this)">Was it sung?</button>
+        </div>
+      </div>
+
+      <div class="tradition-card reveal delay-4">
+        <div class="tradition-icon">&#128066;</div>
+        <h3>Puxada de Orelha</h3>
+        <p>One pull on each ear for every year. The Brazilian birthday tax. It's tradition - you can't escape it.</p>
+        <div class="tradition-status" data-tradition="ear_pull">
+          <button class="tradition-btn" onclick="completeTradition('ear_pull',this)">Ears pulled?</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tradition-progress reveal delay-2">
+      <div class="progress-label"><span id="traditionCount">0</span>/4 traditions completed</div>
+      <div class="progress-bar"><div class="progress-fill" id="traditionProgress" style="width:0%"></div></div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: MAIN CHARACTER CARD -->
   <section class="reveal">
     <p class="section-title">// main_character.yaml</p>
 
@@ -113,87 +185,297 @@
     </div>
   </section>
 
-  <!-- SECTION 4: PHOTO GALLERY -->
-  <section class="reveal">
-    <p class="section-title">// gallery.log - live feed</p>
-    <div class="gallery-grid">
+  <!-- SECTION 6: MAIN CHARACTER QUESTS -->
+  <section class="quests-section reveal">
+    <p class="section-title">// quests.log - main character missions</p>
+    <h2 style="text-align:center;margin-bottom:0.5rem;font-family:var(--font-mono);background:linear-gradient(135deg,var(--purple),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Today's Quest Line</h2>
+    <p style="text-align:center;color:var(--text-secondary);font-size:0.9rem;margin-bottom:2rem;">Main characters don't sit around. Each quest unlocks photo/video slots. Log everything.</p>
 
-      <div class="gallery-card reveal delay-1">
-        <img src="photos/1.jpg" alt="Moment 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-        <div class="gallery-placeholder"><span class="number">01</span><span class="label">arriving</span></div>
-        <div class="gallery-caption">Arriving in Malmo</div>
+    <div class="quest-timeline">
+
+      <!-- QUEST 1: MORNING -->
+      <div class="quest-block reveal delay-1" data-quest="morning">
+        <div class="quest-time">07:00 - 09:00</div>
+        <div class="quest-card">
+          <div class="quest-header">
+            <span class="quest-badge">QUEST 1</span>
+            <span class="quest-xp">+150 XP</span>
+          </div>
+          <h3>Birthday Morning Protocol</h3>
+          <p>Wake up. Read this page. Smile. You're the protagonist today.</p>
+          <ul class="quest-tasks">
+            <li><label><input type="checkbox" onchange="updateQuest('morning',this)"> Open this page and read Yossra's message</label></li>
+            <li><label><input type="checkbox" onchange="updateQuest('morning',this)"> Take your morning selfie (above)</label></li>
+            <li><label><input type="checkbox" onchange="updateQuest('morning',this)"> Play the Spotify dedication while making coffee</label></li>
+          </ul>
+          <div class="quest-log-slots">
+            <div class="mini-log" onclick="captureQuestMoment(this,'morning-1')">
+              <span class="mini-log-icon">&#128247;</span>
+              <span>Morning coffee</span>
+            </div>
+            <div class="mini-log" onclick="captureQuestMoment(this,'morning-2')">
+              <span class="mini-log-icon">&#127909;</span>
+              <span>Birthday morning vibes</span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="gallery-card reveal delay-2">
-        <img src="photos/2.jpg" alt="Moment 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-        <div class="gallery-placeholder"><span class="number">02</span><span class="label">first look</span></div>
-        <div class="gallery-caption">First look</div>
+      <!-- QUEST 2: BREAKFAST -->
+      <div class="quest-block reveal delay-2" data-quest="breakfast">
+        <div class="quest-time">09:00 - 11:00</div>
+        <div class="quest-card">
+          <div class="quest-header">
+            <span class="quest-badge">QUEST 2</span>
+            <span class="quest-xp">+200 XP</span>
+          </div>
+          <h3>Cafe da Manha do Rei</h3>
+          <p>Birthday breakfast is sacred. Make it count. The boys need fuel too - big day ahead.</p>
+          <ul class="quest-tasks">
+            <li><label><input type="checkbox" onchange="updateQuest('breakfast',this)"> Birthday breakfast - go all out</label></li>
+            <li><label><input type="checkbox" onchange="updateQuest('breakfast',this)"> First "feliz aniversario" from the boys</label></li>
+            <li><label><input type="checkbox" onchange="updateQuest('breakfast',this)"> Plan the day's route with your crew</label></li>
+          </ul>
+          <div class="quest-log-slots">
+            <div class="mini-log" onclick="captureQuestMoment(this,'breakfast-1')">
+              <span class="mini-log-icon">&#128247;</span>
+              <span>Breakfast spread</span>
+            </div>
+            <div class="mini-log" onclick="captureQuestMoment(this,'breakfast-2')">
+              <span class="mini-log-icon">&#128247;</span>
+              <span>The crew photo</span>
+            </div>
+            <div class="mini-log" onclick="captureQuestMoment(this,'breakfast-3')">
+              <span class="mini-log-icon">&#127909;</span>
+              <span>Birthday morning video</span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="gallery-card reveal delay-3">
-        <img src="photos/3.jpg" alt="Moment 3" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-        <div class="gallery-placeholder"><span class="number">03</span><span class="label">the city</span></div>
-        <div class="gallery-caption">Exploring the city</div>
+      <!-- QUEST 3: EXPLORE -->
+      <div class="quest-block reveal delay-3" data-quest="explore">
+        <div class="quest-time">11:00 - 14:00</div>
+        <div class="quest-card">
+          <div class="quest-header">
+            <span class="quest-badge">QUEST 3</span>
+            <span class="quest-xp">+300 XP</span>
+          </div>
+          <h3>Malmo Explorer Mode</h3>
+          <p>Main characters explore their world. Take the boys out. Show them Malmo through your eyes. Make it an adventure.</p>
+          <ul class="quest-tasks">
+            <li><label><input type="checkbox" onchange="updateQuest('explore',this)"> Visit somewhere new in Malmo</label></li>
+            <li><label><input type="checkbox" onchange="updateQuest('explore',this)"> Take a photo the boys wouldn't normally take</label></li>
+            <li><label><input type="checkbox" onchange="updateQuest('explore',this)"> Find something that reminds you of Campo Grande</label></li>
+            <li><label><input type="checkbox" onchange="updateQuest('explore',this)"> Let the boys choose one spontaneous stop</label></li>
+          </ul>
+          <div class="quest-log-slots">
+            <div class="mini-log" onclick="captureQuestMoment(this,'explore-1')">
+              <span class="mini-log-icon">&#128247;</span>
+              <span>New place discovered</span>
+            </div>
+            <div class="mini-log" onclick="captureQuestMoment(this,'explore-2')">
+              <span class="mini-log-icon">&#128247;</span>
+              <span>The boys' pick</span>
+            </div>
+            <div class="mini-log" onclick="captureQuestMoment(this,'explore-3')">
+              <span class="mini-log-icon">&#127909;</span>
+              <span>Street walk video</span>
+            </div>
+            <div class="mini-log" onclick="captureQuestMoment(this,'explore-4')">
+              <span class="mini-log-icon">&#128247;</span>
+              <span>Campo Grande moment</span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="gallery-card reveal delay-4">
-        <img src="photos/4.jpg" alt="Moment 4" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-        <div class="gallery-placeholder"><span class="number">04</span><span class="label">main character</span></div>
-        <div class="gallery-caption">Main character moment</div>
+      <!-- QUEST 4: LUNCH -->
+      <div class="quest-block reveal delay-4" data-quest="lunch">
+        <div class="quest-time">14:00 - 16:00</div>
+        <div class="quest-card">
+          <div class="quest-header">
+            <span class="quest-badge">QUEST 4</span>
+            <span class="quest-xp">+250 XP</span>
+          </div>
+          <h3>Birthday Feast - Almoco Especial</h3>
+          <p>The birthday feast. In Brasil, this is the event. Choose your favorite spot. The birthday boy orders first, always.</p>
+          <ul class="quest-tasks">
+            <li><label><input type="checkbox" onchange="updateQuest('lunch',this)"> Pick the restaurant - your choice, your day</label></li>
+            <li><label><input type="checkbox" onchange="updateQuest('lunch',this)"> Order something you've never tried</label></li>
+            <li><label><input type="checkbox" onchange="updateQuest('lunch',this)"> Make a birthday wish out loud (or keep it secret)</label></li>
+          </ul>
+          <div class="quest-log-slots">
+            <div class="mini-log" onclick="captureQuestMoment(this,'lunch-1')">
+              <span class="mini-log-icon">&#128247;</span>
+              <span>The feast</span>
+            </div>
+            <div class="mini-log" onclick="captureQuestMoment(this,'lunch-2')">
+              <span class="mini-log-icon">&#128247;</span>
+              <span>Table selfie with the crew</span>
+            </div>
+            <div class="mini-log" onclick="captureQuestMoment(this,'lunch-3')">
+              <span class="mini-log-icon">&#127909;</span>
+              <span>Cheers moment video</span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="gallery-card reveal delay-1">
-        <img src="photos/5.jpg" alt="Moment 5" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-        <div class="gallery-placeholder"><span class="number">05</span><span class="label">photoshoot</span></div>
-        <div class="gallery-caption">The photoshoot</div>
+      <!-- QUEST 5: ADVENTURE -->
+      <div class="quest-block reveal delay-1" data-quest="adventure">
+        <div class="quest-time">16:00 - 18:30</div>
+        <div class="quest-card">
+          <div class="quest-header">
+            <span class="quest-badge">QUEST 5</span>
+            <span class="quest-xp">+350 XP</span>
+          </div>
+          <h3>Side Quest - The Boys' Challenge</h3>
+          <p>The teenagers get to design this quest. Whatever they want to do - you're in. Gaming, skating, shopping, exploring - the birthday dad says yes to everything.</p>
+          <ul class="quest-tasks">
+            <li><label><input type="checkbox" onchange="updateQuest('adventure',this)"> Let the boys plan the entire activity</label></li>
+            <li><label><input type="checkbox" onchange="updateQuest('adventure',this)"> Do something outside your comfort zone</label></li>
+            <li><label><input type="checkbox" onchange="updateQuest('adventure',this)"> Beat at least one of them at their own game</label></li>
+            <li><label><input type="checkbox" onchange="updateQuest('adventure',this)"> Capture a genuine laugh moment</label></li>
+          </ul>
+          <div class="quest-log-slots">
+            <div class="mini-log" onclick="captureQuestMoment(this,'adventure-1')">
+              <span class="mini-log-icon">&#128247;</span>
+              <span>The boys' activity</span>
+            </div>
+            <div class="mini-log" onclick="captureQuestMoment(this,'adventure-2')">
+              <span class="mini-log-icon">&#127909;</span>
+              <span>Action video</span>
+            </div>
+            <div class="mini-log" onclick="captureQuestMoment(this,'adventure-3')">
+              <span class="mini-log-icon">&#128247;</span>
+              <span>The genuine laugh</span>
+            </div>
+            <div class="mini-log" onclick="captureQuestMoment(this,'adventure-4')">
+              <span class="mini-log-icon">&#128247;</span>
+              <span>Victory pose</span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="gallery-card reveal delay-2">
-        <img src="photos/6.jpg" alt="Moment 6" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-        <div class="gallery-placeholder"><span class="number">06</span><span class="label">together</span></div>
-        <div class="gallery-caption">Together</div>
+      <!-- QUEST 6: SUNSET -->
+      <div class="quest-block reveal delay-2" data-quest="sunset">
+        <div class="quest-time">18:30 - 20:00</div>
+        <div class="quest-card">
+          <div class="quest-header">
+            <span class="quest-badge">QUEST 6</span>
+            <span class="quest-xp">+200 XP</span>
+          </div>
+          <h3>Golden Hour - Por do Sol</h3>
+          <p>Malmo sunsets hit different on your birthday. Find a good spot. The light is golden, the vibes are right. Main character moment.</p>
+          <ul class="quest-tasks">
+            <li><label><input type="checkbox" onchange="updateQuest('sunset',this)"> Find a sunset viewing spot in Malmo</label></li>
+            <li><label><input type="checkbox" onchange="updateQuest('sunset',this)"> Take a golden hour photo</label></li>
+            <li><label><input type="checkbox" onchange="updateQuest('sunset',this)"> 30-second video of the sky</label></li>
+          </ul>
+          <div class="quest-log-slots">
+            <div class="mini-log" onclick="captureQuestMoment(this,'sunset-1')">
+              <span class="mini-log-icon">&#128247;</span>
+              <span>Golden hour portrait</span>
+            </div>
+            <div class="mini-log" onclick="captureQuestMoment(this,'sunset-2')">
+              <span class="mini-log-icon">&#127909;</span>
+              <span>Sunset video</span>
+            </div>
+            <div class="mini-log" onclick="captureQuestMoment(this,'sunset-3')">
+              <span class="mini-log-icon">&#128247;</span>
+              <span>Silhouette shot</span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="gallery-card reveal delay-3">
-        <img src="photos/7.jpg" alt="Moment 7" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-        <div class="gallery-placeholder"><span class="number">07</span><span class="label">food</span></div>
-        <div class="gallery-caption">Birthday feast</div>
+      <!-- QUEST 7: CAKE CEREMONY -->
+      <div class="quest-block reveal delay-3" data-quest="cake">
+        <div class="quest-time">20:00 - 22:00</div>
+        <div class="quest-card brasil-glow">
+          <div class="quest-header">
+            <span class="quest-badge brasil-badge">BOSS QUEST</span>
+            <span class="quest-xp">+500 XP</span>
+          </div>
+          <h3>A Hora do Bolo - Cake Ceremony</h3>
+          <p>This is it. The main event in every festa brasileira. Candles lit, song sung, wish made, cake cut. The primeiro pedaco goes to the person who matters most. No rushing this one.</p>
+          <ul class="quest-tasks">
+            <li><label><input type="checkbox" onchange="updateQuest('cake',this)"> Light the candles</label></li>
+            <li><label><input type="checkbox" onchange="updateQuest('cake',this)"> Everyone sings Parabens pra Voce (with clapping!)</label></li>
+            <li><label><input type="checkbox" onchange="updateQuest('cake',this)"> Make your wish and blow out the candles</label></li>
+            <li><label><input type="checkbox" onchange="updateQuest('cake',this)"> Give the first slice to someone special</label></li>
+            <li><label><input type="checkbox" onchange="updateQuest('cake',this)"> Eat brigadeiro (mandatory)</label></li>
+          </ul>
+          <div class="quest-log-slots">
+            <div class="mini-log" onclick="captureQuestMoment(this,'cake-1')">
+              <span class="mini-log-icon">&#128247;</span>
+              <span>Candles lit</span>
+            </div>
+            <div class="mini-log" onclick="captureQuestMoment(this,'cake-2')">
+              <span class="mini-log-icon">&#127909;</span>
+              <span>Parabens singing video</span>
+            </div>
+            <div class="mini-log" onclick="captureQuestMoment(this,'cake-3')">
+              <span class="mini-log-icon">&#128247;</span>
+              <span>Blowing candles</span>
+            </div>
+            <div class="mini-log" onclick="captureQuestMoment(this,'cake-4')">
+              <span class="mini-log-icon">&#128247;</span>
+              <span>First slice given</span>
+            </div>
+            <div class="mini-log" onclick="captureQuestMoment(this,'cake-5')">
+              <span class="mini-log-icon">&#128247;</span>
+              <span>Brigadeiro moment</span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="gallery-card reveal delay-4">
-        <img src="photos/8.jpg" alt="Moment 8" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-        <div class="gallery-placeholder"><span class="number">08</span><span class="label">sunset</span></div>
-        <div class="gallery-caption">Malmo sunset</div>
-      </div>
-
-      <div class="gallery-card reveal delay-1">
-        <img src="photos/9.jpg" alt="Moment 9" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-        <div class="gallery-placeholder"><span class="number">09</span><span class="label">vibes</span></div>
-        <div class="gallery-caption">The vibes</div>
-      </div>
-
-      <div class="gallery-card reveal delay-2">
-        <img src="photos/10.jpg" alt="Moment 10" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-        <div class="gallery-placeholder"><span class="number">10</span><span class="label">night</span></div>
-        <div class="gallery-caption">Night in Malmo</div>
-      </div>
-
-      <div class="gallery-card reveal delay-3">
-        <img src="photos/11.jpg" alt="Moment 11" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-        <div class="gallery-placeholder"><span class="number">11</span><span class="label">candid</span></div>
-        <div class="gallery-caption">Candid</div>
-      </div>
-
-      <div class="gallery-card reveal delay-4">
-        <img src="photos/12.jpg" alt="Moment 12" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-        <div class="gallery-placeholder"><span class="number">12</span><span class="label">finale</span></div>
-        <div class="gallery-caption">The finale</div>
+      <!-- QUEST 8: NIGHT -->
+      <div class="quest-block reveal delay-4" data-quest="night">
+        <div class="quest-time">22:00 - late</div>
+        <div class="quest-card">
+          <div class="quest-header">
+            <span class="quest-badge">FINALE</span>
+            <span class="quest-xp">+200 XP</span>
+          </div>
+          <h3>Noite do Aniversariante</h3>
+          <p>The day winds down but the main character energy stays. Reflect on the day. What was the best moment? Log the finale.</p>
+          <ul class="quest-tasks">
+            <li><label><input type="checkbox" onchange="updateQuest('night',this)"> Name your favorite moment of the day</label></li>
+            <li><label><input type="checkbox" onchange="updateQuest('night',this)"> One last photo with the boys</label></li>
+            <li><label><input type="checkbox" onchange="updateQuest('night',this)"> Send a message to someone back in Brasil</label></li>
+          </ul>
+          <div class="quest-log-slots">
+            <div class="mini-log" onclick="captureQuestMoment(this,'night-1')">
+              <span class="mini-log-icon">&#128247;</span>
+              <span>Night vibes</span>
+            </div>
+            <div class="mini-log" onclick="captureQuestMoment(this,'night-2')">
+              <span class="mini-log-icon">&#128247;</span>
+              <span>Final crew shot</span>
+            </div>
+            <div class="mini-log" onclick="captureQuestMoment(this,'night-3')">
+              <span class="mini-log-icon">&#127909;</span>
+              <span>Day recap video</span>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>
+
+    <!-- XP SCOREBOARD -->
+    <div class="xp-board reveal">
+      <div class="xp-label">TOTAL XP: <span id="totalXP">0</span> / 2150</div>
+      <div class="progress-bar"><div class="progress-fill xp-fill" id="xpProgress" style="width:0%"></div></div>
+      <div class="xp-rank" id="xpRank">Rank: NPC (complete quests to level up)</div>
+    </div>
   </section>
 
-  <!-- SECTION 5: MESSAGE WALL -->
+  <!-- SECTION 7: MESSAGE WALL -->
   <section class="reveal">
     <p class="section-title">// messages</p>
 
@@ -225,14 +507,14 @@
   <!-- FOOTER -->
   <footer class="portal-footer">
     <p>Built with love by Yossra + <a href="https://elektraos.dev">Elektra</a></p>
-    <p style="margin-top: 0.5rem; font-family: var(--font-mono); font-size: 0.7rem; color: #30363d;">v1.0.0 - deployed March 31, 2026</p>
+    <p style="margin-top: 0.5rem; font-family: var(--font-mono); font-size: 0.7rem; color: #30363d;">v2.0.0 - quest edition - deployed March 31, 2026</p>
   </footer>
 
-  <!-- Hidden file input for camera/gallery -->
-  <input type="file" id="photoInput" accept="image/*" capture="environment" style="display:none">
+  <!-- Hidden file inputs -->
+  <input type="file" id="questPhotoInput" accept="image/*,video/*" capture="environment" style="display:none">
 
   <script>
-    // Scroll reveal
+    // ---- SCROLL REVEAL ----
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('visible');
@@ -240,81 +522,220 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Photo upload system - stores in localStorage so no git needed
-    const STORAGE_KEY = 'joao_birthday_photos';
-    let activeSlot = null;
+    // ---- STORAGE ----
+    const STORAGE_KEY = 'joao_birthday_2026';
+    function getStore() { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
+    function setStore(data) { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); }
 
-    function loadSavedPhotos() {
-      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-      Object.entries(saved).forEach(([slot, data]) => {
-        const card = document.querySelector(`.gallery-card[data-slot="${slot}"]`);
-        if (card) applyPhoto(card, data.src, data.caption);
-      });
-    }
+    // ---- SELFIE SYSTEM ----
+    const selfieZone = document.getElementById('selfieZone');
+    const selfieInput = document.getElementById('selfieInput');
+    const selfieImg = document.getElementById('selfieImg');
+    const selfiePlaceholder = document.getElementById('selfiePlaceholder');
+    const selfieTimestamp = document.getElementById('selfieTimestamp');
 
-    function applyPhoto(card, src, caption) {
-      const img = card.querySelector('img');
-      const placeholder = card.querySelector('.gallery-placeholder');
-      const captionEl = card.querySelector('.gallery-caption');
-      img.src = src;
-      img.style.display = 'block';
-      if (placeholder) placeholder.style.display = 'none';
-      if (captionEl && caption) captionEl.textContent = caption;
-      captionEl.style.opacity = '1';
-    }
-
-    function savePhoto(slot, src, caption) {
-      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-      saved[slot] = { src, caption, time: new Date().toISOString() };
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
-    }
-
-    // Click gallery card to add photo
-    document.querySelectorAll('.gallery-card').forEach((card, i) => {
-      card.dataset.slot = i + 1;
-      card.style.cursor = 'pointer';
-      card.addEventListener('click', () => {
-        activeSlot = card;
-        document.getElementById('photoInput').click();
-      });
-    });
-
-    // Handle file selection (camera or gallery)
-    document.getElementById('photoInput').addEventListener('change', (e) => {
+    selfieZone.addEventListener('click', () => selfieInput.click());
+    selfieInput.addEventListener('change', (e) => {
       const file = e.target.files[0];
-      if (!file || !activeSlot) return;
-
+      if (!file) return;
       const reader = new FileReader();
       reader.onload = (ev) => {
-        // Resize for localStorage limits (max ~2MB per image)
         const img = new Image();
         img.onload = () => {
           const canvas = document.createElement('canvas');
-          const maxSize = 800;
+          const max = 600;
           let w = img.width, h = img.height;
-          if (w > maxSize || h > maxSize) {
-            if (w > h) { h = h * maxSize / w; w = maxSize; }
-            else { w = w * maxSize / h; h = maxSize; }
+          if (w > max || h > max) {
+            if (w > h) { h = h * max / w; w = max; } else { w = w * max / h; h = max; }
           }
-          canvas.width = w;
-          canvas.height = h;
+          canvas.width = w; canvas.height = h;
           canvas.getContext('2d').drawImage(img, 0, 0, w, h);
           const compressed = canvas.toDataURL('image/jpeg', 0.8);
-
-          const slot = activeSlot.dataset.slot;
-          const caption = activeSlot.querySelector('.gallery-caption')?.textContent || `Moment ${slot}`;
-          applyPhoto(activeSlot, compressed, caption);
-          savePhoto(slot, compressed, caption);
-          activeSlot = null;
+          selfieImg.src = compressed;
+          selfieImg.style.display = 'block';
+          selfiePlaceholder.style.display = 'none';
+          const now = new Date();
+          selfieTimestamp.textContent = 'Captured: ' + now.toLocaleTimeString('pt-BR') + ' - ' + now.toLocaleDateString('pt-BR');
+          selfieTimestamp.style.display = 'block';
+          const store = getStore();
+          store.selfie = { src: compressed, time: now.toISOString() };
+          setStore(store);
         };
         img.src = ev.target.result;
       };
       reader.readAsDataURL(file);
-      e.target.value = ''; // reset for same file re-selection
+      e.target.value = '';
     });
 
-    // Load saved photos on page load
-    loadSavedPhotos();
+    // ---- TRADITION TRACKING ----
+    let traditions = {};
+    function completeTradition(name, btn) {
+      traditions[name] = true;
+      btn.textContent = 'Done!';
+      btn.classList.add('completed');
+      btn.disabled = true;
+      const store = getStore();
+      store.traditions = traditions;
+      setStore(store);
+      updateTraditionProgress();
+    }
+
+    function logFirstSlice(btn) {
+      const who = prompt('Who got the first slice of cake?');
+      if (who) {
+        traditions.first_slice = who;
+        btn.textContent = 'First slice -> ' + who;
+        btn.classList.add('completed');
+        btn.disabled = true;
+        const store = getStore();
+        store.traditions = traditions;
+        setStore(store);
+        updateTraditionProgress();
+      }
+    }
+
+    function updateTraditionProgress() {
+      const count = Object.keys(traditions).length;
+      document.getElementById('traditionCount').textContent = count;
+      document.getElementById('traditionProgress').style.width = (count / 4 * 100) + '%';
+    }
+
+    // ---- QUEST SYSTEM ----
+    let quests = {};
+    let totalXP = 0;
+    const xpMap = { morning: 150, breakfast: 200, explore: 300, lunch: 250, adventure: 350, sunset: 200, cake: 500, night: 200 };
+    const taskCounts = { morning: 3, breakfast: 3, explore: 4, lunch: 3, adventure: 4, sunset: 3, cake: 5, night: 3 };
+
+    function updateQuest(questName, checkbox) {
+      if (!quests[questName]) quests[questName] = { done: 0, total: taskCounts[questName] };
+      quests[questName].done += checkbox.checked ? 1 : -1;
+      const store = getStore();
+      store.quests = quests;
+      setStore(store);
+      recalcXP();
+    }
+
+    function recalcXP() {
+      totalXP = 0;
+      Object.entries(quests).forEach(([name, q]) => {
+        if (q.done >= q.total) totalXP += xpMap[name];
+        else totalXP += Math.floor(xpMap[name] * (q.done / q.total) * 0.5);
+      });
+      document.getElementById('totalXP').textContent = totalXP;
+      document.getElementById('xpProgress').style.width = (totalXP / 2150 * 100) + '%';
+      const rank = totalXP >= 2000 ? 'LEGENDARY - Main Character Confirmed'
+        : totalXP >= 1500 ? 'EPIC - Birthday King Mode'
+        : totalXP >= 1000 ? 'RARE - Day Well Spent'
+        : totalXP >= 500 ? 'UNCOMMON - Getting There'
+        : totalXP >= 100 ? 'COMMON - Day Started'
+        : 'NPC (complete quests to level up)';
+      document.getElementById('xpRank').textContent = 'Rank: ' + rank;
+    }
+
+    // ---- QUEST PHOTO/VIDEO LOGGING ----
+    let activeLogSlot = null;
+    const questInput = document.getElementById('questPhotoInput');
+
+    function captureQuestMoment(el, slotId) {
+      activeLogSlot = { el, slotId };
+      questInput.click();
+    }
+
+    questInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file || !activeLogSlot) return;
+      const isVideo = file.type.startsWith('video/');
+
+      if (isVideo) {
+        const url = URL.createObjectURL(file);
+        activeLogSlot.el.innerHTML = '<video src="' + url + '" style="width:100%;height:100%;object-fit:cover;border-radius:8px;" controls playsinline></video><span class="mini-log-done">Logged!</span>';
+        activeLogSlot.el.classList.add('captured');
+        // Videos too large for localStorage, just mark as done
+        const store = getStore();
+        if (!store.logs) store.logs = {};
+        store.logs[activeLogSlot.slotId] = { type: 'video', time: new Date().toISOString() };
+        setStore(store);
+      } else {
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+          const img = new Image();
+          img.onload = () => {
+            const canvas = document.createElement('canvas');
+            const max = 400;
+            let w = img.width, h = img.height;
+            if (w > max || h > max) {
+              if (w > h) { h = h * max / w; w = max; } else { w = w * max / h; h = max; }
+            }
+            canvas.width = w; canvas.height = h;
+            canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+            const compressed = canvas.toDataURL('image/jpeg', 0.7);
+            activeLogSlot.el.innerHTML = '<img src="' + compressed + '" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"><span class="mini-log-done">Logged!</span>';
+            activeLogSlot.el.classList.add('captured');
+            const store = getStore();
+            if (!store.logs) store.logs = {};
+            store.logs[activeLogSlot.slotId] = { type: 'photo', src: compressed, time: new Date().toISOString() };
+            setStore(store);
+          };
+          img.src = ev.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+      e.target.value = '';
+    });
+
+    // ---- RESTORE STATE ON LOAD ----
+    function restoreState() {
+      const store = getStore();
+      // Selfie
+      if (store.selfie) {
+        selfieImg.src = store.selfie.src;
+        selfieImg.style.display = 'block';
+        selfiePlaceholder.style.display = 'none';
+        const d = new Date(store.selfie.time);
+        selfieTimestamp.textContent = 'Captured: ' + d.toLocaleTimeString('pt-BR') + ' - ' + d.toLocaleDateString('pt-BR');
+        selfieTimestamp.style.display = 'block';
+      }
+      // Traditions
+      if (store.traditions) {
+        traditions = store.traditions;
+        Object.entries(traditions).forEach(([key, val]) => {
+          const container = document.querySelector(`[data-tradition="${key}"]`);
+          if (container) {
+            const btn = container.querySelector('.tradition-btn');
+            if (key === 'first_slice' && typeof val === 'string') {
+              btn.textContent = 'First slice -> ' + val;
+            } else {
+              btn.textContent = 'Done!';
+            }
+            btn.classList.add('completed');
+            btn.disabled = true;
+          }
+        });
+        updateTraditionProgress();
+      }
+      // Quests
+      if (store.quests) {
+        quests = store.quests;
+        recalcXP();
+      }
+      // Logs
+      if (store.logs) {
+        Object.entries(store.logs).forEach(([slotId, data]) => {
+          const allLogs = document.querySelectorAll('.mini-log');
+          allLogs.forEach(el => {
+            if (el.getAttribute('onclick')?.includes("'" + slotId + "'")) {
+              if (data.type === 'photo' && data.src) {
+                el.innerHTML = '<img src="' + data.src + '" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"><span class="mini-log-done">Logged!</span>';
+              } else {
+                el.innerHTML = '<span class="mini-log-done" style="font-size:1.5rem;">&#127909;</span><span class="mini-log-done">Video logged!</span>';
+              }
+              el.classList.add('captured');
+            }
+          });
+        });
+      }
+    }
+    restoreState();
   </script>
 
 </body>
