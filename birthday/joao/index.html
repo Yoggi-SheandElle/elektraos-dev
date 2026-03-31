@@ -515,15 +515,26 @@
 
   <script>
     // ---- SCROLL REVEAL ----
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.05, rootMargin: '0px 0px 50px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    function initReveal() {
+      if (!('IntersectionObserver' in window)) {
+        document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+        return;
+      }
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0, rootMargin: '0px 0px 100px 0px' });
+      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initReveal);
+    } else {
+      initReveal();
+    }
 
     // ---- STORAGE ----
     const STORAGE_KEY = 'joao_birthday_2026';
