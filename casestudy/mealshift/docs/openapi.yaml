@@ -1316,12 +1316,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-        '404':
-          description: Order not found.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
 
   /webhooks/order-status-updated:
     post:
