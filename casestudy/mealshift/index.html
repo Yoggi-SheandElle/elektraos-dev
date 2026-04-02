@@ -407,9 +407,9 @@
         <span class="cs-meta-item">|</span>
         <span class="cs-meta-item">Started: <strong style="color:#1a1a2e;">25 Mar 2026, 14:56 UTC</strong></span>
         <span class="cs-meta-item">|</span>
-        <span class="cs-status" style="background:rgba(22,163,74,0.08);color:#16a34a;border:1px solid rgba(22,163,74,0.3);animation:pulse-dot 2s infinite;">
+        <span class="cs-status" style="background:rgba(22,163,74,0.08);color:#16a34a;border:1px solid rgba(22,163,74,0.3);">
           <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#16a34a;margin-right:6px;"></span>
-          Live - Vibe Engineering
+          Phase 1 Complete - Active Project
         </span>
       </div>
       <div style="margin-top:16px;display:flex;justify-content:center;gap:16px;align-items:center;flex-wrap:wrap;">
@@ -1518,32 +1518,11 @@
 
   <script>
   (function() {
-    // Live elapsed timer
-    // Project clock started when client shared the brief (WhatsApp 14:56 UTC)
-    var startTime = new Date('2026-03-25T14:56:00Z').getTime();
+    // Project timer - fixed duration (Mar 25 14:56 to Mar 26 14:45 = 23h 49m)
     var heroTimer = document.getElementById('elapsedTimer');
     var metricTimer = document.getElementById('metricTimer');
-
-    function updateTimer() {
-      var now = Date.now();
-      var diff = Math.max(0, now - startTime);
-      var secs = Math.floor(diff / 1000);
-      var mins = Math.floor(secs / 60);
-      var hrs = Math.floor(mins / 60);
-      secs = secs % 60;
-      mins = mins % 60;
-
-      if (hrs > 0) {
-        heroTimer.textContent = hrs + 'h ' + mins + 'm ' + secs + 's';
-        metricTimer.textContent = hrs + 'h ' + mins + 'm';
-      } else {
-        heroTimer.textContent = mins + 'm ' + secs + 's';
-        metricTimer.textContent = mins + 'm ' + secs + 's';
-      }
-    }
-
-    updateTimer();
-    setInterval(updateTimer, 1000);
+    heroTimer.textContent = '23h 49m';
+    if (metricTimer) metricTimer.textContent = '23h 49m';
 
     // Scroll reveal with IntersectionObserver
     var reveals = document.querySelectorAll('.cs-reveal');
