@@ -417,7 +417,7 @@
         <div style="font-family:var(--font-mono);font-size:11px;color:#666;padding:6px 14px;border-radius:8px;background:#f8f8fa;border:1px solid #e5e5e5;">
           <span style="color:#FF5362;">Builder:</span> Yossra Benzad
           <span style="margin:0 8px;color:#d1d5db;">|</span>
-          <span style="color:#FF5362;">Engine:</span> ElektraOS + Claude Code
+          <span style="color:#FF5362;">Engine:</span> ElektraOS
         </div>
       </div>
     </div>
@@ -519,7 +519,7 @@
       <h2 class="cs-section-title">Live timeline - every step, every decision</h2>
       <p style="font-size:12px;color:#666;font-family:var(--font-mono);margin-bottom:24px;">
         <span style="color:#FF5362;">Your clock</span> = Yossra's instruction time &nbsp;|&nbsp;
-        <span style="color:#FF5362;">Agent clock</span> = Claude Code / ElektraOS processing time
+        <span style="color:#FF5362;">Build clock</span> = ElektraOS processing time
       </p>
       <div class="cs-timeline">
 
@@ -542,11 +542,11 @@
           <div class="cs-entry-header">
             <span class="cs-entry-time">15:12 UTC</span>
             <span class="cs-entry-phase research">Research</span>
-            <span class="cs-entry-duration" style="color:#7c3aed;">agent: 3 min</span>
+            <span class="cs-entry-duration" style="color:#7c3aed;">build: 3 min</span>
           </div>
-          <div class="cs-entry-desc">3 parallel Explore agents launched: (1) Audit elektraos.dev site structure and case study patterns, (2) Explore ElektraOS backend for project tracking infrastructure, (3) Analyze Flipdish developer portal + attempt MealShift PDF download (S3 link expired).</div>
+          <div class="cs-entry-desc">3 parallel research tasks: (1) Audit elektraos.dev site structure and case study patterns, (2) Review ElektraOS backend for project tracking infrastructure, (3) Analyze Flipdish developer portal + attempt MealShift PDF download (S3 link expired).</div>
           <div class="cs-entry-tools">
-            <span class="cs-entry-tool">Claude Code</span>
+            <span class="cs-entry-tool">ElektraOS</span>
             <span class="cs-entry-tool">3x Explore Agents</span>
             <span class="cs-entry-tool">WebFetch</span>
           </div>
@@ -557,7 +557,7 @@
           <div class="cs-entry-header">
             <span class="cs-entry-time">15:15 UTC</span>
             <span class="cs-entry-phase research">Research</span>
-            <span class="cs-entry-duration" style="color:#7c3aed;">agent: 1 min</span>
+            <span class="cs-entry-duration" style="color:#7c3aed;">build: 1 min</span>
           </div>
           <div class="cs-entry-desc">Parsed MealShift API PDF locally via pypdf (ElektraOS venv). Extracted 12,123 characters across 10 pages. Confirmed 11 endpoints: 9 REST + 2 webhooks. Stored in ElektraOS vault as structured brief.</div>
           <div class="cs-entry-tools">
@@ -576,22 +576,22 @@
           </div>
           <div class="cs-entry-desc">Security architecture decision. 3 options evaluated: (1) Private GitHub repo, (2) Local build + encrypt before push, (3) ElektraOS vault + encrypted output. Chose Option 3 - source files never leave local machine. Only AES-256 encrypted HTML deployed.</div>
           <div class="cs-entry-tools">
-            <span class="cs-entry-tool">Claude Code</span>
+            <span class="cs-entry-tool">ElektraOS</span>
             <span class="cs-entry-tool">Architecture Decision</span>
           </div>
         </div>
 
-        <!-- Entry: Plan agent -->
+        <!-- Entry: Planning phase -->
         <div class="cs-entry">
           <div class="cs-entry-header">
             <span class="cs-entry-time">15:20 UTC</span>
             <span class="cs-entry-phase design">Design</span>
-            <span class="cs-entry-duration" style="color:#7c3aed;">agent: 4 min</span>
+            <span class="cs-entry-duration" style="color:#7c3aed;">build: 4 min</span>
           </div>
-          <div class="cs-entry-desc">Plan agent designed full implementation: 4 phases, file structure, encryption workflow, ElektraOS integration, deployment pipeline. Plan approved by builder.</div>
+          <div class="cs-entry-desc">Designed full implementation plan: 4 phases, file structure, encryption workflow, ElektraOS integration, deployment pipeline.</div>
           <div class="cs-entry-tools">
             <span class="cs-entry-tool">Plan Agent</span>
-            <span class="cs-entry-tool">Claude Code</span>
+            <span class="cs-entry-tool">ElektraOS</span>
           </div>
         </div>
 
@@ -600,7 +600,7 @@
           <div class="cs-entry-header">
             <span class="cs-entry-time">15:25 UTC</span>
             <span class="cs-entry-phase research">Research</span>
-            <span class="cs-entry-duration" style="color:#7c3aed;">agent: 1 min</span>
+            <span class="cs-entry-duration" style="color:#7c3aed;">build: 1 min</span>
           </div>
           <div class="cs-entry-desc">Fetched MealShift branding from mealshift.co.uk. Extracted: primary green #FF5362, logo PNG URL, tagline "Flexible, fair, food delivery!", company info (est. 2020, Hertfordshire).</div>
           <div class="cs-entry-tools">
@@ -614,9 +614,9 @@
           <div class="cs-entry-header">
             <span class="cs-entry-time">15:27 UTC</span>
             <span class="cs-entry-phase build">Build</span>
-            <span class="cs-entry-duration" style="color:#7c3aed;">agent: 8 min</span>
+            <span class="cs-entry-duration" style="color:#7c3aed;">build: 8 min</span>
           </div>
-          <div class="cs-entry-desc">Phase 1 foundation: Created directory structure, registered mealshift-docs-builder agent in ElektraOS (agent #46), created vault project directory, parsed PDF into vault/projects/mealshift/brief.md.</div>
+          <div class="cs-entry-desc">Phase 1 foundation: Created directory structure, set up mealshift-docs-builder module in ElektraOS, created project directory, parsed PDF into vault/projects/mealshift/brief.md.</div>
           <div class="cs-entry-tools">
             <span class="cs-entry-tool">ElektraOS</span>
             <span class="cs-entry-tool">SQLite</span>
@@ -629,11 +629,11 @@
           <div class="cs-entry-header">
             <span class="cs-entry-time">15:30 UTC</span>
             <span class="cs-entry-phase build">Build</span>
-            <span class="cs-entry-duration" style="color:#7c3aed;">agent: 4 min</span>
+            <span class="cs-entry-duration" style="color:#7c3aed;">build: 4 min</span>
           </div>
-          <div class="cs-entry-desc">Built this live workplan page. MealShift branding integrated (coral #FF5362, logo). Dual clock system (your time vs agent time). Real-time elapsed timer. Phase dashboard. Architecture diagram.</div>
+          <div class="cs-entry-desc">Built this live workplan page. MealShift branding integrated (coral #FF5362, logo). Dual clock system (your time vs build time). Real-time elapsed timer. Phase dashboard. Architecture diagram.</div>
           <div class="cs-entry-tools">
-            <span class="cs-entry-tool">Claude Code</span>
+            <span class="cs-entry-tool">ElektraOS</span>
             <span class="cs-entry-tool">HTML/CSS/JS</span>
           </div>
         </div>
@@ -657,12 +657,12 @@
           <div class="cs-entry-header">
             <span class="cs-entry-time">15:40 UTC</span>
             <span class="cs-entry-phase" style="background:rgba(239,68,68,0.08);color:#f87171;border-color:rgba(239,68,68,0.2);">Security</span>
-            <span class="cs-entry-duration" style="color:#7c3aed;">agent: 5 min</span>
+            <span class="cs-entry-duration" style="color:#7c3aed;">build: 5 min</span>
           </div>
           <div class="cs-entry-desc">Full security audit across ElektraOS. Fixed 4 HIGH severity issues: disabled /docs /redoc /openapi.json exposure (was leaking 387KB API blueprint), tightened CORS to localhost+elektraos.dev only, minimized health endpoint, disabled telemetry content capture.</div>
           <div class="cs-entry-tools">
             <span class="cs-entry-tool">Security Agent</span>
-            <span class="cs-entry-tool">Claude Code</span>
+            <span class="cs-entry-tool">ElektraOS</span>
             <span class="cs-entry-tool">cURL</span>
           </div>
         </div>
@@ -672,11 +672,11 @@
           <div class="cs-entry-header">
             <span class="cs-entry-time">15:50 UTC</span>
             <span class="cs-entry-phase" style="background:rgba(239,68,68,0.08);color:#f87171;border-color:rgba(239,68,68,0.2);">Security</span>
-            <span class="cs-entry-duration" style="color:#7c3aed;">agent: 3 min</span>
+            <span class="cs-entry-duration" style="color:#7c3aed;">build: 3 min</span>
           </div>
           <div class="cs-entry-desc">Sandboxed Elektra chat for this page. Removed external JS dependencies (chat.js, sigil3d.js) that connected to ElektraOS backend. Replaced with inline FAQ-only chat. Zero external API connections. Said cannot access any system outside this page.</div>
           <div class="cs-entry-tools">
-            <span class="cs-entry-tool">Claude Code</span>
+            <span class="cs-entry-tool">ElektraOS</span>
             <span class="cs-entry-tool">PageCrypt</span>
           </div>
         </div>
@@ -686,7 +686,7 @@
           <div class="cs-entry-header">
             <span class="cs-entry-time">16:00 UTC</span>
             <span class="cs-entry-phase build">Build</span>
-            <span class="cs-entry-duration" style="color:#7c3aed;">agent: 10 min</span>
+            <span class="cs-entry-duration" style="color:#7c3aed;">build: 10 min</span>
           </div>
           <div class="cs-entry-desc">Generated complete OpenAPI 3.0.3 specification from parsed PDF. All 11 endpoints documented with full request/response schemas, 8 reusable component schemas, realistic UK example data (London addresses, GBP currency). Stored in ElektraOS vault.</div>
           <div class="cs-entry-tools">
@@ -701,7 +701,7 @@
           <div class="cs-entry-header">
             <span class="cs-entry-time">16:10 UTC</span>
             <span class="cs-entry-phase build">Build</span>
-            <span class="cs-entry-duration" style="color:#7c3aed;">agent: 4 min</span>
+            <span class="cs-entry-duration" style="color:#7c3aed;">build: 4 min</span>
           </div>
           <div class="cs-entry-desc">Built developer portal using Redoc with custom dark theme. MealShift coral (#FF5362) as primary, ElektraOS dark backgrounds. Stripe-style two-panel layout: explanations left, code samples right. Spec embedded inline - fully self-contained.</div>
           <div class="cs-entry-tools">
@@ -716,7 +716,7 @@
           <div class="cs-entry-header">
             <span class="cs-entry-time">16:15 UTC</span>
             <span class="cs-entry-phase" style="background:rgba(239,68,68,0.08);color:#f87171;border-color:rgba(239,68,68,0.2);">Encrypt</span>
-            <span class="cs-entry-duration" style="color:#7c3aed;">agent: 1 min</span>
+            <span class="cs-entry-duration" style="color:#7c3aed;">build: 1 min</span>
           </div>
           <div class="cs-entry-desc">AES-256 encrypted the docs portal via PageCrypt. Source HTML (57KB) never touches GitHub. Only encrypted output deployed. Verified: zero secrets in public repo, _src/ gitignored, robots.txt blocks crawlers.</div>
           <div class="cs-entry-tools">
@@ -731,7 +731,7 @@
           <div class="cs-entry-header">
             <span class="cs-entry-time">16:20 UTC</span>
             <span class="cs-entry-phase" style="background:rgba(22,163,74,0.08);color:#16a34a;border:1px solid rgba(22,163,74,0.2);">Deploy</span>
-            <span class="cs-entry-duration" style="color:#7c3aed;">agent: 2 min</span>
+            <span class="cs-entry-duration" style="color:#7c3aed;">build: 2 min</span>
           </div>
           <div class="cs-entry-desc">Pushed encrypted HTML to GitHub Pages. Verified AES-256 access works. Passkey shared with client via WhatsApp. Case study card added to /cases/ portfolio with metrics, tags, and encrypted access badge.</div>
           <div class="cs-entry-tools">
@@ -751,7 +751,7 @@
           <div class="cs-entry-header">
             <span class="cs-entry-time">10:00 UTC</span>
             <span class="cs-entry-phase" style="background:rgba(124,58,237,0.08);color:#7c3aed;border:1px solid rgba(124,58,237,0.2);">Integration</span>
-            <span class="cs-entry-duration" style="color:#7c3aed;">agent: 12 min</span>
+            <span class="cs-entry-duration" style="color:#7c3aed;">build: 12 min</span>
           </div>
           <div class="cs-entry-desc">Audited MealShift's existing tech stack. No public repo - private codebase built by CookieDev. Stack: WordPress (marketing), Fuse React dashboard, native iOS/Android apps, Stripe Connect, Google Maps. 7 integration partners confirmed: Deliverect, Otter, Foodhub, Nash, GloriaFood, Flipdish. UrbanPiper coming soon.</div>
           <div class="cs-entry-tools">
@@ -766,11 +766,11 @@
           <div class="cs-entry-header">
             <span class="cs-entry-time">10:15 UTC</span>
             <span class="cs-entry-phase" style="background:rgba(124,58,237,0.08);color:#7c3aed;border:1px solid rgba(124,58,237,0.2);">Integration</span>
-            <span class="cs-entry-duration" style="color:#7c3aed;">agent: 8 min</span>
+            <span class="cs-entry-duration" style="color:#7c3aed;">build: 8 min</span>
           </div>
           <div class="cs-entry-desc">Designed API integration strategy for MealShift's existing systems. 4 integration paths mapped: (1) POS middleware - single endpoint for Lightspeed/Square/Epos Now, (2) Partner onboarding automation - self-serve API key generation + sandbox, (3) Webhook relay layer - centralized status tracking across all 7 partners, (4) White-label SDK - embeddable JS client for restaurant chains. Pending Said's review.</div>
           <div class="cs-entry-tools">
-            <span class="cs-entry-tool">Claude Code</span>
+            <span class="cs-entry-tool">ElektraOS</span>
             <span class="cs-entry-tool">Architecture Planning</span>
           </div>
         </div>
@@ -780,7 +780,7 @@
           <div class="cs-entry-header">
             <span class="cs-entry-time">10:30 UTC</span>
             <span class="cs-entry-phase build">Build</span>
-            <span class="cs-entry-duration" style="color:#7c3aed;">agent: 5 min</span>
+            <span class="cs-entry-duration" style="color:#7c3aed;">build: 5 min</span>
           </div>
           <div class="cs-entry-desc">Upgraded sandboxed FAQ chat to live ElektraOS-connected assistant. Said can now submit real feedback that reaches Yossra. Groq LLM + vault RAG responses replace static keyword matching. Email fallback button added. Client-side FAQ retained as offline fallback.</div>
           <div class="cs-entry-tools">
@@ -800,9 +800,9 @@
           <div class="cs-entry-header">
             <span class="cs-entry-time">14:00 UTC</span>
             <span class="cs-entry-phase" style="background:rgba(124,58,237,0.08);color:#7c3aed;border:1px solid rgba(124,58,237,0.2);">Integration</span>
-            <span class="cs-entry-duration" style="color:#7c3aed;">3 agents in parallel: 15 min</span>
+            <span class="cs-entry-duration" style="color:#7c3aed;">3 parallel research tracks: 15 min</span>
           </div>
-          <div class="cs-entry-desc">Deep research into MealShift's full ecosystem. 3 parallel agents: (1) Platform research - found zero-commission model, 20+ UK cities, CookieDev build, Stripe Connect payments, (2) API audit - mapped all 11 endpoints, auth flow, webhook system, (3) Partner analysis - confirmed 7 live integrations with Deliverect, Flipdish, GloriaFood, Otter, Nash, Foodhub, UrbanPiper. No public API docs exist anywhere - all integrations manual via email.</div>
+          <div class="cs-entry-desc">Deep research into MealShift's full ecosystem. 3 parallel tracks: (1) Platform research - found zero-commission model, 20+ UK cities, CookieDev build, Stripe Connect payments, (2) API audit - mapped all 11 endpoints, auth flow, webhook system, (3) Partner analysis - confirmed 7 live integrations with Deliverect, Flipdish, GloriaFood, Otter, Nash, Foodhub, UrbanPiper. No public API docs exist anywhere - all integrations manual via email.</div>
           <div class="cs-entry-tools">
             <span class="cs-entry-tool">Web Research</span>
             <span class="cs-entry-tool">Chrome</span>
@@ -816,11 +816,11 @@
           <div class="cs-entry-header">
             <span class="cs-entry-time">14:20 UTC</span>
             <span class="cs-entry-phase" style="background:rgba(124,58,237,0.08);color:#7c3aed;border:1px solid rgba(124,58,237,0.2);">Integration</span>
-            <span class="cs-entry-duration" style="color:#7c3aed;">agent: 20 min</span>
+            <span class="cs-entry-duration" style="color:#7c3aed;">build: 20 min</span>
           </div>
           <div class="cs-entry-desc">Designed 6-phase API integration roadmap. Phase 1: Developer onboarding portal (self-serve keys). Phase 2: Webhook relay with normalized events across 7 partners. Phase 3: POS middleware for Lightspeed/Square/Epos Now. Phase 4: White-label delivery SDK (npm + PyPI). Phase 5: Real-time tracking + analytics API. Phase 6: API gateway + multi-region scaling. Each phase scoped with ElektraOS vs CookieDev responsibility split.</div>
           <div class="cs-entry-tools">
-            <span class="cs-entry-tool">Claude Code</span>
+            <span class="cs-entry-tool">ElektraOS</span>
             <span class="cs-entry-tool">Architecture</span>
           </div>
         </div>
@@ -830,9 +830,9 @@
           <div class="cs-entry-header">
             <span class="cs-entry-time">14:45 UTC</span>
             <span class="cs-entry-phase build">Build</span>
-            <span class="cs-entry-duration" style="color:#7c3aed;">agent: 10 min</span>
+            <span class="cs-entry-duration" style="color:#7c3aed;">build: 10 min</span>
           </div>
-          <div class="cs-entry-desc">Built interactive approval pipeline on case study page. Said can expand phase details, select priorities via checkboxes, and submit selections to Yossra for scoping. Client interactions (chat, approvals, page views) are logged to the timeline in real time via localStorage. Nothing gets built until Yossra and agents approve.</div>
+          <div class="cs-entry-desc">Built interactive approval pipeline on case study page. Said can expand phase details, select priorities via checkboxes, and submit selections to Yossra for scoping. Client interactions (chat, approvals, page views) are logged to the timeline in real time via localStorage. Nothing gets built until Yossra approves.</div>
           <div class="cs-entry-tools">
             <span class="cs-entry-tool">JavaScript</span>
             <span class="cs-entry-tool">localStorage</span>
@@ -1202,7 +1202,7 @@
       <div class="cs-section-label">Stack</div>
       <h2 class="cs-section-title">Tools used</h2>
       <div class="cs-tools">
-        <span class="cs-tool-tag">Claude Code</span>
+        <span class="cs-tool-tag">ElektraOS</span>
         <span class="cs-tool-tag">ElektraOS</span>
         <span class="cs-tool-tag">pypdf</span>
         <span class="cs-tool-tag">Prism.js</span>
@@ -1601,7 +1601,7 @@
       var body = encodeURIComponent(
         'Hi Yossra,\n\nI reviewed the 6-phase integration roadmap. Here are the phases I want to prioritize:\n\n' +
         selected.map(function(s) { return '- ' + s; }).join('\n') +
-        '\n\nNote: This requires your approval and agent review before anything gets built.\n\nSaid'
+        '\n\nNote: This requires your approval before anything gets built.\n\nSaid'
       );
       window.open('mailto:yossra.benzad@gmail.com?subject=' + subject + '&body=' + body, '_self');
     };
