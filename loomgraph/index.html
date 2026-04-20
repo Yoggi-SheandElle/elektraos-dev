@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Loomgraph - Live Portfolio</title>
+  <meta name="description" content="Live 3D view of Loomgraph, an agentic SEO graph across a connected portfolio of sites." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./dashboard.css" />
+</head>
+<body>
+  <div id="bg-grid"></div>
+
+  <header class="top-bar">
+    <div class="brand">
+      <div class="logo-dot"></div>
+      <span class="brand-name">LOOMGRAPH</span>
+      <span class="brand-tag">agentic SEO graph - live</span>
+    </div>
+    <div class="stats" id="stats">
+      <div class="stat"><span class="stat-label">sites</span><span class="stat-val" id="stat-sites">-</span></div>
+      <div class="stat"><span class="stat-label">edges</span><span class="stat-val" id="stat-edges">-</span></div>
+      <div class="stat"><span class="stat-label">pending</span><span class="stat-val" id="stat-pending">-</span></div>
+      <div class="stat"><span class="stat-label">uptime</span><span class="stat-val" id="stat-uptime">-</span></div>
+    </div>
+    <div class="actions">
+      <button id="btn-refresh" class="btn btn-ghost" title="Refresh all">refresh</button>
+      <button id="btn-auth" class="btn btn-primary">authenticate</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="panel panel-left">
+      <div class="panel-header">
+        <span class="panel-title">portfolio</span>
+        <span class="panel-count" id="sites-count">0</span>
+      </div>
+      <ul id="sites-list" class="sites-list"></ul>
+    </aside>
+
+    <section class="globe-wrap">
+      <div id="globe"></div>
+      <div class="globe-overlay">
+        <div class="legend">
+          <span class="legend-item"><i class="dot dot-site"></i>site</span>
+          <span class="legend-item"><i class="dot dot-hub"></i>loomgraph hub</span>
+          <span class="legend-item"><i class="dot dot-edge"></i>monitored link</span>
+        </div>
+      </div>
+      <div id="tooltip" class="tooltip"></div>
+    </section>
+
+    <aside class="panel panel-right">
+      <div class="panel-header">
+        <span class="panel-title">pending approvals</span>
+        <span class="panel-count" id="approvals-count">0</span>
+      </div>
+      <ul id="approvals-list" class="approvals-list"></ul>
+      <div class="panel-footer">
+        <small class="hint" id="auth-hint">read-only - click authenticate to approve</small>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="activity">
+    <div class="activity-label">activity</div>
+    <div id="activity-log" class="activity-log"></div>
+  </footer>
+
+  <div id="auth-modal" class="modal hidden">
+    <div class="modal-card">
+      <h3>authenticate</h3>
+      <p class="modal-sub">paste your <code>LOOMGRAPH_API_KEY</code>. stored in session memory only.</p>
+      <input id="auth-key" type="password" placeholder="key..." autocomplete="off" />
+      <div class="modal-actions">
+        <button id="auth-cancel" class="btn btn-ghost">cancel</button>
+        <button id="auth-submit" class="btn btn-primary">unlock</button>
+      </div>
+    </div>
+  </div>
+
+  <script>window.LOOMGRAPH_API = "https://loomgraph.fly.dev";</script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/globe.gl@2.32.6/dist/globe.gl.min.js"></script>
+  <script src="./dashboard.js"></script>
+</body>
+</html>
