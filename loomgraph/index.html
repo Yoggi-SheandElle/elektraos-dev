@@ -27,6 +27,7 @@
     </div>
     <div class="actions">
       <button id="btn-refresh" class="btn btn-ghost" title="Refresh all">refresh</button>
+      <button id="btn-join" class="btn btn-ghost" title="Add your site to the globe">+ join</button>
       <button id="btn-auth" class="btn btn-primary">authenticate</button>
     </div>
   </header>
@@ -69,6 +70,20 @@
     <div id="activity-log" class="activity-log"></div>
   </footer>
 
+  <div id="join-modal" class="modal hidden">
+    <div class="modal-card">
+      <h3>join loomgraph</h3>
+      <p class="modal-sub">add your site to the live globe. no api key needed. <br>we only index your domain; we never write to it.</p>
+      <input id="join-domain" type="text" placeholder="yoursite.com" autocomplete="off" spellcheck="false" />
+      <input id="join-email" type="email" placeholder="email (optional, for updates)" autocomplete="off" />
+      <div class="modal-actions">
+        <button id="join-cancel" class="btn btn-ghost">cancel</button>
+        <button id="join-submit" class="btn btn-primary">join</button>
+      </div>
+      <small id="join-error" class="hint" style="color:#ff7a7a"></small>
+    </div>
+  </div>
+
   <div id="auth-modal" class="modal hidden">
     <div class="modal-card">
       <h3>authenticate</h3>
@@ -83,6 +98,7 @@
 
   <script>window.LOOMGRAPH_API = "https://loomgraph.fly.dev";</script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/globe.gl@2.32.6/dist/globe.gl.min.js"></script>
   <script src="./dashboard.js"></script>
 </body>

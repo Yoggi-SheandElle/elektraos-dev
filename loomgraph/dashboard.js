@@ -90,7 +90,7 @@ async function api(path, opts = {}) {
 }
 
 async function loadSites() {
-  state.sites = await api(`/sites?tenant_id=${TENANT}`);
+  state.sites = await api(`/sites`);
   $("stat-sites").textContent = state.sites.length;
   $("sites-count").textContent = state.sites.length;
   renderSitesList();
@@ -127,6 +127,9 @@ function renderSitesList() {
       el("span", { class: `site-status ${statusClass(s)}` }, [s.status]),
       el("span", { class: "mono" }, [`id=${s.id}`]),
     ];
+    if (s.tenant_id === "guest") {
+      meta.push(el("span", { class: "mono", style: "color:var(--accent-2)" }, ["guest"]));
+    }
     if (s.last_score != null) {
       meta.push(el("span", { class: "mono" }, [`score=${(s.last_score * 100).toFixed(0)}`]));
     }
@@ -198,9 +201,9 @@ function buildGlobe() {
     .showAtmosphere(true);
 
   globe.pointsData([])
-    .pointAltitude(0.04)
-    .pointRadius(0.5)
-    .pointColor((p) => p.isHub ? "#ff3df5" : "#00e5ff")
+    .pointAltitude((p) => p.isHub ? 0.12 : 0.08)
+    .pointRadius((p) => p.isHub ? 1.2 : 0.9)
+    .pointColor((p) => p.isHub ? "#ff3df5" : (p.isGuest ? "#6ef066" : "#00e5ff"))
     .pointLabel(() => "")
     .onPointClick((p) => { if (p && p.siteId) selectSite(p.siteId); })
     .onPointHover(showTooltip);
@@ -218,6 +221,37 @@ function buildGlobe() {
     .arcDashAnimateTime(2600)
     .arcStroke(0.35)
     .arcAltitudeAutoScale(0.4);
+
+  globe.labelsData([])
+    .labelLat((d) => d.lat)
+    .labelLng((d) => d.lng)
+    .labelText((d) => d.label)
+    .labelSize(0.55)
+    .labelDotRadius(0)
+    .labelAltitude(0.12)
+    .labelColor((d) => d.isGuest ? "#6ef066" : "#bffcff")
+    .labelResolution(2);
+
+  globe.polygonsData([])
+    .polygonCapColor(() => "rgba(0, 229, 255, 0.04)")
+    .polygonSideColor(() => "rgba(0, 229, 255, 0.08)")
+    .polygonStrokeColor(() => "#2aa7c4")
+    .polygonAltitude((d) => d.__hover ? 0.012 : 0.005)
+    .onPolygonHover((hoverD) => {
+      const polys = globe.polygonsData();
+      polys.forEach((p) => { p.__hover = (p === hoverD); });
+      globe.polygonCapColor((p) => p.__hover ? "rgba(0, 229, 255, 0.25)" : "rgba(0, 229, 255, 0.04)");
+    });
+
+  fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json")
+    .then((r) => r.json())
+    .then((topo) => {
+      if (window.topojson) {
+        const features = window.topojson.feature(topo, topo.objects.countries).features;
+        globe.polygonsData(features);
+      }
+    })
+    .catch(() => {});
 
   const controls = globe.controls();
   controls.autoRotate = true;
@@ -268,11 +302,12 @@ function renderGlobe() {
     return {
       lat: g.lat, lng: g.lng, city: g.city,
       label: s.domain, siteId: s.id, status: s.status, score: s.last_score,
-      ip: g.ip, org: g.org,
+      ip: g.ip, org: g.org, isGuest: s.tenant_id === "guest",
     };
   });
   state.globe.pointsData([hubPoint, ...sitePoints]);
   state.globe.ringsData([{ ...HUB }, ...sitePoints]);
+  state.globe.labelsData([hubPoint, ...sitePoints]);
   const arcs = sitePoints.map((p) => ({
     startLat: HUB.lat, startLng: HUB.lng, endLat: p.lat, endLng: p.lng,
   }));
@@ -281,6 +316,45 @@ function renderGlobe() {
 
 function openAuthModal() { $("auth-modal").classList.remove("hidden"); $("auth-key").focus(); }
 function closeAuthModal() { $("auth-modal").classList.add("hidden"); $("auth-key").value = ""; }
+
+function openJoinModal() {
+  $("join-error").textContent = "";
+  $("join-domain").value = "";
+  $("join-email").value = "";
+  $("join-modal").classList.remove("hidden");
+  $("join-domain").focus();
+}
+function closeJoinModal() { $("join-modal").classList.add("hidden"); }
+
+async function submitJoin() {
+  const domain = $("join-domain").value.trim().toLowerCase();
+  const email = $("join-email").value.trim();
+  $("join-error").textContent = "";
+  if (!domain || !domain.includes(".")) {
+    $("join-error").textContent = "enter a valid domain like yoursite.com";
+    return;
+  }
+  try {
+    const r = await fetch(`${API}/public/join`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ domain, email: email || null }),
+    });
+    if (r.status === 409) { $("join-error").textContent = "already on the graph"; return; }
+    if (!r.ok) {
+      const d = await r.json().catch(() => ({}));
+      $("join-error").textContent = d.detail || `join failed (${r.status})`;
+      return;
+    }
+    const site = await r.json();
+    log("ok", `joined: ${site.domain}`);
+    closeJoinModal();
+    await refreshAll();
+    selectSite(site.id);
+  } catch (e) {
+    $("join-error").textContent = `network error: ${e.message}`;
+  }
+}
 
 async function refreshAll() {
   try {
@@ -317,6 +391,12 @@ async function init() {
     if (k) { setAuthKey(k); log("ok", "authenticated"); closeAuthModal(); }
   };
   $("auth-key").addEventListener("keydown", (e) => { if (e.key === "Enter") $("auth-submit").click(); });
+
+  $("btn-join").onclick = openJoinModal;
+  $("join-cancel").onclick = closeJoinModal;
+  $("join-submit").onclick = submitJoin;
+  $("join-domain").addEventListener("keydown", (e) => { if (e.key === "Enter") submitJoin(); });
+  $("join-email").addEventListener("keydown", (e) => { if (e.key === "Enter") submitJoin(); });
 
   await refreshAll();
   setInterval(refreshAll, 30000);
