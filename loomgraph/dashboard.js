@@ -237,6 +237,11 @@ function buildGlobe() {
     .polygonSideColor(() => "rgba(0, 229, 255, 0.08)")
     .polygonStrokeColor(() => "#2aa7c4")
     .polygonAltitude((d) => d.__hover ? 0.012 : 0.005)
+    .polygonLabel((d) => {
+      const name = (d && d.properties && (d.properties.name || d.properties.NAME)) || "";
+      if (!name) return "";
+      return `<div style="background:rgba(8,16,28,0.92);border:1px solid #00e5ff;padding:6px 10px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#bffcff;letter-spacing:0.04em;text-transform:uppercase;">${name}</div>`;
+    })
     .onPolygonHover((hoverD) => {
       const polys = globe.polygonsData();
       polys.forEach((p) => { p.__hover = (p === hoverD); });
