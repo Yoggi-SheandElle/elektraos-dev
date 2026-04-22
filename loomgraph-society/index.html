@@ -317,20 +317,51 @@
     </p>
 
     <section id="apply" class="apply">
-      <h2>Apply to join</h2>
+      <h2>Apply and sign the pact</h2>
       <p>
-        One working domain. One contact email. Tell us in a sentence why your site is a fit: what authority topic you own, or what you would contribute. The application lands in the Loomgraph approval queue. No auto-approval, no automated onboarding fee, no hidden terms. If your domain is already scoped out as a fit, the audit runs and the welcome brief arrives within 48 hours.
+        Two steps. First register your domain on the society graph. Then read the Loomgraph pact, confirm you have authority to enrol the domain, and sign. Both actions are logged to an immutable audit trail you can inspect at <a href="https://loomgraph.fly.dev/governance" rel="noopener">loomgraph.fly.dev/governance</a>. No auto-approval of cross-links, no hidden terms, no onboarding fee.
       </p>
+
       <form id="joinForm" onsubmit="return submitJoin(event)">
+        <h3 style="font-size:14px;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);margin:0 0 12px;font-family:var(--font-mono);">Step 1 . Register domain</h3>
         <div class="form-row">
           <input type="url" id="joinDomain" name="domain" placeholder="https://yourdomain.com" required pattern="https?://.+" />
-          <input type="email" id="joinEmail" name="email" placeholder="you@yourdomain.com (optional)" />
+          <input type="email" id="joinEmail" name="email" placeholder="you@yourdomain.com" required />
         </div>
-        <button type="submit" id="joinBtn">Apply to the society</button>
+        <button type="submit" id="joinBtn">Register and show the pact</button>
         <div id="joinStatus" class="apply-status"></div>
       </form>
-      <p style="font-size:11px;color:var(--text-muted);margin-top:16px;line-height:1.6;">
-        By applying you agree the domain is yours to represent and that any cross-links proposed will go through your explicit approval before publishing. We process your email under GDPR legitimate interest for one-time onboarding contact. No newsletter, no resale, no tracking pixels. You can request deletion by replying to the onboarding email.
+
+      <form id="signForm" onsubmit="return submitSign(event)" hidden style="margin-top:32px;">
+        <h3 style="font-size:14px;text-transform:uppercase;letter-spacing:2px;color:var(--cyan);margin:0 0 12px;font-family:var(--font-mono);">Step 2 . Read and sign the pact</h3>
+        <pre id="pactText" style="white-space:pre-wrap;font-family:var(--font-mono);font-size:12px;line-height:1.65;color:var(--text-secondary);border:1px solid var(--border);border-radius:var(--radius-md);padding:20px;max-height:360px;overflow-y:auto;background:rgba(0,0,0,0.2);"></pre>
+        <p style="font-size:11px;color:var(--text-muted);margin:12px 0;font-family:var(--font-mono);">
+          version <span id="pactVersion"></span> . sha256 <code id="pactSha" style="color:var(--cyan);"></code>
+        </p>
+
+        <div class="form-row">
+          <input type="text" id="signerName" placeholder="Your full legal name" required minlength="2" maxlength="200" />
+        </div>
+
+        <label style="display:flex;align-items:flex-start;gap:10px;margin:12px 0;font-size:13px;line-height:1.6;color:var(--text-secondary);">
+          <input type="checkbox" id="accEditorial" required style="margin-top:4px;flex-shrink:0;" />
+          <span>I accept the editorial and data-use terms above, on behalf of the domain I just registered.</span>
+        </label>
+        <label style="display:flex;align-items:flex-start;gap:10px;margin:12px 0;font-size:13px;line-height:1.6;color:var(--text-secondary);">
+          <input type="checkbox" id="accFtc" required style="margin-top:4px;flex-shrink:0;" />
+          <span>I will comply with FTC 16 CFR Part 255 disclosure on any affiliate or sponsored content published on this domain.</span>
+        </label>
+        <label style="display:flex;align-items:flex-start;gap:10px;margin:12px 0 20px;font-size:13px;line-height:1.6;color:var(--text-secondary);">
+          <input type="checkbox" id="accGdpr" required style="margin-top:4px;flex-shrink:0;" />
+          <span>I will honour GDPR Article 17 right-to-be-forgotten requests on this domain, which triggers a tombstone in Loomgraph's knowledge graph within 30 days.</span>
+        </label>
+
+        <button type="submit" id="signBtn">Sign the pact and enrol</button>
+        <div id="signStatus" class="apply-status"></div>
+      </form>
+
+      <p style="font-size:11px;color:var(--text-muted);margin-top:20px;line-height:1.6;">
+        Registration and signing run against a public API (/public/join and /public/pact/sign). Both are rate-limited per IP. Your IP is recorded with the pact for non-repudiation. Email is stored in clear on the pact row because it is what you attested to; only the domain portion leaks to the public audit log. You can revoke at any time; the audit trail persists as required by GDPR Article 30.
       </p>
     </section>
 
@@ -344,40 +375,144 @@
   </footer>
 
   <script>
-    function submitJoin(ev) {
+    const LOOMGRAPH_API = 'https://loomgraph.fly.dev';
+    const onboarding = { siteId: null, domain: null, email: null, pactVersion: null, pactSha: null };
+
+    function detailOrDefault(body, fallback) {
+      if (!body) return fallback;
+      if (typeof body.detail === 'string') return body.detail;
+      if (Array.isArray(body.detail) && body.detail[0] && body.detail[0].msg) return body.detail[0].msg;
+      return fallback;
+    }
+
+    function normaliseDomain(raw) {
+      return raw.trim().toLowerCase()
+        .replace(/^https?:\/\//, '')
+        .replace(/\/.*$/, '')
+        .replace(/^www\./, '');
+    }
+
+    function setStatus(el, text, kind) {
+      el.textContent = text;
+      el.className = 'apply-status' + (kind ? ' ' + kind : '');
+    }
+
+    function renderSignSuccess(el, pactId, siteId) {
+      el.textContent = '';
+      el.className = 'apply-status ok';
+      const msg = document.createElement('div');
+      msg.appendChild(document.createTextNode('Signed. pact_id='));
+      const pact = document.createElement('code');
+      pact.textContent = String(pactId);
+      msg.appendChild(pact);
+      msg.appendChild(document.createTextNode(', site_id='));
+      const site = document.createElement('code');
+      site.textContent = String(siteId);
+      msg.appendChild(site);
+      msg.appendChild(document.createTextNode('. You are now a guest member. An admin reviews guest-tenant applications and promotes your site to active cohort status. Inspect your pact anytime at '));
+      const link = document.createElement('a');
+      const href = LOOMGRAPH_API + '/governance/pact/' + encodeURIComponent(String(siteId));
+      link.href = href;
+      link.rel = 'noopener';
+      link.textContent = '/governance/pact/' + siteId;
+      msg.appendChild(link);
+      msg.appendChild(document.createTextNode('.'));
+      el.appendChild(msg);
+    }
+
+    async function submitJoin(ev) {
       ev.preventDefault();
-      const domain = document.getElementById('joinDomain').value.trim();
-      const email = document.getElementById('joinEmail').value.trim();
       const btn = document.getElementById('joinBtn');
       const status = document.getElementById('joinStatus');
+      const domain = normaliseDomain(document.getElementById('joinDomain').value);
+      const email = document.getElementById('joinEmail').value.trim();
       btn.disabled = true;
-      status.textContent = 'Submitting to Loomgraph approval queue...';
-      status.className = 'apply-status';
+      setStatus(status, 'Registering domain on the society graph...');
 
-      const payload = { domain };
-      if (email) payload.email = email;
-
-      fetch('https://loomgraph.fly.dev/public/join', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      })
-      .then(r => r.json().then(j => ({ ok: r.ok, body: j })))
-      .then(({ ok, body }) => {
-        if (ok) {
-          status.textContent = 'Received. Your application is in the approval queue. We reply within 48h.';
-          status.className = 'apply-status ok';
-          document.getElementById('joinForm').reset();
-        } else {
-          status.textContent = 'Could not submit: ' + (body.detail || 'unknown error');
-          status.className = 'apply-status err';
+      try {
+        const joinResp = await fetch(LOOMGRAPH_API + '/public/join', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ domain, email }),
+        });
+        const joinBody = await joinResp.json().catch(() => ({}));
+        if (!joinResp.ok) {
+          setStatus(status, 'Could not register: ' + detailOrDefault(joinBody, 'unknown error (' + joinResp.status + ')'), 'err');
+          return false;
         }
-      })
-      .catch(err => {
-        status.textContent = 'Network error. Please email yossra.benzad@gmail.com directly with your domain.';
-        status.className = 'apply-status err';
-      })
-      .finally(() => { btn.disabled = false; });
+        onboarding.siteId = joinBody.id;
+        onboarding.domain = domain;
+        onboarding.email = email;
+
+        const pactResp = await fetch(LOOMGRAPH_API + '/governance/pact');
+        const pactBody = await pactResp.json();
+        onboarding.pactVersion = pactBody.version;
+        onboarding.pactSha = pactBody.pact_text_sha256;
+
+        document.getElementById('pactText').textContent = pactBody.pact_text || '[pact text unavailable, please refresh]';
+        document.getElementById('pactVersion').textContent = pactBody.version || '?';
+        document.getElementById('pactSha').textContent = (pactBody.pact_text_sha256 || '').slice(0, 16) + '...';
+
+        setStatus(status, 'Domain registered as site_id=' + joinBody.id + '. Read the pact below and sign to complete enrolment.', 'ok');
+        document.getElementById('joinForm').querySelectorAll('input, button').forEach(el => { el.disabled = true; });
+        const signForm = document.getElementById('signForm');
+        signForm.hidden = false;
+        signForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } catch (err) {
+        setStatus(status, 'Network error. Try again or email yossra.benzad@gmail.com.', 'err');
+      } finally {
+        btn.disabled = false;
+      }
+      return false;
+    }
+
+    async function submitSign(ev) {
+      ev.preventDefault();
+      const btn = document.getElementById('signBtn');
+      const status = document.getElementById('signStatus');
+      if (!onboarding.siteId || !onboarding.pactSha) {
+        setStatus(status, 'Please complete step 1 first.', 'err');
+        return false;
+      }
+      const signerName = document.getElementById('signerName').value.trim();
+      const accEditorial = document.getElementById('accEditorial').checked;
+      const accFtc = document.getElementById('accFtc').checked;
+      const accGdpr = document.getElementById('accGdpr').checked;
+      if (!(accEditorial && accFtc && accGdpr)) {
+        setStatus(status, 'All three acceptance checkboxes are required.', 'err');
+        return false;
+      }
+
+      btn.disabled = true;
+      setStatus(status, 'Signing pact against the Loomgraph audit log...');
+
+      try {
+        const resp = await fetch(LOOMGRAPH_API + '/public/pact/sign', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            site_id: onboarding.siteId,
+            pact_version: onboarding.pactVersion,
+            pact_text_sha256: onboarding.pactSha,
+            signer_name: signerName,
+            signer_email: onboarding.email,
+            accepted_ftc: accFtc,
+            accepted_gdpr: accGdpr,
+            accepted_editorial: accEditorial,
+          }),
+        });
+        const body = await resp.json().catch(() => ({}));
+        if (!resp.ok) {
+          setStatus(status, 'Signing failed: ' + detailOrDefault(body, 'unknown error (' + resp.status + ')'), 'err');
+          return false;
+        }
+        renderSignSuccess(status, body.pact_id, body.site_id);
+        document.getElementById('signForm').querySelectorAll('input, button').forEach(el => { el.disabled = true; });
+      } catch (err) {
+        setStatus(status, 'Network error during signing. Your registration is still recorded as site_id=' + onboarding.siteId + '. Email yossra.benzad@gmail.com to finish signing.', 'err');
+      } finally {
+        btn.disabled = false;
+      }
       return false;
     }
   </script>
