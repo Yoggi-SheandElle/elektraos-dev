@@ -10,9 +10,29 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://elektraos.dev/fr/"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://elektraos.dev/it/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://elektraos.dev/"/>
-    <lastmod>2026-03-25</lastmod>
+    <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+  </url>
+
+  <!-- Loomgraph Society (new, hub of interconnected member sites) -->
+  <url>
+    <loc>https://elektraos.dev/loomgraph-society/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elektraos.dev/loomgraph-society/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elektraos.dev/loomgraph-society/"/>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- Loomgraph case study -->
+  <url>
+    <loc>https://elektraos.dev/case-loomgraph/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elektraos.dev/case-loomgraph/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elektraos.dev/case-loomgraph/"/>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
 
   <!-- High-traffic content pages -->
