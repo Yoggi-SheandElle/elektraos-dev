@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ElektraOS for SMB . Under 50 Employees . AI, Automation, Data</title>
+  <meta name="description" content="ElektraOS SMB: AI, automation and data infrastructure built for companies under 50 employees. Fixed pricing, fast onboarding, production-grade stack.">
+  <meta property="og:title" content="ElektraOS for SMB . Under 50 Employees">
+  <meta property="og:description" content="AI + automation + data for teams of 5 to 50. Fixed pricing, fast onboarding.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://elektraos.dev/smb/">
+  <meta name="theme-color" content="#7c3aed">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="canonical" href="https://elektraos.dev/smb/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "ElektraOS for SMB",
+    "serviceType": "AI, automation and data services for businesses under 50 employees",
+    "provider": {"@type": "Organization", "name": "ElektraOS.dev", "url": "https://elektraos.dev"},
+    "areaServed": ["United Kingdom", "Denmark", "Morocco", "France", "Italy", "Ghana"],
+    "audience": {"@type": "BusinessAudience", "audienceType": "SMB", "numberOfEmployees": {"@type": "QuantitativeValue", "minValue": 1, "maxValue": 50}}
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/sections.css">
+  <link rel="stylesheet" href="../css/chat.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+
+  <style>
+    .smb-hero { padding: 160px 0 40px; text-align: center; }
+    .smb-badge {
+      display: inline-block; font-family: var(--font-mono); font-size: 11px;
+      text-transform: uppercase; letter-spacing: 2px; color: var(--cyan);
+      border: 1px solid rgba(0, 212, 255, 0.2); padding: 6px 16px; border-radius: 999px;
+      margin-bottom: 24px; background: rgba(0, 212, 255, 0.06);
+    }
+    .smb-hero h1 { font-size: clamp(36px, 6vw, 60px); font-weight: 700; line-height: 1.05; margin-bottom: 20px; }
+    .smb-hero h1 .gradient { background: var(--gradient-brand); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .smb-hero-sub { font-size: 18px; color: var(--text-secondary); max-width: 720px; margin: 0 auto; line-height: 1.7; }
+    .smb-container { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+    /* market stats */
+    .mkt-stats {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px; margin: 40px auto 24px; max-width: 960px;
+    }
+    .mkt-stat {
+      border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 22px 18px; text-align: center;
+      background: linear-gradient(135deg, rgba(124,58,237,0.06), rgba(0,212,255,0.03));
+    }
+    .mkt-num {
+      font-family: var(--font-mono); font-size: 30px; font-weight: 700;
+      background: var(--gradient-brand);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      line-height: 1.1;
+    }
+    .mkt-lbl {
+      font-family: var(--font-mono); font-size: 10px;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      color: var(--text-muted); margin-top: 8px; line-height: 1.4;
+    }
+    .mkt-src { font-size: 10px; color: var(--text-muted); margin-top: 6px; font-style: italic; }
+
+    /* three pillars */
+    .pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 48px 0; }
+    .pillar {
+      border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 28px; background: var(--bg-secondary);
+      position: relative; overflow: hidden;
+    }
+    .pillar::before {
+      content: ""; position: absolute; top: 0; left: 0;
+      width: 100%; height: 3px; background: var(--gradient-brand);
+    }
+    .pillar-tag {
+      font-family: var(--font-mono); font-size: 10px;
+      text-transform: uppercase; letter-spacing: 2px; color: var(--cyan); margin-bottom: 12px;
+    }
+    .pillar h3 { font-size: 20px; font-weight: 700; margin: 0 0 12px; line-height: 1.2; }
+    .pillar p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin: 0; }
+    .pillar-who {
+      margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border);
+      font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);
+    }
+    .pillar-who b { color: var(--text-primary); }
+
+    /* who this is for */
+    .who-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 24px 0 40px; }
+    .who-card {
+      border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 20px; background: var(--bg-secondary);
+    }
+    .who-card-head {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
+      font-family: var(--font-mono); font-size: 11px; color: var(--cyan);
+      text-transform: uppercase; letter-spacing: 1.5px;
+    }
+    .who-card-head .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gradient-brand); }
+    .who-card h4 { font-size: 15px; margin: 0 0 6px; font-weight: 600; }
+    .who-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin: 0; }
+
+    /* founding team strip */
+    .team-strip {
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      padding: 36px 0; margin: 48px 0; background: rgba(124,58,237,0.03);
+    }
+    .team-strip h3 {
+      text-align: center; font-size: 14px; font-family: var(--font-mono);
+      text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted);
+      margin: 0 0 20px;
+    }
+    .team-row {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px; max-width: 960px; margin: 0 auto; padding: 0 24px;
+    }
+    .team-card {
+      border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 20px; background: var(--bg-card);
+      text-align: center;
+    }
+    .team-avatar {
+      width: 48px; height: 48px; margin: 0 auto 12px;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      background: var(--gradient-brand); color: #fff;
+      font-family: var(--font-mono); font-weight: 700; font-size: 18px;
+    }
+    .team-name { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+    .team-role {
+      font-family: var(--font-mono); font-size: 10px; color: var(--cyan);
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;
+    }
+    .team-bio { font-size: 12px; color: var(--text-secondary); line-height: 1.5; margin: 0 0 12px; }
+    .team-li {
+      display: inline-block; font-family: var(--font-mono); font-size: 11px;
+      color: var(--text-muted); text-decoration: none;
+      padding: 4px 10px; border: 1px solid var(--border); border-radius: 999px;
+      transition: all 0.2s;
+    }
+    .team-li:hover { color: var(--cyan); border-color: var(--cyan); }
+
+    /* cta */
+    .smb-cta {
+      text-align: center; padding: 56px 24px; margin: 40px 0;
+      background: radial-gradient(circle at 50% 0%, rgba(124,58,237,0.12), transparent 60%),
+                  linear-gradient(180deg, rgba(0,212,255,0.04), transparent);
+      border: 1px solid var(--glass-border); border-radius: var(--radius-lg);
+    }
+    .smb-cta h3 { font-size: 24px; font-weight: 700; margin: 0 0 12px; }
+    .smb-cta p { color: var(--text-secondary); max-width: 480px; margin: 0 auto 24px; line-height: 1.6; }
+    .smb-cta .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; background: var(--gradient-brand);
+      color: #fff; font-family: var(--font-mono); font-size: 13px;
+      font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+      text-decoration: none; border-radius: var(--radius-md);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .smb-cta .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(124,58,237,0.35); }
+
+    .wip-banner {
+      text-align: center; font-family: var(--font-mono); font-size: 11px;
+      color: #E8A838; background: rgba(232,168,56,0.06);
+      border: 1px solid rgba(232,168,56,0.25); border-radius: var(--radius);
+      padding: 10px; margin: 24px auto; max-width: 780px;
+      letter-spacing: 1px; text-transform: uppercase;
+    }
+  </style>
+
+  <link rel="stylesheet" href="/css/smart-features.css">
+</head>
+<body>
+
+  <div style="position:fixed;top:0;left:0;right:0;z-index:101;background:linear-gradient(90deg,rgba(124,58,237,0.15),rgba(0,212,255,0.1));border-bottom:1px solid rgba(124,58,237,0.2);padding:8px 0;text-align:center;font-family:var(--font-mono);font-size:11px;letter-spacing:0.5px;color:var(--text-secondary);backdrop-filter:blur(12px);">
+    <span style="color:var(--cyan);">&#9733;</span> ElektraOS for SMB . Founding cohort forming . Seed work on branch smb-foundation
+  </div>
+
+  <nav class="nav" id="nav" style="top:33px;">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo"><span>E</span>lektraOS<span>.</span>dev</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/#solutions">Solutions</a></li>
+        <li><a href="/smb/" class="active">For SMB</a></li>
+        <li><a href="/log/">Build Log</a></li>
+        <li><a href="/cases/">Cases</a></li>
+        <li><a href="/pricing/">Pricing</a></li>
+      </ul>
+      <a href="#apply" class="btn nav-cta">Join the cohort</a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <header class="smb-hero">
+    <div class="smb-container">
+      <div class="smb-badge">Teams of 5 to 50</div>
+      <h1><span class="gradient">AI and data infrastructure, built for teams under 50.</span></h1>
+      <p class="smb-hero-sub">
+        Enterprise AI tooling is overbuilt. Solopreneur tools hit a ceiling at 5 people. ElektraOS for SMB sits in the gap: production-grade AI, automation and data pipelines for the 5 to 50 band, with fixed pricing and a founding team that has lived on both sides.
+      </p>
+    </div>
+  </header>
+
+  <div class="wip-banner">Work in progress . Seed branch active . Founding cohort onboarding Q2 2026</div>
+
+  <main class="smb-container">
+
+    <div class="mkt-stats">
+      <div class="mkt-stat">
+        <div class="mkt-num">68%</div>
+        <div class="mkt-lbl">US firms 10-100 emp using AI (2025)</div>
+        <div class="mkt-src">up from 47% in prior year</div>
+      </div>
+      <div class="mkt-stat">
+        <div class="mkt-num">91%</div>
+        <div class="mkt-lbl">SMBs with AI report revenue lift</div>
+        <div class="mkt-src">Salesforce SMB Trends 2025</div>
+      </div>
+      <div class="mkt-stat">
+        <div class="mkt-num">20-35%</div>
+        <div class="mkt-lbl">Operational overhead cut in 6 months</div>
+        <div class="mkt-src">McKinsey, SMB automation</div>
+      </div>
+      <div class="mkt-stat">
+        <div class="mkt-num">82%</div>
+        <div class="mkt-lbl">&lt;5 employee firms think "AI isn't for us"</div>
+        <div class="mkt-src">the addressable gap</div>
+      </div>
+    </div>
+
+    <h2 style="font-size:26px;margin:40px 0 8px;">Three pillars, one stack</h2>
+    <p style="color:var(--text-secondary);line-height:1.7;max-width:720px;">
+      The same runtime that powers Loomgraph, MealShift's agent-native storefronts and the BizUs property back-office, scoped down to fixed packages an SMB can buy and an operator can actually run.
+    </p>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-tag">01 . AI &amp; Automation</div>
+        <h3>Agents that handle the work nobody has time to do</h3>
+        <p>Support triage, lead qualification, content drafting, order ops. Built on ElektraOS agents (49 specialised roles, 2,300+ executions) and shipped through Make, n8n or direct API to whatever CRM and inbox the team already uses.</p>
+        <div class="pillar-who">Led by <b>Said Ziane</b> . commercial + ops</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-tag">02 . Data &amp; Analytics</div>
+        <h3>A real data stack, without a data team</h3>
+        <p>Warehouse, ingestion pipelines, dashboards and data-quality checks. Not another BI tool bolted onto a spreadsheet; a managed pipeline from source systems to reliable answers, with weekly review.</p>
+        <div class="pillar-who">Led by <b>Zacki Ziane</b> . data engineering</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-tag">03 . Commerce &amp; Product</div>
+        <h3>Agent-native storefronts, modern checkout, mobile</h3>
+        <p>Ship a storefront AI assistants can actually parse and quote, with Schema.org, feed.json, an approval queue and a mobile-grade checkout. Lifted straight from MealShift's Apr 22 launch pattern.</p>
+        <div class="pillar-who">Led by <b>Jamal Ziane</b> . product</div>
+      </div>
+    </div>
+
+    <h2 style="font-size:26px;margin:56px 0 8px;">Who this is for</h2>
+    <p style="color:var(--text-secondary);line-height:1.7;max-width:720px;">
+      Four operator archetypes we have already built for, now packaged.
+    </p>
+
+    <div class="who-grid">
+      <div class="who-card">
+        <div class="who-card-head"><span class="dot"></span>Multi-vertical commerce</div>
+        <h4>5-25 staff, multiple lines of business</h4>
+        <p>Restaurant group, grocer, specialty retailer. Needs: one back office, feeds for every channel, agent-ready storefront.</p>
+      </div>
+      <div class="who-card">
+        <div class="who-card-head"><span class="dot"></span>Property and lettings</div>
+        <h4>1-10 staff, one or two blocks</h4>
+        <p>Landlord or lettings operator. Needs: tenant vault, compliance tracking, outreach pack, audit trail. Built once for NN16 8XG; now portable.</p>
+      </div>
+      <div class="who-card">
+        <div class="who-card-head"><span class="dot"></span>Heritage DTC</div>
+        <h4>3-15 staff, cross-border brand</h4>
+        <p>Craft, fashion, lifestyle. Needs: brand-safe content ops, multi-locale SEO, legal cross-linking via Loomgraph Society.</p>
+      </div>
+      <div class="who-card">
+        <div class="who-card-head"><span class="dot"></span>Services and consulting</div>
+        <h4>5-30 staff, retainer model</h4>
+        <p>Agency, advisory, niche SaaS. Needs: lead-in pipeline, proposal automation, internal knowledge base the team actually uses.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <section class="team-strip">
+    <h3>// Founding team</h3>
+    <div class="team-row">
+      <div class="team-card">
+        <div class="team-avatar">Y</div>
+        <div class="team-name">Yossra Benzad</div>
+        <div class="team-role">Founder . Systems Architect</div>
+        <p class="team-bio">Built ElektraOS runtime (3,852-line core, 51 routers, 49 agents), Loomgraph Fly.io platform, MealShift Commerce OS. Copenhagen.</p>
+        <a class="team-li" href="https://www.linkedin.com/in/yossra-benzad/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">S</div>
+        <div class="team-name">Said Ziane</div>
+        <div class="team-role">Co-founder . Ops &amp; SMB Growth</div>
+        <p class="team-bio">Co-founder MealShift (London, 2020). Operator of real SMB workflows: food-tech, UK residential property, multi-vertical commerce.</p>
+        <a class="team-li" href="https://www.linkedin.com/in/said-ziane-12895052/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">J</div>
+        <div class="team-name">Jamal Ziane</div>
+        <div class="team-role">Co-founder . Product &amp; Commerce</div>
+        <p class="team-bio">Co-founder MealShift. Product side of commerce platforms; on-demand delivery, couriers, restaurant management systems.</p>
+        <span class="team-li">LinkedIn pending verification</span>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">Z</div>
+        <div class="team-name">Zacki Ziane</div>
+        <div class="team-role">Co-founder . Data Engineering</div>
+        <p class="team-bio">Data Management Consultant at Kubrick Group, London. AstraZeneca client project. University of Nottingham.</p>
+        <a class="team-li" href="https://uk.linkedin.com/in/zacki-ziane" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="smb-container">
+    <section id="apply" class="smb-cta">
+      <h3>Ten spots. Founding cohort.</h3>
+      <p>
+        Fixed monthly fee, three pillars, one operator per pillar on call. Cohort intake Q2 2026. If you run a 5-50 team and recognise yourself in one of the archetypes above, tell us where you are and where you want to be in 90 days.
+      </p>
+      <a href="/#contact" class="btn">Apply to the cohort &rarr;</a>
+    </section>
+  </main>
+
+  <footer style="border-top:1px solid var(--border);padding:40px 0 60px;text-align:center;color:var(--text-muted);font-size:12px;">
+    <div class="smb-container">
+      <p><a href="/">ElektraOS.dev</a> . <a href="/cases/">Cases</a> . <a href="/log/">Build log</a> . <a href="/loomgraph-society/">Loomgraph Society</a></p>
+      <p style="margin-top:12px;">Copenhagen . London . Casablanca . Built on ElektraOS runtime</p>
+    </div>
+  </footer>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>

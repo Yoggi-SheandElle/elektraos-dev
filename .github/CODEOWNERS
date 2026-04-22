@@ -1,0 +1,21 @@
+# CODEOWNERS - elektraos-dev
+# Assigns default reviewers for each path. GitHub auto-requests review
+# from listed owners when a PR touches files under the path.
+# Docs: https://docs.github.com/articles/about-code-owners
+
+# Root + all core site scaffolding: Yossra retains final call
+*                       @Yoggi-SheandElle
+
+# SMB foundation branch work (under 50 employees vertical)
+/smb/                   @Yoggi-SheandElle @said-ziane @jamal-ziane
+/smb/data/              @Yoggi-SheandElle @zacki-ziane
+/smb/pipelines/         @Yoggi-SheandElle @zacki-ziane
+/smb/ops/               @Yoggi-SheandElle @said-ziane
+
+# Loomgraph hub + society: hub owner
+/loomgraph-society/     @Yoggi-SheandElle
+/case-loomgraph/        @Yoggi-SheandElle
+
+# Shared CSS / JS: Yossra-only to prevent design drift during ramp-up
+/css/                   @Yoggi-SheandElle
+/js/                    @Yoggi-SheandElle
