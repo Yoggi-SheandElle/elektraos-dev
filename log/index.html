@@ -285,6 +285,144 @@
   <!-- Feed -->
   <div class="log-feed">
 
+    <!-- ===== April 22, 2026 - MealShift Commerce OS - Security Batch + Agent-Native Storefronts + Platform Activity ===== -->
+    <article class="log-entry reveal" itemscope itemtype="https://schema.org/TechArticle">
+      <meta itemprop="datePublished" content="2026-04-22">
+      <meta itemprop="author" content="ElektraOS.dev">
+      <div class="log-date">
+        <time datetime="2026-04-22">April 22, 2026</time>
+        <span style="margin-left:12px;padding:2px 8px;border-radius:4px;background:rgba(239,68,68,0.1);color:#f87171;font-size:10px;">Security</span>
+        <span style="margin-left:6px;padding:2px 8px;border-radius:4px;background:rgba(0,255,157,0.1);color:var(--green);font-size:10px;">Shipped</span>
+        <span style="margin-left:6px;padding:2px 8px;border-radius:4px;background:rgba(124,58,237,0.1);color:#a78bfa;font-size:10px;">MealShift</span>
+      </div>
+      <h2 class="log-title" itemprop="headline">MealShift Commerce OS - P0/P1 security batch, agent-native storefronts, platform-wide activity tracking</h2>
+      <p class="log-desc" itemprop="description">Three commits to main. First: P0/P1 audit batch (Stripe webhook cross-tenant leak, silent refund stock loss, safeguarding endpoint leak, login brute-force, ledger cross-tenant defence). Second: agent-native storefronts - the first real differentiator. Deliveroo, Uber Eats, DoorDash all login-gate their catalogues. MealShift storefronts ship a sitemap, an AI-welcoming robots.txt, a machine-readable feed.json per store, and Schema.org JSON-LD per vertical - so an AI shopping agent can discover, read, and transact. Third: platform-wide activity tracking via a global interceptor, with a token-gated admin page and 10s live polling.</p>
+      <ul class="log-items">
+        <li>Stripe webhook now resolves by PaymentIntent id first, reference fallback only - closes a cross-tenant leak path</li>
+        <li>Full refunds now call inventory.adjust() to restore stock - previously silently lost</li>
+        <li>Safeguarding endpoint moved from tenant-owner auth to PLATFORM_ADMIN_TOKEN header (any tenant owner could see all FCA balances)</li>
+        <li>Login throttled 10/min per IP via @Throttle override on /auth/login</li>
+        <li>Ledger byRef cross-tenant defence: filter to caller tenant after fetch</li>
+        <li>/sitemap.xml and /robots.txt (apps/web/app/sitemap.ts, robots.ts) explicitly welcome GPTBot, PerplexityBot, ClaudeBot, OAI-SearchBot, Google-Extended</li>
+        <li>/store/&lt;slug&gt;/feed.json: ACP-style machine-readable catalog with order API descriptor - AI agents can transact, not just browse</li>
+        <li>Schema.org JSON-LD per vertical: Restaurant / GroceryStore / Florist / Pharmacy / Store on every storefront</li>
+        <li>activity_events table + @Global ActivityModule, fire-and-forget track() with global interceptor on every request (one api.request / api.anon row per call)</li>
+        <li>Explicit emits wired at auth.service (login, login_failed, register), onboarding.service, payments.service (stripe_connect.started), orders.service (order.placed, order.paid)</li>
+        <li>/admin/platform/activity page: PLATFORM_ADMIN_TOKEN-gated, 10s polling, by-kind rollup + tenant/user filters</li>
+      </ul>
+      <div class="log-tech">
+        <span>NestJS</span><span>Next.js 14</span><span>Prisma</span><span>Stripe Connect</span><span>Schema.org</span><span>ACP</span><span>Vercel</span><span>Render</span><span>JSON-LD</span><span>Nest Throttler</span>
+      </div>
+      <div class="log-metrics">
+        <span class="log-metric">P0/P1 fixes: <strong>5</strong></span>
+        <span class="log-metric">Commits to main: <strong>3</strong></span>
+        <span class="log-metric">Verticals with schema: <strong>5</strong></span>
+        <span class="log-metric">Live tenants: <strong>4</strong></span>
+      </div>
+    </article>
+
+    <!-- ===== April 21, 2026 - Loomgraph Deployed Live + UptimeRobot Status Page ===== -->
+    <article class="log-entry reveal" itemscope itemtype="https://schema.org/TechArticle">
+      <meta itemprop="datePublished" content="2026-04-21">
+      <meta itemprop="author" content="ElektraOS.dev">
+      <div class="log-date">
+        <time datetime="2026-04-21">April 21, 2026</time>
+        <span style="margin-left:12px;padding:2px 8px;border-radius:4px;background:rgba(0,255,157,0.1);color:var(--green);font-size:10px;">Live</span>
+        <span style="margin-left:6px;padding:2px 8px;border-radius:4px;background:rgba(0,212,255,0.1);color:var(--cyan);font-size:10px;">Deploy</span>
+        <span style="margin-left:6px;padding:2px 8px;border-radius:4px;background:rgba(124,58,237,0.1);color:#a78bfa;font-size:10px;">Loomgraph</span>
+      </div>
+      <h2 class="log-title" itemprop="headline">Loomgraph live on Fly.io + UptimeRobot public status page</h2>
+      <p class="log-desc" itemprop="description">Loomgraph deployed from scaffold to running at loomgraph.fly.dev in a single session. LHR region, 256MB shared CPU, SQLite on a mounted volume, four portfolio sites registered on boot. Added a public status page at stats.uptimerobot.com/yJFCkElO2w that also keeps the free Render dyno warm - one move, two purposes.</p>
+      <ul class="log-items">
+        <li>Fly app on lhr, 256MB, one machine, SQLite on /data volume - cold start under 2s</li>
+        <li>Four sites registered at deploy time: ElektraOS.dev, sheandelle.com, aylamaison.com, yossra-site cases</li>
+        <li>Dockerfile cleaned to python:3.12-slim, uid 10001, healthcheck wired to /health</li>
+        <li>fly.toml primary region lhr with http service on 8000, auto-stop disabled while volume mounts</li>
+        <li>UptimeRobot public status page at stats.uptimerobot.com/yJFCkElO2w - covers ElektraOS, MealShift backend, Loomgraph, elektraos.dev</li>
+        <li>Monitors ping every 5 minutes - keeps the Render free dyno warm so the cold-start penalty never hits a live visitor</li>
+        <li>ElektraOS n8n + agents confirmed healthy during deploy (49/49 active, scheduler looping)</li>
+      </ul>
+      <div class="log-tech">
+        <span>Fly.io</span><span>Docker</span><span>SQLite</span><span>Python 3.12</span><span>FastAPI</span><span>UptimeRobot</span><span>Render</span>
+      </div>
+      <div class="log-metrics">
+        <span class="log-metric">Sites registered: <strong>4</strong></span>
+        <span class="log-metric">Cold start: <strong>&lt;2s</strong></span>
+        <span class="log-metric">Monitors: <strong>5</strong></span>
+        <span class="log-metric">Uptime target: <strong>99.5%</strong></span>
+      </div>
+    </article>
+
+    <!-- ===== April 20, 2026 - Loomgraph v0.0.2 - Repo Scaffolded, CI Green, Reviews Passed ===== -->
+    <article class="log-entry reveal" itemscope itemtype="https://schema.org/TechArticle">
+      <meta itemprop="datePublished" content="2026-04-20">
+      <meta itemprop="author" content="ElektraOS.dev">
+      <div class="log-date">
+        <time datetime="2026-04-20">April 20, 2026 (evening)</time>
+        <span style="margin-left:12px;padding:2px 8px;border-radius:4px;background:rgba(0,255,157,0.1);color:var(--green);font-size:10px;">CI Green</span>
+        <span style="margin-left:6px;padding:2px 8px;border-radius:4px;background:rgba(124,58,237,0.1);color:#a78bfa;font-size:10px;">Build</span>
+        <span style="margin-left:6px;padding:2px 8px;border-radius:4px;background:rgba(0,212,255,0.1);color:var(--cyan);font-size:10px;">Loomgraph</span>
+      </div>
+      <h2 class="log-title" itemprop="headline">Loomgraph v0.0.2 - Agents, LLM Shim, MCP, CI, Docker, Reviews Passed</h2>
+      <p class="log-desc" itemprop="description">From empty repo to 11/11 tests, CI green on GitHub Actions, Dockerfile + compose, MCP server read-only, provider-agnostic LLM shim (Anthropic + Ollama + dry). Pre-push, ran three Claude review agents in parallel (security, type design, architecture) and integrated their blocking fixes before shipping.</p>
+      <ul class="log-items">
+        <li>FastAPI app with 6 routers (sites, audits, graph, approvals, strategist, health) - approval queue is the only path to any CMS write</li>
+        <li>Agents: Registrar (domain probe, CMS sniffer), Auditor (PageSpeed + CrUX), Strategist (LLM-backed brief drafter), Weaver (sitemap crawl + cross-link proposer)</li>
+        <li>LLM shim swappable via LOOMGRAPH_LLM_PROVIDER: anthropic (claude-haiku-4-5-20251001 default), ollama (llama3.3 default), dry (canned JSON for CI) - fail-closed on missing keys</li>
+        <li>MCP stdio server exposes 5 read-only tools (list_sites, get_site, list_audits, list_pending_approvals, list_edges) - no write path, approvals must go through HTTP</li>
+        <li>Security review (silent-failure-hunter) integrated: IndexNow now raises on 4xx/5xx, Strategist raises on non-JSON instead of enqueueing fabricated briefs, Anthropic client explicit 60s timeout, Registrar except narrowed from bare to httpx errors, Weaver logs before returning empty</li>
+        <li>Type review integrated: ApprovalQueueItem.status is now ApprovalStatus StrEnum (pending/approved/rejected), rename cls to layout_shift fixed SQLModel metaclass collision</li>
+        <li>Architecture review integrated: SiteAudit now carries tenant_id (closes cross-tenant audit leak), GET /audits/{site_id} enforces tenant match when query param supplied</li>
+        <li>CI: GitHub Actions runs ruff check + ruff format + pytest on Python 3.12, plus a reject-agpl job that greps for AGPL/GNU Affero - first run green</li>
+        <li>Docker: python:3.12-slim base, non-root uid 10001, healthcheck wired, compose uses host.docker.internal to reach ElektraOS on localhost:8000 and Ollama on localhost:11434</li>
+        <li>Tests: monkeypatch external APIs so CI never touches network, cover score persistence on success and non-overwrite on error, 11/11 passing in 2.65s</li>
+      </ul>
+      <div class="log-tech">
+        <span>Python 3.12</span><span>FastAPI</span><span>SQLModel</span><span>httpx</span><span>pydantic-settings</span><span>FastMCP</span><span>Anthropic SDK</span><span>Ollama</span><span>Ruff</span><span>pytest</span><span>GitHub Actions</span><span>Docker</span>
+      </div>
+      <div class="log-metrics">
+        <span class="log-metric">Tests: <strong>11/11</strong></span>
+        <span class="log-metric">Review agents: <strong>3 parallel</strong></span>
+        <span class="log-metric">CI jobs green: <strong>2/2</strong></span>
+        <span class="log-metric">MCP tools: <strong>5 read-only</strong></span>
+      </div>
+    </article>
+
+    <!-- ===== April 20, 2026 - Loomgraph Name Lock + Case Page + Research ===== -->
+    <article class="log-entry reveal" itemscope itemtype="https://schema.org/TechArticle">
+      <meta itemprop="datePublished" content="2026-04-20">
+      <meta itemprop="author" content="ElektraOS.dev">
+      <div class="log-date">
+        <time datetime="2026-04-20">April 20, 2026</time>
+        <span style="margin-left:12px;padding:2px 8px;border-radius:4px;background:rgba(232,168,56,0.1);color:#E8A838;font-size:10px;">In Design</span>
+        <span style="margin-left:6px;padding:2px 8px;border-radius:4px;background:rgba(124,58,237,0.1);color:#a78bfa;font-size:10px;">New Project</span>
+        <span style="margin-left:6px;padding:2px 8px;border-radius:4px;background:rgba(0,212,255,0.1);color:var(--cyan);font-size:10px;">Loomgraph</span>
+      </div>
+      <h2 class="log-title" itemprop="headline">Loomgraph - Name Locked, Case Page Shipped, Research Complete</h2>
+      <p class="log-desc" itemprop="description">Kicked off Loomgraph: agentic SEO and site interconnection layer on top of ElektraOS. Verified name across PyPI, npm, GitHub org and trademark search before writing a line of code (Synapse rejected due to Vertex Project Synapse + Matrix Synapse collisions). Shipped case page, updated cases index and blog, verified ElektraOS 49/49 agents healthy, ran two research subagents on competitive landscape and free-API leverage.</p>
+      <ul class="log-items">
+        <li>Name verification: GitHub org /loomgraph 404 (free), PyPI clean, zero prior art in web search - trademarkable</li>
+        <li>Rejected Synapse after registry check: Vertex Project Synapse (PyPI v2.239.0 active) + Matrix Synapse homeserver would force permanent brand fight</li>
+        <li>Case page shipped at /case-loomgraph/ - 5 agent roles (Registrar, Auditor, Strategist, Weaver, Publisher), 6-phase flow, Schema.org TechArticle JSON-LD</li>
+        <li>Cases index updated with featured Loomgraph card at top of grid, amber In Design badge</li>
+        <li>Blog post published: why the name got trademark-checked before the first commit</li>
+        <li>ElektraOS verified UP on :8000 - 49/49 agents active, scheduler healthy, recent executions confirmed (stale 35/41 note retired)</li>
+        <li>Research report 1: competitive landscape (Surfer/MarketMuse/Clearscope/Frase/InLinks), ML SOTA, CMS API surface, Google scaled-content policy, GDPR/CCPA constraints</li>
+        <li>Research report 2: top 10 free APIs ranked (GSC, PageSpeed, CrUX, IndexNow, Bing Webmaster, Common Crawl, Jina Reader, Groq free, Cloudflare Workers AI, Mozilla Observatory)</li>
+        <li>Clone-shortlist identified: LangGraph (29.7k), smolagents (26.5k), Pydantic-AI (16.5k), Crawlee (22k), Crawl4AI, Windmill (16.2k AGPL)</li>
+        <li>Memory persisted: project_loomgraph.md + feedback_long_term_reasoning.md added to auto-memory index</li>
+      </ul>
+      <div class="log-tech">
+        <span>Python</span><span>FastAPI</span><span>ChromaDB</span><span>DSPy</span><span>n8n</span><span>Claude</span><span>Groq</span><span>Schema.org</span><span>IndexNow</span><span>GSC API</span><span>PageSpeed API</span><span>LangGraph</span><span>smolagents</span><span>MCP</span>
+      </div>
+      <div class="log-metrics">
+        <span class="log-metric">Registries verified: <strong>4</strong></span>
+        <span class="log-metric">Agents active: <strong>49/49</strong></span>
+        <span class="log-metric">Research subagents: <strong>2 complete</strong></span>
+        <span class="log-metric">Free APIs shortlisted: <strong>10</strong></span>
+      </div>
+    </article>
+
     <!-- ===== March 29, 2026 - MealShift Mobile Engineering ===== -->
     <article class="log-entry reveal" itemscope itemtype="https://schema.org/TechArticle">
       <meta itemprop="datePublished" content="2026-03-29">

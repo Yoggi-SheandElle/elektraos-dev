@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Study: Loomgraph . Agentic SEO + Interconnected Sites . ElektraOS.dev</title>
+  <meta name="description" content="Loomgraph: an agentic platform that auto-onboards sites, audits SEO, generates content briefs, and weaves a live internal-link graph across a portfolio of websites. Built on ElektraOS + MealShift Commerce OS.">
+  <meta property="og:title" content="Case Study: Loomgraph . ElektraOS.dev">
+  <meta property="og:description" content="Agentic SEO + interconnected sites. Built on ElektraOS infrastructure, pushes content through the MealShift Commerce OS CMS layer.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://elektraos.dev/case-loomgraph/">
+  <meta name="theme-color" content="#7c3aed">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="canonical" href="https://elektraos.dev/case-loomgraph/">
+  <link rel="alternate" hreflang="en" href="https://elektraos.dev/case-loomgraph/">
+  <link rel="alternate" hreflang="x-default" href="https://elektraos.dev/case-loomgraph/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Loomgraph: Agentic SEO and Interconnected Sites",
+    "description": "Agentic platform that auto-onboards sites, audits SEO, generates content briefs, and weaves a live internal-link graph across a portfolio of websites.",
+    "url": "https://elektraos.dev/case-loomgraph/",
+    "author": {"@type": "Organization", "name": "ElektraOS.dev", "url": "https://elektraos.dev"},
+    "publisher": {"@type": "Organization", "name": "ElektraOS.dev"},
+    "about": {
+      "@type": "SoftwareApplication",
+      "name": "Loomgraph",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Linux"
+    },
+    "dependencies": "Python, FastAPI, ChromaDB, DSPy, n8n, Claude, WordPress REST, Shopify Admin, Wix Velo, Webflow API, IndexNow, Schema.org JSON-LD",
+    "datePublished": "2026-04-20"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/sections.css">
+  <link rel="stylesheet" href="../css/chat.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+
+  <style>
+    .case-hero { padding: 160px 0 80px; text-align: center; }
+    .case-hero-badge {
+      display: inline-block; font-family: var(--font-mono); font-size: 11px;
+      text-transform: uppercase; letter-spacing: 2px; color: var(--cyan);
+      border: 1px solid rgba(0, 212, 255, 0.2); padding: 6px 16px; border-radius: 999px;
+      margin-bottom: 24px; background: rgba(0, 212, 255, 0.06);
+    }
+    .status-pill {
+      display: inline-block; font-family: var(--font-mono); font-size: 10px;
+      text-transform: uppercase; letter-spacing: 1.5px; color: #E8A838;
+      border: 1px solid rgba(232, 168, 56, 0.3); padding: 4px 12px; border-radius: 999px;
+      margin-left: 8px; background: rgba(232, 168, 56, 0.08);
+    }
+    .case-hero h1 {
+      font-size: clamp(32px, 5vw, 56px); font-weight: 700; line-height: 1.1; margin-bottom: 20px;
+    }
+    .case-hero h1 .gradient {
+      background: var(--gradient-brand);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .case-hero-sub { font-size: 18px; color: var(--text-secondary); max-width: 680px; margin: 0 auto; }
+    .case-container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+    .stats-bar {
+      display: grid; grid-template-columns: repeat(5, 1fr);
+      gap: 1px; background: var(--border); border-radius: var(--radius-lg);
+      overflow: hidden; margin: 60px 0 80px;
+    }
+    .stat { background: var(--bg-secondary); padding: 24px 12px; text-align: center; }
+    .stat-value { font-family: var(--font-mono); font-size: 22px; font-weight: 700; color: var(--cyan); }
+    .stat-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-top: 4px; }
+
+    .case-section { margin-bottom: 80px; }
+    .section-label { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--purple); margin-bottom: 12px; }
+    .case-section h2 { font-size: 28px; font-weight: 700; margin-bottom: 16px; line-height: 1.2; }
+    .case-section p { color: var(--text-secondary); font-size: 16px; margin-bottom: 16px; line-height: 1.7; }
+    .case-section ul { color: var(--text-secondary); font-size: 15px; line-height: 1.8; padding-left: 20px; margin-bottom: 16px; }
+
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin-top: 24px; }
+    .card {
+      background: var(--bg-card); border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md); padding: 24px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .card:hover { border-color: rgba(124, 58, 237, 0.3); transform: translateY(-2px); }
+    .card h3 { font-size: 16px; margin-bottom: 8px; }
+    .card p { font-size: 14px; color: var(--text-muted); margin: 0; }
+
+    .agent-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-top: 20px; }
+    .agent-chip { background: var(--bg-card); border: 1px solid var(--glass-border); border-radius: var(--radius-md); padding: 16px; text-align: center; }
+    .agent-chip .count { font-family: var(--font-mono); font-size: 22px; font-weight: 700; color: var(--cyan); }
+    .agent-chip .team { font-size: 14px; font-weight: 600; margin-top: 4px; }
+    .agent-chip .detail { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+    .tech-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; margin-top: 20px; }
+    .tech-chip { background: var(--bg-card); border: 1px solid var(--glass-border); border-radius: var(--radius-md); padding: 14px 16px; text-align: center; font-size: 13px; font-weight: 600; }
+
+    .phase-list { display: grid; gap: 12px; margin-top: 24px; }
+    .phase-row { display: grid; grid-template-columns: 64px 1fr; gap: 16px; padding: 20px; background: var(--bg-card); border: 1px solid var(--glass-border); border-radius: var(--radius-md); }
+    .phase-row .phase-num { font-family: var(--font-mono); font-size: 24px; font-weight: 700; color: var(--cyan); }
+    .phase-row h3 { font-size: 16px; margin-bottom: 4px; }
+    .phase-row p { font-size: 14px; color: var(--text-muted); margin: 0; }
+
+    .cta-section { text-align: center; padding: 80px 0; border-top: 1px solid var(--border); }
+    .cta-button {
+      display: inline-block; padding: 16px 40px; background: var(--gradient-brand);
+      color: white; font-weight: 700; font-size: 15px; border-radius: var(--radius-md);
+      text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
+      font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 1px;
+    }
+    .cta-button:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(124, 58, 237, 0.35); }
+
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 768px) {
+      .stats-bar { grid-template-columns: repeat(3, 1fr); }
+      .case-hero { padding: 120px 0 60px; }
+      .phase-row { grid-template-columns: 48px 1fr; }
+    }
+    @media (max-width: 480px) {
+      .stats-bar { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+  <link rel="stylesheet" href="/css/smart-features.css">
+</head>
+<body>
+
+  <div style="position:fixed;top:0;left:0;right:0;z-index:101;background:linear-gradient(90deg,rgba(124,58,237,0.15),rgba(0,212,255,0.1));border-bottom:1px solid rgba(124,58,237,0.2);padding:8px 0;text-align:center;font-family:var(--font-mono);font-size:11px;letter-spacing:0.5px;color:var(--text-secondary);backdrop-filter:blur(12px);">
+    <span style="color:var(--cyan);">&#9889;</span> Loomgraph . Design phase . Name locked 2026-04-20
+  </div>
+
+  <nav class="nav" id="nav" style="top:33px;">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo"><span>E</span>lektraOS<span>.</span>dev</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/#solutions">Solutions</a></li>
+        <li><a href="/log/">Build Log</a></li>
+        <li><a href="/cases/">Case Studies</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/pricing/">Pricing</a></li>
+        <li><a href="/about/">About</a></li>
+      </ul>
+      <a href="/#contact" class="btn nav-cta">Let's Build</a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <header class="case-hero">
+    <div class="case-container">
+      <div class="case-hero-badge">Agentic SEO . Interconnected Sites</div>
+      <h1><span class="gradient">Loomgraph</span><span class="status-pill">In Design</span></h1>
+      <p class="case-hero-sub">
+        Drop in a domain. It onboards itself, audits its SEO, identifies the gaps, writes briefs, publishes through its own CMS, and weaves itself into a live graph of every other site under management.
+      </p>
+    </div>
+  </header>
+
+  <div class="case-container">
+    <div class="stats-bar reveal">
+      <div class="stat"><div class="stat-value">1</div><div class="stat-label">Onboarding Step</div></div>
+      <div class="stat"><div class="stat-value">4+</div><div class="stat-label">CMS Targets</div></div>
+      <div class="stat"><div class="stat-value">N&times;N</div><div class="stat-label">Cross-Link Graph</div></div>
+      <div class="stat"><div class="stat-value">IndexNow</div><div class="stat-label">Instant Push</div></div>
+      <div class="stat"><div class="stat-value">ElektraOS</div><div class="stat-label">Runtime</div></div>
+    </div>
+  </div>
+
+  <div class="case-container">
+
+    <section class="case-section reveal">
+      <div class="section-label">// The Problem</div>
+      <h2>Portfolio SEO is an N-squared problem nobody automated properly.</h2>
+      <p>
+        Run one site, rank one thing. Run ten sites, and the work compounds faster than the hours.
+        Each site needs its own audit, its own briefs, its own schema, its own internal linking, and its own CMS push-back. The cross-site wins (topical authority relays, brand mentions, entity co-occurrence) only exist if something treats the portfolio as a graph, not a list.
+      </p>
+      <p>
+        The tools that exist split the problem in half: content generators that ignore technical SEO, audit tools that ignore content, and internal-linking plugins that only see inside one WordPress install. Loomgraph is the layer that sits on top of all of them and treats the entire portfolio as one optimisation target.
+      </p>
+    </section>
+
+    <section class="case-section reveal">
+      <div class="section-label">// The Architecture</div>
+      <h2>Thin layer on ElektraOS. Deep integration with CMS APIs. Graph-aware throughout.</h2>
+      <p>
+        Loomgraph is not a new stack. It reuses the ElektraOS agent scheduler, vector store, and workflow bridge, then adds a thin, opinionated layer on top. The MealShift Commerce OS plugins (WooCommerce, Shopify, Wix) handle the CMS push-back for commerce sites; for standalone publishers, it talks to WordPress REST, Webflow Data API, Ghost Admin, and Sanity directly.
+      </p>
+
+      <div class="agent-grid">
+        <div class="agent-chip"><div class="count">1</div><div class="team">Registrar</div><div class="detail">Auto-onboard any URL</div></div>
+        <div class="agent-chip"><div class="count">2</div><div class="team">Auditor</div><div class="detail">Lighthouse, schema, links</div></div>
+        <div class="agent-chip"><div class="count">3</div><div class="team">Strategist</div><div class="detail">Topic graph, brief gen</div></div>
+        <div class="agent-chip"><div class="count">4</div><div class="team">Weaver</div><div class="detail">Cross-site link graph</div></div>
+        <div class="agent-chip"><div class="count">5</div><div class="team">Publisher</div><div class="detail">CMS push + IndexNow</div></div>
+      </div>
+    </section>
+
+    <section class="case-section reveal">
+      <div class="section-label">// How It Works</div>
+      <h2>From URL to live optimisation in one hop.</h2>
+
+      <div class="phase-list">
+        <div class="phase-row"><div class="phase-num">01</div><div><h3>Auto-onboard</h3><p>Drop in a URL. The registrar fetches sitemap + robots, sniffs the CMS (WordPress, Shopify, Wix, Webflow, Ghost, custom), detects schema coverage, and writes itself into the sites registry.</p></div></div>
+        <div class="phase-row"><div class="phase-num">02</div><div><h3>Audit</h3><p>Cron-driven auditor hits PageSpeed Insights API, parses Core Web Vitals from the Chrome UX Report, validates JSON-LD against Schema.org, and scores the site. Free APIs where they are enough, paid where they are not.</p></div></div>
+        <div class="phase-row"><div class="phase-num">03</div><div><h3>Strategise</h3><p>Topic graph built from the site corpus via embeddings. Competitor SERPs pulled via SERP API. Gaps surfaced. LLM drafts briefs, not full posts. Human approves each brief in a queue.</p></div></div>
+        <div class="phase-row"><div class="phase-num">04</div><div><h3>Weave</h3><p>The weaver runs continuously across the full portfolio. Computes topical similarity, proposes internal links both within and across sites, respects editorial rules, and outputs a link-ledger that the publisher executes.</p></div></div>
+        <div class="phase-row"><div class="phase-num">05</div><div><h3>Publish</h3><p>Content, schema, and link edits push through CMS-specific n8n workflows. IndexNow fires on publish for instant Bing + Yandex indexing. Schema.org sameAs and about edges emit across the portfolio to reinforce the entity graph.</p></div></div>
+        <div class="phase-row"><div class="phase-num">06</div><div><h3>Learn</h3><p>Search Console API and GA4 feed ranking and engagement signals back into ChromaDB. Over months the system accumulates enough ranking feedback to train a per-vertical model that beats off-the-shelf Claude briefs. Until then: Claude plus retrieval.</p></div></div>
+      </div>
+    </section>
+
+    <section class="case-section reveal">
+      <div class="section-label">// Why Now</div>
+      <h2>Three things aligned.</h2>
+      <ul>
+        <li><strong>The ElektraOS infrastructure is already there.</strong> Scheduler, 49 agents, ChromaDB vector store, n8n bridge, MCP server - Loomgraph does not need a new runtime, it needs a new vertical.</li>
+        <li><strong>The MealShift Commerce OS plugins are already built.</strong> Woo, Shopify, Wix integrations exist; Loomgraph reuses the CMS push-back layer instead of rewriting it.</li>
+        <li><strong>LLM briefs are finally good enough.</strong> Claude-class models plus retrieval now produce content briefs that match or beat the incumbent SEO tools, which means the moat moves from "can you write" to "can you orchestrate this across a portfolio". That is the gap.</li>
+      </ul>
+    </section>
+
+    <section class="case-section reveal">
+      <div class="section-label">// Stack (Proposed)</div>
+      <h2>Built with</h2>
+      <div class="tech-grid">
+        <div class="tech-chip">Python</div>
+        <div class="tech-chip">FastAPI</div>
+        <div class="tech-chip">ChromaDB</div>
+        <div class="tech-chip">DSPy</div>
+        <div class="tech-chip">n8n</div>
+        <div class="tech-chip">Claude</div>
+        <div class="tech-chip">Groq</div>
+        <div class="tech-chip">WordPress REST</div>
+        <div class="tech-chip">Shopify Admin</div>
+        <div class="tech-chip">Wix Velo</div>
+        <div class="tech-chip">Webflow API</div>
+        <div class="tech-chip">IndexNow</div>
+        <div class="tech-chip">Schema.org</div>
+        <div class="tech-chip">PageSpeed API</div>
+        <div class="tech-chip">Search Console</div>
+        <div class="tech-chip">MCP</div>
+      </div>
+    </section>
+
+    <section class="case-section reveal">
+      <div class="section-label">// Status</div>
+      <h2>Where Loomgraph is today.</h2>
+      <ul>
+        <li>Name locked 2026-04-20 after verifying registry availability (PyPI, npm, GitHub org, trademark search).</li>
+        <li>Architecture designed. Registry schema and first two agents (registrar + auditor) next in the build order.</li>
+        <li>ElektraOS runtime already online. 49 agents active, scheduler healthy, last execution within the hour.</li>
+        <li>Research phase: competitive landscape, free-API integration map, and open-source reference projects under evaluation.</li>
+        <li>Design-partner slots opening for portfolios of 3+ sites. Feedback welcome.</li>
+      </ul>
+    </section>
+  </div>
+
+  <div class="cta-section reveal">
+    <div class="case-container">
+      <h2 style="margin-bottom:16px;">Got a portfolio of sites that should cross-reinforce?</h2>
+      <p style="color:var(--text-secondary);margin-bottom:32px;">
+        Loomgraph is taking design-partner inputs now. Let's talk.
+      </p>
+      <a href="/#contact" class="cta-button">Let's Build</a>
+    </div>
+  </div>
+
+  <div class="chat-widget" id="chatWidget">
+    <div class="chat-panel" id="chatPanel">
+      <div class="chat-panel-header">
+        <div class="header-info">
+          <div class="header-avatar"><svg width="18" height="18" viewBox="0 0 32 32" fill="none"><polygon points="16,5 25,10.5 25,21.5 16,27 7,21.5 7,10.5" stroke="url(#sigil-g)" stroke-width="1.2" opacity="0.6"/><path d="M12 11 L20 11 M12 11 L12 21 M12 16 L19 16 M12 21 L20 21" stroke="url(#sigil-g)" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="16" r="1.5" fill="#00d4ff" opacity="0.9"/><defs><linearGradient id="sigil-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#00d4ff"/></linearGradient></defs></svg></div>
+          <div>
+            <div class="header-name">Elektra</div>
+            <div class="header-status">AI Assistant</div>
+          </div>
+        </div>
+        <button class="chat-close-btn" id="chatClose">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="chat-bubble bot">Loomgraph is the new agentic SEO layer we are designing on top of ElektraOS. Ask me how the cross-site link graph works, or how the CMS push-back is wired.</div>
+      </div>
+      <div class="chat-input-area">
+        <input type="text" class="chat-input" id="chatInput" placeholder="Ask me anything...">
+        <button class="chat-send" id="chatSend">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="sigil3d" class="chat-toggle" style="width:70px;height:70px;padding:0;border:none;background:rgba(13,17,23,0.6);backdrop-filter:blur(8px);overflow:hidden;border-radius:18px;"></div>
+    <button id="chatToggle" style="display:none;"></button>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-copy">
+        <span class="mono">&copy; 2026 ElektraOS.dev</span>
+        <span style="display:block;font-size:11px;color:var(--text-muted);margin-top:4px;">Copenhagen, Denmark</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/yoggi-sheandelle" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.upwork.com/freelancers/~01eddb5df59f03b475" target="_blank" rel="noopener">Upwork</a>
+        <a href="/about/#privacy">Privacy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/chat.js"></script>
+  <script src="../js/sigil3d.js"></script>
+  <script src="../js/app.js"></script>
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+  <script src="/js/i18n.js" defer></script>
+  <script src="/js/tracker.js" defer></script>
+</body>
+</html>

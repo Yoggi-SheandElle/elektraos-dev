@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ElektraOS.dev - Thumbnail Gallery</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0a0f; color: #fff; font-family: 'Space Grotesk', sans-serif; padding: 40px; }
+  h1 { font-size: 28px; margin-bottom: 8px; background: linear-gradient(135deg, #e2e8f0, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .subtitle { color: #666; font-family: 'Space Mono', monospace; font-size: 13px; margin-bottom: 40px; letter-spacing: 1px; }
+  h2 {
+    color: #888; margin: 40px 0 16px; font-family: 'Space Mono', monospace;
+    font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+    border-bottom: 1px solid #1a1a2e; padding-bottom: 8px;
+  }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 20px; }
+  .card {
+    border: 1px solid #1a1a2e; border-radius: 12px; overflow: hidden;
+    background: #111; transition: border-color 0.2s;
+  }
+  .card:hover { border-color: #8b5cf6; }
+  .card img { width: 100%; height: auto; display: block; }
+  .card .meta {
+    padding: 12px 16px; font-size: 12px; color: #666;
+    font-family: 'Space Mono', monospace; display: flex; justify-content: space-between;
+  }
+  .card .meta .provider { color: #8b5cf6; }
+  .badge {
+    display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 4px;
+    font-family: 'Space Mono', monospace; letter-spacing: 1px; text-transform: uppercase;
+    margin-left: 8px;
+  }
+  .badge-approved { background: rgba(52,211,153,0.15); color: #34d399; border: 1px solid rgba(52,211,153,0.3); }
+  .badge-draft { background: rgba(251,191,36,0.15); color: #fbbf24; border: 1px solid rgba(251,191,36,0.3); }
+  .badge-site { background: rgba(139,92,246,0.15); color: #a78bfa; border: 1px solid rgba(139,92,246,0.3); }
+  .full-width { grid-column: 1 / -1; }
+  .full-width img { max-height: 500px; object-fit: contain; background: #0a0a0f; }
+</style>
+</head>
+<body>
+
+<h1>ElektraOS.dev Thumbnail Gallery</h1>
+<p class="subtitle">AI-generated backgrounds (FLUX.1) + face compositing (Pillow) + text overlay</p>
+
+<h2>OG Social Share Image (1200x630) <span class="badge badge-site">FOR SITE</span></h2>
+<div class="grid">
+  <div class="card full-width">
+    <img src="og-share.jpg" alt="OG Share Image">
+    <div class="meta"><span>og-share.jpg - 1200x630</span><span class="provider">FLUX.1 + Pillow Composite</span></div>
+  </div>
+</div>
+
+<h2>About Hero (1200x500) <span class="badge badge-site">FOR SITE</span></h2>
+<div class="grid">
+  <div class="card full-width">
+    <img src="about-hero.jpg" alt="About Hero">
+    <div class="meta"><span>about-hero.jpg - 1200x500</span><span class="provider">FLUX.1 + Pillow Composite</span></div>
+  </div>
+</div>
+
+<h2>Case Study Thumbnails (800x450) <span class="badge badge-site">FOR SITE</span></h2>
+<div class="grid">
+  <div class="card">
+    <img src="case-elektraos.jpg" alt="ElektraOS">
+    <div class="meta"><span>ElektraOS</span><span class="provider">FLUX.1</span></div>
+  </div>
+  <div class="card">
+    <img src="case-ayla.jpg" alt="AYLA Luxury">
+    <div class="meta"><span>AYLA Luxury</span><span class="provider">FLUX.1</span></div>
+  </div>
+  <div class="card">
+    <img src="case-thumbnail-pipeline.jpg" alt="AI Thumbnail Pipeline">
+    <div class="meta"><span>AI Thumbnail Pipeline</span><span class="provider">FLUX.1</span></div>
+  </div>
+  <div class="card">
+    <img src="case-sheandelle.jpg" alt="She&Elle">
+    <div class="meta"><span>She&amp;Elle of Morocco</span><span class="provider">FLUX.1</span></div>
+  </div>
+  <div class="card">
+    <img src="case-40th-brick.jpg" alt="The 40th Brick">
+    <div class="meta"><span>The 40th Brick</span><span class="provider">FLUX.1</span></div>
+  </div>
+  <div class="card">
+    <img src="case-mealshift.jpg" alt="MealShift API">
+    <div class="meta"><span>MealShift API Portal</span><span class="provider">FLUX.1</span></div>
+  </div>
+</div>
+
+<h2>Previous Pipeline Outputs <span class="badge badge-approved">APPROVED</span></h2>
+<div class="grid">
+  <div class="card">
+    <img src="approved_20260324_224003_youtube_a5c00079_v1.jpg" alt="Approved YouTube 1">
+    <div class="meta"><span>YouTube Thumbnail (Approved)</span><span class="provider">HuggingFace FLUX.1</span></div>
+  </div>
+  <div class="card">
+    <img src="approved_20260324_204011_youtube_e531d305_v1.jpg" alt="Approved YouTube 2">
+    <div class="meta"><span>YouTube Thumbnail (Approved)</span><span class="provider">HuggingFace FLUX.1</span></div>
+  </div>
+</div>
+
+<h2>Pipeline Drafts <span class="badge badge-draft">DRAFT</span></h2>
+<div class="grid">
+  <div class="card">
+    <img src="blog_657019c1_v1.jpg" alt="Blog Draft 1">
+    <div class="meta"><span>Blog OG v1</span><span class="provider">HuggingFace FLUX.1</span></div>
+  </div>
+  <div class="card">
+    <img src="blog_a99d764f_v2.jpg" alt="Blog Draft 2">
+    <div class="meta"><span>Blog OG v2</span><span class="provider">HuggingFace FLUX.1</span></div>
+  </div>
+  <div class="card">
+    <img src="blog_ac8a9d3f_v1.jpg" alt="Blog Draft 3">
+    <div class="meta"><span>Blog Draft (latest)</span><span class="provider">HuggingFace FLUX.1</span></div>
+  </div>
+  <div class="card">
+    <img src="youtube_751b4136_v1.jpg" alt="YouTube Draft">
+    <div class="meta"><span>YouTube Draft</span><span class="provider">HuggingFace FLUX.1</span></div>
+  </div>
+  <div class="card">
+    <img src="youtube_a5c00079_v1.jpg" alt="YouTube Draft 2">
+    <div class="meta"><span>YouTube Draft (pre-approval)</span><span class="provider">HuggingFace FLUX.1</span></div>
+  </div>
+  <div class="card">
+    <img src="youtube_e531d305_v1.jpg" alt="YouTube Draft 3">
+    <div class="meta"><span>YouTube Draft (pre-approval)</span><span class="provider">HuggingFace FLUX.1</span></div>
+  </div>
+</div>
+
+</body>
+</html>

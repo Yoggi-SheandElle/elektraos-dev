@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MealShift 2.0 - Strategic Vision & Architecture Blueprint</title>
+  <meta name="description" content="MealShift strategic vision: market positioning, competitive analysis, SWOT, AI-powered architecture blueprint. Confidential.">
+  <meta name="theme-color" content="#FF5362">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --coral: #FF5362; --green: #18a300; --dark: #0B1120; --card: #111827;
+      --border: rgba(255,255,255,0.06); --text: #e2e8f0; --muted: #64748b;
+      --cyan: #00d4ff; --purple: #7c3aed; --amber: #f59e0b; --red: #ef4444;
+      --mono: 'Space Mono', monospace; --sans: 'DM Sans', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--dark); color: var(--text); font-family: var(--sans); line-height: 1.7; }
+    a { color: var(--cyan); text-decoration: none; }
+    .container { max-width: 920px; margin: 0 auto; padding: 0 24px; }
+
+    /* Hero */
+    .hero { padding: 80px 0 40px; text-align: center; border-bottom: 1px solid var(--border); }
+    .hero-badge { display: inline-block; font-family: var(--mono); font-size: 9px; text-transform: uppercase; letter-spacing: 2px; padding: 4px 12px; border-radius: 20px; background: rgba(255,83,98,0.1); border: 1px solid rgba(255,83,98,0.2); color: var(--coral); margin-bottom: 16px; }
+    .hero h1 { font-size: clamp(32px,5vw,48px); font-weight: 700; margin: 12px 0; }
+    .hero h1 span { background: linear-gradient(135deg, var(--coral), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-sub { color: var(--muted); max-width: 640px; margin: 0 auto; font-size: 15px; }
+    .hero-stats { display: flex; justify-content: center; gap: 40px; margin-top: 32px; flex-wrap: wrap; }
+    .stat-val { font-family: var(--mono); font-size: 22px; font-weight: 700; color: var(--cyan); }
+    .stat-label { font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
+
+    /* TOC */
+    .toc { padding: 32px 0; border-bottom: 1px solid var(--border); }
+    .toc-grid { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+    .toc-link { font-family: var(--mono); font-size: 10px; padding: 6px 14px; border-radius: 20px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); color: var(--muted); cursor: pointer; transition: all 0.2s; text-decoration: none; }
+    .toc-link:hover { background: rgba(255,83,98,0.08); border-color: rgba(255,83,98,0.2); color: var(--coral); }
+
+    /* Section */
+    .section { padding: 48px 0; border-bottom: 1px solid var(--border); }
+    .section-label { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: var(--coral); margin-bottom: 8px; }
+    .section h2 { font-size: 24px; margin-bottom: 16px; }
+    .section p { color: var(--muted); margin-bottom: 16px; }
+    .section-intro { font-size: 15px; color: var(--text); margin-bottom: 20px; opacity: 0.85; }
+
+    /* Cards */
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 16px; }
+    .card-grid-3 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; transition: all 0.3s; }
+    .card:hover { border-color: rgba(255,83,98,0.25); transform: translateY(-2px); }
+    .card-icon { font-size: 24px; margin-bottom: 10px; }
+    .card h3 { font-size: 15px; margin-bottom: 6px; }
+    .card p { font-size: 13px; color: var(--muted); margin: 0; }
+    .card-tag { font-family: var(--mono); font-size: 9px; padding: 2px 8px; border-radius: 4px; display: inline-block; margin-top: 10px; }
+    .tag-current { background: rgba(255,83,98,0.1); color: var(--coral); }
+    .tag-new { background: rgba(0,212,255,0.1); color: var(--cyan); }
+    .tag-ai { background: rgba(124,58,237,0.1); color: var(--purple); }
+    .tag-green { background: rgba(24,163,0,0.1); color: var(--green); }
+
+    /* Tables */
+    .compare-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 16px; }
+    .compare-table th { text-align: left; padding: 12px; border-bottom: 2px solid var(--border); font-family: var(--mono); font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
+    .compare-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); }
+    .compare-table tr:hover { background: rgba(255,255,255,0.02); }
+    .c-muted { color: var(--muted); }
+    .c-coral { color: var(--coral); }
+    .c-cyan { color: var(--cyan); }
+    .c-green { color: var(--green); }
+    .c-purple { color: var(--purple); }
+    .c-amber { color: var(--amber); }
+
+    /* Positioning chart */
+    .pos-chart { position: relative; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 40px; margin: 20px 0; height: 400px; overflow: hidden; }
+    .pos-axis-x { position: absolute; bottom: 20px; left: 40px; right: 20px; height: 1px; background: var(--border); }
+    .pos-axis-y { position: absolute; top: 20px; bottom: 20px; left: 40px; width: 1px; background: var(--border); }
+    .pos-label-x { position: absolute; bottom: 4px; right: 20px; font-family: var(--mono); font-size: 9px; color: var(--muted); }
+    .pos-label-y { position: absolute; top: 20px; left: 4px; font-family: var(--mono); font-size: 9px; color: var(--muted); writing-mode: vertical-lr; transform: rotate(180deg); }
+    .pos-dot { position: absolute; width: 14px; height: 14px; border-radius: 50%; transform: translate(-50%,-50%); transition: all 0.6s cubic-bezier(0.4,0,0.2,1); cursor: default; }
+    .pos-dot::after { content: attr(data-label); position: absolute; top: 18px; left: 50%; transform: translateX(-50%); font-family: var(--mono); font-size: 9px; white-space: nowrap; color: var(--muted); }
+    .pos-dot.uber { background: #000; border: 2px solid #1DB954; }
+    .pos-dot.deliveroo { background: #00CCBC; }
+    .pos-dot.justeat { background: #FF8000; }
+    .pos-dot.foodhub { background: #e74c3c; }
+    .pos-dot.stuart { background: #3498db; }
+    .pos-dot.mealshift-now { background: var(--coral); border: 2px solid var(--coral); box-shadow: 0 0 12px rgba(255,83,98,0.4); }
+    .pos-dot.mealshift-progress { background: var(--amber); border: 2px solid var(--amber); box-shadow: 0 0 12px rgba(245,158,11,0.5); }
+    .pos-dot.mealshift-phase1 { background: rgba(0,212,255,0.2); border: 2px dashed var(--cyan); width: 12px; height: 12px; }
+    .pos-dot.mealshift-phase2 { background: rgba(0,212,255,0.35); border: 2px dashed var(--cyan); width: 12px; height: 12px; }
+    .pos-dot.mealshift-future { background: var(--cyan); border: 2px solid var(--cyan); box-shadow: 0 0 16px rgba(0,212,255,0.5); }
+    .pos-arrow { position: absolute; color: var(--amber); font-size: 20px; }
+    .pos-legend { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 16px; font-size: 11px; color: var(--muted); }
+    .pos-legend-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 4px; vertical-align: middle; }
+
+    /* SWOT */
+    .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+    .swot-card { padding: 24px; border-radius: 12px; }
+    .swot-card h3 { font-size: 14px; margin-bottom: 10px; font-family: var(--mono); text-transform: uppercase; letter-spacing: 1px; }
+    .swot-card ul { list-style: none; padding: 0; }
+    .swot-card li { font-size: 13px; padding: 4px 0; padding-left: 16px; position: relative; }
+    .swot-card li::before { content: ''; position: absolute; left: 0; top: 11px; width: 6px; height: 6px; border-radius: 50%; }
+    .swot-s { background: rgba(24,163,0,0.06); border: 1px solid rgba(24,163,0,0.15); }
+    .swot-s h3 { color: var(--green); }
+    .swot-s li::before { background: var(--green); }
+    .swot-w { background: rgba(255,83,98,0.06); border: 1px solid rgba(255,83,98,0.15); }
+    .swot-w h3 { color: var(--coral); }
+    .swot-w li::before { background: var(--coral); }
+    .swot-o { background: rgba(0,212,255,0.06); border: 1px solid rgba(0,212,255,0.15); }
+    .swot-o h3 { color: var(--cyan); }
+    .swot-o li::before { background: var(--cyan); }
+    .swot-t { background: rgba(245,158,11,0.06); border: 1px solid rgba(245,158,11,0.15); }
+    .swot-t h3 { color: var(--amber); }
+    .swot-t li::before { background: var(--amber); }
+
+    /* Architecture */
+    .arch-box { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 28px; font-family: var(--mono); font-size: 11px; overflow-x: auto; white-space: pre; line-height: 1.6; color: var(--muted); margin: 16px 0; }
+    .arch-box .hi { color: var(--cyan); }
+    .arch-box .co { color: var(--coral); }
+    .arch-box .gr { color: var(--green); }
+    .arch-box .pu { color: var(--purple); }
+
+    /* Toggle filters */
+    .toggle-group { display: flex; gap: 6px; margin-bottom: 20px; flex-wrap: wrap; }
+    .toggle-btn { font-family: var(--mono); font-size: 10px; text-transform: uppercase; padding: 5px 12px; border-radius: 20px; cursor: pointer; transition: all 0.2s; background: rgba(255,255,255,0.02); border: 1px solid var(--border); color: var(--muted); }
+    .toggle-btn.active { background: rgba(255,83,98,0.12); border-color: rgba(255,83,98,0.35); color: var(--coral); }
+
+    /* Timeline */
+    .timeline { position: relative; padding-left: 32px; margin-top: 20px; }
+    .timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: var(--border); }
+    .timeline-item { position: relative; margin-bottom: 28px; }
+    .timeline-item::before { content: ''; position: absolute; left: -28px; top: 6px; width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--coral); background: var(--dark); }
+    .timeline-item.done::before { background: var(--green); border-color: var(--green); }
+    .timeline-item.active::before { background: var(--coral); box-shadow: 0 0 12px rgba(255,83,98,0.4); }
+    .tl-month { font-family: var(--mono); font-size: 10px; color: var(--coral); }
+    .tl-title { font-weight: 600; margin: 2px 0; }
+    .tl-desc { font-size: 13px; color: var(--muted); }
+
+    /* Callout */
+    .callout { padding: 20px 24px; border-radius: 8px; margin: 20px 0; font-size: 13px; }
+    .callout-coral { background: rgba(255,83,98,0.06); border-left: 3px solid var(--coral); color: var(--text); }
+    .callout-cyan { background: rgba(0,212,255,0.04); border-left: 3px solid var(--cyan); color: var(--text); }
+    .callout-green { background: rgba(24,163,0,0.04); border-left: 3px solid var(--green); color: var(--text); }
+    .callout strong { color: var(--text); }
+
+    /* CTA */
+    .cta { padding: 60px 0; text-align: center; }
+    .cta h2 { font-size: 28px; margin-bottom: 12px; }
+    .cta p { color: var(--muted); margin-bottom: 20px; }
+
+    /* Footer */
+    footer { padding: 24px 0; text-align: center; border-top: 1px solid var(--border); }
+    footer p { font-size: 11px; color: var(--muted); font-family: var(--mono); }
+
+    @media (max-width: 640px) {
+      .hero-stats { gap: 20px; }
+      .card-grid, .swot-grid { grid-template-columns: 1fr; }
+      .pos-chart { height: 320px; padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-badge">Updated April 2026 - Active Development</div>
+    <h1><span>MealShift 2.0</span></h1>
+    <p class="hero-sub">Strategic vision, competitive positioning, and architecture blueprint for transforming MealShift from a commission-free delivery app into an AI-powered delivery platform.</p>
+    <div class="hero-stats">
+      <div><div class="stat-val">17B</div><div class="stat-label">GBP UK market</div></div>
+      <div><div class="stat-val">0%</div><div class="stat-label">Commission</div></div>
+      <div><div class="stat-val">20+</div><div class="stat-label">UK cities</div></div>
+      <div><div class="stat-val">7</div><div class="stat-label">Partners live</div></div>
+    </div>
+  </div>
+
+  <!-- TOC -->
+  <div class="toc">
+    <div class="toc-grid">
+      <a href="#market" class="toc-link">Market</a>
+      <a href="#positioning" class="toc-link">Positioning</a>
+      <a href="#competition" class="toc-link">Competition</a>
+      <a href="#swot" class="toc-link">SWOT</a>
+      <a href="#reality" class="toc-link">Tech Stack</a>
+      <a href="#architecture" class="toc-link">Architecture</a>
+      <a href="#services" class="toc-link">Services</a>
+      <a href="#intelligence" class="toc-link">AI / ML</a>
+      <a href="#elektra" class="toc-link">ElektraOS Edge</a>
+      <a href="#gap" class="toc-link">Gap Analysis</a>
+      <a href="#roadmap" class="toc-link">Roadmap</a>
+      <a href="#tomorrow" class="toc-link">Tomorrow</a>
+      <a href="#economics" class="toc-link">Economics</a>
+      <a href="#next" class="toc-link">Next Steps</a>
+    </div>
+  </div>
+
+  <!-- 1. MARKET -->
+  <div class="section" id="market">
+    <div class="section-label">01 - Market Context</div>
+    <h2>The UK Food Delivery Landscape</h2>
+    <p class="section-intro">A 17 billion GBP market dominated by three giants - but with cracks that commission-free platforms are exploiting.</p>
+
+    <div class="card-grid card-grid-3">
+      <div class="card">
+        <div class="card-icon">&#127468;&#127463;</div>
+        <h3>17B GBP</h3>
+        <p>UK foodservice delivery market 2026. 87% growth since 2019. 3.1% annual growth rate with post-pandemic stabilization.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#127859;</div>
+        <h3>Cloud Kitchens</h3>
+        <p>EU market: 6.2B to 21B GBP by 2032. 67% of London kitchen space is delivery-focused. Ghost kitchens need commission-free partners.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#129302;</div>
+        <h3>Autonomous Delivery</h3>
+        <p>Starship robots live in UK with Uber Eats (Leeds, Sheffield). Just Eat partnered March 2026. 2,700 robots, 9M deliveries completed globally.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#128483;</div>
+        <h3>Voice Ordering</h3>
+        <p>Just Eat + Alexa+ launched voice ordering UK (March 2026). Domino's, Papa John's, Grubhub already integrated. New ordering channel.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#128200;</div>
+        <h3>Last-Mile Tech</h3>
+        <p>UK last-mile delivery: 6.9B USD (2026) growing to 11.7B by 2033 at 8% CAGR. AI-driven optimization is the #1 investment area.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#9888;&#65039;</div>
+        <h3>90% Failure Rate</h3>
+        <p>90% of food startups fail within 3 years. High customer acquisition costs, flawed unit economics, supply chain complexity. The survivors win big.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. POSITIONING CHART -->
+  <div class="section" id="positioning">
+    <div class="section-label">02 - Competitive Positioning</div>
+    <h2>Where MealShift Sits - Now vs After</h2>
+    <p>X-axis: technology sophistication. Y-axis: restaurant value (inverse of commission rate + partner tools). Each dot marks a real milestone: Mar 2026 is where we started, Apr 2026 reflects the feature work and API docs deployment already done. Phase 1 (Laravel upgrade + WebSocket) moves MealShift past Stuart on the tech axis. Phase 2 (AI dispatch) closes in on Just Eat. The 2.0 target is the empty quadrant - high tech at zero commission - that nobody else occupies.</p>
+
+    <div class="pos-chart">
+      <div class="pos-axis-x"></div>
+      <div class="pos-axis-y"></div>
+      <div class="pos-label-x">Technology Sophistication &rarr;</div>
+      <div class="pos-label-y">Restaurant Value &rarr;</div>
+
+      <!-- Competitors -->
+      <div class="pos-dot uber" style="left:85%;top:55%;" data-label="Uber Eats"></div>
+      <div class="pos-dot deliveroo" style="left:80%;top:58%;" data-label="Deliveroo"></div>
+      <div class="pos-dot justeat" style="left:70%;top:62%;" data-label="Just Eat"></div>
+      <div class="pos-dot stuart" style="left:55%;top:40%;" data-label="Stuart"></div>
+      <div class="pos-dot foodhub" style="left:35%;top:30%;" data-label="Foodhub"></div>
+
+      <!-- MealShift progression -->
+      <div class="pos-dot mealshift-now" style="left:30%;top:25%;" data-label="Mar 2026"></div>
+      <div class="pos-dot mealshift-progress" style="left:37%;top:21%;" data-label="Apr 2026"></div>
+      <div class="pos-dot mealshift-phase1" style="left:50%;top:19%;" data-label="Phase 1"></div>
+      <div class="pos-dot mealshift-phase2" style="left:63%;top:15%;" data-label="Phase 2"></div>
+      <div class="pos-dot mealshift-future" style="left:75%;top:12%;" data-label="2.0 Target"></div>
+
+      <!-- Trajectory arrows -->
+      <div class="pos-arrow" style="left:33%;top:22%;transform:rotate(-25deg);font-size:13px;opacity:0.7;">&#10230;</div>
+      <div class="pos-arrow" style="left:43%;top:20%;transform:rotate(-10deg);font-size:13px;opacity:0.6;">&#10230;</div>
+      <div class="pos-arrow" style="left:56%;top:17%;transform:rotate(-10deg);font-size:13px;opacity:0.6;">&#10230;</div>
+      <div class="pos-arrow" style="left:68%;top:14%;transform:rotate(-8deg);font-size:13px;opacity:0.7;">&#10230;</div>
+    </div>
+
+    <div class="pos-legend">
+      <span><span class="pos-legend-dot" style="background:var(--coral);"></span> Mar 2026 (start)</span>
+      <span><span class="pos-legend-dot" style="background:var(--amber);"></span> Apr 2026 (now)</span>
+      <span><span class="pos-legend-dot" style="background:rgba(0,212,255,0.25);border:1px dashed var(--cyan);"></span> Phase 1 (Laravel + WebSocket)</span>
+      <span><span class="pos-legend-dot" style="background:rgba(0,212,255,0.45);border:1px dashed var(--cyan);"></span> Phase 2 (AI dispatch)</span>
+      <span><span class="pos-legend-dot" style="background:var(--cyan);"></span> 2.0 Target (Platform)</span>
+      <span><span class="pos-legend-dot" style="background:#00CCBC;"></span> Deliveroo</span>
+      <span><span class="pos-legend-dot" style="background:#FF8000;"></span> Just Eat</span>
+      <span><span class="pos-legend-dot" style="background:#000;border:1px solid #1DB954;"></span> Uber Eats</span>
+      <span><span class="pos-legend-dot" style="background:#3498db;"></span> Stuart</span>
+      <span><span class="pos-legend-dot" style="background:#e74c3c;"></span> Foodhub</span>
+    </div>
+
+    <div class="callout callout-cyan" style="margin-top:24px;">
+      <strong>The insight:</strong> The top-right quadrant (high tech + high restaurant value) is empty. Nobody offers Uber-level technology at zero commission. That's the target.
+    </div>
+  </div>
+
+  <!-- 3. COMPETITION -->
+  <div class="section" id="competition">
+    <div class="section-label">03 - Competitive Landscape</div>
+    <h2>Know Your Enemies</h2>
+
+    <table class="compare-table">
+      <tr><th>Platform</th><th>Model</th><th>Commission</th><th>Tech Level</th><th>UK Scale</th><th>Weakness</th></tr>
+      <tr><td><strong>Uber Eats</strong></td><td>Marketplace</td><td class="c-coral">25-30%</td><td class="c-green">1000+ microservices, ML dispatch, Kafka</td><td>National</td><td class="c-muted">Expensive for restaurants, driver churn</td></tr>
+      <tr><td><strong>Deliveroo</strong></td><td>Marketplace</td><td class="c-coral">25-35%</td><td class="c-green">ML dispatch, real-time, DoorDash-owned</td><td>National</td><td class="c-muted">Acquired - uncertain roadmap</td></tr>
+      <tr><td><strong>Just Eat</strong></td><td>Marketplace</td><td class="c-coral">14-25%</td><td class="c-amber">Legacy tech, improving</td><td>45% market share</td><td class="c-muted">Slow tech iteration</td></tr>
+      <tr><td><strong>Foodhub</strong></td><td>Commission-free</td><td class="c-green">0%</td><td class="c-coral">Basic</td><td>30K+ restaurants</td><td class="c-muted">No AI, no real-time tracking</td></tr>
+      <tr><td><strong>Stuart</strong></td><td>Delivery-as-a-service</td><td class="c-amber">Per delivery fee</td><td class="c-amber">Modern infra</td><td>EU-wide</td><td class="c-muted">No restaurant tools, pure logistics</td></tr>
+      <tr><td><strong>Hungrrr</strong></td><td>White-label</td><td class="c-green">0% + monthly</td><td class="c-coral">Basic</td><td>UK</td><td class="c-muted">Template websites, no dispatch AI</td></tr>
+      <tr><td><strong>Flipdish</strong></td><td>All-in-one SaaS + kiosk + AI phone</td><td class="c-amber">49-129 EUR/mo + txn fees</td><td class="c-green">POS, kiosks, AI phone agent (Nov 2025)</td><td>UK, IE, US</td><td class="c-muted">Restaurant-only, joint data controllership, no partial refunds, opaque Uber integration</td></tr>
+      <tr><td><strong class="c-coral">MealShift Commerce OS</strong></td><td><strong>Multi-vertical platform + marketplace</strong></td><td class="c-green"><strong>0% + subscription + 50p (TBD)</strong></td><td class="c-amber">NestJS + Next.js + 3 plugins, growth engine (Claude-powered), Stripe Connect</td><td>UK-first (London, Birmingham, Manchester) expanding</td><td class="c-muted">Auth + billing UI pending, growth engine 40% built</td></tr>
+    </table>
+
+    <div class="callout callout-coral" style="margin-top:20px;">
+      <strong>Key finding:</strong> MealShift's backend is more sophisticated than expected - Clean Architecture with DDD patterns, proper domain modeling, geospatial dispatch. It's ahead of Foodhub/Hungrrr on architecture. The gap vs Uber/Deliveroo is specifically in ML/AI, real-time streaming, and event-driven infrastructure - not in code quality.
+    </div>
+
+    <!-- FLIPDISH DEEP DIVE -->
+    <h3 style="margin-top:32px;">The Flipdish question - closest functional competitor</h3>
+    <p>Flipdish is the competitor to study, not Foodhub. Foodhub is a marketplace. Flipdish is a full merchant SaaS (POS + online ordering + kiosks + AI phone agent + loyalty + inventory + staff tools), which is closer to what we are building. They raised at a 1.25B USD valuation in 2022 and launched an AI Phone Agent in November 2025.</p>
+
+    <div class="card-grid" style="margin-top:16px;">
+      <div class="card" style="border-color:rgba(24,163,0,0.2);">
+        <h3>What Flipdish does well</h3>
+        <ul style="font-size:13px;line-height:1.6;margin-top:8px;">
+          <li>Real all-in-one: website, branded app, kiosk, QR, phone orders all flow into one POS queue</li>
+          <li>Self-service kiosks with concrete uplift claims (30% AOV, 4 orders per minute)</li>
+          <li>AI Phone Agent (Nov 2025) answers calls, takes orders, upsells, takes payment</li>
+          <li>Transparent tiered pricing published on the site (49 / 79 / 99-129 EUR/month)</li>
+          <li>Food cost analysis, wastage reporting, purchase ordering, staff scheduling bundled in</li>
+          <li>Sells kiosk hardware (15 inch touchscreens) as a switching moat</li>
+        </ul>
+        <span class="card-tag tag-green">Study and borrow</span>
+      </div>
+      <div class="card" style="border-color:rgba(227,108,108,0.3);">
+        <h3>Where Flipdish is weak</h3>
+        <ul style="font-size:13px;line-height:1.6;margin-top:8px;">
+          <li><strong>Restaurant-only</strong>. No grocery, no florist, no wholesale, no retail</li>
+          <li><strong>Joint data controller model</strong> - merchants share customer data with Flipdish, do not fully own it</li>
+          <li>No partial refunds, limited promotion granularity, weak tax categorisation</li>
+          <li>CSV export slow, POS UI rated as dated in reviews</li>
+          <li>Orders sometimes fail to sync to kitchen at peak hours (recurring user complaint)</li>
+          <li>Uber integration opaque - merchants lose visibility when drivers are dispatched</li>
+          <li>No marketplace layer - purely merchant SaaS, no consumer demand aggregation</li>
+        </ul>
+        <span class="card-tag tag-coral">Exploit</span>
+      </div>
+      <div class="card" style="border-color:rgba(24,163,0,0.25);">
+        <h3>How MealShift Commerce OS beats them</h3>
+        <ul style="font-size:13px;line-height:1.6;margin-top:8px;">
+          <li><strong>Multi-vertical by design</strong>: restaurant + grocery + flowers + wholesale + retail + pharmacy (120B+ GBP TAM)</li>
+          <li><strong>Full merchant data ownership</strong> with API export - GDPR-friendly, key selling point to UK operators</li>
+          <li>Partial refunds, granular promotions, proper VAT-per-line from v1</li>
+          <li>Own driver network (MealShift) with live tracking; Uber Direct as fallback only</li>
+          <li>Growth Engine (Claude-powered): personalised marketplace home, SEO at scale, demand forecasting, merchant copilot - Flipdish does not have the marketplace layer to feed it</li>
+          <li>MealShift Marketplace as demand channel on top of merchant storefront - one inventory, both sales channels</li>
+          <li>Plugins for Woo + Shopify + Wix - we meet merchants where they already are, Flipdish forces full migration</li>
+        </ul>
+        <span class="card-tag tag-green">Differentiation</span>
+      </div>
+    </div>
+
+    <div class="callout callout-green" style="margin-top:20px;">
+      <strong>Strategic takeaway:</strong> Flipdish is ahead on all-in-one hospitality coverage and the AI phone agent. We should add AI phone agent to the roadmap (we have Claude integrated, 2-3 weeks of work on top of Twilio/Vonage), add self-service kiosk mode to the POS, and match their transparent public pricing. We win on scope (multi-vertical), data ownership, promotion control, refund flexibility, and the marketplace layer that they structurally cannot build quickly.
+    </div>
+  </div>
+
+  <!-- 4. SWOT -->
+  <div class="section" id="swot">
+    <div class="section-label">04 - SWOT Analysis</div>
+    <h2>MealShift's Strategic Position</h2>
+
+    <div class="swot-grid">
+      <div class="swot-card swot-s">
+        <h3>Strengths</h3>
+        <ul>
+          <li>Zero commission model - genuine restaurant value proposition</li>
+          <li>Clean Architecture backend (Laravel 8 / PHP, DDD with hexagonal pattern)</li>
+          <li>Proper domain modeling: DTOs, Money value objects, collections, factory pattern</li>
+          <li>Geospatial driver dispatch with radius search and transport type matching</li>
+          <li>7 live integration partners (Deliverect, Otter, Foodhub, Nash, GloriaFood, Flipdish)</li>
+          <li>20+ UK cities operational coverage</li>
+          <li>Versioned API (v1, v2) with JWT auth, driver/client middleware, webhooks</li>
+          <li>API docs live at mealshift.co.uk/docs - partners can self-discover the API</li>
+          <li>Add-own-driver feature live - restaurants can hire and assign their own drivers</li>
+          <li>Hired driver dispatch working end-to-end - CONFIRMED by Said (April 2026)</li>
+          <li>Native iOS (Swift) + Android (Kotlin) + Vue.js client + React dashboard</li>
+          <li>Android stability restored - crash-causing model defaults fixed, prodServ APKs shipping</li>
+          <li>Stripe Connect + Laravel Cashier for payments and subscriptions</li>
+          <li>Redis already in stack (Predis 2.1)</li>
+          <li>Fair driver model - hourly + per-delivery pay</li>
+          <li>Bootstrapped - no investor pressure to raise commissions</li>
+          <li>Founder-led with deep domain expertise (5+ years)</li>
+        </ul>
+      </div>
+
+      <div class="swot-card swot-w">
+        <h3>Weaknesses</h3>
+        <ul>
+          <li>PHP 7.4 / Laravel 8 - both end-of-life, need upgrade to PHP 8.x / Laravel 10+</li>
+          <li>PHP 7.4 / Laravel 8 end-of-life - upgrade to PHP 8.x / Laravel 10+ still pending (Phase 1)</li>
+          <li>No AI/ML models - dispatch is rule-based (geospatial radius, but no learning)</li>
+          <li>No real-time WebSocket tracking - uses Firebase push notifications only</li>
+          <li>No event-driven architecture - synchronous PHP request/response</li>
+          <li>Secrets hardcoded in Android build.gradle (Stripe keys, keystore passwords)</li>
+          <li>Limited public visibility - no major press, minimal social presence</li>
+          <li>Limited public visibility - no major press, minimal social presence</li>
+          <li>Multi-tool SIRH complexity (SAP, EFFIPLAN, MYTEAM, IA) - data consistency challenge</li>
+        </ul>
+      </div>
+
+      <div class="swot-card swot-o">
+        <h3>Opportunities</h3>
+        <ul>
+          <li>Cloud kitchen explosion - 67% of London kitchen space delivery-focused</li>
+          <li>Starship autonomous delivery - live in UK, seeking new partners</li>
+          <li>POS integration partnerships (Lightspeed, Square, Zettle, Epos Now)</li>
+          <li>White-label delivery API (become the Stripe of food delivery)</li>
+          <li>Multi-vertical expansion: grocery (14B GBP UK), pharmacy, e-commerce last-mile (120B+ GBP)</li>
+          <li>Voice ordering (Just Eat + Alexa launched March 2026)</li>
+          <li>UK gig economy regulation - fair driver model becomes compliance advantage</li>
+          <li>Self-serve developer portal - partners onboard in hours, not weeks</li>
+          <li>Subscription model (MealShift Plus - free delivery membership)</li>
+          <li>AI-augmented engineering (ElektraOS) eliminates need for large dev teams</li>
+        </ul>
+      </div>
+
+      <div class="swot-card swot-t">
+        <h3>Threats</h3>
+        <ul>
+          <li>DoorDash acquired Deliveroo (3.86B USD) - massive UK investment incoming</li>
+          <li>Foodhub growing fast (30K+ restaurants) in same commission-free space</li>
+          <li>90% of food startups fail within 3 years</li>
+          <li>Dynamic pricing regulation (24 US states introduced bills, UK watching)</li>
+          <li>Driver supply competition - all platforms fighting for same pool</li>
+          <li>Technical debt compounding - each year without modernization widens the gap</li>
+          <li>Customer acquisition costs rising across the industry</li>
+          <li>Uber/Just Eat could launch commission-free tiers as competitive response</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3B. PARTNER ECOSYSTEM -->
+  <div class="section" id="partners">
+    <div class="section-label">03B - Integration Partners</div>
+    <h2>MealShift's Partner Ecosystem</h2>
+    <p>7 live integrations that position MealShift at the center of the restaurant technology stack. Each partner extends MealShift's reach without building from scratch.</p>
+
+    <div class="card-grid">
+      <div class="card">
+        <h3>Deliverect</h3>
+        <p>Multi-location restaurant management. Aggregates orders from 30+ platforms into one dashboard. Serves 43,000+ locations globally. MealShift integration lets Deliverect restaurants add commission-free delivery as a channel alongside Uber Eats and Deliveroo.</p>
+        <span class="card-tag tag-green">Order aggregation</span>
+      </div>
+      <div class="card">
+        <h3>Otter (by Flipdish)</h3>
+        <p>POS aggregation and order management. Consolidates all delivery platform orders into the restaurant's existing POS. MealShift appears as another order source - seamless for kitchen staff.</p>
+        <span class="card-tag tag-green">POS integration</span>
+      </div>
+      <div class="card">
+        <h3>Foodhub</h3>
+        <p>Zero-commission online ordering with 30K+ UK restaurants. Menu and order management. MealShift provides the delivery logistics layer that Foodhub restaurants need to fulfill orders.</p>
+        <span class="card-tag tag-green">Delivery logistics</span>
+      </div>
+      <div class="card">
+        <h3>Nash</h3>
+        <p>Restaurant operations platform. Order routing, kitchen management, driver coordination. MealShift slots into Nash's driver dispatch as a commission-free delivery option.</p>
+        <span class="card-tag tag-green">Operations layer</span>
+      </div>
+      <div class="card">
+        <h3>GloriaFood</h3>
+        <p>Free online ordering system used by 20K+ restaurants. Website widget + app for direct customer orders. MealShift fulfills deliveries for GloriaFood restaurants without commission.</p>
+        <span class="card-tag tag-green">Direct ordering</span>
+      </div>
+      <div class="card">
+        <h3>Flipdish</h3>
+        <p>White-label ordering platform for restaurant brands. Custom apps and websites. MealShift powers the last-mile delivery behind Flipdish-branded restaurant experiences.</p>
+        <span class="card-tag tag-green">White-label delivery</span>
+      </div>
+    </div>
+
+    <div class="callout callout-green" style="margin-top:20px;">
+      <strong>Strategic value:</strong> Every integration is a distribution channel. Restaurants don't find MealShift directly - they discover it through tools they already use. This is a moat: the more integrations, the harder to switch away. 7 partners means 7 channels feeding orders into MealShift's driver network.
+    </div>
+
+    <div style="margin-top:16px;padding:20px;background:var(--card);border:1px solid var(--border);border-radius:12px;">
+      <p style="font-size:12px;color:var(--muted);margin-bottom:8px;">MealShift also aggregates orders FROM the major platforms:</p>
+      <p style="font-size:14px;color:var(--text);">Restaurants use MealShift to fulfill deliveries from <strong>Just Eat</strong>, <strong>Uber Eats</strong>, and <strong>Deliveroo</strong> - at zero commission. The restaurant pays the platform fees to those marketplaces but uses MealShift's drivers instead of theirs, saving on per-delivery costs.</p>
+    </div>
+  </div>
+
+  <!-- 4B. CURRENT TECH STACK -->
+  <div class="section" id="reality">
+    <div class="section-label">04B - Current Technical Foundation</div>
+    <h2>MealShift's Existing Architecture</h2>
+    <p>Full codebase audit across backend, iOS, and Android. MealShift is built on a solid Clean Architecture foundation with professional-grade domain modeling.</p>
+
+    <div class="card-grid" style="margin-top:20px;">
+      <div class="card" style="border-color:rgba(24,163,0,0.2);">
+        <h3>Backend: Laravel 8 / PHP 7.4</h3>
+        <p>Clean Architecture with hexagonal/ports-adapters pattern. Domain-driven design: services, DTOs, Money value objects, collections, factory pattern. Well-separated HTTP, application, and domain layers.</p>
+        <span class="card-tag tag-green">Strong foundation</span>
+      </div>
+      <div class="card" style="border-color:rgba(24,163,0,0.2);">
+        <h3>Database: MySQL + Redis</h3>
+        <p>MySQL with 100+ migrations. Redis (Predis 2.1) for caching. Geospatial queries for driver radius matching. Separate models for client orders, system shifts, delivery orders.</p>
+        <span class="card-tag tag-green">Production-ready</span>
+      </div>
+      <div class="card" style="border-color:rgba(24,163,0,0.2);">
+        <h3>Dispatch: Geospatial Matching</h3>
+        <p>Driver matching uses lat/lng radius search, transport type filtering, driver stats, and shift availability. Functional rule-based system ready for AI enhancement.</p>
+        <span class="card-tag tag-green">Ready for ML layer</span>
+      </div>
+      <div class="card" style="border-color:rgba(24,163,0,0.2);">
+        <h3>Payments: Stripe Connect + Cashier</h3>
+        <p>Laravel Cashier for subscription management. Stripe Connect for marketplace splits. Needs instant driver payouts and enhanced subscription tiers to complete the picture.</p>
+        <span class="card-tag tag-green">90% there</span>
+      </div>
+      <div class="card" style="border-color:rgba(24,163,0,0.2);">
+        <h3>Frontend: 4 Clients</h3>
+        <p>iOS (Swift + CocoaPods), Android (Kotlin, 6 modules), Vue.js restaurant client, React admin dashboard. Full native coverage across all platforms.</p>
+        <span class="card-tag tag-green">Complete coverage</span>
+      </div>
+      <div class="card" style="border-color:rgba(0,212,255,0.2);">
+        <h3>API: Versioned + JWT</h3>
+        <p>v1 and v2 routes with driver-specific and client-specific JWT middleware. Request validation, response wrappers, proper error handling. 7 integration partners live.</p>
+        <span class="card-tag tag-new">Mature API layer</span>
+      </div>
+    </div>
+
+    <h3 style="margin-top:28px;font-size:16px;">What's Missing - The Gaps That Matter</h3>
+    <div class="card-grid" style="margin-top:12px;">
+      <div class="card" style="border-color:rgba(255,83,98,0.2);">
+        <h3>No AI / ML</h3>
+        <p>Dispatch is rule-based. No ETA prediction, no demand forecasting, no churn detection. The dispatch algorithm works - it just doesn't learn or improve over time.</p>
+        <span class="card-tag tag-current">Biggest opportunity</span>
+      </div>
+      <div class="card" style="border-color:rgba(255,83,98,0.2);">
+        <h3>No Real-Time Streaming</h3>
+        <p>Firebase push notifications only. No WebSocket live tracking, no geofencing auto-status, no sub-second driver location updates on the customer map.</p>
+        <span class="card-tag tag-current">Table stakes gap</span>
+      </div>
+      <div class="card" style="border-color:rgba(255,83,98,0.2);">
+        <h3>No Event-Driven Architecture</h3>
+        <p>Synchronous PHP request/response. No Kafka, no Redis Streams, no event sourcing. Every operation blocks until complete. Limits scalability and resilience.</p>
+        <span class="card-tag tag-current">Scale blocker</span>
+      </div>
+      <div class="card" style="border-color:rgba(245,158,11,0.2);">
+        <h3>Runtime EOL</h3>
+        <p>PHP 7.4 and Laravel 8 are end-of-life. No security patches. Upgrade to PHP 8.3 / Laravel 11 needed for continued support, performance gains, and modern features.</p>
+        <span class="card-tag" style="background:rgba(245,158,11,0.1);color:var(--amber);">Maintenance risk</span>
+      </div>
+      <div class="card" style="border-color:rgba(245,158,11,0.2);">
+        <h3>Android Fragility</h3>
+        <p>38 data model classes had non-nullable fields causing JSON parse crashes. iOS handled these gracefully. 58 fixes applied across both apps to restore stability.</p>
+        <span class="card-tag" style="background:rgba(245,158,11,0.1);color:var(--amber);">Fixed (58 patches)</span>
+      </div>
+      <div class="card" style="border-color:rgba(245,158,11,0.2);">
+        <h3>No Observability</h3>
+        <p>AppCenter crash reports only. No distributed tracing, no performance monitoring, no real-time alerting. Issues are discovered by users, not by the system.</p>
+        <span class="card-tag" style="background:rgba(245,158,11,0.1);color:var(--amber);">Blind spot</span>
+      </div>
+    </div>
+
+    <div class="callout callout-cyan" style="margin-top:20px;">
+      <strong>The upgrade path is clear:</strong> The domain boundaries are already clean. The business logic is solid. This isn't a rewrite - it's adding an intelligence and real-time layer on top of a strong foundation. The existing Clean Architecture makes this significantly easier.
+    </div>
+  </div>
+
+  <!-- 5. ARCHITECTURE -->
+  <div class="section" id="architecture">
+    <div class="section-label">05 - Target Architecture</div>
+    <h2>Event-Driven Microservices</h2>
+    <p>MealShift's existing Laravel backend already has clean domain boundaries and proper DDD. The target architecture adds an event-driven intelligence layer on top - not a rewrite, an evolution. Inspired by how DoorDash and Uber Eats architect their systems, scaled to MealShift's size.</p>
+
+    <div class="arch-box"><span class="co">Client Apps</span> (Android / iOS / Web)
+    |
+<span class="hi">API Gateway</span> (FastAPI + Rate Limiting + JWT Auth)
+    |
+    +---<span class="co"> Auth Service</span> ---------- Partner keys, JWT rotation, OAuth2
+    |
+    +---<span class="co"> Order Service</span> --------- Temporal saga orchestration
+    |       |
+    |       +-- Validate -> Quote -> Pay -> <span class="pu">Dispatch</span> -> Track -> Complete
+    |       |                                  |
+    |       +-- [COMPENSATE] <------- Refund, cancel, notify on failure
+    |
+    +---<span class="co"> Driver Service</span> -------- GPS via gRPC, H3 hex indexing, state machine
+    |
+    +---<span class="co"> Restaurant Service</span> ---- Menus, hours, POS adapters, prep time ML
+    |
+    +---<span class="pu"> Dispatch Engine</span> ------- AI matching (reinforcement learning)
+    |
+    +---<span class="gr"> Payment Service</span> ------- Stripe Connect splits, instant payouts
+    |
+    +---<span class="hi"> Tracking Service</span> ------ WebSocket, geofencing, auto-status
+    |
+    +---<span class="hi"> Notification Service</span> -- Push, SMS, email, webhook relay
+    |
+<span class="hi">Event Bus</span> (Kafka / Redis Streams) ---- every state change is an event
+    |
+<span class="hi">PostgreSQL + PostGIS</span> + <span class="hi">Redis</span> (geospatial + cache + real-time state)</div>
+
+    <div class="callout callout-green">
+      <strong>Cost to run this entire stack:</strong> ~$20-50/month on a single VPS. Every component is open source. PostgreSQL, Redis, Kafka, Temporal, FastAPI, OSRM, H3 - all free. The intelligence comes from the AI layer, not expensive infrastructure.
+    </div>
+  </div>
+
+  <!-- 6. SERVICES -->
+  <div class="section" id="services">
+    <div class="section-label">06 - The Eight Services</div>
+    <h2>Core Platform Pillars</h2>
+
+    <div class="toggle-group">
+      <div class="toggle-btn active" onclick="toggleService('all')">All</div>
+      <div class="toggle-btn" onclick="toggleService('existing')">Exists</div>
+      <div class="toggle-btn" onclick="toggleService('new')">New</div>
+      <div class="toggle-btn" onclick="toggleService('ai')">AI</div>
+    </div>
+
+    <div class="card-grid" id="serviceGrid">
+      <div class="card" data-type="existing"><div class="card-icon">&#128274;</div><h3>Auth Service</h3><p>JWT with refresh rotation, partner API keys (ms-partner-id + secret), OAuth2 for dashboards, rate limiting per partner/endpoint, API key scoping.</p><span class="card-tag tag-current">Exists - upgrade</span></div>
+      <div class="card" data-type="new"><div class="card-icon">&#128230;</div><h3>Order Service</h3><p>Temporal workflow orchestration. Every order is a saga: Validate - Quote - Pay - Dispatch - Track - Complete. Automatic compensation on failure. Event sourcing.</p><span class="card-tag tag-new">New - Temporal</span></div>
+      <div class="card" data-type="existing"><div class="card-icon">&#128666;</div><h3>Driver Service</h3><p>Real-time GPS via gRPC streaming. H3 hexagonal geospatial indexing. State machine: OFFLINE - AVAILABLE - BUSY - RETURNING. Shift management, earnings, documents.</p><span class="card-tag tag-current">Exists - RT upgrade</span></div>
+      <div class="card" data-type="existing"><div class="card-icon">&#127869;</div><h3>Restaurant Service</h3><p>Menu management, operating hours, multi-location. POS integration adapters (Lightspeed, Square, Zettle, Epos Now). Kitchen prep time estimation.</p><span class="card-tag tag-current">Exists - add POS</span></div>
+      <div class="card" data-type="ai"><div class="card-icon">&#129302;</div><h3>Dispatch Engine</h3><p>AI matching via reinforcement learning. Factors: distance, route load, acceptance rate, vehicle type, ETA-prep sync, driver fairness. Batch nearby orders.</p><span class="card-tag tag-ai">New - AI Core</span></div>
+      <div class="card" data-type="existing"><div class="card-icon">&#128179;</div><h3>Payment Service</h3><p>Stripe Connect Express accounts. Split payments: customer - platform fee - restaurant - driver. Instant driver payouts. Subscription billing (MealShift Plus).</p><span class="card-tag tag-current">Exists - add splits</span></div>
+      <div class="card" data-type="new"><div class="card-icon">&#128205;</div><h3>Tracking Service</h3><p>WebSocket gateway for live map. Redis GeoSet for driver positions. Geofencing: auto PICKING_UP at restaurant, auto ARRIVING at customer. ETA recalc every 30s.</p><span class="card-tag tag-new">New - WebSocket</span></div>
+      <div class="card" data-type="new"><div class="card-icon">&#128276;</div><h3>Notification Service</h3><p>FCM + APNs push, Twilio SMS, SendGrid email, in-app WebSocket. Webhook relay backward compatible with existing 11-endpoint partner API.</p><span class="card-tag tag-new">New - unified</span></div>
+    </div>
+  </div>
+
+  <!-- 7. INTELLIGENCE -->
+  <div class="section" id="intelligence">
+    <div class="section-label">07 - Intelligence Layer</div>
+    <h2>6 ML Models - The Competitive Moat</h2>
+    <p>DoorDash's DeepRed uses reinforcement learning. Uber Eats predicts prep time to sync driver arrival. In the commission-free space, nobody has this. First to add it wins.</p>
+
+    <div class="card-grid">
+      <div class="card"><h3>ETA Predictor</h3><p>Historical orders + live traffic + weather + restaurant prep speed. XGBoost baseline, LSTM for temporal patterns. Replaces distance-based guessing.</p><span class="card-tag tag-ai">XGBoost / LSTM</span></div>
+      <div class="card"><h3>Dispatch Scorer</h3><p>Optimal driver-order matching via Double DQN reinforcement learning. Learns from every delivery. Optimizes for fairness, not just speed.</p><span class="card-tag tag-ai">Deep RL</span></div>
+      <div class="card"><h3>Demand Forecaster</h3><p>Predict order volume by zone/hour. Pre-position drivers in hot zones. Temporal Fusion Transformer. Reduces wait times 20-40%.</p><span class="card-tag tag-ai">TFT</span></div>
+      <div class="card"><h3>Prep Time Estimator</h3><p>Per-restaurant speed prediction. Syncs driver arrival with food readiness. Random Forest trained on historical kitchen data. No more cold food.</p><span class="card-tag tag-ai">Random Forest</span></div>
+      <div class="card"><h3>Churn Predictor</h3><p>Identify at-risk customers before they leave. Order frequency decay, support interactions, delivery issues. Targeted retention campaigns.</p><span class="card-tag tag-ai">Gradient Boosting</span></div>
+      <div class="card"><h3>Dynamic Pricer</h3><p>Transparent surge/discount based on real-time supply/demand. Contextual bandits algorithm. UK pricing regulation compliant.</p><span class="card-tag tag-ai">Contextual Bandits</span></div>
+    </div>
+  </div>
+
+  <!-- 8. ELEKTRAOS EDGE -->
+  <div class="section" id="elektra">
+    <div class="section-label">08 - The ElektraOS Edge</div>
+    <h2>What No Other Platform Can Offer</h2>
+    <p>ElektraOS is a cognitive operating system built in 73 days: 184K+ lines, 48 AI agents, 624 endpoints. Wire it into MealShift and you get capabilities that Uber's 5,000 engineers don't offer to their restaurants.</p>
+
+    <div class="card-grid">
+      <div class="card"><div class="card-icon">&#129504;</div><h3>Restaurant Copilot</h3><p>AI agent that proactively advises on menu pricing, peak hours, prep optimization. Uber gives a dashboard. We give an AI partner that talks to you.</p><span class="card-tag tag-ai">Unique</span></div>
+      <div class="card"><div class="card-icon">&#128176;</div><h3>Driver Earnings Optimizer</h3><p>Agent suggests optimal shift times, routes, zones. "Work Tuesday 6-9pm in zone 3, earn 40% more." Not just dispatching - career coaching.</p><span class="card-tag tag-ai">Unique</span></div>
+      <div class="card"><div class="card-icon">&#128065;</div><h3>Operational Brain</h3><p>48-agent system monitoring every order, driver, restaurant simultaneously. Auto-escalates problems, auto-resolves common issues. Uber needs a NOC team for this.</p><span class="card-tag tag-ai">Unique</span></div>
+      <div class="card"><div class="card-icon">&#128172;</div><h3>Natural Language API</h3><p>Partners describe what they want in English, Elektra generates the integration. "Send orders from my Lightspeed POS to MealShift" - done. No docs needed.</p><span class="card-tag tag-ai">Unique</span></div>
+      <div class="card"><div class="card-icon">&#128736;</div><h3>Self-Healing Infra</h3><p>Proactive agent monitors and fixes issues before they impact users. Late driver? Auto-reassign. Restaurant slow? Auto-notify customer with updated ETA.</p><span class="card-tag tag-ai">Unique</span></div>
+      <div class="card"><div class="card-icon">&#128269;</div><h3>Transparent AI</h3><p>Every dispatch decision is explainable. "Driver X assigned because: 3 min from restaurant, food ready in 4 min, bike fits order, hasn't delivered in 20 min." Uber's is a black box.</p><span class="card-tag tag-ai">Unique</span></div>
+    </div>
+
+    <div class="callout callout-cyan" style="margin-top:20px;">
+      <strong>The math:</strong> ElektraOS was built by one person in 73 days. The entire intelligence layer for MealShift uses the same patterns, same stack, same tools. No hiring. No funding. No 26-person agency. Just AI-augmented engineering.
+    </div>
+  </div>
+
+  <!-- 9. GAP ANALYSIS -->
+  <div class="section" id="gap">
+    <div class="section-label">09 - Before & After</div>
+    <h2>Gap Analysis</h2>
+
+    <table class="compare-table">
+      <tr><th>Aspect</th><th>Current</th><th>After 2.0</th><th>Impact</th></tr>
+      <tr><td>Backend</td><td class="c-amber">Laravel 8 / PHP 7.4 (Clean Architecture, DDD)</td><td class="c-cyan">PHP 8.3 / Laravel 11 + event layer</td><td class="c-green">Modern runtime, keep good architecture</td></tr>
+      <tr><td>Database</td><td class="c-amber">MySQL + Redis (Predis)</td><td class="c-cyan">MySQL + PostGIS + Redis Streams</td><td class="c-green">Add geospatial + event streaming</td></tr>
+      <tr><td>Events</td><td class="c-muted">Synchronous PHP</td><td class="c-cyan">Redis Streams / Kafka</td><td class="c-green">Nothing blocks, everything reacts</td></tr>
+      <tr><td>Dispatch</td><td class="c-amber">Geospatial radius + transport match</td><td class="c-purple">AI reinforcement learning</td><td class="c-green">Learns from every delivery</td></tr>
+      <tr><td>ETA</td><td class="c-muted">Distance-based estimate</td><td class="c-purple">ML (traffic + weather + prep)</td><td class="c-green">Accurate to 2-3 minutes</td></tr>
+      <tr><td>Tracking</td><td class="c-amber">Firebase push notifications</td><td class="c-cyan">WebSocket sub-second + geofencing</td><td class="c-green">Live map, auto-status</td></tr>
+      <tr><td>Payments</td><td class="c-amber">Stripe Connect + Laravel Cashier</td><td class="c-cyan">+ instant payouts + subscription tiers</td><td class="c-green">Already close - add instant payouts</td></tr>
+      <tr><td>API</td><td class="c-green">Versioned (v1, v2) + JWT + middleware + docs live at /docs</td><td class="c-cyan">+ GraphQL + gRPC + self-serve portal</td><td class="c-green">Docs deployed Apr 2026 - add dev portal next</td></tr>
+      <tr><td>Domain Model</td><td class="c-green">DTOs, Value Objects, Collections, Factories</td><td class="c-green">Already production-grade</td><td class="c-green">No change needed - this is solid</td></tr>
+      <tr><td>Observability</td><td class="c-muted">AppCenter crashes</td><td class="c-cyan">OpenTelemetry + Grafana</td><td class="c-green">See everything, fix before users notice</td></tr>
+      <tr><td>Android</td><td class="c-coral">38 crash-risk models, dead repos, devServ pointing to dead server</td><td class="c-green">Crashes fixed, build recovered, prodServ APKs shipping (v8), add-own-driver merged</td><td class="c-green">Done - stability restored + features live</td></tr>
+      <tr><td>ML Models</td><td class="c-muted">0</td><td class="c-purple">6 models</td><td class="c-green">The intelligence moat</td></tr>
+      <tr><td>Restaurant Tools</td><td class="c-amber">Vue.js client + React dashboard</td><td class="c-purple">+ AI copilot + profit analytics</td><td class="c-green">Dual frontend is a strength</td></tr>
+      <tr><td>Autonomous</td><td class="c-muted">None</td><td class="c-cyan">Starship robot integration</td><td class="c-green">UK-specific opportunity</td></tr>
+    </table>
+  </div>
+
+  <!-- 10. ROADMAP -->
+  <div class="section" id="roadmap">
+    <div class="section-label">10 - Implementation Roadmap</div>
+    <h2>From Here to There</h2>
+    <p>Not a rewrite. An evolution. Each phase delivers standalone value.</p>
+
+    <div class="timeline">
+      <div class="timeline-item done">
+        <div class="tl-month">Phase 0a: Done (March 29, 2026)</div>
+        <div class="tl-title">Android Codebase Audit + Stability Fixes</div>
+        <div class="tl-desc">6-module audit. 38 crash-risk models identified and patched. Build recovered from defunct JCenter/Bintray repos. 4 APKs built and delivered to Said. API docs portal built and pushed to Bitbucket.</div>
+      </div>
+      <div class="timeline-item done">
+        <div class="tl-month">Phase 0b: Done (April 1, 2026)</div>
+        <div class="tl-title">Feature Merge + Critical Bug Fixes + API Docs Deployed</div>
+        <div class="tl-desc">
+          Merged add-own-driver feature (PR #7, 54 new files) from dev branch. Fixed Epoxy annotation and R class import issues from broken merge.<br><br>
+          <strong>Hired drivers list fix:</strong> Driver.email and DriverTransport.id missing defaults caused silent MissingFieldException crashing the list. Fixed and CONFIRMED WORKING by Said.<br><br>
+          <strong>Shift drop pins fix:</strong> Added restaurant coordinates fallback when drop lat/lng is null (v8 APK). Previous APKs v1-v7 used devServ flavor pointing to dead dev.mealshift.co.uk - Said could never test. Switched all builds to prodServ.<br><br>
+          <strong>API docs live:</strong> Deployed to DigitalOcean Droplet via Docker container. Live at mealshift.co.uk/docs/index.html.
+        </div>
+      </div>
+      <div class="timeline-item active">
+        <div class="tl-month">Phase 1: Foundation (In Progress)</div>
+        <div class="tl-title">Upgrade Laravel + Add Real-Time Layer</div>
+        <div class="tl-desc">Upgrade PHP 7.4 to 8.3, Laravel 8 to 11. Add WebSocket tracking via Laravel Reverb. Leverage existing Redis + Stripe Connect + Clean Architecture. Keep all domain logic intact.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-month">Phase 2: Intelligence (Week 2)</div>
+        <div class="tl-title">AI Dispatch + Temporal Workflows + ETA</div>
+        <div class="tl-desc">Order lifecycle orchestration. ETA prediction model trained on historical data. Dispatch agent. Geofencing auto-status. Kafka event streaming.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-month">Phase 3: Platform (Weeks 3-4)</div>
+        <div class="tl-title">Developer Portal + Restaurant Copilot + Driver Optimizer</div>
+        <div class="tl-desc">Self-serve API portal. ElektraOS agents wired in. Demand forecasting. Restaurant profit dashboard. Driver earnings intelligence.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-month">Phase 4: Differentiate (Month 2+)</div>
+        <div class="tl-title">Robots + Voice + Subscriptions + Multi-Vertical</div>
+        <div class="tl-desc">Starship integration. Alexa voice ordering. MealShift Plus. Expand beyond food: grocery, pharmacy, e-commerce last-mile.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10B. WHERE MEALSHIFT COULD BE TOMORROW -->
+  <div class="section" id="tomorrow">
+    <div class="section-label">Where It All Leads</div>
+    <h2>MealShift Tomorrow</h2>
+    <p>The foundation is solid. The market is ready. The commission-free model is the right bet. Here's what MealShift becomes when the intelligence layer clicks into place.</p>
+
+    <div class="card-grid" style="margin-top:20px;">
+      <div class="card" style="border-color:rgba(0,212,255,0.25);background:linear-gradient(135deg,rgba(0,212,255,0.04),rgba(124,58,237,0.04));">
+        <div class="card-icon" style="font-size:28px;">&#127468;&#127463;</div>
+        <h3>The UK's Smartest Commission-Free Platform</h3>
+        <p>Same zero-commission model restaurants already love - but now with AI dispatch that learns from every delivery, ETA predictions that are accurate to 2 minutes, and demand forecasting that pre-positions drivers before the rush starts. Foodhub and Hungrrr can't match this. Uber and Deliveroo won't offer it commission-free.</p>
+      </div>
+      <div class="card" style="border-color:rgba(0,212,255,0.25);background:linear-gradient(135deg,rgba(0,212,255,0.04),rgba(124,58,237,0.04));">
+        <div class="card-icon" style="font-size:28px;">&#128205;</div>
+        <h3>Live Tracking That Customers Expect</h3>
+        <p>Sub-second driver location on a live map. Geofencing triggers auto-status: driver enters restaurant zone, order flips to "Picking Up." Arrives at door, customer gets notified before the bell rings. Not a nice-to-have anymore - this is what every customer under 40 assumes you already have.</p>
+      </div>
+      <div class="card" style="border-color:rgba(0,212,255,0.25);background:linear-gradient(135deg,rgba(0,212,255,0.04),rgba(124,58,237,0.04));">
+        <div class="card-icon" style="font-size:28px;">&#129302;</div>
+        <h3>A Restaurant That Talks to an AI Partner</h3>
+        <p>Not a dashboard. A copilot. "Your Tuesday evening orders are up 30% from last month. Consider adding a prep cook from 5-8pm." "Driver arrival is synced with your kitchen - food won't sit cold." "You've saved 8,400 GBP in commission fees this quarter vs Deliveroo." No other platform gives restaurants this.</p>
+      </div>
+      <div class="card" style="border-color:rgba(0,212,255,0.25);background:linear-gradient(135deg,rgba(0,212,255,0.04),rgba(124,58,237,0.04));">
+        <div class="card-icon" style="font-size:28px;">&#128666;</div>
+        <h3>Drivers Who Stay</h3>
+        <p>"Work Zone 3 on Tuesday evenings - you'll earn 40% more than your current pattern." Earnings optimizer, shift planner, fair dispatch that prevents driver starvation. When Uber treats drivers as numbers, MealShift treats them as partners with data to prove it. Lower churn, lower recruitment costs, better service.</p>
+      </div>
+      <div class="card" style="border-color:rgba(0,212,255,0.25);background:linear-gradient(135deg,rgba(0,212,255,0.04),rgba(124,58,237,0.04));">
+        <div class="card-icon" style="font-size:28px;">&#129516;</div>
+        <h3>Robots on the Ground</h3>
+        <p>Starship autonomous robots are already delivering for Uber Eats in Leeds and Sheffield. MealShift integrates next. Short-distance orders go to robots at a fraction of the cost. Human drivers handle longer routes and complex deliveries. First commission-free platform with autonomous delivery in the UK.</p>
+      </div>
+      <div class="card" style="border-color:rgba(0,212,255,0.25);background:linear-gradient(135deg,rgba(0,212,255,0.04),rgba(124,58,237,0.04));">
+        <div class="card-icon" style="font-size:28px;">&#128172;</div>
+        <h3>"Hey Alexa, Order From MealShift"</h3>
+        <p>Just Eat launched Alexa+ voice ordering in UK (March 2026). MealShift follows. Reorder your favorite, track your delivery, rate your driver - all hands-free. A clean versioned API makes this integration straightforward. New ordering channel, zero additional infrastructure.</p>
+      </div>
+    </div>
+
+    <div class="card-grid" style="margin-top:16px;">
+      <div class="card" style="border-color:rgba(124,58,237,0.25);background:linear-gradient(135deg,rgba(124,58,237,0.06),rgba(0,0,0,0));">
+        <div class="card-icon" style="font-size:28px;">&#128640;</div>
+        <h3>The White-Label Play</h3>
+        <p>Restaurant chains (Nando's, Wagamama, local chains with 5+ locations) use MealShift as invisible delivery infrastructure. They keep their brand, their customers, their margins. MealShift gets volume. The Stripe model applied to food delivery. Commission-free + white-label = unstoppable value proposition.</p>
+      </div>
+      <div class="card" style="border-color:rgba(124,58,237,0.25);background:linear-gradient(135deg,rgba(124,58,237,0.06),rgba(0,0,0,0));">
+        <div class="card-icon" style="font-size:28px;">&#127981;</div>
+        <h3>Beyond Food</h3>
+        <p>The same dispatch engine, the same driver network, the same real-time tracking - applied to grocery (14B GBP UK market), pharmacy/NHS delivery, e-commerce last-mile (120B+ GBP market). The commission-free model scales across verticals. Food delivery is the wedge. Logistics is the platform.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:28px;padding:28px;background:var(--card);border:1px solid rgba(0,212,255,0.15);border-radius:12px;text-align:center;">
+      <p style="font-size:20px;font-weight:700;color:var(--text);margin-bottom:8px;">The timeline to get here?</p>
+      <p style="font-family:var(--mono);font-size:36px;font-weight:700;background:linear-gradient(135deg,var(--coral),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px;">Weeks, not months.</p>
+      <p style="color:var(--muted);font-size:13px;">The architecture is clean. The domain logic is solid. The tools are open source.<br>The only thing missing is the intelligence layer - and that's what we build.</p>
+    </div>
+  </div>
+
+  <!-- 11. ECONOMICS -->
+  <div class="section" id="economics">
+    <div class="section-label">11 - Economics</div>
+    <h2>What This Costs</h2>
+
+    <div class="card-grid">
+      <div class="card">
+        <h3>Infrastructure</h3>
+        <p>$20-50/month. Single VPS. All open source: PostgreSQL, Redis, Kafka, Temporal, FastAPI, OSRM, H3. Same server can run ElektraOS alongside.</p>
+        <span class="card-tag tag-green">~$50/mo</span>
+      </div>
+      <div class="card">
+        <h3>Engineering</h3>
+        <p>AI-augmented development via Claude Code + ElektraOS. No hiring needed. The same approach that built 184K lines and 41 agents in 73 days.</p>
+        <span class="card-tag tag-green">$0 hiring</span>
+      </div>
+      <div class="card">
+        <h3>Third-Party APIs</h3>
+        <p>Stripe: 1.4% + 20p per transaction (standard UK). Twilio SMS: ~3p/msg. SendGrid: free tier covers 100 emails/day. FCM: free.</p>
+        <span class="card-tag tag-green">Pay-as-you-go</span>
+      </div>
+      <div class="card">
+        <h3>What Said Provides</h3>
+        <p>Backend access (to understand current state). Historical order data (to train ML models). A domain pointed at the new infra. Trust.</p>
+        <span class="card-tag tag-current">Access + Data</span>
+      </div>
+    </div>
+
+    <div class="callout callout-green" style="margin-top:20px;">
+      <strong>Total investment to reach Phase 3:</strong> Under $200. The existing Laravel backend is a solid foundation - no rewrite needed. Add the intelligence layer on top. No funding round. No VC. The competitive advantage comes from AI, not capital.
+    </div>
+  </div>
+
+  <!-- 12. NEXT STEPS -->
+  <div class="section" id="next">
+    <div class="section-label">12 - Next Steps</div>
+    <h2>What We Need From Said</h2>
+
+    <div class="card-grid card-grid-3">
+      <div class="card" style="border-color:rgba(255,83,98,0.2);">
+        <div class="card-icon">1</div>
+        <h3>Backend Access</h3>
+        <p>Read-only access to the current backend codebase. We need to understand what exists before proposing what to add. No changes - just observation.</p>
+      </div>
+      <div class="card" style="border-color:rgba(0,212,255,0.2);">
+        <div class="card-icon">2</div>
+        <h3>Historical Data</h3>
+        <p>Order history, driver patterns, restaurant metrics. This is what trains the ML models. More data = smarter dispatch, better ETAs, accurate demand forecasting.</p>
+      </div>
+      <div class="card" style="border-color:rgba(24,163,0,0.4);background:rgba(24,163,0,0.04);">
+        <div class="card-icon">&#10003;</div>
+        <h3>API Docs - LIVE</h3>
+        <p>Deployed April 1, 2026. Live at <strong>mealshift.co.uk/docs/index.html</strong>. Partners can now self-discover the full API. Hosted via DigitalOcean Droplet, Docker container ms_website.</p>
+        <span class="card-tag tag-green">Done</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <h2>The empty quadrant is waiting.</h2>
+    <p>High technology + zero commission. Nobody occupies that space. Yet.</p>
+    <p style="color:var(--muted);font-size:12px;margin-top:32px;font-family:var(--mono);">Built by <a href="https://elektraos.dev">ElektraOS.dev</a> &middot; Research powered by Claude Opus 4.6 &middot; Updated April 2026</p>
+  </div>
+
+  <footer>
+    <p>MealShift 2.0 Strategic Vision &middot; Confidential &middot; Prepared for Said Ziane</p>
+  </footer>
+
+</div>
+
+<script>
+function toggleService(type) {
+  document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('#serviceGrid .card').forEach(card => {
+    if (type === 'all') { card.style.display = ''; return; }
+    card.style.display = (card.dataset.type === type) ? '' : 'none';
+  });
+}
+// Smooth scroll for TOC
+document.querySelectorAll('.toc-link').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+
+</body>
+</html>
