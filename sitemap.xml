@@ -25,6 +25,16 @@
     <priority>0.95</priority>
   </url>
 
+  <!-- ElektraOS for SMB (vertical, under 50 employees) -->
+  <url>
+    <loc>https://elektraos.dev/smb/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elektraos.dev/smb/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elektraos.dev/smb/"/>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
   <!-- Loomgraph case study -->
   <url>
     <loc>https://elektraos.dev/case-loomgraph/</loc>
