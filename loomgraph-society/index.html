@@ -125,6 +125,87 @@
     h2.sec { font-size: 28px; margin: 48px 0 16px; }
     h3.sub { font-size: 18px; margin: 24px 0 12px; color: var(--text-primary); }
     .copy { color: var(--text-secondary); line-height: 1.8; margin-bottom: 14px; }
+
+    /* ===== Hub-and-spoke hero SVG ===== */
+    .hub-viz {
+      max-width: 860px; margin: 24px auto 40px;
+      padding: 0 24px;
+    }
+    .hub-viz svg { width: 100%; height: auto; display: block; }
+    .hub-node-core rect {
+      fill: url(#hubGrad);
+      stroke: rgba(124, 58, 237, 0.6);
+      stroke-width: 1.5;
+      filter: drop-shadow(0 0 18px rgba(124,58,237,0.35));
+    }
+    .hub-node-core text { fill: #fff; font-weight: 700; font-family: var(--font-mono); }
+    .hub-spoke { stroke-dasharray: 4 4; animation: hubDash 12s linear infinite; }
+    @keyframes hubDash { to { stroke-dashoffset: -80; } }
+    .hub-node rect {
+      fill: rgba(15, 20, 32, 0.92);
+      stroke: rgba(0, 212, 255, 0.35);
+      stroke-width: 1;
+      transition: stroke 0.3s, fill 0.3s;
+    }
+    .hub-node:hover rect { stroke: var(--cyan); fill: rgba(0, 212, 255, 0.08); }
+    .hub-node text { fill: var(--text-secondary); font-family: var(--font-mono); font-size: 11px; }
+    .hub-node.founding text { fill: #00ff9d; }
+    .hub-node.guest text    { fill: #E8A838; }
+    .hub-node.localehub text { fill: var(--cyan); }
+    .hub-caption {
+      text-align: center; margin-top: 16px;
+      font-family: var(--font-mono); font-size: 11px;
+      color: var(--text-muted); letter-spacing: 1px;
+    }
+    .hub-caption .ch { padding: 0 10px; }
+    .hub-caption .ch.founding b { color: #00ff9d; }
+    .hub-caption .ch.guest b    { color: #E8A838; }
+    .hub-caption .ch.hub b      { color: var(--cyan); }
+
+    /* ===== Stats strip ===== */
+    .soc-stats {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px; margin: 40px 0 32px;
+    }
+    .soc-stat {
+      border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 22px 20px; text-align: center;
+      background: linear-gradient(135deg, rgba(124,58,237,0.06), rgba(0,212,255,0.03));
+    }
+    .soc-stat-num {
+      font-family: var(--font-mono); font-size: 28px; font-weight: 700;
+      background: var(--gradient-brand);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      line-height: 1.1;
+    }
+    .soc-stat-lbl {
+      font-family: var(--font-mono); font-size: 10px;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      color: var(--text-muted); margin-top: 6px;
+    }
+
+    /* ===== Mechanics - upgraded card ===== */
+    .mech { position: relative; overflow: hidden; }
+    .mech::before {
+      content: ""; position: absolute; top: 0; left: 0;
+      width: 3px; height: 100%; background: var(--gradient-brand);
+      opacity: 0.5; transition: opacity 0.3s;
+    }
+    .mech:hover::before { opacity: 1; }
+    .mech-num {
+      display: inline-block;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: rgba(0, 212, 255, 0.08);
+      border: 1px solid rgba(0, 212, 255, 0.25);
+      color: var(--cyan);
+      text-align: center; line-height: 26px;
+      font-size: 11px;
+    }
+
+    @media (max-width: 640px) {
+      .hub-viz svg .hub-node text { font-size: 9px; }
+    }
   </style>
 
   <link rel="stylesheet" href="/css/smart-features.css">
@@ -161,6 +242,108 @@
     </div>
   </header>
 
+  <div class="hub-viz" aria-hidden="true">
+    <svg viewBox="0 0 860 520" xmlns="http://www.w3.org/2000/svg" role="img">
+      <defs>
+        <linearGradient id="hubGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%"   stop-color="#7c3aed"/>
+          <stop offset="100%" stop-color="#00d4ff"/>
+        </linearGradient>
+        <radialGradient id="hubGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"  stop-color="rgba(124,58,237,0.18)"/>
+          <stop offset="70%" stop-color="rgba(124,58,237,0.02)"/>
+          <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
+        </radialGradient>
+      </defs>
+
+      <!-- background glow -->
+      <circle cx="430" cy="260" r="240" fill="url(#hubGlow)"/>
+
+      <!-- spokes: inner ring (founding) -->
+      <g stroke="rgba(0,255,157,0.4)" stroke-width="1" class="hub-spoke" fill="none">
+        <line x1="430" y1="260" x2="280" y2="150"/>
+        <line x1="430" y1="260" x2="580" y2="150"/>
+        <line x1="430" y1="260" x2="220" y2="260"/>
+        <line x1="430" y1="260" x2="640" y2="260"/>
+        <line x1="430" y1="260" x2="430" y2="110"/>
+      </g>
+      <!-- spokes: outer ring (hubs + guest) -->
+      <g stroke="rgba(0,212,255,0.28)" stroke-width="1" class="hub-spoke" fill="none">
+        <line x1="430" y1="260" x2="100" y2="400"/>
+        <line x1="430" y1="260" x2="260" y2="440"/>
+        <line x1="430" y1="260" x2="430" y2="460"/>
+        <line x1="430" y1="260" x2="600" y2="440"/>
+        <line x1="430" y1="260" x2="760" y2="400"/>
+      </g>
+      <g stroke="rgba(232,168,56,0.35)" stroke-width="1" class="hub-spoke" fill="none">
+        <line x1="430" y1="260" x2="760" y2="150"/>
+      </g>
+
+      <!-- central hub -->
+      <g class="hub-node-core">
+        <rect x="360" y="230" width="140" height="60" rx="10" ry="10"/>
+        <text x="430" y="256" text-anchor="middle" font-size="13">LOOMGRAPH</text>
+        <text x="430" y="276" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.75)">agents . audits . pact</text>
+      </g>
+
+      <!-- founding nodes -->
+      <g class="hub-node founding">
+        <rect x="210" y="90"  width="150" height="34" rx="6" ry="6"/>
+        <text x="285" y="112" text-anchor="middle">elektraos.dev</text>
+      </g>
+      <g class="hub-node founding">
+        <rect x="500" y="90"  width="170" height="34" rx="6" ry="6"/>
+        <text x="585" y="112" text-anchor="middle">sheandelle.com</text>
+      </g>
+      <g class="hub-node founding">
+        <rect x="355" y="50"  width="150" height="34" rx="6" ry="6"/>
+        <text x="430" y="72"  text-anchor="middle">mealshift.co.uk</text>
+      </g>
+      <g class="hub-node founding">
+        <rect x="100" y="243" width="170" height="34" rx="6" ry="6"/>
+        <text x="185" y="265" text-anchor="middle">thefreshmarket.ma</text>
+      </g>
+      <g class="hub-node founding">
+        <rect x="590" y="243" width="130" height="34" rx="6" ry="6"/>
+        <text x="655" y="265" text-anchor="middle">bizus.co.uk</text>
+      </g>
+
+      <!-- guest node -->
+      <g class="hub-node guest">
+        <rect x="700" y="130" width="110" height="34" rx="6" ry="6"/>
+        <text x="755" y="152" text-anchor="middle">ayla.ma</text>
+      </g>
+
+      <!-- locale hubs -->
+      <g class="hub-node localehub">
+        <rect x="35"  y="380" width="140" height="34" rx="6" ry="6"/>
+        <text x="105" y="402" text-anchor="middle">uk.elektraos.dev</text>
+      </g>
+      <g class="hub-node localehub">
+        <rect x="190" y="420" width="140" height="34" rx="6" ry="6"/>
+        <text x="260" y="442" text-anchor="middle">fr.elektraos.dev</text>
+      </g>
+      <g class="hub-node localehub">
+        <rect x="360" y="440" width="140" height="34" rx="6" ry="6"/>
+        <text x="430" y="462" text-anchor="middle">it.elektraos.dev</text>
+      </g>
+      <g class="hub-node localehub">
+        <rect x="530" y="420" width="140" height="34" rx="6" ry="6"/>
+        <text x="600" y="442" text-anchor="middle">ma.elektraos.dev</text>
+      </g>
+      <g class="hub-node localehub">
+        <rect x="690" y="380" width="140" height="34" rx="6" ry="6"/>
+        <text x="760" y="402" text-anchor="middle">gh.elektraos.dev</text>
+      </g>
+    </svg>
+
+    <div class="hub-caption">
+      <span class="ch founding"><b>&#9679;</b> Founding operating business</span>
+      <span class="ch guest"><b>&#9679;</b> Guest tenant</span>
+      <span class="ch hub"><b>&#9679;</b> ElektraOS locale hub</span>
+    </div>
+  </div>
+
   <main class="soc-container">
 
     <section class="pact">
@@ -169,6 +352,29 @@
         One site cannot rank alone unless it is the loudest. A <strong>hub of connected sites</strong> can rank together by being the most <em>useful</em>. The Loomgraph Society is built on that premise: every member runs its own business, keeps its own voice, owns its traffic. Loomgraph - the agentic platform underneath - handles the unglamorous shared work: audits, briefs, internal-link proposals, IndexNow pings, structured data. Nothing goes live without a human approving it. Nothing that violates Google Search Essentials, FTC disclosure, GDPR, or the member's own editorial standards ever gets proposed a second time.
       </p>
     </section>
+
+    <div class="soc-stats">
+      <div class="soc-stat">
+        <div class="soc-stat-num">11</div>
+        <div class="soc-stat-lbl">Member sites</div>
+      </div>
+      <div class="soc-stat">
+        <div class="soc-stat-num">5</div>
+        <div class="soc-stat-lbl">Operating businesses</div>
+      </div>
+      <div class="soc-stat">
+        <div class="soc-stat-num">5</div>
+        <div class="soc-stat-lbl">Locale hubs</div>
+      </div>
+      <div class="soc-stat">
+        <div class="soc-stat-num">4</div>
+        <div class="soc-stat-lbl">Languages</div>
+      </div>
+      <div class="soc-stat">
+        <div class="soc-stat-num">6</div>
+        <div class="soc-stat-lbl">Countries</div>
+      </div>
+    </div>
 
     <h2 class="sec">Founding cohort</h2>
     <p class="copy">
@@ -257,6 +463,55 @@
     <p class="copy">
       Domain authority compounds when every member publishes something genuinely useful and the rest of the hub links to it <em>only</em> where the topic actually warrants it. The agents propose; humans approve. Every mechanic below stays inside Google Search Essentials, FTC disclosure rules, and GDPR/CCPA consent boundaries.
     </p>
+
+    <div class="hub-viz" style="margin: 24px auto 8px;" aria-hidden="true">
+      <svg viewBox="0 0 860 140" xmlns="http://www.w3.org/2000/svg" role="img">
+        <defs>
+          <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M0,0 L10,5 L0,10 z" fill="rgba(0,212,255,0.7)"/>
+          </marker>
+        </defs>
+        <g font-family="var(--font-mono)" font-size="11" text-anchor="middle">
+          <!-- steps -->
+          <g>
+            <rect x="10"  y="50" width="140" height="40" rx="6" fill="rgba(15,20,32,0.92)" stroke="rgba(124,58,237,0.45)"/>
+            <text x="80"  y="66" fill="#7c3aed" font-weight="700">01 . AUDIT</text>
+            <text x="80"  y="82" fill="rgba(255,255,255,0.55)" font-size="10">PageSpeed . CrUX</text>
+          </g>
+          <g>
+            <rect x="180" y="50" width="140" height="40" rx="6" fill="rgba(15,20,32,0.92)" stroke="rgba(0,212,255,0.4)"/>
+            <text x="250" y="66" fill="#00d4ff" font-weight="700">02 . PROPOSE</text>
+            <text x="250" y="82" fill="rgba(255,255,255,0.55)" font-size="10">Weaver agent</text>
+          </g>
+          <g>
+            <rect x="350" y="50" width="140" height="40" rx="6" fill="rgba(15,20,32,0.92)" stroke="rgba(232,168,56,0.45)"/>
+            <text x="420" y="66" fill="#E8A838" font-weight="700">03 . APPROVE</text>
+            <text x="420" y="82" fill="rgba(255,255,255,0.55)" font-size="10">Human in loop</text>
+          </g>
+          <g>
+            <rect x="520" y="50" width="140" height="40" rx="6" fill="rgba(15,20,32,0.92)" stroke="rgba(0,255,157,0.4)"/>
+            <text x="590" y="66" fill="#00ff9d" font-weight="700">04 . PUBLISH</text>
+            <text x="590" y="82" fill="rgba(255,255,255,0.55)" font-size="10">CMS push + IndexNow</text>
+          </g>
+          <g>
+            <rect x="690" y="50" width="160" height="40" rx="6" fill="rgba(15,20,32,0.92)" stroke="rgba(124,58,237,0.45)"/>
+            <text x="770" y="66" fill="#7c3aed" font-weight="700">05 . MEASURE</text>
+            <text x="770" y="82" fill="rgba(255,255,255,0.55)" font-size="10">GSC . hub analytics</text>
+          </g>
+        </g>
+        <!-- arrows -->
+        <g stroke="rgba(0,212,255,0.7)" stroke-width="1.5" fill="none" marker-end="url(#arr)">
+          <line x1="150" y1="70" x2="178" y2="70"/>
+          <line x1="320" y1="70" x2="348" y2="70"/>
+          <line x1="490" y1="70" x2="518" y2="70"/>
+          <line x1="660" y1="70" x2="688" y2="70"/>
+        </g>
+        <!-- feedback loop -->
+        <path d="M770,90 Q770,125 430,125 Q80,125 80,90"
+              fill="none" stroke="rgba(124,58,237,0.35)" stroke-width="1" stroke-dasharray="3 4" marker-end="url(#arr)"/>
+        <text x="430" y="118" text-anchor="middle" font-family="var(--font-mono)" font-size="9" fill="rgba(255,255,255,0.4)" letter-spacing="1">&larr; Feedback . re-audit on measured lift</text>
+      </svg>
+    </div>
 
     <div class="mech-grid">
       <div class="mech">
