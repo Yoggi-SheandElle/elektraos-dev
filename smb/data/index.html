@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data and Analytics Pillar . ElektraOS for SMB</title>
+  <meta name="description" content="A real data stack, without a data team. Warehouse, ingestion, dashboards, data quality. Built for SMBs under 50 employees at fixed price.">
+  <meta property="og:title" content="Data and Analytics Pillar . ElektraOS for SMB">
+  <meta property="og:description" content="Enterprise-grade data pipelines, scoped and priced for teams of 5 to 50.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://elektraos.dev/smb/data/">
+  <meta name="theme-color" content="#7c3aed">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="canonical" href="https://elektraos.dev/smb/data/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Data and Analytics for SMB",
+    "serviceType": "Managed data warehouse, ingestion pipelines and analytics for teams under 50 employees",
+    "provider": {"@type": "Organization", "name": "ElektraOS.dev", "url": "https://elektraos.dev"},
+    "areaServed": ["United Kingdom", "Denmark", "Morocco", "France", "Italy"],
+    "audience": {"@type": "BusinessAudience", "audienceType": "SMB", "numberOfEmployees": {"@type": "QuantitativeValue", "minValue": 5, "maxValue": 50}},
+    "isPartOf": {"@type": "Service", "name": "ElektraOS for SMB", "url": "https://elektraos.dev/smb/"}
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sections.css">
+  <link rel="stylesheet" href="../../css/responsive.css">
+  <link rel="stylesheet" href="../pillar.css">
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo"><span>E</span>lektraOS<span>.</span>dev</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/#solutions">Solutions</a></li>
+        <li><a href="/smb/" class="active">For SMB</a></li>
+        <li><a href="/log/">Build Log</a></li>
+        <li><a href="/cases/">Cases</a></li>
+        <li><a href="/pricing/">Pricing</a></li>
+      </ul>
+      <a href="/smb/#apply" class="btn nav-cta">Join the cohort</a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <header class="pillar-hero">
+    <div class="pillar-container">
+      <div class="pillar-crumbs">
+        <a href="/smb/">ElektraOS for SMB</a> . Pillar 02
+      </div>
+      <div class="pillar-hero-tag">02 . Data and Analytics</div>
+      <h1><span class="gradient">A real data stack, without a data team.</span></h1>
+      <p class="pillar-hero-sub">
+        Warehouse, ingestion pipelines, dashboards and data-quality checks. Not another BI tool bolted onto a spreadsheet; a managed pipeline from source systems to reliable answers, with weekly review of every metric that drives a decision.
+      </p>
+    </div>
+  </header>
+
+  <main class="pillar-container">
+
+    <section class="pillar-section">
+      <h2>What is included</h2>
+      <p class="lede">Enterprise data engineering discipline, scoped for SMB surface area. Every layer of the stack is owned by one engineer, not outsourced to a vendor per step.</p>
+
+      <div class="scope-grid">
+        <div class="scope-card">
+          <div class="scope-tag">Layer . Ingestion</div>
+          <h4>Source connectors and ETL</h4>
+          <p>Pull from the systems the team already pays for: Shopify, Stripe, Xero, HubSpot, Klaviyo, Google Analytics, bespoke SQL. Scheduled, idempotent, monitored.</p>
+        </div>
+        <div class="scope-card">
+          <div class="scope-tag">Layer . Storage</div>
+          <h4>Managed warehouse</h4>
+          <p>Postgres or BigQuery depending on volume. One schema per tenant, partitioned for growth. No shared tables across clients.</p>
+        </div>
+        <div class="scope-card">
+          <div class="scope-tag">Layer . Modelling</div>
+          <h4>Tables the team can read</h4>
+          <p>Versioned SQL models for the business entities that matter: orders, customers, products, sessions, cohorts. Column names that match the operator's language.</p>
+        </div>
+        <div class="scope-card">
+          <div class="scope-tag">Layer . Analytics</div>
+          <h4>Dashboards that answer one question each</h4>
+          <p>Metabase or Looker Studio, focused boards per role: founder, head of ops, head of marketing. Every chart carries the SQL and a refresh timestamp.</p>
+        </div>
+        <div class="scope-card">
+          <div class="scope-tag">Layer . Quality</div>
+          <h4>Data-quality checks</h4>
+          <p>Row counts, freshness, referential integrity, outlier detection. Failures go to the operator channel before the dashboard lies.</p>
+        </div>
+        <div class="scope-card">
+          <div class="scope-tag">Cadence</div>
+          <h4>Weekly data review</h4>
+          <p>Thirty minutes to walk the dashboards, flag what is broken, decide what to build next. Not a monthly report; a working session.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="pillar-section">
+      <h2>First 90 days</h2>
+      <p class="lede">From zero visibility to three trustworthy dashboards. Each milestone is a shipped artifact the operator can open.</p>
+
+      <div class="plan-grid">
+        <div class="plan-card">
+          <div class="plan-day">Day 0 to 30</div>
+          <h4>Inventory and schema v0</h4>
+          <ul>
+            <li>Map every source of truth the team uses</li>
+            <li>Pick the three highest-value streams</li>
+            <li>Provision warehouse and tenant schema</li>
+            <li>Schema v0 committed to cohort repo</li>
+          </ul>
+        </div>
+        <div class="plan-card">
+          <div class="plan-day">Day 31 to 60</div>
+          <h4>Ingestion and first dashboards</h4>
+          <ul>
+            <li>Connectors for the top three sources live</li>
+            <li>Modelled tables for orders and customers</li>
+            <li>Two focused dashboards shipped</li>
+            <li>Quality checks wired to alerts</li>
+          </ul>
+        </div>
+        <div class="plan-card">
+          <div class="plan-day">Day 61 to 90</div>
+          <h4>Trust and expand</h4>
+          <ul>
+            <li>One more data source integrated</li>
+            <li>Third dashboard by role</li>
+            <li>Backfill historical and reconcile totals</li>
+            <li>Weekly review cadence locked in</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="pillar-section">
+      <h2>Proof this is not greenfield</h2>
+      <p class="lede">Engineer credentials plus runtime references. The SMB package is the downshift of patterns already running.</p>
+
+      <div class="proof-list">
+        <div class="proof-item">
+          <div class="proof-label">Engineer</div>
+          <div class="proof-detail">Zacki Ziane, Kubrick Group, London. Client engagement with AstraZeneca on enterprise data pipelines. University of Nottingham.</div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-label">Runtime</div>
+          <div class="proof-detail">ElektraOS SQLite core: 76 tables, 19.9MB production database. Verified Apr 10, 2026. Target warehouse upgrade path Postgres and BigQuery.</div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-label">MealShift signals</div>
+          <div class="proof-detail">Platform activity tracking shipped Apr 22. Live event feed across commerce surfaces feeds the analytics layer.</div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-label">Quality pattern</div>
+          <div class="proof-detail">Loomgraph compliance scanner: regex-gated validation, hashed audit rows. Same approach applied to data-quality checks.</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <section class="lead-strip">
+    <div class="lead-row">
+      <div class="lead-avatar">Z</div>
+      <div class="lead-meta">
+        <div class="lead-name">Zacki Ziane</div>
+        <div class="lead-role">Pillar lead . Data engineering</div>
+        <p class="lead-bio">Data Management Consultant at Kubrick Group, client engagement with AstraZeneca. London-based. Brings warehouse and ingestion design, data quality and observability, SQL and schema modelling. The enterprise-to-SMB downshift that most SMB tools miss.</p>
+      </div>
+      <a class="lead-li" href="https://uk.linkedin.com/in/zacki-ziane" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </section>
+
+  <main class="pillar-container">
+    <section class="pillar-cta">
+      <h3>Pillar 02 lead contact</h3>
+      <p>If the team cannot currently answer a basic question like "what did we sell last week, net of refunds" in under a minute, this pillar is the fix.</p>
+      <a href="/smb/#apply" class="btn">Apply to the cohort</a>
+      <a href="/smb/" class="btn btn-ghost">Back to SMB</a>
+    </section>
+  </main>
+
+  <footer style="border-top:1px solid var(--border);padding:40px 0 60px;text-align:center;color:var(--text-muted);font-size:12px;">
+    <div class="pillar-container">
+      <p><a href="/">ElektraOS.dev</a> . <a href="/smb/">SMB</a> . <a href="/smb/ops/">Ops pillar</a> . <a href="/smb/product/">Product pillar</a> . <a href="/loomgraph-society/">Loomgraph Society</a></p>
+      <p style="margin-top:12px;">Copenhagen . London . Casablanca . Built on ElektraOS runtime</p>
+    </div>
+  </footer>
+
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/app.js"></script>
+</body>
+</html>
