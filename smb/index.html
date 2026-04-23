@@ -330,14 +330,216 @@
   </section>
 
   <main class="smb-container">
-    <section id="apply" class="smb-cta">
-      <h3>Ten spots. Founding cohort.</h3>
-      <p>
-        Fixed monthly fee, three pillars, one operator per pillar on call. Cohort intake Q2 2026. If you run a 5-50 team and recognise yourself in one of the archetypes above, tell us where you are and where you want to be in 90 days.
+    <section id="apply" class="smb-cta" style="text-align:left;">
+      <h3 style="text-align:center;">Ten spots. Founding cohort.</h3>
+      <p style="text-align:center;">
+        Fixed monthly fee, three pillars, one operator per pillar on call. Cohort intake Q2 2026. Applications land in the Loomgraph registry; your domain joins the Society the moment you submit.
       </p>
-      <a href="/#contact" class="btn">Apply to the cohort &rarr;</a>
+
+      <form id="cohortForm" class="cohort-form" novalidate>
+        <div class="cohort-row">
+          <label>Company name
+            <input required name="company_name" type="text" maxlength="200" autocomplete="organization">
+          </label>
+          <label>Primary domain
+            <input required name="domain" type="text" maxlength="253" placeholder="acme.co.uk" autocomplete="url">
+          </label>
+        </div>
+        <div class="cohort-row">
+          <label>Your name
+            <input required name="contact_name" type="text" maxlength="200" autocomplete="name">
+          </label>
+          <label>Your email
+            <input required name="contact_email" type="email" maxlength="253" autocomplete="email">
+          </label>
+        </div>
+        <div class="cohort-row">
+          <label>Employees
+            <select required name="employee_count">
+              <option value="">Select range</option>
+              <option value="3">1 to 5</option>
+              <option value="10">6 to 15</option>
+              <option value="20">16 to 25</option>
+              <option value="35">26 to 40</option>
+              <option value="48">41 to 50</option>
+            </select>
+          </label>
+          <label>Country
+            <select name="country">
+              <option value="">Prefer not to say</option>
+              <option>United Kingdom</option>
+              <option>Denmark</option>
+              <option>France</option>
+              <option>Italy</option>
+              <option>Morocco</option>
+              <option>Ghana</option>
+              <option>Other</option>
+            </select>
+          </label>
+        </div>
+        <fieldset class="cohort-pillars">
+          <legend>Pillars of interest (pick at least one)</legend>
+          <label><input type="checkbox" name="pillars" value="ops"> 01 . AI and Automation</label>
+          <label><input type="checkbox" name="pillars" value="data"> 02 . Data and Analytics</label>
+          <label><input type="checkbox" name="pillars" value="product"> 03 . Commerce and Product</label>
+        </fieldset>
+        <label>Where you are, where you want to be in 90 days (optional)
+          <textarea name="notes" maxlength="2000" rows="4" placeholder="Current bottleneck and the outcome that would count as a win"></textarea>
+        </label>
+        <div class="cohort-actions">
+          <button type="submit" class="btn" id="cohortSubmit">Submit application</button>
+          <span class="cohort-status" id="cohortStatus"></span>
+        </div>
+        <p class="cohort-privacy">
+          We store company, domain, contact name and the interest payload in the Loomgraph audit log. The email is hashed to its domain before audit; the raw address reaches only the founding team inbox. You can request erasure any time under GDPR Art. 17.
+        </p>
+      </form>
+
+      <div id="cohortSuccess" hidden>
+        <h4>Application received.</h4>
+        <p>Your domain is now registered as a guest site in Loomgraph. The founding team will reach out within three working days with a cohort brief and next steps.</p>
+        <p><a href="/loomgraph-society/" class="btn btn-ghost">See the Society &rarr;</a></p>
+      </div>
     </section>
   </main>
+
+  <style>
+    .cohort-form {
+      display: flex; flex-direction: column; gap: 14px;
+      max-width: 640px; margin: 28px auto 0;
+      font-family: var(--font-body);
+    }
+    .cohort-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 600px) { .cohort-row { grid-template-columns: 1fr; } }
+    .cohort-form label {
+      display: flex; flex-direction: column; gap: 6px;
+      font-family: var(--font-mono); font-size: 11px;
+      text-transform: uppercase; letter-spacing: 1.2px;
+      color: var(--text-muted);
+    }
+    .cohort-form input, .cohort-form select, .cohort-form textarea {
+      font-family: var(--font-body); font-size: 14px;
+      color: var(--text-primary);
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 11px 13px; outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      text-transform: none; letter-spacing: 0;
+    }
+    .cohort-form input:focus, .cohort-form select:focus, .cohort-form textarea:focus {
+      border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(0,212,255,0.12);
+    }
+    .cohort-form textarea { resize: vertical; min-height: 90px; }
+    .cohort-pillars {
+      border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 14px 16px; background: var(--bg-secondary);
+    }
+    .cohort-pillars legend {
+      padding: 0 6px; font-family: var(--font-mono); font-size: 11px;
+      text-transform: uppercase; letter-spacing: 1.2px; color: var(--text-muted);
+    }
+    .cohort-pillars label {
+      flex-direction: row; align-items: center; gap: 10px;
+      text-transform: none; letter-spacing: 0;
+      font-family: var(--font-body); font-size: 14px;
+      color: var(--text-primary); padding: 6px 0;
+    }
+    .cohort-actions {
+      display: flex; align-items: center; gap: 16px;
+      margin-top: 6px;
+    }
+    .cohort-actions .btn { cursor: pointer; border: 0; }
+    .cohort-actions .btn[disabled] { opacity: 0.6; cursor: not-allowed; }
+    .cohort-status {
+      font-family: var(--font-mono); font-size: 11px;
+      text-transform: uppercase; letter-spacing: 1.2px;
+      color: var(--text-muted);
+    }
+    .cohort-status.err { color: var(--red); }
+    .cohort-privacy {
+      font-size: 11px; color: var(--text-muted);
+      line-height: 1.6; margin: 6px 0 0;
+    }
+    #cohortSuccess {
+      text-align: center; margin: 40px auto 0; max-width: 520px;
+    }
+    #cohortSuccess h4 { font-size: 18px; margin: 0 0 10px; }
+    #cohortSuccess p { color: var(--text-secondary); line-height: 1.6; }
+  </style>
+
+  <script>
+    (function(){
+      var form = document.getElementById('cohortForm');
+      var success = document.getElementById('cohortSuccess');
+      var submit = document.getElementById('cohortSubmit');
+      var statusEl = document.getElementById('cohortStatus');
+      if (!form) return;
+      var ENDPOINT = 'https://loomgraph.fly.dev/public/cohort/apply';
+
+      function setStatus(msg, isError) {
+        statusEl.textContent = msg || '';
+        statusEl.classList.toggle('err', !!isError);
+      }
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        var fd = new FormData(form);
+        var pillars = fd.getAll('pillars');
+        if (pillars.length === 0) {
+          setStatus('Pick at least one pillar', true);
+          return;
+        }
+        var employee = parseInt(fd.get('employee_count'), 10);
+        if (!employee || employee < 1 || employee > 50) {
+          setStatus('Select an employee range', true);
+          return;
+        }
+        var body = {
+          company_name: (fd.get('company_name') || '').trim(),
+          domain: (fd.get('domain') || '').trim(),
+          contact_name: (fd.get('contact_name') || '').trim(),
+          contact_email: (fd.get('contact_email') || '').trim(),
+          employee_count: employee,
+          pillars: pillars,
+          notes: (fd.get('notes') || '').trim() || null,
+          country: (fd.get('country') || '').trim() || null
+        };
+        submit.disabled = true;
+        setStatus('Submitting . . .');
+        fetch(ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        }).then(function(r){
+          return r.json().then(function(data){ return { status: r.status, data: data }; });
+        }).then(function(res){
+          if (res.status === 201) {
+            form.style.display = 'none';
+            success.hidden = false;
+            setStatus('');
+          } else if (res.status === 429) {
+            setStatus('Rate limited. Try again in a minute.', true);
+            submit.disabled = false;
+          } else if (res.status === 409) {
+            setStatus('That domain is already managed under another tenant.', true);
+            submit.disabled = false;
+          } else if (res.status === 422) {
+            var detail = res.data && res.data.detail;
+            var msg = typeof detail === 'string' ? detail : 'Check the fields and try again';
+            setStatus(msg, true);
+            submit.disabled = false;
+          } else {
+            setStatus('Something went wrong. Try again shortly.', true);
+            submit.disabled = false;
+          }
+        }).catch(function(){
+          setStatus('Network error. Try again shortly.', true);
+          submit.disabled = false;
+        });
+      });
+    })();
+  </script>
 
   <footer style="border-top:1px solid var(--border);padding:40px 0 60px;text-align:center;color:var(--text-muted);font-size:12px;">
     <div class="smb-container">
