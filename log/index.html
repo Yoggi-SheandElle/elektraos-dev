@@ -287,6 +287,40 @@
   <!-- Feed -->
   <div class="log-feed">
 
+    <!-- ===== April 24, 2026 - SMB section visuals + i18n expansion + governance layout fix ===== -->
+    <article class="log-entry reveal" itemscope itemtype="https://schema.org/TechArticle">
+      <meta itemprop="datePublished" content="2026-04-24">
+      <meta itemprop="author" content="ElektraOS.dev">
+      <div class="log-date">
+        <time datetime="2026-04-24">April 24, 2026</time>
+        <span style="margin-left:12px;padding:2px 8px;border-radius:4px;background:rgba(0,255,157,0.1);color:var(--green);font-size:10px;">Shipped</span>
+        <span style="margin-left:6px;padding:2px 8px;border-radius:4px;background:rgba(0,212,255,0.1);color:var(--cyan);font-size:10px;">Design</span>
+        <span style="margin-left:6px;padding:2px 8px;border-radius:4px;background:rgba(232,168,56,0.1);color:#E8A838;font-size:10px;">i18n</span>
+      </div>
+      <h2 class="log-title" itemprop="headline">SMB section visuals, governance layout fix, 8-locale language picker</h2>
+      <p class="log-desc" itemprop="description">Dark text-only SMB pages gained proper visual anchors. Governance had a silent CSS grid bug: an empty placeholder div inside each article made the 2-column grid overflow to a third row, crushing the body copy into an 80px column. Fixed with a 1-line <code>:empty</code> display:none rule, then added a 5-step milestone timeline and 6 region chips. Compliance gained an Article 6 risk pyramid and a 4-step scope-to-enforcement flow. Pricing gained a PPP bar chart visualising the 9 market adjustment factors. Language picker expanded from 5 to 8 locales (added DE, IT, NL, SE).</p>
+      <ul class="log-items">
+        <li>Governance grid bug: empty div + ::before pseudo created 3 grid items in 2 columns, forcing body copy into 80px col - fixed with `.gv-article > div:first-child:empty { display: none; }`</li>
+        <li>Governance: added 5-step milestone timeline (Pact v1 / rates.json / hub leads / Stichting / B Corp) with green/amber/cyan status dots on a tricolour track</li>
+        <li>Governance: 6 region chips with flags covering UK, DK, DE, FR-IT-NL-SE, MA, GH with primary/review colour bands</li>
+        <li>Compliance: Article 6 risk pyramid - 4 tiers (Unacceptable / High-risk / Limited / Minimal) with action column per tier</li>
+        <li>Compliance: 4-step inventory-to-enforcement flow (Catalogue, Classify, Document, Post-market monitor)</li>
+        <li>Pricing: PPP market multiplier bar chart across 9 markets, colour-coded (anchor amber for UK, cyan for mature EU, green for emerging MA/GH)</li>
+        <li>i18n.js: extended SUPPORTED/LABELS/NAMES arrays from 5 to 8 locales, adding Deutsch, Italiano, Nederlands, Svenska</li>
+        <li>Locale pill alignment fix across 15 locale roots: `margin-right:auto` on the pill absorbs flex free space, gluing the pill next to the logo instead of floating centred</li>
+        <li>Branding unification commit 048e874 + pill fix c08c66f + governance/i18n 42818f0 pushed to master</li>
+      </ul>
+      <div class="log-tech">
+        <span>CSS Grid</span><span>Vanilla JS</span><span>GitHub Pages</span><span>DM Sans</span><span>Space Mono</span><span>SVG inline</span><span>hreflang</span>
+      </div>
+      <div class="log-metrics">
+        <span class="log-metric">Pages with new visuals: <strong>3</strong></span>
+        <span class="log-metric">Locale roots patched: <strong>15</strong></span>
+        <span class="log-metric">Language picker locales: <strong>8</strong></span>
+        <span class="log-metric">Commits to master: <strong>3</strong></span>
+      </div>
+    </article>
+
     <!-- ===== April 22, 2026 - MealShift Commerce OS - Security Batch + Agent-Native Storefronts + Platform Activity ===== -->
     <article class="log-entry reveal" itemscope itemtype="https://schema.org/TechArticle">
       <meta itemprop="datePublished" content="2026-04-22">

@@ -155,6 +155,46 @@
     .pp-equity ul { margin: 0; padding-left: 20px; color: var(--text-secondary); font-size: 13px; }
     .pp-equity ul li { margin-bottom: 4px; line-height: 1.5; }
 
+    /* PPP bar chart */
+    .pp-ppp-wrap { margin: 50px 0 10px; }
+    .pp-ppp-wrap h2 { font-size: 22px; margin: 0 0 8px; }
+    .pp-ppp-wrap p { color: var(--text-secondary); max-width: 720px; line-height: 1.7; margin: 0 0 24px; }
+    .pp-ppp-chart {
+      border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 24px 22px; background: var(--bg-secondary);
+    }
+    .pp-ppp-row {
+      display: grid; grid-template-columns: 110px 1fr 60px;
+      align-items: center; gap: 14px; padding: 8px 0;
+    }
+    .pp-ppp-row .mkt { font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--text-primary); letter-spacing: 0.5px; }
+    .pp-ppp-row .mkt .cur { color: var(--text-muted); font-weight: 400; margin-left: 6px; font-size: 11px; }
+    .pp-ppp-row .track {
+      position: relative; height: 22px; border-radius: 4px;
+      background: rgba(255,255,255,0.03);
+      overflow: hidden;
+    }
+    .pp-ppp-row .fill {
+      position: absolute; left: 0; top: 0; bottom: 0;
+      background: var(--gradient-brand); border-radius: 4px;
+      box-shadow: 0 0 12px rgba(0,212,255,0.18);
+    }
+    .pp-ppp-row .fill.anchor { background: linear-gradient(90deg, #E8A838, #F0C060); box-shadow: 0 0 12px rgba(232,168,56,0.25); }
+    .pp-ppp-row .fill.low { background: linear-gradient(90deg, #22c55e, #16a34a); box-shadow: 0 0 12px rgba(34,197,94,0.18); }
+    .pp-ppp-row .val { font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: var(--cyan); text-align: right; }
+    .pp-ppp-row .val.anchor { color: #E8A838; }
+    .pp-ppp-row .val.low { color: #22c55e; }
+    .pp-ppp-axis {
+      display: flex; justify-content: space-between;
+      margin-top: 10px; padding-left: 124px; padding-right: 74px;
+      font-family: var(--font-mono); font-size: 10px;
+      color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase;
+    }
+    @media (max-width: 600px) {
+      .pp-ppp-row { grid-template-columns: 80px 1fr 50px; gap: 10px; }
+      .pp-ppp-axis { padding-left: 90px; padding-right: 60px; }
+    }
+
     .pp-principles {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 16px; margin: 40px 0;
@@ -321,6 +361,23 @@
         <li>Student-led ventures under 24 months old</li>
         <li>Operators in conflict-affected or post-conflict regions</li>
       </ul>
+    </section>
+
+    <section class="pp-ppp-wrap">
+      <h2>Market PPP factors, at a glance</h2>
+      <p>The PPP factor is the only market-level adjustment. UK is the anchor at 1.00. Richer markets pay proportionally more, emerging markets proportionally less, same runtime, same agents, same support.</p>
+      <div class="pp-ppp-chart">
+        <div class="pp-ppp-row"><div class="mkt">Denmark<span class="cur">DKK</span></div><div class="track"><div class="fill" style="width:88%;"></div></div><div class="val">1.15</div></div>
+        <div class="pp-ppp-row"><div class="mkt">Sweden<span class="cur">SEK</span></div><div class="track"><div class="fill" style="width:84%;"></div></div><div class="val">1.10</div></div>
+        <div class="pp-ppp-row"><div class="mkt">Germany<span class="cur">EUR</span></div><div class="track"><div class="fill" style="width:80%;"></div></div><div class="val">1.05</div></div>
+        <div class="pp-ppp-row"><div class="mkt">Netherlands<span class="cur">EUR</span></div><div class="track"><div class="fill" style="width:80%;"></div></div><div class="val">1.05</div></div>
+        <div class="pp-ppp-row"><div class="mkt">UK . anchor<span class="cur">GBP</span></div><div class="track"><div class="fill anchor" style="width:76%;"></div></div><div class="val anchor">1.00</div></div>
+        <div class="pp-ppp-row"><div class="mkt">France<span class="cur">EUR</span></div><div class="track"><div class="fill" style="width:76%;"></div></div><div class="val">1.00</div></div>
+        <div class="pp-ppp-row"><div class="mkt">Italy<span class="cur">EUR</span></div><div class="track"><div class="fill" style="width:72%;"></div></div><div class="val">0.95</div></div>
+        <div class="pp-ppp-row"><div class="mkt">Morocco<span class="cur">MAD</span></div><div class="track"><div class="fill low" style="width:27%;"></div></div><div class="val low">0.35</div></div>
+        <div class="pp-ppp-row"><div class="mkt">Ghana<span class="cur">GHS</span></div><div class="track"><div class="fill low" style="width:17%;"></div></div><div class="val low">0.22</div></div>
+        <div class="pp-ppp-axis"><span>0.00</span><span>0.50</span><span>1.00</span><span>1.30</span></div>
+      </div>
     </section>
 
     <section class="pp-matrix-wrap">

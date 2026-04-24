@@ -113,6 +113,50 @@
     .cp-stage .when { font-family: var(--font-mono); font-size: 11px; color: var(--cyan); text-transform: uppercase; letter-spacing: 1.2px; }
     .cp-stage .what { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
     .cp-stage .what b { color: var(--text-primary); }
+
+    /* Article 6 risk pyramid */
+    .cp-pyramid { margin: 40px 0 10px; }
+    .cp-pyramid-title { font-family: var(--font-mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--cyan); margin: 0 0 20px; }
+    .cp-risk-row {
+      display: grid; grid-template-columns: 140px 1fr 120px; align-items: center;
+      gap: 16px; padding: 14px 18px; margin-bottom: 8px;
+      border: 1px solid var(--border); border-radius: var(--radius);
+      background: var(--bg-secondary);
+    }
+    .cp-risk-row.unacceptable { border-left: 4px solid var(--red, #ef4444); }
+    .cp-risk-row.high { border-left: 4px solid #E8A838; }
+    .cp-risk-row.limited { border-left: 4px solid var(--cyan); }
+    .cp-risk-row.minimal { border-left: 4px solid #22c55e; }
+    .cp-risk-row .label { font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 1.2px; font-weight: 700; }
+    .cp-risk-row.unacceptable .label { color: #ef4444; }
+    .cp-risk-row.high .label { color: #E8A838; }
+    .cp-risk-row.limited .label { color: var(--cyan); }
+    .cp-risk-row.minimal .label { color: #22c55e; }
+    .cp-risk-row .desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+    .cp-risk-row .desc b { color: var(--text-primary); }
+    .cp-risk-row .action { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); text-align: right; }
+    @media (max-width: 760px) {
+      .cp-risk-row { grid-template-columns: 1fr; gap: 6px; }
+      .cp-risk-row .action { text-align: left; }
+    }
+
+    /* Scope flow */
+    .cp-flow {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 12px; margin: 32px 0 20px;
+    }
+    @media (max-width: 860px) { .cp-flow { grid-template-columns: repeat(2, 1fr); } }
+    .cp-flow-step {
+      position: relative; padding: 18px 14px 16px;
+      background: var(--bg-secondary); border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+    .cp-flow-step .n {
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 2px;
+      color: var(--cyan); text-transform: uppercase; margin-bottom: 6px;
+    }
+    .cp-flow-step .t { font-size: 14px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+    .cp-flow-step .s { font-size: 12px; color: var(--text-muted); line-height: 1.55; }
   </style>
 
   <script defer src="https://yossra-analytics.fly.dev/analytics" data-website-id="4abcaca6-fb37-47bf-bc8e-41e4b2503ee8"></script>
@@ -163,6 +207,56 @@
     <section style="margin:30px 0 10px;">
       <h2 style="font-size:22px;margin:0 0 10px;">What actually changes 2 Aug 2026</h2>
       <p style="color:var(--text-secondary);line-height:1.7;max-width:760px;">General-purpose AI obligations have been live since 2 Aug 2025. From 2 Aug 2026 the majority of remaining provisions apply, including the full framework for <b>high-risk AI systems</b>: risk management, data governance, technical documentation, logging, human oversight, transparency and post-market monitoring. If your SMB uses AI in hiring, credit, education, access to essential services, biometrics, critical infrastructure, or law enforcement-adjacent tooling, you are in scope.</p>
+    </section>
+
+    <section class="cp-pyramid">
+      <div class="cp-pyramid-title">Article 6 . Risk classification</div>
+      <div class="cp-risk-row unacceptable">
+        <div class="label">Unacceptable</div>
+        <div class="desc"><b>Banned outright.</b> Social scoring, real-time biometric ID in public spaces, emotion recognition at work or school, manipulative systems.</div>
+        <div class="action">Do not build</div>
+      </div>
+      <div class="cp-risk-row high">
+        <div class="label">High-risk</div>
+        <div class="desc"><b>Full compliance required.</b> Hiring, credit scoring, education access, essential services, critical infrastructure, law-enforcement tooling, biometrics.</div>
+        <div class="action">Annex IV dossier</div>
+      </div>
+      <div class="cp-risk-row limited">
+        <div class="label">Limited risk</div>
+        <div class="desc"><b>Transparency obligations.</b> Chatbots, deepfakes, emotion-recognition in non-work contexts. Users must be told they are interacting with AI.</div>
+        <div class="action">Disclosure notice</div>
+      </div>
+      <div class="cp-risk-row minimal">
+        <div class="label">Minimal risk</div>
+        <div class="desc"><b>No mandatory obligations.</b> Spam filters, AI in video games, inventory forecasting. Voluntary code of conduct recommended.</div>
+        <div class="action">Voluntary</div>
+      </div>
+    </section>
+
+    <section style="margin:40px 0 10px;">
+      <h2 style="font-size:22px;margin:0 0 14px;">From inventory to enforcement-ready</h2>
+      <div class="cp-flow">
+        <div class="cp-flow-step">
+          <div class="n">01 . Inventory</div>
+          <div class="t">Catalogue AI use</div>
+          <div class="s">Every system, vendor, data flow, user group.</div>
+        </div>
+        <div class="cp-flow-step">
+          <div class="n">02 . Classify</div>
+          <div class="t">Article 6 tier</div>
+          <div class="s">Score each system, flag grey areas.</div>
+        </div>
+        <div class="cp-flow-step">
+          <div class="n">03 . Document</div>
+          <div class="t">Annex IV dossier</div>
+          <div class="s">Design, data, risk, oversight, logs.</div>
+        </div>
+        <div class="cp-flow-step">
+          <div class="n">04 . Operate</div>
+          <div class="t">Post-market monitor</div>
+          <div class="s">Incident log, annual review, regulator contact.</div>
+        </div>
+      </div>
     </section>
 
     <section class="cp-packs">
