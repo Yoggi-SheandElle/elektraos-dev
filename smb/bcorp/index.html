@@ -17,11 +17,12 @@
 :root{--bg:#0a0f0d;--bg-card:#0f1a15;--text:#e8f0ec;--muted:#7a968a;--green:#10b981;--amber:#f59e0b;--red:#ef4444;--border:rgba(16,185,129,0.15);}
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;}
-nav{position:fixed;top:0;left:0;right:0;padding:1rem 1.5rem;background:rgba(10,15,13,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;z-index:100;}
-.nav-logo{font-family:'Space Mono',monospace;font-size:0.85rem;color:var(--green);text-decoration:none;}
-.nav-links{display:flex;gap:1.25rem;}
+nav{position:fixed;top:0;left:0;right:0;padding:1rem 1.5rem;background:rgba(10,15,13,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;z-index:100;gap:1rem;flex-wrap:wrap;}
+.nav-logo{font-family:'Space Mono',monospace;font-size:0.9rem;font-weight:700;color:var(--text);text-decoration:none;letter-spacing:0.02em;}
+.nav-logo span{color:var(--green);}
+.nav-links{display:flex;gap:1.25rem;flex-wrap:wrap;}
 .nav-links a{font-size:0.8rem;color:var(--muted);text-decoration:none;}
-.nav-links a:hover{color:var(--green);}
+.nav-links a:hover,.nav-links a.active{color:var(--green);}
 .hero{padding:7rem 1.5rem 2rem;max-width:960px;margin:0 auto;text-align:center;}
 .badge{font-family:'Space Mono',monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.25em;color:var(--green);margin-bottom:1rem;}
 h1{font-size:clamp(2rem,5vw,3.4rem);font-weight:700;line-height:1.15;margin-bottom:1rem;}
@@ -68,13 +69,15 @@ footer a{color:var(--green);text-decoration:none;}
 </head>
 <body>
 <nav>
-  <a href="/smb/" class="nav-logo">&#9733; ElektraOS SMB</a>
+  <a href="/" class="nav-logo"><span>E</span>lektraOS<span>.</span>dev</a>
   <div class="nav-links">
+    <a href="/smb/">For SMB</a>
     <a href="/smb/pricing/">Pricing</a>
-    <a href="/smb/compliance/">AI Act</a>
+    <a href="/smb/compliance/">EU AI Act</a>
     <a href="/smb/governance/">Governance</a>
     <a href="/smb/hubs/">Hubs</a>
-    <a href="/smb/bcorp/">B Corp</a>
+    <a href="/smb/bcorp/" class="active">B Corp</a>
+    <a href="/cases/">Cases</a>
   </div>
 </nav>
 
