@@ -1,111 +1,180 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ElektraOS UK . AI systems for British teams</title>
-<meta name="description" content="ElektraOS UK: GBP-anchored AI stack for British SMBs. London hub live under BizUs Legal Ltd. ICO-ready data handling, EU AI Act dossier included.">
-<meta property="og:title" content="ElektraOS UK . AI for British SMBs">
-<meta property="og:description" content="GBP pricing anchor. London hub live. ICO + EU AI Act ready.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://elektraos.dev/uk/">
-<meta name="theme-color" content="#1e40af">
-<link rel="icon" type="image/svg+xml" href="../favicon.svg">
-<link rel="canonical" href="https://elektraos.dev/uk/">
-<link rel="alternate" hreflang="en" href="https://elektraos.dev/">
-<link rel="alternate" hreflang="en-GB" href="https://elektraos.dev/uk/">
-<link rel="alternate" hreflang="en-GH" href="https://elektraos.dev/gh/">
-<link rel="alternate" hreflang="x-default" href="https://elektraos.dev/">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#0a0a0f;--bg-card:#12121a;--text:#e8e8ee;--muted:#8a8a9a;--accent:#1e40af;--red:#c8102e;--white:#f0f4ff;--border:rgba(30,64,175,0.2);}
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;}
-nav{position:fixed;top:0;left:0;right:0;padding:1rem 1.5rem;background:rgba(10,10,15,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;z-index:100;}
-.nav-logo{font-family:'Space Mono',monospace;font-size:0.85rem;color:var(--white);text-decoration:none;}
-.nav-links{display:flex;gap:1.25rem;align-items:center;}
-.nav-links a{font-size:0.8rem;color:var(--muted);text-decoration:none;}
-.nav-links a:hover{color:var(--white);}
-.nav-cta{background:var(--accent);color:#fff;padding:0.45rem 0.9rem;border-radius:8px;font-size:0.75rem;font-weight:600;}
-.hero{min-height:90vh;display:flex;flex-direction:column;justify-content:center;padding:6rem 1.5rem 3rem;max-width:960px;margin:0 auto;}
-.badge{font-family:'Space Mono',monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.25em;color:var(--white);margin-bottom:1rem;display:inline-flex;gap:0.5rem;align-items:center;}
-.dot{width:6px;height:6px;background:var(--red);border-radius:50%;}
-h1{font-size:clamp(2.2rem,6vw,4rem);font-weight:700;line-height:1.1;margin-bottom:1.25rem;}
-h1 span{color:var(--accent);}
-h1 em{color:var(--red);font-style:normal;}
-.lead{font-size:1.15rem;color:var(--muted);max-width:680px;margin-bottom:2rem;}
-.btns{display:flex;gap:0.75rem;flex-wrap:wrap;}
-.btn{padding:0.8rem 1.4rem;border-radius:10px;font-size:0.85rem;font-weight:600;text-decoration:none;transition:all 0.2s;}
-.btn-primary{background:var(--accent);color:#fff;}
-.btn-primary:hover{background:#2563eb;box-shadow:0 0 24px rgba(30,64,175,0.4);}
-.btn-ghost{border:1px solid var(--border);color:var(--text);}
-.btn-ghost:hover{border-color:var(--accent);}
-section{padding:4rem 1.5rem;max-width:960px;margin:0 auto;}
-h2{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:700;margin-bottom:1rem;}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-top:2rem;}
-.card{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:1.75rem;text-decoration:none;display:block;transition:all 0.2s;}
-.card:hover{border-color:var(--accent);transform:translateY(-3px);}
-.card h3{font-size:1.05rem;margin-bottom:0.5rem;color:var(--text);}
-.card p{font-size:0.9rem;color:var(--muted);}
-.card .tag{font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;color:var(--accent);margin-bottom:0.75rem;text-transform:uppercase;}
-.card.red .tag{color:var(--red);}
-footer{text-align:center;padding:3rem 1.5rem;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border);}
-footer a{color:var(--accent);text-decoration:none;}
-</style>
-<script defer src="https://yossra-analytics.fly.dev/analytics" data-website-id="4abcaca6-fb37-47bf-bc8e-41e4b2503ee8"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ElektraOS UK . AI systems for British teams</title>
+  <meta name="description" content="ElektraOS UK: GBP-anchored AI stack for British SMBs. London hub live under BizUs Legal Ltd. ICO-ready data handling, EU AI Act dossier included.">
+  <meta property="og:title" content="ElektraOS UK . AI for British SMBs">
+  <meta property="og:description" content="GBP pricing anchor. London hub live. ICO + EU AI Act ready.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://elektraos.dev/uk/">
+  <meta name="theme-color" content="#7c3aed">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="canonical" href="https://elektraos.dev/uk/">
+  <link rel="alternate" hreflang="en" href="https://elektraos.dev/">
+  <link rel="alternate" hreflang="en-GB" href="https://elektraos.dev/uk/">
+  <link rel="alternate" hreflang="en-GH" href="https://elektraos.dev/gh/">
+  <link rel="alternate" hreflang="x-default" href="https://elektraos.dev/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/animations.css">
+  <link rel="stylesheet" href="/css/sections.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+
+  <style>
+    .uk-hero { padding: 160px 0 40px; max-width: 1040px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+    .uk-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--font-mono); font-size: 11px;
+      text-transform: uppercase; letter-spacing: 2px; color: var(--cyan);
+      border: 1px solid rgba(0, 212, 255, 0.2); padding: 6px 16px; border-radius: 999px;
+      margin-bottom: 24px; background: rgba(0, 212, 255, 0.06);
+    }
+    .uk-badge .dot { width: 6px; height: 6px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 10px rgba(34,197,94,0.6); }
+    .uk-hero h1 { font-size: clamp(36px, 6vw, 60px); font-weight: 700; line-height: 1.05; margin-bottom: 20px; color: var(--text-primary); max-width: 860px; }
+    .uk-hero h1 .gradient { background: var(--gradient-brand); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .uk-hero h1 .anchor { color: #E8A838; }
+    .uk-lead { font-size: 18px; color: var(--text-secondary); max-width: 720px; line-height: 1.7; margin-bottom: 32px; }
+    .uk-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .uk-btn {
+      padding: 12px 22px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 600;
+      text-decoration: none; transition: all 0.2s var(--ease);
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .uk-btn-primary { background: var(--gradient-brand); color: #fff; }
+    .uk-btn-primary:hover { box-shadow: 0 0 28px var(--purple-glow); transform: translateY(-1px); }
+    .uk-btn-ghost { border: 1px solid var(--border); color: var(--text-primary); }
+    .uk-btn-ghost:hover { border-color: var(--purple); color: var(--purple); }
+
+    .uk-section { padding: 40px 24px 64px; max-width: 1040px; margin: 0 auto; }
+    .uk-section h2 { font-size: clamp(26px, 4vw, 34px); font-weight: 700; margin-bottom: 14px; color: var(--text-primary); }
+    .uk-section p.kicker { color: var(--text-secondary); max-width: 720px; line-height: 1.7; margin-bottom: 28px; }
+
+    .uk-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .uk-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-md); padding: 24px;
+      text-decoration: none; display: block;
+      transition: all 0.2s var(--ease);
+    }
+    .uk-card:hover { border-color: var(--purple); transform: translateY(-3px); box-shadow: var(--shadow-glow); }
+    .uk-card .tag {
+      font-family: var(--font-mono); font-size: 11px; letter-spacing: 2px;
+      color: var(--cyan); text-transform: uppercase; margin-bottom: 12px;
+    }
+    .uk-card.amber .tag { color: #E8A838; }
+    .uk-card.red .tag { color: var(--red); }
+    .uk-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 8px; color: var(--text-primary); }
+    .uk-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+    .uk-stats {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px; margin: 36px 0 0;
+    }
+    .uk-stat {
+      border: 1px solid var(--border); border-radius: var(--radius-md);
+      padding: 22px 18px; text-align: center;
+      background: linear-gradient(135deg, rgba(124,58,237,0.06), rgba(0,212,255,0.03));
+    }
+    .uk-stat-num {
+      font-family: var(--font-mono); font-size: 26px; font-weight: 700;
+      background: var(--gradient-brand);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      line-height: 1.1;
+    }
+    .uk-stat-label {
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 2px;
+      color: var(--text-muted); text-transform: uppercase; margin-top: 8px;
+    }
+  </style>
+
+  <script defer src="https://yossra-analytics.fly.dev/analytics" data-website-id="4abcaca6-fb37-47bf-bc8e-41e4b2503ee8"></script>
 </head>
 <body>
-<nav>
-  <a href="/" class="nav-logo" style="font-family:'Space Mono',monospace;font-size:0.9rem;font-weight:700;text-decoration:none;"><span style="opacity:0.7">E</span>lektraOS<span style="opacity:0.7">.</span>dev</a><a href="/uk/" style="font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;padding:3px 7px;border-radius:4px;background:rgba(255,255,255,0.08);color:#e8e8ee;text-decoration:none;margin-left:0.5rem;margin-right:auto;">UK</a>
-  <div class="nav-links">
-    <a href="/uk/smb/">SMB</a>
-    <a href="/smb/pricing/">Pricing</a>
-    <a href="/smb/compliance/">AI Act</a>
-    <a href="/smb/hubs/" class="nav-cta">Become a hub</a>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo"><span>E</span>lektraOS<span>.</span>dev</a>
+    <a href="/uk/" style="font-family:var(--font-mono);font-size:11px;letter-spacing:2px;padding:4px 10px;border-radius:6px;background:rgba(124,58,237,0.12);color:var(--text-primary);text-decoration:none;margin-left:10px;margin-right:auto;border:1px solid var(--purple-border);">UK</a>
+    <div class="nav-links">
+      <a href="/uk/smb/">SMB</a>
+      <a href="/smb/pricing/">Pricing</a>
+      <a href="/smb/compliance/">AI Act</a>
+      <a href="/smb/hubs/" class="nav-cta">Become a hub</a>
+    </div>
   </div>
 </nav>
 
-<div class="hero">
-  <div class="badge"><span class="dot"></span>London hub live . BizUs Legal Ltd . Co. 13415877</div>
-  <h1>AI systems. <span>British</span> <em>teams</em>.</h1>
-  <p class="lead">One AI stack for UK SMBs of 5 to 50. GBP-anchored fair pricing, ICO-aligned data handling, EU AI Act dossier ready for UK firms selling into EU markets. Built from Copenhagen, hub led from London.</p>
-  <div class="btns">
-    <a href="/uk/smb/" class="btn btn-primary">UK SMB stack &gt;</a>
-    <a href="/smb/pricing/" class="btn btn-ghost">GBP pricing</a>
-    <a href="/smb/compliance/" class="btn btn-ghost">AI Act dossier</a>
+<section class="uk-hero">
+  <div class="uk-badge"><span class="dot"></span>London hub live . BizUs Legal Ltd . Co. 13415877</div>
+  <h1>AI systems for <span class="gradient">British teams</span>, priced against the <span class="anchor">GBP anchor</span>.</h1>
+  <p class="uk-lead">One AI stack for UK SMBs of 5 to 50. GBP-anchored fair pricing, ICO-aligned data handling, EU AI Act dossier ready for UK firms selling into EU markets. Built from Copenhagen, hub led from London.</p>
+  <div class="uk-btns">
+    <a href="/uk/smb/" class="uk-btn uk-btn-primary">UK SMB stack &rarr;</a>
+    <a href="/smb/pricing/" class="uk-btn uk-btn-ghost">GBP pricing</a>
+    <a href="/smb/compliance/" class="uk-btn uk-btn-ghost">AI Act dossier</a>
   </div>
-</div>
 
-<section>
+  <div class="uk-stats">
+    <div class="uk-stat">
+      <div class="uk-stat-num">GBP 299</div>
+      <div class="uk-stat-label">Floor tier, monthly</div>
+    </div>
+    <div class="uk-stat">
+      <div class="uk-stat-num">1.00</div>
+      <div class="uk-stat-label">PPP anchor</div>
+    </div>
+    <div class="uk-stat">
+      <div class="uk-stat-num">40%</div>
+      <div class="uk-stat-label">Equity discount</div>
+    </div>
+    <div class="uk-stat">
+      <div class="uk-stat-num">2 Aug 2026</div>
+      <div class="uk-stat-label">AI Act enforcement</div>
+    </div>
+  </div>
+</section>
+
+<section class="uk-section">
   <h2>Where to go next.</h2>
-  <div class="grid">
-    <a href="/uk/smb/" class="card">
+  <p class="kicker">UK entry points across the stack. Pricing, compliance, governance and case studies all share the same runtime, same agents, same transparent rates.</p>
+  <div class="uk-grid">
+    <a href="/uk/smb/" class="uk-card">
       <div class="tag">SMB</div>
       <h3>AI stack for British SMBs</h3>
-      <p>Chatbots, automation, SEO, custom agents. GBP 299/mo floor, 40% equity discount for under-represented founders.</p>
+      <p>Chatbots, automation, SEO, custom agents. GBP 299/mo floor, 40 percent equity discount for under-represented founders.</p>
     </a>
-    <a href="/smb/pricing/" class="card">
-      <div class="tag">Pricing</div>
+    <a href="/smb/pricing/" class="uk-card amber">
+      <div class="tag">Pricing . anchor</div>
       <h3>Live GBP calculator</h3>
       <p>Pick team size and equity eligibility. Price updates in GBP, no FX surprises, no Stripe markup.</p>
     </a>
-    <a href="/smb/compliance/" class="card red">
+    <a href="/smb/compliance/" class="uk-card red">
       <div class="tag">EU AI Act</div>
       <h3>Article 6 + Annex IV pack</h3>
       <p>Selling AI into EU clients after 2 Aug 2026? We already built the classification and dossier. Reusable for your stack.</p>
     </a>
-    <a href="/smb/governance/" class="card">
+    <a href="/smb/governance/" class="uk-card">
       <div class="tag">Governance</div>
       <h3>Pact + Stichting</h3>
       <p>Signed governance pact. Stichting vehicle planned Q4 2026. No Scandi shell games, no opaque ops.</p>
     </a>
-    <a href="/smb/hubs/" class="card">
+    <a href="/smb/hubs/" class="uk-card">
       <div class="tag">Hubs</div>
       <h3>Become a UK hub lead</h3>
-      <p>Close clients in your region, keep 70%. No monthly fee, no non-compete. We supply stack, pricing, playbook.</p>
+      <p>Close clients in your region, keep 70 percent. No monthly fee, no non-compete. We supply stack, pricing, playbook.</p>
     </a>
-    <a href="/casestudy/mealshift/vision/" class="card">
+    <a href="/casestudy/mealshift/vision/" class="uk-card">
       <div class="tag">Case</div>
       <h3>MealShift Commerce OS</h3>
       <p>Multi-vertical commerce OS for UK merchants. NestJS + Next.js, live client on production. Woo/Shopify/Wix plugins.</p>
@@ -113,9 +182,11 @@ footer a{color:var(--accent);text-decoration:none;}
   </div>
 </section>
 
-<footer>
+<footer style="text-align:center;padding:48px 24px;font-size:12px;color:var(--text-muted);border-top:1px solid var(--border);">
   <p>ElektraOS UK . London hub led by BizUs Legal Ltd . Company no. 13415877</p>
-  <p style="margin-top:0.5rem;"><a href="https://elektraos.dev/">elektraos.dev</a> . <a href="/smb/">SMB home</a> . <a href="mailto:yossra.benzad@gmail.com">yossra.benzad@gmail.com</a></p>
+  <p style="margin-top:8px;">Copenhagen . London . Casablanca . Accra . Built on ElektraOS runtime</p>
+  <p style="margin-top:8px;"><a href="https://elektraos.dev/" style="color:var(--cyan);text-decoration:none;">elektraos.dev</a> . <a href="/smb/" style="color:var(--cyan);text-decoration:none;">SMB home</a> . <a href="mailto:yossra.benzad@gmail.com" style="color:var(--cyan);text-decoration:none;">yossra.benzad@gmail.com</a></p>
 </footer>
+
 </body>
 </html>
