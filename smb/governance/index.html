@@ -82,6 +82,45 @@
     .gv-status .s .live { background: #22c55e; }
     .gv-status .s .wip { background: #E8A838; }
     .gv-status .s .next { background: var(--cyan); }
+
+    /* Fix: hide the empty placeholder div so content doesn't wrap to a narrow column */
+    .gv-article > div:first-child:empty { display: none; }
+
+    /* Milestone timeline */
+    .gv-timeline { margin: 56px 0 24px; }
+    .gv-timeline-title { font-family: var(--font-mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--cyan); margin: 0 0 28px; }
+    .gv-timeline-track { position: relative; padding: 0 0 8px; }
+    .gv-timeline-track::before {
+      content: ''; position: absolute; top: 30px; left: 5%; right: 5%; height: 2px;
+      background: linear-gradient(90deg, #22c55e 0%, #22c55e 40%, #E8A838 40%, #E8A838 60%, var(--cyan) 60%, var(--cyan) 100%);
+      border-radius: 2px; z-index: 1;
+    }
+    .gv-timeline-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; position: relative; z-index: 2; }
+    .gv-timeline-step { text-align: center; padding-top: 52px; position: relative; }
+    .gv-timeline-step .tl-dot { position: absolute; top: 22px; left: 50%; transform: translateX(-50%); width: 18px; height: 18px; border-radius: 50%; border: 3px solid var(--bg); box-sizing: content-box; }
+    .gv-timeline-step .tl-dot.live { background: #22c55e; box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.22); }
+    .gv-timeline-step .tl-dot.wip { background: #E8A838; box-shadow: 0 0 0 3px rgba(232, 168, 56, 0.22); }
+    .gv-timeline-step .tl-dot.next { background: var(--cyan); box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.22); }
+    .gv-timeline-step .tl-date { font-family: var(--font-mono); font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
+    .gv-timeline-step .tl-label { font-size: 13px; color: var(--text); font-weight: 600; line-height: 1.4; }
+    @media (max-width: 720px) {
+      .gv-timeline-steps { grid-template-columns: 1fr; gap: 20px; }
+      .gv-timeline-track::before { display: none; }
+      .gv-timeline-step { padding-top: 0; text-align: left; padding-left: 32px; }
+      .gv-timeline-step .tl-dot { top: 4px; left: 0; transform: none; }
+    }
+
+    /* Residency region chips */
+    .gv-regions { margin: 56px 0 16px; }
+    .gv-regions-title { font-family: var(--font-mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--cyan); margin: 0 0 18px; }
+    .gv-regions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+    .gv-region { border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; background: var(--bg-secondary); position: relative; overflow: hidden; }
+    .gv-region::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--cyan); opacity: 0.6; }
+    .gv-region .r-flag { font-size: 22px; margin-bottom: 8px; display: block; }
+    .gv-region .r-market { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+    .gv-region .r-dc { font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px; color: var(--text-muted); text-transform: uppercase; }
+    .gv-region.primary::before { background: #22c55e; opacity: 0.8; }
+    .gv-region.review::before { background: #E8A838; opacity: 0.8; }
   </style>
 
   <script defer src="https://yossra-analytics.fly.dev/analytics" data-website-id="4abcaca6-fb37-47bf-bc8e-41e4b2503ee8"></script>
@@ -126,6 +165,39 @@
       <div class="s"><h4><span class="dot live"></span>Live</h4><p>Loomgraph Society membership for every SMB at floor tier and above. Domain joins the registry day one.</p></div>
       <div class="s"><h4><span class="dot wip"></span>In progress</h4><p>Local hub lead revenue share (70/30). First hub leads Q3 2026.</p></div>
       <div class="s"><h4><span class="dot next"></span>Next</h4><p>B Corp certification prep under 7th edition standards. Stichting formation in Netherlands Q4 2026.</p></div>
+    </section>
+
+    <section class="gv-timeline" aria-label="Governance milestone timeline">
+      <div class="gv-timeline-title">Milestone timeline</div>
+      <div class="gv-timeline-track">
+        <div class="gv-timeline-steps">
+          <div class="gv-timeline-step">
+            <div class="tl-dot live"></div>
+            <div class="tl-date">2026-04-24</div>
+            <div class="tl-label">Pact v1 published</div>
+          </div>
+          <div class="gv-timeline-step">
+            <div class="tl-dot live"></div>
+            <div class="tl-date">2026 Q2</div>
+            <div class="tl-label">rates.json live</div>
+          </div>
+          <div class="gv-timeline-step">
+            <div class="tl-dot wip"></div>
+            <div class="tl-date">2026 Q3</div>
+            <div class="tl-label">First hub leads</div>
+          </div>
+          <div class="gv-timeline-step">
+            <div class="tl-dot next"></div>
+            <div class="tl-date">2026 Q4</div>
+            <div class="tl-label">Stichting (NL)</div>
+          </div>
+          <div class="gv-timeline-step">
+            <div class="tl-dot next"></div>
+            <div class="tl-date">2027 Q2</div>
+            <div class="tl-label">B Corp submission</div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <div class="gv-pact">
@@ -212,6 +284,42 @@
       </article>
 
     </div>
+
+    <section class="gv-regions" aria-label="Data residency regions at a glance">
+      <div class="gv-regions-title">Data residency . Where your data lives</div>
+      <div class="gv-regions-grid">
+        <div class="gv-region primary">
+          <span class="r-flag">&#127468;&#127463;</span>
+          <div class="r-market">United Kingdom</div>
+          <div class="r-dc">Fly.io LHR . London</div>
+        </div>
+        <div class="gv-region primary">
+          <span class="r-flag">&#127465;&#127472;</span>
+          <div class="r-market">Denmark</div>
+          <div class="r-dc">Fly.io CPH . Copenhagen</div>
+        </div>
+        <div class="gv-region primary">
+          <span class="r-flag">&#127465;&#127466;</span>
+          <div class="r-market">Germany, Austria</div>
+          <div class="r-dc">Hetzner . Frankfurt</div>
+        </div>
+        <div class="gv-region primary">
+          <span class="r-flag">&#127467;&#127479;</span>
+          <div class="r-market">FR . IT . NL . SE</div>
+          <div class="r-dc">Fly.io AMS / FRA</div>
+        </div>
+        <div class="gv-region review">
+          <span class="r-flag">&#127474;&#127462;</span>
+          <div class="r-market">Morocco</div>
+          <div class="r-dc">Fly.io CDG . Paris . Law 09-08 under review</div>
+        </div>
+        <div class="gv-region primary">
+          <span class="r-flag">&#127468;&#127469;</span>
+          <div class="r-market">Ghana</div>
+          <div class="r-dc">Fly.io JNB or LHR . customer choice</div>
+        </div>
+      </div>
+    </section>
 
     <section style="margin:40px 0;">
       <h2 style="font-size:22px;margin:0 0 16px;">Data residency quick reference</h2>
