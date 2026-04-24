@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B Corp Certification Path . ElektraOS SMB</title>
+<meta name="description" content="ElektraOS is preparing for B Corp certification under the 7th edition standards (published April 2026). Target: Q2 2027 under a Netherlands stichting. Live progress tracker.">
+<meta property="og:title" content="ElektraOS B Corp Path . Transparent prep for Q2 2027">
+<meta property="og:url" content="https://elektraos.dev/smb/bcorp/">
+<meta name="theme-color" content="#10b981">
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="canonical" href="https://elektraos.dev/smb/bcorp/">
+<link rel="alternate" hreflang="en" href="https://elektraos.dev/smb/bcorp/">
+<link rel="alternate" hreflang="x-default" href="https://elektraos.dev/smb/bcorp/">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0f0d;--bg-card:#0f1a15;--text:#e8f0ec;--muted:#7a968a;--green:#10b981;--amber:#f59e0b;--red:#ef4444;--border:rgba(16,185,129,0.15);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;}
+nav{position:fixed;top:0;left:0;right:0;padding:1rem 1.5rem;background:rgba(10,15,13,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;z-index:100;}
+.nav-logo{font-family:'Space Mono',monospace;font-size:0.85rem;color:var(--green);text-decoration:none;}
+.nav-links{display:flex;gap:1.25rem;}
+.nav-links a{font-size:0.8rem;color:var(--muted);text-decoration:none;}
+.nav-links a:hover{color:var(--green);}
+.hero{padding:7rem 1.5rem 2rem;max-width:960px;margin:0 auto;text-align:center;}
+.badge{font-family:'Space Mono',monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.25em;color:var(--green);margin-bottom:1rem;}
+h1{font-size:clamp(2rem,5vw,3.4rem);font-weight:700;line-height:1.15;margin-bottom:1rem;}
+h1 span{color:var(--green);}
+.lead{font-size:1.1rem;color:var(--muted);max-width:680px;margin:0 auto 2rem;}
+.countdown{font-family:'Space Mono',monospace;font-size:1.1rem;color:var(--amber);padding:1rem;background:var(--bg-card);border-radius:10px;display:inline-block;margin:1rem 0;}
+section{padding:3rem 1.5rem;max-width:960px;margin:0 auto;}
+h2{font-size:clamp(1.4rem,3vw,2rem);font-weight:700;margin-bottom:1rem;}
+h3{font-size:1.1rem;margin-bottom:0.5rem;color:var(--text);}
+p{color:var(--muted);margin-bottom:1rem;}
+.pillar-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin:1.5rem 0;}
+.pillar{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:1.5rem;}
+.pillar-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;}
+.pillar-num{font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--green);letter-spacing:0.1em;}
+.status{font-family:'Space Mono',monospace;font-size:0.65rem;padding:0.25rem 0.6rem;border-radius:6px;text-transform:uppercase;letter-spacing:0.1em;}
+.status.done{background:rgba(16,185,129,0.15);color:var(--green);}
+.status.progress{background:rgba(245,158,11,0.15);color:var(--amber);}
+.status.pending{background:rgba(239,68,68,0.15);color:var(--red);}
+.pillar p{font-size:0.88rem;margin-bottom:0.5rem;}
+.pillar ul{list-style:none;padding:0;}
+.pillar li{font-size:0.85rem;color:var(--muted);padding:0.3rem 0 0.3rem 1.2rem;position:relative;}
+.pillar li::before{content:'>';position:absolute;left:0;color:var(--green);font-family:'Space Mono',monospace;}
+.timeline{position:relative;padding-left:2rem;margin:2rem 0;}
+.timeline::before{content:'';position:absolute;left:0.5rem;top:0;bottom:0;width:2px;background:var(--border);}
+.milestone{margin-bottom:1.5rem;position:relative;}
+.milestone::before{content:'';position:absolute;left:-1.7rem;top:0.5rem;width:10px;height:10px;border-radius:50%;background:var(--green);}
+.milestone.future::before{background:var(--muted);}
+.milestone-date{font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--amber);letter-spacing:0.1em;margin-bottom:0.3rem;}
+.milestone h4{font-size:1rem;margin-bottom:0.3rem;color:var(--text);}
+.milestone p{font-size:0.88rem;margin:0;}
+.score-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.88rem;}
+.score-table th,.score-table td{padding:0.75rem;text-align:left;border-bottom:1px solid var(--border);}
+.score-table th{font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--green);letter-spacing:0.1em;text-transform:uppercase;}
+.score-table td{color:var(--muted);}
+.score-table td:first-child{color:var(--text);font-weight:500;}
+.btns{display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:1.5rem;}
+.btn{padding:0.7rem 1.3rem;border-radius:10px;font-size:0.85rem;font-weight:600;text-decoration:none;}
+.btn-primary{background:var(--green);color:#000;}
+.btn-ghost{border:1px solid var(--border);color:var(--text);}
+footer{text-align:center;padding:3rem 1.5rem;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border);}
+footer a{color:var(--green);text-decoration:none;}
+</style>
+<script defer src="https://yossra-analytics.fly.dev/analytics" data-website-id="4abcaca6-fb37-47bf-bc8e-41e4b2503ee8"></script>
+</head>
+<body>
+<nav>
+  <a href="/smb/" class="nav-logo">&#9733; ElektraOS SMB</a>
+  <div class="nav-links">
+    <a href="/smb/pricing/">Pricing</a>
+    <a href="/smb/compliance/">AI Act</a>
+    <a href="/smb/governance/">Governance</a>
+    <a href="/smb/hubs/">Hubs</a>
+    <a href="/smb/bcorp/">B Corp</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="badge">Certification prep tracker . 7th edition standards</div>
+  <h1>Path to <span>B Corp</span> certification.</h1>
+  <p class="lead">ElektraOS is committing to B Corp certification under the 7th edition standards (published April 2026 by B Lab). This page tracks our progress honestly. Certification is not yet awarded, so we do not claim it. We do show what we are doing to earn it.</p>
+  <div class="countdown" id="countdown">Target filing: Q2 2027 . building the evidence base</div>
+</div>
+
+<section>
+  <h2>What is the 7th edition.</h2>
+  <p>B Lab released the 7th edition of its impact standards in April 2026. Unlike the earlier points-based B Impact Assessment, the 7th edition uses <strong>minimum requirements across seven impact topics</strong>. You pass all of them or you do not certify.</p>
+  <p>We picked the 7th edition (not legacy 6th) because it aligns with our operating reality: a small AI-native company with a global hub network, serving SMBs in mature and emerging markets. The newer standard takes supply chain, AI governance, and environmental accounting seriously.</p>
+</section>
+
+<section>
+  <h2>The seven impact topics.</h2>
+  <div class="pillar-grid">
+    <div class="pillar">
+      <div class="pillar-head">
+        <span class="pillar-num">01 . Purpose + Stakeholder Governance</span>
+        <span class="status progress">In progress</span>
+      </div>
+      <h3>Mission locked in legal docs</h3>
+      <p>Stichting (NL foundation) is the planned vehicle. Charter will encode fair pricing, hub compact, equity discount, and no-sale-to-big-tech clauses.</p>
+      <ul><li>Governance Pact v1 published 2026-04-24</li><li>Stichting filing: target Q4 2026</li><li>Stakeholder advisory board: forming</li></ul>
+    </div>
+    <div class="pillar">
+      <div class="pillar-head">
+        <span class="pillar-num">02 . Fair Work</span>
+        <span class="status done">Strong</span>
+      </div>
+      <h3>Hub leads get 70 percent of revenue</h3>
+      <p>No non-compete. 90-day exit. No monthly fee. Fair Work is structurally baked into the hub model before we had to think about it for certification.</p>
+      <ul><li>70/30 revenue split documented</li><li>No non-compete clauses anywhere</li><li>Transparent equity discount: 40%</li></ul>
+    </div>
+    <div class="pillar">
+      <div class="pillar-head">
+        <span class="pillar-num">03 . Justice + Diversity</span>
+        <span class="status progress">In progress</span>
+      </div>
+      <h3>Equity discount is the baseline</h3>
+      <p>40 percent off for under-represented founders, women-led, youth-led, and first-year startups under GBP 500k ARR. Self-declare then verify. Published transparent eligibility rules.</p>
+      <ul><li>Equity discount rules public</li><li>Cohort 25% reserved seats for equity-tier</li><li>Diversity report: commit to annual publication</li></ul>
+    </div>
+    <div class="pillar">
+      <div class="pillar-head">
+        <span class="pillar-num">04 . Climate Action</span>
+        <span class="status pending">Pending</span>
+      </div>
+      <h3>Emissions measurement before reduction</h3>
+      <p>We run on Fly.io and Render. Step one: audit carbon intensity of our deployment regions. Step two: commit to science-based targets. Step three: publish annual CO2 numbers.</p>
+      <ul><li>Scope 1/2 baseline: pending Q3 2026</li><li>Scope 3 methodology: TBD</li><li>SBT commitment: target Q1 2027</li></ul>
+    </div>
+    <div class="pillar">
+      <div class="pillar-head">
+        <span class="pillar-num">05 . Environmental Stewardship</span>
+        <span class="status pending">Pending</span>
+      </div>
+      <h3>Data centre region selection</h3>
+      <p>Every Loomgraph and ElektraOS deployment picks lowest-carbon region within latency budget. LHR is our current primary (low carbon) for UK/EU traffic. Need to audit + document the decision framework.</p>
+      <ul><li>Fly.io region carbon audit: pending</li><li>Renewable PPA verification: pending</li><li>Water usage: N/A (no on-prem)</li></ul>
+    </div>
+    <div class="pillar">
+      <div class="pillar-head">
+        <span class="pillar-num">06 . Human Rights</span>
+        <span class="status progress">In progress</span>
+      </div>
+      <h3>Supply chain: we build most of it ourselves</h3>
+      <p>Human rights exposure mostly lives in our cloud and LLM vendors. We commit to publishing a vendor register and avoiding providers with documented violations. AI safety review for every agent.</p>
+      <ul><li>Vendor register: Q2 2026 publication target</li><li>AI safety review framework: v0 draft</li><li>Labour standards: all work direct-hire</li></ul>
+    </div>
+    <div class="pillar">
+      <div class="pillar-head">
+        <span class="pillar-num">07 . Government + Collective Action</span>
+        <span class="status progress">In progress</span>
+      </div>
+      <h3>EU AI Act early compliance</h3>
+      <p>We signed up for the Danish regulatory sandbox (Datatilsynet + Digitaliseringsstyrelsen) and will publish our Annex IV dossier publicly once the first cohort completes. Regulatory cooperation over lobbying.</p>
+      <ul><li>Copenhagen sandbox: application pending</li><li>EU AI Act dossier: v1 drafted</li><li>No political donations: committed</li></ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Timeline to certification.</h2>
+  <div class="timeline">
+    <div class="milestone">
+      <div class="milestone-date">2026-04-24 . DONE</div>
+      <h4>Governance Pact v1 published</h4>
+      <p>9-article commitment pact live at /smb/governance/. Legal anchor for fair pricing, data residency, hub compact.</p>
+    </div>
+    <div class="milestone">
+      <div class="milestone-date">Q2 2026 . NEXT</div>
+      <h4>Vendor register + AI safety framework v1</h4>
+      <p>Publish cloud/LLM/payment vendors list with selection criteria. AI safety review templates for every new agent.</p>
+    </div>
+    <div class="milestone future">
+      <div class="milestone-date">Q3 2026</div>
+      <h4>Scope 1/2 carbon baseline</h4>
+      <p>Measure Fly.io + Render emissions for all deployments. Publish baseline numbers.</p>
+    </div>
+    <div class="milestone future">
+      <div class="milestone-date">Q4 2026</div>
+      <h4>Stichting foundation filed (NL)</h4>
+      <p>Incorporate Dutch foundation. Lock mission in charter. Stichting holds IP and governance, ApS/Ltd operate locally.</p>
+    </div>
+    <div class="milestone future">
+      <div class="milestone-date">Q1 2027</div>
+      <h4>First Annual Hub Report published</h4>
+      <p>Number of hub leads, clients served, equity discounts applied, revenue split, uptime, and incidents. All numbers, no spin.</p>
+    </div>
+    <div class="milestone future">
+      <div class="milestone-date">Q2 2027</div>
+      <h4>B Corp application filed</h4>
+      <p>File with B Lab. Verification period 3-6 months. Certification expected by late 2027.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Where we stand today.</h2>
+  <table class="score-table">
+    <thead>
+      <tr>
+        <th>Impact topic</th>
+        <th>Status</th>
+        <th>Evidence</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Purpose + Governance</td><td>In progress</td><td>Pact v1 live, stichting pending</td></tr>
+      <tr><td>Fair Work</td><td>Strong</td><td>70/30 hub split, no NCA</td></tr>
+      <tr><td>Justice + Diversity</td><td>In progress</td><td>40% equity discount live</td></tr>
+      <tr><td>Climate Action</td><td>Pending</td><td>Baseline Q3 2026</td></tr>
+      <tr><td>Environmental Stewardship</td><td>Pending</td><td>Region audit Q3 2026</td></tr>
+      <tr><td>Human Rights</td><td>In progress</td><td>Vendor register Q2 2026</td></tr>
+      <tr><td>Government + Collective</td><td>In progress</td><td>DK sandbox pending</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>Why we publish this page before we are certified.</h2>
+  <p>Most B Corp pages go live the day a company passes the assessment. We are publishing ours now, during prep, because the governance pact commits us to transparency. If we quietly dropped B Corp later, this page would make that visible.</p>
+  <p>If something here is inaccurate or a commitment slips, email us and we will either correct it or explain what changed. That is the deal.</p>
+  <div class="btns">
+    <a href="/smb/governance/" class="btn btn-primary">Read Governance Pact</a>
+    <a href="mailto:yossra.benzad@gmail.com?subject=B%20Corp%20prep%20question" class="btn btn-ghost">Question us</a>
+  </div>
+</section>
+
+<footer>
+  <p>ElektraOS B Corp path . Not certified yet . Committed to the 7th edition standards</p>
+  <p style="margin-top:0.5rem;"><a href="/smb/">SMB home</a> . <a href="/smb/governance/">Governance</a> . <a href="mailto:yossra.benzad@gmail.com">yossra.benzad@gmail.com</a></p>
+</footer>
+
+<script>
+var target = new Date('2027-06-30T00:00:00+02:00');
+function tick(){
+  var now = new Date();
+  var diff = target - now;
+  if(diff <= 0){ document.getElementById('countdown').textContent='Target date reached'; return; }
+  var d = Math.floor(diff / 86400000);
+  document.getElementById('countdown').textContent = 'Target filing: Q2 2027 . ' + d + ' days to build the evidence base';
+}
+tick(); setInterval(tick, 60000);
+</script>
+</body>
+</html>

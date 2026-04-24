@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Governance Pact . Fair pricing, equity access, data residency . ElektraOS.dev</title>
+  <meta name="description" content="ElektraOS SMB governance pact v1: fair-pricing commitment, equity-tier eligibility, data residency per market, and B Corp prep status.">
+  <meta property="og:title" content="Governance Pact . ElektraOS.dev">
+  <meta property="og:description" content="Public commitments on fair pricing, equity access, and data residency. Updated quarterly, versioned, auditable.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://elektraos.dev/smb/governance/">
+  <meta name="theme-color" content="#7c3aed">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="canonical" href="https://elektraos.dev/smb/governance/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="alternate" hreflang="en" href="https://elektraos.dev/smb/governance/">
+  <link rel="alternate" hreflang="x-default" href="https://elektraos.dev/smb/governance/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/animations.css">
+  <link rel="stylesheet" href="/css/sections.css">
+  <link rel="stylesheet" href="/css/chat.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="/css/smart-features.css">
+
+  <style>
+    .gv-hero { padding: 160px 0 30px; text-align: center; }
+    .gv-container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+    .gv-badge {
+      display:inline-block; font-family: var(--font-mono); font-size: 11px;
+      text-transform: uppercase; letter-spacing: 2px; color: var(--cyan);
+      border: 1px solid rgba(0, 212, 255, 0.2); padding: 6px 16px; border-radius: 999px;
+      margin-bottom: 24px; background: rgba(0, 212, 255, 0.06);
+    }
+    .gv-hero h1 { font-size: clamp(34px, 6vw, 52px); font-weight: 700; line-height: 1.05; margin-bottom: 20px; }
+    .gv-hero h1 .gradient { background: var(--gradient-brand); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .gv-hero-sub { font-size: 17px; color: var(--text-secondary); max-width: 720px; margin: 0 auto; line-height: 1.7; }
+
+    .gv-pact {
+      counter-reset: pact;
+      margin: 40px 0;
+    }
+    .gv-article {
+      counter-increment: pact;
+      display: grid; grid-template-columns: 80px 1fr; gap: 22px;
+      padding: 26px 0; border-top: 1px solid var(--border);
+    }
+    .gv-article:first-child { border-top: 0; }
+    .gv-article::before {
+      content: counter(pact, decimal-leading-zero);
+      font-family: var(--font-mono); font-size: 26px; font-weight: 700;
+      background: var(--gradient-brand);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      line-height: 1;
+    }
+    .gv-article h3 { font-size: 18px; margin: 0 0 8px; }
+    .gv-article p { color: var(--text-secondary); line-height: 1.7; font-size: 14px; margin: 0 0 8px; }
+    .gv-article .meta { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.2px; margin-top: 10px; }
+
+    .gv-table-wrap { margin: 30px 0; overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius-lg); }
+    .gv-table { width: 100%; border-collapse: collapse; font-size: 13px; background: var(--bg-secondary); }
+    .gv-table th, .gv-table td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+    .gv-table th { font-family: var(--font-mono); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); background: var(--bg-card); }
+
+    .gv-status {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 14px; margin: 40px 0;
+    }
+    .gv-status .s {
+      border: 1px solid var(--border); border-radius: var(--radius); padding: 20px;
+      background: var(--bg-secondary);
+    }
+    .gv-status .s h4 { margin: 0 0 8px; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--cyan); }
+    .gv-status .s p { margin: 0; font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+    .gv-status .s .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+    .gv-status .s .live { background: #22c55e; }
+    .gv-status .s .wip { background: #E8A838; }
+    .gv-status .s .next { background: var(--cyan); }
+  </style>
+
+  <script defer src="https://yossra-analytics.fly.dev/analytics" data-website-id="4abcaca6-fb37-47bf-bc8e-41e4b2503ee8"></script>
+</head>
+<body>
+
+  <div style="position:fixed;top:0;left:0;right:0;z-index:101;background:linear-gradient(90deg,rgba(124,58,237,0.15),rgba(0,212,255,0.1));border-bottom:1px solid rgba(124,58,237,0.2);padding:8px 0;text-align:center;font-family:var(--font-mono);font-size:11px;letter-spacing:0.5px;color:var(--text-secondary);backdrop-filter:blur(12px);">
+    <span style="color:var(--cyan);">&#9733;</span> Governance Pact v1 . Effective 2026-04-24 . Versioned, auditable, revisable every quarter
+  </div>
+
+  <nav class="nav" id="nav" style="top:33px;">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo"><span>E</span>lektraOS<span>.</span>dev</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/smb/">For SMB</a></li>
+        <li><a href="/smb/pricing/">Pricing</a></li>
+        <li><a href="/smb/compliance/">EU AI Act</a></li>
+        <li><a href="/smb/governance/" class="active">Governance</a></li>
+        <li><a href="/smb/hubs/">Hubs</a></li>
+        <li><a href="/cases/">Cases</a></li>
+      </ul>
+      <a href="/smb/#apply" class="btn nav-cta">Apply</a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <header class="gv-hero">
+    <div class="gv-container">
+      <div class="gv-badge">Governance Pact v1 . 2026-04-24</div>
+      <h1><span class="gradient">What we promise, and how we will be held to it.</span></h1>
+      <p class="gv-hero-sub">
+        Fair access has to be written down, not implied. Below is the first version of the ElektraOS SMB Governance Pact: the commitments that back the pricing table, the rules around equity-tier access, the data residency rule per market, and the path we are taking toward B Corp certification under the 7th edition standards published April 2026.
+      </p>
+    </div>
+  </header>
+
+  <main class="gv-container">
+
+    <section class="gv-status">
+      <div class="s"><h4><span class="dot live"></span>Live</h4><p>Fair-pricing engine at /smb/pricing/rates.json. 10 markets, 4 scale tiers, equity discount.</p></div>
+      <div class="s"><h4><span class="dot live"></span>Live</h4><p>Loomgraph Society membership for every SMB at floor tier and above. Domain joins the registry day one.</p></div>
+      <div class="s"><h4><span class="dot wip"></span>In progress</h4><p>Local hub lead revenue share (70/30). First hub leads Q3 2026.</p></div>
+      <div class="s"><h4><span class="dot next"></span>Next</h4><p>B Corp certification prep under 7th edition standards. Stichting formation in Netherlands Q4 2026.</p></div>
+    </section>
+
+    <div class="gv-pact">
+
+      <article class="gv-article">
+        <div></div>
+        <div>
+          <h3>Fair-pricing commitment</h3>
+          <p>Every tier is published in human-readable HTML at /smb/pricing/ and machine-readable JSON at /smb/pricing/rates.json. No hidden markup for any market. No customer-by-customer deal-desk negotiation for the productised floor and cohort tiers. Retainer tier allows scope customisation, but the base rate follows the same PPP x scale formula.</p>
+          <p class="meta">Enforcement: rates.json is the source of truth. Any locale page showing different prices is a bug and must be fixed within 48 hours.</p>
+        </div>
+      </article>
+
+      <article class="gv-article">
+        <div></div>
+        <div>
+          <h3>Equity-tier access</h3>
+          <p>A 40 percent discount stacks on any tier for eligible operators. Self-declaration on application, verified once by the hub lead, renewable every 12 months. Eligibility covers: underrepresented founders, women-first leadership teams, registered social enterprises or non-profits, student-led ventures under 24 months old, and operators in conflict-affected or post-conflict regions.</p>
+          <p class="meta">Minimum allocation: 25 percent of cohort slots per intake reserved for equity-tier applicants. If allocation is undersubscribed, unused slots roll to the next intake, they do not convert to standard-tier slots.</p>
+        </div>
+      </article>
+
+      <article class="gv-article">
+        <div></div>
+        <div>
+          <h3>Data residency per market</h3>
+          <p>SMB operational data sits in the region of the hub. EU customers: Frankfurt (Hetzner) or Copenhagen (Fly.io CPH) at customer choice. UK customers: London (Fly.io LHR). Morocco customers: Paris (Fly.io CDG, closest EU point; MA data sovereignty law not yet enforced in our stack, flagged for review). Ghana customers: Johannesburg (Fly.io JNB) or London (Fly.io LHR) at customer choice.</p>
+          <p class="meta">Reviewed against Morocco Law 09-08 and Ghana Data Protection Act 2012 quarterly. Customers can request a region swap; executed within 30 days.</p>
+        </div>
+      </article>
+
+      <article class="gv-article">
+        <div></div>
+        <div>
+          <h3>Runtime audit trail</h3>
+          <p>Every ElektraOS agent execution on behalf of an SMB is logged with: agent name, input hash, output hash, model, latency, timestamp. Customers can request a full audit export at any time, no cost, delivered within 72 hours. Logs retained for 24 months, then hashed and archived.</p>
+          <p class="meta">No agent-generated content is published on customer-owned channels without human approval for cohort and retainer tiers. Floor tier allows opt-in auto-publish for specific content types; off by default.</p>
+        </div>
+      </article>
+
+      <article class="gv-article">
+        <div></div>
+        <div>
+          <h3>Cross-link consent (Loomgraph)</h3>
+          <p>Membership in Loomgraph Society does not grant automatic cross-linking. Every cross-link proposal requires: a shared entity in the knowledge graph OR a 1-hop entity relation, AND explicit approval from the receiving site's operator. Rejected proposals remain rejected until the operator reverses the decision.</p>
+          <p class="meta">Enforcement: /api/approvals endpoint on loomgraph.fly.dev, publicly auditable.</p>
+        </div>
+      </article>
+
+      <article class="gv-article">
+        <div></div>
+        <div>
+          <h3>Hub lead compact</h3>
+          <p>Local hub leads keep 70 percent of gross local revenue. The remaining 30 percent funds the shared runtime, the equity pool (which subsidises the 40 percent equity discount), and compliance review. Hub leads are independent operators, not employees. They carry a 12-month minimum commitment and can exit on 90 days' notice.</p>
+          <p class="meta">Revenue split reviewed annually. Any change requires 6 months' notice to existing hub leads.</p>
+        </div>
+      </article>
+
+      <article class="gv-article">
+        <div></div>
+        <div>
+          <h3>Exit and data portability</h3>
+          <p>Any SMB can exit on 30 days' notice (floor, cohort) or 90 days' notice (retainer). On exit we deliver: full data export (S3 bucket or local download, customer choice), all agent configurations in portable JSON, all Loomgraph registry entries removed within 7 days. No lock-in on domains, content, or operational data.</p>
+          <p class="meta">Cohort tier exits before the 12-month term require a pro-rata buy-out of the remaining months; this is the only exit fee anywhere in the stack.</p>
+        </div>
+      </article>
+
+      <article class="gv-article">
+        <div></div>
+        <div>
+          <h3>B Corp certification path</h3>
+          <p>We have started certification prep under the 7th edition standards (published April 2026, 683 pages, first major overhaul since 2007). Target submission: Q2 2027. Certifying entity: a Netherlands stichting (foundation) as the global coordinator, with regional affiliates in UK, Denmark, Morocco, Ghana. Equity-pricing policy already aligns with B Lab's 40 percent equity-pricing mechanism.</p>
+          <p class="meta">Prep document maintained at /vault/governance/bcorp_prep.md (internal). Public progress log on /log/.</p>
+        </div>
+      </article>
+
+      <article class="gv-article">
+        <div></div>
+        <div>
+          <h3>Amendment and transparency</h3>
+          <p>This pact is versioned. v1 effective 2026-04-24. Changes are published with a visible diff, a "what changed" summary, and the date. Breaking changes (anything that reduces a customer's rights or increases their price by more than PPP-adjusted inflation) require 90 days' notice.</p>
+          <p class="meta">Full diff history at /smb/governance/history/ (to be published from v2 onward). Feedback: yossra.benzad@gmail.com.</p>
+        </div>
+      </article>
+
+    </div>
+
+    <section style="margin:40px 0;">
+      <h2 style="font-size:22px;margin:0 0 16px;">Data residency quick reference</h2>
+      <div class="gv-table-wrap">
+        <table class="gv-table">
+          <thead>
+            <tr><th>Hub market</th><th>Primary region</th><th>Provider</th><th>Failover</th><th>Notes</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>United Kingdom</td><td>London</td><td>Fly.io LHR</td><td>Frankfurt</td><td>ICO-friendly, UK GDPR</td></tr>
+            <tr><td>Denmark</td><td>Copenhagen</td><td>Fly.io CPH</td><td>Frankfurt</td><td>Datatilsynet-friendly, EU AI Act sandbox</td></tr>
+            <tr><td>Germany, Austria</td><td>Frankfurt</td><td>Hetzner / Fly.io FRA</td><td>Amsterdam</td><td>BDSG compatible</td></tr>
+            <tr><td>France, Italy, Netherlands, Sweden</td><td>Amsterdam or Frankfurt</td><td>Fly.io AMS / FRA</td><td>London</td><td>EU GDPR, customer choice</td></tr>
+            <tr><td>Morocco</td><td>Paris</td><td>Fly.io CDG</td><td>Frankfurt</td><td>Law 09-08 review ongoing, flagged</td></tr>
+            <tr><td>Ghana</td><td>Johannesburg</td><td>Fly.io JNB</td><td>London</td><td>Ghana DPA 2012, customer choice</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <footer style="border-top:1px solid var(--border);padding:40px 0 60px;text-align:center;color:var(--text-muted);font-size:12px;margin-top:40px;">
+    <div class="gv-container">
+      <p><a href="/">ElektraOS.dev</a> . <a href="/smb/">For SMB</a> . <a href="/smb/pricing/">Pricing</a> . <a href="/smb/compliance/">EU AI Act</a> . <a href="/smb/hubs/">Hubs</a> . <a href="/loomgraph-society/">Society</a></p>
+      <p style="margin-top:12px;">Governance Pact v1 . 2026-04-24 . Copenhagen . London . Casablanca . Accra</p>
+    </div>
+  </footer>
+
+  <script src="/js/utils.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>

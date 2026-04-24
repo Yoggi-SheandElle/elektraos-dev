@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Hub Lead . Run ElektraOS in your market . ElektraOS.dev</title>
+  <meta name="description" content="Apply to run an ElektraOS local hub in your market. 70 percent local revenue, 30 percent runtime + equity pool. Copenhagen, London, Casablanca, Accra live. Next markets by application.">
+  <meta property="og:title" content="Local Hub Lead . ElektraOS.dev">
+  <meta property="og:description" content="Run ElektraOS in your market. 70/30 revenue split, no monthly fee, shared runtime, shared knowledge graph.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://elektraos.dev/smb/hubs/">
+  <meta name="theme-color" content="#7c3aed">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="canonical" href="https://elektraos.dev/smb/hubs/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="alternate" hreflang="en" href="https://elektraos.dev/smb/hubs/">
+  <link rel="alternate" hreflang="x-default" href="https://elektraos.dev/smb/hubs/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/animations.css">
+  <link rel="stylesheet" href="/css/sections.css">
+  <link rel="stylesheet" href="/css/chat.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="/css/smart-features.css">
+
+  <style>
+    .hb-hero { padding: 160px 0 30px; text-align: center; }
+    .hb-container { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+    .hb-badge {
+      display:inline-block; font-family: var(--font-mono); font-size: 11px;
+      text-transform: uppercase; letter-spacing: 2px; color: var(--cyan);
+      border: 1px solid rgba(0, 212, 255, 0.2); padding: 6px 16px; border-radius: 999px;
+      margin-bottom: 24px; background: rgba(0, 212, 255, 0.06);
+    }
+    .hb-hero h1 { font-size: clamp(34px, 6vw, 54px); font-weight: 700; line-height: 1.05; margin-bottom: 20px; }
+    .hb-hero h1 .gradient { background: var(--gradient-brand); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hb-hero-sub { font-size: 17px; color: var(--text-secondary); max-width: 720px; margin: 0 auto; line-height: 1.7; }
+
+    .hb-live {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px; margin: 40px 0;
+    }
+    .hb-live .m {
+      border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 18px; background: var(--bg-secondary); position: relative;
+    }
+    .hb-live .m .flag { font-size: 22px; margin-bottom: 6px; display: block; }
+    .hb-live .m .name { font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+    .hb-live .m .tag { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 1.2px; color: var(--cyan); }
+    .hb-live .m.open { border-style: dashed; opacity: 0.85; }
+    .hb-live .m.open .tag { color: #E8A838; }
+
+    .hb-split {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+      margin: 30px 0;
+    }
+    @media (max-width: 800px) { .hb-split { grid-template-columns: 1fr; } }
+    .hb-split .c {
+      border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 28px; background: var(--bg-secondary);
+    }
+    .hb-split .c h3 { margin: 0 0 12px; font-size: 18px; }
+    .hb-split .c .val {
+      font-family: var(--font-mono); font-size: 40px; font-weight: 700;
+      background: var(--gradient-brand);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      line-height: 1;
+    }
+    .hb-split .c p { color: var(--text-secondary); font-size: 14px; line-height: 1.7; margin: 10px 0 0; }
+
+    .hb-form {
+      max-width: 680px; margin: 30px auto 0;
+      background: var(--bg-secondary); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 32px;
+    }
+    .hb-form label {
+      display: flex; flex-direction: column; gap: 6px;
+      font-family: var(--font-mono); font-size: 11px;
+      text-transform: uppercase; letter-spacing: 1.2px;
+      color: var(--text-muted); margin-bottom: 16px;
+    }
+    .hb-form input, .hb-form select, .hb-form textarea {
+      font-family: var(--font-body); font-size: 14px;
+      color: var(--text-primary);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 11px 13px; outline: none;
+      text-transform: none; letter-spacing: 0;
+    }
+    .hb-form input:focus, .hb-form select:focus, .hb-form textarea:focus {
+      border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(0,212,255,0.12);
+    }
+    .hb-form textarea { resize: vertical; min-height: 100px; }
+    .hb-form .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 600px) { .hb-form .row { grid-template-columns: 1fr; } }
+    .hb-form .actions { display: flex; gap: 14px; align-items: center; margin-top: 6px; }
+    .hb-status { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 1.2px; color: var(--text-muted); }
+    .hb-status.err { color: var(--red); }
+
+    .hb-list-steps { counter-reset: step; margin: 30px 0; }
+    .hb-list-steps li {
+      counter-increment: step;
+      list-style: none;
+      position: relative; padding: 14px 0 14px 56px;
+      border-top: 1px solid var(--border);
+      font-size: 14px; color: var(--text-secondary); line-height: 1.7;
+    }
+    .hb-list-steps li:first-child { border-top: 0; }
+    .hb-list-steps li::before {
+      content: counter(step, decimal-leading-zero);
+      position: absolute; left: 0; top: 14px;
+      font-family: var(--font-mono); font-size: 14px;
+      color: var(--cyan); letter-spacing: 1px;
+    }
+    .hb-list-steps li b { color: var(--text-primary); }
+  </style>
+
+  <script defer src="https://yossra-analytics.fly.dev/analytics" data-website-id="4abcaca6-fb37-47bf-bc8e-41e4b2503ee8"></script>
+</head>
+<body>
+
+  <div style="position:fixed;top:0;left:0;right:0;z-index:101;background:linear-gradient(90deg,rgba(124,58,237,0.15),rgba(0,212,255,0.1));border-bottom:1px solid rgba(124,58,237,0.2);padding:8px 0;text-align:center;font-family:var(--font-mono);font-size:11px;letter-spacing:0.5px;color:var(--text-secondary);backdrop-filter:blur(12px);">
+    <span style="color:var(--cyan);">&#9733;</span> Local hub leads . Applications open . First new markets locked Q3 2026
+  </div>
+
+  <nav class="nav" id="nav" style="top:33px;">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo"><span>E</span>lektraOS<span>.</span>dev</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/smb/">For SMB</a></li>
+        <li><a href="/smb/pricing/">Pricing</a></li>
+        <li><a href="/smb/compliance/">EU AI Act</a></li>
+        <li><a href="/smb/governance/">Governance</a></li>
+        <li><a href="/smb/hubs/" class="active">Hubs</a></li>
+        <li><a href="/cases/">Cases</a></li>
+      </ul>
+      <a href="#apply" class="btn nav-cta">Apply as hub lead</a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <header class="hb-hero">
+    <div class="hb-container">
+      <div class="hb-badge">Network . Not franchise . Not reseller</div>
+      <h1><span class="gradient">Run ElektraOS in your market.</span></h1>
+      <p class="hb-hero-sub">
+        A local hub lead is the operator on the ground in one country or one region. You carry the language, the relationships, and the local buying culture. We carry the runtime, the agents, the knowledge graph, the compliance work, and the bill for the shared infrastructure. Seventy percent of gross local revenue is yours. No monthly fee, no licence fee, no setup fee.
+      </p>
+    </div>
+  </header>
+
+  <main class="hb-container">
+
+    <section>
+      <h2 style="font-size:22px;margin:40px 0 10px;">Hubs live today</h2>
+      <p style="color:var(--text-secondary);line-height:1.7;max-width:720px;">Four markets where at least one founding-team member is on the ground. These are the anchors. Everything else is by application.</p>
+      <div class="hb-live">
+        <div class="m"><span class="flag">&#127465;&#127472;</span><div class="name">Copenhagen</div><div class="tag">HQ . Yossra Benzad</div></div>
+        <div class="m"><span class="flag">&#127468;&#127463;</span><div class="name">London</div><div class="tag">UK . Said, Jamal, Zacki Ziane</div></div>
+        <div class="m"><span class="flag">&#127474;&#127462;</span><div class="name">Casablanca</div><div class="tag">Morocco . Said (hybrid)</div></div>
+        <div class="m"><span class="flag">&#127468;&#127469;</span><div class="name">Accra</div><div class="tag">Ghana . Hub lead wanted</div></div>
+      </div>
+
+      <h2 style="font-size:22px;margin:40px 0 10px;">Open for application</h2>
+      <p style="color:var(--text-secondary);line-height:1.7;max-width:720px;">Target markets for the first expansion wave. If your market is not listed, apply anyway, these are prioritised not exclusive.</p>
+      <div class="hb-live">
+        <div class="m open"><span class="flag">&#127465;&#127466;</span><div class="name">Berlin or Munich</div><div class="tag">Germany . Open</div></div>
+        <div class="m open"><span class="flag">&#127475;&#127473;</span><div class="name">Amsterdam</div><div class="tag">Netherlands . Open</div></div>
+        <div class="m open"><span class="flag">&#127480;&#127466;</span><div class="name">Stockholm</div><div class="tag">Sweden . Open</div></div>
+        <div class="m open"><span class="flag">&#127467;&#127479;</span><div class="name">Paris or Lyon</div><div class="tag">France . Open</div></div>
+        <div class="m open"><span class="flag">&#127470;&#127481;</span><div class="name">Milan</div><div class="tag">Italy . Open</div></div>
+        <div class="m open"><span class="flag">&#127480;&#127475;</span><div class="name">Dakar</div><div class="tag">Senegal . Open</div></div>
+        <div class="m open"><span class="flag">&#127472;&#127466;</span><div class="name">Nairobi</div><div class="tag">Kenya . Open</div></div>
+        <div class="m open"><span class="flag">&#127477;&#127481;</span><div class="name">Lisbon</div><div class="tag">Portugal . Open</div></div>
+      </div>
+    </section>
+
+    <section class="hb-split">
+      <div class="c">
+        <h3>Revenue split</h3>
+        <div class="val">70 / 30</div>
+        <p>Hub lead keeps 70 percent of gross local revenue. 30 percent feeds the shared runtime, the equity pool that subsidises the 40 percent equity discount, and quarterly compliance review. Reviewed annually. Any change requires 6 months' notice to existing hub leads.</p>
+      </div>
+      <div class="c">
+        <h3>Minimum commitment</h3>
+        <div class="val">90 days</div>
+        <p>12-month minimum to commit. Exit on 90 days' notice. No non-compete, no IP transfer, no claw-back on revenue already earned. You own your local brand and your local client relationships.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2 style="font-size:22px;margin:40px 0 10px;">What we provide, what you provide</h2>
+      <ol class="hb-list-steps">
+        <li><b>We provide the runtime.</b> ElektraOS (3,852-line core, 49 agents, 566 endpoints), Loomgraph (Fly.io, 12 routers, public join), analytics (Umami on Fly.io), and every locale page infrastructure.</li>
+        <li><b>We provide the compliance work.</b> EU AI Act readiness, GDPR reconciliation, data residency per market, audit trail. Documented in the Governance Pact.</li>
+        <li><b>We provide brand and sales material.</b> /smb/ in your locale, /pricing/ in your currency, /compliance/ pages, case study templates, Loomgraph Society seat.</li>
+        <li><b>You provide local reach.</b> Outreach, community, first 3 operators in 90 days, language authenticity, local events.</li>
+        <li><b>You provide local regulatory sense.</b> You flag when the Moroccan Data Protection Law 09-08, the Ghana DPA 2012, or a specific EU member-state rule needs a product change.</li>
+        <li><b>You publish a quarterly hub report.</b> Revenue, operator count, equity-tier take-up, local feedback. Goes on /log/ publicly.</li>
+      </ol>
+    </section>
+
+    <section id="apply" style="margin:40px 0;">
+      <h2 style="font-size:24px;margin:0 0 8px;text-align:center;">Apply as a local hub lead</h2>
+      <p style="color:var(--text-secondary);line-height:1.7;max-width:620px;margin:0 auto 24px;text-align:center;">Send a short application. No CV required. We read everything within 7 days and reply with a yes, a no, or a redirect.</p>
+
+      <form id="hubForm" class="hb-form" novalidate>
+        <label>Your name
+          <input required name="contact_name" type="text" maxlength="200" autocomplete="name">
+        </label>
+        <label>Your email
+          <input required name="contact_email" type="email" maxlength="253" autocomplete="email">
+        </label>
+        <div class="row">
+          <label>Target market
+            <select name="market" required>
+              <option value="">Pick a market</option>
+              <option>Germany</option>
+              <option>Netherlands</option>
+              <option>Sweden</option>
+              <option>France</option>
+              <option>Italy</option>
+              <option>Portugal</option>
+              <option>Senegal</option>
+              <option>Kenya</option>
+              <option>Ghana</option>
+              <option>Other EU</option>
+              <option>Other Africa</option>
+              <option>Other (name in notes)</option>
+            </select>
+          </label>
+          <label>Target city
+            <input name="city" type="text" maxlength="120" placeholder="e.g. Berlin, Dakar, Lisbon">
+          </label>
+        </div>
+        <label>Your LinkedIn or primary URL
+          <input required name="url" type="url" maxlength="253" placeholder="https://linkedin.com/in/..." autocomplete="url">
+        </label>
+        <label>Languages you operate in (comma-separated)
+          <input name="languages" type="text" maxlength="200" placeholder="English, German, French, Arabic, ...">
+        </label>
+        <label>Why this market, why you, in 3 to 5 sentences
+          <textarea required name="why" maxlength="2000" rows="5" placeholder="Local reach, network, past SMB work, why you want to run a hub"></textarea>
+        </label>
+        <label>Equity-tier self-declaration (optional)
+          <select name="equity">
+            <option value="">Prefer not to say</option>
+            <option value="none">None apply</option>
+            <option value="underrep">Underrepresented background</option>
+            <option value="women">Women-first leadership</option>
+            <option value="social">Registered social enterprise</option>
+            <option value="student">Student-led venture (under 24 months)</option>
+            <option value="post-conflict">Operator in conflict-affected or post-conflict region</option>
+          </select>
+        </label>
+        <div class="actions">
+          <button type="submit" class="btn" id="hubSubmit">Submit application</button>
+          <span class="hb-status" id="hubStatus"></span>
+        </div>
+        <p style="font-size:11px;color:var(--text-muted);line-height:1.6;margin:14px 0 0;">
+          We store name, email, market, city, URL, languages, and the why text in the Loomgraph registry as a hub-lead application. No CV or document upload. You can request erasure any time under GDPR Art. 17.
+        </p>
+      </form>
+
+      <div id="hubSuccess" hidden style="max-width:620px;margin:30px auto 0;text-align:center;">
+        <h4 style="font-size:20px;margin:0 0 10px;">Application received.</h4>
+        <p style="color:var(--text-secondary);line-height:1.7;">We read every application. You will hear back within 7 days with a yes, a no, or a redirect to an existing hub lead already working in your market.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer style="border-top:1px solid var(--border);padding:40px 0 60px;text-align:center;color:var(--text-muted);font-size:12px;margin-top:40px;">
+    <div class="hb-container">
+      <p><a href="/">ElektraOS.dev</a> . <a href="/smb/">For SMB</a> . <a href="/smb/pricing/">Pricing</a> . <a href="/smb/compliance/">EU AI Act</a> . <a href="/smb/governance/">Governance</a></p>
+      <p style="margin-top:12px;">Copenhagen . London . Casablanca . Accra . Built on ElektraOS runtime</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      var form = document.getElementById('hubForm');
+      var success = document.getElementById('hubSuccess');
+      var submit = document.getElementById('hubSubmit');
+      var statusEl = document.getElementById('hubStatus');
+      if (!form) return;
+      var ENDPOINT = 'https://loomgraph.fly.dev/public/cohort/apply';
+
+      function setStatus(msg, isError){
+        statusEl.textContent = msg || '';
+        statusEl.classList.toggle('err', !!isError);
+      }
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        var fd = new FormData(form);
+        var body = {
+          contact_name: (fd.get('contact_name') || '').trim(),
+          contact_email: (fd.get('contact_email') || '').trim(),
+          market: fd.get('market') || '',
+          city: (fd.get('city') || '').trim(),
+          url: (fd.get('url') || '').trim(),
+          languages: (fd.get('languages') || '').trim(),
+          why: (fd.get('why') || '').trim(),
+          equity: fd.get('equity') || ''
+        };
+        if (!body.contact_name || !body.contact_email || !body.market || !body.why) {
+          setStatus('Fill in the required fields', true);
+          return;
+        }
+        submit.disabled = true;
+        setStatus('Opening your email client . . .');
+        var subject = 'Hub lead application . ' + body.market + (body.city ? ' (' + body.city + ')' : '');
+        var lines = [
+          'Name: ' + body.contact_name,
+          'Email: ' + body.contact_email,
+          'Target market: ' + body.market,
+          'Target city: ' + (body.city || '-'),
+          'LinkedIn / URL: ' + (body.url || '-'),
+          'Languages: ' + (body.languages || '-'),
+          'Equity tier: ' + (body.equity || '-'),
+          '',
+          'Why this market, why me:',
+          body.why,
+          '',
+          '--',
+          'Sent from elektraos.dev/smb/hubs/'
+        ];
+        var mailto = 'mailto:yossra.benzad@gmail.com'
+          + '?subject=' + encodeURIComponent(subject)
+          + '&body=' + encodeURIComponent(lines.join('\n'));
+        fetch(ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contact_name: body.contact_name,
+            contact_email: body.contact_email,
+            market: body.market,
+            city: body.city || null,
+            url: body.url || null,
+            languages: body.languages || null,
+            why: body.why,
+            equity: body.equity || null,
+            kind: 'hub_lead'
+          })
+        }).catch(function(){ });
+        window.location.href = mailto;
+        setTimeout(function(){
+          form.style.display = 'none';
+          success.hidden = false;
+          setStatus('');
+        }, 600);
+      });
+    })();
+  </script>
+
+  <script src="/js/utils.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMB Pricing . Fair, market-adjusted, income-aware . ElektraOS.dev</title>
+  <meta name="description" content="ElektraOS for SMB: market-adjusted pricing tied to purchasing power and the operator's own scale. Transparent tiers in GBP, DKK, EUR, MAD, GHS.">
+  <meta property="og:title" content="SMB Pricing . ElektraOS.dev">
+  <meta property="og:description" content="Fair pricing for SMBs, scaled by market and by operator size. Transparent tiers across 10 markets.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://elektraos.dev/smb/pricing/">
+  <meta name="theme-color" content="#7c3aed">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="canonical" href="https://elektraos.dev/smb/pricing/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+  <link rel="alternate" hreflang="en" href="https://elektraos.dev/smb/pricing/">
+  <link rel="alternate" hreflang="x-default" href="https://elektraos.dev/smb/pricing/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "PriceSpecification",
+    "name": "ElektraOS SMB market-adjusted pricing",
+    "description": "Two-axis fair pricing: market PPP factor and customer scale tier, with a 40 percent equity discount for eligible operators.",
+    "url": "https://elektraos.dev/smb/pricing/",
+    "provider": {"@type": "Organization", "name": "ElektraOS.dev", "url": "https://elektraos.dev"}
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/animations.css">
+  <link rel="stylesheet" href="/css/sections.css">
+  <link rel="stylesheet" href="/css/chat.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="/css/smart-features.css">
+
+  <style>
+    .pp-hero { padding: 160px 0 40px; text-align: center; }
+    .pp-container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+    .pp-badge {
+      display:inline-block; font-family: var(--font-mono); font-size: 11px;
+      text-transform: uppercase; letter-spacing: 2px; color: var(--cyan);
+      border: 1px solid rgba(0, 212, 255, 0.2); padding: 6px 16px; border-radius: 999px;
+      margin-bottom: 24px; background: rgba(0, 212, 255, 0.06);
+    }
+    .pp-hero h1 { font-size: clamp(36px, 6vw, 56px); font-weight: 700; line-height: 1.05; margin-bottom: 20px; }
+    .pp-hero h1 .gradient { background: var(--gradient-brand); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .pp-hero-sub { font-size: 17px; color: var(--text-secondary); max-width: 720px; margin: 0 auto; line-height: 1.7; }
+
+    .pp-selectors {
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px;
+      background: var(--bg-secondary); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 18px; margin: 40px 0 28px;
+    }
+    @media (max-width: 720px) { .pp-selectors { grid-template-columns: 1fr; } }
+    .pp-selectors label {
+      font-family: var(--font-mono); font-size: 10px; text-transform: uppercase;
+      letter-spacing: 1.5px; color: var(--text-muted); display: block; margin-bottom: 6px;
+    }
+    .pp-selectors select, .pp-selectors input {
+      width: 100%; font-family: var(--font-body); font-size: 14px;
+      color: var(--text-primary); background: var(--bg-card);
+      border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 10px 12px; outline: none;
+    }
+    .pp-selectors select:focus, .pp-selectors input:focus {
+      border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(0,212,255,0.12);
+    }
+
+    .pp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 20px 0 40px; }
+    @media (max-width: 900px) { .pp-grid { grid-template-columns: 1fr; } }
+    .pp-card {
+      border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 28px; background: var(--bg-secondary);
+      position: relative; display: flex; flex-direction: column;
+    }
+    .pp-card.featured { border-color: var(--cyan); }
+    .pp-card.featured::before {
+      content: "Recommended"; position: absolute; top: -11px; left: 20px;
+      background: var(--gradient-brand); color: #fff; padding: 3px 10px;
+      font-family: var(--font-mono); font-size: 10px; text-transform: uppercase;
+      letter-spacing: 1.5px; border-radius: 999px;
+    }
+    .pp-tag {
+      font-family: var(--font-mono); font-size: 10px;
+      text-transform: uppercase; letter-spacing: 2px; color: var(--cyan); margin-bottom: 10px;
+    }
+    .pp-card h3 { font-size: 20px; font-weight: 700; margin: 0 0 6px; line-height: 1.2; }
+    .pp-card .pp-sub { color: var(--text-secondary); font-size: 13px; margin-bottom: 20px; }
+    .pp-price {
+      font-family: var(--font-mono); font-size: 32px; font-weight: 700;
+      background: var(--gradient-brand);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      line-height: 1.1;
+    }
+    .pp-price .cur { font-size: 14px; font-weight: 500; color: var(--text-muted); -webkit-text-fill-color: var(--text-muted); margin-right: 4px; }
+    .pp-price .per { font-size: 12px; font-weight: 400; color: var(--text-muted); -webkit-text-fill-color: var(--text-muted); margin-left: 4px; }
+    .pp-price-eq { font-size: 12px; color: var(--text-muted); margin-top: 6px; }
+    .pp-price-eq strong { color: var(--cyan); }
+    .pp-includes { list-style: none; padding: 0; margin: 20px 0 0; }
+    .pp-includes li {
+      font-size: 13px; color: var(--text-secondary); line-height: 1.6;
+      padding: 6px 0 6px 22px; position: relative;
+    }
+    .pp-includes li::before {
+      content: ""; position: absolute; left: 0; top: 12px;
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--gradient-brand);
+    }
+    .pp-cta {
+      display: inline-flex; justify-content: center; align-items: center;
+      margin-top: 24px; padding: 12px 20px;
+      font-family: var(--font-mono); font-size: 12px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      text-decoration: none; border-radius: var(--radius);
+      background: var(--bg-card); color: var(--text-primary);
+      border: 1px solid var(--border); transition: all 0.2s;
+    }
+    .pp-cta:hover { border-color: var(--cyan); color: var(--cyan); }
+    .pp-card.featured .pp-cta { background: var(--gradient-brand); color: #fff; border: 0; }
+
+    .pp-matrix-wrap { margin: 50px 0 30px; }
+    .pp-matrix-wrap h2 { font-size: 22px; margin: 0 0 12px; }
+    .pp-matrix-wrap p { color: var(--text-secondary); max-width: 720px; line-height: 1.7; margin: 0 0 20px; }
+    .pp-matrix-scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius-lg); }
+    .pp-matrix {
+      width: 100%; border-collapse: collapse; font-size: 13px;
+      background: var(--bg-secondary);
+    }
+    .pp-matrix th, .pp-matrix td {
+      padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    .pp-matrix th {
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--text-muted); background: var(--bg-card);
+    }
+    .pp-matrix td.market { font-weight: 700; color: var(--text-primary); }
+    .pp-matrix td.muted { color: var(--text-muted); }
+
+    .pp-equity {
+      background: linear-gradient(135deg, rgba(124,58,237,0.07), rgba(0,212,255,0.04));
+      border: 1px solid rgba(124,58,237,0.2);
+      border-radius: var(--radius-lg); padding: 28px; margin: 40px 0;
+    }
+    .pp-equity h3 { font-size: 18px; margin: 0 0 10px; }
+    .pp-equity p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin: 0 0 12px; }
+    .pp-equity ul { margin: 0; padding-left: 20px; color: var(--text-secondary); font-size: 13px; }
+    .pp-equity ul li { margin-bottom: 4px; line-height: 1.5; }
+
+    .pp-principles {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px; margin: 40px 0;
+    }
+    .pp-principle {
+      border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 22px; background: var(--bg-secondary);
+    }
+    .pp-principle h4 {
+      font-size: 14px; font-weight: 700; margin: 0 0 8px;
+      font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 1.2px;
+      color: var(--cyan);
+    }
+    .pp-principle p { font-size: 13px; color: var(--text-secondary); line-height: 1.7; margin: 0; }
+  </style>
+
+  <script defer src="https://yossra-analytics.fly.dev/analytics" data-website-id="4abcaca6-fb37-47bf-bc8e-41e4b2503ee8"></script>
+</head>
+<body>
+
+  <div style="position:fixed;top:0;left:0;right:0;z-index:101;background:linear-gradient(90deg,rgba(124,58,237,0.15),rgba(0,212,255,0.1));border-bottom:1px solid rgba(124,58,237,0.2);padding:8px 0;text-align:center;font-family:var(--font-mono);font-size:11px;letter-spacing:0.5px;color:var(--text-secondary);backdrop-filter:blur(12px);">
+    <span style="color:var(--cyan);">&#9733;</span> Fair pricing live . 10 markets . Machine-readable at /smb/pricing/rates.json
+  </div>
+
+  <nav class="nav" id="nav" style="top:33px;">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo"><span>E</span>lektraOS<span>.</span>dev</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/smb/">For SMB</a></li>
+        <li><a href="/smb/pricing/" class="active">Pricing</a></li>
+        <li><a href="/smb/compliance/">EU AI Act</a></li>
+        <li><a href="/smb/hubs/">Hubs</a></li>
+        <li><a href="/cases/">Cases</a></li>
+        <li><a href="/log/">Log</a></li>
+      </ul>
+      <a href="/smb/#apply" class="btn nav-cta">Apply</a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <header class="pp-hero">
+    <div class="pp-container">
+      <div class="pp-badge">Fair pricing . 10 markets . 4 scale tiers</div>
+      <h1><span class="gradient">One stack, priced for where you are and what you make.</span></h1>
+      <p class="pp-hero-sub">
+        We price the same work differently by market, because a pound does not go the same distance in Accra as it does in Copenhagen. On top of that, we price by your scale: a 3-person seed operator does not pay like a 40-person established one. A 40 percent equity discount stacks on top for underrepresented founders, women-first teams, social enterprises, student-led ventures, and operators in post-conflict regions.
+      </p>
+    </div>
+  </header>
+
+  <main class="pp-container">
+
+    <section class="pp-principles">
+      <div class="pp-principle">
+        <h4>01 . Market PPP factor</h4>
+        <p>Every country has a purchasing-power factor against the UK anchor. DK 1.15, EU 1.0, MA 0.35, GH 0.22. Not a discount, a local floor.</p>
+      </div>
+      <div class="pp-principle">
+        <h4>02 . Scale multiplier</h4>
+        <p>Seed 0.35, Growth 0.65, Scale 1.0, Established 1.30. Based on headcount and annual revenue, self-declared and verified once at onboarding.</p>
+      </div>
+      <div class="pp-principle">
+        <h4>03 . Equity discount</h4>
+        <p>Minus 40 percent stacks on top. Women-first teams, underrepresented founders, social enterprises, student-led ventures, post-conflict regions.</p>
+      </div>
+      <div class="pp-principle">
+        <h4>04 . Transparent rail</h4>
+        <p>Every tier is published at /smb/pricing/rates.json. Loomgraph and locale sites pull the same numbers. No hidden local markup.</p>
+      </div>
+    </section>
+
+    <div class="pp-selectors">
+      <div>
+        <label for="ppMarket">Your market</label>
+        <select id="ppMarket">
+          <option value="UK">United Kingdom (GBP)</option>
+          <option value="DK" selected>Denmark (DKK)</option>
+          <option value="DE">Germany (EUR)</option>
+          <option value="FR">France (EUR)</option>
+          <option value="IT">Italy (EUR)</option>
+          <option value="NL">Netherlands (EUR)</option>
+          <option value="SE">Sweden (SEK)</option>
+          <option value="MA">Morocco (MAD)</option>
+          <option value="GH">Ghana (GHS)</option>
+          <option value="EU">Other EU (EUR)</option>
+        </select>
+      </div>
+      <div>
+        <label for="ppTier">Your scale</label>
+        <select id="ppTier">
+          <option value="seed">Seed . 1-5 staff . under 250k GBP rev</option>
+          <option value="growth" selected>Growth . 6-15 staff . 250k to 1M GBP</option>
+          <option value="scale">Scale . 16-30 staff . 1 to 5M GBP</option>
+          <option value="established">Established . 31-50 staff . 5M GBP plus</option>
+        </select>
+      </div>
+      <div>
+        <label for="ppEquity">Equity discount</label>
+        <select id="ppEquity">
+          <option value="0">Standard rate</option>
+          <option value="1">Apply -40 percent (I qualify)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="pp-grid">
+      <div class="pp-card" id="cardFloor">
+        <div class="pp-tag">01 . Floor</div>
+        <h3>Productised floor</h3>
+        <p class="pp-sub">One site, three automations, shared runtime. Entry point for every market.</p>
+        <div class="pp-price"><span class="cur" id="curFloor">DKK</span><span id="priceFloor">1,950</span><span class="per">/mo</span></div>
+        <div class="pp-price-eq" id="eqFloor">Standard . <strong id="anchorFloor">GBP 194</strong> equivalent</div>
+        <ul class="pp-includes">
+          <li>Agent-native storefront or site on ElektraOS runtime</li>
+          <li>3 automations via Make or n8n</li>
+          <li>Loomgraph Society membership (1 domain)</li>
+          <li>Weekly async review</li>
+          <li>Shared runtime, locale-routed chat</li>
+        </ul>
+        <a href="/smb/#apply" class="pp-cta">Start with floor</a>
+      </div>
+
+      <div class="pp-card featured" id="cardCohort">
+        <div class="pp-tag">02 . Cohort</div>
+        <h3>Founding cohort</h3>
+        <p class="pp-sub">10 slots per intake. One operator per pillar on call. 12-month term.</p>
+        <div class="pp-price"><span class="cur" id="curCohort">DKK</span><span id="priceCohort">17,550</span><span class="per">/mo</span></div>
+        <div class="pp-price-eq" id="eqCohort">Standard . <strong id="anchorCohort">GBP 1,950</strong> equivalent</div>
+        <ul class="pp-includes">
+          <li>One operator per pillar on call</li>
+          <li>Dedicated ElektraOS agent roster</li>
+          <li>EU AI Act readiness review</li>
+          <li>Weekly sync, monthly governance check-in</li>
+          <li>Loomgraph Society priority routing</li>
+        </ul>
+        <a href="/smb/#apply" class="pp-cta">Apply to cohort</a>
+      </div>
+
+      <div class="pp-card" id="cardRetainer">
+        <div class="pp-tag">03 . Retainer</div>
+        <h3>Dedicated retainer</h3>
+        <p class="pp-sub">All three pillars staffed continuously. Quarterly strategy review.</p>
+        <div class="pp-price"><span class="cur" id="curRetainer">DKK</span><span id="priceRetainer">29,250</span><span class="per">/mo</span></div>
+        <div class="pp-price-eq" id="eqRetainer">Standard . <strong id="anchorRetainer">GBP 3,250</strong> equivalent</div>
+        <ul class="pp-includes">
+          <li>Dedicated runtime slice and audit trail</li>
+          <li>All three pillars staffed continuously</li>
+          <li>Quarterly strategy review</li>
+          <li>EU AI Act conformity dossier</li>
+          <li>Loomgraph Society network seat</li>
+        </ul>
+        <a href="/smb/#apply" class="pp-cta">Request retainer</a>
+      </div>
+    </div>
+
+    <section class="pp-equity">
+      <h3>Equity discount: who qualifies</h3>
+      <p>Fair access is not a slogan. If any of the below applies to your leadership team, self-declare on the application and the hub lead verifies once. Renewable every 12 months.</p>
+      <ul>
+        <li>Founders from underrepresented backgrounds</li>
+        <li>Women-first leadership teams</li>
+        <li>Registered social enterprises or non-profits</li>
+        <li>Student-led ventures under 24 months old</li>
+        <li>Operators in conflict-affected or post-conflict regions</li>
+      </ul>
+    </section>
+
+    <section class="pp-matrix-wrap">
+      <h2>Full matrix: floor tier across 10 markets x 4 scale tiers</h2>
+      <p>Every price below is live. If you speak one of these currencies, you know what the other markets pay. Same runtime, same agents, same KG, different floor. Cohort and retainer tiers scale at the same ratios.</p>
+      <div class="pp-matrix-scroll">
+        <table class="pp-matrix">
+          <thead>
+            <tr>
+              <th>Market</th>
+              <th>Currency</th>
+              <th>PPP</th>
+              <th>Seed (x0.35)</th>
+              <th>Growth (x0.65)</th>
+              <th>Scale (x1.00)</th>
+              <th>Established (x1.30)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="market">UK</td><td class="muted">GBP</td><td class="muted">1.00</td><td>105</td><td>194</td><td>299</td><td>389</td></tr>
+            <tr><td class="market">Denmark</td><td class="muted">DKK</td><td class="muted">1.15</td><td>1,050</td><td>1,950</td><td>2,500</td><td>3,250</td></tr>
+            <tr><td class="market">Germany</td><td class="muted">EUR</td><td class="muted">1.05</td><td>130</td><td>245</td><td>365</td><td>475</td></tr>
+            <tr><td class="market">France</td><td class="muted">EUR</td><td class="muted">1.00</td><td>125</td><td>230</td><td>349</td><td>455</td></tr>
+            <tr><td class="market">Italy</td><td class="muted">EUR</td><td class="muted">0.95</td><td>115</td><td>220</td><td>330</td><td>430</td></tr>
+            <tr><td class="market">Netherlands</td><td class="muted">EUR</td><td class="muted">1.05</td><td>130</td><td>245</td><td>365</td><td>475</td></tr>
+            <tr><td class="market">Sweden</td><td class="muted">SEK</td><td class="muted">1.10</td><td>1,250</td><td>2,350</td><td>3,600</td><td>4,700</td></tr>
+            <tr><td class="market">Morocco</td><td class="muted">MAD</td><td class="muted">0.35</td><td>450</td><td>850</td><td>1,300</td><td>1,700</td></tr>
+            <tr><td class="market">Ghana</td><td class="muted">GHS</td><td class="muted">0.22</td><td>300</td><td>550</td><td>850</td><td>1,100</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="pp-matrix-wrap">
+      <h2>EU AI Act compliance (one-off, fixed scope)</h2>
+      <p>Enforcement lands 2 August 2026. Fixed-scope packages for SMBs that cannot staff a compliance officer. Priced in GBP for UK, EUR for EU.</p>
+      <div class="pp-matrix-scroll">
+        <table class="pp-matrix">
+          <thead>
+            <tr><th>Package</th><th>Duration</th><th>GBP</th><th>EUR</th><th>Scope</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="market">Scoping review</td><td>2 weeks</td><td>4,200</td><td>5,000</td><td class="muted">System inventory, risk classification, gap list</td></tr>
+            <tr><td class="market">Full conformity dossier</td><td>6 weeks</td><td>12,700</td><td>15,000</td><td class="muted">Dossier, technical documentation, governance pact</td></tr>
+            <tr><td class="market">Readiness + sandbox routing</td><td>10 weeks</td><td>21,200</td><td>25,000</td><td class="muted">Dossier + Danish regulatory sandbox submission</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <footer style="border-top:1px solid var(--border);padding:40px 0 60px;text-align:center;color:var(--text-muted);font-size:12px;margin-top:40px;">
+    <div class="pp-container">
+      <p><a href="/">ElektraOS.dev</a> . <a href="/smb/">For SMB</a> . <a href="/smb/pricing/rates.json">rates.json</a> . <a href="/smb/governance/">Governance</a> . <a href="/smb/hubs/">Hubs</a> . <a href="/loomgraph-society/">Society</a></p>
+      <p style="margin-top:12px;">Copenhagen . London . Casablanca . Accra . Built on ElektraOS runtime</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      var ANCHOR = { floor: 299, cohort: 3000, retainer: 5000 };
+      var MARKETS = {
+        UK: { sym:'GBP', fx:1.00, ppp:1.00 },
+        DK: { sym:'DKK', fx:8.80, ppp:1.15 },
+        DE: { sym:'EUR', fx:1.18, ppp:1.05 },
+        FR: { sym:'EUR', fx:1.18, ppp:1.00 },
+        IT: { sym:'EUR', fx:1.18, ppp:0.95 },
+        NL: { sym:'EUR', fx:1.18, ppp:1.05 },
+        SE: { sym:'SEK', fx:13.40, ppp:1.10 },
+        MA: { sym:'MAD', fx:12.70, ppp:0.35 },
+        GH: { sym:'GHS', fx:19.20, ppp:0.22 },
+        EU: { sym:'EUR', fx:1.18, ppp:1.00 }
+      };
+      var TIERS = { seed:0.35, growth:0.65, scale:1.00, established:1.30 };
+
+      function round(n, market){
+        if (market === 'DK' || market === 'SE') return Math.round(n/50)*50;
+        if (market === 'MA' || market === 'GH') return Math.round(n/50)*50;
+        if (n < 500) return Math.round(n/5)*5;
+        return Math.round(n/10)*10;
+      }
+      function fmt(n){ return n.toLocaleString('en-US'); }
+
+      function recompute(){
+        var m = document.getElementById('ppMarket').value;
+        var t = document.getElementById('ppTier').value;
+        var eq = document.getElementById('ppEquity').value === '1';
+        var mk = MARKETS[m]; var tmul = TIERS[t]; var eqmul = eq ? 0.60 : 1.00;
+
+        ['floor','cohort','retainer'].forEach(function(pkg){
+          var gbpAnchor = ANCHOR[pkg] * tmul * eqmul;
+          var local = gbpAnchor * mk.fx * mk.ppp;
+          var localR = round(local, m);
+          var anchorR = Math.round(gbpAnchor);
+
+          document.getElementById('price'+cap(pkg)).textContent = fmt(localR);
+          document.getElementById('cur'+cap(pkg)).textContent = mk.sym;
+          document.getElementById('anchor'+cap(pkg)).textContent = 'GBP ' + fmt(anchorR);
+          document.getElementById('eq'+cap(pkg)).firstChild.textContent =
+            eq ? 'With equity discount . ' : 'Standard . ';
+        });
+      }
+      function cap(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
+
+      document.getElementById('ppMarket').addEventListener('change', recompute);
+      document.getElementById('ppTier').addEventListener('change', recompute);
+      document.getElementById('ppEquity').addEventListener('change', recompute);
+      recompute();
+    })();
+  </script>
+
+  <script src="/js/utils.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>

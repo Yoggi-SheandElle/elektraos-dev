@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en-GH">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About ElektraOS Ghana . Copenhagen brain, African heart</title>
+<meta name="description" content="ElektraOS was built by a solo operator in Copenhagen with roots between Morocco and Europe. Why we price for Accra, how we operate, and what fair access means to us.">
+<meta property="og:title" content="About ElektraOS Ghana">
+<meta property="og:url" content="https://elektraos.dev/gh/about/">
+<meta name="theme-color" content="#006B3F">
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="canonical" href="https://elektraos.dev/gh/about/">
+<link rel="alternate" hreflang="en" href="https://elektraos.dev/about/">
+<link rel="alternate" hreflang="en-GH" href="https://elektraos.dev/gh/about/">
+<link rel="alternate" hreflang="x-default" href="https://elektraos.dev/about/">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0f0d;--bg-card:#0f1a15;--text:#e8f0ec;--muted:#6b8a7a;--red:#CE1126;--gold:#FCD116;--green:#006B3F;--border:rgba(0,107,63,0.15);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;}
+nav{position:fixed;top:0;left:0;right:0;padding:1rem 1.5rem;background:rgba(10,15,13,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;z-index:100;}
+.nav-logo{font-family:'Space Mono',monospace;font-size:0.85rem;color:var(--gold);text-decoration:none;}
+.nav-links{display:flex;gap:1.25rem;}
+.nav-links a{font-size:0.8rem;color:var(--muted);text-decoration:none;}
+.nav-links a:hover{color:var(--gold);}
+.flag-bar{position:fixed;top:58px;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red) 33%,var(--gold) 33% 66%,var(--green) 66%);z-index:99;}
+.hero{min-height:60vh;display:flex;flex-direction:column;justify-content:center;padding:7rem 1.5rem 3rem;max-width:800px;margin:0 auto;}
+.badge{font-family:'Space Mono',monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.25em;color:var(--gold);margin-bottom:1rem;}
+h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:700;line-height:1.15;margin-bottom:1.25rem;}
+h1 span{color:var(--gold);}
+.lead{font-size:1.15rem;color:var(--muted);max-width:680px;}
+section{padding:3rem 1.5rem;max-width:800px;margin:0 auto;}
+h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:700;margin-bottom:1rem;color:var(--text);}
+p{color:var(--muted);margin-bottom:1rem;}
+p strong{color:var(--text);}
+.callout{background:var(--bg-card);border-left:3px solid var(--gold);border-radius:8px;padding:1.5rem;margin:1.5rem 0;}
+.callout p{margin-bottom:0;color:var(--text);font-style:italic;}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin:2rem 0;}
+.stat{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;text-align:center;}
+.stat-val{font-family:'Space Mono',monospace;font-size:1.5rem;font-weight:700;color:var(--gold);}
+.stat-label{font-size:0.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;margin-top:0.3rem;}
+.btns{display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:2rem;}
+.btn{padding:0.8rem 1.4rem;border-radius:10px;font-size:0.85rem;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-gold{background:var(--gold);color:#000;}
+.btn-gold:hover{box-shadow:0 0 24px rgba(252,209,22,0.4);}
+.btn-ghost{border:1px solid var(--border);color:var(--text);}
+.btn-ghost:hover{border-color:var(--gold);}
+footer{text-align:center;padding:3rem 1.5rem;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border);}
+footer a{color:var(--gold);text-decoration:none;}
+</style>
+<script defer src="https://yossra-analytics.fly.dev/analytics" data-website-id="4abcaca6-fb37-47bf-bc8e-41e4b2503ee8"></script>
+</head>
+<body>
+<div class="flag-bar"></div>
+<nav>
+  <a href="/gh/" class="nav-logo">&#9733; ElektraOS Ghana</a>
+  <div class="nav-links">
+    <a href="/gh/">Home</a>
+    <a href="/gh/smb/">SMB</a>
+    <a href="/gh/about/">About</a>
+    <a href="/gh/cases/">Cases</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="badge">Who we are</div>
+  <h1>Copenhagen brain. <span>African heart.</span></h1>
+  <p class="lead">ElektraOS is built by Yossra Benzad, a solo AI systems operator in Copenhagen with roots between Morocco and Europe. This page explains how a one-person operation serves Ghana fairly, and what you should expect when you work with us.</p>
+</div>
+
+<section>
+  <h2>The short version.</h2>
+  <p>I am one person. I build AI systems that run autonomously because a team of one cannot scale any other way. That constraint is a feature, not a bug. It means every Ghanaian SMB gets the same stack as my Copenhagen and London clients. No junior staff, no outsourced builds, no templates.</p>
+  <p>The runtime that powers ElektraOS has 49 specialized agents across 51 routers and 566 endpoints. The same infrastructure runs every client deployment. When you hire us for GHS 450 a month, you get the production stack, not a discounted scraps version.</p>
+</section>
+
+<section>
+  <h2>Why prices for Ghana are different.</h2>
+  <p>A London team pays <strong>GBP 299 a month</strong> at the floor tier. A Ghanaian team pays <strong>GHS 450</strong>. That is not charity. It is <strong>Purchasing Power Parity (PPP)</strong>: prices tracking real local buying power, not global FX rates.</p>
+  <p>Ghana's PPP factor on our grid is <strong>0.22</strong>. That means a Kumasi cafe pays 22% of what a London operator pays for the exact same stack. Not a stripped-down version. The same agents, the same API endpoints, the same dashboard.</p>
+  <div class="callout">
+    <p>Fair access is not a discount. It is the baseline. Every market gets prices its economy can actually sustain.</p>
+  </div>
+</section>
+
+<section>
+  <h2>How we operate.</h2>
+  <div class="stats">
+    <div class="stat"><div class="stat-val">49</div><div class="stat-label">AI agents</div></div>
+    <div class="stat"><div class="stat-val">566</div><div class="stat-label">API endpoints</div></div>
+    <div class="stat"><div class="stat-val">51</div><div class="stat-label">Routers</div></div>
+    <div class="stat"><div class="stat-val">24/7</div><div class="stat-label">Always on</div></div>
+  </div>
+  <p>Our hub model (see <a href="/smb/hubs/" style="color:var(--gold);">/smb/hubs/</a>) lets local operators in each market close, onboard, and support clients in their own language and context. Revenue splits 70/30 with the local hub lead keeping the majority. No monthly fee. No non-compete. 90-day exit clause.</p>
+  <p>We are looking for an <strong>Accra hub lead</strong> right now. If you know the Ghanaian commerce scene and can explain AI in plain language to shop owners, this is for you.</p>
+</section>
+
+<section>
+  <h2>The honest part.</h2>
+  <p>We do not have a Ghanaian case study yet. Our live work is in the UK (MealShift), Denmark (ElektraOS itself), and Morocco (Ayla, SheAndelle). We are clear about that. We are not going to pretend we have ten years of Accra commerce experience when we do not.</p>
+  <p>What we have is a production AI stack that ran for 12 months without downtime, a governance pact that commits us to fair pricing in writing, and a 40% equity discount for women-led, youth-led, and first-year businesses.</p>
+  <div class="btns">
+    <a href="/gh/smb/" class="btn btn-gold">See Ghana SMB page</a>
+    <a href="/smb/governance/" class="btn btn-ghost">Governance pact</a>
+    <a href="/smb/hubs/" class="btn btn-ghost">Become Accra hub lead</a>
+  </div>
+</section>
+
+<footer>
+  <p>ElektraOS Ghana . Medaase.</p>
+  <p style="margin-top:0.5rem;"><a href="/gh/">home</a> . <a href="/gh/smb/">SMB</a> . <a href="mailto:yossra.benzad@gmail.com">yossra.benzad@gmail.com</a></p>
+</footer>
+</body>
+</html>

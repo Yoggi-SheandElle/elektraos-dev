@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-GH">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ElektraOS Ghana . Case studies and live work</title>
+<meta name="description" content="Live production work powering the ElektraOS stack. UK commerce, Moroccan beauty, Danish runtime. Ghana work pending Accra hub lead.">
+<meta property="og:title" content="ElektraOS Ghana . Cases">
+<meta property="og:url" content="https://elektraos.dev/gh/cases/">
+<meta name="theme-color" content="#006B3F">
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="canonical" href="https://elektraos.dev/gh/cases/">
+<link rel="alternate" hreflang="en" href="https://elektraos.dev/cases/">
+<link rel="alternate" hreflang="en-GH" href="https://elektraos.dev/gh/cases/">
+<link rel="alternate" hreflang="x-default" href="https://elektraos.dev/cases/">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0f0d;--bg-card:#0f1a15;--text:#e8f0ec;--muted:#6b8a7a;--red:#CE1126;--gold:#FCD116;--green:#006B3F;--border:rgba(0,107,63,0.15);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;}
+nav{position:fixed;top:0;left:0;right:0;padding:1rem 1.5rem;background:rgba(10,15,13,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;z-index:100;}
+.nav-logo{font-family:'Space Mono',monospace;font-size:0.85rem;color:var(--gold);text-decoration:none;}
+.nav-links{display:flex;gap:1.25rem;}
+.nav-links a{font-size:0.8rem;color:var(--muted);text-decoration:none;}
+.nav-links a:hover{color:var(--gold);}
+.flag-bar{position:fixed;top:58px;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red) 33%,var(--gold) 33% 66%,var(--green) 66%);z-index:99;}
+.hero{padding:7rem 1.5rem 2rem;max-width:960px;margin:0 auto;text-align:center;}
+.badge{font-family:'Space Mono',monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.25em;color:var(--gold);margin-bottom:1rem;}
+h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:700;line-height:1.15;margin-bottom:1rem;}
+h1 span{color:var(--gold);}
+.lead{font-size:1.1rem;color:var(--muted);max-width:640px;margin:0 auto;}
+section{padding:3rem 1.5rem;max-width:960px;margin:0 auto;}
+h2{font-size:clamp(1.4rem,3vw,1.9rem);font-weight:700;margin-bottom:1.5rem;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1rem;margin-top:1.5rem;}
+.case-card{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:1.75rem;transition:all 0.3s;display:flex;flex-direction:column;}
+.case-card:hover{border-color:var(--gold);transform:translateY(-3px);}
+.case-flag{font-family:'Space Mono',monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.15em;color:var(--gold);margin-bottom:0.5rem;}
+.case-title{font-size:1.2rem;font-weight:700;color:var(--text);margin-bottom:0.5rem;}
+.case-card p{font-size:0.92rem;color:var(--muted);margin-bottom:1rem;flex-grow:1;}
+.case-stats{display:flex;gap:1rem;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--green);padding-top:0.75rem;border-top:1px solid var(--border);}
+.case-card a{color:var(--gold);text-decoration:none;font-size:0.85rem;font-weight:600;margin-top:0.75rem;}
+.pending-card{background:linear-gradient(135deg,rgba(252,209,22,0.04),rgba(206,17,38,0.04));border:1px dashed rgba(252,209,22,0.3);border-radius:14px;padding:2rem;text-align:center;margin:2rem 0;}
+.pending-card h3{color:var(--gold);margin-bottom:0.75rem;}
+.pending-card p{color:var(--muted);margin-bottom:1rem;}
+.btn{padding:0.7rem 1.3rem;border-radius:10px;font-size:0.85rem;font-weight:600;text-decoration:none;display:inline-block;}
+.btn-gold{background:var(--gold);color:#000;}
+.btn-ghost{border:1px solid var(--border);color:var(--text);margin-left:0.5rem;}
+footer{text-align:center;padding:3rem 1.5rem;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border);}
+footer a{color:var(--gold);text-decoration:none;}
+</style>
+<script defer src="https://yossra-analytics.fly.dev/analytics" data-website-id="4abcaca6-fb37-47bf-bc8e-41e4b2503ee8"></script>
+</head>
+<body>
+<div class="flag-bar"></div>
+<nav>
+  <a href="/gh/" class="nav-logo">&#9733; ElektraOS Ghana</a>
+  <div class="nav-links">
+    <a href="/gh/">Home</a>
+    <a href="/gh/smb/">SMB</a>
+    <a href="/gh/about/">About</a>
+    <a href="/gh/cases/">Cases</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="badge">Live work . real clients</div>
+  <h1>Production <span>case studies</span>.</h1>
+  <p class="lead">Everything listed runs on the same ElektraOS stack a Ghanaian client would get. No demos. No vapourware. Ghana-specific case study coming once Accra hub lead onboards.</p>
+</div>
+
+<section>
+  <h2>Live client work.</h2>
+  <div class="grid">
+    <div class="case-card">
+      <div class="case-flag">UK . Commerce</div>
+      <div class="case-title">MealShift Commerce OS</div>
+      <p>Multi-vertical UK commerce platform. NestJS API + Next.js web, Slack ops wired, Woo/Shopify/Wix plugins. Live production client, UK-only. Agent-native storefronts.</p>
+      <div class="case-stats"><span>5 repos</span><span>Production</span><span>Live Slack ops</span></div>
+      <a href="/casestudy/mealshift/vision/">Read vision &gt;</a>
+    </div>
+    <div class="case-card">
+      <div class="case-flag">DK . Runtime</div>
+      <div class="case-title">ElektraOS Core</div>
+      <p>Our own 49-agent, 566-endpoint AI runtime. 3,852-line main.py, 76-table SQLite, 12 months of production stability. The system we deploy for every client.</p>
+      <div class="case-stats"><span>49 agents</span><span>566 endpoints</span><span>12mo uptime</span></div>
+      <a href="/case-elektraos/">Read case &gt;</a>
+    </div>
+    <div class="case-card">
+      <div class="case-flag">MA . Beauty</div>
+      <div class="case-title">Ayla + SheAndelle</div>
+      <p>Moroccan beauty and wellness brands. AI-assisted content, booking automation, multilingual chat (Darija + French + English). Local MAD pricing.</p>
+      <div class="case-stats"><span>Multilingual</span><span>Booking</span><span>MAD pricing</span></div>
+      <a href="/case-ayla/">Read case &gt;</a>
+    </div>
+    <div class="case-card">
+      <div class="case-flag">UK . Property</div>
+      <div class="case-title">Kettering Montagu</div>
+      <p>8-flat residential block (NN16 8XG) with tenant outreach pack, SQLite vault, automated contract templates. Run under BizUs Legal Ltd brand.</p>
+      <div class="case-stats"><span>SQLite vault</span><span>Contracts</span><span>Outreach</span></div>
+      <a href="/case-kettering-montagu/">Read case &gt;</a>
+    </div>
+    <div class="case-card">
+      <div class="case-flag">EU . Network</div>
+      <div class="case-title">Loomgraph</div>
+      <p>Agentic SEO network live on Fly.io (lhr region). Knowledge graph with 14 entity types, MCP server, public join + cohort endpoints. 4 sites registered.</p>
+      <div class="case-stats"><span>Fly.io live</span><span>KG</span><span>MCP</span></div>
+      <a href="/case-loomgraph/">Read case &gt;</a>
+    </div>
+    <div class="case-card">
+      <div class="case-flag">DK . Game</div>
+      <div class="case-title">40th Brick</div>
+      <p>Phaser 3 birthday game on Render. 40 rooms across 4 chapters. Shows range: same stack that runs commerce clients also renders interactive narratives.</p>
+      <div class="case-stats"><span>Phaser 3</span><span>40 rooms</span><span>Render</span></div>
+      <a href="/case-40th-brick/">Read case &gt;</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="pending-card">
+    <h3>Ghana case study: pending.</h3>
+    <p>We have not onboarded a Ghanaian client yet. When we do, their story lives here, in their own words, with real numbers. Until then, we will not fake it.</p>
+    <p>If you are a Ghanaian SMB ready to be the first case study, or an Accra hub lead ready to build the pipeline:</p>
+    <a href="/gh/smb/" class="btn btn-gold">Ghana SMB page</a>
+    <a href="/smb/hubs/" class="btn btn-ghost">Hub lead application</a>
+  </div>
+</section>
+
+<footer>
+  <p>ElektraOS Ghana . Honest about what we have built and what we have not.</p>
+  <p style="margin-top:0.5rem;"><a href="/gh/">home</a> . <a href="/cases/">all cases</a> . <a href="mailto:yossra.benzad@gmail.com">yossra.benzad@gmail.com</a></p>
+</footer>
+</body>
+</html>

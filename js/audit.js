@@ -12,7 +12,7 @@
 
   var RECS_POOL = [
     { text: 'Render-blocking resources detected', severity: 'high' },
-    { text: 'Images not optimized — missing WebP format', severity: 'high' },
+    { text: 'Images not optimized - missing WebP format', severity: 'high' },
     { text: 'Missing meta description on multiple pages', severity: 'medium' },
     { text: 'No structured data (schema markup)', severity: 'medium' },
     { text: 'TTFB above 1.5s threshold', severity: 'high' },

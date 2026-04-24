@@ -17,7 +17,7 @@
   <link rel="alternate" hreflang="en" href="https://elektraos.dev/loomgraph-society/">
   <link rel="alternate" hreflang="x-default" href="https://elektraos.dev/loomgraph-society/">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://formspree.io https://loomgraph.fly.dev; frame-ancestors 'none';">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://yossra-analytics.fly.dev; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://formspree.io https://loomgraph.fly.dev https://yossra-analytics.fly.dev; frame-ancestors 'none';">
 
   <script type="application/ld+json">
   {
@@ -269,13 +269,20 @@
         <line x1="430" y1="260" x2="640" y2="260"/>
         <line x1="430" y1="260" x2="430" y2="110"/>
       </g>
-      <!-- spokes: outer ring (hubs + guest) -->
-      <g stroke="rgba(0,212,255,0.28)" stroke-width="1" class="hub-spoke" fill="none">
-        <line x1="430" y1="260" x2="100" y2="400"/>
-        <line x1="430" y1="260" x2="260" y2="440"/>
-        <line x1="430" y1="260" x2="430" y2="460"/>
-        <line x1="430" y1="260" x2="600" y2="440"/>
-        <line x1="430" y1="260" x2="760" y2="400"/>
+      <!-- spokes: outer ring (live hubs, cyan solid) -->
+      <g stroke="rgba(0,255,157,0.35)" stroke-width="1.2" class="hub-spoke" fill="none">
+        <line x1="430" y1="260" x2="97"  y2="381"/>
+        <line x1="430" y1="260" x2="260" y2="431"/>
+        <line x1="430" y1="260" x2="415" y2="461"/>
+      </g>
+      <!-- spokes: outer ring (wanted hubs, amber dashed) -->
+      <g stroke="rgba(232,168,56,0.25)" stroke-width="1" class="hub-spoke" fill="none">
+        <line x1="430" y1="260" x2="565" y2="431"/>
+        <line x1="430" y1="260" x2="715" y2="391"/>
+        <line x1="430" y1="260" x2="90"  y2="201"/>
+        <line x1="430" y1="260" x2="765" y2="251"/>
+        <line x1="430" y1="260" x2="765" y2="81"/>
+        <line x1="430" y1="260" x2="90"  y2="81"/>
       </g>
       <g stroke="rgba(232,168,56,0.35)" stroke-width="1" class="hub-spoke" fill="none">
         <line x1="430" y1="260" x2="760" y2="150"/>
@@ -316,33 +323,58 @@
         <text x="755" y="152" text-anchor="middle">ayla.ma</text>
       </g>
 
-      <!-- locale hubs -->
-      <g class="hub-node localehub">
-        <rect x="35"  y="380" width="140" height="34" rx="6" ry="6"/>
-        <text x="105" y="402" text-anchor="middle">uk.elektraos.dev</text>
+      <!-- locale hubs (live: green dot, wanted: amber dot) -->
+      <g class="hub-node localehub" data-status="live">
+        <rect x="20"  y="360" width="155" height="42" rx="6" ry="6"/>
+        <text x="97" y="378" text-anchor="middle">uk . London</text>
+        <text x="97" y="394" text-anchor="middle" font-size="9" fill="#00ff9d">live . 2 sites</text>
       </g>
-      <g class="hub-node localehub">
-        <rect x="190" y="420" width="140" height="34" rx="6" ry="6"/>
-        <text x="260" y="442" text-anchor="middle">fr.elektraos.dev</text>
+      <g class="hub-node localehub" data-status="live">
+        <rect x="185" y="410" width="150" height="42" rx="6" ry="6"/>
+        <text x="260" y="428" text-anchor="middle">da . Copenhagen</text>
+        <text x="260" y="444" text-anchor="middle" font-size="9" fill="#00ff9d">live . anchor</text>
       </g>
-      <g class="hub-node localehub">
-        <rect x="360" y="440" width="140" height="34" rx="6" ry="6"/>
-        <text x="430" y="462" text-anchor="middle">it.elektraos.dev</text>
+      <g class="hub-node localehub" data-status="live">
+        <rect x="345" y="440" width="140" height="42" rx="6" ry="6"/>
+        <text x="415" y="458" text-anchor="middle">ma . Casablanca</text>
+        <text x="415" y="474" text-anchor="middle" font-size="9" fill="#00ff9d">live . hybrid</text>
       </g>
-      <g class="hub-node localehub">
-        <rect x="530" y="420" width="140" height="34" rx="6" ry="6"/>
-        <text x="600" y="442" text-anchor="middle">ma.elektraos.dev</text>
+      <g class="hub-node localehub" data-status="wanted">
+        <rect x="495" y="410" width="140" height="42" rx="6" ry="6"/>
+        <text x="565" y="428" text-anchor="middle">gh . Accra</text>
+        <text x="565" y="444" text-anchor="middle" font-size="9" fill="#E8A838">wanted . apply</text>
       </g>
-      <g class="hub-node localehub">
-        <rect x="690" y="380" width="140" height="34" rx="6" ry="6"/>
-        <text x="760" y="402" text-anchor="middle">gh.elektraos.dev</text>
+      <g class="hub-node localehub" data-status="wanted">
+        <rect x="645" y="370" width="140" height="42" rx="6" ry="6"/>
+        <text x="715" y="388" text-anchor="middle">de . Berlin</text>
+        <text x="715" y="404" text-anchor="middle" font-size="9" fill="#E8A838">wanted</text>
+      </g>
+      <g class="hub-node localehub" data-status="wanted">
+        <rect x="20"  y="180" width="140" height="42" rx="6" ry="6"/>
+        <text x="90" y="198" text-anchor="middle">fr . Paris</text>
+        <text x="90" y="214" text-anchor="middle" font-size="9" fill="#E8A838">wanted</text>
+      </g>
+      <g class="hub-node localehub" data-status="wanted">
+        <rect x="695" y="230" width="140" height="42" rx="6" ry="6"/>
+        <text x="765" y="248" text-anchor="middle">nl . Amsterdam</text>
+        <text x="765" y="264" text-anchor="middle" font-size="9" fill="#E8A838">wanted</text>
+      </g>
+      <g class="hub-node localehub" data-status="wanted">
+        <rect x="695" y="60" width="140" height="42" rx="6" ry="6"/>
+        <text x="765" y="78" text-anchor="middle">sv . Stockholm</text>
+        <text x="765" y="94" text-anchor="middle" font-size="9" fill="#E8A838">wanted</text>
+      </g>
+      <g class="hub-node localehub" data-status="wanted">
+        <rect x="20" y="60" width="140" height="42" rx="6" ry="6"/>
+        <text x="90" y="78" text-anchor="middle">it . Milan</text>
+        <text x="90" y="94" text-anchor="middle" font-size="9" fill="#E8A838">wanted</text>
       </g>
     </svg>
 
     <div class="hub-caption">
-      <span class="ch founding"><b>&#9679;</b> Founding operating business</span>
+      <span class="ch founding"><b>&#9679;</b> Founding operating business (5 live)</span>
       <span class="ch guest"><b>&#9679;</b> Guest tenant</span>
-      <span class="ch hub"><b>&#9679;</b> ElektraOS locale hub</span>
+      <span class="ch hub"><b>&#9679;</b> Locale hub: <span style="color:#00ff9d">3 live</span> . <span style="color:#E8A838">6 wanted</span></span>
     </div>
   </div>
 
@@ -357,7 +389,7 @@
 
     <div class="soc-stats">
       <div class="soc-stat">
-        <div class="soc-stat-num">11</div>
+        <div class="soc-stat-num">6</div>
         <div class="soc-stat-lbl">Member sites</div>
       </div>
       <div class="soc-stat">
@@ -365,11 +397,11 @@
         <div class="soc-stat-lbl">Operating businesses</div>
       </div>
       <div class="soc-stat">
-        <div class="soc-stat-num">5</div>
-        <div class="soc-stat-lbl">Locale hubs</div>
+        <div class="soc-stat-num">3 / 9</div>
+        <div class="soc-stat-lbl">Locale hubs live / planned</div>
       </div>
       <div class="soc-stat">
-        <div class="soc-stat-num">4</div>
+        <div class="soc-stat-num">10</div>
         <div class="soc-stat-lbl">Languages</div>
       </div>
       <div class="soc-stat">
