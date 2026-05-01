@@ -64,11 +64,58 @@
     table.bridge td .mono { color: #c4b5fd; }
     .vision { background: rgba(167,139,250,.05); border-left: 3px solid #a78bfa; padding: 14px 18px; margin: 16px 0; border-radius: 0 6px 6px 0; }
     .vision strong { color: #c4b5fd; }
+    .intent { background: rgba(134, 239, 172, .07); border-left: 3px solid #86efac; padding: 12px 16px; margin: 0 0 22px; border-radius: 0 6px 6px 0; }
+    .intent .label { display: block; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #86efac; margin-bottom: 4px; }
+    .intent p { margin: 0; color: #d1d5db; font-size: 15px; }
     @media (max-width: 600px) {
       .wrap { padding: 36px 18px 72px; }
       h1 { font-size: 26px; }
       section h2 { font-size: 20px; }
       .diagram { font-size: 11px; }
+    }
+    @media print {
+      @page { size: A4; margin: 18mm 16mm 18mm 16mm; }
+      html, body { background: #ffffff !important; color: #111827 !important; font-size: 11pt; line-height: 1.5; }
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .wrap { max-width: none; padding: 0; }
+      a { color: #4338ca !important; border-bottom-color: rgba(67,56,202,.3) !important; }
+      header.hero { border-bottom: 1px solid #e5e7eb; padding-bottom: 16px; margin-bottom: 22px; page-break-after: avoid; }
+      .eyebrow { color: #6d28d9 !important; }
+      h1 { font-size: 22pt; color: #111827 !important; }
+      .lede { color: #374151 !important; font-size: 12pt; }
+      nav.toc { background: #f9fafb !important; border-color: #e5e7eb !important; page-break-inside: avoid; }
+      nav.toc a { color: #111827 !important; }
+      section { margin: 0; page-break-before: always; padding-top: 0; }
+      section:first-of-type { page-break-before: avoid; }
+      section h2 { font-size: 16pt; color: #111827 !important; page-break-after: avoid; margin-top: 0; }
+      section h2 .num { color: #9ca3af !important; }
+      h3 { font-size: 11pt; color: #111827 !important; page-break-after: avoid; margin-top: 16px; }
+      .tagline { color: #4b5563 !important; font-size: 11pt; margin-bottom: 12px; }
+      .links { background: #f9fafb !important; border-color: #e5e7eb !important; padding: 8px 12px; page-break-inside: avoid; font-size: 10pt; }
+      .links span.label { color: #6b7280 !important; }
+      .facts { font-size: 10.5pt; }
+      .facts li { margin: 3px 0; page-break-inside: avoid; }
+      .facts li strong { color: #111827 !important; }
+      .ask { background: #f5f3ff !important; border-color: #c4b5fd !important; page-break-inside: avoid; }
+      .ask h3, .ask ol li { color: #1f2937 !important; }
+      .ask ol { color: #1f2937 !important; }
+      .vision { background: #f5f3ff !important; border-left-color: #7c3aed !important; color: #1f2937 !important; page-break-inside: avoid; }
+      .vision strong { color: #5b21b6 !important; }
+      .intent { background: #ecfdf5 !important; border-left-color: #059669 !important; page-break-inside: avoid; }
+      .intent .label { color: #047857 !important; }
+      .intent p { color: #064e3b !important; }
+      .diagram { background: #f9fafb !important; border-color: #e5e7eb !important; color: #111827 !important; font-size: 9.5pt; page-break-inside: avoid; }
+      table.bridge { font-size: 10pt; page-break-inside: auto; }
+      table.bridge th, table.bridge td { border-bottom-color: #e5e7eb !important; padding: 7px 8px; }
+      table.bridge th { color: #6b7280 !important; }
+      table.bridge tr { page-break-inside: avoid; }
+      table.bridge td .mono { color: #5b21b6 !important; }
+      .pill { vertical-align: middle; }
+      .pill.mine { background: #f5f3ff !important; color: #5b21b6 !important; border-color: #c4b5fd !important; }
+      .pill.family { background: #ecfdf5 !important; color: #047857 !important; border-color: #86efac !important; }
+      .status { color: #059669 !important; }
+      .footnote { color: #6b7280 !important; border-top-color: #e5e7eb !important; }
+      p, li { orphans: 3; widows: 3; }
     }
   </style>
 </head>
@@ -94,7 +141,11 @@
     <!-- ===== ELEKTRAOS ===== -->
     <section id="elektraos">
       <h2><span class="num">01</span>ElektraOS<span class="pill mine">mine</span></h2>
-      <p class="tagline">My private AI operating system. Started January 2026. Runs locally. The long-term memory layer for everything else I work on.</p>
+      <p class="tagline">My private AI operating system. Started January 2026. Runs locally.</p>
+      <div class="intent">
+        <span class="label">What I am trying to do with it</span>
+        <p>Keep it as my private internal infrastructure - not a product, not for sale. ElektraOS is the brain that powers my public work: it stores knowledge, runs the agents that audit, draft, and monitor, and gives the other three projects something durable to plug into. The decision I want to lock is to <em>stop expanding it</em> and let it serve the products in front of it.</p>
+      </div>
       <div class="links">
         <span class="label">Status</span><span class="status">running, port 8000</span>
         <span class="label">Repo</span>private
@@ -122,6 +173,10 @@
     <section id="site">
       <h2><span class="num">02</span>elektraos.dev<span class="pill mine">mine</span></h2>
       <p class="tagline">My public website and portfolio. The front door.</p>
+      <div class="intent">
+        <span class="label">What I am trying to do with it</span>
+        <p>Turn it from a personal portfolio into the public face of a Copenhagen-based business this year. The /smb/ and Loomgraph sections already prefigure the product, but the homepage still reads as a freelancer site. The decision I want to lock is whether elektraos.dev becomes the wrapper brand for everything I do, or whether Loomgraph becomes the headline and elektraos.dev shrinks back to a portfolio.</p>
+      </div>
       <div class="links">
         <span class="label">Live</span><a href="https://elektraos.dev" target="_blank" rel="noopener">elektraos.dev</a>
         <span class="label">Source</span><a href="https://github.com/Yoggi-SheandElle/elektraos-dev" target="_blank" rel="noopener">github.com/Yoggi-SheandElle/elektraos-dev</a>
@@ -171,6 +226,10 @@
     <section id="loomgraph">
       <h2><span class="num">03</span>Loomgraph<span class="pill mine">mine</span></h2>
       <p class="tagline">Agentic SEO and governance for small businesses. Started 20 April 2026. The youngest project but the one with the clearest commercial shape.</p>
+      <div class="intent">
+        <span class="label">What I am trying to do with it</span>
+        <p>Ship the most defensible commercial product I have built, aimed at Danish and EU small businesses that need AI-readability, multilingual SEO, and a real governance posture but cannot afford an enterprise stack. The bet is that bundling those three into a single membership (with a Society layer where members reinforce each other's authority) is something a one-person company in Copenhagen can credibly run. The decision I want to lock is whether to push it as a SaaS, a Society, or a hybrid.</p>
+      </div>
       <div class="links">
         <span class="label">Service</span><a href="https://loomgraph.fly.dev" target="_blank" rel="noopener">loomgraph.fly.dev</a>
         <span class="label">Landing</span><a href="https://elektraos.dev/loomgraph/" target="_blank" rel="noopener">elektraos.dev/loomgraph/</a>
@@ -226,7 +285,11 @@
     <!-- ===== MEALSHIFT ===== -->
     <section id="mealshift">
       <h2><span class="num">04</span>MealShift Commerce OS<span class="pill family">with my uncle</span></h2>
-      <p class="tagline">Not mine to monetise. Building it with my uncle Said Ziane in the UK. I am trying to finish my piece this week so the platform can start generating revenue.</p>
+      <p class="tagline">Building it with my uncle Said Ziane in the UK. Not mine to monetise.</p>
+      <div class="intent">
+        <span class="label">What I am trying to do with it</span>
+        <p>Finish my piece this week (security, agent-native storefronts, activity tracking are already shipped; what is left is closing onboarding gaps for the first paying tenants) so my uncle can start charging UK customers. After that, my time goes back to the three projects above. I am including MealShift here only so you see what is taking my hours this week and why it is not part of my own monetisation question.</p>
+      </div>
       <div class="links">
         <span class="label">Tenants</span>
         <a href="https://mealshift.co.uk" target="_blank" rel="noopener">mealshift.co.uk</a>
