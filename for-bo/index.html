@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Bo - Yossra Benzad portfolio overview</title>
+  <meta name="description" content="A focused portfolio overview for Bo Walther: ElektraOS, elektraos.dev, Loomgraph, and the MealShift project with my uncle, plus how they all connect.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <script defer src="https://yossra-analytics.fly.dev/analytics" data-website-id="4abcaca6-fb37-47bf-bc8e-41e4b2503ee8"></script>
+  <style>
+    *,*::before,*::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'DM Sans', system-ui, sans-serif;
+      background: #0b0b10;
+      color: #e9e9f0;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: #a78bfa; text-decoration: none; border-bottom: 1px solid rgba(167,139,250,.25); }
+    a:hover { color: #c4b5fd; border-bottom-color: #c4b5fd; }
+    code, .mono { font-family: 'Space Mono', ui-monospace, monospace; font-size: 0.92em; }
+    .wrap { max-width: 860px; margin: 0 auto; padding: 56px 24px 96px; }
+    header.hero { border-bottom: 1px solid rgba(255,255,255,.08); padding-bottom: 32px; margin-bottom: 40px; }
+    .eyebrow { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #a78bfa; margin: 0 0 12px; }
+    h1 { font-size: 32px; font-weight: 700; margin: 0 0 12px; letter-spacing: -0.01em; }
+    .lede { color: #b8b8c5; font-size: 17px; margin: 0; }
+    nav.toc { margin: 32px 0 0; padding: 16px 18px; background: #14141c; border: 1px solid rgba(255,255,255,.06); border-radius: 10px; }
+    nav.toc ol { margin: 0; padding-left: 20px; }
+    nav.toc li { margin: 4px 0; }
+    section { margin: 56px 0; padding-top: 8px; }
+    section h2 { font-size: 24px; font-weight: 700; margin: 0 0 8px; letter-spacing: -0.005em; }
+    section h2 .num { font-family: 'Space Mono', monospace; color: #6b7280; font-size: 16px; margin-right: 10px; }
+    .tagline { color: #b8b8c5; margin: 0 0 18px; font-size: 15px; }
+    h3 { font-size: 16px; font-weight: 600; margin: 24px 0 8px; color: #fff; }
+    .links { display: flex; flex-wrap: wrap; gap: 8px 14px; margin: 0 0 18px; padding: 12px 14px; background: #14141c; border: 1px solid rgba(255,255,255,.06); border-radius: 8px; }
+    .links span.label { font-family: 'Space Mono', monospace; font-size: 12px; color: #9ca3af; margin-right: 4px; letter-spacing: 0.05em; text-transform: uppercase; }
+    .facts { margin: 0; padding-left: 20px; }
+    .facts li { margin: 6px 0; }
+    .facts li strong { color: #fff; font-weight: 600; }
+    .ask { background: linear-gradient(180deg, #1a1525, #14141c); border: 1px solid rgba(167,139,250,.25); border-radius: 12px; padding: 22px 24px; margin: 32px 0; }
+    .ask h3 { margin: 0 0 10px; font-size: 18px; }
+    .ask ol { margin: 8px 0 0; padding-left: 22px; }
+    .ask ol li { margin: 6px 0; }
+    .footnote { color: #6b7280; font-size: 13px; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.06); }
+    .pill { display: inline-block; font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; vertical-align: middle; margin-left: 8px; }
+    .pill.mine { background: rgba(167,139,250,.15); color: #c4b5fd; border: 1px solid rgba(167,139,250,.3); }
+    .pill.family { background: rgba(34,197,94,.12); color: #86efac; border: 1px solid rgba(34,197,94,.3); }
+    .status { font-family: 'Space Mono', monospace; font-size: 12px; color: #86efac; }
+    .status::before { content: "● "; }
+    .diagram { background: #14141c; border: 1px solid rgba(255,255,255,.08); border-radius: 10px; padding: 18px 20px; margin: 18px 0; font-family: 'Space Mono', monospace; font-size: 13px; color: #d1d5db; line-height: 1.7; white-space: pre; overflow-x: auto; }
+    .quote { border-left: 3px solid #a78bfa; padding: 4px 0 4px 16px; color: #d1d5db; margin: 16px 0; font-style: italic; }
+    table.bridge { width: 100%; border-collapse: collapse; margin: 14px 0 18px; font-size: 14px; }
+    table.bridge th, table.bridge td { padding: 10px 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,.06); vertical-align: top; }
+    table.bridge th { color: #9ca3af; font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 400; }
+    table.bridge td .mono { color: #c4b5fd; }
+    .vision { background: rgba(167,139,250,.05); border-left: 3px solid #a78bfa; padding: 14px 18px; margin: 16px 0; border-radius: 0 6px 6px 0; }
+    .vision strong { color: #c4b5fd; }
+    @media (max-width: 600px) {
+      .wrap { padding: 36px 18px 72px; }
+      h1 { font-size: 26px; }
+      section h2 { font-size: 20px; }
+      .diagram { font-size: 11px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <header class="hero">
+      <p class="eyebrow">Portfolio overview / for Bo Walther</p>
+      <h1>Where I am, what I have built, and what I am trying to figure out</h1>
+      <p class="lede">A structured walkthrough of three projects of mine and one I am building with my uncle, plus how they all connect. Every link below is live. The page is unindexed - it is for you.</p>
+      <nav class="toc">
+        <ol>
+          <li><a href="#elektraos">ElektraOS - my AI runtime</a></li>
+          <li><a href="#site">elektraos.dev - my public site and portfolio</a></li>
+          <li><a href="#loomgraph">Loomgraph - agentic SEO and governance</a></li>
+          <li><a href="#mealshift">MealShift Commerce OS - ongoing project with my uncle</a></li>
+          <li><a href="#bridges">How they connect</a></li>
+          <li><a href="#stuck">Where I am stuck and what I would like from you</a></li>
+        </ol>
+      </nav>
+    </header>
+
+    <!-- ===== ELEKTRAOS ===== -->
+    <section id="elektraos">
+      <h2><span class="num">01</span>ElektraOS<span class="pill mine">mine</span></h2>
+      <p class="tagline">My private AI operating system. Started January 2026. Runs locally. The long-term memory layer for everything else I work on.</p>
+      <div class="links">
+        <span class="label">Status</span><span class="status">running, port 8000</span>
+        <span class="label">Repo</span>private
+      </div>
+
+      <h3>What it is</h3>
+      <p>A single FastAPI service that hosts 49 specialised AI agents, each owning a narrow responsibility (content drafting, SEO audit, outreach generation, ledger, monitoring, content backlog drain, agent decline diagnosis). Agents read from and write to a shared markdown knowledge vault, so context persists across sessions instead of being trapped inside individual chats.</p>
+
+      <h3>What is in it today</h3>
+      <ul class="facts">
+        <li><strong>51 routers, 566 API endpoints, 76 database tables.</strong></li>
+        <li><strong>49 specialised agents.</strong></li>
+        <li><strong>Knowledge vault:</strong> markdown files with cross-linked MOC (Map of Content) hub pages, an Obsidian-compatible structure.</li>
+        <li><strong>Automation bridge:</strong> n8n with a workflow library wired to vault events.</li>
+        <li><strong>Observability:</strong> OpenTelemetry tracing on every request, OpenLIT on LLM calls.</li>
+        <li><strong>Hookify guardrails:</strong> file-level rules that block accidental writes to .env, em-dash typography, and core vault files.</li>
+        <li><strong>Read-only dashboard skill</strong> that aggregates server health, agent activity, content backlog, outreach, and revenue into a single view.</li>
+      </ul>
+
+      <h3>Why I built it</h3>
+      <p>Before ElektraOS, my work and knowledge were scattered across Notion, Google Docs, Trello, ChatGPT history, and folders on disk. None of it was queryable. None of it persisted across tools. ElektraOS is the back office that makes everything else I do compound instead of leak.</p>
+    </section>
+
+    <!-- ===== SITE ===== -->
+    <section id="site">
+      <h2><span class="num">02</span>elektraos.dev<span class="pill mine">mine</span></h2>
+      <p class="tagline">My public website and portfolio. The front door.</p>
+      <div class="links">
+        <span class="label">Live</span><a href="https://elektraos.dev" target="_blank" rel="noopener">elektraos.dev</a>
+        <span class="label">Source</span><a href="https://github.com/Yoggi-SheandElle/elektraos-dev" target="_blank" rel="noopener">github.com/Yoggi-SheandElle/elektraos-dev</a>
+        <span class="label">Hosting</span>GitHub Pages
+      </div>
+
+      <h3>Stack and shape</h3>
+      <ul class="facts">
+        <li>Hand-built static site, no framework, deploy on git push.</li>
+        <li>DM Sans + Space Mono typography across all pages.</li>
+        <li><strong>10 locale roots:</strong> English, Danish, German, French, Italian, Dutch, Swedish, Moroccan Arabic, Ghanaian English, UK English.</li>
+        <li>Self-hosted Umami analytics at <span class="mono">yossra-analytics.fly.dev/analytics</span>, no Google tracking.</li>
+        <li>CSP, X-Frame-Options DENY, GDPR-clean cookie posture.</li>
+      </ul>
+
+      <h3>Personal portfolio side</h3>
+      <ul class="facts">
+        <li><a href="https://elektraos.dev/cases/" target="_blank" rel="noopener">/cases/</a> - case study index</li>
+        <li><a href="https://elektraos.dev/case-elektraos/" target="_blank" rel="noopener">/case-elektraos/</a> - the runtime above</li>
+        <li><a href="https://elektraos.dev/case-sheandelle/" target="_blank" rel="noopener">/case-sheandelle/</a> - fashion e-commerce</li>
+        <li><a href="https://elektraos.dev/case-thumbnail-pipeline/" target="_blank" rel="noopener">/case-thumbnail-pipeline/</a> - programmatic content production</li>
+        <li><a href="https://elektraos.dev/case-40th-brick/" target="_blank" rel="noopener">/case-40th-brick/</a> - Phaser 3 narrative game</li>
+        <li><a href="https://elektraos.dev/log/" target="_blank" rel="noopener">/log/</a> - build log</li>
+        <li><a href="https://elektraos.dev/blog/" target="_blank" rel="noopener">/blog/</a> - writing</li>
+      </ul>
+
+      <h3>B2B / Society side</h3>
+      <p>This is the half I am trying to grow into a product. It is a structured set of pages that prefigure what a Copenhagen-based business could look like.</p>
+      <ul class="facts">
+        <li><a href="https://elektraos.dev/smb/" target="_blank" rel="noopener">/smb/</a> - SMB section root</li>
+        <li><a href="https://elektraos.dev/smb/pricing/" target="_blank" rel="noopener">/smb/pricing/</a> - pricing with PPP market multipliers across 9 markets</li>
+        <li><a href="https://elektraos.dev/smb/compliance/" target="_blank" rel="noopener">/smb/compliance/</a> - EU AI Act Article 6 risk pyramid</li>
+        <li><a href="https://elektraos.dev/smb/governance/" target="_blank" rel="noopener">/smb/governance/</a> - 5-step milestone timeline + region chips</li>
+        <li><a href="https://elektraos.dev/smb/hubs/" target="_blank" rel="noopener">/smb/hubs/</a> - cohort signup posting to Loomgraph</li>
+        <li><a href="https://elektraos.dev/smb/bcorp/" target="_blank" rel="noopener">/smb/bcorp/</a> - B-Corp posture</li>
+        <li><a href="https://elektraos.dev/smb/data/" target="_blank" rel="noopener">/smb/data/</a>, <a href="https://elektraos.dev/smb/ops/" target="_blank" rel="noopener">/smb/ops/</a>, <a href="https://elektraos.dev/smb/product/" target="_blank" rel="noopener">/smb/product/</a></li>
+        <li><a href="https://elektraos.dev/loomgraph/" target="_blank" rel="noopener">/loomgraph/</a> - Loomgraph live portfolio landing</li>
+        <li><a href="https://elektraos.dev/loomgraph-society/" target="_blank" rel="noopener">/loomgraph-society/</a> - Society membership page</li>
+      </ul>
+
+      <div class="vision">
+        <strong>Open question I want your read on:</strong> the Loomgraph pages above are not yet wired into a clear CTA from the homepage. I cannot decide whether Loomgraph should become the front-and-centre headline of elektraos.dev, or whether the site stays a portfolio with Loomgraph as a sub-product.
+      </div>
+    </section>
+
+    <!-- ===== LOOMGRAPH ===== -->
+    <section id="loomgraph">
+      <h2><span class="num">03</span>Loomgraph<span class="pill mine">mine</span></h2>
+      <p class="tagline">Agentic SEO and governance for small businesses. Started 20 April 2026. The youngest project but the one with the clearest commercial shape.</p>
+      <div class="links">
+        <span class="label">Service</span><a href="https://loomgraph.fly.dev" target="_blank" rel="noopener">loomgraph.fly.dev</a>
+        <span class="label">Landing</span><a href="https://elektraos.dev/loomgraph/" target="_blank" rel="noopener">elektraos.dev/loomgraph/</a>
+        <span class="label">Society</span><a href="https://elektraos.dev/loomgraph-society/" target="_blank" rel="noopener">elektraos.dev/loomgraph-society/</a>
+        <span class="label">Hosting</span>Fly.io, lhr region
+      </div>
+
+      <h3>Two-line pitch</h3>
+      <p>Drop a domain into the registry. Loomgraph onboards it (sitemap, robots, CMS detection), connects it into a shared multilingual Knowledge Graph, and governs it under a signed digital "Pact" with an immutable audit log.</p>
+
+      <h3>The problem it solves</h3>
+      <p>Small and medium businesses cannot afford the SEO + AI governance stack that big companies are starting to deploy. They cannot prove their site is GDPR-clean, FTC-disclosure-clean, AI-agent-readable, or Schema.org-correct. Loomgraph does this for them, and connects their site into a shared graph with other member sites so they benefit from each other's authority and entity references.</p>
+
+      <h3>Knowledge Graph</h3>
+      <ul class="facts">
+        <li><strong>53 entities, 39 relations.</strong></li>
+        <li>Multilingual aliases on every entity: Arabic, French, Italian, English.</li>
+        <li>Schema.org JSON-LD output, sameAs links to Wikidata for canonical identity.</li>
+        <li>Content negotiation on <span class="mono">/kg/entity/{slug}</span>: HTML for humans, JSON-LD for machines.</li>
+        <li>Public sitemap and machine-readable LLM registry.</li>
+      </ul>
+
+      <h3>Governance layer</h3>
+      <ul class="facts">
+        <li><strong>9 policies, 5 regulatory anchors</strong> (FTC 16 CFR Part 255, GDPR, Google Search Essentials, plus two more).</li>
+        <li><strong>SLAs:</strong> 72 hours / 30 days.</li>
+        <li><strong>Pact:</strong> versioned governance contract, sha256-gated, signable.</li>
+        <li><strong>Immutable audit log:</strong> append-only, hashed actor IDs, every mutation writes an entry.</li>
+        <li><strong>Compliance scanner:</strong> regex + parsing for FTC disclosure presence, GDPR cookie banner detection, Search Essentials spam patterns.</li>
+        <li><strong>GDPR Article 17:</strong> right-to-be-forgotten endpoint that tombstones subject data while preserving a hashed audit trail.</li>
+      </ul>
+
+      <h3>Self-service onboarding</h3>
+      <ul class="facts">
+        <li><span class="mono">/public/cohort/apply</span> - rate-limited application endpoint, used by elektraos.dev/smb/.</li>
+        <li><span class="mono">/public/join</span> - guest tenant creation.</li>
+        <li><span class="mono">/public/pact/sign</span> - guests sign the pact without admin involvement.</li>
+        <li><span class="mono">/admin</span> - operator panel for promoting guest sites to permanent members.</li>
+      </ul>
+
+      <h3>Status</h3>
+      <ul class="facts">
+        <li><strong>33 of 33 automated tests passing.</strong></li>
+        <li>4 of my own portfolio domains already registered as tenants.</li>
+        <li>Live core loop verified: a registered site signs the pact, the cross-link detector auto-registers entity references, and the KG entity grows reference counts citing real sites.</li>
+      </ul>
+
+      <div class="vision">
+        <strong>Where I think this could go:</strong> a multi-tenant SMB platform that bundles AI-readability, governance, and cross-site authority into one product. The Society is the social layer where members can see each other and benefit from belonging.
+      </div>
+    </section>
+
+    <!-- ===== MEALSHIFT ===== -->
+    <section id="mealshift">
+      <h2><span class="num">04</span>MealShift Commerce OS<span class="pill family">with my uncle</span></h2>
+      <p class="tagline">Not mine to monetise. Building it with my uncle Said Ziane in the UK. I am trying to finish my piece this week so the platform can start generating revenue.</p>
+      <div class="links">
+        <span class="label">Tenants</span>
+        <a href="https://mealshift.co.uk" target="_blank" rel="noopener">mealshift.co.uk</a>
+        <a href="https://bizus.co.uk" target="_blank" rel="noopener">bizus.co.uk</a>
+        <a href="https://sheandelle.com" target="_blank" rel="noopener">sheandelle.com</a>
+        <a href="https://thefreshmarket.ma" target="_blank" rel="noopener">thefreshmarket.ma</a>
+      </div>
+
+      <h3>What it is</h3>
+      <p>A multi-tenant commerce platform on NestJS (API) + Next.js (storefront), with plugin adapters for WooCommerce, Shopify, and Wix. Runs on Vercel. Stripe Connect, real ledger, refund handling, and FCA-aware safeguarding for marketplace funds.</p>
+
+      <h3>What we are trying to do with it</h3>
+      <p>Give UK small businesses (restaurants, grocers, florists, pharmacies, general stores) a commerce platform that is open to AI shopping agents from day one. Most existing platforms (Deliveroo, Uber Eats, DoorDash) are login-gated to AI crawlers and shoppers. MealShift is not.</p>
+
+      <h3>What that means concretely</h3>
+      <ul class="facts">
+        <li>Every storefront publishes a sitemap and a robots.txt that explicitly welcomes <span class="mono">GPTBot</span>, <span class="mono">PerplexityBot</span>, <span class="mono">ClaudeBot</span>, and <span class="mono">OAI-SearchBot</span>.</li>
+        <li>An ACP-style <span class="mono">/store/{slug}/feed.json</span> that machine-readable AI shoppers can transact against.</li>
+        <li>Schema.org JSON-LD per vertical (Restaurant, GroceryStore, Florist, Pharmacy, Store) on every storefront.</li>
+        <li>Platform-wide activity tracking: every API call logs tenant, user, status code, duration, and metadata.</li>
+      </ul>
+
+      <h3>Status</h3>
+      <ul class="facts">
+        <li>4 tenants live in production.</li>
+        <li>0 orders so far, Stripe in demo mode while we onboard.</li>
+        <li>Last week I shipped a P0/P1 security batch (Stripe webhook cross-tenant fix, refund stock restoration, login throttle, ledger tenant filter), agent-native storefronts, and platform activity tracking.</li>
+        <li>I am pushing this week to close the remaining onboarding gaps so my uncle can start charging.</li>
+      </ul>
+    </section>
+
+    <!-- ===== BRIDGES ===== -->
+    <section id="bridges">
+      <h2><span class="num">05</span>How they connect</h2>
+      <p class="tagline">The four projects share a clear topology. None of them are accidental neighbours.</p>
+
+      <div class="diagram">elektraos.dev   (front door, public site)
+     │
+     ├── chat widget  ──────────►  ElektraOS  (private brain, runs in WSL)
+     │
+     ├── /smb/#apply  ──────────►  Loomgraph  (governance + KG, on Fly.io)
+     │
+     └── /loomgraph/  ──────────►  Loomgraph
+
+ElektraOS  ◄── HTTP only ──►  Loomgraph        (no shared code)
+
+MealShift   ──── 4 tenants registered as Loomgraph sites
+            ──── plugin layer (Woo / Shopify / Wix) is the
+                 future CMS push-back layer for Loomgraph</div>
+
+      <h3>What each project gives the others</h3>
+      <table class="bridge">
+        <thead>
+          <tr><th>From</th><th>To</th><th>What flows</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="mono">elektraos.dev</span></td>
+            <td><span class="mono">ElektraOS</span></td>
+            <td>chat widget queries route to a 3-tier reply pipeline (FAQ + retrieval + LLM fallback) over HTTPS</td>
+          </tr>
+          <tr>
+            <td><span class="mono">elektraos.dev</span></td>
+            <td><span class="mono">Loomgraph</span></td>
+            <td>SMB application form posts to <span class="mono">/public/cohort/apply</span>, writes a row in Loomgraph's audit log, applicant lands in the registry instantly</td>
+          </tr>
+          <tr>
+            <td><span class="mono">Loomgraph</span></td>
+            <td><span class="mono">elektraos.dev</span></td>
+            <td>the Society page reads live KG entities and Pact state; <span class="mono">/loomgraph/</span> dashboard shows live sites, edges, pending approvals</td>
+          </tr>
+          <tr>
+            <td><span class="mono">ElektraOS</span></td>
+            <td><span class="mono">elektraos.dev</span></td>
+            <td>vault content powers FAQ replies; agents draft case study and blog content</td>
+          </tr>
+          <tr>
+            <td><span class="mono">MealShift</span></td>
+            <td><span class="mono">Loomgraph</span></td>
+            <td>4 of MealShift's tenant domains are already registered Loomgraph sites; storefront sitemaps and feed.json are graph-friendly by construction</td>
+          </tr>
+          <tr>
+            <td><span class="mono">MealShift plugins</span></td>
+            <td><span class="mono">Loomgraph</span> (planned)</td>
+            <td>the Woo / Shopify / Wix adapters become Loomgraph's CMS push-back layer, so audits can result in real CMS edits behind a human-in-the-loop approval queue</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="vision">
+        <strong>The composite picture:</strong> a SMB platform where Loomgraph governs and grows authority, MealShift runs the commerce rails, ElektraOS is the brain that drafts and audits, and elektraos.dev is the public face. Each piece is independently deployable. None of them require the others to keep working.
+      </div>
+    </section>
+
+    <!-- ===== STUCK ===== -->
+    <section id="stuck">
+      <h2><span class="num">06</span>Where I am stuck</h2>
+      <p>I have built a lot, the pieces clearly connect, and I cannot tell which is the real product. I keep building bridges between projects instead of choosing one to push hard.</p>
+      <ul class="facts">
+        <li><strong>ElektraOS</strong> feels personal and infrastructural. Maybe it stays internal.</li>
+        <li><strong>elektraos.dev</strong> feels like marketing for something I have not named yet.</li>
+        <li><strong>Loomgraph</strong> feels like the most defensible commercial idea, but it is the youngest, and right now it is buried inside elektraos.dev instead of being the headline.</li>
+        <li><strong>MealShift</strong> is my uncle's. My job is to get it shipped this week so it can start being monetised; after that, my time goes back to the three above.</li>
+      </ul>
+
+      <p>What I am trying to decide: whether elektraos.dev (or one of its sub-products) is enough to turn into a Copenhagen-based business this year, and which monetisation shape (Loomgraph SaaS, agency, hybrid) makes sense.</p>
+
+      <div class="ask">
+        <h3>What I would like from you</h3>
+        <p style="margin: 0 0 6px; color: #b8b8c5;">Not a pitch. An honest read. Specifically:</p>
+        <ol>
+          <li>Which of the three would you push if you were in my position, and which would you cut?</li>
+          <li>Is Loomgraph (multilingual KG + signed governance pact + SMB SEO) a defensible research direction, a defensible startup direction, both, or just a feature inside a bigger platform?</li>
+          <li>Should elektraos.dev be the home of the portfolio with Loomgraph as a sub-product, or should Loomgraph become the headline and elektraos.dev fold underneath it?</li>
+          <li>From your consulting work with tech companies, do you see a market shape for any of this in Denmark or the EU, or am I solving a problem that does not have buyers yet?</li>
+          <li>What would you tell a former student who is clearly capable but visibly spread too thin?</li>
+        </ol>
+      </div>
+    </section>
+
+    <p class="footnote">
+      <a href="https://www.linkedin.com/in/yossra-benzad/" target="_blank" rel="noopener">LinkedIn</a> .
+      <a href="mailto:benzad.yossra@gmail.com">benzad.yossra@gmail.com</a>
+    </p>
+
+  </div>
+</body>
+</html>
