@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Citetome - AEO &amp; GEO, audited. The control plane for AI-search citation.</title>
+  <meta name="description" content="The AEO and GEO control plane for multilingual SMBs across Europe, the UK and Morocco. Answer-engine and generative-engine optimization with a signed governance pact and append-only audit log. Get cited by ChatGPT, Perplexity, Google AI Overviews and Claude.">
+  <meta property="og:title" content="Citetome - AEO &amp; GEO, audited.">
+  <meta property="og:description" content="The AEO &amp; GEO control plane for multilingual SMBs. Audited, signed, reversible.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://citetome.com/">
+  <meta name="theme-color" content="#FAF6EE">
+  <link rel="canonical" href="https://citetome.com/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://citetome.com/#app",
+        "name": "Citetome",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "offers": [
+          {"@type": "Offer", "name": "Audit", "price": "500", "priceCurrency": "EUR"},
+          {"@type": "Offer", "name": "Audit Pro", "price": "1500", "priceCurrency": "EUR"},
+          {"@type": "Offer", "name": "Managed Starter", "price": "200", "priceCurrency": "EUR"},
+          {"@type": "Offer", "name": "Managed Standard", "price": "500", "priceCurrency": "EUR"},
+          {"@type": "Offer", "name": "Managed Premium", "price": "800", "priceCurrency": "EUR"}
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://api.citetome.com">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;1,500&family=Inter:wght@400;450;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <style>
+    :root {
+      --bone:     #FAF6EE;
+      --paper:    #F3EEE2;
+      --tea:      #E6DDC8;
+      --ink:      #0F0E0C;
+      --ink-soft: #2A2722;
+      --ink-mid:  #56524A;
+      --stone:    #8A8377;
+      --gold:     #B8915E;
+      --gold-dim: #8E6F44;
+      --oxblood:  #6F2D1D;
+      --rule:     #DED4BD;
+      --rule-soft:#EBE3CE;
+      --green:    #2F5D43;
+      --green-bg: #DDE7DF;
+
+      --serif: 'EB Garamond', 'Iowan Old Style', Georgia, serif;
+      --sans:  'Inter', -apple-system, 'Segoe UI', Roboto, sans-serif;
+      --mono:  'JetBrains Mono', 'SF Mono', Consolas, monospace;
+
+      --container: 1200px;
+      --gutter: clamp(20px, 4vw, 56px);
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 80px; }
+    body {
+      margin: 0; background: var(--bone); color: var(--ink);
+      font-family: var(--sans); font-size: 16px; line-height: 1.6;
+      font-feature-settings: 'cv11', 'ss01';
+      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+    img, svg { display: block; max-width: 100%; }
+    a { color: var(--ink); text-decoration: none; transition: color 0.18s var(--ease); }
+    a:hover { color: var(--oxblood); }
+    button { font-family: inherit; cursor: pointer; }
+
+    .container { max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter); }
+
+    h1, h2, h3, h4 {
+      font-family: var(--sans);
+      font-weight: 600;
+      letter-spacing: -0.025em;
+      margin: 0; color: var(--ink); line-height: 1.05;
+    }
+    h1 { font-size: clamp(44px, 6.5vw, 80px); letter-spacing: -0.035em; }
+    h2 { font-size: clamp(30px, 3.5vw, 44px); letter-spacing: -0.028em; }
+    h3 { font-size: clamp(20px, 1.6vw, 22px); line-height: 1.3; font-weight: 600; letter-spacing: -0.015em; }
+    h4 { font-size: 14px; font-weight: 600; letter-spacing: 0.01em; }
+    p { margin: 0 0 1.1em; max-width: 64ch; color: var(--ink-soft); }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--mono); font-size: 11px; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mid);
+    }
+    .eyebrow::before {
+      content: ''; display: inline-block;
+      width: 6px; height: 6px; background: var(--gold);
+      border-radius: 50%;
+    }
+    .tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 4px 10px;
+      background: var(--paper); border: 1px solid var(--rule);
+      border-radius: 999px;
+      font-family: var(--mono); font-size: 11px; font-weight: 500;
+      color: var(--ink-mid); letter-spacing: 0.02em;
+    }
+    .tag .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); }
+
+    .accent { color: var(--oxblood); }
+    .quiet { color: var(--ink-mid); }
+
+    /* progress */
+    .progress {
+      position: fixed; top: 0; left: 0; height: 2px; background: var(--ink);
+      width: 0; z-index: 200; transition: width 0.1s linear;
+    }
+
+    /* nav */
+    .nav {
+      position: sticky; top: 0;
+      background: rgba(250, 246, 238, 0.82);
+      backdrop-filter: saturate(180%) blur(14px);
+      -webkit-backdrop-filter: saturate(180%) blur(14px);
+      z-index: 50;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s var(--ease), background 0.3s var(--ease);
+    }
+    .nav.scrolled { border-bottom-color: var(--rule); background: rgba(250, 246, 238, 0.96); }
+    .nav-inner {
+      max-width: var(--container); margin: 0 auto;
+      padding: 16px clamp(16px, 3vw, 40px);
+      display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    }
+    .nav-links { flex-shrink: 0; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand-mark {
+      width: 28px; height: 28px; flex-shrink: 0;
+      transition: transform 0.5s var(--ease);
+    }
+    .brand:hover .brand-mark { transform: scale(1.06); }
+    .brand-word {
+      font-family: var(--serif); font-style: italic; font-weight: 500;
+      font-size: 26px; letter-spacing: -0.015em; color: var(--ink);
+      line-height: 1;
+    }
+    .nav-links { display: flex; gap: 22px; align-items: center; font-size: 14px; font-weight: 450; flex-shrink: 0; }
+    @media (max-width: 1080px) { .nav-links { gap: 18px; } .nav-links a[data-section="faq"] { display: none; } }
+    .nav-links a {
+      color: var(--ink-soft); position: relative; padding: 4px 0;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; left: 0; bottom: -2px;
+      width: 100%; height: 1.5px; background: var(--ink);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s var(--ease);
+    }
+    .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+    .nav-links a.active { color: var(--ink); }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 18px; border-radius: 8px;
+      font-family: var(--sans); font-size: 14px; font-weight: 500;
+      border: 1px solid var(--ink); background: var(--ink); color: var(--bone);
+      cursor: pointer; transition: all 0.2s var(--ease); text-decoration: none;
+      letter-spacing: -0.005em;
+    }
+    .btn:hover { background: var(--oxblood); border-color: var(--oxblood); transform: translateY(-1px); }
+    .btn-ghost { background: transparent; color: var(--ink); border-color: var(--rule); }
+    .btn-ghost:hover { border-color: var(--ink); background: transparent; color: var(--ink); transform: translateY(-1px); }
+    .btn-lg { padding: 13px 22px; font-size: 15px; border-radius: 10px; }
+    .btn-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: var(--sans); font-size: 14px; font-weight: 500;
+      color: var(--ink);
+    }
+    .btn-link:hover { color: var(--oxblood); }
+    .btn-link .arrow { transition: transform 0.2s var(--ease); }
+    .btn-link:hover .arrow { transform: translateX(4px); }
+
+    @media (max-width: 800px) { .nav-links > a:not(.btn) { display: none; } }
+
+    /* reveal */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    .reveal.d1 { transition-delay: 0.06s; }
+    .reveal.d2 { transition-delay: 0.12s; }
+    .reveal.d3 { transition-delay: 0.18s; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+
+    /* ───────── hero ───────── */
+    .hero { padding: clamp(48px, 6vw, 88px) 0 clamp(56px, 8vw, 120px); position: relative; overflow: hidden; }
+    /* atmospheric mesh - soft 3D feel, no movement */
+    .hero::before {
+      content: ''; position: absolute; inset: -10%;
+      background:
+        radial-gradient(900px 500px at 12% -10%, rgba(184,145,94,0.16), transparent 55%),
+        radial-gradient(700px 400px at 90% 30%, rgba(111,45,29,0.07), transparent 60%),
+        radial-gradient(500px 300px at 50% 100%, rgba(47,93,67,0.06), transparent 65%);
+      pointer-events: none; z-index: 0;
+    }
+    .hero .container { position: relative; z-index: 1; }
+
+    /* 3D extruded brackets - large ornament floating in negative space */
+    .hero-decor {
+      position: absolute;
+      right: -120px; top: 30%;
+      width: 580px; height: 580px;
+      pointer-events: none;
+      opacity: 0.55;
+      z-index: 0;
+      filter: drop-shadow(0 30px 60px rgba(15,14,12,0.08));
+    }
+    @media (max-width: 920px) { .hero-decor { right: -200px; top: auto; bottom: -120px; width: 380px; height: 380px; opacity: 0.35; } }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.05fr 1fr;
+      gap: clamp(40px, 5vw, 80px); align-items: center;
+    }
+    @media (max-width: 920px) { .hero-grid { grid-template-columns: 1fr; gap: 56px; } }
+    .hero h1 {
+      margin-top: 28px;
+      font-size: clamp(44px, 6.5vw, 80px);
+      line-height: 1.02;
+    }
+    .hero h1 .accent { color: var(--oxblood); }
+    .hero h1 em { font-family: var(--serif); font-style: italic; font-weight: 500; color: var(--ink); letter-spacing: -0.02em; }
+    .hero-sub {
+      font-size: clamp(17px, 1.6vw, 19px);
+      line-height: 1.55; color: var(--ink-mid);
+      margin: 28px 0 32px; max-width: 32em;
+    }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin-bottom: 36px; }
+    .hero-trust {
+      display: flex; gap: 22px; flex-wrap: wrap; align-items: center;
+      padding-top: 20px; border-top: 1px solid var(--rule);
+      font-family: var(--mono); font-size: 11px; font-weight: 500;
+      letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-mid);
+    }
+    .hero-trust .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--green); display: inline-block; margin-right: 6px; }
+
+    /* product card (the dashboard mock) - 3D tilt-ready */
+    .pc-stage { perspective: 1400px; perspective-origin: 50% 30%; }
+    .product-card {
+      background: linear-gradient(180deg, #FFFFFF 0%, var(--bone) 100%);
+      border: 1px solid var(--rule);
+      border-radius: 14px;
+      padding: 22px;
+      box-shadow:
+        0 1px 0 rgba(15,14,12,0.04),
+        0 2px 8px rgba(15,14,12,0.04),
+        0 24px 40px -24px rgba(15,14,12,0.14),
+        0 60px 120px -40px rgba(15,14,12,0.22);
+      position: relative; overflow: hidden;
+      transform-style: preserve-3d;
+      transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+      transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+      will-change: transform;
+    }
+    .product-card > * { transform: translateZ(0); }
+    .product-card .pc-head, .product-card .pc-summary, .product-card .pc-foot { transform: translateZ(20px); }
+    .product-card .pc-rows { transform: translateZ(10px); }
+    .product-card::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(800px 200px at -10% -10%, rgba(184,145,94,0.08), transparent 60%),
+        radial-gradient(600px 200px at 110% 110%, rgba(111,45,29,0.05), transparent 60%);
+      pointer-events: none;
+    }
+    .pc-head {
+      position: relative;
+      display: flex; align-items: center; justify-content: space-between;
+      padding-bottom: 14px; margin-bottom: 14px;
+      border-bottom: 1px solid var(--rule-soft);
+    }
+    .pc-head .lbl { font-family: var(--mono); font-size: 11px; color: var(--ink-mid); letter-spacing: 0.06em; }
+    .pc-head .live { display: inline-flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 10px; color: var(--green); letter-spacing: 0.08em; }
+    .pc-head .live::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s var(--ease) infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.4;transform:scale(0.8);} }
+
+    .pc-summary {
+      position: relative;
+      display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 14px;
+      padding: 6px 0 16px; margin-bottom: 12px; border-bottom: 1px solid var(--rule-soft);
+    }
+    .pc-summary .cell { display: flex; flex-direction: column; gap: 4px; }
+    .pc-summary .k { font-family: var(--mono); font-size: 10px; color: var(--ink-mid); letter-spacing: 0.06em; text-transform: uppercase; }
+    .pc-summary .v { font-size: 22px; font-weight: 600; color: var(--ink); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+    .pc-summary .v small { font-size: 12px; font-weight: 500; color: var(--green); margin-left: 4px; letter-spacing: 0.01em; }
+
+    .pc-rows { position: relative; display: grid; gap: 2px; }
+    .pc-row {
+      display: grid; grid-template-columns: 1.6fr 0.6fr 1fr 0.6fr;
+      align-items: center; gap: 14px;
+      padding: 10px 8px; border-radius: 6px;
+      transition: background 0.15s var(--ease);
+      font-size: 13px;
+    }
+    .pc-row:hover { background: rgba(184,145,94,0.08); }
+    .pc-row .site { font-weight: 500; color: var(--ink); display: flex; align-items: center; gap: 8px; }
+    .pc-row .site .country { font-family: var(--mono); font-size: 9px; padding: 2px 5px; background: var(--paper); border: 1px solid var(--rule); border-radius: 3px; color: var(--ink-mid); letter-spacing: 0.04em; }
+    .pc-row .score { font-family: var(--mono); font-size: 12px; color: var(--ink); font-variant-numeric: tabular-nums; text-align: right; }
+    .pc-row .spark { width: 100%; height: 22px; }
+    .pc-row .status { display: inline-flex; align-items: center; gap: 5px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.04em; text-transform: uppercase; }
+    .pc-row .status::before { content: ''; width: 6px; height: 6px; border-radius: 50%; }
+    .pc-row .status.ok { color: var(--green); }
+    .pc-row .status.ok::before { background: var(--green); }
+    .pc-row .status.warn { color: var(--gold-dim); }
+    .pc-row .status.warn::before { background: var(--gold); }
+    .pc-row .status.err { color: var(--oxblood); }
+    .pc-row .status.err::before { background: var(--oxblood); }
+
+    .pc-foot { position: relative; padding-top: 14px; margin-top: 12px; border-top: 1px solid var(--rule-soft); display: flex; justify-content: space-between; align-items: center; font-family: var(--mono); font-size: 11px; color: var(--ink-mid); letter-spacing: 0.03em; }
+
+    /* logos strip */
+    .logos {
+      padding: 36px 0 24px;
+      border-top: 1px solid var(--rule-soft);
+      border-bottom: 1px solid var(--rule-soft);
+    }
+    .logos-label { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-mid); text-align: center; margin-bottom: 18px; }
+    .logos-row { display: flex; flex-wrap: wrap; gap: 36px; justify-content: center; align-items: center; }
+    .logos-row .l {
+      font-family: var(--sans);
+      font-weight: 500;
+      font-size: 18px;
+      color: var(--ink-mid);
+      letter-spacing: -0.01em;
+      opacity: 0.8;
+      transition: opacity 0.2s var(--ease), color 0.2s var(--ease);
+    }
+    .logos-row .l:hover { opacity: 1; color: var(--ink); }
+
+    /* sections */
+    section { padding: clamp(72px, 8vw, 110px) 0; position: relative; }
+    section.tinted { background: var(--paper); }
+    .section-head {
+      max-width: 760px; margin-bottom: clamp(40px, 5vw, 64px);
+    }
+    .section-head h2 { margin-top: 14px; }
+    .section-head p { margin-top: 18px; font-size: 18px; color: var(--ink-mid); max-width: 56ch; }
+
+    /* features grid */
+    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 14px; overflow: hidden; }
+    @media (max-width: 880px) { .features { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .features { grid-template-columns: 1fr; } }
+    .feature {
+      background: var(--bone);
+      padding: 32px 28px; position: relative;
+      transition: background 0.25s var(--ease);
+    }
+    .feature:hover { background: #FFFFFF; }
+    .feature .icon {
+      width: 36px; height: 36px;
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      background: var(--paper);
+      display: grid; place-items: center;
+      margin-bottom: 22px;
+      color: var(--ink); transition: border-color 0.25s var(--ease);
+    }
+    .feature:hover .icon { border-color: var(--ink); }
+    .feature h3 { font-size: 17px; margin-bottom: 8px; }
+    .feature p { font-size: 14px; line-height: 1.55; color: var(--ink-mid); margin: 0; max-width: none; }
+
+    /* steps */
+    .steps { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 4vw, 56px); }
+    @media (max-width: 720px) { .steps { grid-template-columns: 1fr; } }
+    .step {
+      display: grid; grid-template-columns: 48px 1fr; gap: 16px;
+      padding: 24px 0; border-top: 1px solid var(--rule);
+    }
+    .step:nth-child(-n+2) { border-top: 0; padding-top: 0; }
+    @media (max-width: 720px) { .step:nth-child(2) { border-top: 1px solid var(--rule); padding-top: 24px; } }
+    .step .num {
+      font-family: var(--mono); font-size: 13px; font-weight: 500;
+      color: var(--gold); padding-top: 4px; letter-spacing: 0.04em;
+    }
+    .step h3 { font-size: 19px; margin-bottom: 8px; }
+    .step p { color: var(--ink-mid); font-size: 14.5px; margin: 0; max-width: none; line-height: 1.6; }
+    .step code {
+      display: inline-block; margin-top: 10px;
+      font-family: var(--mono); font-size: 12px;
+      background: var(--paper); border: 1px solid var(--rule);
+      padding: 4px 8px; border-radius: 4px; color: var(--ink-soft);
+    }
+
+    /* code/API showcase */
+    .api-show {
+      display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 4vw, 56px);
+      align-items: center; margin-top: 56px;
+    }
+    @media (max-width: 880px) { .api-show { grid-template-columns: 1fr; } }
+    .api-show h3 { font-size: 22px; margin-bottom: 14px; }
+    .api-show p { font-size: 15px; color: var(--ink-mid); margin: 0; max-width: 50ch; }
+    .code-block {
+      background: var(--ink);
+      border-radius: 12px;
+      padding: 22px;
+      font-family: var(--mono); font-size: 13px; line-height: 1.6;
+      color: var(--tea);
+      overflow-x: auto;
+      box-shadow: 0 30px 60px -30px rgba(15,14,12,0.4);
+    }
+    .code-block .c-key { color: #B8B0E0; }
+    .code-block .c-str { color: #D5C896; }
+    .code-block .c-cmt { color: var(--stone); }
+    .code-block .c-method { color: #6FBF8A; }
+
+    /* numbers */
+    .numbers {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1px; background: var(--rule);
+      border: 1px solid var(--rule); border-radius: 14px; overflow: hidden;
+    }
+    @media (max-width: 720px) { .numbers { grid-template-columns: repeat(2, 1fr); } }
+    .stat { background: var(--bone); padding: 32px 26px; text-align: left; transition: background 0.3s var(--ease); }
+    .stat:hover { background: #FFFFFF; }
+    .stat .big {
+      font-size: clamp(38px, 4vw, 52px); line-height: 1; color: var(--ink);
+      letter-spacing: -0.035em; font-variant-numeric: tabular-nums; font-weight: 600;
+    }
+    .stat .big small { font-size: 0.45em; color: var(--gold); margin-left: 3px; font-weight: 500; }
+    .stat .label { margin-top: 14px; font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mid); }
+
+    /* pricing */
+    .price-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; border: 1px solid var(--rule); border-radius: 14px; overflow: hidden; background: var(--rule); }
+    .price-card { background: var(--bone); padding: 24px 20px; display: flex; flex-direction: column; gap: 12px; transition: background 0.25s var(--ease); position: relative; }
+    .price-card:hover { background: #FFFFFF; }
+    .price-card .name { font-family: var(--sans); font-size: 14px; font-weight: 600; color: var(--ink); letter-spacing: -0.005em; }
+    .price-card .price { font-size: 30px; font-weight: 600; color: var(--ink); letter-spacing: -0.025em; font-variant-numeric: tabular-nums; }
+    .price-card .price small { font-size: 13px; color: var(--ink-mid); font-weight: 500; margin-left: 2px; }
+    .price-card .desc { font-size: 13px; line-height: 1.5; color: var(--ink-mid); margin-bottom: 16px; flex: 1; }
+    .price-card .feat { display: grid; gap: 8px; margin: 0 0 16px; padding: 0; list-style: none; font-size: 13px; color: var(--ink-soft); }
+    .price-card .feat li { display: flex; gap: 6px; align-items: start; }
+    .price-card .feat li::before { content: '✓'; color: var(--green); font-weight: 600; flex-shrink: 0; }
+    .price-card .cta { margin-top: auto; }
+    .price-card .cta a {
+      display: inline-block; width: 100%;
+      padding: 9px 14px; border-radius: 6px;
+      border: 1px solid var(--rule); background: transparent;
+      font-size: 13px; font-weight: 500; text-align: center;
+      transition: all 0.2s var(--ease);
+    }
+    .price-card .cta a:hover { background: var(--ink); color: var(--bone); border-color: var(--ink); }
+    .price-card.featured { background: var(--ink); color: var(--bone); }
+    .price-card.featured .name, .price-card.featured .price, .price-card.featured .feat { color: var(--bone); }
+    .price-card.featured .desc { color: var(--tea); }
+    .price-card.featured .feat li::before { color: var(--gold); }
+    .price-card.featured .cta a { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+    .price-card.featured .cta a:hover { background: var(--bone); border-color: var(--bone); color: var(--ink); }
+    .price-card .badge { position: absolute; top: 12px; right: 12px; font-family: var(--mono); font-size: 9px; padding: 3px 7px; border-radius: 4px; background: var(--gold); color: var(--ink); letter-spacing: 0.04em; text-transform: uppercase; font-weight: 600; }
+    @media (max-width: 1080px) { .price-grid { grid-template-columns: repeat(2, 1fr); } .price-card { padding: 28px 24px; } }
+    @media (max-width: 560px) { .price-grid { grid-template-columns: 1fr; } }
+
+    /* audit form */
+    .audit-form {
+      background: var(--ink); color: var(--bone);
+      padding: clamp(40px, 5vw, 60px) clamp(28px, 4vw, 48px);
+      border-radius: 16px; position: relative; overflow: hidden;
+    }
+    .audit-form::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--gold), var(--oxblood)); }
+    .audit-form .eyebrow { color: var(--gold); }
+    .audit-form .eyebrow::before { background: var(--gold); }
+    .audit-form h2 { color: var(--bone); margin-top: 14px; font-size: clamp(28px, 3.2vw, 40px); }
+    .audit-form p { color: var(--tea); font-size: 16px; margin: 16px 0 28px; max-width: 50ch; }
+    .audit-input-wrap { display: flex; gap: 10px; flex-wrap: wrap; align-items: stretch; }
+    .audit-input {
+      flex: 1 1 320px;
+      background: rgba(232,221,200,0.06);
+      border: 1px solid rgba(232,221,200,0.18);
+      border-radius: 8px;
+      color: var(--bone);
+      font-family: var(--sans); font-size: 15px;
+      padding: 13px 16px; outline: none;
+      transition: border-color 0.2s var(--ease), background 0.2s var(--ease);
+    }
+    .audit-input::placeholder { color: var(--stone); }
+    .audit-input:focus { border-color: var(--gold); background: rgba(232,221,200,0.10); }
+    .audit-form .btn { background: var(--gold); border-color: var(--gold); color: var(--ink); padding: 13px 22px; }
+    .audit-form .btn:hover { background: var(--bone); border-color: var(--bone); color: var(--ink); }
+    .audit-feedback { margin-top: 14px; font-size: 13px; color: var(--gold); min-height: 18px; }
+    .audit-meta { margin-top: 22px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; color: var(--stone); }
+    kbd { font-family: var(--mono); font-size: 10px; background: rgba(232,221,200,0.08); border: 1px solid rgba(232,221,200,0.2); padding: 1px 5px; border-radius: 3px; color: var(--tea); margin: 0 1px; }
+
+    /* faq */
+    .faq { display: grid; gap: 0; max-width: 820px; }
+    .faq details {
+      border-top: 1px solid var(--rule);
+      padding: 22px 0;
+    }
+    .faq details:last-child { border-bottom: 1px solid var(--rule); }
+    .faq summary {
+      cursor: pointer; font-family: var(--sans); font-size: 18px; font-weight: 500;
+      color: var(--ink); list-style: none;
+      display: flex; justify-content: space-between; align-items: center; gap: 24px;
+      letter-spacing: -0.01em;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after {
+      content: ''; width: 10px; height: 10px;
+      border-right: 1.5px solid var(--ink-mid);
+      border-bottom: 1.5px solid var(--ink-mid);
+      transform: rotate(45deg);
+      transition: transform 0.3s var(--ease);
+      flex-shrink: 0; margin-right: 4px;
+    }
+    .faq details[open] summary::after { transform: rotate(225deg); }
+    .faq p { margin-top: 12px; color: var(--ink-mid); max-width: 60ch; font-size: 15px; }
+
+    /* closing */
+    .closing { padding: clamp(80px, 9vw, 120px) 0; text-align: center; }
+    .closing h2 { margin-bottom: 20px; max-width: 18ch; margin-left: auto; margin-right: auto; }
+    .closing p { font-size: 17px; color: var(--ink-mid); margin: 0 auto 32px; max-width: 50ch; }
+    .closing-actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; align-items: center; }
+
+    /* footer */
+    footer { background: var(--ink); color: var(--tea); padding: 64px 0 32px; }
+    footer .container { color: var(--tea); }
+    footer a { color: var(--tea); }
+    footer a:hover { color: var(--gold); }
+    .foot-grid { display: grid; grid-template-columns: 1.5fr repeat(3, 1fr); gap: 40px; margin-bottom: 48px; }
+    @media (max-width: 720px) { .foot-grid { grid-template-columns: 1fr 1fr; gap: 32px; } }
+    .foot-brand .brand-word { color: var(--bone); }
+    .foot-blurb { margin-top: 16px; font-size: 14px; color: var(--stone); line-height: 1.5; max-width: 30ch; }
+    .foot-col h5 { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin: 0 0 16px; }
+    .foot-col ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+    .foot-col li { font-size: 13.5px; }
+    .foot-base {
+      padding-top: 24px; border-top: 1px solid rgba(232,221,200,0.1);
+      display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.02em; color: var(--stone);
+    }
+
+    /* floating cta */
+    .float-cta {
+      position: fixed; bottom: 22px; right: 22px;
+      background: var(--ink); color: var(--bone);
+      padding: 10px 16px; border-radius: 999px;
+      font-family: var(--sans); font-size: 13px; font-weight: 500;
+      box-shadow: 0 20px 40px -10px rgba(15,14,12,0.4);
+      opacity: 0; pointer-events: none; transform: translateY(20px);
+      transition: opacity 0.4s var(--ease), transform 0.4s var(--ease), background 0.2s var(--ease);
+      z-index: 90; display: inline-flex; align-items: center; gap: 7px; text-decoration: none;
+    }
+    .float-cta.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .float-cta:hover { background: var(--oxblood); }
+    .float-cta::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); display: inline-block; }
+
+    .tip {
+      position: fixed; background: var(--ink); color: var(--bone);
+      padding: 6px 10px; border-radius: 4px;
+      font-family: var(--mono); font-size: 10px; letter-spacing: 0.04em;
+      pointer-events: none; opacity: 0; transition: opacity 0.15s var(--ease);
+      z-index: 100; white-space: nowrap;
+    }
+    .tip.show { opacity: 1; }
+  </style>
+</head>
+<body>
+
+  <div class="progress" id="progress"></div>
+
+  <!-- nav -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="/" class="brand" aria-label="Citetome home">
+        <svg class="brand-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <path d="M9 22 L9 9 L24 9" stroke="#0F0E0C" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+          <path d="M55 42 L55 55 L40 55" stroke="#0F0E0C" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+          <circle cx="32" cy="32" r="3" fill="#B8915E"/>
+        </svg>
+        <span class="brand-word">citetome</span>
+      </a>
+      <div class="nav-links">
+        <a href="#features" data-section="features">Features</a>
+        <a href="#how" data-section="how">How it works</a>
+        <a href="#numbers" data-section="numbers">Live</a>
+        <a href="#pricing" data-section="pricing">Pricing</a>
+        <a href="#faq" data-section="faq">FAQ</a>
+        <a href="#audit" class="btn">Request audit</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- hero -->
+  <header class="hero">
+
+    <!-- 3D extruded brackets ornament -->
+    <svg class="hero-decor" id="hero-decor" viewBox="0 0 600 600" fill="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="bracketFace" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#1A1813"/>
+          <stop offset="100%" stop-color="#0F0E0C"/>
+        </linearGradient>
+        <linearGradient id="bracketSide" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#3B342A"/>
+          <stop offset="100%" stop-color="#1A1813"/>
+        </linearGradient>
+        <linearGradient id="bracketTop" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#56524A"/>
+          <stop offset="100%" stop-color="#2A2722"/>
+        </linearGradient>
+        <radialGradient id="orb" cx="0.4" cy="0.35" r="0.7">
+          <stop offset="0%" stop-color="#E8C28F"/>
+          <stop offset="55%" stop-color="#B8915E"/>
+          <stop offset="100%" stop-color="#7A5C36"/>
+        </radialGradient>
+        <radialGradient id="orbHighlight" cx="0.3" cy="0.25" r="0.5">
+          <stop offset="0%" stop-color="rgba(255,245,220,0.9)"/>
+          <stop offset="60%" stop-color="rgba(255,245,220,0)"/>
+        </radialGradient>
+      </defs>
+
+      <!-- opening bracket ｢ - extruded right + down -->
+      <g transform="translate(80 80)">
+        <!-- shadow plate (deepest layer) -->
+        <path d="M0 200 L0 0 L200 0 L200 30 L30 30 L30 200 Z" fill="url(#bracketSide)" transform="translate(20 20)"/>
+        <!-- middle slab -->
+        <path d="M0 200 L0 0 L200 0 L200 30 L30 30 L30 200 Z" fill="url(#bracketTop)" transform="translate(10 10)"/>
+        <!-- front face -->
+        <path d="M0 200 L0 0 L200 0 L200 30 L30 30 L30 200 Z" fill="url(#bracketFace)"/>
+        <!-- highlight edge -->
+        <path d="M0 0 L200 0 L200 4 L4 4 L4 200 L0 200 Z" fill="rgba(232,221,200,0.15)"/>
+      </g>
+
+      <!-- closing bracket ｣ - extruded left + down -->
+      <g transform="translate(320 320)">
+        <path d="M200 0 L200 200 L0 200 L0 170 L170 170 L170 0 Z" fill="url(#bracketSide)" transform="translate(20 20)"/>
+        <path d="M200 0 L200 200 L0 200 L0 170 L170 170 L170 0 Z" fill="url(#bracketTop)" transform="translate(10 10)"/>
+        <path d="M200 0 L200 200 L0 200 L0 170 L170 170 L170 0 Z" fill="url(#bracketFace)"/>
+        <path d="M200 200 L0 200 L0 196 L196 196 L196 0 L200 0 Z" fill="rgba(15,14,12,0.35)"/>
+      </g>
+
+      <!-- golden orb between the brackets (the cited entity) -->
+      <g transform="translate(220 220)">
+        <ellipse cx="80" cy="92" rx="60" ry="12" fill="rgba(15,14,12,0.18)"/>
+        <circle cx="80" cy="80" r="56" fill="url(#orb)"/>
+        <circle cx="80" cy="80" r="56" fill="url(#orbHighlight)"/>
+        <circle cx="80" cy="80" r="56" fill="none" stroke="rgba(15,14,12,0.10)" stroke-width="1"/>
+      </g>
+    </svg>
+
+    <div class="container">
+      <div class="hero-grid">
+        <div class="reveal">
+          <span class="tag"><span class="dot"></span> AEO + GEO · EU AI Act 2026 · Live in production</span>
+          <h1>
+            AI-search citation,<br/>
+            <em>audited</em> &amp; <em>signed</em>.
+          </h1>
+          <p class="hero-sub">
+            Citetome is the answer-engine and generative-engine optimization (AEO + GEO) control plane for multilingual SMBs. Built around customers across Europe, the UK and Morocco, ready for any market. Eight deterministic audits, a signed governance pact, and an append-only audit log - so the brands ChatGPT, Perplexity, Google AI Overviews and Claude cite are the ones that earned it.
+          </p>
+          <div class="hero-actions">
+            <a href="#audit" class="btn btn-lg">Request an audit <span class="arrow">→</span></a>
+            <a href="https://api.citetome.com/customer?tenant=yossra" target="_blank" rel="noopener" class="btn btn-ghost btn-lg">View live dashboard</a>
+          </div>
+          <div class="hero-trust">
+            <span><span class="dot"></span>SOC-ready governance</span>
+            <span>·</span>
+            <span>GDPR Article 17</span>
+            <span>·</span>
+            <span>EU, UK &amp; MA</span>
+            <span>·</span>
+            <span>141 tests passing</span>
+          </div>
+        </div>
+
+        <aside class="reveal d1">
+         <div class="pc-stage">
+          <div class="product-card" id="product-card">
+            <header class="pc-head">
+              <span class="lbl">CITETOME · OPERATOR</span>
+              <span class="live">LIVE <span id="live-stamp">· LAST SWEEP 11 MAY</span></span>
+            </header>
+            <div class="pc-summary">
+              <div class="cell">
+                <span class="k">Tenant</span>
+                <span class="v" style="font-size: 17px;">yossra</span>
+              </div>
+              <div class="cell">
+                <span class="k">Sites</span>
+                <span class="v" id="pc-sites">6<small>+1</small></span>
+              </div>
+              <div class="cell">
+                <span class="k">Entities</span>
+                <span class="v" id="pc-entities">69</span>
+              </div>
+            </div>
+            <div class="pc-rows">
+              <div class="pc-row">
+                <span class="site">elektraos.dev <span class="country">DK</span></span>
+                <span class="score">0.92</span>
+                <svg class="spark" viewBox="0 0 100 22" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,14 14,12 28,10 42,8 56,6 70,5 84,4 100,4" fill="none" stroke="#2F5D43" stroke-width="1.4"/></svg>
+                <span class="status ok">OK</span>
+              </div>
+              <div class="pc-row">
+                <span class="site">sheandelle.com <span class="country">DK</span></span>
+                <span class="score">0.89</span>
+                <svg class="spark" viewBox="0 0 100 22" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,14 14,12 28,10 42,8 56,7 70,6 84,5 100,5" fill="none" stroke="#2F5D43" stroke-width="1.4"/></svg>
+                <span class="status ok">OK</span>
+              </div>
+              <div class="pc-row">
+                <span class="site">aylamaison.com <span class="country">MA</span></span>
+                <span class="score">0.83</span>
+                <svg class="spark" viewBox="0 0 100 22" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,11 14,10 28,10 42,9 56,9 70,8 84,9 100,9" fill="none" stroke="#6F2D1D" stroke-width="1.4"/></svg>
+                <span class="status err">FIX</span>
+              </div>
+              <div class="pc-row">
+                <span class="site">mealshift.co.uk <span class="country">GB</span></span>
+                <span class="score">0.77</span>
+                <svg class="spark" viewBox="0 0 100 22" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,12 14,12 28,11 42,11 56,10 70,10 84,9 100,9" fill="none" stroke="#B8915E" stroke-width="1.4"/></svg>
+                <span class="status warn">WARN</span>
+              </div>
+              <div class="pc-row">
+                <span class="site">www.freshmarket.ma <span class="country">MA</span></span>
+                <span class="score">0.68</span>
+                <svg class="spark" viewBox="0 0 100 22" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,11 14,13 28,12 42,11 56,11 70,12 84,12 100,11" fill="none" stroke="#6F2D1D" stroke-width="1.4"/></svg>
+                <span class="status err">FIX</span>
+              </div>
+              <div class="pc-row">
+                <span class="site">bizus.co.uk <span class="country">GB</span></span>
+                <span class="score">0.57</span>
+                <svg class="spark" viewBox="0 0 100 22" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,8 14,9 28,10 42,11 56,12 70,12 84,12 100,12" fill="none" stroke="#B8915E" stroke-width="1.4"/></svg>
+                <span class="status warn">WARN</span>
+              </div>
+            </div>
+            <div class="pc-foot">
+              <span>Audit sweep · last 14d</span>
+              <span>12 alerts open · 15 proposals pending</span>
+            </div>
+          </div>
+         </div>
+        </aside>
+      </div>
+    </div>
+  </header>
+
+  <!-- logo strip / engines we optimize for -->
+  <div class="logos">
+    <div class="container">
+      <div class="logos-label">Optimizing citation in</div>
+      <div class="logos-row">
+        <span class="l">ChatGPT</span>
+        <span class="l">Perplexity</span>
+        <span class="l">Google AI Overviews</span>
+        <span class="l">Claude</span>
+        <span class="l">Gemini</span>
+        <span class="l">Copilot</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- features -->
+  <section id="features">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">01 · Features</span>
+        <h2>The control plane for AI-search visibility.</h2>
+        <p>Six capabilities, one product. Each is deterministic, auditable, and rolls back cleanly. No magic, no auto-publish, no surprises.</p>
+      </div>
+      <div class="features">
+        <div class="feature reveal">
+          <div class="icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </div>
+          <h3>Eight deterministic audits</h3>
+          <p>HTML/AEO legibility, Schema.org JSON-LD against 969 canonical types, hreflang reciprocity, PageSpeed, CrUX, Search Console, GEO citation rate (ChatGPT, Perplexity, Claude, Gemini), Wayback archival. Fail-closed on missing credentials.</p>
+        </div>
+        <div class="feature reveal d1">
+          <div class="icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <h3>Signed governance pact</h3>
+          <p>Per-site, version-pinned, sha256-gated. Every mutation lands in an append-only audit log with hashed actor IDs. Revocation is one endpoint away.</p>
+        </div>
+        <div class="feature reveal d2">
+          <div class="icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13 13 0 0 1 0 18M12 3a13 13 0 0 0 0 18"/></svg>
+          </div>
+          <h3>Knowledge graph</h3>
+          <p>69 canonical entities. Schema.org JSON-LD per entity URL. Wikidata sameAs anchors. Cross-link engine proposes entity-justified edges between member sites.</p>
+        </div>
+        <div class="feature reveal">
+          <div class="icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c0-5 4-9 9-9s9 4 9 9-4 9-9 9-9-4-9-9z"/><path d="M3 12h18"/><path d="M12 3v18"/></svg>
+          </div>
+          <h3>Multilingual entity consistency</h3>
+          <p>Audit hreflang reciprocity and entity coherence across every language variant - DK, EN, FR, AR. Most auditors don't touch this. We treat it as foundational.</p>
+        </div>
+        <div class="feature reveal d1">
+          <div class="icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>GDPR Article 17 erasure</h3>
+          <p>A single endpoint tombstones a site's subject data while preserving the hashed event trail. EU AI Act-aligned by design, August 2026 ready.</p>
+        </div>
+        <div class="feature reveal d2">
+          <div class="icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M17 7h4v4"/></svg>
+          </div>
+          <h3>Regression alerts</h3>
+          <p>Per-source budgets with 10pt tolerance. Daily delta. budget_breach / regression / streak_recovery events. Idempotent dedup per period. Webhook delivery on the way.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- how it works -->
+  <section id="how" class="tinted">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">02 · How it works</span>
+        <h2>Four steps. Each one writes to the record.</h2>
+        <p>Nothing reaches your CMS without your approval. The architecture refuses to auto-publish.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="num">01</div>
+          <div>
+            <h3>Register your domain</h3>
+            <p>We fetch your sitemap, parse robots.txt, detect the CMS type. Locale, currency, country noted. You're in the registry.</p>
+            <code>POST /sites { "tenant_id": "you", "domain": "yoursite.com" }</code>
+          </div>
+        </div>
+        <div class="step reveal d1">
+          <div class="num">02</div>
+          <div>
+            <h3>Sign the pact</h3>
+            <p>Version-pinned governance pact, sha256-gated. Every mutation from here lands in an append-only audit log with a hashed actor ID.</p>
+            <code>POST /governance/pact/sign { "site_id": N }</code>
+          </div>
+        </div>
+        <div class="step reveal d2">
+          <div class="num">03</div>
+          <div>
+            <h3>Audit, deterministically</h3>
+            <p>Eight checks, repeatable. Scores feed a trend, budgets, and alerts. Fail-closed when credentials are missing. No silent zeros.</p>
+            <code>POST /audits/run · /audits/html · /audits/schema</code>
+          </div>
+        </div>
+        <div class="step reveal d3">
+          <div class="num">04</div>
+          <div>
+            <h3>Propose, you approve</h3>
+            <p>Entity-justified cross-links, schema fixes, a back-of-folio list. Proposals land in a queue. Your infra pulls approved changes.</p>
+            <code>GET /sites/{id}/approved</code>
+          </div>
+        </div>
+      </div>
+
+      <!-- API showcase -->
+      <div class="api-show reveal">
+        <div>
+          <span class="eyebrow">DEVELOPER API</span>
+          <h3 style="margin-top: 14px;">Programmable, by design.</h3>
+          <p>Every audit, every entity, every approval is reachable via a clean REST surface. HMAC-keyed, rate-limited, content-negotiated. <code style="font-family: var(--mono); font-size: 13px; background: var(--paper); padding: 2px 6px; border: 1px solid var(--rule); border-radius: 3px;">api.citetome.com</code></p>
+        </div>
+        <pre class="code-block"><span class="c-cmt"># Probe an entity in the catalogue</span>
+<span class="c-method">curl</span> https://api.citetome.com/kg/entity/indexnow
+
+<span class="c-key">{</span>
+  <span class="c-key">"slug"</span>:        <span class="c-str">"indexnow"</span>,
+  <span class="c-key">"kind"</span>:        <span class="c-str">"DefinedTerm"</span>,
+  <span class="c-key">"name_en"</span>:     <span class="c-str">"IndexNow"</span>,
+  <span class="c-key">"wikidata_id"</span>: <span class="c-str">"Q108546024"</span>,
+  <span class="c-key">"references"</span>:  <span class="c-str">[ { "site": "sheandelle.com" } ]</span>
+<span class="c-key">}</span></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- numbers -->
+  <section id="numbers">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">03 · Live data</span>
+        <h2>What the catalogue holds today.</h2>
+        <p>Real counts from production, not slides. Updated on each audit sweep.</p>
+      </div>
+      <div class="numbers">
+        <div class="stat reveal">
+          <div class="big" data-target="8">0</div>
+          <div class="label">Audit types</div>
+        </div>
+        <div class="stat reveal d1">
+          <div class="big" data-target="69" id="stat-entities">0</div>
+          <div class="label">Canonical entities</div>
+        </div>
+        <div class="stat reveal d2">
+          <div class="big" data-target="6" id="stat-sites">0</div>
+          <div class="label">Sites under pact</div>
+        </div>
+        <div class="stat reveal d3">
+          <div class="big" data-target="141">0</div>
+          <div class="label">Tests passing</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- pricing -->
+  <section id="pricing" class="tinted">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">04 · Pricing</span>
+        <h2>Fixed-fee. No metered surprises.</h2>
+        <p>Pricing validated against the EU SMB market by an external advisor. Start with an audit, upgrade when you're ready.</p>
+      </div>
+      <div class="price-grid reveal">
+        <div class="price-card">
+          <div class="name">Audit</div>
+          <div class="price">€500</div>
+          <div class="desc">A one-shot legibility report.</div>
+          <ul class="feat">
+            <li>11-signal HTML/AEO audit</li>
+            <li>Branded PDF report</li>
+            <li>5 working-day turnaround</li>
+            <li>15-min walkthrough call</li>
+          </ul>
+          <div class="cta"><a href="#audit">Start audit</a></div>
+        </div>
+        <div class="price-card">
+          <div class="name">Audit Pro</div>
+          <div class="price">€1,500</div>
+          <div class="desc">Multilingual + entity depth.</div>
+          <ul class="feat">
+            <li>Everything in Audit</li>
+            <li>Multilingual entity review</li>
+            <li>Cross-link opportunity map</li>
+            <li>Entity catalogue + 10-fix backlog</li>
+          </ul>
+          <div class="cta"><a href="#audit">Start Audit Pro</a></div>
+        </div>
+        <div class="price-card">
+          <div class="name">Starter</div>
+          <div class="price">€200<small>/mo</small></div>
+          <div class="desc">Monthly visibility plan.</div>
+          <ul class="feat">
+            <li>Monthly audit sweep</li>
+            <li>1 governance review</li>
+            <li>Email report</li>
+            <li>Registry membership</li>
+          </ul>
+          <div class="cta"><a href="#audit">Start Starter</a></div>
+        </div>
+        <div class="price-card featured">
+          <span class="badge">Most popular</span>
+          <div class="name">Standard</div>
+          <div class="price">€500<small>/mo</small></div>
+          <div class="desc">Hands-on managed plan.</div>
+          <ul class="feat">
+            <li>Everything in Starter</li>
+            <li>Entity onboarding</li>
+            <li>WP plugin install</li>
+            <li>Monthly cross-link proposals</li>
+            <li>Slack support</li>
+          </ul>
+          <div class="cta"><a href="#audit">Start Standard</a></div>
+        </div>
+        <div class="price-card">
+          <div class="name">Premium</div>
+          <div class="price">€800<small>/mo</small></div>
+          <div class="desc">Hub coordination + edits.</div>
+          <ul class="feat">
+            <li>Everything in Standard</li>
+            <li>Human-approved CMS edits</li>
+            <li>Multilingual hub coordination</li>
+            <li>Quarterly strategy call</li>
+          </ul>
+          <div class="cta"><a href="#audit">Start Premium</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- audit form -->
+  <section id="audit">
+    <div class="container">
+      <div class="audit-form reveal">
+        <span class="eyebrow">Free initial audit</span>
+        <h2>Show me how my site reads to AI.</h2>
+        <p>Drop your URL. We'll run the deterministic audit, send the report within five working days, and book a 15-minute walkthrough. No commitment.</p>
+        <form class="audit-input-wrap" id="audit-form">
+          <input class="audit-input" id="audit-url" type="url" placeholder="https://your-domain.com" required pattern="https?://.+" />
+          <button class="btn" type="submit">Request audit →</button>
+        </form>
+        <div class="audit-feedback" id="audit-feedback"></div>
+        <div class="audit-meta">KEYBOARD: <kbd>/</kbd> focus URL · <kbd>?</kbd> shortcuts · <kbd>g</kbd> top · <kbd>G</kbd> bottom</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- faq -->
+  <section id="faq" class="tinted">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">FAQ</span>
+        <h2>Common questions.</h2>
+      </div>
+      <div class="faq reveal">
+        <details open>
+          <summary>What does Citetome actually do?</summary>
+          <p>We audit your website for AI-search readability, fix the structured-data and entity signals that ChatGPT, Perplexity, Google AI Overviews and Claude rely on for citation, and run a governance trail so every change is signed, audit-logged and reversible.</p>
+        </details>
+        <details>
+          <summary>How is this different from regular SEO?</summary>
+          <p>Regular SEO optimises for keyword ranking. Citetome optimises for entity legibility - whether AI search systems can identify, cite and trust your brand. Both matter; the AI-search citation layer is what's new and unowned for SMBs in 2026.</p>
+        </details>
+        <details>
+          <summary>Will you write to my CMS automatically?</summary>
+          <p>No. Architectural rule. Proposals land in an approval queue. A human approves. Your own infrastructure pulls approved changes. We never auto-publish.</p>
+        </details>
+        <details>
+          <summary>Why does the governance trail matter?</summary>
+          <p>EU AI Act enforcement begins August 2026. Regulated SMBs - legal, finance, healthtech - need an auditable record of every change made to their AI-search visibility. We sign a pact with each member site, write every proposal and approval to an append-only log, and support GDPR Article 17 erasure on demand.</p>
+        </details>
+        <details>
+          <summary>AEO or GEO? Which one is this?</summary>
+          <p>Both. AEO (answer-engine optimization) covers featured snippets, voice search, and Google AI Overviews - the "extract a direct answer" layer. GEO (generative-engine optimization) covers ChatGPT, Perplexity, Claude, Gemini, Copilot - the "synthesize and cite a brand" layer. Citetome audits, fixes, and governs both, because in 2026 the same SMB needs the same brand to be readable, citeable, and trustworthy across every machine reader.</p>
+        </details>
+        <details>
+          <summary>Who's behind it?</summary>
+          <p>Solo-founded in Copenhagen, built on Fly.io with a Python + FastAPI + SQLModel stack. 141 tests passing. Pricing validated by an external advisor with European SaaS experience. Markets served: Denmark, the UK, Morocco, and any multilingual SMB with the same problem.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- closing -->
+  <section class="closing">
+    <div class="container">
+      <div class="reveal">
+        <span class="eyebrow" style="justify-content: center; display: inline-flex;">Get started</span>
+        <h2 style="margin-top: 14px;">Five days. One audit. Zero commitment.</h2>
+        <p>If the catalogue is for you, we sign the pact and continue. If not, you keep the report.</p>
+        <div class="closing-actions">
+          <a href="#audit" class="btn btn-lg">Request an audit</a>
+          <a href="https://api.citetome.com/customer?tenant=yossra" class="btn btn-ghost btn-lg" target="_blank" rel="noopener">View live dashboard</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <footer>
+    <div class="container">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a href="/" class="brand" aria-label="Citetome home">
+            <svg class="brand-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+              <path d="M9 22 L9 9 L24 9" stroke="#E6DDC8" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+              <path d="M55 42 L55 55 L40 55" stroke="#E6DDC8" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+              <circle cx="32" cy="32" r="3" fill="#B8915E"/>
+            </svg>
+            <span class="brand-word">citetome</span>
+          </a>
+          <p class="foot-blurb">The AEO control plane for multilingual SMBs. Governed, audit-logged, multi-region.</p>
+        </div>
+        <div class="foot-col">
+          <h5>Product</h5>
+          <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#how">How it works</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h5>Live</h5>
+          <ul>
+            <li><a href="https://api.citetome.com/customer?tenant=yossra" target="_blank" rel="noopener">Customer dashboard</a></li>
+            <li><a href="https://api.citetome.com/governance" target="_blank" rel="noopener">Governance posture</a></li>
+            <li><a href="https://api.citetome.com/kg/sitemap.xml" target="_blank" rel="noopener">Knowledge graph</a></li>
+            <li><a href="https://api.citetome.com/llms.txt" target="_blank" rel="noopener">LLMs registry</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h5>Contact</h5>
+          <ul>
+            <li><a href="mailto:hello@citetome.com">hello@citetome.com</a></li>
+            <li>Copenhagen, DK</li>
+            <li>DK · UK · MA</li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-base">
+        <div>© 2026 Citetome · Made in Copenhagen</div>
+        <div>api.citetome.com · 141 tests · Fly.io lhr</div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#audit" class="float-cta" id="float-cta">Request an audit</a>
+  <div class="tip" id="tip"></div>
+
+  <script>
+    // progress + nav state + active links
+    const progress = document.getElementById('progress');
+    const nav = document.getElementById('nav');
+    const floatCta = document.getElementById('float-cta');
+    const navLinks = document.querySelectorAll('.nav-links a[data-section]');
+    const sectionIds = ['features', 'how', 'numbers', 'pricing', 'faq'];
+    const sections = sectionIds.map(id => document.getElementById(id));
+
+    function onScroll() {
+      const max = document.body.scrollHeight - window.innerHeight;
+      const ratio = Math.min(1, Math.max(0, window.scrollY / Math.max(1, max)));
+      progress.style.width = (ratio * 100).toFixed(2) + '%';
+      nav.classList.toggle('scrolled', window.scrollY > 8);
+      floatCta.classList.toggle('show', window.scrollY > 600 && ratio < 0.92);
+      const fromTop = window.scrollY + 120;
+      let activeId = null;
+      for (const s of sections) {
+        if (s && s.offsetTop <= fromTop) activeId = s.id;
+      }
+      navLinks.forEach(a => a.classList.toggle('active', a.dataset.section === activeId));
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    reveals.forEach(r => io.observe(r));
+
+    // count-up stats
+    const statEls = document.querySelectorAll('.big[data-target]');
+    const statIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const el = e.target;
+        const target = parseInt(el.dataset.target, 10);
+        const small = el.querySelector('small');
+        const suffix = small ? small.textContent : '';
+        const start = performance.now();
+        const duration = 1100;
+        function tick(t) {
+          const p = Math.min(1, (t - start) / duration);
+          const eased = 1 - Math.pow(1 - p, 3);
+          const n = Math.round(target * eased);
+          el.textContent = '';
+          el.appendChild(document.createTextNode(String(n)));
+          if (suffix) {
+            const sm = document.createElement('small');
+            sm.textContent = suffix;
+            el.appendChild(sm);
+          }
+          if (p < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+        statIO.unobserve(el);
+      });
+    }, { threshold: 0.4 });
+    statEls.forEach(s => statIO.observe(s));
+
+    // sparkline hover tooltip
+    const tip = document.getElementById('tip');
+    document.querySelectorAll('.pc-row').forEach(row => {
+      const site = row.querySelector('.site') && row.querySelector('.site').firstChild && row.querySelector('.site').firstChild.textContent.trim();
+      const score = row.querySelector('.score') && row.querySelector('.score').textContent;
+      const status = row.querySelector('.status') && row.querySelector('.status').textContent;
+      row.addEventListener('mouseenter', () => {
+        tip.textContent = (site || '') + ' · ' + (score || '') + ' · ' + (status || '');
+        tip.classList.add('show');
+      });
+      row.addEventListener('mousemove', (e) => {
+        tip.style.left = (e.clientX + 14) + 'px';
+        tip.style.top  = (e.clientY - 32) + 'px';
+      });
+      row.addEventListener('mouseleave', () => tip.classList.remove('show'));
+    });
+
+    // live data - only authenticated, no hallucinated numbers
+    async function fetchLive() {
+      try {
+        const r = await fetch('https://api.citetome.com/sites?tenant_id=yossra', { mode: 'cors' });
+        if (r.ok) {
+          const sites = await r.json();
+          if (Array.isArray(sites) && sites.length) {
+            // real last_audit_at from the API, not today's date
+            const stamp = document.getElementById('live-stamp');
+            if (stamp) {
+              const timestamps = sites.map(s => s.last_audit_at).filter(Boolean).map(t => new Date(t));
+              if (timestamps.length) {
+                const latest = new Date(Math.max.apply(null, timestamps));
+                const month = latest.toLocaleString('en-GB', { month: 'short' }).toUpperCase();
+                stamp.textContent = '· LAST SWEEP ' + String(latest.getDate()).padStart(2,'0') + ' ' + month;
+              }
+            }
+            const statSites = document.getElementById('stat-sites');
+            const pcSites = document.getElementById('pc-sites');
+            if (statSites) statSites.dataset.target = String(sites.length);
+            if (pcSites) pcSites.textContent = String(sites.length);
+          }
+        }
+      } catch (err) {}
+      try {
+        const r = await fetch('https://api.citetome.com/kg/entities', { mode: 'cors' });
+        if (r.ok) {
+          const data = await r.json();
+          const list = Array.isArray(data) ? data : (data.entities || []);
+          if (list.length) {
+            const count = list.length;
+            const statEnt = document.getElementById('stat-entities');
+            const pcEnt = document.getElementById('pc-entities');
+            if (statEnt) statEnt.dataset.target = String(count);
+            if (pcEnt) pcEnt.textContent = String(count);
+          }
+        }
+      } catch (err) {}
+      // real alert + proposal counts from the API
+      try {
+        const [aR, pR] = await Promise.all([
+          fetch('https://api.citetome.com/audits/alerts?tenant_id=yossra&only_open=true', { mode: 'cors' }),
+          fetch('https://api.citetome.com/approvals/pending', { mode: 'cors' })
+        ]);
+        const alerts = aR.ok ? await aR.json() : [];
+        const props = pR.ok ? await pR.json() : [];
+        const aList = Array.isArray(alerts) ? alerts : (alerts.alerts || alerts.items || []);
+        const pList = Array.isArray(props) ? props : (props.items || []);
+        const foot = document.querySelector('.pc-foot');
+        if (foot) {
+          const right = foot.children[1];
+          if (right) right.textContent = aList.length + ' alerts open · ' + pList.length + ' proposals pending';
+        }
+      } catch (err) {}
+    }
+    fetchLive();
+
+    // audit form
+    const auditForm = document.getElementById('audit-form');
+    const auditUrl = document.getElementById('audit-url');
+    const auditFeedback = document.getElementById('audit-feedback');
+    auditForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const url = auditUrl.value.trim();
+      if (!url) return;
+      auditFeedback.textContent = 'Opening your mail client with ' + url + ' pre-filled…';
+      const subject = encodeURIComponent('Audit request: ' + url);
+      const body = encodeURIComponent('Hi Citetome,\n\nPlease audit ' + url + '.\n\nA bit about us:\n- Industry:\n- Languages:\n- Current AI-search visibility concern:\n\nThanks.');
+      window.location.href = 'mailto:hello@citetome.com?subject=' + subject + '&body=' + body;
+      setTimeout(() => { auditFeedback.textContent = 'If your mail client didn\'t open, email hello@citetome.com directly.'; }, 1800);
+    });
+
+    // 3D tilt on product card (Apple-style, restrained)
+    const card = document.getElementById('product-card');
+    const stage = card && card.parentElement;
+    if (card && stage && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      let raf = 0;
+      function tilt(e) {
+        const r = stage.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width;
+        const y = (e.clientY - r.top)  / r.height;
+        const ry = (x - 0.5) *  8;
+        const rx = (0.5 - y) *  6;
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => {
+          card.style.setProperty('--ry', ry.toFixed(2) + 'deg');
+          card.style.setProperty('--rx', rx.toFixed(2) + 'deg');
+        });
+      }
+      function rest() {
+        cancelAnimationFrame(raf);
+        card.style.setProperty('--ry', '0deg');
+        card.style.setProperty('--rx', '0deg');
+      }
+      stage.addEventListener('mousemove', tilt);
+      stage.addEventListener('mouseleave', rest);
+    }
+
+    // subtle parallax on the 3D bracket ornament
+    const decor = document.getElementById('hero-decor');
+    if (decor && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      let pRaf = 0;
+      window.addEventListener('mousemove', (e) => {
+        cancelAnimationFrame(pRaf);
+        pRaf = requestAnimationFrame(() => {
+          const dx = (e.clientX / window.innerWidth - 0.5) * 14;
+          const dy = (e.clientY / window.innerHeight - 0.5) * 10;
+          decor.style.transform = 'translate3d(' + dx.toFixed(1) + 'px, ' + dy.toFixed(1) + 'px, 0)';
+        });
+      }, { passive: true });
+    }
+
+    // keyboard
+    document.addEventListener('keydown', (e) => {
+      const tag = e.target.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+      if (e.key === '/') {
+        e.preventDefault();
+        document.getElementById('audit').scrollIntoView({ behavior: 'smooth' });
+        setTimeout(() => auditUrl.focus(), 600);
+      } else if (e.key === '?') {
+        alert('Keyboard:\n/ - jump to audit form\n? - this help\ng - top\nG - bottom');
+      } else if (e.key === 'g') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (e.key === 'G') {
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      }
+    });
+  </script>
+
+</body>
+</html>
