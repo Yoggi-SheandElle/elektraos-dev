@@ -151,7 +151,7 @@
         window.trackEvent('case_open', label, { href: href });
       }
       // Contact CTA
-      else if (href && (href.indexOf('#contact') !== -1 || href.indexOf('upwork') !== -1)) {
+      else if (href && (href.indexOf('#contact') !== -1 || false /* upwork retired */)) {
         window.trackEvent('contact_cta', label, { href: href });
       }
       // Chat opens
