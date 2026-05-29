@@ -143,6 +143,26 @@
     <priority>0.9</priority>
   </url>
 
+  <!-- Artist Ops case study (design partner withheld) -->
+  <url>
+    <loc>https://elektraos.dev/casestudy/artist-ops/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elektraos.dev/casestudy/artist-ops/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elektraos.dev/casestudy/artist-ops/"/>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Global Creative Network open hub -->
+  <url>
+    <loc>https://elektraos.dev/case/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elektraos.dev/case/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elektraos.dev/case/"/>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
   <!-- High-traffic content pages -->
   <url>
     <loc>https://elektraos.dev/cases/</loc>

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artist Ops . Case Study . ElektraOS.dev</title>
+  <meta name="description" content="Day one of a project with one working artist. The plan: hand her inbox, outreach, bookings, and fee negotiation to a system that sounds like her. Public details stay light until she's ready to be named.">
+  <meta property="og:title" content="Artist Ops . Case Study">
+  <meta property="og:description" content="Day one. One artist. A system that handles her inbox, sounds like her in outreach, and tracks her bookings. If it works for her, it opens to others.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://elektraos.dev/casestudy/artist-ops/">
+  <meta name="theme-color" content="#D946EF">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="canonical" href="https://elektraos.dev/casestudy/artist-ops/">
+  <meta name="robots" content="index, follow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/animations.css">
+  <link rel="stylesheet" href="/css/sections.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+
+  <style>
+    :root {
+      --izr-1: #D946EF;
+      --izr-2: #00D4FF;
+      --izr-3: #F472B6;
+    }
+
+    .izr-hero {
+      padding: 120px 24px 48px; text-align: center;
+      background: radial-gradient(900px 400px at 50% -50px, rgba(217,70,239,0.10), transparent 60%);
+    }
+    .izr-badge {
+      font-family: var(--font-mono); font-size: 10px;
+      text-transform: uppercase; letter-spacing: 2.5px;
+      color: var(--izr-1); padding: 6px 20px; border-radius: 999px;
+      border: 1px solid rgba(217,70,239,0.25);
+      background: rgba(217,70,239,0.05);
+      display: inline-block; margin-bottom: 20px;
+    }
+    .izr-title {
+      font-size: clamp(32px, 5vw, 52px); font-weight: 700;
+      margin-bottom: 16px; line-height: 1.1;
+    }
+    .izr-title .grad {
+      background: linear-gradient(135deg, var(--izr-1), var(--izr-2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .izr-sub {
+      font-size: 16px; color: var(--text-secondary);
+      max-width: 580px; margin: 0 auto 32px; line-height: 1.8;
+    }
+
+    .izr-stats {
+      display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;
+      padding: 24px 0; margin: 0 auto; max-width: 720px;
+      border-top: 1px solid rgba(217,70,239,0.10);
+      border-bottom: 1px solid rgba(217,70,239,0.10);
+    }
+    .izr-stat-val {
+      font-family: var(--font-mono); font-size: 22px; font-weight: 700;
+      background: linear-gradient(135deg, var(--izr-1), var(--izr-2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .izr-stat-label {
+      font-size: 10px; text-transform: uppercase; letter-spacing: 1px;
+      color: var(--text-muted); margin-top: 4px;
+    }
+
+    .izr-section { max-width: 820px; margin: 0 auto; padding: 56px 24px; }
+    .izr-section h2 { font-size: clamp(22px, 3vw, 30px); margin-top: 8px; }
+    .izr-section p.lead {
+      color: var(--text-secondary); line-height: 1.8; font-size: 15px;
+      margin-top: 16px;
+    }
+
+    .izr-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px; margin-top: 28px;
+    }
+    .izr-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px; padding: 20px;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .izr-card:hover { border-color: rgba(217,70,239,0.30); transform: translateY(-2px); }
+    .izr-card h4 { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+    .izr-card p { font-size: 12.5px; color: var(--text-muted); line-height: 1.65; }
+    .izr-card .num {
+      font-family: var(--font-mono); font-size: 10px; color: var(--izr-1);
+      letter-spacing: 1.2px; margin-bottom: 8px; display: block;
+    }
+
+    .izr-phase {
+      display: grid; grid-template-columns: 80px 1fr; gap: 16px;
+      padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .izr-phase:last-child { border-bottom: none; }
+    .izr-phase .ph-tag {
+      font-family: var(--font-mono); font-size: 10px;
+      color: var(--izr-2); letter-spacing: 1.2px;
+      padding-top: 2px;
+    }
+    .izr-phase h4 { font-size: 15px; margin-bottom: 4px; }
+    .izr-phase p { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+
+    .izr-tagrow { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+    .izr-tagrow span {
+      font-family: var(--font-mono); font-size: 10px;
+      padding: 4px 10px; border-radius: 4px;
+      background: rgba(217,70,239,0.06);
+      border: 1px solid rgba(217,70,239,0.12);
+      color: var(--izr-1);
+    }
+
+    .izr-vision {
+      background: radial-gradient(600px 200px at 50% 0%, rgba(0,212,255,0.06), transparent 70%);
+      border-top: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      padding: 64px 24px;
+    }
+    .izr-twoside { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 820px; margin: 28px auto 0; }
+    .izr-side {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px; padding: 24px;
+    }
+    .izr-side h3 { font-size: 16px; margin-bottom: 10px; }
+    .izr-side h3 .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 8px; }
+    .izr-side ul { list-style: none; padding: 0; margin: 12px 0 0; }
+    .izr-side ul li {
+      font-size: 13px; color: var(--text-secondary); line-height: 1.7;
+      padding: 6px 0 6px 18px; position: relative;
+    }
+    .izr-side ul li::before {
+      content: "+"; position: absolute; left: 0;
+      color: var(--izr-1); font-family: var(--font-mono); font-weight: 700;
+    }
+    @media (max-width: 700px) {
+      .izr-twoside { grid-template-columns: 1fr; }
+    }
+
+    .izr-classified {
+      max-width: 820px; margin: 0 auto; padding: 0 24px;
+    }
+    .izr-classified-box {
+      background: linear-gradient(180deg, rgba(217,70,239,0.04), transparent);
+      border: 1px dashed rgba(217,70,239,0.30);
+      border-radius: 12px;
+      padding: 20px 22px;
+      display: flex; gap: 14px; align-items: flex-start;
+    }
+    .izr-classified-box svg { flex-shrink: 0; color: var(--izr-1); margin-top: 2px; }
+    .izr-classified-box p {
+      font-size: 13px; color: var(--text-secondary); line-height: 1.7; margin: 0;
+    }
+    .izr-classified-box strong { color: var(--izr-1); font-weight: 600; }
+
+    .izr-cta {
+      text-align: center; padding: 56px 24px 80px;
+      border-top: 1px solid rgba(217,70,239,0.10);
+      max-width: 760px; margin: 0 auto;
+    }
+    .btn-grad {
+      display: inline-block; padding: 12px 28px; border-radius: 8px;
+      background: linear-gradient(135deg, var(--izr-1), var(--izr-2));
+      color: #0B1120; font-weight: 700; font-size: 14px;
+      text-decoration: none; transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .btn-grad:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(217,70,239,0.30); }
+  </style>
+  <link rel="stylesheet" href="/css/smart-features.css">
+  <script defer src="https://yossra-analytics.fly.dev/analytics" data-website-id="4abcaca6-fb37-47bf-bc8e-41e4b2503ee8"></script>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div style="position:fixed;top:0;left:0;right:0;z-index:101;background:linear-gradient(90deg,rgba(217,70,239,0.14),rgba(0,212,255,0.10));border-bottom:1px solid rgba(217,70,239,0.18);padding:8px 0;text-align:center;font-family:var(--font-mono);font-size:11px;letter-spacing:0.5px;color:var(--text-secondary);backdrop-filter:blur(12px);">
+    <span style="color:var(--izr-1);">&#9733;</span> Day one . Building with one artist . Names withheld for now
+  </div>
+
+  <!-- Nav -->
+  <nav class="nav" id="nav" style="top:33px;">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo"><span>E</span>lektraOS<span>.</span>dev</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/#solutions">Solutions</a></li>
+        <li><a href="/log/">Build Log</a></li>
+        <li><a href="/cases/" style="color:var(--cyan);">Case Studies</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/pricing/">Pricing</a></li>
+        <li><a href="/about/">About</a></li>
+      </ul>
+      <a href="/#contact" class="btn nav-cta">Let's Build</a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="izr-hero">
+    <div class="izr-badge">In progress . With one artist</div>
+    <h1 class="izr-title">Artist <span class="grad">Ops</span></h1>
+    <p class="izr-sub">
+      This started as a conversation with an artist who's tired of running her own admin.
+      The plan is simple: a system that opens her inbox, sends outreach in her voice,
+      tracks her bookings, and negotiates fees on her behalf. If it works for her, it
+      opens to others.
+    </p>
+
+    <div class="izr-stats">
+      <div style="text-align:center;">
+        <div class="izr-stat-val">1</div>
+        <div class="izr-stat-label">Design partner</div>
+      </div>
+      <div style="text-align:center;">
+        <div class="izr-stat-val">2-sided</div>
+        <div class="izr-stat-label">Artists + Bookers</div>
+      </div>
+      <div style="text-align:center;">
+        <div class="izr-stat-val">Day 1</div>
+        <div class="izr-stat-label">Where we are</div>
+      </div>
+      <div style="text-align:center;">
+        <div class="izr-stat-val">Local</div>
+        <div class="izr-stat-label">Building from</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Classified note -->
+  <div class="izr-classified" style="margin-top:24px;">
+    <div class="izr-classified-box">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      <p><strong>She stays private for now.</strong> The actual build, voice model, and inbox integrations live
+      in a local workspace. This page stays vague until she's ready to put her name on it.</p>
+    </div>
+  </div>
+
+  <!-- The pain -->
+  <div class="izr-section">
+    <span class="section-label" style="color:var(--izr-1);">What she said</span>
+    <h2>Most working artists are running their own back office.</h2>
+    <p class="lead">
+      Email triage. Press replies. Booker follow-ups. Fee negotiations one DM at a time.
+      Contracts saved as screenshots. Calendar split across three apps. Everything she actually
+      wants to be doing - writing, recording, performing - happens in whatever hours are left.
+      Her words, not ours.
+    </p>
+  </div>
+
+  <!-- What's being built -->
+  <div class="izr-section">
+    <span class="section-label" style="color:var(--izr-1);">What we're building first</span>
+    <h2>One artist, end to end. Then we see what's transferable.</h2>
+    <p class="lead">
+      We start with her inbox, her writing, her current bookings. Whatever works for her gets pulled
+      out and made into something the next artist can use. Nothing gets generalised before it's proven once.
+    </p>
+
+    <div class="izr-grid">
+      <div class="izr-card">
+        <span class="num">01</span>
+        <h4>Her inbox, handled</h4>
+        <p>Bookings flagged, press handled, noise binned. She wakes up to a clean inbox and a short list of things that actually need her.</p>
+      </div>
+      <div class="izr-card">
+        <span class="num">02</span>
+        <h4>Outreach in her voice</h4>
+        <p>Built from her own emails, bio, and writing. If a draft doesn't sound like her, she doesn't send it. The system learns from every edit.</p>
+      </div>
+      <div class="izr-card">
+        <span class="num">03</span>
+        <h4>Pitches with proof</h4>
+        <p>Every pitch goes out with the right tracks, video, press, and past venues already attached. No more "who are you again".</p>
+      </div>
+      <div class="izr-card">
+        <span class="num">04</span>
+        <h4>Bookings tracked</h4>
+        <p>Every conversation that could turn into a booking is a tracked deal. Where it is, who replied last, what the fee is, what's next.</p>
+      </div>
+      <div class="izr-card">
+        <span class="num">05</span>
+        <h4>Fees, with backbone</h4>
+        <p>Counter-offers grounded in her actual fee history, the venue size, and what comparable artists charge. She approves, it goes.</p>
+      </div>
+      <div class="izr-card">
+        <span class="num">06</span>
+        <h4>One weekly digest</h4>
+        <p>One summary she'll actually read. What closed, what's stuck, what needs her, what to drop.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- The bigger vision -->
+  <div class="izr-vision">
+    <div style="max-width:820px;margin:0 auto;text-align:center;">
+      <span class="section-label" style="color:var(--izr-2);">Where it goes</span>
+      <h2 style="font-size:clamp(22px,3vw,32px);margin-top:8px;">Eventually a place where bookers find the right artist, not the loudest one.</h2>
+      <p style="color:var(--text-secondary);line-height:1.8;font-size:15px;max-width:640px;margin:16px auto 0;">
+        Every artist has their own profile, portfolio, and assistant. Bookers pay to access it
+        and find people who actually fit the room, the date, the budget. The matching gets
+        sharper every time something gets booked.
+      </p>
+
+      <div class="izr-twoside">
+        <div class="izr-side">
+          <h3><span class="dot" style="background:var(--izr-1);"></span>For artists</h3>
+          <p style="font-size:13px;color:var(--text-muted);line-height:1.7;">Time back. Voice intact. Numbers in one place.</p>
+          <ul>
+            <li>An assistant that knows their work, their rates, and how they talk</li>
+            <li>A portfolio that stays current without them touching it</li>
+            <li>Only inbound bookings that match what they'd actually accept</li>
+            <li>All their contracts and fees in one place, owned by them</li>
+          </ul>
+        </div>
+        <div class="izr-side">
+          <h3><span class="dot" style="background:var(--izr-2);"></span>For bookers</h3>
+          <p style="font-size:13px;color:var(--text-muted);line-height:1.7;">Real profiles. Real fit. Fewer cold emails into the void.</p>
+          <ul>
+            <li>Verified profiles, not Instagram guesses</li>
+            <li>Match on what matters: room, date, budget, energy</li>
+            <li>One brief, a ranked shortlist back, no more chasing dead leads</li>
+            <li>The more deals close, the sharper the matches get</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Approach phases -->
+  <div class="izr-section">
+    <span class="section-label" style="color:var(--izr-1);">How we get there</span>
+    <h2>One artist deep, before any artist wide.</h2>
+    <p class="lead">
+      Every phase has a stopping point. We only carry forward the parts that actually work for her.
+      Nothing gets called a platform until it's run end to end for one person.
+    </p>
+
+    <div style="margin-top:24px;">
+      <div class="izr-phase">
+        <div class="ph-tag">Phase 0</div>
+        <div>
+          <h4>Listen and gather</h4>
+          <p>Read her existing emails, contracts, portfolio, and writing. Learn how she sounds, what she's said yes to, what she's said no to, how she runs her admin today.</p>
+        </div>
+      </div>
+      <div class="izr-phase">
+        <div class="ph-tag">Phase 1</div>
+        <div>
+          <h4>Take over the inbox</h4>
+          <p>She wakes up to a triaged inbox and drafted replies in her voice. She edits, approves, sends. Every change teaches the system how she actually answers.</p>
+        </div>
+      </div>
+      <div class="izr-phase">
+        <div class="ph-tag">Phase 2</div>
+        <div>
+          <h4>Track the deals</h4>
+          <p>Every booking conversation becomes a tracked deal. Fee suggestions based on what she's charged before and what the room is worth, not a markup formula.</p>
+        </div>
+      </div>
+      <div class="izr-phase">
+        <div class="ph-tag">Phase 3</div>
+        <div>
+          <h4>Two more artists</h4>
+          <p>Find two more artists in different disciplines. Rebuild the stack for them. Keep what's shared, throw out what isn't.</p>
+        </div>
+      </div>
+      <div class="izr-phase">
+        <div class="ph-tag">Phase 4</div>
+        <div>
+          <h4>Open the booker side</h4>
+          <p>Let bookers in. Subscription access, ranked shortlists, matching that learns from what actually gets booked. Only when the artist side is real.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="izr-tagrow">
+      <span>FastAPI</span><span>Claude</span><span>Voice modeling</span><span>Email API</span>
+      <span>Vector search</span><span>Postgres</span><span>n8n</span><span>Matching engine</span>
+      <span>Stripe subscriptions</span><span>Two-sided marketplace</span>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="izr-cta">
+    <h3 style="margin-bottom:8px;">This is day one. We'll talk about it more when there's more to show.</h3>
+    <p style="color:var(--text-secondary);font-size:14px;max-width:520px;margin:0 auto 24px;">
+      If you're an artist drowning in your own admin, or a booker tired of cold-emailing
+      the same dozen agencies, say hello. The first seats are for people who want to help shape it.
+    </p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="/#contact" class="btn-grad">Say hello</a>
+      <a href="/cases/" class="btn btn-outline">Other case studies</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-copy">
+        <span class="mono">&copy; 2026 ElektraOS.dev</span>
+        <span style="display:block;font-size:11px;color:var(--text-muted);margin-top:4px;">London, United Kingdom</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/yoggi-sheandelle" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/yossra-benzad/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/i18n.js" defer></script>
+  <script>
+    var hb=document.getElementById('navHamburger'),nl=document.getElementById('navLinks');
+    if(hb)hb.addEventListener('click',function(){nl.classList.toggle('open');hb.classList.toggle('open');});
+    if('IntersectionObserver' in window){
+      var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target);}});},{threshold:0.1});
+      document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+    }
+  </script>
+</body>
+</html>

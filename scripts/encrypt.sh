@@ -1,30 +1,37 @@
 #!/bin/bash
 # Encrypt all protected pages with StatiCrypt
 # Usage: bash scripts/encrypt.sh
-# Passwords: mercy2026, aylamanage2026, mealshift2026
+# Passwords: mercy2026, izraa2026, aylamanage2026, mealshift2026
+# Note: staticrypt v3.5+ uses -d for output directory; input filename is preserved.
 
-set -e
 cd "$(dirname "$0")/.."
 
 echo "Encrypting protected pages..."
 
-staticrypt case/_src/index.html -p mercy2026 -o case/index.html --short
-echo "  [OK] case/ (Mercy)"
+# Each block: skip if source missing (some _src/ are gitignored on shared machines)
 
-staticrypt casestudy/ayla/manage/_src/index.html -p aylamanage2026 -o casestudy/ayla/manage/index.html --short
-echo "  [OK] casestudy/ayla/manage/ (Aya)"
+encrypt() {
+  local src="$1" pass="$2" outdir="$3" label="$4"
+  if [ ! -f "$src" ]; then
+    echo "  [SKIP] $label - source missing: $src"
+    return 0
+  fi
+  staticrypt "$src" -p "$pass" -d "$outdir" --short >/dev/null
+  echo "  [OK] $label"
+}
 
-staticrypt casestudy/mealshift/_src/index.html -p mealshift2026 -o casestudy/mealshift/index.html --short
-echo "  [OK] casestudy/mealshift/ (Said)"
-
-staticrypt casestudy/mealshift/docs/_src/index.html -p mealshift2026 -o casestudy/mealshift/docs/index.html --short
-echo "  [OK] casestudy/mealshift/docs/ (Said)"
+encrypt case/mercy/_src/index.html         mercy2026       case/mercy/         "case/mercy/ (Mercy)"
+encrypt case/izraa-baraa/_src/index.html   izraa2026       case/izraa-baraa/   "case/izraa-baraa/ (Izraa)"
+encrypt casestudy/ayla/manage/_src/index.html  aylamanage2026  casestudy/ayla/manage/  "casestudy/ayla/manage/ (Aya)"
+encrypt casestudy/mealshift/_src/index.html    mealshift2026   casestudy/mealshift/    "casestudy/mealshift/ (Said)"
+encrypt casestudy/mealshift/docs/_src/index.html mealshift2026 casestudy/mealshift/docs/ "casestudy/mealshift/docs/ (Said)"
 
 echo ""
-echo "All 4 pages encrypted with StatiCrypt."
+echo "Encryption complete."
 echo ""
 echo "Shareable links (auto-decrypt):"
-echo "  Mercy:    https://elektraos.dev/case/#staticrypt_pwd=mercy2026"
-echo "  Aya:      https://elektraos.dev/casestudy/ayla/manage/#staticrypt_pwd=aylamanage2026"
+echo "  Mercy:     https://elektraos.dev/case/mercy/#staticrypt_pwd=mercy2026"
+echo "  Izraa:     https://elektraos.dev/case/izraa-baraa/#staticrypt_pwd=izraa2026"
+echo "  Aya:       https://elektraos.dev/casestudy/ayla/manage/#staticrypt_pwd=aylamanage2026"
 echo "  MealShift: https://elektraos.dev/casestudy/mealshift/#staticrypt_pwd=mealshift2026"
 echo "  MS Docs:   https://elektraos.dev/casestudy/mealshift/docs/#staticrypt_pwd=mealshift2026"
