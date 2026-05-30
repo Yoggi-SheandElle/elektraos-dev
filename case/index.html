@@ -220,7 +220,7 @@ footer{text-align:center;padding:3rem 2rem;font-family:'JetBrains Mono',monospac
 
 /* CHAT WIDGET */
 .mercy-chat{position:fixed;bottom:2rem;right:2rem;z-index:200;}
-.chat-toggle-btn{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#8B5E3C,#6B3F1F);border:2px solid rgba(232,168,56,0.3);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(139,94,60,0.4);transition:all 0.3s;position:relative;overflow:hidden;}
+.chat-toggle-btn{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#0f1729,#1a2332);border:2px solid rgba(0,201,167,0.35);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(0,201,167,0.35);transition:all 0.3s;position:relative;overflow:hidden;}
 .chat-toggle-btn:hover{transform:scale(1.1);box-shadow:0 6px 32px rgba(232,168,56,0.4);}
 .chat-toggle-btn .online-dot{position:absolute;top:2px;right:2px;width:12px;height:12px;border-radius:50%;background:var(--teal);border:2px solid var(--navy);}
 .chat-panel-mercy{position:absolute;bottom:68px;right:0;width:360px;height:500px;background:rgba(11,17,32,0.97);backdrop-filter:blur(24px);border:1px solid rgba(232,168,56,0.15);border-radius:20px;display:none;flex-direction:column;overflow:hidden;box-shadow:0 16px 64px rgba(0,0,0,0.5);}
@@ -228,7 +228,7 @@ footer{text-align:center;padding:3rem 2rem;font-family:'JetBrains Mono',monospac
 @media(max-width:640px){.chat-panel-mercy{width:calc(100vw - 2rem);right:-0.5rem;height:70vh;}}
 
 .chat-head{padding:16px 20px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(232,168,56,0.1);flex-shrink:0;}
-.chat-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#8B5E3C,#6B3F1F);display:flex;align-items:center;justify-content:center;border:2px solid rgba(232,168,56,0.2);flex-shrink:0;}
+.chat-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#0f1729,#1a2332);display:flex;align-items:center;justify-content:center;border:2px solid rgba(0,201,167,0.25);flex-shrink:0;}
 .chat-head-info{flex:1;}
 .chat-head-name{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;color:var(--white);}
 .chat-head-status{font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--teal);letter-spacing:0.08em;}
@@ -691,7 +691,7 @@ footer{text-align:center;padding:3rem 2rem;font-family:'JetBrains Mono',monospac
 <div class="mercy-chat">
   <div class="chat-panel-mercy" id="mercyChat">
     <div class="chat-head">
-      <div class="chat-avatar"><svg width="24" height="24" viewBox="0 0 64 64"><circle cx="32" cy="36" r="20" fill="#6B3F1F"/><circle cx="32" cy="36" r="18" fill="#8B5E3C"/><circle cx="32" cy="36" r="16" fill="url(#cav)" opacity="0.5"/><circle cx="26" cy="32" r="3" fill="#5C3310" opacity="0.7"/><circle cx="38" cy="32" r="3" fill="#5C3310" opacity="0.7"/><circle cx="32" cy="40" r="2.5" fill="#5C3310" opacity="0.7"/><line x1="28" y1="18" x2="22" y2="4" stroke="#E8A838" stroke-width="2.5" stroke-linecap="round"/><line x1="22" y1="4" x2="20" y2="2" stroke="#E8A838" stroke-width="2" stroke-linecap="round"/><ellipse cx="32" cy="20" rx="16" ry="3" fill="none" stroke="#A07050" stroke-width="1" opacity="0.4"/><defs><radialGradient id="cav" cx="0.35" cy="0.3" r="0.7"><stop offset="0%" stop-color="#A07050"/><stop offset="100%" stop-color="#5C3A1E"/></radialGradient></defs></svg></div>
+      <div class="chat-avatar"><svg width="24" height="24" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="24" stroke="url(#cnetA)" stroke-width="2" opacity="0.45"/><path d="M32 14 L50 42 L14 42 Z" stroke="url(#cnetA)" stroke-width="2.5" stroke-linejoin="round" opacity="0.8"/><circle cx="32" cy="14" r="4.5" fill="url(#cnetA)"/><circle cx="50" cy="42" r="4.5" fill="url(#cnetA)"/><circle cx="14" cy="42" r="4.5" fill="url(#cnetA)"/><circle cx="32" cy="32" r="3.5" fill="#E8A838"/><defs><linearGradient id="cnetA" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#00C9A7"/><stop offset="100%" stop-color="#E8A838"/></linearGradient></defs></svg></div>
       <div class="chat-head-info">
         <div class="chat-head-name">Elektra</div>
         <div class="chat-head-status" id="chatStatus">ONLINE</div>
@@ -709,7 +709,7 @@ footer{text-align:center;padding:3rem 2rem;font-family:'JetBrains Mono',monospac
     </div>
   </div>
   <div class="chat-toggle-btn" onclick="toggleMercyChat()">
-    <svg width="32" height="32" viewBox="0 0 64 64"><circle cx="32" cy="36" r="20" fill="#6B3F1F"/><circle cx="32" cy="36" r="18" fill="#8B5E3C"/><circle cx="32" cy="36" r="16" fill="url(#ctv)" opacity="0.5"/><circle cx="26" cy="32" r="3" fill="#5C3310" opacity="0.7"/><circle cx="38" cy="32" r="3" fill="#5C3310" opacity="0.7"/><circle cx="32" cy="40" r="2.5" fill="#5C3310" opacity="0.7"/><line x1="28" y1="18" x2="22" y2="4" stroke="#E8A838" stroke-width="2.5" stroke-linecap="round"/><line x1="22" y1="4" x2="20" y2="2" stroke="#E8A838" stroke-width="2" stroke-linecap="round"/><ellipse cx="32" cy="20" rx="16" ry="3" fill="none" stroke="#A07050" stroke-width="1" opacity="0.4"/><defs><radialGradient id="ctv" cx="0.35" cy="0.3" r="0.7"><stop offset="0%" stop-color="#A07050"/><stop offset="100%" stop-color="#5C3A1E"/></radialGradient></defs></svg>
+    <svg width="32" height="32" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="24" stroke="url(#cnetB)" stroke-width="2" opacity="0.45"/><path d="M32 14 L50 42 L14 42 Z" stroke="url(#cnetB)" stroke-width="2.5" stroke-linejoin="round" opacity="0.8"/><circle cx="32" cy="14" r="4.5" fill="url(#cnetB)"/><circle cx="50" cy="42" r="4.5" fill="url(#cnetB)"/><circle cx="14" cy="42" r="4.5" fill="url(#cnetB)"/><circle cx="32" cy="32" r="3.5" fill="#E8A838"/><defs><linearGradient id="cnetB" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#00C9A7"/><stop offset="100%" stop-color="#E8A838"/></linearGradient></defs></svg>
     <span class="online-dot"></span>
   </div>
 </div>

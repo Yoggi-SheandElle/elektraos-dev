@@ -194,6 +194,47 @@ footer{text-align:center;padding:3rem 2rem;font-family:'JetBrains Mono',monospac
 
 .fade{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease;}
 .fade.vis{opacity:1;transform:translateY(0);}
+
+/* CHAT WIDGET */
+.mercy-chat{position:fixed;bottom:2rem;right:2rem;z-index:200;}
+.chat-toggle-btn{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#0f1729,#1a2332);border:2px solid rgba(0,201,167,0.35);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(0,201,167,0.35);transition:all 0.3s;position:relative;overflow:hidden;}
+.chat-toggle-btn:hover{transform:scale(1.1);box-shadow:0 6px 32px rgba(232,168,56,0.4);}
+.chat-toggle-btn .online-dot{position:absolute;top:2px;right:2px;width:12px;height:12px;border-radius:50%;background:var(--teal);border:2px solid var(--navy);}
+.chat-panel-mercy{position:absolute;bottom:68px;right:0;width:360px;height:500px;background:rgba(11,17,32,0.97);backdrop-filter:blur(24px);border:1px solid rgba(232,168,56,0.15);border-radius:20px;display:none;flex-direction:column;overflow:hidden;box-shadow:0 16px 64px rgba(0,0,0,0.5);}
+.chat-panel-mercy.open{display:flex;animation:slideUp 0.3s ease;}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@media(max-width:640px){.chat-panel-mercy{width:calc(100vw - 2rem);right:-0.5rem;height:70vh;}}
+
+.chat-head{padding:16px 20px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(232,168,56,0.1);flex-shrink:0;}
+.chat-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#0f1729,#1a2332);display:flex;align-items:center;justify-content:center;border:2px solid rgba(0,201,167,0.25);flex-shrink:0;}
+.chat-head-info{flex:1;}
+.chat-head-name{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;color:var(--white);}
+.chat-head-status{font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--teal);letter-spacing:0.08em;}
+.chat-close{background:none;border:none;color:var(--gray);cursor:pointer;font-size:1.2rem;padding:4px;transition:color 0.2s;}
+.chat-close:hover{color:var(--white);}
+
+.chat-messages{flex:1;overflow-y:auto;padding:16px 20px;display:flex;flex-direction:column;gap:12px;}
+.chat-messages::-webkit-scrollbar{width:4px;}
+.chat-messages::-webkit-scrollbar-thumb{background:rgba(232,168,56,0.2);border-radius:2px;}
+
+.chat-msg{max-width:85%;padding:10px 14px;border-radius:14px;font-size:0.88rem;line-height:1.6;animation:msgIn 0.3s ease;}
+@keyframes msgIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+.chat-msg.bot{align-self:flex-start;background:var(--navy-light);color:var(--gray-light);border-bottom-left-radius:4px;}
+.chat-msg.user{align-self:flex-end;background:linear-gradient(135deg,rgba(232,168,56,0.15),rgba(0,201,167,0.1));color:var(--white);border-bottom-right-radius:4px;border:1px solid rgba(232,168,56,0.1);}
+.chat-msg.typing{color:var(--gray);}
+.chat-msg.typing .dots{display:inline-flex;gap:3px;}
+.chat-msg.typing .dots span{width:6px;height:6px;border-radius:50%;background:var(--gray);animation:dotPulse 1.4s ease-in-out infinite;}
+.chat-msg.typing .dots span:nth-child(2){animation-delay:0.2s;}
+.chat-msg.typing .dots span:nth-child(3){animation-delay:0.4s;}
+@keyframes dotPulse{0%,100%{opacity:0.3;transform:scale(0.8);}50%{opacity:1;transform:scale(1);}}
+
+.chat-input-area{padding:12px 16px;border-top:1px solid rgba(232,168,56,0.1);display:flex;gap:8px;flex-shrink:0;}
+.chat-input-field{flex:1;background:var(--navy-light);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:10px 14px;color:var(--white);font-family:'Source Sans 3',sans-serif;font-size:0.88rem;outline:none;transition:border-color 0.2s;}
+.chat-input-field:focus{border-color:rgba(232,168,56,0.3);}
+.chat-input-field::placeholder{color:var(--gray-dark);}
+.chat-send-btn{width:40px;height:40px;border-radius:12px;background:var(--amber);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;flex-shrink:0;}
+.chat-send-btn:hover{background:#d49530;transform:scale(1.05);}
+.chat-send-btn svg{width:16px;height:16px;stroke:var(--navy);fill:none;stroke-width:2;}
 </style>
   <script defer src="https://yossra-analytics.fly.dev/analytics" data-website-id="4abcaca6-fb37-47bf-bc8e-41e4b2503ee8"></script>
 </head>
@@ -561,6 +602,136 @@ var countObs = new IntersectionObserver(function(entries) {
   });
 }, { threshold: 0.5 });
 document.querySelectorAll('.stat-n').forEach(function(el){ countObs.observe(el); });
+</script>
+
+<!-- CHAT WIDGET -->
+<div class="mercy-chat">
+  <div class="chat-panel-mercy" id="mercyChat">
+    <div class="chat-head">
+      <div class="chat-avatar"><svg width="24" height="24" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="24" stroke="url(#cnetA)" stroke-width="2" opacity="0.45"/><path d="M32 14 L50 42 L14 42 Z" stroke="url(#cnetA)" stroke-width="2.5" stroke-linejoin="round" opacity="0.8"/><circle cx="32" cy="14" r="4.5" fill="url(#cnetA)"/><circle cx="50" cy="42" r="4.5" fill="url(#cnetA)"/><circle cx="14" cy="42" r="4.5" fill="url(#cnetA)"/><circle cx="32" cy="32" r="3.5" fill="#E8A838"/><defs><linearGradient id="cnetA" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#00C9A7"/><stop offset="100%" stop-color="#E8A838"/></linearGradient></defs></svg></div>
+      <div class="chat-head-info">
+        <div class="chat-head-name">Elektra</div>
+        <div class="chat-head-status" id="chatStatus">EN LIGNE</div>
+      </div>
+      <button class="chat-close" onclick="toggleMercyChat()">&#10005;</button>
+    </div>
+    <div class="chat-messages" id="mercyMessages">
+      <div class="chat-msg bot">Salut! Je suis Elektra. Posez-moi vos questions sur les systemes, les prix en dinar, le paiement local ou le reseau.</div>
+    </div>
+    <div class="chat-input-area">
+      <input type="text" class="chat-input-field" id="mercyInput" placeholder="Posez votre question..." autocomplete="off">
+      <button class="chat-send-btn" id="mercySend" onclick="sendMercyMsg()">
+        <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="chat-toggle-btn" onclick="toggleMercyChat()">
+    <svg width="32" height="32" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="24" stroke="url(#cnetB)" stroke-width="2" opacity="0.45"/><path d="M32 14 L50 42 L14 42 Z" stroke="url(#cnetB)" stroke-width="2.5" stroke-linejoin="round" opacity="0.8"/><circle cx="32" cy="14" r="4.5" fill="url(#cnetB)"/><circle cx="50" cy="42" r="4.5" fill="url(#cnetB)"/><circle cx="14" cy="42" r="4.5" fill="url(#cnetB)"/><circle cx="32" cy="32" r="3.5" fill="#E8A838"/><defs><linearGradient id="cnetB" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#00C9A7"/><stop offset="100%" stop-color="#E8A838"/></linearGradient></defs></svg>
+    <span class="online-dot"></span>
+  </div>
+</div>
+
+<script>
+// ===== ELEKTRA CHAT (FR) =====
+var CHAT_API = 'https://elektraos.dev/public/chat';
+var chatSession = localStorage.getItem('tunisia_chat_session') || ('mercy_' + Date.now() + '_' + Math.random().toString(36).slice(2,6));
+localStorage.setItem('tunisia_chat_session', chatSession);
+var chatOpen = false;
+
+// FAQ locale (repli quand l'API est hors ligne)
+var mercyFAQ = {
+  pricing: 'Les prix sont calibres sur le pouvoir d\'achat tunisien, pas une simple conversion. Abonnements: Micro 59 TND/mois, Starter 169 TND/mois, Professionnel 449 TND/mois. Projets ponctuels: site web 290-1490 TND, chatbot IA 149-790 TND, automatisation 90-590 TND par flux. Paiement en dinar accepte.',
+  payment: 'Vous payez avec les methodes que vous utilisez deja: Flouci, D17, e-DINAR, Konnect ou carte. Tout en dinar tunisien - pas besoin d\'une carte internationale pour acceder a une infrastructure de niveau mondial.',
+  system: 'ElektraOS est un systeme d\'exploitation creatif complet: des agents IA, de l\'automatisation, de la generation de contenu et du SEO qui tournent 24h/24. La meme infrastructure que les startups financees, ouverte aux creatifs et freelances de Tunisie.',
+  network: 'Le reseau couvre 7 villes, Tunis inclus. C\'est un reseau vivant de personnes reelles, lie par la confiance et soutenu par de vrais systemes - pas une application a telecharger. Sfax et Sousse font aussi partie du maillage tunisien.',
+  freelance: 'On aide les freelances tunisiens a mieux se vendre a l\'international - France, USA, Canada. Propositions generees par IA, optimisation de portfolio, prospection automatisee et strategies de prix pour l\'export. Le talent est la, on lui donne les outils.',
+  hello: 'Bonjour! Ravie de vous voir. Que voulez-vous savoir? Je peux parler des systemes, des prix en dinar, du paiement local, du reseau ou de l\'export pour freelances. A vous de jouer.',
+  help: 'Je peux vous renseigner sur: les tarifs, le paiement local, le systeme ElektraOS, le reseau, ou l\'aide a l\'export pour les freelances. Posez votre question!'
+};
+
+function matchFAQ(msg) {
+  msg = msg.toLowerCase();
+  if (/prix|tarif|cout|coute|combien|dinar|tnd|abonn|micro|starter|profession/.test(msg)) return mercyFAQ.pricing;
+  if (/paiement|payer|paye|flouci|d17|e-dinar|edinar|konnect|carte|wallet/.test(msg)) return mercyFAQ.payment;
+  if (/systeme|elektra|agent|automatis|contenu|seo|ia\b|intelligence/.test(msg)) return mercyFAQ.system;
+  if (/reseau|ville|tunis|sfax|sousse|membre|communaut/.test(msg)) return mercyFAQ.network;
+  if (/freelance|export|france|usa|canada|etranger|international|vendre|client/.test(msg)) return mercyFAQ.freelance;
+  if (/aide|que peux|comment|info/.test(msg)) return mercyFAQ.help;
+  if (/bonjour|salut|coucou|hello|hey|hi\b|bonsoir/.test(msg)) return mercyFAQ.hello;
+  return null;
+}
+
+function toggleMercyChat() {
+  chatOpen = !chatOpen;
+  document.getElementById('mercyChat').classList.toggle('open', chatOpen);
+  if (chatOpen) document.getElementById('mercyInput').focus();
+}
+
+function addChatMsg(text, who) {
+  var el = document.getElementById('mercyMessages');
+  var msg = document.createElement('div');
+  msg.className = 'chat-msg ' + who;
+  msg.textContent = text;
+  el.appendChild(msg);
+  el.scrollTop = el.scrollHeight;
+  return msg;
+}
+
+function showTyping() {
+  var el = document.getElementById('mercyMessages');
+  var msg = document.createElement('div');
+  msg.className = 'chat-msg bot typing';
+  msg.id = 'typingIndicator';
+  msg.innerHTML = '<span class="dots"><span></span><span></span><span></span></span>';
+  el.appendChild(msg);
+  el.scrollTop = el.scrollHeight;
+}
+
+function removeTyping() {
+  var t = document.getElementById('typingIndicator');
+  if (t) t.remove();
+}
+
+function sendMercyMsg() {
+  var input = document.getElementById('mercyInput');
+  var text = input.value.trim();
+  if (!text) return;
+
+  addChatMsg(text, 'user');
+  input.value = '';
+  showTyping();
+
+  // On tente l'API d'abord, sinon repli sur la FAQ
+  fetch(CHAT_API, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message: text, session_id: chatSession, page: 'tunisia-case' })
+  })
+  .then(function(r) { if (!r.ok) throw new Error('API error'); return r.json(); })
+  .then(function(data) {
+    removeTyping();
+    addChatMsg(data.reply, 'bot');
+  })
+  .catch(function() {
+    removeTyping();
+    var faq = matchFAQ(text);
+    if (faq) {
+      addChatMsg(faq, 'bot');
+    } else {
+      addChatMsg('Hmm, je ne suis pas sure pour celle-ci. Essayez les tarifs, le paiement local, le systeme, le reseau ou l\'export pour freelances. Ou dites simplement bonjour!', 'bot');
+    }
+  });
+}
+
+// La touche Entree envoie
+document.getElementById('mercyInput').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') { e.preventDefault(); sendMercyMsg(); }
+});
+
+// Verification de l'etat
+fetch(CHAT_API.replace('/chat', '/health'))
+  .then(function(r) { if (r.ok) document.getElementById('chatStatus').textContent = 'EN LIGNE'; })
+  .catch(function() { document.getElementById('chatStatus').textContent = 'HORS LIGNE - MODE FAQ'; });
 </script>
 
 </body>
