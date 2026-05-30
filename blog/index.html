@@ -146,6 +146,26 @@
 
     <article class="blog-post reveal" itemscope itemtype="https://schema.org/BlogPosting">
       <div class="blog-meta">
+        <time class="blog-date" datetime="2026-05-30" itemprop="datePublished">May 30, 2026</time>
+        <span class="blog-cat eng">Engineering</span>
+        <span class="blog-cat sys">Design</span>
+      </div>
+      <h2 class="blog-title" itemprop="headline">Redesigning the case-studies page as a Mission Control: 13 monitors, zero fake numbers</h2>
+      <p class="blog-excerpt" itemprop="description">The old /cases/ page was a generic bento grid - card, card, card, card. Useful, navigable, forgettable. Today it became a Mission Control: one operator console with 13 monitor cards, each showing a custom widget that reflects what the project actually is. ElektraOS gets an agent grid pulsing 41 dots, one per agent. Loomgraph gets a node network with connecting lines that dash and pulse. Vienna Artists gets a waveform of 24 audio bars. AYLA Maison gets a gold shimmer typographic mark with floating particles. The Global Creative Network gets a stylised six-city map with corridor lines. MealShift gets a terminal scroll. The UK property brief gets an SVG floor plan of all eight units. The 40th Brick gets a CSS pixel grid spelling its number. Operations Suite gets a workflow diagram. Project N gets a CLASSIFIED glitch with redacted bars. Twelve distinct widgets, all CSS and SVG, no external JS, no images, no hallucinated activity. The Roster ticker at the top cycles through every project but uses only metrics already published on each card - no invented agent activity, no fake API logs, no "shipped 4 outbound drafts" filler. The hardest debugging moment: the global animations.css .reveal opacity:0 was hiding every monitor below the fold because the site-wide IntersectionObserver only fired for cards already in view at load. Override added at the page level; monitors render immediately, hover does the motion. The bigger lesson: when the work IS the differentiator, your portfolio should let people see into each project, not just past it.</p>
+    </article>
+
+    <article class="blog-post reveal" itemscope itemtype="https://schema.org/BlogPosting">
+      <div class="blog-meta">
+        <time class="blog-date" datetime="2026-05-20" itemprop="datePublished">May 20, 2026</time>
+        <span class="blog-cat eng">Engineering</span>
+        <span class="blog-cat sys">Launch</span>
+      </div>
+      <h2 class="blog-title" itemprop="headline">From Loomgraph to Citetome: shipping a marketing site that runs on real verified data, not mockups</h2>
+      <p class="blog-excerpt" itemprop="description">Loomgraph rebranded as Citetome and shipped a full marketing site in one day - hero, product card, pricing grid, audit request form, live dashboard. What made it different: every number on the page is wired to api.citetome.com, not invented. Six sites monitored, 69 entities catalogued, 141 tests run, 12 alerts open, 15 proposals pending. Per-site scores live on the page: elektraos.dev 0.92, sheandelle.com 0.89, aylamaison.com 0.83, mealshift.co.uk 0.77, freshmarket.ma 0.68, bizus.co.uk 0.57. No mockup ranges, no "up to" weasel words. The aesthetic moved from Loomgraph's purple-amber toward an editorial-tech feel: light mode, sans-serif primary with italic Garamond accents, a corner-bracket logo mark that doubles as a 3D extruded ornament in the hero with mouse parallax. The dashboard ships with backward-compatible auth - accepts both the new X-Citetome-Key header and the legacy X-Loomgraph-Key so nothing breaks during the cutover. 1,607 lines added across pricing, audit, and dashboard subpages in the same session. Built fast because the API was already real; the marketing site is just a window onto data that already existed.</p>
+    </article>
+
+    <article class="blog-post reveal" itemscope itemtype="https://schema.org/BlogPosting">
+      <div class="blog-meta">
         <time class="blog-date" datetime="2026-04-22" itemprop="datePublished">April 22, 2026</time>
         <span class="blog-cat eng">Engineering</span>
         <span class="blog-cat sys">Systems</span>

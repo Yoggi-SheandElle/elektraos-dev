@@ -287,6 +287,135 @@
   <!-- Feed -->
   <div class="log-feed">
 
+    <!-- ===== May 30, 2026 - /case/ restructure + Vienna Artists case study + Mission Control redesign ===== -->
+    <article class="log-entry reveal" itemscope itemtype="https://schema.org/TechArticle">
+      <meta itemprop="datePublished" content="2026-05-30">
+      <meta itemprop="author" content="ElektraOS.dev">
+      <div class="log-date">
+        <time datetime="2026-05-30">May 30, 2026</time>
+        <span style="margin-left:12px;padding:2px 8px;border-radius:4px;background:rgba(0,255,157,0.1);color:var(--green);font-size:10px;">Shipped</span>
+        <span style="margin-left:6px;padding:2px 8px;border-radius:4px;background:rgba(0,212,255,0.1);color:var(--cyan);font-size:10px;">Design</span>
+        <span style="margin-left:6px;padding:2px 8px;border-radius:4px;background:rgba(124,58,237,0.1);color:#a78bfa;font-size:10px;">Case Studies</span>
+      </div>
+      <h2 class="log-title" itemprop="headline">/case/ restructure, new Vienna Artists case study, Mission Control redesign of /cases/</h2>
+      <p class="log-desc" itemprop="description">Five commits to master. Started a new Vienna-based artist platform engagement: a public case study at /casestudy/vienna-artists/ and a private password-gated artist brief at /case/izraa-baraa/ alongside the existing Mercy/Global Creative Network landing at /case/. Fixed the StaticCrypt script for v3.5+ (uses -d, not -o), made it skip missing sources gracefully, and committed .staticrypt.json for deterministic re-encryption. Then a full redesign of /cases/ from a generic bento grid to a Mission Control operator console: 13 monitor cards, one custom widget per project (agent grid for ElektraOS, node network for Loomgraph, waveform for Vienna Artists, gold shimmer for AYLA, city map for GCN, terminal scroll for MealShift, blueprint for the UK property brief, pixel grid for 40th Brick, workflow diagram for Operations, glitch for Project N).</p>
+      <ul class="log-items">
+        <li>New private brief at /case/izraa-baraa/ - StaticCrypt-gated, plaintext source gitignored so nothing personal lands in public git history</li>
+        <li>New public case study at /casestudy/vienna-artists/ - anonymised framing, partner stays private until ready to be named</li>
+        <li>Local-only template scaffold at /case/_template/ (gitignored) for future artist briefs</li>
+        <li>scripts/encrypt.sh: replaced removed -o flag with -d for staticrypt v3.5+, added per-file skip-on-missing so the script no longer halts on absent gitignored sources (MealShift)</li>
+        <li>/cases/ redesign: dark navy operator-console aesthetic, Fraunces serif display + JetBrains Mono labels, per-card --c1/--c2 CSS custom properties drive each monitor's theme</li>
+        <li>12 distinct CSS/SVG widget components, no external JS dependencies, vanilla CSS animations for agent pulse, node link dashes, terminal scroll, waveform bars, gold shimmer, pixel grid</li>
+        <li>Hero "Mission Control" board: 4-tile vitals strip + scrolling Roster ticker populated only from each card's already-public metrics and status badges - no fabricated activity logs</li>
+        <li>Layout fix: page-level override for the global animations.css .reveal opacity:0 which had been hiding monitors below the fold (site-wide IntersectionObserver only fired for above-the-fold elements)</li>
+        <li>Commits 13e9043, 45b2307, e1586c9, 621fb5e, e25c230 pushed to master across the day</li>
+      </ul>
+      <div class="log-tech">
+        <span>HTML/CSS/SVG</span><span>StaticCrypt v3.5</span><span>CSS Custom Properties</span><span>JetBrains Mono</span><span>Fraunces</span><span>CSS animations</span><span>animation-timeline</span><span>GitHub Pages</span>
+      </div>
+      <div class="log-metrics">
+        <span class="log-metric">Monitors on /cases/: <strong>13</strong></span>
+        <span class="log-metric">Custom widgets: <strong>12</strong></span>
+        <span class="log-metric">New protected briefs: <strong>1</strong></span>
+        <span class="log-metric">Commits to master: <strong>5</strong></span>
+      </div>
+    </article>
+
+    <!-- ===== May 21, 2026 - Reposition: strip Upwork, shift HQ from Copenhagen to London ===== -->
+    <article class="log-entry reveal" itemscope itemtype="https://schema.org/TechArticle">
+      <meta itemprop="datePublished" content="2026-05-21">
+      <meta itemprop="author" content="ElektraOS.dev">
+      <div class="log-date">
+        <time datetime="2026-05-21">May 21, 2026</time>
+        <span style="margin-left:12px;padding:2px 8px;border-radius:4px;background:rgba(0,255,157,0.1);color:var(--green);font-size:10px;">Shipped</span>
+        <span style="margin-left:6px;padding:2px 8px;border-radius:4px;background:rgba(232,168,56,0.1);color:#E8A838;font-size:10px;">Repositioning</span>
+        <span style="margin-left:6px;padding:2px 8px;border-radius:4px;background:rgba(0,212,255,0.1);color:var(--cyan);font-size:10px;">Legal</span>
+      </div>
+      <h2 class="log-title" itemprop="headline">Reposition elektraos.dev as a B2B London hub: strip Upwork, swap Danish legal references for UK</h2>
+      <p class="log-desc" itemprop="description">Single commit (2ce9f83) that retires the Upwork-mediated framing across the site and shifts the legal headquarters from Copenhagen, Denmark to London, United Kingdom. Every locale - English, Danish, French, Italian, Moroccan - now points to direct email contact instead of a freelancer URL, and the legal copy is updated to reflect services delivered under a signed Statement of Work rather than via Upwork. UK regulatory references replace their Danish equivalents in the privacy and cookie policies.</p>
+      <ul class="log-items">
+        <li>Replaced all Upwork freelancer URLs and CTAs with direct email contact across EN, DA, FR, IT, MA locale roots</li>
+        <li>Legal copy updated: services now delivered under signed Statement of Work, not Upwork-mediated</li>
+        <li>HQ shifted in schema.org markup, footer, and contact info: Copenhagen, Denmark -> London, United Kingdom</li>
+        <li>Privacy supervisory authority: Danish Datatilsynet -> UK ICO (Information Commissioner's Office)</li>
+        <li>Cookie law reference: Danish Cookiebekendtgoerelsen -> UK PECR (Privacy and Electronic Communications Regulations)</li>
+        <li>Copyright basis: Danish ophavsretsloven -> UK Copyright Designs and Patents Act 1988</li>
+        <li>Removed duplicate /citetome/ subfolder from this repo: citetome is now a standalone entity at citetome.com</li>
+        <li>Historical build-log references cleaned: no longer mention Upwork as the delivery channel</li>
+        <li>Resolved stash conflicts on index.html, log/index.html, sitemap.xml, smb/index.html keeping upstream</li>
+      </ul>
+      <div class="log-tech">
+        <span>Static HTML</span><span>schema.org JSON-LD</span><span>GitHub Pages</span><span>i18n</span><span>Legal copy</span>
+      </div>
+      <div class="log-metrics">
+        <span class="log-metric">Locales updated: <strong>5</strong></span>
+        <span class="log-metric">Legal authorities swapped: <strong>3</strong></span>
+        <span class="log-metric">Commits to master: <strong>1</strong></span>
+      </div>
+    </article>
+
+    <!-- ===== May 20, 2026 - Citetome launch: marketing site + subpages ===== -->
+    <article class="log-entry reveal" itemscope itemtype="https://schema.org/TechArticle">
+      <meta itemprop="datePublished" content="2026-05-20">
+      <meta itemprop="author" content="ElektraOS.dev">
+      <div class="log-date">
+        <time datetime="2026-05-20">May 20, 2026</time>
+        <span style="margin-left:12px;padding:2px 8px;border-radius:4px;background:rgba(0,255,157,0.1);color:var(--green);font-size:10px;">Shipped</span>
+        <span style="margin-left:6px;padding:2px 8px;border-radius:4px;background:rgba(124,58,237,0.1);color:#a78bfa;font-size:10px;">Launch</span>
+        <span style="margin-left:6px;padding:2px 8px;border-radius:4px;background:rgba(0,212,255,0.1);color:var(--cyan);font-size:10px;">Citetome</span>
+      </div>
+      <h2 class="log-title" itemprop="headline">Citetome launches: rebrand from Loomgraph, marketing site, pricing, audit form, dashboard</h2>
+      <p class="log-desc" itemprop="description">Two commits (be9d633, 6e57159). Loomgraph rebranded as Citetome with a clean editorial-tech aesthetic - light mode, sans-serif primary, italic Garamond accents, corner-bracket logo mark. Marketing site built around real verified data pulled from api.citetome.com rather than mockup numbers. Three subpages followed in the same day: a full price grid with comparison table, a Formspree-wired audit request form with a 5-day delivery timeline, and a rebranded live 3D globe dashboard that points at api.citetome.com while still accepting the legacy X-Loomgraph-Key header for backward compatibility.</p>
+      <ul class="log-items">
+        <li>Brand rename Loomgraph -> Citetome, editorial-tech aesthetic, light mode with serif italic accents</li>
+        <li>Hero: 3D extruded brackets ornament with mouse parallax, product card with mouse-tracked 3D tilt</li>
+        <li>Live operator dashboard preview wired to real audit scores from api.citetome.com</li>
+        <li>Verified live data displayed (no hallucinated numbers): 6 sites, 69 entities, 141 tests, 12 alerts open, 15 proposals pending</li>
+        <li>Per-site scores shown: elektraos.dev 0.92, sheandelle.com 0.89, aylamaison.com 0.83, mealshift.co.uk 0.77, freshmarket.ma 0.68, bizus.co.uk 0.57</li>
+        <li>/citetome/pricing/: full price grid + side-by-side comparison table + billing FAQ</li>
+        <li>/citetome/audit/: Formspree-wired form, 5-day delivery timeline, 4-pillar coverage</li>
+        <li>/citetome/dashboard/: rebranded live 3D globe, accepts both X-Citetome-Key and legacy X-Loomgraph-Key headers</li>
+        <li>AEO and GEO positioning, multilingual SMB framing across EU, UK, Morocco</li>
+        <li>Lines added: 1,607 across 5 dashboard/pricing/audit files in commit 6e57159</li>
+      </ul>
+      <div class="log-tech">
+        <span>HTML/CSS/JS</span><span>CSS 3D transforms</span><span>Formspree</span><span>api.citetome.com</span><span>Garamond italic</span><span>GitHub Pages</span>
+      </div>
+      <div class="log-metrics">
+        <span class="log-metric">Pages shipped: <strong>4</strong></span>
+        <span class="log-metric">Lines added: <strong>1,607</strong></span>
+        <span class="log-metric">Real data sources wired: <strong>1</strong> (api.citetome.com)</span>
+        <span class="log-metric">Commits to master: <strong>2</strong></span>
+      </div>
+    </article>
+
+    <!-- ===== May 1, 2026 - /for-bo/ single-client portfolio overview page ===== -->
+    <article class="log-entry reveal" itemscope itemtype="https://schema.org/TechArticle">
+      <meta itemprop="datePublished" content="2026-05-01">
+      <meta itemprop="author" content="ElektraOS.dev">
+      <div class="log-date">
+        <time datetime="2026-05-01">May 1, 2026</time>
+        <span style="margin-left:12px;padding:2px 8px;border-radius:4px;background:rgba(0,255,157,0.1);color:var(--green);font-size:10px;">Shipped</span>
+        <span style="margin-left:6px;padding:2px 8px;border-radius:4px;background:rgba(232,168,56,0.1);color:#E8A838;font-size:10px;">Portfolio</span>
+      </div>
+      <h2 class="log-title" itemprop="headline">/for-bo/ single-client portfolio overview page for Bo Walther</h2>
+      <p class="log-desc" itemprop="description">Two commits (423e73f, c741f3d). New /for-bo/ page assembled as a portfolio overview tailored to one specific client. Initial commit added the page itself - 357 lines, single self-contained index.html. Follow-up commit (same day) added a print stylesheet and intent boxes per project so the page reads well both on screen and when printed for a meeting handout.</p>
+      <ul class="log-items">
+        <li>Self-contained /for-bo/index.html, 357 lines on first commit (423e73f)</li>
+        <li>Print stylesheet added so the page produces a usable PDF for hand-offs (c741f3d, +65/-2)</li>
+        <li>Intent boxes per project: short explanation of why each project is relevant to the specific client</li>
+        <li>Pattern reusable as a template for future per-client overview pages</li>
+      </ul>
+      <div class="log-tech">
+        <span>Static HTML</span><span>CSS print stylesheet</span><span>GitHub Pages</span>
+      </div>
+      <div class="log-metrics">
+        <span class="log-metric">Pages shipped: <strong>1</strong></span>
+        <span class="log-metric">Lines added: <strong>357 + 65</strong></span>
+        <span class="log-metric">Commits to master: <strong>2</strong></span>
+      </div>
+    </article>
+
     <!-- ===== April 24, 2026 - SMB section visuals + i18n expansion + governance layout fix ===== -->
     <article class="log-entry reveal" itemscope itemtype="https://schema.org/TechArticle">
       <meta itemprop="datePublished" content="2026-04-24">
