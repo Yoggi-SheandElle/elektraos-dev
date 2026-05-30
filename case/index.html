@@ -440,7 +440,7 @@ footer{text-align:center;padding:3rem 2rem;font-family:'JetBrains Mono',monospac
 <!-- NETWORK -->
 <section id="network" class="fade" style="max-width:1200px;">
   <div class="section-tag">04 / The Network</div>
-  <h2>Six cities.<br>One <span class="hl">connected system.</span></h2>
+  <h2>Seven cities.<br>One <span class="hl">connected system.</span></h2>
   <p>Each node is a creative hub. Each corridor is an opportunity. Accra is where the energy is. Click a city to explore.</p>
 
   <div class="network-container">
@@ -461,6 +461,10 @@ footer{text-align:center;padding:3rem 2rem;font-family:'JetBrains Mono',monospac
         <line x1="310" y1="140" x2="340" y2="400" stroke="var(--magenta)" stroke-dasharray="4,4"/>
         <line x1="480" y1="180" x2="370" y2="320" stroke="var(--blue)" stroke-dasharray="4,4"/>
         <line x1="420" y1="150" x2="370" y2="320" stroke="var(--teal)" stroke-dasharray="4,4"/>
+        <!-- Tunis corridors -->
+        <line x1="370" y1="320" x2="450" y2="300" stroke="#E70013" stroke-dasharray="4,4"/>
+        <line x1="480" y1="180" x2="450" y2="300" stroke="var(--amber)" stroke-dasharray="4,4"/>
+        <line x1="450" y1="300" x2="340" y2="400" stroke="var(--teal)" stroke-dasharray="4,4"/>
         <!-- Highlighted CPH-Accra corridor -->
         <line x1="420" y1="150" x2="340" y2="400" stroke="var(--amber)" stroke-width="2" stroke-dasharray="6,3" opacity="1"/>
       </g>
@@ -495,6 +499,12 @@ footer{text-align:center;padding:3rem 2rem;font-family:'JetBrains Mono',monospac
         <circle class="dot-ring" cx="370" cy="320" r="10" fill="none" stroke="var(--teal)" stroke-width="1" opacity="0.4"/>
         <text x="405" y="315" fill="var(--teal)" font-family="JetBrains Mono" font-size="9" letter-spacing="0.1em">CASABLANCA</text>
         <text x="405" y="328" fill="var(--gray)" font-family="Source Sans 3" font-size="8">Africa's Digital Gateway</text>
+      </g>
+      <g class="city-dot" onclick="showCity('tunis')" filter="url(#glow)">
+        <circle cx="450" cy="300" r="5" fill="#E70013"/>
+        <circle class="dot-ring" cx="450" cy="300" r="10" fill="none" stroke="#E70013" stroke-width="1" opacity="0.4"/>
+        <text x="478" y="296" fill="#E70013" font-family="JetBrains Mono" font-size="9" letter-spacing="0.1em">TUNIS</text>
+        <text x="478" y="309" fill="var(--gray)" font-family="Source Sans 3" font-size="8">Maghreb Creative Hub</text>
       </g>
       <!-- Accra - HIGHLIGHTED with larger node -->
       <g class="city-dot" onclick="showCity('accra')" filter="url(#glow)">
@@ -643,7 +653,7 @@ footer{text-align:center;padding:3rem 2rem;font-family:'JetBrains Mono',monospac
   <p class="lead">What if every creative, in every country, had access to the same AI-powered tools that only well-funded startups have today?</p>
 
   <div class="principles">
-    <div class="principle"><div class="pr-icon">&#127758;</div><div class="pr-text"><strong>Global, borderless, trust-based.</strong> You join because someone you trust brought you in. Copenhagen, Vienna, Casablanca, Accra, Paris, London. The network grows through real people, not algorithms.</div></div>
+    <div class="principle"><div class="pr-icon">&#127758;</div><div class="pr-text"><strong>Global, borderless, trust-based.</strong> You join because someone you trust brought you in. Copenhagen, Vienna, Tunis, Casablanca, Accra, Paris, London. The network grows through real people, not algorithms.</div></div>
     <div class="principle"><div class="pr-icon">&#9878;</div><div class="pr-text"><strong>Fair market prices, tailored to reality.</strong> A designer in Accra and a designer in Copenhagen both get paid what their work is worth in their context. No race to the bottom. Pricing adapts to local economies while maintaining real value.</div></div>
     <div class="principle"><div class="pr-icon">&#129302;</div><div class="pr-text"><strong>Your own AI system, built around your brain.</strong> Every member gets a smart system tailored to how they work. Your workflow, your needs, your memory. AI agents that adapt to YOU, not the other way around.</div></div>
     <div class="principle"><div class="pr-icon">&#128176;</div><div class="pr-text"><strong>Zero funding required.</strong> This needs time and dedication, not investors. Work at whatever scale fits your life. The system adjusts. A single mom in Accra and a full-time creative in Vienna both find their place.</div></div>
@@ -750,6 +760,12 @@ const cities = {
     tag: 'Africa\'s Digital Bridge',
     desc: 'Morocco\'s Digital 2030 strategy: 240,000 digital jobs, 3,000 startups, EUR 120M allocated for startup ecosystem. 36% of Technopark-supported startups export to 4 continents.',
     stat: 'Morocco positioned as bridge between Europe and Africa. 7,874 new companies registered in January 2026 alone.'
+  },
+  tunis: {
+    name: 'Tunis',
+    tag: 'Maghreb Creative Hub',
+    desc: 'Tunisia is the 5th-largest startup hub in MENA: 1,450+ startups, 1,165 labelled under the Startup Act, 12,000+ jobs created in 2024. World-class design and software talent, much of it working part-time and exporting cheaply abroad.',
+    stat: 'Fair pricing in TND, paid with Flouci, D17, e-DINAR and Konnect. <a href="/case/tunisia/" style="color:#E70013;">Open the Tunisia hub &rarr;</a>'
   },
   accra: {
     name: 'Accra',

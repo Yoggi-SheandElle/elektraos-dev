@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ElektraOS - Le reseau creatif, Tunisie</title>
+<meta name="description" content="Une infrastructure IA pour les creatifs et freelances tunisiens. Memes outils que les startups financees, prix calibres sur l'economie locale, paiement Flouci, D17, e-DINAR et Konnect.">
+<meta property="og:title" content="ElektraOS - Le reseau creatif, Tunisie">
+<meta property="og:description" content="Memes systemes IA que les startups financees, prix calibres pour la Tunisie, paiement avec les methodes que vous utilisez deja.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://elektraos.dev/case/tunisia/">
+<meta name="theme-color" content="#00C9A7">
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="canonical" href="https://elektraos.dev/case/tunisia/">
+<link rel="alternate" hreflang="fr" href="https://elektraos.dev/case/tunisia/">
+<link rel="alternate" hreflang="ar" href="https://elektraos.dev/case/tunisia/">
+<link rel="alternate" hreflang="x-default" href="https://elektraos.dev/case/tunisia/">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Sans+Arabic:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0B1120;
+  --navy-light: #111827;
+  --navy-mid: #1a2332;
+  --navy-card: #0f1729;
+  --teal: #00C9A7;
+  --teal-dim: rgba(0,201,167,0.12);
+  --teal-glow: rgba(0,201,167,0.35);
+  --amber: #E8A838;
+  --amber-dim: rgba(232,168,56,0.12);
+  --amber-glow: rgba(232,168,56,0.35);
+  --magenta: #E879F9;
+  --blue: #60A5FA;
+  --white: #F0F4F8;
+  --gray: #94A3B8;
+  --gray-light: #CBD5E1;
+  --gray-dark: #475569;
+  --tn-red: #E70013;
+  --tn-red-dim: rgba(231,0,19,0.12);
+  --tn-red-glow: rgba(231,0,19,0.35);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Source Sans 3',sans-serif;background:var(--navy);color:var(--white);line-height:1.7;overflow-x:hidden;}
+
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:var(--navy);}
+::-webkit-scrollbar-thumb{background:var(--teal);border-radius:3px;}
+
+/* ARABIC */
+[lang="ar"]{font-family:'Noto Sans Arabic','Source Sans 3',sans-serif;}
+[dir="rtl"]{direction:rtl;text-align:right;}
+.ar-line{font-family:'Noto Sans Arabic',sans-serif;line-height:1.9;}
+.ar-hero{font-family:'Noto Sans Arabic',sans-serif;font-weight:800;font-size:clamp(1.8rem,5vw,3.2rem);line-height:1.4;margin-bottom:0.75rem;color:var(--gray-light);}
+.ar-sub{font-family:'Noto Sans Arabic',sans-serif;font-weight:400;font-size:clamp(1rem,2.5vw,1.3rem);color:var(--gray);line-height:1.9;}
+.ar-tag{font-family:'Noto Sans Arabic',sans-serif;font-size:0.85rem;color:var(--tn-red);letter-spacing:0;margin-top:0.3rem;opacity:0.85;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0.75rem 2rem;display:flex;justify-content:space-between;align-items:center;background:rgba(11,17,32,0.9);backdrop-filter:blur(24px);border-bottom:1px solid rgba(0,201,167,0.08);}
+.nav-logo{font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:var(--teal);letter-spacing:0.05em;display:flex;align-items:center;gap:0.5rem;text-decoration:none;}
+.nav-logo .pulse{width:8px;height:8px;border-radius:50%;background:var(--tn-red);animation:blink 2s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.nav-links{display:flex;gap:1.5rem;}
+.nav-links a{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--gray);text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.3s;}
+.nav-links a:hover{color:var(--teal);}
+@media(max-width:768px){.nav-links{display:none;}}
+
+/* SECTION BASE */
+section{min-height:100vh;padding:7rem 2rem 4rem;display:flex;flex-direction:column;justify-content:center;position:relative;max-width:1100px;margin:0 auto;}
+.section-tag{font-family:'JetBrains Mono',monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.25em;color:var(--teal);margin-bottom:1.25rem;opacity:0.7;}
+h1{font-family:'Outfit',sans-serif;font-weight:900;font-size:clamp(2.8rem,7vw,5.5rem);line-height:1.05;margin-bottom:1.5rem;letter-spacing:-0.02em;}
+h2{font-family:'Outfit',sans-serif;font-weight:700;font-size:clamp(1.8rem,4.5vw,3rem);line-height:1.15;margin-bottom:1.25rem;}
+h3{font-family:'Outfit',sans-serif;font-weight:600;font-size:1.2rem;margin-bottom:0.5rem;}
+p{font-size:1.1rem;color:var(--gray-light);max-width:700px;margin-bottom:1rem;}
+p.lead{font-size:1.3rem;color:var(--white);font-weight:300;}
+.hl{color:var(--teal);}
+.hl-a{color:var(--amber);}
+.hl-m{color:var(--magenta);}
+.hl-r{color:var(--tn-red);}
+
+/* HERO */
+#hero{text-align:center;align-items:center;min-height:100vh;}
+#hero h1{background:linear-gradient(135deg,var(--white) 0%,var(--teal) 50%,var(--amber) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+#hero p{text-align:center;}
+.hero-sub{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin-top:1rem;}
+.hero-sub span{font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--gray);letter-spacing:0.05em;padding:0.4rem 0.8rem;border:1px solid var(--gray-dark);border-radius:6px;}
+.hero-ar{margin:1.5rem auto 0;max-width:680px;padding:1.5rem 1.75rem;background:linear-gradient(135deg,rgba(231,0,19,0.06),rgba(0,201,167,0.05));border:1px solid rgba(231,0,19,0.18);border-radius:16px;}
+.scroll-cue{margin-top:3rem;font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--gray);animation:float 3s ease-in-out infinite;}
+@keyframes float{0%,100%{transform:translateY(0);opacity:0.4;}50%{transform:translateY(8px);opacity:1;}}
+
+/* PERSONAL BANNER */
+.mercy-banner{background:linear-gradient(135deg,rgba(232,168,56,0.08),rgba(0,201,167,0.08));border:1px solid rgba(232,168,56,0.2);border-radius:16px;padding:2rem 2.5rem;margin:2rem 0;text-align:center;}
+.mercy-banner h3{color:var(--amber);font-size:1.3rem;margin-bottom:0.5rem;}
+.mercy-banner p{max-width:600px;margin:0 auto;text-align:center;}
+
+/* CARDS GRID */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin:2rem 0;}
+.card{background:var(--navy-card);border:1px solid rgba(0,201,167,0.08);border-radius:12px;padding:1.5rem;transition:all 0.4s;cursor:default;}
+.card:hover{border-color:var(--teal);transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,201,167,0.08);}
+.card-icon{font-size:1.6rem;margin-bottom:0.75rem;}
+.card p{font-size:0.95rem;color:var(--gray);margin:0;}
+
+/* LAYER STACK */
+.layers{margin:2rem 0;}
+.layer{display:flex;align-items:stretch;gap:0;margin-bottom:2px;overflow:hidden;border-radius:0;}
+.layer:first-child{border-radius:10px 10px 0 0;}
+.layer:last-child{border-radius:0 0 10px 10px;}
+.layer-bar{width:4px;flex-shrink:0;}
+.layer-content{flex:1;padding:1.25rem 1.5rem;background:var(--navy-light);transition:all 0.3s;cursor:pointer;}
+.layer-content:hover{background:var(--navy-mid);}
+.layer-title{font-family:'Outfit',sans-serif;font-weight:600;font-size:1rem;margin-bottom:0.2rem;}
+.layer-desc{font-size:0.9rem;color:var(--gray);margin:0;max-height:0;overflow:hidden;transition:max-height 0.4s ease, margin 0.4s ease;}
+.layer.open .layer-desc{max-height:200px;margin-top:0.4rem;}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin:2rem 0;}
+.stat{background:var(--navy-card);border:1px solid rgba(0,201,167,0.06);border-radius:12px;padding:1.25rem;text-align:center;transition:all 0.3s;}
+.stat:hover{border-color:var(--teal);}
+.stat-n{font-family:'Outfit',sans-serif;font-weight:800;font-size:2.5rem;color:var(--teal);line-height:1;}
+.stat-n.counting{color:var(--gray-dark);}
+.stat-l{font-size:0.8rem;color:var(--gray);margin-top:0.3rem;}
+.stat-h{font-size:0.7rem;color:var(--amber);margin-top:0.2rem;font-style:italic;}
+
+/* CORRIDOR */
+.corridors{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+@media(max-width:640px){.corridors{grid-template-columns:1fr;}}
+.corridor{background:var(--navy-card);border:1px solid rgba(0,201,167,0.06);border-radius:12px;padding:1.5rem;transition:all 0.3s;}
+.corridor:hover{border-color:var(--amber);box-shadow:0 0 24px rgba(232,168,56,0.06);}
+.corridor-route{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--amber);letter-spacing:0.08em;margin-bottom:0.5rem;}
+.corridor h3{font-size:1rem;color:var(--white);}
+.corridor p{font-size:0.88rem;color:var(--gray);margin:0;}
+
+/* COLLAB CARDS */
+.collab-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin:2rem 0;}
+@media(max-width:640px){.collab-grid{grid-template-columns:1fr;}}
+.collab-card{background:var(--navy-card);border:1px solid rgba(232,168,56,0.1);border-radius:14px;padding:1.75rem;transition:all 0.4s;}
+.collab-card:hover{border-color:var(--amber);transform:translateY(-3px);box-shadow:0 8px 32px rgba(232,168,56,0.08);}
+.collab-card .collab-num{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--amber);letter-spacing:0.15em;margin-bottom:0.75rem;}
+.collab-card h3{color:var(--white);font-size:1.15rem;margin-bottom:0.5rem;}
+.collab-card p{font-size:0.92rem;color:var(--gray);margin:0;}
+.collab-card .collab-tags{display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.75rem;}
+.collab-card .collab-tags span{font-family:'JetBrains Mono',monospace;font-size:0.6rem;padding:0.2rem 0.5rem;border-radius:4px;background:rgba(0,201,167,0.06);color:var(--teal);letter-spacing:0.05em;}
+
+/* VISION PRINCIPLES */
+.principles{display:grid;gap:0.75rem;margin:2rem 0;}
+.principle{display:flex;gap:1rem;padding:1.25rem 1.5rem;background:var(--navy-card);border-radius:10px;border:1px solid rgba(0,201,167,0.05);transition:all 0.3s;cursor:default;}
+.principle:hover{border-color:rgba(0,201,167,0.15);background:var(--navy-light);}
+.pr-icon{font-size:1.3rem;flex-shrink:0;margin-top:0.1rem;}
+.pr-text{font-size:1rem;color:var(--gray-light);line-height:1.6;}
+.pr-text strong{color:var(--white);}
+
+/* CTA */
+.cta-block{background:linear-gradient(135deg,rgba(0,201,167,0.06) 0%,rgba(231,0,19,0.06) 100%);border:1px solid rgba(0,201,167,0.15);border-radius:16px;padding:3rem;margin:2rem 0;text-align:center;}
+.cta-block h2{background:linear-gradient(135deg,var(--teal),var(--amber));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.cta-block p{max-width:550px;margin:0.5rem auto;text-align:center;}
+
+/* LINKS */
+.links{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.5rem;justify-content:center;}
+.btn{font-family:'JetBrains Mono',monospace;font-size:0.78rem;padding:0.7rem 1.4rem;border-radius:8px;text-decoration:none;letter-spacing:0.03em;transition:all 0.3s;border:none;cursor:pointer;}
+.btn-p{background:var(--teal);color:var(--navy);font-weight:600;}
+.btn-p:hover{box-shadow:0 0 28px var(--teal-glow);transform:translateY(-1px);}
+.btn-s{background:transparent;color:var(--teal);border:1px solid rgba(0,201,167,0.25);}
+.btn-s:hover{border-color:var(--teal);background:var(--teal-dim);}
+
+/* TERMINAL BLOCK */
+.terminal{background:#0a0e17;border:1px solid rgba(0,201,167,0.1);border-radius:12px;padding:1.5rem;margin:2rem 0;font-family:'JetBrains Mono',monospace;font-size:0.82rem;line-height:1.8;overflow-x:auto;}
+.terminal .prompt{color:var(--teal);}
+.terminal .output{color:var(--gray-light);}
+.terminal .highlight{color:var(--amber);}
+.terminal .cursor{display:inline-block;width:8px;height:14px;background:var(--teal);animation:blink 1s step-end infinite;vertical-align:text-bottom;margin-left:2px;}
+
+/* PRICING TABLE */
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin:2rem 0;}
+.pricing-card{background:var(--navy-card);border:1px solid rgba(0,201,167,0.08);border-radius:14px;padding:1.75rem;transition:all 0.4s;position:relative;overflow:hidden;}
+.pricing-card:hover{border-color:var(--teal);transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,201,167,0.08);}
+.pricing-card.popular{border-color:rgba(232,168,56,0.3);background:linear-gradient(135deg,var(--navy-card),rgba(232,168,56,0.04));}
+.pricing-card.popular::before{content:'LE PLUS CHOISI';position:absolute;top:12px;right:-28px;background:var(--amber);color:var(--navy);font-family:'JetBrains Mono',monospace;font-size:0.55rem;font-weight:600;letter-spacing:0.1em;padding:3px 32px;transform:rotate(45deg);}
+.pricing-tier{font-family:'JetBrains Mono',monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:0.75rem;}
+.pricing-tier.micro{color:var(--teal);}
+.pricing-tier.starter{color:var(--amber);}
+.pricing-tier.pro{color:var(--magenta);}
+.pricing-amount{font-family:'Outfit',sans-serif;font-weight:800;font-size:2.2rem;color:var(--white);line-height:1;margin-bottom:0.25rem;}
+.pricing-amount span{font-size:0.9rem;font-weight:400;color:var(--gray);}
+.pricing-local{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--gray);margin-bottom:1rem;}
+.pricing-features{list-style:none;padding:0;margin:1rem 0;}
+.pricing-features li{font-size:0.9rem;color:var(--gray-light);padding:0.35rem 0;padding-left:1.2rem;position:relative;}
+.pricing-features li::before{content:'>';position:absolute;left:0;color:var(--teal);font-family:'JetBrains Mono',monospace;font-weight:700;}
+.pricing-note{background:var(--navy-light);border-left:3px solid var(--teal);border-radius:0 12px 12px 0;padding:1.25rem 1.5rem;margin:2rem 0;}
+.pricing-note p{margin:0;font-size:0.9rem;}
+
+.divider{width:60px;height:2px;background:linear-gradient(90deg,var(--teal),var(--tn-red));margin:2.5rem 0;border-radius:2px;}
+
+footer{text-align:center;padding:3rem 2rem;font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--gray-dark);letter-spacing:0.05em;}
+
+.fade{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.fade.vis{opacity:1;transform:translateY(0);}
+</style>
+  <script defer src="https://yossra-analytics.fly.dev/analytics" data-website-id="4abcaca6-fb37-47bf-bc8e-41e4b2503ee8"></script>
+</head>
+<body>
+
+<nav>
+  <a href="https://elektraos.dev" class="nav-logo"><span class="pulse"></span> elektra://tunisie</a>
+  <div class="nav-links">
+    <a href="#hero">Debut</a>
+    <a href="#contexte">Contexte</a>
+    <a href="#methode">Methode</a>
+    <a href="#ensemble">Ensemble</a>
+    <a href="#preuve">Preuve</a>
+    <a href="#tarifs">Tarifs</a>
+    <a href="#vision">Vision</a>
+    <a href="#contact">Contact</a>
+    <a href="/case/">Reseau mondial</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="section-tag">Le reseau creatif - Tunisie</div>
+  <h1>Un cerveau.<br>Un systeme.<br>La creativite tunisienne.</h1>
+  <p class="lead" style="text-align:center;max-width:640px;">
+    Un systeme d'exploitation creatif complet, construit et prouve avec l'IA. Il s'ouvre aujourd'hui aux creatifs et freelances de Tunisie - meme infrastructure que les startups financees, prix calibres sur l'economie locale, paiement avec les methodes que vous utilisez deja.
+  </p>
+  <div class="hero-ar" dir="rtl" lang="ar">
+    <div class="ar-hero">دماغ واحد. نظام واحد. الإبداع التونسي.</div>
+    <div class="ar-sub">نفس البنية التحتية للذكاء الاصطناعي التي تملكها الشركات الناشئة الممولة - بأسعار تناسب الاقتصاد التونسي، وبطرق دفع تستعملونها بالفعل.</div>
+  </div>
+  <div class="hero-sub">
+    <span>Tunis x Sfax x Sousse</span>
+    <span>Propulse par l'IA</span>
+    <span>Zero financement</span>
+  </div>
+  <div class="scroll-cue">&#8595; defiler pour explorer</div>
+</section>
+
+<!-- CONTEXTE / LE PROBLEME -->
+<section id="contexte" class="fade">
+  <div class="section-tag">01 / Le probleme</div>
+  <div dir="rtl" lang="ar" class="ar-tag">المشكلة</div>
+  <h2>Des creatifs de classe mondiale,<br>sous-outilles et <span class="hl-r">sous-payes.</span></h2>
+  <p>En Tunisie, le design et le creatif representent 42,8% du travail freelance, le developpement logiciel 28,6% et le marketing et la vente 27,9%. Le talent est la, reconnu a l'international.</p>
+  <p>81,6% des freelances tunisiens ont deja travaille sur des projets internationaux, avec la France, les Etats-Unis et le Canada comme premiers marches cibles. Mais la plupart travaillent a temps partiel - seulement environ 7,65% le font a plein temps - et exportent leur travail a bas prix.</p>
+  <p><strong style="color:var(--white);">On change cela en donnant la meme infrastructure IA qu'aux startups financees, mais a un prix pense pour la Tunisie.</strong></p>
+  <div class="cards">
+    <div class="card"><div class="card-icon">&#127912;</div><h3>Le talent</h3><p>Design et creatif 42,8%, dev logiciel 28,6%, marketing 27,9%. Une scene freelance dense et exportatrice.</p></div>
+    <div class="card"><div class="card-icon">&#127760;</div><h3>L'export</h3><p>81,6% ont travaille a l'international. Marches cibles: France, USA, Canada. Mais souvent a temps partiel et sous-price.</p></div>
+    <div class="card"><div class="card-icon">&#9889;</div><h3>L'ecart</h3><p>Les outils IA des startups financees restent hors de portee. Le travail part a l'etranger, la valeur reste ailleurs.</p></div>
+    <div class="card"><div class="card-icon">&#129504;</div><h3>Le pari</h3><p>Et si chaque creatif tunisien disposait du meme systeme IA, calibre pour son economie et payable en dinar?</p></div>
+  </div>
+</section>
+
+<!-- METHODE -->
+<section id="methode" class="fade">
+  <div class="section-tag">02 / La methode</div>
+  <div dir="rtl" lang="ar" class="ar-tag">الطريقة</div>
+  <h2>Vous ne codez pas.<br>Vous <span class="hl">concevez.</span></h2>
+  <p>Pensez a un producteur de musique. Il ne fabrique pas les instruments. Il concoit le morceau: l'arrangement, l'emotion, les silences. Puis il utilise un studio entier pour donner vie a sa vision.</p>
+  <p>La methode est simple. Vous concevez les systemes. L'IA les construit.</p>
+
+  <div class="layers">
+    <div class="layer open" onclick="toggleLayer(this)">
+      <div class="layer-bar" style="background:var(--teal)"></div>
+      <div class="layer-content">
+        <div class="layer-title">&#129504; Votre vision - L'architecture</div>
+        <div class="layer-desc">Vous decidez quoi construire, comment les donnees circulent, ce qui se connecte a quoi. Chaque decision de structure et de logique vous appartient. C'est la couche strategie.</div>
+      </div>
+    </div>
+    <div class="layer" onclick="toggleLayer(this)">
+      <div class="layer-bar" style="background:var(--amber)"></div>
+      <div class="layer-content">
+        <div class="layer-title">&#128295; Claude Code - Le partenaire technique</div>
+        <div class="layer-desc">L'IA ecrit le code a partir de vos specifications. Comme un developpeur senior qui travaille a la vitesse de la pensee, 24h/24, et qui n'oublie jamais ce qui a ete dit.</div>
+      </div>
+    </div>
+    <div class="layer" onclick="toggleLayer(this)">
+      <div class="layer-bar" style="background:var(--magenta)"></div>
+      <div class="layer-content">
+        <div class="layer-title">&#9889; ElektraOS - Le systeme vivant</div>
+        <div class="layer-desc">Des agents IA organises en equipes: revenus, contenu, veille, operations. Chacun est un employe virtuel avec une mission precise, actif sans interruption.</div>
+      </div>
+    </div>
+    <div class="layer" onclick="toggleLayer(this)">
+      <div class="layer-bar" style="background:var(--tn-red)"></div>
+      <div class="layer-content">
+        <div class="layer-title">&#127481; Pour la Tunisie - L'infrastructure</div>
+        <div class="layer-desc">Ces memes systemes se construisent maintenant pour les creatifs tunisiens. Chatbots IA, pipelines d'automatisation, generation de contenu, moteurs SEO. L'infrastructure qui remet les chances a egalite.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="terminal">
+    <span class="prompt">elektra:~$</span> <span class="output">system.status(region="TN")</span><br>
+    <span class="output">+======================================+</span><br>
+    <span class="output">| </span><span class="highlight">ElektraOS</span><span class="output"> | STATUT: EN LIGNE       |</span><br>
+    <span class="output">| Region: Tunisie | Devise: TND        |</span><br>
+    <span class="output">| Paiement: Flouci / D17 / e-DINAR      |</span><br>
+    <span class="output">| Methode: ingenierie augmentee par IA  |</span><br>
+    <span class="output">+======================================+</span><br>
+    <span class="prompt">elektra:~$</span> <span class="cursor"></span>
+  </div>
+</section>
+
+<!-- ENSEMBLE -->
+<section id="ensemble" class="fade">
+  <div class="section-tag">03 / Ce qu'on construit ensemble</div>
+  <div dir="rtl" lang="ar" class="ar-tag">ما الذي نبنيه معا</div>
+  <h2>Voici ce qui devient<br><span class="hl-a">possible.</span></h2>
+  <p class="lead">Ou que vous soyez en Tunisie, quoi que vous creiez, voici ce qui devient possible quand les systemes travaillent pour vous.</p>
+
+  <div class="mercy-banner">
+    <h3>Une vraie infrastructure, pas de la charite</h3>
+    <p>Pas de la charite. Pas un argumentaire. Une vraie infrastructure pour des gens reels qui meritent de meilleurs outils.</p>
+  </div>
+
+  <div class="collab-grid">
+    <div class="collab-card">
+      <div class="collab-num">OPPORTUNITE 01</div>
+      <h3>Votre propre systeme IA</h3>
+      <p>Un ElektraOS personnel construit autour de votre flux de travail. Planification de contenu, gestion clients, automatisation des reseaux sociaux, suivi des taches - le tout sur des agents IA qui apprennent votre maniere de travailler.</p>
+      <div class="collab-tags"><span>agents IA</span><span>automatisation</span><span>tableau de bord</span></div>
+    </div>
+    <div class="collab-card">
+      <div class="collab-num">OPPORTUNITE 02</div>
+      <h3>Accelerateur de freelances</h3>
+      <p>Aider les freelances tunisiens a mieux se vendre a l'international: propositions generees par IA, optimisation de portfolio, prospection automatisee, et strategies de prix qui fonctionnent pour la France, les USA et le Canada.</p>
+      <div class="collab-tags"><span>freelances</span><span>propositions</span><span>export</span></div>
+    </div>
+    <div class="collab-card">
+      <div class="collab-num">OPPORTUNITE 03</div>
+      <h3>Usine a contenu</h3>
+      <p>Creation de contenu assistee par IA a grande echelle. Articles, reseaux sociaux, scripts video, SEO - le meme pipeline prouve avec des clients, adapte au marche creatif tunisien, en francais comme en arabe.</p>
+      <div class="collab-tags"><span>contenu IA</span><span>reseaux sociaux</span><span>SEO</span></div>
+    </div>
+    <div class="collab-card">
+      <div class="collab-num">OPPORTUNITE 04</div>
+      <h3>E-commerce local et export</h3>
+      <p>Vos produits creatifs, artisanat et mode vendus en Tunisie et a l'etranger. Photographie produit par IA, fiches automatisees, paiement local Flouci, D17 et e-DINAR, et coordination logistique.</p>
+      <div class="collab-tags"><span>e-commerce</span><span>paiement local</span><span>export</span></div>
+    </div>
+    <div class="collab-card">
+      <div class="collab-num">OPPORTUNITE 05</div>
+      <h3>Clusters emergents</h3>
+      <p>L'edu-tech, le jeu video, les industries creatives, la modelisation 3D et l'IA montent en Tunisie. On construit l'infrastructure logicielle pour ces equipes qui demarrent sans budget de startup financee.</p>
+      <div class="collab-tags"><span>jeu video</span><span>3D</span><span>edu-tech</span></div>
+    </div>
+    <div class="collab-card">
+      <div class="collab-num">OPPORTUNITE 06</div>
+      <h3>Formations et ateliers</h3>
+      <p>Apprendre a utiliser l'IA comme outil de construction, pas seulement comme chatbot. Ateliers a Tunis, Sfax et Sousse, sessions a distance, projets pratiques. Litteratie IA pour creatifs et entrepreneurs.</p>
+      <div class="collab-tags"><span>ateliers</span><span>litteratie IA</span><span>communaute</span></div>
+    </div>
+  </div>
+
+  <div style="background:var(--navy-light);border-left:3px solid var(--tn-red);border-radius:0 12px 12px 0;padding:1.5rem 2rem;margin:1.5rem 0;">
+    <p style="color:var(--white);font-style:italic;font-weight:300;font-size:1.15rem;margin:0;">
+      "On n'est pas oblige de tout choisir. On commence par ce qui a du sens pour vous, on voit si ca marche, et on grandit a partir de la. Une fois le systeme construit, il monte en charge sans recruter plus de monde."
+    </p>
+  </div>
+</section>
+
+<!-- PREUVE -->
+<section id="preuve" class="fade">
+  <div class="section-tag">04 / Le contexte tunisien</div>
+  <div dir="rtl" lang="ar" class="ar-tag">السياق التونسي</div>
+  <h2>Des chiffres reels,<br><span class="hl-a">un ecosysteme reel.</span></h2>
+  <p>La Tunisie est le 5eme plus grand hub de startups de la region MENA. Ce n'est pas une promesse, c'est un ecosysteme qui monte. Voici les chiffres verifies.</p>
+
+  <div class="stats">
+    <div class="stat"><div class="stat-n" data-target="1450">0</div><div class="stat-l">Startups</div><div class="stat-h">+ et 17 scaleups</div></div>
+    <div class="stat"><div class="stat-n" data-target="1165">0</div><div class="stat-l">Startups labellisees</div><div class="stat-h">via le Startup Act</div></div>
+    <div class="stat"><div class="stat-n" data-target="12000">0</div><div class="stat-l">Emplois crees</div><div class="stat-h">par les startups en 2024</div></div>
+    <div class="stat"><div class="stat-n" data-target="400">0</div><div class="stat-l">M$ leves en 2024</div><div class="stat-h">+60% sur un an</div></div>
+    <div class="stat"><div class="stat-n" data-target="300">0</div><div class="stat-l">M$ de ventes cumulees</div><div class="stat-h">par les startups labellisees</div></div>
+    <div class="stat"><div class="stat-n" data-target="83">0</div><div class="stat-l">% penetration internet</div><div class="stat-h">prevision 2026</div></div>
+  </div>
+
+  <p style="margin-top:1rem;">Le <strong style="color:var(--white);">Startup Act</strong> donne aux startups labellisees une reconnaissance legale, des avantages fiscaux et des comptes en devises. Les clusters emergents - edu-tech, jeu video, industries creatives, modelisation 3D, IA - tirent cette croissance.</p>
+
+  <div class="terminal">
+    <span class="prompt">elektra:~$</span> <span class="output">network.add("vous", ville="Tunisie")</span><br>
+    <span class="output">+===============================================+</span><br>
+    <span class="output">| </span><span class="highlight">NOUVEAU NOEUD AJOUTE</span><span class="output">                          |</span><br>
+    <span class="output">| Membre: Vous                                  |</span><br>
+    <span class="output">| Ville: Tunis / Sfax / Sousse                  |</span><br>
+    <span class="output">| Devise: TND | Paiement: Flouci, D17, e-DINAR  |</span><br>
+    <span class="output">| Statut: </span><span class="highlight">INVITE</span><span class="output">                                |</span><br>
+    <span class="output">+===============================================+</span><br>
+    <span class="prompt">elektra:~$</span> <span class="cursor"></span>
+  </div>
+</section>
+
+<!-- PAIEMENT -->
+<section id="paiement" class="fade" style="min-height:auto;padding-top:4rem;padding-bottom:2rem;">
+  <div class="section-tag">05 / Le paiement</div>
+  <div dir="rtl" lang="ar" class="ar-tag">الدفع</div>
+  <h2>Payez avec ce que<br>vous <span class="hl">utilisez deja.</span></h2>
+  <p>Le paiement mobile en Tunisie a ete multiplie par environ 6 en un an: pres de 2 millions d'operations et plus de 600 millions de TND traites. On accepte les methodes locales que vous connaissez.</p>
+  <div class="corridors">
+    <div class="corridor"><div class="corridor-route">FLOUCI</div><h3>Portefeuille + Visa</h3><p>Wallet, QR et carte Visa. Plus de 170 000 utilisateurs.</p></div>
+    <div class="corridor"><div class="corridor-route">D17</div><h3>La Poste tunisienne</h3><p>E-wallet de La Poste, populaire chez les plus jeunes.</p></div>
+    <div class="corridor"><div class="corridor-route">e-DINAR</div><h3>Paiement postal</h3><p>Paiement electronique postal largement repandu.</p></div>
+    <div class="corridor"><div class="corridor-route">KONNECT</div><h3>Pour les PME</h3><p>E-wallet pense pour les petites et moyennes entreprises.</p></div>
+  </div>
+</section>
+
+<!-- TARIFS -->
+<!-- TND prices are illustrative, pending Yossra's confirmation -->
+<section id="tarifs" class="fade">
+  <div class="section-tag">06 / Tarifs justes, pour la Tunisie</div>
+  <div dir="rtl" lang="ar" class="ar-tag">أسعار عادلة لتونس</div>
+  <h2>De vrais prix.<br><span class="hl-a">Calibres sur votre economie.</span></h2>
+  <p>Les prix sont calibres sur le pouvoir d'achat local, pas une simple conversion de change (a titre indicatif, environ 1 USD = 2,9 TND en mai 2026). Ce ne sont pas des remises - ce sont des tarifs justes pour le contexte tunisien. Paiement en dinar accepte.</p>
+
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <div class="pricing-tier micro">Micro</div>
+      <div class="pricing-amount">59 TND <span>/mois</span></div>
+      <p style="font-size:0.85rem;color:var(--gray);margin-bottom:0.75rem;">Pour les freelances et createurs solo qui demarrent.</p>
+      <ul class="pricing-features">
+        <li>Chatbot IA pour votre activite</li>
+        <li>Planification reseaux sociaux de base</li>
+        <li>1 flux d'automatisation</li>
+        <li>Support par email et chat</li>
+      </ul>
+    </div>
+    <div class="pricing-card popular">
+      <div class="pricing-tier starter">Starter</div>
+      <div class="pricing-amount">169 TND <span>/mois</span></div>
+      <p style="font-size:0.85rem;color:var(--gray);margin-bottom:0.75rem;">Pour les petites structures pretes a passer a l'echelle.</p>
+      <ul class="pricing-features">
+        <li>Assistant IA personnalise</li>
+        <li>Pipeline de generation de contenu</li>
+        <li>5 flux d'automatisation</li>
+        <li>Gestion des reseaux sociaux</li>
+        <li>Point strategie mensuel</li>
+      </ul>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-tier pro">Professionnel</div>
+      <div class="pricing-amount">449 TND <span>/mois</span></div>
+      <p style="font-size:0.85rem;color:var(--gray);margin-bottom:0.75rem;">Infrastructure IA complete. Remplace un mi-temps.</p>
+      <ul class="pricing-features">
+        <li>Systeme ElektraOS-lite complet</li>
+        <li>Agents IA illimites</li>
+        <li>Integration e-commerce</li>
+        <li>Moteur SEO + contenu</li>
+        <li>Portail client</li>
+        <li>Support prioritaire</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0;">
+    <div class="pricing-note">
+      <p><strong style="color:var(--white);">Projets ponctuels</strong></p>
+      <p style="margin-top:0.3rem;">Site web: <span style="color:var(--teal);">290-1490 TND</span><br>
+      Chatbot IA: <span style="color:var(--teal);">149-790 TND</span><br>
+      Automatisation: <span style="color:var(--teal);">90-590 TND</span> par flux</p>
+    </div>
+    <div class="pricing-note" style="border-left-color:var(--tn-red);">
+      <p><strong style="color:var(--white);">Paiement local</strong></p>
+      <p style="margin-top:0.3rem;">Reglez avec <span style="color:var(--teal);">Flouci</span>, <span style="color:var(--teal);">D17</span>, <span style="color:var(--teal);">e-DINAR</span>, <span style="color:var(--teal);">Konnect</span> ou carte. Les methodes que vous utilisez deja, en dinar.</p>
+    </div>
+  </div>
+
+  <div class="terminal">
+    <span class="prompt">elektra:~$</span> <span class="output">pricing.model("locale", "TND")</span><br>
+    <span class="output">+===============================================+</span><br>
+    <span class="output">| MODELE DE PRIX JUSTE                          |</span><br>
+    <span class="output">| Calibrage: </span><span class="highlight">pouvoir d'achat local</span><span class="output">          |</span><br>
+    <span class="output">| Paiement: </span><span class="highlight">Flouci / D17 / e-DINAR / Konnect</span><span class="output"> |</span><br>
+    <span class="output">| Philosophie: </span><span class="highlight">juste, pas brade</span><span class="output">             |</span><br>
+    <span class="output">+===============================================+</span><br>
+    <span class="prompt">elektra:~$</span> <span class="cursor"></span>
+  </div>
+</section>
+
+<!-- VISION -->
+<section id="vision" class="fade">
+  <div class="section-tag">07 / La vision</div>
+  <div dir="rtl" lang="ar" class="ar-tag">الرؤية</div>
+  <h2>Une societe juste<br>pour les <span class="hl-a">outsiders.</span></h2>
+  <p class="lead">Et si chaque creatif tunisien avait acces aux memes outils IA que seules les startups bien financees possedent aujourd'hui?</p>
+
+  <div class="hero-ar" dir="rtl" lang="ar" style="margin:1.5rem 0;">
+    <div class="ar-line" style="font-size:1.25rem;color:var(--white);font-weight:600;">المبدعون التونسيون من الطراز العالمي - لكنهم يفتقرون إلى الأدوات وأجورهم بخسة.</div>
+    <div class="ar-line" style="margin-top:0.5rem;color:var(--gray-light);">نمنحكم نفس البنية التحتية للذكاء الاصطناعي التي تملكها الشركات الممولة، بسعر يناسب الاقتصاد المحلي، وبالدينار التونسي.</div>
+  </div>
+
+  <div class="principles">
+    <div class="principle"><div class="pr-icon">&#9878;</div><div class="pr-text"><strong>Des prix justes, ancres dans la realite.</strong> Un designer a Tunis et un designer a Paris sont payes ce que vaut leur travail dans leur contexte. Pas de course vers le bas. Le prix s'adapte a l'economie locale.</div></div>
+    <div class="principle"><div class="pr-icon">&#129302;</div><div class="pr-text"><strong>Votre propre systeme IA, construit autour de vous.</strong> Chaque membre obtient un systeme intelligent adapte a sa maniere de travailler. Votre flux, vos besoins, votre memoire. Des agents qui s'adaptent a vous.</div></div>
+    <div class="principle"><div class="pr-icon">&#128176;</div><div class="pr-text"><strong>Aucun financement requis.</strong> Cela demande du temps et de l'engagement, pas des investisseurs. Travaillez a l'echelle qui convient a votre vie. Le systeme s'ajuste.</div></div>
+    <div class="principle"><div class="pr-icon">&#127481;</div><div class="pr-text"><strong>Payable avec vos methodes locales.</strong> Flouci, D17, e-DINAR, Konnect ou carte. En dinar. Pas besoin d'une carte internationale pour acceder a une infrastructure de niveau mondial.</div></div>
+    <div class="principle"><div class="pr-icon">&#128737;</div><div class="pr-text"><strong>Soutenir les outsiders pour rendre le jeu juste.</strong> Le jeu n'est pas equitable et on le sait. Il s'agit de donner aux gens la meme infrastructure que les fondateurs privilegies tiennent pour acquise.</div></div>
+    <div class="principle"><div class="pr-icon">&#128279;</div><div class="pr-text"><strong>Un reseau, pas une plateforme.</strong> Ce n'est pas une application a telecharger. C'est un reseau vivant de personnes reelles, lie par de vraies relations et soutenu par de vrais systemes. Il grandit comme grandit la confiance.</div></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="fade">
+  <div class="section-tag">08 / Prochaines etapes</div>
+
+  <div class="cta-block">
+    <h2>Envie d'en faire partie?</h2>
+    <p class="lead" style="color:var(--white);">Si cela vous parle, ecrivez-nous. Dites-nous ce que vous creez et ou vous etes en Tunisie, et on verra ensemble comment le reseau peut vous soutenir.</p>
+    <div class="hero-ar" dir="rtl" lang="ar" style="margin:1.5rem auto;max-width:560px;">
+      <div class="ar-line" style="color:var(--white);font-weight:600;font-size:1.15rem;">هل تريد الانضمام؟ راسلونا. أخبرونا بما تصنعونه وأين أنتم في تونس، وسنرى معا كيف يدعمكم الشبكة.</div>
+    </div>
+    <div class="links">
+      <a href="mailto:yossra.benzad@gmail.com?subject=Rejoindre%20le%20reseau%20-%20Tunisie" class="btn btn-p">Nous contacter &#8594;</a>
+      <a href="https://elektraos.dev" target="_blank" class="btn btn-s">Decouvrir elektraos.dev</a>
+      <a href="/case/" class="btn btn-s">Reseau mondial</a>
+    </div>
+  </div>
+
+  <div class="divider" style="margin:2.5rem auto;"></div>
+  <p style="text-align:center;color:var(--gray);font-size:0.9rem;max-width:100%;margin:0 auto;">
+    Propulse par ElektraOS - Tunis, Tunisie - 2026<br>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--gray-dark);">
+      Cette page a ete construite avec la meme methode augmentee par IA qu'elle decrit.
+    </span>
+  </p>
+</section>
+
+<footer>elektraos.dev - transformez vos idees en produits - Tunis, 2026</footer>
+
+<script>
+function toggleLayer(el) {
+  document.querySelectorAll('.layer').forEach(function(l){ if(l !== el) l.classList.remove('open'); });
+  el.classList.toggle('open');
+}
+
+// Fade in
+var fadeObs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e){ if (e.isIntersecting) e.target.classList.add('vis'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade').forEach(function(el){ fadeObs.observe(el); });
+
+// Counter animation
+function animateCount(el) {
+  var target = parseInt(el.dataset.target);
+  var duration = 1500;
+  var start = performance.now();
+  el.classList.add('counting');
+  function step(now) {
+    var progress = Math.min((now - start) / duration, 1);
+    var eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.floor(eased * target);
+    if (progress < 1) requestAnimationFrame(step);
+    else { el.textContent = target; el.classList.remove('counting'); }
+  }
+  requestAnimationFrame(step);
+}
+var countObs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting && !e.target.dataset.counted) {
+      e.target.dataset.counted = 'true';
+      animateCount(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.stat-n').forEach(function(el){ countObs.observe(el); });
+</script>
+
+</body>
+</html>
