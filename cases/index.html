@@ -1,15 +1,15 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Case Studies . ElektraOS.dev . Production Systems</title>
-  <meta name="description" content="Case studies: AI systems, e-commerce, automation, interactive games. Real projects, real metrics, real production code. London, United Kingdom.">
+  <title>Case Studies . ElektraOS.dev . Mission Control</title>
+  <meta name="description" content="Production systems built and shipped. AI infrastructure, automation pipelines, e-commerce, marketplaces, interactive games. Live status across 13 projects.">
   <meta name="keywords" content="case study, AI engineer, automation, SaaS, e-commerce, full-stack developer, London, United Kingdom, ElektraOS, portfolio">
-  <meta property="og:title" content="Case Studies . ElektraOS.dev">
-  <meta property="og:description" content="Real projects. Real metrics. Production systems built and shipped.">
+  <meta property="og:title" content="Case Studies . ElektraOS.dev . Mission Control">
+  <meta property="og:description" content="Real projects. Real metrics. Live monitor view of every system we've shipped.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://elektraos.dev/cases.html">
+  <meta property="og:url" content="https://elektraos.dev/cases/">
   <meta name="theme-color" content="#7c3aed">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
   <link rel="canonical" href="https://elektraos.dev/cases/">
@@ -25,8 +25,8 @@
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": "ElektraOS.dev Case Studies",
-    "description": "Portfolio of production AI systems, automation pipelines, e-commerce builds, and full-stack engineering projects.",
-    "url": "https://elektraos.dev/cases.html",
+    "description": "Portfolio of production AI systems, automation pipelines, e-commerce builds, marketplaces, and full-stack engineering projects.",
+    "url": "https://elektraos.dev/cases/",
     "author": {
       "@type": "Person",
       "jobTitle": "AI Systems Engineer",
@@ -38,7 +38,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="../css/variables.css">
   <link rel="stylesheet" href="../css/base.css">
@@ -47,172 +47,847 @@
   <link rel="stylesheet" href="../css/sections.css">
   <link rel="stylesheet" href="../css/chat.css">
   <link rel="stylesheet" href="../css/responsive.css">
+
   <style>
-    /* ===== HERO ===== */
-    .cases-hero { padding: 120px 0 32px; text-align: center; }
-    .hero-counter {
-      display: flex; gap: 32px; justify-content: center; flex-wrap: wrap;
-      margin-top: 24px; padding: 0 24px;
+    /* =============================================================
+       MISSION CONTROL  -  /cases/ redesign
+       Operator console aesthetic. Per-project "monitor" widgets.
+       ============================================================= */
+
+    :root {
+      --mc-bg: #06080F;
+      --mc-panel: rgba(15, 19, 32, 0.65);
+      --mc-panel-solid: #0E1322;
+      --mc-line: rgba(255,255,255,0.06);
+      --mc-line-bright: rgba(255,255,255,0.14);
+      --mc-grid: rgba(124,58,237,0.05);
+      --mc-mono: 'JetBrains Mono', 'Space Mono', monospace;
+      --mc-display: 'Fraunces', 'DM Sans', serif;
+      --mc-text: #E8EDF5;
+      --mc-text-dim: #8C95A8;
+      --mc-text-mute: #5A6378;
+      --mc-green: #4ADE80;
+      --mc-amber: #F59E0B;
+      --mc-red: #F87171;
+      --mc-blue: #60A5FA;
+      --mc-violet: #A78BFA;
+      --mc-cyan: #22D3EE;
     }
-    .hero-counter-item { text-align: center; }
-    .hero-counter-val {
-      font-family: var(--font-mono); font-size: 28px; font-weight: 700;
-      background: linear-gradient(135deg, var(--purple), var(--cyan));
+
+    /* Page-level texture */
+    body.cases-mc {
+      background: var(--mc-bg);
+      background-image:
+        radial-gradient(800px 600px at 10% -10%, rgba(124,58,237,0.08), transparent 60%),
+        radial-gradient(700px 500px at 110% 20%, rgba(0,212,255,0.06), transparent 60%),
+        linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.4) 100%);
+    }
+    body.cases-mc::before {
+      content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image:
+        linear-gradient(to right, var(--mc-grid) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--mc-grid) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(circle at 50% 30%, black 30%, transparent 75%);
+    }
+    body.cases-mc::after {
+      content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: repeating-linear-gradient(
+        0deg, rgba(255,255,255,0.012) 0px, rgba(255,255,255,0.012) 1px,
+        transparent 1px, transparent 3px
+      );
+      opacity: 0.6;
+    }
+
+    /* =============================================================
+       MISSION CONTROL HERO
+       ============================================================= */
+    .mc-hero {
+      position: relative; z-index: 2;
+      max-width: 1280px; margin: 0 auto;
+      padding: 130px 32px 32px;
+    }
+    .mc-hero-label {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--mc-mono); font-size: 10.5px;
+      letter-spacing: 0.35em; text-transform: uppercase;
+      color: var(--mc-cyan);
+      padding: 5px 14px;
+      border: 1px solid rgba(34,211,238,0.25);
+      border-radius: 2px;
+      background: rgba(34,211,238,0.06);
+    }
+    .mc-hero-label .mc-led {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--mc-green);
+      box-shadow: 0 0 10px var(--mc-green), 0 0 2px var(--mc-green);
+      animation: ledPulse 1.6s ease-in-out infinite;
+    }
+    @keyframes ledPulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.55; transform: scale(0.85); }
+    }
+    .mc-hero-title {
+      font-family: var(--mc-display); font-weight: 900;
+      font-size: clamp(40px, 7vw, 88px); line-height: 0.95;
+      letter-spacing: -0.035em; margin: 18px 0 8px;
+      color: var(--mc-text);
+    }
+    .mc-hero-title em {
+      font-style: italic; font-weight: 500;
+      background: linear-gradient(120deg, var(--mc-cyan) 0%, var(--mc-violet) 80%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text; line-height: 1.1;
+      background-clip: text;
     }
-    .hero-counter-label {
-      font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px;
-      color: var(--text-muted); margin-top: 4px;
+    .mc-hero-sub {
+      font-family: var(--mc-mono); font-size: 12px;
+      color: var(--mc-text-dim); max-width: 620px; line-height: 1.75;
+      margin-bottom: 28px;
     }
 
-    /* ===== BENTO GRID ===== */
-    .cases-grid {
+    /* Counter strip - the "vital signs" */
+    .mc-vitals {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 0 24px 80px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px; background: var(--mc-line);
+      border: 1px solid var(--mc-line);
+      border-radius: 4px; overflow: hidden;
+      margin-bottom: 24px;
     }
-    .case-card-full { grid-column: span 1; }
-    .case-card-full.featured { grid-column: 1 / -1; }
-    .case-card-full.wide { grid-column: 1 / -1; }
-
-    @media (max-width: 700px) {
-      .cases-grid { grid-template-columns: 1fr; gap: 12px; }
-      .case-card-full, .case-card-full.featured, .case-card-full.wide { grid-column: span 1; }
+    .mc-vital {
+      background: var(--mc-panel);
+      backdrop-filter: blur(8px);
+      padding: 18px 20px; position: relative;
+    }
+    .mc-vital::after {
+      content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--mc-violet), transparent);
+      opacity: 0.4;
+    }
+    .mc-vital-num {
+      font-family: var(--mc-mono); font-weight: 700;
+      font-size: clamp(22px, 3vw, 34px); color: var(--mc-text);
+      line-height: 1; letter-spacing: -0.01em;
+    }
+    .mc-vital-num em { color: var(--mc-cyan); font-style: normal; font-size: 0.55em; }
+    .mc-vital-label {
+      font-family: var(--mc-mono); font-size: 9.5px;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--mc-text-mute); margin-top: 6px;
+    }
+    @media (max-width: 720px) {
+      .mc-vitals { grid-template-columns: repeat(2, 1fr); }
     }
 
-    /* ===== CARD BASE ===== */
-    .case-card-full {
-      background: var(--bg-card); border: 1px solid var(--glass-border);
-      border-radius: 16px; overflow: hidden; transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
-      text-decoration: none; color: inherit; display: grid;
-      grid-template-rows: auto 1fr auto;
+    /* Activity log - the live ticker */
+    .mc-ticker {
+      display: flex; align-items: stretch;
+      background: var(--mc-panel); backdrop-filter: blur(8px);
+      border: 1px solid var(--mc-line);
+      border-radius: 4px;
+      font-family: var(--mc-mono); font-size: 11px;
+      overflow: hidden;
+    }
+    .mc-ticker-prefix {
+      padding: 11px 16px; background: rgba(74,222,128,0.08);
+      color: var(--mc-green); letter-spacing: 0.18em;
+      font-size: 10px; text-transform: uppercase;
+      border-right: 1px solid var(--mc-line);
+      display: flex; align-items: center; gap: 8px;
+      white-space: nowrap;
+    }
+    .mc-ticker-prefix .mc-led {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--mc-green);
+      box-shadow: 0 0 8px var(--mc-green);
+      animation: ledPulse 1.4s ease-in-out infinite;
+    }
+    .mc-ticker-track {
+      flex: 1; overflow: hidden; position: relative;
+      mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+    }
+    .mc-ticker-line {
+      padding: 11px 20px; color: var(--mc-text-dim);
+      white-space: nowrap;
+      animation: tickerScroll 38s linear infinite;
+      display: inline-block;
+    }
+    .mc-ticker-line span { color: var(--mc-text); margin-right: 30px; }
+    .mc-ticker-line span::before {
+      content: "// "; color: var(--mc-text-mute); font-weight: 400;
+    }
+    .mc-ticker-line span em { color: var(--mc-cyan); font-style: normal; }
+    .mc-ticker-line span b { color: var(--mc-amber); font-weight: 500; }
+    @keyframes tickerScroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* =============================================================
+       CHANNEL SELECTOR (filters)
+       ============================================================= */
+    .mc-channels-wrap {
+      max-width: 1280px; margin: 32px auto 28px;
+      padding: 0 32px; position: relative; z-index: 2;
+    }
+    .mc-channels-label {
+      font-family: var(--mc-mono); font-size: 10px;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--mc-text-mute); margin-bottom: 10px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .mc-channels-label::after {
+      content: ""; flex: 1; height: 1px; background: var(--mc-line);
+    }
+    .mc-channels {
+      display: flex; flex-wrap: wrap; gap: 6px;
+    }
+    .mc-channel {
+      font-family: var(--mc-mono); font-size: 10.5px;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 8px 14px 8px 12px;
+      background: var(--mc-panel);
+      border: 1px solid var(--mc-line);
+      color: var(--mc-text-dim); cursor: pointer;
+      border-radius: 2px;
+      transition: all 0.2s ease;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .mc-channel:hover {
+      border-color: var(--mc-line-bright);
+      color: var(--mc-text);
+    }
+    .mc-channel.active {
+      border-color: var(--mc-cyan);
+      background: rgba(34,211,238,0.08);
+      color: var(--mc-cyan);
+    }
+    .mc-channel .ch-num {
+      font-size: 9px;
+      color: var(--mc-text-mute);
+      background: rgba(255,255,255,0.04);
+      padding: 1px 6px; border-radius: 2px;
+    }
+    .mc-channel.active .ch-num {
+      background: rgba(34,211,238,0.15); color: var(--mc-cyan);
+    }
+
+    /* =============================================================
+       MONITOR GRID
+       ============================================================= */
+    .mc-grid {
+      max-width: 1280px; margin: 0 auto;
+      padding: 0 32px 80px;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+      position: relative; z-index: 2;
+    }
+    .monitor { grid-column: span 6; }
+    .monitor.wide { grid-column: span 8; }
+    .monitor.narrow { grid-column: span 4; }
+    .monitor.full { grid-column: span 12; }
+    @media (max-width: 900px) {
+      .mc-grid { grid-template-columns: repeat(6, 1fr); }
+      .monitor { grid-column: span 6; }
+      .monitor.wide, .monitor.narrow, .monitor.full { grid-column: span 6; }
+    }
+
+    /* The monitor frame */
+    .monitor {
+      --c1: #7c3aed;
+      --c2: #00d4ff;
+      position: relative;
+      background: linear-gradient(180deg, rgba(15,19,32,0.92), rgba(8,10,18,0.95));
+      border: 1px solid var(--mc-line);
+      border-radius: 6px;
+      overflow: hidden;
+      text-decoration: none; color: inherit;
+      display: flex; flex-direction: column;
+      transition: border-color 0.3s ease, transform 0.35s ease, box-shadow 0.35s ease;
+      isolation: isolate;
+    }
+    .monitor:hover {
+      border-color: var(--c1);
+      transform: translateY(-3px);
+      box-shadow:
+        0 14px 40px rgba(0,0,0,0.5),
+        0 0 0 1px var(--c1),
+        0 0 32px -8px var(--c1);
+    }
+    .monitor:hover .corner { opacity: 1; }
+    .monitor:hover .scan-line { opacity: 1; }
+
+    /* Corner brackets */
+    .corner {
+      position: absolute; width: 14px; height: 14px;
+      border: 1.5px solid var(--c1); opacity: 0.6;
+      transition: opacity 0.3s ease; pointer-events: none;
+      z-index: 4;
+    }
+    .corner.tl { top: 6px; left: 6px; border-right: none; border-bottom: none; }
+    .corner.tr { top: 6px; right: 6px; border-left: none; border-bottom: none; }
+    .corner.bl { bottom: 6px; left: 6px; border-right: none; border-top: none; }
+    .corner.br { bottom: 6px; right: 6px; border-left: none; border-top: none; }
+
+    /* Monitor head bar */
+    .m-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 16px 10px;
+      border-bottom: 1px solid var(--mc-line);
+      font-family: var(--mc-mono);
+      position: relative; z-index: 3;
+    }
+    .m-head-left {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--mc-text-mute);
+    }
+    .m-head-leds { display: inline-flex; gap: 4px; }
+    .m-head-leds span {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--mc-text-mute); opacity: 0.45;
+    }
+    .m-head-leds span.on { background: var(--c1); opacity: 1; box-shadow: 0 0 6px var(--c1); }
+    .m-head-slug {
+      color: var(--mc-text-dim); font-size: 10px;
+      letter-spacing: 0.1em;
+    }
+    .m-head-status {
+      font-size: 9px; letter-spacing: 0.18em;
+      padding: 3px 8px; border-radius: 2px;
+      background: rgba(74,222,128,0.10); color: var(--mc-green);
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .m-head-status.amber { background: rgba(245,158,11,0.10); color: var(--mc-amber); }
+    .m-head-status.red { background: rgba(248,113,113,0.10); color: var(--mc-red); }
+    .m-head-status.violet { background: rgba(167,139,250,0.10); color: var(--mc-violet); }
+    .m-head-status.lock { background: rgba(245,158,11,0.10); color: var(--mc-amber); }
+    .m-head-status .mc-led {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: currentColor;
+      box-shadow: 0 0 6px currentColor;
+      animation: ledPulse 1.6s ease-in-out infinite;
+    }
+
+    /* The "screen" - widget canvas */
+    .m-screen {
+      position: relative;
+      min-height: 180px;
+      background:
+        radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--c1) 12%, transparent), transparent 70%),
+        linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.55));
+      border-bottom: 1px solid var(--mc-line);
+      overflow: hidden;
+      display: flex; align-items: stretch; justify-content: stretch;
+    }
+    .monitor.full .m-screen { min-height: 220px; }
+    .scan-line {
+      position: absolute; inset: 0; pointer-events: none; z-index: 2;
+      background-image: repeating-linear-gradient(
+        0deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px,
+        transparent 1px, transparent 3px
+      );
+      opacity: 0.7; transition: opacity 0.3s;
+    }
+
+    /* Monitor body (text content) */
+    .m-body {
+      padding: 16px 20px 18px;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .m-tags { display: flex; gap: 5px; flex-wrap: wrap; }
+    .m-tag {
+      font-family: var(--mc-mono); font-size: 9px;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 2px 7px; border-radius: 2px;
+      background: rgba(255,255,255,0.03);
+      color: var(--mc-text-dim);
+      border: 1px solid var(--mc-line);
+    }
+    .m-tag.accent { color: var(--c1); border-color: color-mix(in srgb, var(--c1) 30%, transparent); background: color-mix(in srgb, var(--c1) 8%, transparent); }
+
+    .m-title {
+      font-family: var(--mc-display); font-weight: 700;
+      font-size: clamp(20px, 2.4vw, 28px);
+      line-height: 1.05; letter-spacing: -0.015em;
+      color: var(--mc-text);
+      margin: 2px 0;
+    }
+    .m-desc {
+      font-size: 13px; line-height: 1.65;
+      color: var(--mc-text-dim);
+      max-width: 60ch;
+    }
+
+    .m-metrics {
+      display: flex; gap: 18px; flex-wrap: wrap;
+      padding-top: 8px; border-top: 1px dashed var(--mc-line);
+      margin-top: 4px;
+    }
+    .m-metric { display: flex; flex-direction: column; gap: 1px; }
+    .m-metric-v {
+      font-family: var(--mc-mono); font-weight: 600;
+      font-size: 14px; color: var(--c1);
+    }
+    .m-metric-l {
+      font-family: var(--mc-mono); font-size: 9px;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--mc-text-mute);
+    }
+
+    .m-foot {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 18px;
+      border-top: 1px solid var(--mc-line);
+      font-family: var(--mc-mono); font-size: 11px;
+      color: var(--c1);
+    }
+    .m-foot .arrow {
+      transition: transform 0.3s ease;
+      display: inline-block;
+    }
+    .monitor:hover .m-foot .arrow { transform: translateX(4px); }
+
+    .m-tech {
+      display: flex; flex-wrap: wrap; gap: 3px;
+      padding: 0 20px 14px;
+    }
+    .m-tech span {
+      font-family: var(--mc-mono); font-size: 9px;
+      padding: 1px 6px; border-radius: 2px;
+      background: rgba(255,255,255,0.025);
+      color: var(--mc-text-mute);
+      border: 1px solid rgba(255,255,255,0.03);
+    }
+
+    /* =============================================================
+       WIDGET LIBRARY
+       Each widget fills .m-screen with a per-project visual.
+       ============================================================= */
+
+    /* AgentGrid - grid of pulsing dots (ElektraOS, Project N) */
+    .w-agent-grid {
+      width: 100%; padding: 24px;
+      display: grid; gap: 8px;
+      grid-template-columns: repeat(10, 1fr);
+      align-items: center; justify-items: center;
+    }
+    .w-agent-grid i {
+      width: 100%; aspect-ratio: 1;
+      border-radius: 50%;
+      background: color-mix(in srgb, var(--c2) 20%, transparent);
+      border: 1px solid color-mix(in srgb, var(--c2) 40%, transparent);
+      animation: agentPulse 2.5s ease-in-out infinite;
+      max-width: 14px;
+    }
+    .w-agent-grid i:nth-child(odd) { background: color-mix(in srgb, var(--c1) 25%, transparent); border-color: color-mix(in srgb, var(--c1) 50%, transparent); }
+    .w-agent-grid i.live {
+      background: var(--c2); border-color: var(--c2);
+      box-shadow: 0 0 8px var(--c2);
+    }
+    .w-agent-grid i:nth-child(odd).live { background: var(--c1); border-color: var(--c1); box-shadow: 0 0 8px var(--c1); }
+    @keyframes agentPulse {
+      0%,100% { opacity: 0.4; transform: scale(0.85); }
+      50%     { opacity: 1; transform: scale(1.08); }
+    }
+    .w-agent-grid i:nth-child(7n)  { animation-delay: 0.0s; }
+    .w-agent-grid i:nth-child(7n+1){ animation-delay: 0.3s; }
+    .w-agent-grid i:nth-child(7n+2){ animation-delay: 0.6s; }
+    .w-agent-grid i:nth-child(7n+3){ animation-delay: 0.9s; }
+    .w-agent-grid i:nth-child(7n+4){ animation-delay: 1.2s; }
+    .w-agent-grid i:nth-child(7n+5){ animation-delay: 1.5s; }
+    .w-agent-grid i:nth-child(7n+6){ animation-delay: 1.8s; }
+    .w-agent-grid .overlay {
+      position: absolute; bottom: 10px; right: 14px; z-index: 3;
+      font-family: var(--mc-mono); font-size: 10px;
+      letter-spacing: 0.15em; color: var(--c2);
+      text-transform: uppercase;
+    }
+    .w-agent-grid .overlay b { font-weight: 600; color: var(--mc-text); }
+
+    /* NodeNetwork - SVG graph (Loomgraph, Loomgraph Society, GCN) */
+    .w-node-network {
+      width: 100%; padding: 16px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .w-node-network svg { width: 100%; max-height: 200px; }
+    .w-node-network .nn-link { stroke: color-mix(in srgb, var(--c1) 35%, transparent); stroke-width: 1; stroke-dasharray: 3 4; animation: nnDash 12s linear infinite; }
+    .w-node-network .nn-node { fill: var(--c2); stroke: color-mix(in srgb, var(--c2) 60%, transparent); stroke-width: 1; filter: drop-shadow(0 0 4px var(--c2)); }
+    .w-node-network .nn-node-alt { fill: var(--c1); filter: drop-shadow(0 0 5px var(--c1)); }
+    .w-node-network .nn-pulse { fill: none; stroke: var(--c2); stroke-width: 1; opacity: 0.7; }
+    @keyframes nnDash { to { stroke-dashoffset: -50; } }
+
+    /* Waveform - audio bars (Vienna Artists) */
+    .w-waveform {
+      width: 100%; padding: 32px 24px; min-height: 180px;
+      display: flex; align-items: center; justify-content: center;
+      gap: 4px;
+    }
+    .w-waveform i {
+      width: 5px; background: linear-gradient(180deg, var(--c1), var(--c2));
+      border-radius: 1px;
+      animation: wf 1.2s ease-in-out infinite;
+      opacity: 0.9;
+    }
+    @keyframes wf {
+      0%,100% { height: 12%; }
+      50%     { height: 90%; }
+    }
+    .w-waveform i:nth-child(1)  { animation-delay: 0.00s; }
+    .w-waveform i:nth-child(2)  { animation-delay: 0.07s; }
+    .w-waveform i:nth-child(3)  { animation-delay: 0.14s; }
+    .w-waveform i:nth-child(4)  { animation-delay: 0.21s; }
+    .w-waveform i:nth-child(5)  { animation-delay: 0.28s; }
+    .w-waveform i:nth-child(6)  { animation-delay: 0.35s; }
+    .w-waveform i:nth-child(7)  { animation-delay: 0.42s; }
+    .w-waveform i:nth-child(8)  { animation-delay: 0.49s; }
+    .w-waveform i:nth-child(9)  { animation-delay: 0.42s; }
+    .w-waveform i:nth-child(10) { animation-delay: 0.35s; }
+    .w-waveform i:nth-child(11) { animation-delay: 0.28s; }
+    .w-waveform i:nth-child(12) { animation-delay: 0.21s; }
+    .w-waveform i:nth-child(13) { animation-delay: 0.14s; }
+    .w-waveform i:nth-child(14) { animation-delay: 0.07s; }
+    .w-waveform i:nth-child(15) { animation-delay: 0.00s; }
+    .w-waveform i:nth-child(16) { animation-delay: 0.10s; }
+    .w-waveform i:nth-child(17) { animation-delay: 0.20s; }
+    .w-waveform i:nth-child(18) { animation-delay: 0.30s; }
+    .w-waveform i:nth-child(19) { animation-delay: 0.40s; }
+    .w-waveform i:nth-child(20) { animation-delay: 0.50s; }
+    .w-waveform i:nth-child(21) { animation-delay: 0.60s; }
+    .w-waveform i:nth-child(22) { animation-delay: 0.50s; }
+    .w-waveform i:nth-child(23) { animation-delay: 0.40s; }
+    .w-waveform i:nth-child(24) { animation-delay: 0.30s; }
+    .w-waveform .overlay {
+      position: absolute; top: 14px; left: 18px; z-index: 3;
+      font-family: var(--mc-mono); font-size: 10px;
+      color: color-mix(in srgb, var(--c1) 80%, white);
+      letter-spacing: 0.18em; text-transform: uppercase;
+    }
+
+    /* TerminalStream - scrolling logs (MealShift) */
+    .w-terminal {
+      width: 100%; padding: 14px 18px;
+      font-family: var(--mc-mono); font-size: 11px;
+      line-height: 1.7;
+      overflow: hidden; height: 200px;
+      background: rgba(0,0,0,0.35);
+    }
+    .w-terminal .t-row { color: var(--mc-text-dim); white-space: nowrap; }
+    .w-terminal .t-row .t-time { color: var(--mc-text-mute); margin-right: 8px; }
+    .w-terminal .t-row .t-tag { color: var(--c1); margin-right: 6px; }
+    .w-terminal .t-row .t-tag.ok { color: var(--mc-green); }
+    .w-terminal .t-row .t-tag.warn { color: var(--mc-amber); }
+    .w-terminal .t-row .t-tag.err { color: var(--mc-red); }
+    .w-terminal .t-row .t-val { color: var(--c2); }
+    .w-terminal .t-stream {
+      animation: termScroll 22s linear infinite;
+    }
+    @keyframes termScroll {
+      from { transform: translateY(0); }
+      to { transform: translateY(-50%); }
+    }
+
+    /* MosaicPreview - thumbnail grid (Thumbnail Pipeline) */
+    .w-mosaic {
+      width: 100%; padding: 14px;
+      display: grid; gap: 6px;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+    }
+    .w-mosaic i {
+      aspect-ratio: 16/10;
+      border-radius: 2px;
+      background:
+        radial-gradient(circle at 30% 30%, color-mix(in srgb, var(--c2) 50%, transparent), transparent 70%),
+        linear-gradient(135deg, color-mix(in srgb, var(--c1) 25%, var(--mc-panel-solid)), var(--mc-panel-solid));
+      border: 1px solid var(--mc-line);
+      position: relative;
+      animation: mosaicCycle 6s ease-in-out infinite;
+      overflow: hidden;
+    }
+    .w-mosaic i::after {
+      content: ""; position: absolute; inset: 4px;
+      border: 1px dashed color-mix(in srgb, var(--c1) 30%, transparent);
+      border-radius: 1px;
+    }
+    .w-mosaic i:nth-child(1) { animation-delay: 0.0s; }
+    .w-mosaic i:nth-child(2) { animation-delay: 0.3s; }
+    .w-mosaic i:nth-child(3) { animation-delay: 0.6s; }
+    .w-mosaic i:nth-child(4) { animation-delay: 0.9s; }
+    .w-mosaic i:nth-child(5) { animation-delay: 1.2s; }
+    .w-mosaic i:nth-child(6) { animation-delay: 1.5s; }
+    .w-mosaic i:nth-child(7) { animation-delay: 1.8s; }
+    .w-mosaic i:nth-child(8) { animation-delay: 2.1s; }
+    @keyframes mosaicCycle {
+      0%,100% { opacity: 0.6; filter: hue-rotate(0deg); }
+      50%     { opacity: 1; filter: hue-rotate(40deg); }
+    }
+
+    /* GoldShimmer - AYLA luxury (gold particles + brand mark) */
+    .w-gold {
+      width: 100%; padding: 20px; position: relative;
+      display: flex; align-items: center; justify-content: center;
+      background:
+        radial-gradient(ellipse at 50% 50%, rgba(184,149,106,0.12), transparent 70%);
+    }
+    .w-gold::before {
+      content: "AYLA"; position: absolute;
+      font-family: var(--mc-display); font-weight: 300;
+      font-size: clamp(54px, 8vw, 90px); letter-spacing: 0.2em;
+      background: linear-gradient(135deg, #B8956A 0%, #D4B896 35%, #fff 55%, #D4B896 65%, #B8956A 100%);
+      background-size: 200% 200%;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: goldShine 5s ease-in-out infinite;
+    }
+    .w-gold::after {
+      content: ""; position: absolute; inset: 0;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(212,184,150,0.5) 0%, transparent 2px),
+        radial-gradient(circle at 80% 70%, rgba(212,184,150,0.5) 0%, transparent 2px),
+        radial-gradient(circle at 60% 20%, rgba(212,184,150,0.4) 0%, transparent 1.5px),
+        radial-gradient(circle at 30% 80%, rgba(212,184,150,0.4) 0%, transparent 1.5px),
+        radial-gradient(circle at 90% 40%, rgba(212,184,150,0.3) 0%, transparent 1px);
+      animation: goldFloat 8s ease-in-out infinite;
+    }
+    @keyframes goldShine {
+      0%,100% { background-position: 0% 50%; }
+      50%     { background-position: 100% 50%; }
+    }
+    @keyframes goldFloat {
+      0%,100% { transform: translateY(0); opacity: 0.7; }
+      50%     { transform: translateY(-4px); opacity: 1; }
+    }
+
+    /* PixelGame - 40th Brick (8-bit pixel grid) */
+    .w-pixel {
+      width: 100%; padding: 16px;
+      display: grid;
+      grid-template-columns: repeat(20, 1fr);
+      gap: 2px;
+      max-height: 200px;
+    }
+    .w-pixel i {
+      aspect-ratio: 1;
+      background: transparent;
+      transition: background 0.15s linear;
+    }
+    .w-pixel i.on  { background: var(--c1); box-shadow: 0 0 4px var(--c1); }
+    .w-pixel i.on2 { background: var(--c2); box-shadow: 0 0 4px var(--c2); }
+
+    /* CityMap - GCN (6 city nodes on a stylized world map) */
+    .w-city {
+      width: 100%; padding: 14px;
       position: relative;
     }
-    .case-card-full:hover {
-      border-color: rgba(124,58,237,0.3);
-      transform: translateY(-4px);
-      box-shadow: 0 16px 48px rgba(0,0,0,0.35), 0 0 0 1px rgba(124,58,237,0.1);
+    .w-city svg { width: 100%; height: auto; display: block; max-height: 220px; }
+    .w-city .city-dot { fill: var(--c1); filter: drop-shadow(0 0 6px var(--c1)); }
+    .w-city .city-dot.hi { fill: var(--c2); filter: drop-shadow(0 0 8px var(--c2)); }
+    .w-city .city-ring { fill: none; stroke: var(--c1); stroke-width: 0.5; opacity: 0.4; }
+    .w-city .city-link { stroke: var(--c1); stroke-width: 0.5; stroke-dasharray: 2 3; opacity: 0.4; animation: nnDash 16s linear infinite; }
+    .w-city .city-label {
+      font-family: var(--mc-mono); font-size: 6.5px;
+      fill: var(--mc-text-dim); letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
 
-    /* ===== SCROLL-DRIVEN REVEAL ===== */
-    @supports (animation-timeline: view()) {
-      .case-card-full {
-        animation: cardReveal linear both;
-        animation-timeline: view();
-        animation-range: entry 0% entry 40%;
-      }
-      @keyframes cardReveal {
-        from { opacity: 0; transform: translateY(32px) scale(0.97); }
-        to   { opacity: 1; transform: translateY(0) scale(1); }
-      }
+    /* BlueprintFloorplan - Kettering (architectural lines) */
+    .w-blueprint {
+      width: 100%; padding: 18px;
+      position: relative;
+      background:
+        repeating-linear-gradient(0deg, transparent 0 11px, rgba(255,255,255,0.02) 11px 12px),
+        repeating-linear-gradient(90deg, transparent 0 11px, rgba(255,255,255,0.02) 11px 12px);
     }
-    /* Fallback for browsers without scroll-driven animations */
-    @supports not (animation-timeline: view()) {
-      .case-card-full.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s, transform 0.6s; }
-      .case-card-full.reveal.visible { opacity: 1; transform: translateY(0); }
+    .w-blueprint svg { width: 100%; height: auto; display: block; max-height: 200px; }
+    .w-blueprint .bp-line { stroke: var(--c1); stroke-width: 1; fill: none; }
+    .w-blueprint .bp-fill { fill: color-mix(in srgb, var(--c1) 12%, transparent); }
+    .w-blueprint .bp-door { stroke: var(--c2); stroke-width: 1; fill: none; stroke-dasharray: 2 2; }
+    .w-blueprint .bp-label {
+      font-family: var(--mc-mono); font-size: 6px;
+      fill: var(--mc-text-mute); letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
-
-    /* ===== CARD SECTIONS ===== */
-    .case-header { padding: 28px 24px 20px; }
-    .case-tags { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
-    .case-tag-sm {
-      font-family: var(--font-mono); font-size: 9px;
-      text-transform: uppercase; letter-spacing: 1px;
-      padding: 3px 8px; border-radius: 4px;
-    }
-    .case-tag-sm.ai { background: rgba(124,58,237,0.1); color: #a78bfa; }
-    .case-tag-sm.ship { background: rgba(0,255,157,0.08); color: var(--green); }
-    .case-tag-sm.design { background: rgba(245,158,11,0.08); color: var(--amber); }
-    .case-tag-sm.infra { background: rgba(0,212,255,0.08); color: var(--cyan); }
-    .case-tag-sm.game { background: rgba(239,68,68,0.08); color: #f87171; }
-    .case-tag-sm.network { background: rgba(232,168,56,0.1); color: #E8A838; }
-    .case-card-title { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
-    .case-card-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
-    .case-body { padding: 20px 24px; }
-    .case-metrics { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 16px; }
-    .case-metric-val { font-family: var(--font-mono); font-size: 16px; font-weight: 700; color: var(--cyan); }
-    .case-metric-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); }
-    .case-tech { display: flex; flex-wrap: wrap; gap: 4px; }
-    .case-tech span {
-      font-family: var(--font-mono); font-size: 9px;
-      padding: 2px 7px; border-radius: 3px;
-      background: rgba(255,255,255,0.02); color: var(--text-muted);
-      border: 1px solid rgba(255,255,255,0.04);
-    }
-    .case-arrow {
-      padding: 16px 24px; border-top: 1px solid rgba(255,255,255,0.04);
-      font-family: var(--font-mono); font-size: 11px; color: var(--purple);
-      display: flex; justify-content: space-between; align-items: center;
-      margin-top: auto;
+    .w-blueprint .bp-unit {
+      stroke: var(--c2); stroke-width: 0.7; fill: none;
+      stroke-dasharray: 0 0;
+      opacity: 0.6;
     }
 
-    /* ===== FEATURED CARD ===== */
-    .case-card-full.featured .case-body {
-      border-top: 1px solid rgba(255,255,255,0.04);
+    /* WorkflowDiagram - Operations Suite (n8n-style flow) */
+    .w-workflow {
+      width: 100%; padding: 16px;
+      position: relative;
+    }
+    .w-workflow svg { width: 100%; max-height: 200px; }
+    .w-workflow .wf-node { fill: var(--mc-panel-solid); stroke: var(--c1); stroke-width: 1; }
+    .w-workflow .wf-node.on { fill: color-mix(in srgb, var(--c2) 20%, var(--mc-panel-solid)); stroke: var(--c2); }
+    .w-workflow .wf-link { stroke: var(--c1); stroke-width: 1; fill: none; opacity: 0.4; }
+    .w-workflow .wf-flow { stroke: var(--c2); stroke-width: 1.5; fill: none; stroke-dasharray: 3 5; animation: nnDash 6s linear infinite; }
+    .w-workflow .wf-label {
+      font-family: var(--mc-mono); font-size: 7px;
+      fill: var(--mc-text-dim); letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
-    /* ===== CATEGORY FILTERS ===== */
-    .cat-filters {
-      display: flex; justify-content: center; gap: 6px; flex-wrap: wrap;
-      max-width: 800px; margin: 24px auto 32px; padding: 0 24px;
+    /* PatternWeave - She&Elle (lifestyle pattern) */
+    .w-pattern {
+      width: 100%; padding: 18px;
+      position: relative; min-height: 180px;
+      background:
+        radial-gradient(circle at 50% 50%, transparent 60%, rgba(0,0,0,0.4));
     }
-    .cat-btn {
-      font-family: var(--font-mono); font-size: 10px; text-transform: uppercase;
-      letter-spacing: 1px; padding: 6px 14px; border-radius: 20px;
-      background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
-      color: var(--text-muted); cursor: pointer; transition: all 0.25s;
+    .w-pattern::before {
+      content: ""; position: absolute; inset: 0;
+      background-image:
+        radial-gradient(circle at 25% 25%, color-mix(in srgb, var(--c1) 50%, transparent) 0%, transparent 30%),
+        radial-gradient(circle at 75% 25%, color-mix(in srgb, var(--c2) 35%, transparent) 0%, transparent 25%),
+        radial-gradient(circle at 25% 75%, color-mix(in srgb, var(--c2) 40%, transparent) 0%, transparent 30%),
+        radial-gradient(circle at 75% 75%, color-mix(in srgb, var(--c1) 45%, transparent) 0%, transparent 28%);
+      background-size: 60px 60px;
+      opacity: 0.55;
+      animation: weaveDrift 15s linear infinite;
     }
-    .cat-btn:hover { background: rgba(124,58,237,0.06); border-color: rgba(124,58,237,0.2); color: var(--text-secondary); }
-    .cat-btn.active { background: rgba(124,58,237,0.12); border-color: rgba(124,58,237,0.35); color: var(--purple); }
-    .case-card-full[data-cat].hidden { display: none; }
+    .w-pattern::after {
+      content: ""; position: absolute; inset: 0;
+      background-image:
+        repeating-linear-gradient(45deg, rgba(255,255,255,0.04) 0 1px, transparent 1px 14px),
+        repeating-linear-gradient(-45deg, rgba(255,255,255,0.04) 0 1px, transparent 1px 14px);
+    }
+    @keyframes weaveDrift {
+      from { background-position: 0 0; }
+      to { background-position: 60px 60px; }
+    }
+    .w-pattern .overlay {
+      position: relative; z-index: 2;
+      font-family: var(--mc-display); font-weight: 500;
+      font-style: italic;
+      font-size: clamp(28px, 4vw, 44px);
+      color: var(--mc-text); letter-spacing: 0.01em;
+      text-align: center; padding-top: 28px;
+      text-shadow: 0 4px 24px rgba(0,0,0,0.6);
+    }
+    .w-pattern .overlay em { color: var(--c1); font-style: italic; }
 
-    /* ===== BRAND ICON ===== */
-    .case-icon {
-      width: 40px; height: 40px; border-radius: 10px; margin-bottom: 12px;
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-mono); font-weight: 700; font-size: 16px;
+    /* GlitchRedacted - Project N */
+    .w-glitch {
+      width: 100%; padding: 24px;
+      display: flex; flex-direction: column; gap: 8px;
+      justify-content: center;
+      font-family: var(--mc-mono); font-size: 11px;
+      background:
+        linear-gradient(180deg, rgba(13,17,23,0.7), rgba(13,17,23,0.95));
+      position: relative;
     }
+    .w-glitch::before {
+      content: "CLASSIFIED"; position: absolute;
+      top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-12deg);
+      font-family: var(--mc-display); font-weight: 700;
+      font-size: clamp(28px, 4vw, 46px); letter-spacing: 0.3em;
+      color: color-mix(in srgb, var(--c1) 28%, transparent);
+      pointer-events: none;
+      border: 2px solid color-mix(in srgb, var(--c1) 28%, transparent);
+      padding: 8px 22px;
+      animation: glitchPulse 4s ease-in-out infinite;
+    }
+    @keyframes glitchPulse {
+      0%,100% { opacity: 0.55; }
+      45% { opacity: 0.9; transform: translate(-50%, -50%) rotate(-12deg) skew(-1deg, 0); }
+      55% { opacity: 0.4; transform: translate(-50%, -50%) rotate(-12deg) skew(1deg, 0); }
+    }
+    .w-glitch .gl-row {
+      display: flex; align-items: center; gap: 10px;
+      color: var(--mc-text-dim);
+    }
+    .w-glitch .gl-block {
+      display: inline-block; height: 9px;
+      background: color-mix(in srgb, var(--c1) 50%, var(--mc-panel-solid));
+      border-radius: 1px;
+    }
+    .w-glitch .gl-block.w1 { width: 60px; }
+    .w-glitch .gl-block.w2 { width: 100px; }
+    .w-glitch .gl-block.w3 { width: 140px; }
+    .w-glitch .gl-block.w4 { width: 80px; }
 
-    /* ===== NETWORK CARD SPECIAL ===== */
-    .case-card-full.network-card {
-      background: linear-gradient(135deg, rgba(232,168,56,0.04), rgba(0,201,167,0.04));
-      border-color: rgba(232,168,56,0.15);
-    }
-    .case-card-full.network-card:hover {
-      border-color: rgba(232,168,56,0.4);
-      box-shadow: 0 16px 48px rgba(232,168,56,0.08), 0 0 0 1px rgba(232,168,56,0.15);
-    }
-    .case-card-full.network-card .case-arrow { color: #E8A838; }
+    /* IframePeek - AYLA Maison (live preview thumbnail) */
+    /* Not used by default — using GoldShimmer for performance — but available. */
 
-    /* ===== STATUS BADGES ===== */
-    .status-badge {
-      position: absolute; top: 12px; right: 12px;
-      display: flex; align-items: center; gap: 6px;
-      font-family: var(--font-mono); font-size: 9px; border-radius: 4px;
-      padding: 3px 8px; z-index: 1;
-    }
-    .status-badge.live { color: var(--green); background: rgba(0,255,157,0.06); border: 1px solid rgba(0,255,157,0.15); }
-    .status-badge.encrypted { color: var(--amber); background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.2); }
-    .status-dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
+    /* Hidden state for filtering */
+    .monitor.hidden { display: none; }
 
-    /* ===== CTA ===== */
-    .cases-cta {
-      text-align: center; max-width: 1080px; margin: 0 auto;
-      padding: 48px 24px; border-top: 1px solid var(--border);
+    /* =============================================================
+       FOOTER NOTE
+       ============================================================= */
+    .mc-note {
+      max-width: 1280px; margin: 24px auto 64px;
+      padding: 0 32px;
+      position: relative; z-index: 2;
     }
+    .mc-note-inner {
+      padding: 18px 22px;
+      background: var(--mc-panel); border: 1px solid var(--mc-line);
+      border-left: 2px solid var(--mc-green);
+      border-radius: 0 4px 4px 0;
+      font-family: var(--mc-mono); font-size: 11px;
+      color: var(--mc-text-dim); line-height: 1.75;
+    }
+    .mc-note-inner b { color: var(--mc-green); font-weight: 500; }
+    .mc-note-inner em { font-style: normal; color: var(--mc-cyan); }
+
+    .mc-cta {
+      max-width: 1280px; margin: 0 auto 64px; padding: 0 32px;
+      text-align: center; position: relative; z-index: 2;
+    }
+    .mc-cta-inner {
+      padding: 48px 32px;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(124,58,237,0.10), transparent 60%),
+        var(--mc-panel);
+      border: 1px solid var(--mc-line);
+      border-radius: 6px;
+      backdrop-filter: blur(8px);
+    }
+    .mc-cta-inner h3 {
+      font-family: var(--mc-display); font-weight: 700;
+      font-size: clamp(22px, 3vw, 32px); margin-bottom: 8px;
+      color: var(--mc-text);
+    }
+    .mc-cta-inner p {
+      color: var(--mc-text-dim); max-width: 520px; margin: 0 auto 22px;
+    }
+    .mc-cta-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .mc-btn {
+      font-family: var(--mc-mono); font-size: 11px;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 12px 24px; border-radius: 2px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .mc-btn-primary {
+      background: var(--mc-cyan); color: var(--mc-bg);
+      border: 1px solid var(--mc-cyan);
+    }
+    .mc-btn-primary:hover { box-shadow: 0 0 20px var(--mc-cyan); transform: translateY(-1px); }
+    .mc-btn-ghost {
+      background: transparent; color: var(--mc-text-dim);
+      border: 1px solid var(--mc-line-bright);
+    }
+    .mc-btn-ghost:hover { border-color: var(--mc-text); color: var(--mc-text); }
+
+    /* Override global .reveal { opacity:0 } from animations.css - monitors render immediately. */
+    .monitor.reveal, .monitor { opacity: 1 !important; transform: none !important; }
+
   </style>
   <link rel="stylesheet" href="/css/smart-features.css">
   <script defer src="https://yossra-analytics.fly.dev/analytics" data-website-id="4abcaca6-fb37-47bf-bc8e-41e4b2503ee8"></script>
 </head>
-<body>
+<body class="cases-mc">
 
   <!-- ===== TOP BAR ===== -->
-  <div style="position:fixed;top:0;left:0;right:0;z-index:101;background:linear-gradient(90deg,rgba(124,58,237,0.15),rgba(0,212,255,0.1));border-bottom:1px solid rgba(124,58,237,0.2);padding:8px 0;text-align:center;font-family:var(--font-mono);font-size:11px;letter-spacing:0.5px;color:var(--text-secondary);backdrop-filter:blur(12px);">
-    <span style="color:var(--cyan);">&#9889;</span> Neuro-surgery in progress. We ship live.
+  <div style="position:fixed;top:0;left:0;right:0;z-index:101;background:linear-gradient(90deg,rgba(124,58,237,0.15),rgba(0,212,255,0.1));border-bottom:1px solid rgba(124,58,237,0.2);padding:8px 0;text-align:center;font-family:var(--mc-mono);font-size:11px;letter-spacing:0.5px;color:var(--mc-text-dim);backdrop-filter:blur(12px);">
+    <span style="color:var(--mc-cyan);">&#9889;</span> Mission Control . 13 projects . All systems nominal
   </div>
 
   <!-- Nav -->
@@ -233,387 +908,759 @@
     </div>
   </nav>
 
-  <!-- Hero -->
-  <div class="cases-hero">
-    <span class="section-label">case studies</span>
-    <h1 class="gradient-text" style="font-size:clamp(28px,4vw,44px);margin-top:8px;">Production systems.</h1>
-    <p style="font-size:16px;color:var(--text-secondary);max-width:500px;margin:12px auto 0;line-height:1.7;">Every project is ongoing. Nothing is ever truly shipped. Everything is always improving.</p>
-    <div class="hero-counter">
-      <div class="hero-counter-item"><div class="hero-counter-val">9</div><div class="hero-counter-label">Projects</div></div>
-      <div class="hero-counter-item"><div class="hero-counter-val">184K+</div><div class="hero-counter-label">Lines of code</div></div>
-      <div class="hero-counter-item"><div class="hero-counter-val">7</div><div class="hero-counter-label">Cities</div></div>
-      <div class="hero-counter-item"><div class="hero-counter-val">73</div><div class="hero-counter-label">Days built</div></div>
+  <!-- =====================================================
+       MISSION CONTROL HERO
+       ===================================================== -->
+  <section class="mc-hero">
+    <div class="mc-hero-label"><span class="mc-led"></span> ELEKTRA . MISSION CONTROL . 24/7</div>
+    <h1 class="mc-hero-title">Every project, <em>on one screen.</em></h1>
+    <p class="mc-hero-sub">
+      Thirteen production systems. Some shipped, some in active build, some still classified.
+      Each card below is a monitor showing the project's signature - its agents, its graph, its waveform,
+      its blueprint. Click any monitor to drop into the case study.
+    </p>
+
+    <div class="mc-vitals">
+      <div class="mc-vital">
+        <div class="mc-vital-num">184<em>K+</em></div>
+        <div class="mc-vital-label">Lines of production code</div>
+      </div>
+      <div class="mc-vital">
+        <div class="mc-vital-num">41<em>+</em></div>
+        <div class="mc-vital-label">AI agents deployed</div>
+      </div>
+      <div class="mc-vital">
+        <div class="mc-vital-num">73</div>
+        <div class="mc-vital-label">Days built (solo)</div>
+      </div>
+      <div class="mc-vital">
+        <div class="mc-vital-num">7</div>
+        <div class="mc-vital-label">Cities in the network</div>
+      </div>
+    </div>
+
+    <div class="mc-ticker">
+      <div class="mc-ticker-prefix"><span class="mc-led"></span> ROSTER</div>
+      <div class="mc-ticker-track">
+        <div class="mc-ticker-line" id="tickerLine">
+          <span><em>loomgraph-society</em> . <b>cohort open</b> . 11 founding sites</span>
+          <span><em>elektraos</em> . <b>production</b> . 41 agents . 624 endpoints</span>
+          <span><em>vienna-artists</em> . <b>day 1</b> . in discovery</span>
+          <span><em>ayla.maison</em> . <b>live</b> . 3 collections . 9 products</span>
+          <span><em>gcn</em> . <b>encrypted brief</b> . 6 cities</span>
+          <span><em>loomgraph</em> . <b>in design</b> . 5 agent roles</span>
+          <span><em>thumbnail-pipeline</em> . <b>active</b> . 3 brands . 5 platforms</span>
+          <span><em>sheandelle</em> . <b>active</b> . wordpress . custom theme</span>
+          <span><em>40th-brick</em> . <b>deployed</b> . 40 rooms . 4 chapters</span>
+          <span><em>mealshift</em> . <b>encrypted brief</b> . 6 modules . 17 bugs fixed</span>
+          <span><em>ops-suite</em> . <b>24/7</b> . 31 workflows</span>
+          <span><em>kettering</em> . <b>encrypted brief</b> . 8 units . 20 contacts</span>
+          <span><em>project-n</em> . <b>classified</b> . in development</span>
+          <span><em>loomgraph-society</em> . <b>cohort open</b> . 11 founding sites</span>
+          <span><em>elektraos</em> . <b>production</b> . 41 agents . 624 endpoints</span>
+          <span><em>vienna-artists</em> . <b>day 1</b> . in discovery</span>
+          <span><em>ayla.maison</em> . <b>live</b> . 3 collections . 9 products</span>
+          <span><em>gcn</em> . <b>encrypted brief</b> . 6 cities</span>
+          <span><em>loomgraph</em> . <b>in design</b> . 5 agent roles</span>
+          <span><em>thumbnail-pipeline</em> . <b>active</b> . 3 brands . 5 platforms</span>
+          <span><em>sheandelle</em> . <b>active</b> . wordpress . custom theme</span>
+          <span><em>40th-brick</em> . <b>deployed</b> . 40 rooms . 4 chapters</span>
+          <span><em>mealshift</em> . <b>encrypted brief</b> . 6 modules . 17 bugs fixed</span>
+          <span><em>ops-suite</em> . <b>24/7</b> . 31 workflows</span>
+          <span><em>kettering</em> . <b>encrypted brief</b> . 8 units . 20 contacts</span>
+          <span><em>project-n</em> . <b>classified</b> . in development</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       CHANNEL SELECTOR
+       ===================================================== -->
+  <div class="mc-channels-wrap">
+    <div class="mc-channels-label">Channel</div>
+    <div class="mc-channels" id="channels">
+      <button class="mc-channel active" data-cat="all">All <span class="ch-num">13</span></button>
+      <button class="mc-channel" data-cat="ai">AI Systems <span class="ch-num">7</span></button>
+      <button class="mc-channel" data-cat="software">Software <span class="ch-num">8</span></button>
+      <button class="mc-channel" data-cat="automation">Automation <span class="ch-num">4</span></button>
+      <button class="mc-channel" data-cat="website">Websites <span class="ch-num">2</span></button>
+      <button class="mc-channel" data-cat="ecommerce">E-Commerce <span class="ch-num">1</span></button>
+      <button class="mc-channel" data-cat="api">API <span class="ch-num">1</span></button>
+      <button class="mc-channel" data-cat="network">Network <span class="ch-num">3</span></button>
+      <button class="mc-channel" data-cat="game">Games <span class="ch-num">1</span></button>
+      <button class="mc-channel" data-cat="marketplace">Marketplace <span class="ch-num">1</span></button>
     </div>
   </div>
 
-  <!-- Category Filters -->
-  <div class="cat-filters">
-    <button class="cat-btn active" onclick="filterCases('all')">All</button>
-    <button class="cat-btn" onclick="filterCases('software')">Software</button>
-    <button class="cat-btn" onclick="filterCases('ai')">AI Systems</button>
-    <button class="cat-btn" onclick="filterCases('automation')">Automation</button>
-    <button class="cat-btn" onclick="filterCases('website')">Websites</button>
-    <button class="cat-btn" onclick="filterCases('ecommerce')">E-Commerce</button>
-    <button class="cat-btn" onclick="filterCases('api')">API</button>
-    <button class="cat-btn" onclick="filterCases('network')">Network</button>
-    <button class="cat-btn" onclick="filterCases('game')">Games</button>
-  </div>
+  <!-- =====================================================
+       MONITOR GRID
+       ===================================================== -->
+  <div class="mc-grid" id="casesGrid">
 
-  <!-- Cases Bento Grid -->
-  <div class="cases-grid" id="casesGrid">
-
-    <!-- Loomgraph Society (hub of interconnected member sites) -->
-    <a href="/loomgraph-society/" class="case-card-full featured wide reveal" data-cat="software ai automation seo society" itemscope itemtype="https://schema.org/Organization">
-      <div class="status-badge" style="background:rgba(0,255,157,0.08);color:var(--green);border:1px solid rgba(0,255,157,0.3);"><span class="status-dot" style="background:var(--green);"></span> Cohort Open</div>
-      <div class="case-header">
-        <div class="case-icon" style="background:linear-gradient(135deg,#00ff9d,#00d4ff);color:#0B1120;">&#9733;</div>
-        <div class="case-tags">
-          <span class="case-tag-sm network">Hub</span>
-          <span class="case-tag-sm ai">Legal Growth</span>
-          <span class="case-tag-sm ship">Live</span>
+    <!-- LOOMGRAPH SOCIETY (full width hub) -->
+    <a href="/loomgraph-society/" class="monitor full reveal" data-cat="software ai automation seo society network" style="--c1:#00ff9d;--c2:#00d4ff;" itemscope itemtype="https://schema.org/Organization">
+      <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      <div class="m-head">
+        <div class="m-head-left">
+          <span class="m-head-leds"><span class="on"></span><span class="on"></span><span></span></span>
+          MON-01
         </div>
-        <h2 class="case-card-title" itemprop="name">Loomgraph Society</h2>
-        <p class="case-card-desc" itemprop="description">A hub of working websites that grow together. Shared audits, shared briefs, contextual cross-links woven between real businesses by agents, approved by humans. Eleven founding sites. Every mechanic respects Google Search Essentials, FTC disclosure, and GDPR. No PBN, no paid links.</p>
+        <div class="m-head-slug">loomgraph.society / hub</div>
+        <div class="m-head-status"><span class="mc-led"></span> COHORT OPEN</div>
       </div>
-      <div class="case-body">
-        <div class="case-metrics">
-          <div class="case-metric-item"><div class="case-metric-val">11</div><div class="case-metric-label">Founding sites</div></div>
-          <div class="case-metric-item"><div class="case-metric-val">8</div><div class="case-metric-label">Legal mechanics</div></div>
-          <div class="case-metric-item"><div class="case-metric-val">0</div><div class="case-metric-label">PBN tactics</div></div>
-          <div class="case-metric-item"><div class="case-metric-val">5</div><div class="case-metric-label">Locale hubs</div></div>
-        </div>
-        <div class="case-tech">
-          <span>Hub Model</span><span>IndexNow</span><span>Schema.org sameAs</span><span>Approval Queue</span><span>Human-in-the-loop</span><span>GDPR</span><span>FTC-compliant</span>
+      <div class="m-screen">
+        <span class="scan-line"></span>
+        <div class="w-node-network">
+          <svg viewBox="0 0 600 200" preserveAspectRatio="xMidYMid meet">
+            <!-- Central hub + 11 nodes around it -->
+            <g class="nn-link-group">
+              <line class="nn-link" x1="300" y1="100" x2="80" y2="60"/>
+              <line class="nn-link" x1="300" y1="100" x2="120" y2="160"/>
+              <line class="nn-link" x1="300" y1="100" x2="200" y2="40"/>
+              <line class="nn-link" x1="300" y1="100" x2="220" y2="170"/>
+              <line class="nn-link" x1="300" y1="100" x2="380" y2="40"/>
+              <line class="nn-link" x1="300" y1="100" x2="400" y2="170"/>
+              <line class="nn-link" x1="300" y1="100" x2="480" y2="60"/>
+              <line class="nn-link" x1="300" y1="100" x2="520" y2="160"/>
+              <line class="nn-link" x1="300" y1="100" x2="40" y2="120"/>
+              <line class="nn-link" x1="300" y1="100" x2="560" y2="100"/>
+              <line class="nn-link" x1="300" y1="100" x2="300" y2="20"/>
+              <!-- inter-node hints -->
+              <line class="nn-link" x1="80" y1="60" x2="200" y2="40"/>
+              <line class="nn-link" x1="200" y1="40" x2="380" y2="40"/>
+              <line class="nn-link" x1="380" y1="40" x2="480" y2="60"/>
+              <line class="nn-link" x1="120" y1="160" x2="220" y2="170"/>
+              <line class="nn-link" x1="220" y1="170" x2="400" y2="170"/>
+              <line class="nn-link" x1="400" y1="170" x2="520" y2="160"/>
+            </g>
+            <!-- nodes -->
+            <circle class="nn-node nn-node-alt" cx="300" cy="100" r="8"/>
+            <circle class="nn-node" cx="80"  cy="60"  r="4"/>
+            <circle class="nn-node" cx="120" cy="160" r="4"/>
+            <circle class="nn-node" cx="200" cy="40"  r="4"/>
+            <circle class="nn-node" cx="220" cy="170" r="4"/>
+            <circle class="nn-node" cx="380" cy="40"  r="4"/>
+            <circle class="nn-node" cx="400" cy="170" r="4"/>
+            <circle class="nn-node" cx="480" cy="60"  r="4"/>
+            <circle class="nn-node" cx="520" cy="160" r="4"/>
+            <circle class="nn-node" cx="40"  cy="120" r="4"/>
+            <circle class="nn-node" cx="560" cy="100" r="4"/>
+            <circle class="nn-node" cx="300" cy="20"  r="4"/>
+          </svg>
         </div>
       </div>
-      <div class="case-arrow"><span>Enter the society</span><span>&rarr;</span></div>
+      <div class="m-body">
+        <div class="m-tags">
+          <span class="m-tag accent">Hub</span>
+          <span class="m-tag">Legal Growth</span>
+          <span class="m-tag">Live</span>
+        </div>
+        <h2 class="m-title" itemprop="name">Loomgraph Society</h2>
+        <p class="m-desc" itemprop="description">A hub of working websites that grow together. Shared audits, shared briefs, contextual cross-links woven between real businesses by agents, approved by humans. Eleven founding sites. Every mechanic respects Google Search Essentials, FTC disclosure, GDPR. No PBN, no paid links.</p>
+        <div class="m-metrics">
+          <div class="m-metric"><span class="m-metric-v">11</span><span class="m-metric-l">Founding sites</span></div>
+          <div class="m-metric"><span class="m-metric-v">8</span><span class="m-metric-l">Legal mechanics</span></div>
+          <div class="m-metric"><span class="m-metric-v">0</span><span class="m-metric-l">PBN tactics</span></div>
+          <div class="m-metric"><span class="m-metric-v">5</span><span class="m-metric-l">Locale hubs</span></div>
+        </div>
+      </div>
+      <div class="m-tech">
+        <span>Hub Model</span><span>IndexNow</span><span>Schema.org sameAs</span><span>Approval Queue</span><span>Human-in-loop</span><span>GDPR</span><span>FTC-compliant</span>
+      </div>
+      <div class="m-foot"><span>Enter the society</span><span class="arrow">&rarr;</span></div>
     </a>
 
-    <!-- Loomgraph (platform case study) -->
-    <a href="/case-loomgraph/" class="case-card-full featured reveal" data-cat="software ai automation seo" itemscope itemtype="https://schema.org/SoftwareApplication">
-      <div class="status-badge" style="background:rgba(232,168,56,0.08);color:#E8A838;border:1px solid rgba(232,168,56,0.3);"><span class="status-dot" style="background:#E8A838;"></span> In Design</div>
-      <div class="case-header">
-        <div class="case-icon" style="background:linear-gradient(135deg,#7c3aed,#E8A838);color:#fff;">L</div>
-        <div class="case-tags">
-          <span class="case-tag-sm ai">Agentic SEO</span>
-          <span class="case-tag-sm infra">Portfolio Graph</span>
-          <span class="case-tag-sm design">New</span>
+    <!-- ELEKTRAOS (wide left) -->
+    <a href="/case-elektraos/" class="monitor wide reveal" data-cat="software ai automation" style="--c1:#A78BFA;--c2:#22D3EE;" itemscope itemtype="https://schema.org/SoftwareApplication">
+      <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      <div class="m-head">
+        <div class="m-head-left">
+          <span class="m-head-leds"><span class="on"></span><span class="on"></span><span class="on"></span></span>
+          MON-02
         </div>
-        <h2 class="case-card-title" itemprop="name">Loomgraph</h2>
-        <p class="case-card-desc" itemprop="description">Agentic platform that auto-onboards any website, audits SEO, generates content briefs, and weaves a live internal-link graph across the full portfolio. Sits on ElektraOS runtime, pushes content through the MealShift Commerce OS CMS layer (Woo, Shopify, Wix) plus WordPress REST, Webflow Data API, and Ghost Admin.</p>
+        <div class="m-head-slug">elektraos / runtime</div>
+        <div class="m-head-status"><span class="mc-led"></span> 41 AGENTS LIVE</div>
       </div>
-      <div class="case-body">
-        <div class="case-metrics">
-          <div class="case-metric-item"><div class="case-metric-val">1</div><div class="case-metric-label">Onboarding step</div></div>
-          <div class="case-metric-item"><div class="case-metric-val">5</div><div class="case-metric-label">Agent roles</div></div>
-          <div class="case-metric-item"><div class="case-metric-val">N&times;N</div><div class="case-metric-label">Cross-link graph</div></div>
-          <div class="case-metric-item"><div class="case-metric-val">IndexNow</div><div class="case-metric-label">Instant push</div></div>
+      <div class="m-screen">
+        <span class="scan-line"></span>
+        <div class="w-agent-grid" id="agentGrid">
+          <!-- 41 dots, generated by JS -->
         </div>
-        <div class="case-tech">
-          <span>Python</span><span>FastAPI</span><span>ChromaDB</span><span>DSPy</span><span>n8n</span><span>Claude</span><span>WordPress REST</span><span>Shopify GraphQL</span><span>Webflow API</span><span>Schema.org</span>
+        <div class="overlay"><b>41</b> AGENTS . 5 TEAMS</div>
+      </div>
+      <div class="m-body">
+        <div class="m-tags">
+          <span class="m-tag accent">AI Systems</span>
+          <span class="m-tag">Infrastructure</span>
+          <span class="m-tag">Production</span>
+        </div>
+        <h2 class="m-title" itemprop="name">ElektraOS</h2>
+        <p class="m-desc" itemprop="description">Full-stack cognitive operating system. 41 specialised AI agents across 5 teams, multi-provider LLM orchestration, real-time operator console, autonomous scheduling, and Obsidian-compatible knowledge vault.</p>
+        <div class="m-metrics">
+          <div class="m-metric"><span class="m-metric-v">184K+</span><span class="m-metric-l">Lines</span></div>
+          <div class="m-metric"><span class="m-metric-v">41</span><span class="m-metric-l">Agents</span></div>
+          <div class="m-metric"><span class="m-metric-v">624</span><span class="m-metric-l">Endpoints</span></div>
+          <div class="m-metric"><span class="m-metric-v">59</span><span class="m-metric-l">DB tables</span></div>
         </div>
       </div>
-      <div class="case-arrow"><span>View case study</span><span>&rarr;</span></div>
+      <div class="m-tech"><span>Python</span><span>FastAPI</span><span>SQLite</span><span>Claude CLI</span><span>Groq</span><span>MCP</span><span>SSE</span><span>n8n</span><span>Playwright</span></div>
+      <div class="m-foot"><span>View case study</span><span class="arrow">&rarr;</span></div>
     </a>
 
-    <!-- ROW 1: ElektraOS featured (12 col) -->
-    <a href="/case-elektraos/" class="case-card-full featured reveal" data-cat="software ai automation" itemscope itemtype="https://schema.org/SoftwareApplication">
-      <div class="case-header">
-        <div class="case-icon" style="background:linear-gradient(135deg,#7c3aed,#00d4ff);color:#fff;">E</div>
-        <div class="case-tags">
-          <span class="case-tag-sm ai">AI Systems</span>
-          <span class="case-tag-sm infra">Infrastructure</span>
-          <span class="case-tag-sm ship">Production</span>
+    <!-- VIENNA ARTISTS (narrow right) -->
+    <a href="/casestudy/vienna-artists/" class="monitor narrow reveal" data-cat="software ai automation marketplace" style="--c1:#D946EF;--c2:#22D3EE;" itemscope itemtype="https://schema.org/CreativeWork">
+      <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      <div class="m-head">
+        <div class="m-head-left">
+          <span class="m-head-leds"><span class="on"></span><span></span><span></span></span>
+          MON-03
         </div>
-        <h2 class="case-card-title" itemprop="name">ElektraOS</h2>
-        <p class="case-card-desc" itemprop="description">Full-stack cognitive operating system. 41 specialized AI agents across 5 teams, multi-provider LLM orchestration, real-time operator console, autonomous scheduling, and Obsidian-compatible knowledge vault.</p>
+        <div class="m-head-slug">vienna-artists / day-1</div>
+        <div class="m-head-status violet"><span class="mc-led"></span> DAY 1 . VIENNA</div>
       </div>
-      <div class="case-body">
-        <div class="case-metrics">
-          <div class="case-metric-item"><div class="case-metric-val">184K+</div><div class="case-metric-label">Lines of code</div></div>
-          <div class="case-metric-item"><div class="case-metric-val">41</div><div class="case-metric-label">AI agents</div></div>
-          <div class="case-metric-item"><div class="case-metric-val">624</div><div class="case-metric-label">Endpoints</div></div>
-          <div class="case-metric-item"><div class="case-metric-val">59</div><div class="case-metric-label">DB tables</div></div>
-        </div>
-        <div class="case-tech">
-          <span>Python</span><span>FastAPI</span><span>SQLite</span><span>Claude CLI</span><span>Groq</span><span>MCP</span><span>SSE</span><span>n8n</span><span>Playwright</span>
+      <div class="m-screen">
+        <span class="scan-line"></span>
+        <div class="w-waveform">
+          <span class="overlay">listening</span>
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
         </div>
       </div>
-      <div class="case-arrow" style="flex-wrap:wrap;gap:8px;">
-        <span>View case study &rarr;</span>
-        <span onclick="event.preventDefault();event.stopPropagation();window.open('https://yoggi-sheandelle.github.io/elektraos-portfolio/','_blank');" style="font-family:var(--font-mono);font-size:10px;color:var(--cyan);cursor:pointer;background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.2);padding:4px 10px;border-radius:6px;display:inline-flex;align-items:center;gap:5px;">
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          Live Portfolio
-        </span>
+      <div class="m-body">
+        <div class="m-tags">
+          <span class="m-tag accent">AI Agent</span>
+          <span class="m-tag">Two-sided</span>
+        </div>
+        <h2 class="m-title" itemprop="name">Vienna Artists</h2>
+        <p class="m-desc" itemprop="description">A new project starting in Vienna with one working artist. A system that opens her inbox, sends outreach in her voice, tracks her bookings, and negotiates fees on her behalf.</p>
+        <div class="m-metrics">
+          <div class="m-metric"><span class="m-metric-v">Vienna</span><span class="m-metric-l">Launch</span></div>
+          <div class="m-metric"><span class="m-metric-v">Day 1</span><span class="m-metric-l">Phase</span></div>
+        </div>
       </div>
+      <div class="m-tech"><span>FastAPI</span><span>Claude</span><span>Voice modeling</span><span>Email API</span><span>Matching engine</span></div>
+      <div class="m-foot"><span>Read what we're trying</span><span class="arrow">&rarr;</span></div>
     </a>
 
-    <!-- Vienna Artists (new project, day one, launching in Vienna) -->
-    <a href="/casestudy/vienna-artists/" class="case-card-full reveal" data-cat="software ai automation marketplace" itemscope itemtype="https://schema.org/CreativeWork">
-      <div class="status-badge" style="background:rgba(217,70,239,0.08);color:#D946EF;border:1px solid rgba(217,70,239,0.30);"><span class="status-dot" style="background:#D946EF;"></span> Day 1 . Vienna</div>
-      <div class="case-header">
-        <div class="case-tags">
-          <span class="case-tag-sm ai">AI Agent</span>
-          <span class="case-tag-sm infra">Two-sided</span>
-          <span class="case-tag-sm design">New Project</span>
+    <!-- AYLA MAISON -->
+    <a href="/casestudy/ayla/" class="monitor reveal" data-cat="ecommerce website ai" style="--c1:#D4B896;--c2:#B8956A;" itemscope itemtype="https://schema.org/CreativeWork">
+      <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      <div class="m-head">
+        <div class="m-head-left">
+          <span class="m-head-leds"><span class="on"></span><span class="on"></span><span class="on"></span></span>
+          MON-04
         </div>
-        <div class="case-icon" style="background:linear-gradient(135deg,#D946EF,#00D4FF);color:#0B1120;">V</div>
-        <h2 class="case-card-title" itemprop="name">Vienna Artists</h2>
-        <p class="case-card-desc" itemprop="description">A new project starting in Vienna with one working artist. A system that opens her inbox, sends outreach in her voice, tracks her bookings, and negotiates fees on her behalf. If it works for her, it opens to the city - then to a Vienna-grown layer that helps bookers find the right artist, not the loudest one.</p>
+        <div class="m-head-slug">ayla.maison / shop</div>
+        <div class="m-head-status"><span class="mc-led"></span> LIVE</div>
       </div>
-      <div class="case-body">
-        <div class="case-metrics">
-          <div class="case-metric-item"><div class="case-metric-val" style="color:#D946EF;">Vienna</div><div class="case-metric-label">Launch city</div></div>
-          <div class="case-metric-item"><div class="case-metric-val" style="color:#D946EF;">2-sided</div><div class="case-metric-label">Artists + Bookers</div></div>
-          <div class="case-metric-item"><div class="case-metric-val" style="color:#D946EF;">Day 1</div><div class="case-metric-label">Where we are</div></div>
+      <div class="m-screen">
+        <span class="scan-line"></span>
+        <div class="w-gold"></div>
+      </div>
+      <div class="m-body">
+        <div class="m-tags">
+          <span class="m-tag accent">E-Commerce</span>
+          <span class="m-tag">Production</span>
+          <span class="m-tag">AI</span>
         </div>
-        <div class="case-tech">
-          <span>FastAPI</span><span>Claude</span><span>Voice modeling</span><span>Email API</span><span>Matching engine</span><span>Stripe</span><span>Postgres</span>
+        <h2 class="m-title" itemprop="name">AYLA Maison</h2>
+        <p class="m-desc" itemprop="description">Luxury minimalist jewelry brand from Casablanca. Full e-commerce site with 3 curated collections, AI-powered content management portal, and client self-service dashboard. Live at aylamaison.com.</p>
+        <div class="m-metrics">
+          <div class="m-metric"><span class="m-metric-v">3</span><span class="m-metric-l">Collections</span></div>
+          <div class="m-metric"><span class="m-metric-v">9</span><span class="m-metric-l">Products</span></div>
+          <div class="m-metric"><span class="m-metric-v">Live</span><span class="m-metric-l">aylamaison.com</span></div>
         </div>
       </div>
-      <div class="case-arrow"><span>Read what we're trying</span><span>&rarr;</span></div>
+      <div class="m-tech"><span>HTML/CSS/JS</span><span>GitHub Pages</span><span>SEO</span><span>Custom Domain</span><span>PageCrypt</span></div>
+      <div class="m-foot"><span>View case study</span><span class="arrow">&rarr;</span></div>
     </a>
 
-    <!-- ROW 2: AYLA (8 col) + Network/Mercy (4 col) -->
-    <a href="/casestudy/ayla/" class="case-card-full reveal" data-cat="ecommerce website ai" itemscope itemtype="https://schema.org/CreativeWork">
-      <div class="status-badge live"><span class="status-dot" style="background:var(--green);"></span> Live</div>
-      <div class="case-header">
-        <div class="case-tags">
-          <span class="case-tag-sm ship">Production</span>
-          <span class="case-tag-sm design">E-Commerce</span>
-          <span class="case-tag-sm ai">AI</span>
+    <!-- GLOBAL CREATIVE NETWORK -->
+    <a href="/case/" class="monitor reveal" data-cat="network" style="--c1:#E8A838;--c2:#00C9A7;" itemscope itemtype="https://schema.org/CreativeWork">
+      <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      <div class="m-head">
+        <div class="m-head-left">
+          <span class="m-head-leds"><span class="on"></span><span class="on"></span><span></span></span>
+          MON-05
         </div>
-        <div class="case-icon" style="background:linear-gradient(135deg,#B8956A,#D4B896);color:#1D1D1F;">A</div>
-        <h2 class="case-card-title" itemprop="name">AYLA Maison</h2>
-        <p class="case-card-desc" itemprop="description">Luxury minimalist jewelry brand from Casablanca. Full e-commerce site with 3 curated collections, AI-powered content management portal, and client self-service dashboard. Live at aylamaison.com.</p>
+        <div class="m-head-slug">gcn / 6 cities</div>
+        <div class="m-head-status lock"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg> ENCRYPTED</div>
       </div>
-      <div class="case-body">
-        <div class="case-metrics">
-          <div class="case-metric-item"><div class="case-metric-val">3</div><div class="case-metric-label">Collections</div></div>
-          <div class="case-metric-item"><div class="case-metric-val">9</div><div class="case-metric-label">Products</div></div>
-          <div class="case-metric-item"><div class="case-metric-val">Live</div><div class="case-metric-label">aylamaison.com</div></div>
-        </div>
-        <div class="case-tech">
-          <span>HTML/CSS/JS</span><span>GitHub Pages</span><span>SEO</span><span>Custom Domain</span><span>PageCrypt</span>
+      <div class="m-screen">
+        <span class="scan-line"></span>
+        <div class="w-city">
+          <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet">
+            <!-- Stylised world: just 6 dots with corridor lines -->
+            <g>
+              <!-- Corridors -->
+              <line class="city-link" x1="170" y1="60" x2="220" y2="80"/>
+              <line class="city-link" x1="170" y1="60" x2="135" y2="90"/>
+              <line class="city-link" x1="170" y1="60" x2="105" y2="50"/>
+              <line class="city-link" x1="135" y1="90" x2="150" y2="155"/>
+              <line class="city-link" x1="150" y1="155" x2="135" y2="180"/>
+              <line class="city-link" x1="220" y1="80" x2="150" y2="155"/>
+              <line class="city-link" x1="170" y1="60" x2="135" y2="180"/>
+            </g>
+            <!-- City nodes + labels -->
+            <g>
+              <circle class="city-ring" cx="170" cy="60" r="9"/>
+              <circle class="city-dot hi" cx="170" cy="60" r="3"/>
+              <text class="city-label" x="170" y="48" text-anchor="middle">CPH</text>
+            </g>
+            <g>
+              <circle class="city-ring" cx="220" cy="80" r="7"/>
+              <circle class="city-dot" cx="220" cy="80" r="2.5"/>
+              <text class="city-label" x="240" y="83">VIENNA</text>
+            </g>
+            <g>
+              <circle class="city-ring" cx="135" cy="90" r="7"/>
+              <circle class="city-dot" cx="135" cy="90" r="2.5"/>
+              <text class="city-label" x="100" y="93" text-anchor="end">PARIS</text>
+            </g>
+            <g>
+              <circle class="city-ring" cx="105" cy="50" r="7"/>
+              <circle class="city-dot" cx="105" cy="50" r="2.5"/>
+              <text class="city-label" x="73" y="53" text-anchor="end">LONDON</text>
+            </g>
+            <g>
+              <circle class="city-ring" cx="150" cy="155" r="7"/>
+              <circle class="city-dot" cx="150" cy="155" r="2.5"/>
+              <text class="city-label" x="170" y="158">CASA</text>
+            </g>
+            <g>
+              <circle class="city-ring" cx="135" cy="180" r="7"/>
+              <circle class="city-dot hi" cx="135" cy="180" r="3"/>
+              <text class="city-label" x="155" y="183">ACCRA</text>
+            </g>
+          </svg>
         </div>
       </div>
-      <div class="case-arrow"><span>View case study</span><span>&rarr;</span></div>
+      <div class="m-body">
+        <div class="m-tags">
+          <span class="m-tag accent">Network</span>
+          <span class="m-tag">Partnership</span>
+        </div>
+        <h2 class="m-title" itemprop="name">Global Creative Network</h2>
+        <p class="m-desc" itemprop="description">AI-powered creative infrastructure across 6 cities. Fair local pricing, smart systems built for underdogs. Encrypted brief.</p>
+        <div class="m-metrics">
+          <div class="m-metric"><span class="m-metric-v">6</span><span class="m-metric-l">Cities</span></div>
+          <div class="m-metric"><span class="m-metric-v">$25</span><span class="m-metric-l">From /mo</span></div>
+        </div>
+      </div>
+      <div class="m-tech"><span>AI Agents</span><span>Automation</span><span>MoMo</span><span>Fair Pricing</span></div>
+      <div class="m-foot"><span>Explore the network</span><span class="arrow">&rarr;</span></div>
     </a>
 
-    <!-- Global Creative Network (Mercy / partnership pitch - password-protected) -->
-    <a href="/case/" class="case-card-full network-card reveal" data-cat="network" itemscope itemtype="https://schema.org/CreativeWork">
-      <div class="status-badge encrypted">
-        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-        Encrypted
-      </div>
-      <div class="case-header">
-        <div class="case-tags">
-          <span class="case-tag-sm network">Network</span>
-          <span class="case-tag-sm design">Partnership</span>
+    <!-- LOOMGRAPH (platform) -->
+    <a href="/case-loomgraph/" class="monitor reveal" data-cat="software ai automation seo" style="--c1:#7c3aed;--c2:#E8A838;" itemscope itemtype="https://schema.org/SoftwareApplication">
+      <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      <div class="m-head">
+        <div class="m-head-left">
+          <span class="m-head-leds"><span class="on"></span><span class="on"></span><span></span></span>
+          MON-06
         </div>
-        <div class="case-icon" style="background:linear-gradient(135deg,#E8A838,#00C9A7);color:#0B1120;">&#9889;</div>
-        <h2 class="case-card-title" itemprop="name">Global Creative Network</h2>
-        <p class="case-card-desc" itemprop="description">AI-powered creative infrastructure across 6 cities. Fair local pricing, smart systems built for underdogs. Encrypted.</p>
+        <div class="m-head-slug">loomgraph / platform</div>
+        <div class="m-head-status amber"><span class="mc-led"></span> IN DESIGN</div>
       </div>
-      <div class="case-body">
-        <div class="case-metrics">
-          <div class="case-metric-item"><div class="case-metric-val">6</div><div class="case-metric-label">Cities</div></div>
-          <div class="case-metric-item"><div class="case-metric-val">$25</div><div class="case-metric-label">From /mo</div></div>
-        </div>
-        <div class="case-tech">
-          <span>AI Agents</span><span>Automation</span><span>MoMo</span><span>Fair Pricing</span>
+      <div class="m-screen">
+        <span class="scan-line"></span>
+        <div class="w-node-network">
+          <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet">
+            <!-- Layered graph: input → 5 agent roles → fan-out -->
+            <g>
+              <line class="nn-link" x1="40" y1="100" x2="160" y2="50"/>
+              <line class="nn-link" x1="40" y1="100" x2="160" y2="85"/>
+              <line class="nn-link" x1="40" y1="100" x2="160" y2="120"/>
+              <line class="nn-link" x1="40" y1="100" x2="160" y2="155"/>
+              <line class="nn-link" x1="40" y1="100" x2="160" y2="190"/>
+
+              <line class="nn-link" x1="160" y1="50" x2="280" y2="40"/>
+              <line class="nn-link" x1="160" y1="85" x2="280" y2="80"/>
+              <line class="nn-link" x1="160" y1="85" x2="280" y2="120"/>
+              <line class="nn-link" x1="160" y1="120" x2="280" y2="120"/>
+              <line class="nn-link" x1="160" y1="120" x2="280" y2="160"/>
+              <line class="nn-link" x1="160" y1="155" x2="280" y2="160"/>
+              <line class="nn-link" x1="160" y1="190" x2="280" y2="180"/>
+
+              <line class="nn-link" x1="280" y1="40" x2="360" y2="60"/>
+              <line class="nn-link" x1="280" y1="80" x2="360" y2="100"/>
+              <line class="nn-link" x1="280" y1="120" x2="360" y2="100"/>
+              <line class="nn-link" x1="280" y1="160" x2="360" y2="140"/>
+              <line class="nn-link" x1="280" y1="180" x2="360" y2="160"/>
+            </g>
+            <g>
+              <circle class="nn-node nn-node-alt" cx="40" cy="100" r="6"/>
+              <circle class="nn-node" cx="160" cy="50" r="4"/>
+              <circle class="nn-node" cx="160" cy="85" r="4"/>
+              <circle class="nn-node" cx="160" cy="120" r="4"/>
+              <circle class="nn-node" cx="160" cy="155" r="4"/>
+              <circle class="nn-node" cx="160" cy="190" r="4"/>
+              <circle class="nn-node" cx="280" cy="40" r="3"/>
+              <circle class="nn-node" cx="280" cy="80" r="3"/>
+              <circle class="nn-node" cx="280" cy="120" r="3"/>
+              <circle class="nn-node" cx="280" cy="160" r="3"/>
+              <circle class="nn-node" cx="280" cy="180" r="3"/>
+              <circle class="nn-node nn-node-alt" cx="360" cy="60" r="4"/>
+              <circle class="nn-node nn-node-alt" cx="360" cy="100" r="4"/>
+              <circle class="nn-node nn-node-alt" cx="360" cy="140" r="4"/>
+              <circle class="nn-node nn-node-alt" cx="360" cy="160" r="4"/>
+            </g>
+          </svg>
         </div>
       </div>
-      <div class="case-arrow"><span>Explore the network</span><span>&rarr;</span></div>
+      <div class="m-body">
+        <div class="m-tags">
+          <span class="m-tag accent">Agentic SEO</span>
+          <span class="m-tag">Portfolio Graph</span>
+          <span class="m-tag">New</span>
+        </div>
+        <h2 class="m-title" itemprop="name">Loomgraph</h2>
+        <p class="m-desc" itemprop="description">Agentic platform that auto-onboards any website, audits SEO, generates content briefs, and weaves a live internal-link graph across the full portfolio. Sits on ElektraOS runtime, pushes content through WordPress REST, Shopify GraphQL, Webflow, Ghost.</p>
+        <div class="m-metrics">
+          <div class="m-metric"><span class="m-metric-v">1</span><span class="m-metric-l">Onboarding step</span></div>
+          <div class="m-metric"><span class="m-metric-v">5</span><span class="m-metric-l">Agent roles</span></div>
+          <div class="m-metric"><span class="m-metric-v">N&times;N</span><span class="m-metric-l">Cross-link graph</span></div>
+        </div>
+      </div>
+      <div class="m-tech"><span>Python</span><span>FastAPI</span><span>ChromaDB</span><span>DSPy</span><span>n8n</span><span>Claude</span><span>WordPress REST</span><span>Shopify GraphQL</span></div>
+      <div class="m-foot"><span>View case study</span><span class="arrow">&rarr;</span></div>
     </a>
 
-    <!-- ROW 3: Thumbnail (6 col) + She&Elle (6 col) -->
-    <a href="/case-thumbnail-pipeline/" class="case-card-full reveal" data-cat="ai automation software" itemscope itemtype="https://schema.org/CreativeWork">
-      <div class="case-header">
-        <div class="case-tags">
-          <span class="case-tag-sm ai">AI Systems</span>
-          <span class="case-tag-sm ship">Active</span>
+    <!-- AI THUMBNAIL PIPELINE -->
+    <a href="/case-thumbnail-pipeline/" class="monitor reveal" data-cat="ai automation software" style="--c1:#7c3aed;--c2:#00d4ff;" itemscope itemtype="https://schema.org/CreativeWork">
+      <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      <div class="m-head">
+        <div class="m-head-left">
+          <span class="m-head-leds"><span class="on"></span><span class="on"></span><span></span></span>
+          MON-07
         </div>
-        <div class="case-icon" style="background:linear-gradient(135deg,#1a1a2e,#7c3aed);color:#00d4ff;">T</div>
-        <h2 class="case-card-title" itemprop="name">AI Thumbnail Pipeline</h2>
-        <p class="case-card-desc" itemprop="description">Multi-brand thumbnail generator with face consistency, JSON-structured prompts, and one-click approval. Generates platform-ready visuals in under 60 seconds.</p>
+        <div class="m-head-slug">thumbnail.pipeline</div>
+        <div class="m-head-status"><span class="mc-led"></span> ACTIVE</div>
       </div>
-      <div class="case-body">
-        <div class="case-metrics">
-          <div class="case-metric-item"><div class="case-metric-val">3</div><div class="case-metric-label">Brands</div></div>
-          <div class="case-metric-item"><div class="case-metric-val">5</div><div class="case-metric-label">Platforms</div></div>
-          <div class="case-metric-item"><div class="case-metric-val">&lt;60s</div><div class="case-metric-label">Per thumbnail</div></div>
-        </div>
-        <div class="case-tech">
-          <span>Python</span><span>FastAPI</span><span>HuggingFace FLUX.1</span><span>AI Engineering</span><span>JavaScript</span>
+      <div class="m-screen">
+        <span class="scan-line"></span>
+        <div class="w-mosaic">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
         </div>
       </div>
-      <div class="case-arrow"><span>View full case study</span><span>&rarr;</span></div>
+      <div class="m-body">
+        <div class="m-tags">
+          <span class="m-tag accent">AI Systems</span>
+          <span class="m-tag">Active</span>
+        </div>
+        <h2 class="m-title" itemprop="name">AI Thumbnail Pipeline</h2>
+        <p class="m-desc" itemprop="description">Multi-brand thumbnail generator with face consistency, JSON-structured prompts, and one-click approval. Generates platform-ready visuals in under 60 seconds.</p>
+        <div class="m-metrics">
+          <div class="m-metric"><span class="m-metric-v">3</span><span class="m-metric-l">Brands</span></div>
+          <div class="m-metric"><span class="m-metric-v">5</span><span class="m-metric-l">Platforms</span></div>
+          <div class="m-metric"><span class="m-metric-v">&lt;60s</span><span class="m-metric-l">Per thumbnail</span></div>
+        </div>
+      </div>
+      <div class="m-tech"><span>Python</span><span>FastAPI</span><span>HuggingFace FLUX.1</span><span>AI Engineering</span></div>
+      <div class="m-foot"><span>View full case study</span><span class="arrow">&rarr;</span></div>
     </a>
 
-    <a href="/case-sheandelle/" class="case-card-full reveal" data-cat="website" itemscope itemtype="https://schema.org/CreativeWork">
-      <div class="case-header">
-        <div class="case-tags">
-          <span class="case-tag-sm design">Design</span>
-          <span class="case-tag-sm ship">Active</span>
+    <!-- SHE&ELLE OF MOROCCO -->
+    <a href="/case-sheandelle/" class="monitor reveal" data-cat="website" style="--c1:#c4956a;--c2:#8b6d4f;" itemscope itemtype="https://schema.org/CreativeWork">
+      <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      <div class="m-head">
+        <div class="m-head-left">
+          <span class="m-head-leds"><span class="on"></span><span class="on"></span><span></span></span>
+          MON-08
         </div>
-        <div class="case-icon" style="background:linear-gradient(135deg,#c4956a,#8b6d4f);color:#fff;">S</div>
-        <h2 class="case-card-title" itemprop="name">She&amp;Elle of Morocco</h2>
-        <p class="case-card-desc" itemprop="description">Brand identity and WordPress site for a Moroccan-Scandinavian lifestyle brand. Custom theme, content strategy, and social media automation pipeline.</p>
+        <div class="m-head-slug">sheandelle.morocco</div>
+        <div class="m-head-status"><span class="mc-led"></span> ACTIVE</div>
       </div>
-      <div class="case-body">
-        <div class="case-metrics">
-          <div class="case-metric-item"><div class="case-metric-val">WordPress</div><div class="case-metric-label">Platform</div></div>
-          <div class="case-metric-item"><div class="case-metric-val">Custom</div><div class="case-metric-label">Theme</div></div>
-        </div>
-        <div class="case-tech">
-          <span>WordPress</span><span>GeneratePress</span><span>CSS</span><span>Content Strategy</span><span>Social Media</span>
+      <div class="m-screen">
+        <span class="scan-line"></span>
+        <div class="w-pattern">
+          <div class="overlay"><em>She</em> &amp; Elle</div>
         </div>
       </div>
-      <div class="case-arrow"><span>View case study</span><span>&rarr;</span></div>
+      <div class="m-body">
+        <div class="m-tags">
+          <span class="m-tag accent">Design</span>
+          <span class="m-tag">Active</span>
+        </div>
+        <h2 class="m-title" itemprop="name">She&amp;Elle of Morocco</h2>
+        <p class="m-desc" itemprop="description">Brand identity and WordPress site for a Moroccan-Scandinavian lifestyle brand. Custom theme, content strategy, and social media automation pipeline.</p>
+        <div class="m-metrics">
+          <div class="m-metric"><span class="m-metric-v">WordPress</span><span class="m-metric-l">Platform</span></div>
+          <div class="m-metric"><span class="m-metric-v">Custom</span><span class="m-metric-l">Theme</span></div>
+        </div>
+      </div>
+      <div class="m-tech"><span>WordPress</span><span>GeneratePress</span><span>CSS</span><span>Content Strategy</span><span>Social Media</span></div>
+      <div class="m-foot"><span>View case study</span><span class="arrow">&rarr;</span></div>
     </a>
 
-    <!-- ROW 4: 40th Brick (4 col) + MealShift (4 col) + Operations (4 col) -->
-    <a href="/case-40th-brick/" class="case-card-full reveal" data-cat="game software" itemscope itemtype="https://schema.org/CreativeWork">
-      <div class="case-header">
-        <div class="case-tags">
-          <span class="case-tag-sm game">Game</span>
-          <span class="case-tag-sm ship">Deployed</span>
+    <!-- 40TH BRICK -->
+    <a href="/case-40th-brick/" class="monitor reveal" data-cat="game software" style="--c1:#e05545;--c2:#f59e0b;" itemscope itemtype="https://schema.org/CreativeWork">
+      <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      <div class="m-head">
+        <div class="m-head-left">
+          <span class="m-head-leds"><span class="on"></span><span class="on"></span><span></span></span>
+          MON-09
         </div>
-        <div class="case-icon" style="background:linear-gradient(135deg,#e05545,#f59e0b);color:#fff;">40</div>
-        <h2 class="case-card-title" itemprop="name">The 40th Brick</h2>
-        <p class="case-card-desc" itemprop="description">Personalized interactive puzzle. 40 rooms, 4 chapters. Gamepad support for Steam Deck.</p>
+        <div class="m-head-slug">40th-brick / steam</div>
+        <div class="m-head-status"><span class="mc-led"></span> DEPLOYED</div>
       </div>
-      <div class="case-body">
-        <div class="case-metrics">
-          <div class="case-metric-item"><div class="case-metric-val">40</div><div class="case-metric-label">Rooms</div></div>
-          <div class="case-metric-item"><div class="case-metric-val">4</div><div class="case-metric-label">Chapters</div></div>
-        </div>
-        <div class="case-tech">
-          <span>Node.js</span><span>Socket.io</span><span>Gamepad API</span><span>Steam Deck</span>
+      <div class="m-screen">
+        <span class="scan-line"></span>
+        <div class="w-pixel" id="pixelBrick">
+          <!-- 20x6 = 120 cells, populated by JS -->
         </div>
       </div>
-      <div class="case-arrow"><span>View teaser</span><span>&rarr;</span></div>
+      <div class="m-body">
+        <div class="m-tags">
+          <span class="m-tag accent">Game</span>
+          <span class="m-tag">Deployed</span>
+        </div>
+        <h2 class="m-title" itemprop="name">The 40th Brick</h2>
+        <p class="m-desc" itemprop="description">Personalised interactive puzzle. 40 rooms, 4 chapters. Gamepad support for Steam Deck.</p>
+        <div class="m-metrics">
+          <div class="m-metric"><span class="m-metric-v">40</span><span class="m-metric-l">Rooms</span></div>
+          <div class="m-metric"><span class="m-metric-v">4</span><span class="m-metric-l">Chapters</span></div>
+        </div>
+      </div>
+      <div class="m-tech"><span>Node.js</span><span>Socket.io</span><span>Gamepad API</span><span>Steam Deck</span></div>
+      <div class="m-foot"><span>View teaser</span><span class="arrow">&rarr;</span></div>
     </a>
 
-    <a href="/casestudy/mealshift/" class="case-card-full reveal" data-cat="software api" itemscope itemtype="https://schema.org/CreativeWork">
-      <div class="status-badge encrypted">
-        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-        Encrypted
-      </div>
-      <div class="case-header">
-        <div class="case-tags">
-          <span class="case-tag-sm" style="background:rgba(24,163,0,0.1);color:#FF5362;">Active Build</span>
-          <span class="case-tag-sm infra">API</span>
-          <span class="case-tag-sm ship">Mobile</span>
+    <!-- MEALSHIFT -->
+    <a href="/casestudy/mealshift/" class="monitor reveal" data-cat="software api" style="--c1:#FF5362;--c2:#4ADE80;" itemscope itemtype="https://schema.org/CreativeWork">
+      <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      <div class="m-head">
+        <div class="m-head-left">
+          <span class="m-head-leds"><span class="on"></span><span class="on"></span><span></span></span>
+          MON-10
         </div>
-        <div class="case-icon" style="background:linear-gradient(135deg,#FF5362,#0d6600);color:#fff;">M</div>
-        <h2 class="case-card-title" itemprop="name">MealShift</h2>
-        <p class="case-card-desc" itemprop="description">UK food delivery platform. Multi-module Android codebase audit, build recovery, 17 crash fixes across client and driver apps. API docs portal with OpenAPI spec.</p>
+        <div class="m-head-slug">mealshift / android</div>
+        <div class="m-head-status lock"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg> ENCRYPTED</div>
       </div>
-      <div class="case-body">
-        <div class="case-metrics">
-          <div class="case-metric-item"><div class="case-metric-val">6</div><div class="case-metric-label">Modules</div></div>
-          <div class="case-metric-item"><div class="case-metric-val">17</div><div class="case-metric-label">Bugs fixed</div></div>
-          <div class="case-metric-item"><div class="case-metric-val">2</div><div class="case-metric-label">APKs shipped</div></div>
-        </div>
-        <div class="case-tech">
-          <span>Kotlin</span><span>Android SDK</span><span>Hilt</span><span>RxJava3</span><span>Retrofit</span><span>Firebase</span><span>OpenAPI 3.x</span><span>Claude Code</span>
+      <div class="m-screen">
+        <span class="scan-line"></span>
+        <div class="w-terminal">
+          <div class="t-stream">
+            <div class="t-row"><span class="t-tag">[brief]</span> mealshift / android workplan</div>
+            <div class="t-row"><span class="t-tag ok">[stack]</span> kotlin . android sdk . hilt</div>
+            <div class="t-row"><span class="t-tag ok">[stack]</span> rxjava3 . retrofit . firebase</div>
+            <div class="t-row"><span class="t-tag ok">[stack]</span> openapi 3.x . claude code</div>
+            <div class="t-row"><span class="t-tag">[scope]</span> modules . <span class="t-val">6</span></div>
+            <div class="t-row"><span class="t-tag">[scope]</span> bugs fixed . <span class="t-val">17</span></div>
+            <div class="t-row"><span class="t-tag">[scope]</span> apks shipped . <span class="t-val">2</span></div>
+            <div class="t-row"><span class="t-tag warn">[gate]</span> brief is password-protected</div>
+            <!-- duplicate for seamless scroll -->
+            <div class="t-row"><span class="t-tag">[brief]</span> mealshift / android workplan</div>
+            <div class="t-row"><span class="t-tag ok">[stack]</span> kotlin . android sdk . hilt</div>
+            <div class="t-row"><span class="t-tag ok">[stack]</span> rxjava3 . retrofit . firebase</div>
+            <div class="t-row"><span class="t-tag ok">[stack]</span> openapi 3.x . claude code</div>
+            <div class="t-row"><span class="t-tag">[scope]</span> modules . <span class="t-val">6</span></div>
+            <div class="t-row"><span class="t-tag">[scope]</span> bugs fixed . <span class="t-val">17</span></div>
+            <div class="t-row"><span class="t-tag">[scope]</span> apks shipped . <span class="t-val">2</span></div>
+            <div class="t-row"><span class="t-tag warn">[gate]</span> brief is password-protected</div>
+          </div>
         </div>
       </div>
-      <div class="case-arrow"><span>View workplan</span><span>&rarr;</span></div>
+      <div class="m-body">
+        <div class="m-tags">
+          <span class="m-tag accent">Active Build</span>
+          <span class="m-tag">API</span>
+          <span class="m-tag">Mobile</span>
+        </div>
+        <h2 class="m-title" itemprop="name">MealShift</h2>
+        <p class="m-desc" itemprop="description">UK food delivery platform. Multi-module Android codebase audit, build recovery, 17 crash fixes across client and driver apps. API docs portal with OpenAPI spec.</p>
+        <div class="m-metrics">
+          <div class="m-metric"><span class="m-metric-v">6</span><span class="m-metric-l">Modules</span></div>
+          <div class="m-metric"><span class="m-metric-v">17</span><span class="m-metric-l">Bugs fixed</span></div>
+          <div class="m-metric"><span class="m-metric-v">2</span><span class="m-metric-l">APKs shipped</span></div>
+        </div>
+      </div>
+      <div class="m-tech"><span>Kotlin</span><span>Android SDK</span><span>Hilt</span><span>RxJava3</span><span>Retrofit</span><span>Firebase</span><span>OpenAPI 3.x</span></div>
+      <div class="m-foot"><span>View workplan</span><span class="arrow">&rarr;</span></div>
     </a>
 
-    <div class="case-card-full reveal" data-cat="automation software" itemscope itemtype="https://schema.org/CreativeWork">
-      <div class="case-header">
-        <div class="case-tags">
-          <span class="case-tag-sm infra">Automation</span>
-          <span class="case-tag-sm ship">Production</span>
+    <!-- OPERATIONS SUITE (no href - internal) -->
+    <div class="monitor reveal" data-cat="automation software" style="--c1:#22D3EE;--c2:#7c3aed;" itemscope itemtype="https://schema.org/CreativeWork">
+      <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      <div class="m-head">
+        <div class="m-head-left">
+          <span class="m-head-leds"><span class="on"></span><span class="on"></span><span class="on"></span></span>
+          MON-11
         </div>
-        <div class="case-icon" style="background:linear-gradient(135deg,#00d4ff,#0a6e8a);color:#fff;">Op</div>
-        <h2 class="case-card-title" itemprop="name">Operations Suite</h2>
-        <p class="case-card-desc" itemprop="description">31 automation workflows. Invoice OCR, email digests, lead routing, content scheduling. Fully autonomous.</p>
+        <div class="m-head-slug">ops-suite / internal</div>
+        <div class="m-head-status"><span class="mc-led"></span> 24/7</div>
       </div>
-      <div class="case-body">
-        <div class="case-metrics">
-          <div class="case-metric-item"><div class="case-metric-val">31</div><div class="case-metric-label">Workflows</div></div>
-          <div class="case-metric-item"><div class="case-metric-val">24/7</div><div class="case-metric-label">Autonomous</div></div>
-        </div>
-        <div class="case-tech">
-          <span>n8n</span><span>Python</span><span>FastAPI</span><span>Cron</span><span>OCR</span>
+      <div class="m-screen">
+        <span class="scan-line"></span>
+        <div class="w-workflow">
+          <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet">
+            <!-- Workflow nodes -->
+            <g>
+              <line class="wf-link" x1="55" y1="60" x2="170" y2="60"/>
+              <line class="wf-link" x1="55" y1="100" x2="170" y2="100"/>
+              <line class="wf-link" x1="55" y1="140" x2="170" y2="140"/>
+              <line class="wf-link" x1="225" y1="60" x2="340" y2="80"/>
+              <line class="wf-link" x1="225" y1="100" x2="340" y2="100"/>
+              <line class="wf-link" x1="225" y1="140" x2="340" y2="120"/>
+              <path class="wf-flow" d="M 55 100 L 110 100" />
+              <path class="wf-flow" d="M 225 100 L 280 100" />
+            </g>
+            <g>
+              <rect class="wf-node" x="14" y="48" width="54" height="24" rx="2"/>
+              <text class="wf-label" x="41" y="63" text-anchor="middle">CRON</text>
+              <rect class="wf-node on" x="14" y="88" width="54" height="24" rx="2"/>
+              <text class="wf-label" x="41" y="103" text-anchor="middle">OCR</text>
+              <rect class="wf-node" x="14" y="128" width="54" height="24" rx="2"/>
+              <text class="wf-label" x="41" y="143" text-anchor="middle">PYTHON</text>
+
+              <rect class="wf-node" x="158" y="48" width="68" height="24" rx="2"/>
+              <text class="wf-label" x="192" y="63" text-anchor="middle">N8N</text>
+              <rect class="wf-node on" x="158" y="88" width="68" height="24" rx="2"/>
+              <text class="wf-label" x="192" y="103" text-anchor="middle">FASTAPI</text>
+              <rect class="wf-node" x="158" y="128" width="68" height="24" rx="2"/>
+              <text class="wf-label" x="192" y="143" text-anchor="middle">N8N</text>
+
+              <rect class="wf-node" x="324" y="68" width="56" height="24" rx="2"/>
+              <text class="wf-label" x="352" y="83" text-anchor="middle">31</text>
+              <rect class="wf-node on" x="324" y="98" width="56" height="24" rx="2"/>
+              <text class="wf-label" x="352" y="113" text-anchor="middle">WORKFLOWS</text>
+            </g>
+          </svg>
         </div>
       </div>
-      <div class="case-arrow"><span>Internal system</span><span>&rarr;</span></div>
+      <div class="m-body">
+        <div class="m-tags">
+          <span class="m-tag accent">Automation</span>
+          <span class="m-tag">Production</span>
+        </div>
+        <h2 class="m-title" itemprop="name">Operations Suite</h2>
+        <p class="m-desc" itemprop="description">31 automation workflows. Invoice OCR, email digests, lead routing, content scheduling. Fully autonomous.</p>
+        <div class="m-metrics">
+          <div class="m-metric"><span class="m-metric-v">31</span><span class="m-metric-l">Workflows</span></div>
+          <div class="m-metric"><span class="m-metric-v">24/7</span><span class="m-metric-l">Autonomous</span></div>
+        </div>
+      </div>
+      <div class="m-tech"><span>n8n</span><span>Python</span><span>FastAPI</span><span>Cron</span><span>OCR</span></div>
+      <div class="m-foot"><span>Internal system</span><span class="arrow">&#9679;</span></div>
     </div>
 
-    <a href="/case-kettering-montagu/" class="case-card-full reveal" data-cat="property advisory" itemscope itemtype="https://schema.org/CreativeWork">
-      <div class="status-badge encrypted">
-        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-        Encrypted
-      </div>
-      <div class="case-header">
-        <div class="case-tags">
-          <span class="case-tag-sm" style="background:rgba(0,46,91,0.10);color:#054993;">Property Strategy</span>
-          <span class="case-tag-sm ship">UK Client</span>
+    <!-- KETTERING MONTAGU -->
+    <a href="/case-kettering-montagu/" class="monitor reveal" data-cat="property advisory" style="--c1:#54a0ff;--c2:#fde428;" itemscope itemtype="https://schema.org/CreativeWork">
+      <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      <div class="m-head">
+        <div class="m-head-left">
+          <span class="m-head-leds"><span class="on"></span><span class="on"></span><span></span></span>
+          MON-12
         </div>
-        <div class="case-icon" style="background:linear-gradient(135deg,#054993,#fde428);color:#fff;">K</div>
-        <h2 class="case-card-title" itemprop="name">UK Residential Block - 8 Units</h2>
-        <p class="case-card-desc" itemprop="description">Mixed-strategy portfolio brief for a UK property principal: revenue-ranked outreach across council, contractor SA, NHS, and accessible-housing channels. Operator framing, tailored portfolios, verified contacts. Brief is password-protected.</p>
+        <div class="m-head-slug">kettering / 8 units</div>
+        <div class="m-head-status lock"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg> ENCRYPTED</div>
       </div>
-      <div class="case-body">
-        <div class="case-metrics">
-          <div class="case-metric-item"><div class="case-metric-val">8</div><div class="case-metric-label">Units</div></div>
-          <div class="case-metric-item"><div class="case-metric-val">20</div><div class="case-metric-label">Verified contacts</div></div>
-          <div class="case-metric-item"><div class="case-metric-val">9</div><div class="case-metric-label">Tailored pitches</div></div>
-        </div>
-        <div class="case-tech">
-          <span>Market research</span><span>Revenue model</span><span>Contact verification</span><span>SQLite</span><span>StaticCrypt AES-256</span>
+      <div class="m-screen">
+        <span class="scan-line"></span>
+        <div class="w-blueprint">
+          <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet">
+            <!-- Outline of an 8-unit block: rough split into 4 + 4 -->
+            <rect class="bp-line" x="20" y="20" width="360" height="160"/>
+            <line class="bp-line" x1="20" y1="100" x2="380" y2="100"/>
+            <line class="bp-line" x1="110" y1="20" x2="110" y2="100"/>
+            <line class="bp-line" x1="200" y1="20" x2="200" y2="100"/>
+            <line class="bp-line" x1="290" y1="20" x2="290" y2="100"/>
+            <line class="bp-line" x1="110" y1="100" x2="110" y2="180"/>
+            <line class="bp-line" x1="200" y1="100" x2="200" y2="180"/>
+            <line class="bp-line" x1="290" y1="100" x2="290" y2="180"/>
+            <!-- door arcs (suggestive) -->
+            <path class="bp-door" d="M 30 95 A 10 10 0 0 0 40 105"/>
+            <path class="bp-door" d="M 120 95 A 10 10 0 0 0 130 105"/>
+            <path class="bp-door" d="M 210 95 A 10 10 0 0 0 220 105"/>
+            <path class="bp-door" d="M 300 95 A 10 10 0 0 0 310 105"/>
+            <path class="bp-door" d="M 30 175 A 10 10 0 0 0 40 165"/>
+            <path class="bp-door" d="M 120 175 A 10 10 0 0 0 130 165"/>
+            <path class="bp-door" d="M 210 175 A 10 10 0 0 0 220 165"/>
+            <path class="bp-door" d="M 300 175 A 10 10 0 0 0 310 165"/>
+            <!-- unit labels -->
+            <text class="bp-label" x="65" y="65" text-anchor="middle">U1</text>
+            <text class="bp-label" x="155" y="65" text-anchor="middle">U2</text>
+            <text class="bp-label" x="245" y="65" text-anchor="middle">U3</text>
+            <text class="bp-label" x="335" y="65" text-anchor="middle">U4</text>
+            <text class="bp-label" x="65" y="145" text-anchor="middle">U5</text>
+            <text class="bp-label" x="155" y="145" text-anchor="middle">U6</text>
+            <text class="bp-label" x="245" y="145" text-anchor="middle">U7</text>
+            <text class="bp-label" x="335" y="145" text-anchor="middle">U8</text>
+          </svg>
         </div>
       </div>
-      <div class="case-arrow"><span>Open brief (password)</span><span>&rarr;</span></div>
+      <div class="m-body">
+        <div class="m-tags">
+          <span class="m-tag accent">Property Strategy</span>
+          <span class="m-tag">UK Client</span>
+        </div>
+        <h2 class="m-title" itemprop="name">UK Residential Block - 8 Units</h2>
+        <p class="m-desc" itemprop="description">Mixed-strategy portfolio brief for a UK property principal: revenue-ranked outreach across council, contractor SA, NHS, accessible-housing channels. Operator framing, tailored portfolios, verified contacts. Brief is password-protected.</p>
+        <div class="m-metrics">
+          <div class="m-metric"><span class="m-metric-v">8</span><span class="m-metric-l">Units</span></div>
+          <div class="m-metric"><span class="m-metric-v">20</span><span class="m-metric-l">Verified contacts</span></div>
+          <div class="m-metric"><span class="m-metric-v">9</span><span class="m-metric-l">Tailored pitches</span></div>
+        </div>
+      </div>
+      <div class="m-tech"><span>Market research</span><span>Revenue model</span><span>Contact verification</span><span>SQLite</span><span>StaticCrypt AES-256</span></div>
+      <div class="m-foot"><span>Open brief (password)</span><span class="arrow">&rarr;</span></div>
     </a>
 
-    <!-- Project N - NERVE GRID (vague teaser) -->
-    <div class="case-card-full reveal" data-cat="ai software" style="background:linear-gradient(135deg,rgba(13,17,23,0.95),rgba(124,58,237,0.03));border-color:rgba(124,58,237,0.12);">
-      <div class="case-header">
-        <div class="case-tags">
-          <span class="case-tag-sm ai" style="background:rgba(124,58,237,0.15);">Classified</span>
-          <span class="case-tag-sm" style="background:rgba(0,212,255,0.06);color:var(--cyan);">In Development</span>
+    <!-- PROJECT N (classified) -->
+    <div class="monitor reveal" data-cat="ai software" style="--c1:#A78BFA;--c2:#22D3EE;" itemscope itemtype="https://schema.org/CreativeWork">
+      <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      <div class="m-head">
+        <div class="m-head-left">
+          <span class="m-head-leds"><span class="on"></span><span></span><span></span></span>
+          MON-13
         </div>
-        <div class="case-icon" style="background:linear-gradient(135deg,#0d1117,#7c3aed);color:#00d4ff;font-size:14px;">N</div>
-        <h2 class="case-card-title">Project N</h2>
-        <p class="case-card-desc">Real-time augmented intelligence layer. Desktop-native. Autonomous agent monitoring with holographic overlay. Details classified.</p>
+        <div class="m-head-slug">project-n / [REDACTED]</div>
+        <div class="m-head-status violet"><span class="mc-led"></span> CLASSIFIED</div>
       </div>
-      <div class="case-body">
-        <div class="case-metrics">
-          <div class="case-metric-item"><div class="case-metric-val" style="color:var(--purple);">41</div><div class="case-metric-label">Agents monitored</div></div>
-          <div class="case-metric-item"><div class="case-metric-val" style="color:var(--purple);">Live</div><div class="case-metric-label">Status</div></div>
-        </div>
-        <div class="case-tech">
-          <span>Electron</span><span>Three.js</span><span>WebGPU</span><span>SSE</span><span>Holographic</span>
+      <div class="m-screen">
+        <span class="scan-line"></span>
+        <div class="w-glitch">
+          <div class="gl-row"><span class="gl-block w1"></span><span class="gl-block w3"></span></div>
+          <div class="gl-row"><span class="gl-block w2"></span><span class="gl-block w4"></span><span class="gl-block w1"></span></div>
+          <div class="gl-row"><span class="gl-block w3"></span><span class="gl-block w2"></span></div>
+          <div class="gl-row"><span class="gl-block w1"></span><span class="gl-block w4"></span><span class="gl-block w2"></span></div>
         </div>
       </div>
-      <div class="case-arrow" style="color:var(--purple);"><span>Coming soon</span><span>&#9679;</span></div>
+      <div class="m-body">
+        <div class="m-tags">
+          <span class="m-tag accent">Classified</span>
+          <span class="m-tag">In Development</span>
+        </div>
+        <h2 class="m-title">Project N</h2>
+        <p class="m-desc">Real-time augmented intelligence layer. Desktop-native. Autonomous agent monitoring with holographic overlay. Details classified.</p>
+        <div class="m-metrics">
+          <div class="m-metric"><span class="m-metric-v">41</span><span class="m-metric-l">Agents monitored</span></div>
+          <div class="m-metric"><span class="m-metric-v">Live</span><span class="m-metric-l">Status</span></div>
+        </div>
+      </div>
+      <div class="m-tech"><span>Electron</span><span>Three.js</span><span>WebGPU</span><span>SSE</span><span>Holographic</span></div>
+      <div class="m-foot"><span>Coming soon</span><span class="arrow">&#9679;</span></div>
     </div>
 
   </div>
 
   <!-- Subtle architecture hint -->
-  <div style="max-width:900px;margin:0 auto;padding:0 24px;">
-    <div class="reveal" style="padding:20px 24px;border-left:2px solid var(--green);background:rgba(0,255,157,0.02);border-radius:0 8px 8px 0;">
-      <p style="font-size:12px;color:var(--text-muted);line-height:1.7;margin:0;font-family:var(--font-mono);">
-        Project statuses update automatically. A tracker agent monitors <span style="color:var(--green);">6 repositories</span> and feeds progress data through the content pipeline.
-      </p>
+  <div class="mc-note">
+    <div class="mc-note-inner">
+      // <b>tracker agent</b> monitors <em>6 repositories</em> and feeds progress data through the content pipeline.
+      Project statuses on this page update automatically.
     </div>
   </div>
 
   <!-- CTA -->
-  <div class="cases-cta reveal">
-    <h3 style="margin-bottom:8px;">Every project here is production code.</h3>
-    <p style="color:var(--text-secondary);font-size:14px;max-width:480px;margin:0 auto 24px;">Open for projects, co-builds, and partnerships. If you need something engineered, let's talk.</p>
-    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-      <a href="/#contact" class="btn btn-primary">Start a Project</a>
-      <a href="/log/" class="btn btn-outline">View Build Log</a>
+  <div class="mc-cta">
+    <div class="mc-cta-inner">
+      <h3>Every project here is production code.</h3>
+      <p>Open for projects, co-builds, and partnerships. If you need something engineered, let's talk.</p>
+      <div class="mc-cta-btns">
+        <a href="/#contact" class="mc-btn mc-btn-primary">Start a project &rarr;</a>
+        <a href="/log/" class="mc-btn mc-btn-ghost">View build log</a>
+      </div>
     </div>
   </div>
 
@@ -656,7 +1703,6 @@
         </button>
       </div>
     </div>
-    <!-- 3D Living Sigil as chat toggle -->
     <div id="sigil3d" class="chat-toggle" style="width:70px;height:70px;padding:0;border:none;background:rgba(13,17,23,0.6);backdrop-filter:blur(8px);overflow:hidden;border-radius:18px;"></div>
     <button id="chatToggle" style="display:none;"></button>
   </div>
@@ -666,19 +1712,69 @@
   <script src="../js/sigil3d.js"></script>
   <script src="../js/app.js"></script>
   <script>
-  function filterCases(cat) {
-    var cards = document.querySelectorAll('.case-card-full[data-cat]');
-    var btns = document.querySelectorAll('.cat-btn');
-    btns.forEach(function(b) { b.classList.remove('active'); });
-    event.target.classList.add('active');
-    cards.forEach(function(c) {
-      if (cat === 'all' || c.getAttribute('data-cat').indexOf(cat) !== -1) {
-        c.classList.remove('hidden');
-      } else {
-        c.classList.add('hidden');
+    // ===== Channel filter =====
+    (function(){
+      var monitors = document.querySelectorAll('.monitor[data-cat]');
+      var btns = document.querySelectorAll('.mc-channel');
+      btns.forEach(function(b){
+        b.addEventListener('click', function(){
+          btns.forEach(function(x){ x.classList.remove('active'); });
+          b.classList.add('active');
+          var cat = b.getAttribute('data-cat');
+          monitors.forEach(function(m){
+            if (cat === 'all' || m.getAttribute('data-cat').indexOf(cat) !== -1) {
+              m.classList.remove('hidden');
+            } else {
+              m.classList.add('hidden');
+            }
+          });
+        });
+      });
+    })();
+
+    // ===== Populate ElektraOS agent grid (41 dots = 41 agents, the actual count) =====
+    (function(){
+      var grid = document.getElementById('agentGrid');
+      if (!grid) return;
+      for (var i=0; i<41; i++) {
+        var d = document.createElement('i');
+        // every dot is "live" - they ARE the 41 agents
+        d.className = 'live';
+        grid.appendChild(d);
       }
+    })();
+
+    // ===== Populate 40th Brick pixel grid =====
+    (function(){
+      var grid = document.getElementById('pixelBrick');
+      if (!grid) return;
+      // Create a "40" written in pixels (very stylised)
+      // 20 cols x 6 rows = 120 cells
+      var pattern = [
+        // row 0
+        '..XX....XX...XXXX...',
+        '.X..X..X..X.X....X..',
+        '.X..X..X..X......X..',
+        '.X..X..X..X..XXXXX..',
+        '.X..X..X..X.X.......',
+        '..XX....XX..XXXXXXXX'
+      ];
+      for (var r=0; r<6; r++) {
+        for (var c=0; c<20; c++) {
+          var ch = pattern[r][c];
+          var d = document.createElement('i');
+          if (ch === 'X') d.className = (c+r) % 3 === 0 ? 'on2' : 'on';
+          grid.appendChild(d);
+        }
+      }
+    })();
+
+    // ===== Nav hamburger =====
+    var hb = document.getElementById('navHamburger'),
+        nl = document.getElementById('navLinks');
+    if (hb) hb.addEventListener('click', function(){
+      nl.classList.toggle('open'); hb.classList.toggle('open');
     });
-  }
   </script>
   <script src="/js/i18n.js" defer></script>
   <script src="/js/tracker.js" defer></script>
