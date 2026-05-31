@@ -6,9 +6,9 @@
 (function(){
   'use strict';
 
-  var SUPPORTED = ['en','da','de','fr','it','nl','se','ma'];
-  var LABELS = {en:'EN',da:'DA',de:'DE',fr:'FR',it:'IT',nl:'NL',se:'SE',ma:'MA'};
-  var NAMES = {en:'English',da:'Dansk',de:'Deutsch',fr:'Fran\u00E7ais',it:'Italiano',nl:'Nederlands',se:'Svenska',ma:'Darija'};
+  var SUPPORTED = ['en','da','de','fr','it','nl','se','ma','tn'];
+  var LABELS = {en:'EN',da:'DA',de:'DE',fr:'FR',it:'IT',nl:'NL',se:'SE',ma:'MA',tn:'TN'};
+  var NAMES = {en:'English',da:'Dansk',de:'Deutsch',fr:'Fran\u00E7ais',it:'Italiano',nl:'Nederlands',se:'Svenska',ma:'Darija',tn:'Tounsi'};
 
   function getCurrentLang(){
     var path = window.location.pathname;
