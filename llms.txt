@@ -1,20 +1,31 @@
 # ElektraOS.dev - AI engineering and automation studio
 
-> Independent studio run by Yossra Benzad, a full-stack engineer based in London. Custom SaaS, AI systems, automation, and websites - precision-engineered solutions from concept to production.
+> Independent studio run by Yossra Benzad, a full-stack engineer based in London. Custom SaaS, AI systems, automation, and websites - precision-engineered from concept to production for clients across 9 markets (UK, Ghana, Morocco, Denmark, Germany, Netherlands, Sweden, France, Italy). Transparent pricing: AI chatbots from $500, workflow automation from $300, SEO from $400, web design from $500. A dedicated SMB track serves companies under 50 employees with fixed pricing and EU AI Act compliance support. Everything shipped is real, deployed, production-grade code - no templates.
 
-## Key pages
+## Services
 
-- [Home](https://elektraos.dev/): Overview of services and approach
-- [About](https://elektraos.dev/about/): Who builds this and how
-- [Pricing](https://elektraos.dev/pricing/): Scoped pricing for chatbots, automation, SEO, and web design
 - [AI Chatbot](https://elektraos.dev/chatbot/): Custom chatbots trained on your data, multi-language, with lead capture
 - [AI Automation](https://elektraos.dev/automation/): Workflow automation - invoice parsing, email routing, CRM updates, lead scoring
-- [SEO Optimization](https://elektraos.dev/seo/): Technical SEO audits, Core Web Vitals, schema markup, content optimization
+- [SEO Optimization](https://elektraos.dev/seo/): Technical SEO audits, Core Web Vitals, schema markup, AI-search visibility
 - [Web Design](https://elektraos.dev/design/): Responsive websites built from scratch, mobile-first and SEO-ready
-- [Free Performance Diagnostic](https://elektraos.dev/audit/): Free website performance audit
-- [Case Studies](https://elektraos.dev/cases/): Detailed breakdowns of shipped production projects
-- [Blog](https://elektraos.dev/blog/): Articles on AI, automation, and web engineering
+- [Pricing](https://elektraos.dev/pricing/): Transparent pricing with a live project configurator
+- [Free Performance Diagnostic](https://elektraos.dev/audit/): Instant website performance score, no signup
+
+## For SMB
+
+- [SMB Home](https://elektraos.dev/smb/): AI, automation and data infrastructure for companies under 50 employees. Fixed pricing, fast onboarding
+- [EU AI Act Compliance](https://elektraos.dev/smb/compliance/): Annex IV dossier preparation
+- [SMB Pricing](https://elektraos.dev/smb/pricing/): Fair, market-adjusted rates
+
+## Proof
+
+- [Case Studies](https://elektraos.dev/cases/): Live status across 13 shipped production projects
+- [ElektraOS](https://elektraos.dev/case-elektraos/): Cognitive operating system - 184K+ lines, 41 agents, 624 endpoints
+- [AYLA Luxury](https://elektraos.dev/case-ayla/): Live luxury jewelry e-commerce with AI-visibility audit, 100/100 AI-readability, WhatsApp ordering
+- [Loomgraph](https://elektraos.dev/case-loomgraph/): Agentic platform for SEO audits, content briefs, and live internal-link graphs
+- [Loomgraph Society](https://elektraos.dev/loomgraph-society/): A hub of websites that grow together through compliant cross-linking
 - [Build Log](https://elektraos.dev/log/): Running engineering log of what gets shipped
+- [Blog](https://elektraos.dev/blog/): Articles on AI, automation, and web engineering
 
 ## Languages
 
@@ -22,4 +33,5 @@ Content is available in 11 locales: English (default), Danish (/da/), German (/d
 
 ## Contact
 
-- Email: yossra.benzad@gmail.com
+- Email: benzad.yossra@gmail.com (replies within 24 hours)
+- Location: London, United Kingdom. Remote worldwide.
