@@ -28,7 +28,7 @@
         '--',
         'Sent from ' + window.location.href
       ];
-      var mailto = 'mailto:yossra.benzad@gmail.com'
+      var mailto = 'mailto:benzad.yossra@gmail.com'
         + '?subject=' + encodeURIComponent(subject)
         + '&body=' + encodeURIComponent(lines.join('\n'));
       window.location.href = mailto;
