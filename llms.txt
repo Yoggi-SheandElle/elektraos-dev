@@ -1,0 +1,25 @@
+# ElektraOS.dev - AI engineering and automation studio
+
+> Independent studio run by Yossra Benzad, a full-stack engineer based in London. Custom SaaS, AI systems, automation, and websites - precision-engineered solutions from concept to production.
+
+## Key pages
+
+- [Home](https://elektraos.dev/): Overview of services and approach
+- [About](https://elektraos.dev/about/): Who builds this and how
+- [Pricing](https://elektraos.dev/pricing/): Scoped pricing for chatbots, automation, SEO, and web design
+- [AI Chatbot](https://elektraos.dev/chatbot/): Custom chatbots trained on your data, multi-language, with lead capture
+- [AI Automation](https://elektraos.dev/automation/): Workflow automation - invoice parsing, email routing, CRM updates, lead scoring
+- [SEO Optimization](https://elektraos.dev/seo/): Technical SEO audits, Core Web Vitals, schema markup, content optimization
+- [Web Design](https://elektraos.dev/design/): Responsive websites built from scratch, mobile-first and SEO-ready
+- [Free Performance Diagnostic](https://elektraos.dev/audit/): Free website performance audit
+- [Case Studies](https://elektraos.dev/cases/): Detailed breakdowns of shipped production projects
+- [Blog](https://elektraos.dev/blog/): Articles on AI, automation, and web engineering
+- [Build Log](https://elektraos.dev/log/): Running engineering log of what gets shipped
+
+## Languages
+
+Content is available in 11 locales: English (default), Danish (/da/), German (/de/), French (/fr/), Italian (/it/), Dutch (/nl/), Swedish (/se/), Arabic for Morocco (/ma/), English for Ghana (/gh/), English for the UK (/uk/), and French for Tunisia (/tn/).
+
+## Contact
+
+- Email: yossra.benzad@gmail.com

@@ -17,6 +17,8 @@
   <link rel="alternate" hreflang="da" href="https://elektraos.dev/da/log/">
   <link rel="alternate" hreflang="fr" href="https://elektraos.dev/fr/log/">
   <link rel="alternate" hreflang="it" href="https://elektraos.dev/it/log/">
+  <link rel="alternate" hreflang="ar-MA" href="https://elektraos.dev/ma/log/">
+  <link rel="alternate" hreflang="fr-TN" href="https://elektraos.dev/tn/log/">
   <link rel="alternate" hreflang="x-default" href="https://elektraos.dev/log/">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 
@@ -286,6 +288,75 @@
 
   <!-- Feed -->
   <div class="log-feed">
+
+    <!-- ===== June 11, 2026 - AYLA Maison AI-visibility elevation + owner self-publish portal ===== -->
+    <article class="log-entry reveal" itemscope itemtype="https://schema.org/TechArticle">
+      <meta itemprop="datePublished" content="2026-06-11">
+      <meta itemprop="author" content="ElektraOS.dev">
+      <div class="log-date">
+        <time datetime="2026-06-11">June 11, 2026</time>
+        <span style="margin-left:12px;padding:2px 8px;border-radius:4px;background:rgba(0,255,157,0.1);color:var(--green);font-size:10px;">Shipped</span>
+        <span style="margin-left:6px;padding:2px 8px;border-radius:4px;background:rgba(212,168,83,0.1);color:#d4a853;font-size:10px;">Client</span>
+        <span style="margin-left:6px;padding:2px 8px;border-radius:4px;background:rgba(124,58,237,0.1);color:#a78bfa;font-size:10px;">AEO</span>
+      </div>
+      <h2 class="log-title" itemprop="headline">AYLA Maison elevated for AI shoppers: 81.7 to 100.0 AI-readability, 37 to 82 agent-readiness, owner self-publish portal</h2>
+      <p class="log-desc" itemprop="description">Two commits to the AYLA repo (d0ed539, 8bf9e70). A Citetome audit of the live aylamaison.com scored 81.7/100 on AI-readability and 37/100 on agent-readiness: an AI assistant could describe the brand, but an agent could not read a single price. The fixes shipped the same day - JSON-LD Organization, JewelryStore, and WebSite nodes, Product and Offer nodes with MAD prices, llms.txt, AI crawler directives in robots.txt, and a products.json machine feed. Re-audit through the same engine: 100.0/100 AI-readability, 82/100 agent-readiness. Same session: WhatsApp ordering and an owner self-publish portal - a manage page that commits content through the GitHub API via api.citetome.com - built and shipping imminently. The luxury design layer stayed untouched.</p>
+      <ul class="log-items">
+        <li>Citetome baseline audit of the live site: 81.7/100 AI-readability, 37/100 agent-readiness</li>
+        <li>JSON-LD shipped: Organization, JewelryStore, WebSite nodes plus Product and Offer nodes with MAD prices on the homepage (d0ed539, 8bf9e70)</li>
+        <li>llms.txt published plus AI crawler directives in robots.txt - agents now know what they may read</li>
+        <li>products.json machine-readable feed: the full catalog parseable without scraping the DOM</li>
+        <li>Re-audit after fixes: 100.0/100 AI-readability, 82/100 agent-readiness</li>
+        <li>WhatsApp ordering wired for direct customer orders</li>
+        <li>Owner self-publish portal built: manage page commits through the GitHub API via api.citetome.com, so the owner updates products without touching code - shipping imminently</li>
+        <li>Zero visual changes: the site design was not touched</li>
+      </ul>
+      <div class="log-tech">
+        <span>JSON-LD</span><span>schema.org</span><span>llms.txt</span><span>robots.txt</span><span>products.json</span><span>GitHub API</span><span>api.citetome.com</span><span>WhatsApp</span><span>GitHub Pages</span>
+      </div>
+      <div class="log-metrics">
+        <span class="log-metric">AI-readability: <strong>81.7 -&gt; 100.0</strong></span>
+        <span class="log-metric">Agent-readiness: <strong>37 -&gt; 82</strong></span>
+        <span class="log-metric">Commits: <strong>2</strong></span>
+        <span class="log-metric">Design changes: <strong>0</strong></span>
+      </div>
+    </article>
+
+    <!-- ===== June 10, 2026 - Citetome launch hardening + Danish AI Visibility Index ===== -->
+    <article class="log-entry reveal" itemscope itemtype="https://schema.org/TechArticle">
+      <meta itemprop="datePublished" content="2026-06-10">
+      <meta itemprop="author" content="ElektraOS.dev">
+      <div class="log-date">
+        <time datetime="2026-06-10">June 10, 2026</time>
+        <span style="margin-left:12px;padding:2px 8px;border-radius:4px;background:rgba(0,255,157,0.1);color:var(--green);font-size:10px;">Shipped</span>
+        <span style="margin-left:6px;padding:2px 8px;border-radius:4px;background:rgba(124,58,237,0.1);color:#a78bfa;font-size:10px;">Launch</span>
+        <span style="margin-left:6px;padding:2px 8px;border-radius:4px;background:rgba(0,212,255,0.1);color:var(--cyan);font-size:10px;">Citetome</span>
+      </div>
+      <h2 class="log-title" itemprop="headline">Citetome launch hardening: six automated checks, 228 tests green, EN/DA/FR, and the Danish AI Visibility Index</h2>
+      <p class="log-desc" itemprop="description">Ten commits in one day across citetome.com and the api.citetome.com backend. The audit engine now runs six automated checks - HTML/AEO, schema, PageSpeed, CrUX, AI citation, agent readiness - with 228 backend tests passing. Monthly visibility reports shipped, and Resend email is live in both directions: outbound report delivery plus an inbound webhook. The marketing site gained Danish and French locale pages, the Tome logo mark across favicon, nav, customer console, and report headers, a full sub-processor disclosure with claim corrections, and live Cal.com booking at cal.com/citetome/audit-walkthrough. Governance pact v2 signed; LinkedIn company page live. And the first benchmark dataset landed: the Danish AI Visibility Index, 38 Danish SMB sites audited across 5 verticals, anonymized.</p>
+      <ul class="log-items">
+        <li>Six automated audit checks: HTML/AEO, schema, PageSpeed, CrUX, AI citation, agent readiness (fb0588e, 07ea490)</li>
+        <li>228 backend tests passing</li>
+        <li>Monthly visibility reports shipped (07ea490)</li>
+        <li>Resend email both directions: outbound delivery plus inbound webhook with archived Index evidence snapshot (7861607)</li>
+        <li>Danish and French locale pages for index, pricing, and audit (6960d5a), plus a copy honesty pass, hreflang, expanded sitemap and llms.txt (fae3b44)</li>
+        <li>Tome logo brand rollout: favicon and nav on the marketing site (168d031), customer console and report headers on the backend (3757403)</li>
+        <li>Legal: full sub-processor disclosure and claim corrections across EN/DA/FR (6217c60)</li>
+        <li>Cal.com booking live: cal.com/citetome/audit-walkthrough wired into audit and pricing pages (01979eb)</li>
+        <li>Governance pact v2 signed; LinkedIn company page live at linkedin.com/company/citetome</li>
+        <li>Danish AI Visibility Index (June 2026): 38 SMB sites across 5 verticals - avg AI-visibility 83/100, avg agent-readiness 48/100, 26% have llms.txt, 0 of 38 publish structured prices, availability, or hours</li>
+      </ul>
+      <div class="log-tech">
+        <span>Python</span><span>FastAPI</span><span>pytest</span><span>Resend</span><span>Cal.com</span><span>hreflang</span><span>llms.txt</span><span>Fly.io</span><span>GitHub Pages</span>
+      </div>
+      <div class="log-metrics">
+        <span class="log-metric">Automated checks: <strong>6</strong></span>
+        <span class="log-metric">Backend tests: <strong>228 passing</strong></span>
+        <span class="log-metric">Locales live: <strong>3</strong> (EN/DA/FR)</span>
+        <span class="log-metric">Index sites audited: <strong>38</strong></span>
+        <span class="log-metric">Commits: <strong>10</strong></span>
+      </div>
+    </article>
 
     <!-- ===== May 30, 2026 - /case/ restructure + Vienna Artists case study + Mission Control redesign ===== -->
     <article class="log-entry reveal" itemscope itemtype="https://schema.org/TechArticle">

@@ -13,6 +13,8 @@
   if (!toggle) return;
 
   // ── Config ──
+  // Live API is local-dev only; production goes straight to the FAQ fallback.
+  var IS_LOCAL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
   var API_URL = 'http://localhost:8000/public/chat';
   var SESSION_ID = localStorage.getItem('elektra_session') || ('s_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6));
   localStorage.setItem('elektra_session', SESSION_ID);
@@ -53,8 +55,10 @@
     }
   }
 
-  checkApi();
-  setInterval(checkApi, 30000);
+  if (IS_LOCAL) {
+    checkApi();
+    setInterval(checkApi, 30000);
+  }
 
   // ── Local FAQ fallback ──
   var FAQ = {

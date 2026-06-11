@@ -1,16 +1,17 @@
 // ===== ELEKTRA SITE TRACKER =====
 // Lightweight async visitor tracking for elektraos.dev
-// Sends page views + key events to ElektraOS backend.
-// Non-blocking. Falls back silently if endpoint offline.
-// Privacy: IPs are hashed server-side. No PII collected.
+// Local development only: posts to a localhost endpoint when the site
+// runs on localhost. In production this script is a no-op (analytics
+// is handled by Umami). Non-blocking, no PII collected.
 
 (function () {
   'use strict';
 
   // ── Config ──────────────────────────────────────────────────────────────
-  // Cloudflare quick tunnel - update when restarted (run: cloudflared tunnel --url http://localhost:8000)
-  var TRACKER_URL = 'https://duration-extent-remark-maryland.trycloudflare.com/public/track';
-  // Fallback: set via window.ELEKTRA_TRACKER_URL before this script loads
+  // Only active on localhost. In production send() returns immediately.
+  var IS_LOCAL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+  var TRACKER_URL = 'http://localhost:8000/public/track';
+  // Override: set via window.ELEKTRA_TRACKER_URL before this script loads
   if (window.ELEKTRA_TRACKER_URL) TRACKER_URL = window.ELEKTRA_TRACKER_URL;
 
   var SESSION_KEY = 'ek_sid';
@@ -65,6 +66,7 @@
 
   // ── Send beacon ──────────────────────────────────────────────────────────
   function send(payload) {
+    if (!IS_LOCAL) return; // production no-op
     try {
       var body = JSON.stringify(payload);
       if (navigator.sendBeacon) {

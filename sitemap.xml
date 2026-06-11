@@ -1,312 +1,688 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
-
-  <!-- Homepage -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://elektraos.dev/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://elektraos.dev/"/>
-    <xhtml:link rel="alternate" hreflang="da" href="https://elektraos.dev/da/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://elektraos.dev/de/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://elektraos.dev/fr/"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://elektraos.dev/it/"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://elektraos.dev/nl/"/>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://elektraos.dev/se/"/>
-    <xhtml:link rel="alternate" hreflang="ar-MA" href="https://elektraos.dev/ma/"/>
-    <xhtml:link rel="alternate" hreflang="en-GH" href="https://elektraos.dev/gh/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://elektraos.dev/"/>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-21</lastmod>
     <priority>1.0</priority>
   </url>
-
-  <!-- Loomgraph Society (new, hub of interconnected member sites) -->
   <url>
-    <loc>https://elektraos.dev/loomgraph-society/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://elektraos.dev/loomgraph-society/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://elektraos.dev/loomgraph-society/"/>
-    <lastmod>2026-04-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-
-  <!-- ElektraOS for SMB (vertical, under 50 employees) -->
-  <url>
-    <loc>https://elektraos.dev/smb/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://elektraos.dev/smb/"/>
-    <xhtml:link rel="alternate" hreflang="da" href="https://elektraos.dev/da/smb/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://elektraos.dev/de/smb/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://elektraos.dev/fr/smb/"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://elektraos.dev/it/smb/"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://elektraos.dev/nl/smb/"/>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://elektraos.dev/se/smb/"/>
-    <xhtml:link rel="alternate" hreflang="ar-MA" href="https://elektraos.dev/ma/smb/"/>
-    <xhtml:link rel="alternate" hreflang="en-GH" href="https://elektraos.dev/gh/smb/"/>
-    <xhtml:link rel="alternate" hreflang="en-GB" href="https://elektraos.dev/uk/smb/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://elektraos.dev/smb/"/>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://elektraos.dev/smb/pricing/</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://elektraos.dev/smb/compliance/</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://elektraos.dev/smb/governance/</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://elektraos.dev/smb/hubs/</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://elektraos.dev/smb/bcorp/</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://elektraos.dev/about/</loc>
+    <lastmod>2026-05-21</lastmod>
     <priority>0.8</priority>
   </url>
-
-  <!-- New locale roots -->
   <url>
-    <loc>https://elektraos.dev/de/</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://elektraos.dev/nl/</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://elektraos.dev/se/</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <!-- UK anchor -->
-  <url>
-    <loc>https://elektraos.dev/uk/</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://elektraos.dev/uk/smb/</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Ghana subpages -->
-  <url>
-    <loc>https://elektraos.dev/gh/smb/</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://elektraos.dev/gh/about/</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-  </url>
-  <url>
-    <loc>https://elektraos.dev/gh/cases/</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Loomgraph case study -->
-  <url>
-    <loc>https://elektraos.dev/case-loomgraph/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://elektraos.dev/case-loomgraph/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://elektraos.dev/case-loomgraph/"/>
-    <lastmod>2026-04-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Vienna Artists case study (project framing; first artist withheld) -->
-  <url>
-    <loc>https://elektraos.dev/casestudy/vienna-artists/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://elektraos.dev/casestudy/vienna-artists/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://elektraos.dev/casestudy/vienna-artists/"/>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <!-- High-traffic content pages -->
-  <url>
-    <loc>https://elektraos.dev/cases/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://elektraos.dev/cases/"/>
-    <xhtml:link rel="alternate" hreflang="da" href="https://elektraos.dev/da/cases/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://elektraos.dev/fr/cases/"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://elektraos.dev/it/cases/"/>
-    <lastmod>2026-03-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://elektraos.dev/blog/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://elektraos.dev/blog/"/>
-    <xhtml:link rel="alternate" hreflang="da" href="https://elektraos.dev/da/blog/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://elektraos.dev/fr/blog/"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://elektraos.dev/it/blog/"/>
-    <lastmod>2026-03-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://elektraos.dev/log/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://elektraos.dev/log/"/>
-    <xhtml:link rel="alternate" hreflang="da" href="https://elektraos.dev/da/log/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://elektraos.dev/fr/log/"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://elektraos.dev/it/log/"/>
-    <lastmod>2026-03-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Solution pages -->
-  <url>
-    <loc>https://elektraos.dev/chatbot/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://elektraos.dev/chatbot/"/>
-    <xhtml:link rel="alternate" hreflang="da" href="https://elektraos.dev/da/chatbot/"/>
-    <lastmod>2026-03-25</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://elektraos.dev/audit/</loc>
+    <lastmod>2026-05-21</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://elektraos.dev/automation/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://elektraos.dev/automation/"/>
-    <xhtml:link rel="alternate" hreflang="da" href="https://elektraos.dev/da/automation/"/>
-    <lastmod>2026-03-25</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-21</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://elektraos.dev/seo/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://elektraos.dev/seo/"/>
-    <xhtml:link rel="alternate" hreflang="da" href="https://elektraos.dev/da/seo/"/>
-    <lastmod>2026-03-25</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://elektraos.dev/blog/</loc>
+    <lastmod>2026-06-11</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://elektraos.dev/design/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://elektraos.dev/design/"/>
-    <xhtml:link rel="alternate" hreflang="da" href="https://elektraos.dev/da/design/"/>
-    <lastmod>2026-03-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://elektraos.dev/case-thumbnail-pipeline/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://elektraos.dev/case-thumbnail-pipeline/"/>
-    <xhtml:link rel="alternate" hreflang="da" href="https://elektraos.dev/da/case-thumbnail-pipeline/"/>
-    <lastmod>2026-03-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- About and Pricing -->
-  <url>
-    <loc>https://elektraos.dev/about/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://elektraos.dev/about/"/>
-    <xhtml:link rel="alternate" hreflang="da" href="https://elektraos.dev/da/about/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://elektraos.dev/fr/about/"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://elektraos.dev/it/about/"/>
-    <lastmod>2026-03-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://elektraos.dev/pricing/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://elektraos.dev/pricing/"/>
-    <xhtml:link rel="alternate" hreflang="da" href="https://elektraos.dev/da/pricing/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://elektraos.dev/fr/pricing/"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://elektraos.dev/it/pricing/"/>
-    <lastmod>2026-03-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Audit -->
-  <url>
-    <loc>https://elektraos.dev/audit/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://elektraos.dev/audit/"/>
-    <xhtml:link rel="alternate" hreflang="da" href="https://elektraos.dev/da/audit/"/>
-    <lastmod>2026-03-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <!-- Case studies -->
-  <url>
-    <loc>https://elektraos.dev/case-ayla/</loc>
-    <lastmod>2026-03-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://elektraos.dev/case-elektraos/</loc>
-    <lastmod>2026-03-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://elektraos.dev/case-sheandelle/</loc>
-    <lastmod>2026-03-25</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://elektraos.dev/blog/readable-not-transactable/</loc>
+    <lastmod>2026-06-11</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://elektraos.dev/case-40th-brick/</loc>
-    <lastmod>2026-03-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.8</priority>
   </url>
-
-  <!-- Danish pages -->
+  <url>
+    <loc>https://elektraos.dev/case-ayla/</loc>
+    <lastmod>2026-06-11</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/case-elektraos/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/case-loomgraph/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/case-sheandelle/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/case-thumbnail-pipeline/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/case/</loc>
+    <lastmod>2026-05-31</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/cases/</loc>
+    <lastmod>2026-06-11</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/chatbot/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/design/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/for-bo/</loc>
+    <lastmod>2026-05-01</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/log/</loc>
+    <lastmod>2026-06-11</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/loomgraph-society/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/portal/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/pricing/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/seo/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/smb/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <priority>0.8</priority>
+  </url>
   <url>
     <loc>https://elektraos.dev/da/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://elektraos.dev/"/>
-    <xhtml:link rel="alternate" hreflang="da" href="https://elektraos.dev/da/"/>
-    <lastmod>2026-03-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://elektraos.dev/da/about/</loc>
-    <lastmod>2026-03-25</lastmod>
+    <lastmod>2026-05-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://elektraos.dev/da/pricing/</loc>
-    <lastmod>2026-03-25</lastmod>
+    <loc>https://elektraos.dev/da/audit/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/da/automation/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/da/blog/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/da/case-40th-brick/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/da/case-ayla/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/da/case-elektraos/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/da/case-sheandelle/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/da/case-thumbnail-pipeline/</loc>
+    <lastmod>2026-05-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://elektraos.dev/da/cases/</loc>
-    <lastmod>2026-03-25</lastmod>
+    <lastmod>2026-05-21</lastmod>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/da/chatbot/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/da/design/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/da/log/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/da/pricing/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/da/seo/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/da/smb/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/de/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/de/smb/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/fr/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/fr/about/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/fr/audit/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/fr/automation/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/fr/blog/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/fr/case-40th-brick/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/fr/case-ayla/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/fr/case-elektraos/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/fr/case-sheandelle/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/fr/case-thumbnail-pipeline/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/fr/cases/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/fr/chatbot/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/fr/design/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/fr/log/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/fr/pricing/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/fr/seo/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/fr/smb/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/gh/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/gh/about/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/gh/cases/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/gh/smb/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/it/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/it/about/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/it/audit/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/it/automation/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/it/blog/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/it/case-40th-brick/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/it/case-ayla/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/it/case-elektraos/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/it/case-sheandelle/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/it/case-thumbnail-pipeline/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/it/cases/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/it/chatbot/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/it/design/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/it/log/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/it/pricing/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/it/seo/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/it/smb/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/ma/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/ma/about/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/ma/audit/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/ma/automation/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/ma/blog/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/ma/case-40th-brick/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/ma/case-ayla/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/ma/case-elektraos/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/ma/case-sheandelle/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/ma/case-thumbnail-pipeline/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/ma/cases/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/ma/chatbot/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/ma/design/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/ma/log/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/ma/pricing/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/ma/seo/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/ma/smb/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/nl/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/nl/smb/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/se/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/se/smb/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/tn/</loc>
+    <lastmod>2026-05-31</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/tn/about/</loc>
+    <lastmod>2026-05-31</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/tn/audit/</loc>
+    <lastmod>2026-05-31</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/tn/automation/</loc>
+    <lastmod>2026-05-31</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/tn/blog/</loc>
+    <lastmod>2026-05-31</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/tn/case-40th-brick/</loc>
+    <lastmod>2026-05-31</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/tn/case-ayla/</loc>
+    <lastmod>2026-05-31</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/tn/case-elektraos/</loc>
+    <lastmod>2026-05-31</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/tn/case-sheandelle/</loc>
+    <lastmod>2026-05-31</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/tn/case-thumbnail-pipeline/</loc>
+    <lastmod>2026-05-31</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/tn/cases/</loc>
+    <lastmod>2026-05-31</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/tn/chatbot/</loc>
+    <lastmod>2026-05-31</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/tn/design/</loc>
+    <lastmod>2026-05-31</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/tn/log/</loc>
+    <lastmod>2026-05-31</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/tn/pricing/</loc>
+    <lastmod>2026-05-31</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/tn/seo/</loc>
+    <lastmod>2026-05-31</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/tn/smb/</loc>
+    <lastmod>2026-05-31</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/uk/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/uk/smb/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/birthday/joao/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/case/tunisia/</loc>
+    <lastmod>2026-05-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/casestudy/ayla/</loc>
+    <lastmod>2026-06-11</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/casestudy/mealshift/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/casestudy/mealshift/docs/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/casestudy/mealshift/vision/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/casestudy/vienna-artists/</loc>
+    <lastmod>2026-05-30</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/img/generate-thumbnails.html</loc>
+    <lastmod>2026-04-24</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/loomgraph/dashboard/</loc>
+    <lastmod>2026-05-20</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/smb/bcorp/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/smb/compliance/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/smb/data/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/smb/governance/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/smb/hubs/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/smb/ops/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/smb/pricing/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://elektraos.dev/smb/product/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <priority>0.5</priority>
   </url>
 </urlset>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Readable, not transactable . Blog . ElektraOS.dev</title>
+  <meta name="description" content="The Danish AI Visibility Index, June 2026: 38 SMB sites audited across 5 verticals. Average AI-visibility 83/100, average agent-readiness 48/100, and 0 of 38 publish structured prices, availability, or hours.">
+  <meta property="og:title" content="Readable, not transactable . ElektraOS.dev">
+  <meta property="og:description" content="38 Danish SMB sites audited: AI assistants can read them, AI agents cannot transact with them. What the gap means and how to close it.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://elektraos.dev/blog/readable-not-transactable/">
+  <meta name="theme-color" content="#7c3aed">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="canonical" href="https://elektraos.dev/blog/readable-not-transactable/">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Readable, not transactable",
+    "description": "The Danish AI Visibility Index, June 2026: 38 SMB sites audited across 5 verticals. Average AI-visibility 83/100, average agent-readiness 48/100, and 0 of 38 publish structured prices, availability, or hours.",
+    "url": "https://elektraos.dev/blog/readable-not-transactable/",
+    "datePublished": "2026-06-11",
+    "inLanguage": "en",
+    "author": {
+      "@type": "Person",
+      "name": "Yossra Benzad",
+      "url": "https://elektraos.dev/about/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ElektraOS.dev",
+      "url": "https://elektraos.dev"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/animations.css">
+  <link rel="stylesheet" href="/css/sections.css">
+  <link rel="stylesheet" href="/css/chat.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <style>
+    .post-hero { padding: 140px 24px 24px; max-width: 700px; margin: 0 auto; }
+    .post-meta {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 16px; flex-wrap: wrap;
+    }
+    .post-date {
+      font-family: var(--font-mono); font-size: 11px;
+      color: var(--text-muted); letter-spacing: 1px;
+    }
+    .post-cat {
+      font-family: var(--font-mono); font-size: 9px;
+      text-transform: uppercase; letter-spacing: 1px;
+      padding: 3px 8px; border-radius: 4px;
+    }
+    .post-cat.eng { background: rgba(124,58,237,0.1); color: #a78bfa; }
+    .post-cat.sys { background: rgba(0,255,157,0.08); color: var(--green); }
+    .post-hero h1 {
+      font-size: clamp(28px, 4.5vw, 44px); font-weight: 700; line-height: 1.15;
+    }
+    .post-body { max-width: 700px; margin: 0 auto; padding: 16px 24px 80px; }
+    .post-body p {
+      font-size: 15px; color: var(--text-secondary); line-height: 1.85;
+      margin-bottom: 20px;
+    }
+    .post-body h2 {
+      font-size: 22px; font-weight: 700; margin: 36px 0 14px; line-height: 1.3;
+    }
+    .post-body a { color: var(--cyan); text-decoration: none; }
+    .post-body a:hover { text-decoration: underline; }
+    .post-body ul { margin: 0 0 20px 18px; }
+    .post-body li {
+      font-size: 15px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 6px;
+    }
+    .post-stats {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1px; background: var(--border); border-radius: var(--radius-lg);
+      overflow: hidden; margin: 28px 0;
+    }
+    .post-stat { background: var(--bg-secondary); padding: 20px 12px; text-align: center; }
+    .post-stat-val { font-family: var(--font-mono); font-size: 24px; font-weight: 700; color: var(--cyan); }
+    .post-stat-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-top: 4px; }
+    .post-back {
+      display: inline-block; margin-bottom: 20px;
+      font-family: var(--font-mono); font-size: 11px;
+      color: var(--purple); text-decoration: none; letter-spacing: 0.5px;
+    }
+    .post-back:hover { color: var(--cyan); }
+  </style>
+  <link rel="stylesheet" href="/css/smart-features.css">
+  <script defer src="https://yossra-analytics.fly.dev/analytics" data-website-id="4abcaca6-fb37-47bf-bc8e-41e4b2503ee8"></script>
+</head>
+<body>
+
+  <!-- ===== TOP BAR ===== -->
+  <div style="position:fixed;top:0;left:0;right:0;z-index:101;background:linear-gradient(90deg,rgba(124,58,237,0.15),rgba(0,212,255,0.1));border-bottom:1px solid rgba(124,58,237,0.2);padding:8px 0;text-align:center;font-family:var(--font-mono);font-size:11px;letter-spacing:0.5px;color:var(--text-secondary);backdrop-filter:blur(12px);">
+    <span style="color:var(--cyan);">&#9889;</span> Neuro-surgery in progress. We ship live.
+  </div>
+
+  <!-- Nav -->
+  <nav class="nav" id="nav" style="top:33px;">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo"><span>E</span>lektraOS<span>.</span>dev</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/#solutions">Solutions</a></li>
+        <li><a href="/smb/">For SMB</a></li>
+        <li><a href="/log/">Build Log</a></li>
+        <li><a href="/cases/">Case Studies</a></li>
+        <li><a href="/blog/" style="color:var(--cyan);">Blog</a></li>
+        <li><a href="/pricing/">Pricing</a></li>
+        <li><a href="/about/">About</a></li>
+      </ul>
+      <a href="/#contact" class="btn nav-cta">Let's Build</a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- Post -->
+  <header class="post-hero">
+    <a href="/blog/" class="post-back">&larr; All posts</a>
+    <div class="post-meta">
+      <time class="post-date" datetime="2026-06-11">June 11, 2026</time>
+      <span class="post-cat eng">Engineering</span>
+      <span class="post-cat sys">Systems</span>
+    </div>
+    <h1>Readable, not transactable</h1>
+  </header>
+
+  <article class="post-body" itemscope itemtype="https://schema.org/BlogPosting">
+    <meta itemprop="headline" content="Readable, not transactable">
+    <meta itemprop="datePublished" content="2026-06-11">
+
+    <p>
+      In June 2026 we audited 38 Danish SMB websites across five verticals and pushed
+      each one through the same automated pipeline: HTML and answer-engine readability,
+      schema coverage, PageSpeed, CrUX field data, AI citation checks, and agent
+      readiness. The results are anonymized. No site is named, no owner was contacted.
+      We call the dataset the Danish AI Visibility Index.
+    </p>
+
+    <div class="post-stats">
+      <div class="post-stat">
+        <div class="post-stat-val">83/100</div>
+        <div class="post-stat-label">Avg AI-visibility</div>
+      </div>
+      <div class="post-stat">
+        <div class="post-stat-val">48/100</div>
+        <div class="post-stat-label">Avg agent-readiness</div>
+      </div>
+      <div class="post-stat">
+        <div class="post-stat-val">26%</div>
+        <div class="post-stat-label">Have llms.txt</div>
+      </div>
+      <div class="post-stat">
+        <div class="post-stat-val">0 / 38</div>
+        <div class="post-stat-label">Structured prices</div>
+      </div>
+    </div>
+
+    <p>
+      The headline finding fits in one sentence: Danish SMB sites are readable, not
+      transactable. Average AI-visibility came in at 83 out of 100. These sites are not
+      invisible to AI. An assistant like ChatGPT or Claude can find them, parse them,
+      and describe what the business does. Years of decent CMS defaults and ordinary
+      SEO work got them there, mostly by accident.
+    </p>
+
+    <p>
+      Agent-readiness tells the other half of the story. The average was 48 out of 100.
+      Only 26 percent of the sites publish an llms.txt file. And the number that stopped
+      us: 0 of 38 publish structured prices, availability, or opening hours. Not one.
+    </p>
+
+    <h2>Why the gap matters</h2>
+
+    <p>
+      The two scores measure two different futures. AI-visibility is about being
+      described: when someone asks an assistant for a recommendation, can the model
+      read your site well enough to mention you accurately? Most of these businesses
+      pass that test today.
+    </p>
+
+    <p>
+      Agent-readiness is about being acted on. An AI agent booking a table, comparing
+      quotes, or placing an order needs machine-readable answers to three questions:
+      what does it cost, is it available, and when are you open. If those answers only
+      exist as pixels in a hero image or text in a PDF menu, the agent moves on to a
+      competitor that publishes them as data. Readable gets you mentioned. Transactable
+      gets you chosen.
+    </p>
+
+    <p>
+      The pattern across verticals was consistent: prose is fine, structure is missing.
+      Sites describe their offers in fluent paragraphs and then hide every number an
+      agent would need. That is not a technology gap. Schema.org has supported offers,
+      prices, and opening hours for over a decade. It is an intent gap: nobody asked
+      the sites to be machines' counterparties until now.
+    </p>
+
+    <h2>What closing the gap looks like</h2>
+
+    <p>
+      The fixes are unglamorous and fast. JSON-LD that carries actual prices, not just
+      the organization name. An llms.txt that tells AI crawlers what the site contains
+      and what they may use. Crawler directives in robots.txt that welcome the agents
+      you want. A machine-readable product or service feed, so an agent does not have
+      to scrape your DOM and guess.
+    </p>
+
+    <p>
+      We ran this playbook on a live client site this week: a jewelry e-commerce brand
+      in Casablanca. The before scores were 81.7 for AI-readability and 37 for
+      agent-readiness, almost exactly the Index pattern. After one day of fixes
+      (structured product data with real prices, llms.txt, robots directives, a
+      products.json feed), the re-audit came back at 100.0 and 82. The design did not
+      change. No pixel moved. The site simply started answering the questions agents ask.
+    </p>
+
+    <h2>Caveats, because they matter</h2>
+
+    <p>
+      38 sites is a small sample. One country. Five verticals. The scores come from our
+      own audit methodology, which is documented at
+      <a href="https://citetome.com" target="_blank" rel="noopener">citetome.com</a>,
+      and other methodologies will weight things differently. We are not claiming Danish
+      SMBs are losing measurable revenue to agents today; agent-driven commerce is still
+      early. The claim is narrower and harder to dismiss: when an agent does come asking,
+      0 of 38 sites in this sample can currently answer with a price. That is fixable in
+      days, and the businesses that fix it first will be the ones agents can choose.
+    </p>
+  </article>
+
+  <!-- CTA -->
+  <div style="text-align:center;padding:32px 24px 80px;border-top:1px solid var(--border);max-width:700px;margin:0 auto;">
+    <p style="color:var(--text-muted);font-size:13px;margin-bottom:16px;">Want to know where your site lands on both scores?</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="https://citetome.com" target="_blank" rel="noopener" class="btn btn-primary">Citetome methodology</a>
+      <a href="/blog/" class="btn btn-outline">All posts</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-copy">
+        <span class="mono">&copy; 2026 ElektraOS.dev</span>
+        <span style="display:block;font-size:11px;color:var(--text-muted);margin-top:4px;">London, United Kingdom</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/yoggi-sheandelle" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:benzad.yossra@gmail.com?subject=Project%20inquiry%20from%20elektraos.dev" target="_blank" rel="noopener">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/utils.js"></script>
+  <script src="/js/chat.js"></script>
+  <script src="/js/app.js"></script>
+  <script src="/js/i18n.js" defer></script>
+  <script src="/js/tracker.js" defer></script>
+</body>
+</html>
