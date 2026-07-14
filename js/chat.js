@@ -418,8 +418,7 @@
         if (HIST.length > 8) { HIST = HIST.slice(-8); }
         var div = document.createElement('div');
         div.textContent = data.reply;
-        addMessage(div.innerHTML.replace(/
-/g, '<br>') + leadPrompt, 'bot', data);
+        addMessage(div.innerHTML.replace(/\n/g, '<br>') + leadPrompt, 'bot', data);
         showSuggestions(['Pricing', 'Case studies', 'Contact']);
       })
       .catch(function () {
