@@ -1,0 +1,57 @@
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "ElektraOS.dev - AI Engineering Services & Case Studies",
+  "home_page_url": "https://elektraos.dev/",
+  "feed_url": "https://elektraos.dev/feed.json",
+  "description": "Services, pricing and case studies from ElektraOS.dev - AI chatbots, automation, SEO and web design for small and mid-sized businesses. Machine-readable for AI agents.",
+  "language": "en",
+  "authors": [{ "name": "Yossra Benzad", "url": "https://elektraos.dev/about" }],
+  "items": [
+    {
+      "id": "https://elektraos.dev/chatbot",
+      "url": "https://elektraos.dev/chatbot",
+      "title": "AI Chatbot Development",
+      "content_text": "Custom AI chatbots trained on your business: customer support, lead capture and booking flows. Three tiers from USD 500 (starter) to USD 2,500 (custom multi-channel). Contracted through Upwork. Book an intro call by email.",
+      "tags": ["service", "ai-chatbot"],
+      "_commerce": { "price_from": 500, "price_to": 2500, "currency": "USD", "availability": "available", "order_url": "mailto:benzad.yossra@gmail.com?subject=Order%3A%20AI%20Chatbot" }
+    },
+    {
+      "id": "https://elektraos.dev/automation",
+      "url": "https://elektraos.dev/automation",
+      "title": "Business Automation",
+      "content_text": "Workflow automation with n8n, APIs and AI agents: intake pipelines, reporting, notifications and back-office glue. From USD 300 (single workflow) to USD 2,000 (full operations pipeline).",
+      "tags": ["service", "automation"],
+      "_commerce": { "price_from": 300, "price_to": 2000, "currency": "USD", "availability": "available", "order_url": "mailto:benzad.yossra@gmail.com?subject=Order%3A%20Automation" }
+    },
+    {
+      "id": "https://elektraos.dev/seo",
+      "url": "https://elektraos.dev/seo",
+      "title": "SEO & AI-Search Visibility",
+      "content_text": "Technical SEO plus answer-engine optimization: structured data, llms.txt, multilingual hreflang and content that AI assistants cite. From USD 400 (audit) to USD 1,500 (full implementation).",
+      "tags": ["service", "seo", "aeo"],
+      "_commerce": { "price_from": 400, "price_to": 1500, "currency": "USD", "availability": "available", "order_url": "mailto:benzad.yossra@gmail.com?subject=Order%3A%20SEO" }
+    },
+    {
+      "id": "https://elektraos.dev/design",
+      "url": "https://elektraos.dev/design",
+      "title": "Web Design & Build",
+      "content_text": "Fast, structured, AI-readable websites: landing pages to multilingual multi-page sites. From USD 500 (landing page) to USD 3,000+ (full site with CMS).",
+      "tags": ["service", "web-design"],
+      "_commerce": { "price_from": 500, "price_to": 3000, "currency": "USD", "availability": "available", "order_url": "mailto:benzad.yossra@gmail.com?subject=Order%3A%20Web%20Design" }
+    },
+    {
+      "id": "https://elektraos.dev/pricing",
+      "url": "https://elektraos.dev/pricing",
+      "title": "Pricing - all services",
+      "content_text": "Transparent tiered pricing for chatbots, automation, SEO and web design. All contracts through Upwork. Booking an intro call is free.",
+      "tags": ["pricing"]
+    },
+    {
+      "id": "https://elektraos.dev/cases",
+      "url": "https://elektraos.dev/cases",
+      "title": "Case studies",
+      "content_text": "Shipped work: ElektraOS (49-agent FastAPI platform), Loomgraph/Citetome (AEO control plane), Sheandelle, AYLA Maison, MealShift storefronts and more.",
+      "tags": ["case-study"]
+    }
+  ]
+}
