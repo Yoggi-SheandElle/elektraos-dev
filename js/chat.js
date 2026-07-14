@@ -1,7 +1,8 @@
-// ===== ELEKTRA CHAT v2 - Smart local engine + ElektraOS backend =====
-// Tries live API on localhost; production runs a scored intent matcher
-// over a full-site knowledge base. Bot replies may contain links (KB
-// constants only - user input is never rendered as HTML).
+// ===== ELEKTRA CHAT v3 - Live LLM engine + on-page fallback =====
+// Production talks to the Citetome/Loomgraph API (provider-agnostic LLM,
+// short rolling history, strict rate limits). If the API errors, the
+// scored intent matcher over the site knowledge base answers instead.
+// Bot HTML comes only from KB constants; API replies render as text.
 
 (function () {
   // -- Self-bootstrap: inject the widget on pages that don't carry the markup --
@@ -54,11 +55,13 @@
 
   // -- Config --
   var IS_LOCAL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-  var API_URL = 'http://localhost:8000/public/chat';
+  var API_URL = IS_LOCAL ? 'http://localhost:8000/public/chat' : 'https://api.citetome.com/public/chat';
+  var HEALTH_URL = IS_LOCAL ? 'http://localhost:8000/health' : 'https://api.citetome.com/health';
   var EMAIL = 'benzad.yossra@gmail.com';
   var SESSION_ID = localStorage.getItem('elektra_session') || ('s_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6));
   localStorage.setItem('elektra_session', SESSION_ID);
-  var isApiOnline = false;
+  var isApiOnline = !IS_LOCAL; // optimistic in production; health check corrects
+  var HIST = [];               // rolling {role, text} pairs for the LLM
   var messageCount = 0;
   var leadCaptured = false;
 
@@ -82,21 +85,21 @@
 
   // -- API health (local dev only) --
   function checkApi() {
-    fetch(API_URL.replace('/chat', '/health'), { method: 'GET', signal: AbortSignal.timeout(3000) })
+    fetch(HEALTH_URL, { method: 'GET', signal: AbortSignal.timeout(4000) })
       .then(function (r) { return r.json(); })
-      .then(function (d) { isApiOnline = d.status === 'online'; updateStatus(); })
+      .then(function (d) { isApiOnline = d.status === 'ok' || d.status === 'online'; updateStatus(); })
       .catch(function () { isApiOnline = false; updateStatus(); });
   }
 
   function updateStatus() {
     var statusEl = panel ? panel.querySelector('.header-status') : null;
     if (statusEl) {
-      statusEl.textContent = isApiOnline ? 'AI Assistant - Online' : 'AI Assistant';
+      statusEl.textContent = isApiOnline ? 'Live AI - Online' : 'AI Assistant';
       statusEl.style.color = isApiOnline ? '#00ff9d' : '#aaa';
     }
   }
 
-  if (IS_LOCAL) { checkApi(); setInterval(checkApi, 30000); }
+  checkApi(); setInterval(checkApi, 60000);
 
   // -- Knowledge base --
   // k: weighted keywords {term: weight}. ctx: page slugs that boost this intent.
@@ -400,15 +403,24 @@
       fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: text, session_id: SESSION_ID, page: getCurrentPage() }),
-        signal: AbortSignal.timeout(10000)
+        body: JSON.stringify({ message: text, session_id: SESSION_ID, page: getCurrentPage(), history: HIST.slice(-6) }),
+        signal: AbortSignal.timeout(20000)
       })
-      .then(function (r) { return r.json(); })
+      .then(function (r) {
+        if (!r.ok) { throw new Error('http ' + r.status); }
+        return r.json();
+      })
       .then(function (data) {
         typing.remove();
+        if (!data.reply) { throw new Error('empty'); }
+        HIST.push({ role: 'user', text: text.slice(0, 800) });
+        HIST.push({ role: 'assistant', text: String(data.reply).slice(0, 800) });
+        if (HIST.length > 8) { HIST = HIST.slice(-8); }
         var div = document.createElement('div');
-        div.textContent = data.reply || 'Something went wrong.';
-        addMessage(div.innerHTML + leadPrompt, 'bot', data);
+        div.textContent = data.reply;
+        addMessage(div.innerHTML.replace(/
+/g, '<br>') + leadPrompt, 'bot', data);
+        showSuggestions(['Pricing', 'Case studies', 'Contact']);
       })
       .catch(function () {
         typing.remove();
