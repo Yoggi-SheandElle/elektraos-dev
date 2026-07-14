@@ -127,7 +127,7 @@
 
     { id: 'about_bot',
       k: { 'who are you': 6, elektra: 3, 'about you': 5, yourself: 3, 'how do you work': 5, 'are you ai': 4, 'real person': 4, human: 2 },
-      r: ['I\'m Elektra. On this site I run as a lightweight on-page engine - your questions never leave the browser. The full ElektraOS system behind me runs 41 specialized agents. Built by Yossra, full-stack engineer in London.'],
+      r: ['I\'m Elektra. Normally I answer live on the ElektraOS engine (model + latency shown under my replies); right now you are on my offline fallback, answering from the site itself. The full system behind me runs 49 specialized agents. Built by Yossra.'],
       s: ['What is ElektraOS?', 'Who is Yossra?', 'Services'] },
 
     { id: 'about_studio',
@@ -138,7 +138,7 @@
 
     { id: 'elektraos_system',
       k: { elektraos: 4, 'operating system': 4, 'cognitive': 3, 'multi-agent': 4, 'agent system': 4, terminal: 2, 'your system': 3, backend: 2, infrastructure: 2 },
-      r: ['ElektraOS is a cognitive operating system: 184K+ lines of code, 41 agents, 624 endpoints - built to run an entire business from a single terminal. It powers this site, the automations, and the agent workflows. Full story: <a href="/case-elektraos/">ElektraOS case study</a>.'],
+      r: ['ElektraOS is a cognitive operating system: 184K+ lines of code, 49 agents, 566 endpoints - built to run an entire business from a single terminal. It powers this site, the automations, and the agent workflows. Full story: <a href="/case-elektraos/">ElektraOS case study</a>.'],
       s: ['Other case studies', 'What can you build for me?', 'Pricing'] },
 
     { id: 'services',
@@ -207,7 +207,7 @@
     { id: 'cases_overview',
       k: { 'case stud': 5, portfolio: 4, projects: 3, examples: 3, built: 2, shipped: 3, 'previous work': 5, 'your work': 4, clients: 3, proof: 3 },
       ctx: ['cases'],
-      r: ['All real, deployed systems - live status across 13 projects on the ' + LINK.cases + ' page. Highlights: <a href="/case-ayla/">AYLA Luxury</a> (live jewelry e-commerce), <a href="/case-elektraos/">ElektraOS</a> (184K+ lines, 41 agents), <a href="/case-loomgraph/">Loomgraph</a> (agentic SEO platform), <a href="/case-sheandelle/">She&amp;Elle</a> (brand + digital presence), <a href="/case-thumbnail-pipeline/">AI media pipeline</a>, and <a href="/case-40th-brick/">The 40th Brick</a> (interactive puzzle game).'],
+      r: ['All real, deployed systems - live status across 13 projects on the ' + LINK.cases + ' page. Highlights: <a href="/case-ayla/">AYLA Luxury</a> (live jewelry e-commerce), <a href="/case-elektraos/">ElektraOS</a> (184K+ lines, 49 agents), <a href="/case-loomgraph/">Loomgraph</a> (agentic SEO platform), <a href="/case-sheandelle/">She&amp;Elle</a> (brand + digital presence), <a href="/case-thumbnail-pipeline/">AI media pipeline</a>, and <a href="/case-40th-brick/">The 40th Brick</a> (interactive puzzle game).'],
       s: ['Tell me about AYLA', 'What is ElektraOS?', 'Pricing'] },
 
     { id: 'case_ayla',

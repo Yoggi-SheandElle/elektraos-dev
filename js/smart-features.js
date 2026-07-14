@@ -14,7 +14,7 @@
   var el = document.getElementById('systemPulse');
   if (!el) return;
 
-  var agents = 41, endpoints = 624, workflows = 31;
+  var agents = 49, endpoints = 566, workflows = 31;
   var tasks = ['Content pipeline sync', 'Agent health check', 'Vault index update', 'Thumbnail generation',
     'SEO audit cycle', 'Lead scoring update', 'Email digest compiled', 'Workflow optimization',
     'API cache refresh', 'Model response cached', 'Schedule rebalanced', 'Knowledge graph updated'];
@@ -248,9 +248,9 @@
     { text: 'I think in <span class="highlight">systems</span>, not tasks. I automate before I repeat. I build once and let it <span class="accent">scale</span>.' },
     { text: '' },
     { prompt: true, text: 'uptime' },
-    { text: '<span class="accent">' + Math.floor((Date.now() - new Date('2025-10-01').getTime()) / 86400000) + '</span> days in production' },
-    { text: '<span class="accent">41</span> specialized agents active' },
-    { text: '<span class="accent">624</span> API endpoints responding' },
+    { text: '<span class="accent">' + Math.floor((Date.now() - new Date('2026-01-05').getTime()) / 86400000) + '</span> days in production' },
+    { text: '<span class="accent">49</span> specialized agents active' },
+    { text: '<span class="accent">566</span> API endpoints responding' },
     { text: '<span class="accent">31</span> automation workflows running' },
     { text: '' },
     { prompt: true, cursor: true }
