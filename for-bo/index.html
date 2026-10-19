@@ -152,12 +152,11 @@
       </div>
 
       <h3>What it is</h3>
-      <p>A single FastAPI service that hosts 49 specialised AI agents, each owning a narrow responsibility (content drafting, SEO audit, outreach generation, ledger, monitoring, content backlog drain, agent decline diagnosis). Agents read from and write to a shared markdown knowledge vault, so context persists across sessions instead of being trapped inside individual chats.</p>
+      <p>A single FastAPI service that hosts specialised AI agents, each owning a narrow responsibility (content drafting, SEO audit, outreach generation, ledger, monitoring, content backlog drain, agent decline diagnosis). Agents read from and write to a shared markdown knowledge vault, so context persists across sessions instead of being trapped inside individual chats.</p>
 
       <h3>What is in it today</h3>
       <ul class="facts">
-        <li><strong>51 routers, 566 API endpoints, 76 database tables.</strong></li>
-        <li><strong>49 specialised agents.</strong></li>
+        <li><strong>Specialised agents with human approval.</strong></li>
         <li><strong>Knowledge vault:</strong> markdown files with cross-linked MOC (Map of Content) hub pages, an Obsidian-compatible structure.</li>
         <li><strong>Automation bridge:</strong> n8n with a workflow library wired to vault events.</li>
         <li><strong>Observability:</strong> OpenTelemetry tracing on every request, OpenLIT on LLM calls.</li>
