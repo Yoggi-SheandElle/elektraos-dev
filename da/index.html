@@ -17,7 +17,7 @@
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta http-equiv="X-Frame-Options" content="DENY">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://api.citetome.com https://formspree.io https://yossra-analytics.fly.dev; frame-ancestors 'none';">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://api.citetome.com https://formspree.io; frame-ancestors 'none';">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -177,12 +177,16 @@
     ]
   }
   </script>
-  <script defer src="https://yossra-analytics.fly.dev/analytics" data-website-id="4abcaca6-fb37-47bf-bc8e-41e4b2503ee8"></script>
 </head>
 <body>
 
+  <!-- ===== TOP BAR ===== -->
+  <div style="position:fixed;top:0;left:0;right:0;z-index:101;background:linear-gradient(90deg,rgba(124,58,237,0.15),rgba(0,212,255,0.1));border-bottom:1px solid rgba(124,58,237,0.2);padding:8px 0;text-align:center;font-family:var(--font-mono);font-size:11px;letter-spacing:0.5px;color:var(--text-secondary);backdrop-filter:blur(12px);">
+    <span style="color:var(--cyan);">&#9889;</span> Siden er under neuro-kirurgi lige nu. Nogle funktioner kan glitche. Vi shipper live.
+  </div>
+
   <!-- ===== NAV ===== -->
-  <nav class="nav" id="nav" >
+  <nav class="nav" id="nav" style="top:33px;">
     <div class="nav-inner">
       <a href="/da/" class="nav-logo"><span>E</span>lektraOS<span>.</span>dev</a>
       <ul class="nav-links" id="navLinks">
@@ -560,7 +564,7 @@
   <!-- ===== GDPR COOKIE BANNER ===== -->
   <div id="cookieBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--bg-secondary);border-top:1px solid var(--border);padding:16px 24px;font-size:13px;color:var(--text-secondary);">
     <div style="max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
-      <p style="margin:0;flex:1;min-width:240px;">Denne side bruger kun noedvendige cookies til kontaktformularen. Ingen tracking, ingen analyse, ingen tredjeparts-cookies. <a href="#privacy" onclick="document.getElementById('privacyModal').style.display='flex';return false;" style="color:var(--cyan);text-decoration:underline;">Privatlivspolitik</a></p>
+      <p style="margin:0;flex:1;min-width:240px;">Denne side s&aelig;tter ingen cookies og bruger ingen analysev&aelig;rkt&oslash;jer. Den gemmer kun dit valg her i din browser. <a href="#privacy" onclick="document.getElementById('privacyModal').style.display='flex';return false;" style="color:var(--cyan);text-decoration:underline;">Privatlivspolitik</a></p>
       <div style="display:flex;gap:8px;">
         <button onclick="document.getElementById('cookieBanner').style.display='none';localStorage.setItem('cookieConsent','accepted')" style="padding:8px 20px;background:var(--gradient-brand);border:none;border-radius:8px;color:#fff;cursor:pointer;font-size:12px;font-weight:600;">Accepter</button>
         <button onclick="document.getElementById('cookieBanner').style.display='none';localStorage.setItem('cookieConsent','declined')" style="padding:8px 20px;background:transparent;border:1px solid var(--border);border-radius:8px;color:var(--text-secondary);cursor:pointer;font-size:12px;font-weight:600;">Afvis</button>
@@ -577,19 +581,20 @@
         <button onclick="document.getElementById('privacyModal').style.display='none'" style="background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:20px;">&times;</button>
       </div>
       <div style="font-size:14px;line-height:1.8;color:var(--text-secondary);">
-        <p><strong>Dataansvarlig:</strong> Yossra Benzad, der driver virksomhed under navnet ElektraOS, London, Storbritannien<br>Kontakt: yossra.benzad@gmail.com</p>
-        <p><strong>Virksomhedsoplysninger:</strong> Dette er en personlig portfolio-hjemmeside drevet fra København og London. Alle tjenester leveres i oejeblikket udelukkende via <a href="mailto:benzad.yossra@gmail.com?subject=Project%20inquiry%20from%20elektraos.dev" target="_blank" rel="noopener" style="color:var(--cyan);">Email</a>, som haandterer kontrakter, betalinger og tvistloesning. Denne hjemmeside behandler ikke transaktioner direkte.</p>
-        <p><strong>Hvad vi indsamler:</strong> Naar du indsender kontaktformularen, indsamler vi dit navn, din email og din besked. Disse data behandles af Formspree for at levere din besked. Ingen andre persondata indsamles.</p>
-        <p><strong>Cookies:</strong> Denne side bruger ingen tracking-cookies, ingen analyse-cookies og ingen tredjeparts-cookies. Kun noedvendige cookies til formularindsendelse kan blive sat af formularleverandoeren (Formspree). Intet samtykke kraeves for strengt noedvendige cookies iht. ePrivacy-direktivet og dansk cookiebekendtgoerelse.</p>
-        <p><strong>Retsgrundlag (GDPR artikel 6):</strong> Kontaktformularindsendelser behandles under artikel 6(1)(b), noedvendigt for at besvare din henvendelse. Ingen data behandles til markedsfoeringsformaal uden saerskilt udtrykkeligt samtykke.</p>
-        <p><strong>Tredjepartsdatabehandlere:</strong> Formspree Inc. (formularhaandtering), GitHub Inc. (webhosting), Google (skrifttype-levering). Alle opererer under EU-godkendte dataoverforselsmekanismer.</p>
-        <p><strong>Dataopbevaring:</strong> Kontaktformularindsendelser opbevares kun saa laenge det er noedvendigt for at besvare din henvendelse, derefter slettes de. Ingen data saelges eller deles med tredjeparter til markedsfoering.</p>
-        <p><strong>Dine rettigheder (GDPR artikel 15-22):</strong> Du har ret til indsigt, berigtigelse, sletning, begraensning af behandling, dataportabilitet og indsigelse mod behandling af dine persondata. Kontakt yossra.benzad@gmail.com for at udoeve disse rettigheder. Vi svarer inden for 30 dage som kraevet af GDPR.</p>
-        <p><strong>Boern:</strong> Denne hjemmeside indsamler ikke bevidst data fra personer under 16 aar.</p>
-        <p><strong>Britisk tilsynsmyndighed:</strong> Information Commissioner's Office (ICO), Wycliffe House, Water Lane, Wilmslow, Cheshire SK9 5AF, Storbritannien. <a href="https://ico.org.uk" target="_blank" rel="noopener" style="color:var(--cyan);">ico.org.uk</a></p>
-        <p><strong>Prisdisclaimer:</strong> Alle viste priser er vejledende og kun til reference. Faktisk projektprissaetning, kontrakter og betalinger haandteres via a signed Statement of Work. Ingen transaktioner finder sted paa denne hjemmeside.</p>
-        <p><strong>Ophavsret og immaterielle rettigheder:</strong> Al kildekode, design, indhold og dokumentation paa denne hjemmeside og tilknyttede repositories er beskyttet under dansk og EU-ophavsretslovgivning (ophavsretsloven). Ophavsret opstaar automatisk ved skabelse iht. Bernerkonventionen. Ingen registrering kraeves. Alle rettigheder forbeholdes. Uautoriseret reproduktion, distribution eller brug af materiale fra denne hjemmeside er forbudt.</p>
-        <p style="color:var(--text-muted);font-size:12px;margin-top:16px;">Sidst opdateret: Marts 2026</p>
+        <p><strong>Hvem st&aring;r bag siden:</strong> ElektraOS.dev er Yossra Benzads personlige hjemmeside. Jeg er en privatperson med base i K&oslash;benhavn. Siden er ikke en registreret virksomhed og har intet CVR-nummer. Kontakt: <a href="mailto:yossra.benzad@gmail.com">yossra.benzad@gmail.com</a></p>
+        <p><strong>Dataansvarlig:</strong> Yossra Benzad, K&oslash;benhavn. Kontakt: <a href="mailto:yossra.benzad@gmail.com">yossra.benzad@gmail.com</a></p>
+        <p><strong>Kontaktformular:</strong> N&aring;r du bruger kontaktformularen, modtager jeg dit navn, din e-mailadresse og din besked. Formspree, Inc. (USA) leverer formularen til min indbakke som min databehandler. Jeg bruger oplysningerne alene til at svare dig. Retsgrundlag: databeskyttelsesforordningens artikel 6, stk. 1, litra b, n&aring;r du sp&oslash;rger om et muligt samarbejde, ellers artikel 6, stk. 1, litra f, min legitime interesse i at svare p&aring; din besked.</p>
+        <p><strong>Hosting:</strong> Siden hostes p&aring; GitHub Pages (GitHub, Inc., USA). GitHub logger bes&oslash;gendes IP-adresser af sikkerhedshensyn.</p>
+        <p><strong>Skrifttyper:</strong> Skrifttyperne hentes fra Google Fonts, s&aring; din browser sender din IP-adresse til Google, n&aring;r en side indl&aelig;ses.</p>
+        <p><strong>Overf&oslash;rsel uden for EU:</strong> Formspree, GitHub og Google behandler data i USA. Deres egne privatlivspolitikker beskriver de garantier, de bruger ved overf&oslash;rsel fra EU.</p>
+        <p><strong>Cookies og lagring i browseren:</strong> Siden s&aelig;tter ingen cookies og bruger ingen analyse- eller sporingsv&aelig;rkt&oslash;jer. Den gemmer kun dit valg i cookie-meddelelsen i din browsers lokale lager og bruger det ikke til andet. Nogle demosider og kundeportalen gemmer et sessions-id i din browser, n&aring;r du bruger dem.</p>
+        <p><strong>Hvor l&aelig;nge jeg gemmer data:</strong> Beskeder gemmes, indtil din henvendelse er behandlet, og slettes senest efter 12 m&aring;neder, medmindre vi aftaler et samarbejde.</p>
+        <p><strong>Dine rettigheder:</strong> Efter databeskyttelsesforordningens artikel 15 til 21 kan du bede om indsigt i, berigtigelse eller sletning af dine oplysninger, begr&aelig;nse eller g&oslash;re indsigelse mod behandlingen og bede om dataportabilitet. Skriv til <a href="mailto:yossra.benzad@gmail.com">yossra.benzad@gmail.com</a>. Jeg svarer inden for en m&aring;ned.</p>
+        <p><strong>Klage:</strong> Du kan klage til Datatilsynet, Carl Jacobsens Vej 35, 2500 Valby. Tlf. 33 19 32 00, dt@datatilsynet.dk, <a href="https://www.datatilsynet.dk/" target="_blank" rel="noopener">datatilsynet.dk</a></p>
+        <p><strong>G&aelig;ldende regler:</strong> databeskyttelsesforordningen (forordning (EU) 2016/679), databeskyttelsesloven (lov nr. 502 af 23. maj 2018), cookiebekendtg&oslash;relsen (bekendtg&oslash;relse nr. 1148 af 9. december 2011) og e-handelsloven (lov nr. 227 af 22. april 2002).</p>
+        <p><strong>Priser:</strong> Priserne p&aring; siden er vejledende. Der s&aelig;lges intet via siden. Alt arbejde aftales skriftligt f&oslash;rst.</p>
+        <p><strong>Ophavsret:</strong> Indhold og kode p&aring; siden er beskyttet af ophavsretsloven. Sp&oslash;rg venligst, f&oslash;r du genbruger det.</p>
+        <p style="color:var(--text-muted);font-size:12px;margin-top:16px;">Sidst opdateret: oktober 2026</p>
       </div>
     </div>
   </div>

@@ -5,6 +5,10 @@
 // Bot HTML comes only from KB constants; API replies render as text.
 
 (function () {
+  // CHAT_DISABLED: hidden until the chat backend is live again.
+  var CHAT_DISABLED = true;
+  if (CHAT_DISABLED) { var cw = document.getElementById('chatWidget'); if (cw) cw.style.display = 'none'; return; }
+
   // -- Self-bootstrap: inject the widget on pages that don't carry the markup --
   var AVATAR_SVG = '<svg width="18" height="18" viewBox="0 0 32 32" fill="none"><polygon points="16,5 25,10.5 25,21.5 16,27 7,21.5 7,10.5" stroke="url(#sigil-g2)" stroke-width="1.2" opacity="0.6"/><path d="M12 11 L20 11 M12 11 L12 21 M12 16 L19 16 M12 21 L20 21" stroke="url(#sigil-g2)" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="16" r="1.5" fill="#00d4ff" opacity="0.9"/><defs><linearGradient id="sigil-g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#00d4ff"/></linearGradient></defs></svg>';
 
